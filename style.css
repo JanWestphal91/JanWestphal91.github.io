@@ -11,6 +11,8 @@
     --container: 1100px;
     --radius: 16px;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    --effect-animations: none;
+    --effect-delays: 0s;
 }
 
 body.light {
@@ -39,6 +41,17 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
+}
+
+/* Dark-mode-only effect layer */
+body:not(.light) {
+    background-image: url("Images/Backgroundfirework.png");
+    /*background-repeat:repeat;*/
+    /*radial-gradient(circle at 20% 20%, rgba(0, 255, 204, 0.34), transparent 35%),*/
+        /*radial-gradient(circle at 80% 30%, rgba(0, 174, 255, 0.30), transparent 40%),*/
+        /*radial-gradient(circle at 50% 80%, rgba(153, 0, 255, 0.28), transparent 45%);*/
+    /*background-size: 100% 100%;*/
+    animation: dark-bg-scroll 28s linear infinite;
 }
 
 a {
@@ -258,6 +271,91 @@ h3 {
     padding: 2rem 0;
     border-top: 1px solid var(--border);
     color: var(--muted);
+}
+
+.text-effects {
+    display: inline-block;
+    white-space: pre-wrap;
+}
+
+.text-effect__char {
+    display: inline-block;
+    animation: none;
+}
+
+.wavy-text__char {
+    will-change: transform;
+}
+
+.rainbow-text__char {
+    color: inherit;
+    will-change: color;
+}
+
+body:not(.light) .text-effect__char {
+    animation: var(--effect-animations, none);
+    animation-delay: var(--effect-delays, 0s);
+}
+
+@keyframes dark-bg-scroll {
+    0% {
+        background-position: 0 100%, 100% 0, 50% 100%;
+    }
+
+    100% {
+        background-position: 100% 0, 0 100%, 0 0;
+    }
+}
+
+@keyframes wavy-bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-0.35em);
+    }
+}
+
+@keyframes rainbow-cycle {
+    0% {
+        color: #ff5f6d;
+    }
+
+    16% {
+        color: #ff9a3d;
+    }
+
+    33% {
+        color: #ffd166;
+    }
+
+    50% {
+        color: #7bd88f;
+    }
+
+    66% {
+        color: #58c7ff;
+    }
+
+    83% {
+        color: #8a7dff;
+    }
+
+    100% {
+        color: #ff5f6d;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body:not(.light) {
+        animation: none;
+    }
+
+    .text-effect__char {
+        animation: none;
+    }
 }
 
 @media (max-width: 900px) {

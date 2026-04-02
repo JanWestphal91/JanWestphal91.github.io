@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
             name="description"
-            content="Portfolio von Netro – Medien-Ingenieur, Game Dev, UI/UX, Rendering und Creative Coding."
+            content="Portfolio von Jan Westphal – Medien-Ingenieur, Game Dev, UI/UX, Rendering und Creative Coding."
     />
-    <title>Netro – Portfolio</title>
+    <title>Jan Westphal – Portfolio</title>
 
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
@@ -15,19 +15,19 @@
 <body>
 <header class="site-header">
     <div class="container nav">
-        <a href="#top" class="logo">Netro</a>
+        <a href="#top" class="logo">Jan Westphal</a>
 
         <nav>
             <ul class="nav-links">
-                <li><a href="#about">Über mich</a></li>
-                <li><a href="#projects">Projekte</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="#about">About me</a></li>
+                <li><a href="#projects">Projects</a></li>
+<!--                <li><a href="#skills">Skills</a></li>-->
+                <li><a href="#contact">Contact / Socials</a></li>
             </ul>
         </nav>
 
         <button id="theme-toggle" class="theme-toggle" aria-label="Theme wechseln">
-            🌙
+            Cool Mode
         </button>
     </div>
 </header>
@@ -35,35 +35,32 @@
 <main id="top">
     <section class="hero">
         <div class="container">
-            <p class="kicker">Designer Portfolio</p>
-            <h1>
-                Digital design with<br />
-                <span>clarity, systems and taste.</span>
-            </h1>
+            <p class="kicker" data-wavy>Portfolio</p>
+            <br>
+            <h1 data-wavy + data-rainbow>Hier steht irgendwas Cooles.</h1>
             <p class="hero-copy">
-                Ich gestalte digitale Interfaces, visuelle Systeme und interaktive
-                Arbeiten mit einem Fokus auf Klarheit, Struktur und ruhige Details.
+
             </p>
         </div>
     </section>
 
-    <section id="work" class="section">
+    <section id="projects" class="section">
         <div class="container">
             <div class="section-head">
                 <p class="kicker">Selected Work</p>
-                <h2>Ausgewählte Projekte</h2>
+                <h2>Projects</h2>
             </div>
 
             <div class="work-list">
+                <!--ab hier mehrere vorgestellte projekte, article als js noch auslagern-->
                 <article class="work-item">
                     <div class="work-meta">
-                        <span>UI / UX</span>
-                        <span>2026</span>
+                        <span>[Webgame] 2026</span>
+
                     </div>
-                    <h3>Interface System für ein Kreativ-Tool</h3>
+                    <h3><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C!</a>.</h3>
                     <p>
-                        Reduktion komplexer Funktionen auf eine klare, ruhige Oberfläche
-                        mit konsistentem Komponentenverhalten und hoher Lesbarkeit.
+                        Made with Godot and Aseprite, free 2 play. this game is a small homage to the old Flash games of the early 2000s. It features a cute pony racing through a colorful world, trying to reach lightspeed. The game is available on itch.io.
                     </p>
                 </article>
 
@@ -98,17 +95,14 @@
         <div class="container about-grid">
             <div>
                 <p class="kicker">About</p>
-                <h2>Design als strukturierte Entscheidung.</h2>
+                <h2>Irgendein Spruch.</h2>
             </div>
             <div>
                 <p>
-                    Ich interessiere mich für die Verbindung aus Gestaltung, Technik und
-                    verständlichen Systemen. Mich reizt besonders Arbeit, die visuell
-                    ruhig wirkt, aber inhaltlich und technisch präzise gelöst ist.
+                    Irgendein längerer text.
                 </p>
                 <p>
-                    Mein Fokus liegt auf digitalen Interfaces, visuellen Konzepten,
-                    Prototyping und interaktiven Medienprojekten.
+                    Noch mehr willkürlicher text.
                 </p>
             </div>
         </div>
@@ -117,15 +111,11 @@
     <section id="contact" class="section">
         <div class="container contact-block">
             <p class="kicker">Contact</p>
-            <h2>Let’s build something thoughtful.</h2>
-            <p>
-                Hier kannst du später deine Mailadresse, GitHub, LinkedIn oder ein
-                Impressum ergänzen.
-            </p>
-
+            <h2>You can contact me here.</h2>
             <div class="contact-actions">
-                <a href="mailto:deine-mail@example.com" class="link-button">E-Mail</a>
-                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="link-button secondary">GitHub</a>
+                <a href="mailto:j.westphal@live.com" class="link-button">E-Mail</a>
+                <a href="https://github.com/JanWestphal91/" target="_blank" rel="noopener noreferrer" class="link-button secondary">GitHub</a>
+                <a href="https://jan-west.itch.io/" target="_blank" rel="noopener noreferrer" class="link-button secondary">Itch.IO</a>
             </div>
         </div>
     </section>
@@ -133,8 +123,7 @@
 
 <footer class="site-footer">
     <div class="container footer-row">
-        <p>© 2026 Netro</p>
-        <p>Design · UI/UX · Creative Coding</p>
+        <p>© 2026 Jan Westphal</p>
     </div>
 </footer>
 </body>
