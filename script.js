@@ -110,6 +110,135 @@ function getElementEffects(element) {
     });
 }
 
+const PROJECT_DATA = {
+    "go-pony-go-c": {
+        title: "Go Pony, Go C!",
+        category: "[Webgame] 2026",
+        summary: "Arcade-Racing mit Pixel-Art, Highspeed-Flow und einer klaren Retro-Flash-DNA.",
+        meta: [
+            "Rolle: Game Design, Programming, Art Direction",
+            "Tools: Godot, Aseprite",
+            "Status: Veroeffentlicht auf itch.io"
+        ],
+        images: [
+            {
+                src: "Images/Backgroundfirework.png",
+                alt: "Farbiges Firework-Backgroundmotiv als visueller Moodshot",
+                caption: "Moodshot / Farbwelt"
+            },
+            {
+                src: "Images/iconpatterndark.png",
+                alt: "Dunkles Icon-Pattern fuer das visuelle Interface",
+                caption: "UI-Pattern Dark"
+            },
+            {
+                src: "Images/iconpatternlight.png",
+                alt: "Helles Icon-Pattern fuer das visuelle Interface",
+                caption: "UI-Pattern Light"
+            }
+        ],
+        content: [
+            "Das Projekt ist als kompakter Arcaderacer angelegt: schnell starten, Rhythmus finden und ueber direkte Bewegung belohnt werden.",
+            "Im Fokus standen Lesbarkeit im Tempo, charakterstarke Pixel-Art und eine klare Spielschleife, die sofort funktioniert."
+        ]
+    },
+    "creative-coding-experiments": {
+        title: "Interaktive visuelle Experimente",
+        category: "Creative Coding 2026",
+        summary: "Prototypische Arbeiten zwischen Motion, Typografie und Echtzeit-Interaktion.",
+        meta: [
+            "Rolle: Creative Coding, Visual Design",
+            "Fokus: Echtzeit-Input, Formexploration",
+            "Status: Laufende Sammlung"
+        ],
+        images: [
+            {
+                src: "Images/iconpatterndark.png",
+                alt: "Abstraktes dunkles Pattern als visuelle Studie",
+                caption: "Pattern Study Dark"
+            },
+            {
+                src: "Images/iconpatternlight.png",
+                alt: "Abstraktes helles Pattern als visuelle Studie",
+                caption: "Pattern Study Light"
+            }
+        ],
+        content: [
+            "Die Experimente dienen als Sandbox fuer Bewegungsprinzipien, Farbkonzepte und systematische Typo-Animation.",
+            "Einzelne Studien lassen sich spaeter als Module in groessere Projekte uebernehmen."
+        ]
+    },
+    "design-system-structure": {
+        title: "Visuelle Struktur fuer skalierbare Produkte",
+        category: "Design Systems 2025",
+        summary: "Ein modulares Set aus Regeln und Komponenten fuer konsistente UI-Entwicklung.",
+        meta: [
+            "Rolle: UX/UI, System Design",
+            "Fokus: Skalierbarkeit und Konsistenz",
+            "Status: Konzept + Dokumentation"
+        ],
+        images: [
+            {
+                src: "Images/iconpatternlight.png",
+                alt: "Helles Pattern als Basis fuer ein Design-System",
+                caption: "System Pattern"
+            }
+        ],
+        content: [
+            "Das Design-System definiert Typografie, Spacing, Komponenten-Hierarchien und klare Einsatzregeln fuer Teams.",
+            "Dadurch entstehen schnellere Iterationen und ein durchgaengig stimmiges Nutzererlebnis ueber mehrere Features hinweg."
+        ]
+    }
+};
+
+function renderProjectPage() {
+    if (document.body.dataset.page !== "project") {
+        return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const hashId = window.location.hash.replace(/^#/, "");
+    const id = params.get("id") || hashId || "go-pony-go-c";
+    const project = PROJECT_DATA[id] || PROJECT_DATA["go-pony-go-c"];
+
+    const categoryElement = document.getElementById("project-category");
+    const titleElement = document.getElementById("project-title");
+    const summaryElement = document.getElementById("project-summary");
+    const metaElement = document.getElementById("project-meta");
+    const galleryElement = document.getElementById("project-gallery");
+    const contentElement = document.getElementById("project-content");
+
+    if (!categoryElement || !titleElement || !summaryElement || !metaElement || !galleryElement || !contentElement) {
+        return;
+    }
+
+    categoryElement.textContent = project.category;
+    titleElement.textContent = project.title;
+    summaryElement.textContent = project.summary;
+    document.title = `${project.title} - Jan Westphal`;
+
+    metaElement.innerHTML = project.meta
+        .map((item) => `<li>${escapeHtml(item)}</li>`)
+        .join("");
+
+    galleryElement.innerHTML = project.images
+        .map((image) => {
+            return `
+                <figure class="project-gallery__item">
+                    <img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" loading="lazy">
+                    <figcaption>${escapeHtml(image.caption)}</figcaption>
+                </figure>
+            `;
+        })
+        .join("");
+
+    contentElement.innerHTML = project.content
+        .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
+        .join("");
+}
+
+renderProjectPage();
+
 const autoEffectSelector = Object.values(TEXT_EFFECTS)
     .map((effect) => `[${effect.dataAttribute}]`)
     .join(",");

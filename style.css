@@ -45,7 +45,7 @@ body {
 
 /* Dark-mode-only effect layer */
 body:not(.light) {
-    background-image: url("Images/Backgroundfirework.png");
+    background-image: url("Images/iconpatterndark.png");
     /*background-repeat:repeat;*/
     /*radial-gradient(circle at 20% 20%, rgba(0, 255, 204, 0.34), transparent 35%),*/
         /*radial-gradient(circle at 80% 30%, rgba(0, 174, 255, 0.30), transparent 40%),*/
@@ -125,6 +125,32 @@ body.light .site-header {
     border-radius: 999px;
     padding: 0.65rem 0.85rem;
     cursor: pointer;
+}
+
+.kicker {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--accent);
+    color: #08110f;
+    font-weight: 600;
+    margin-top: 0.9rem;
+}
+
+.link-button.secondary {
+    background: var(--surface);
+    color: var(--text);
 }
 
 .hero {
@@ -273,6 +299,85 @@ h3 {
     color: var(--muted);
 }
 
+.project-page {
+    min-height: calc(100vh - 72px);
+}
+
+.project-hero {
+    padding-top: 4.5rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: var(--muted);
+}
+
+.back-link:hover {
+    color: var(--text);
+}
+
+.project-summary {
+    color: var(--muted);
+    max-width: 70ch;
+    margin-bottom: 1.25rem;
+}
+
+.project-meta {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    padding: 0;
+    margin: 0;
+}
+
+.project-meta li {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-gallery__item {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.project-gallery__item img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.project-gallery__item figcaption {
+    padding: 0.7rem 0.9rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.project-content {
+    max-width: 78ch;
+}
+
+.project-content p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--muted);
+}
+
 .text-effects {
     display: inline-block;
     white-space: pre-wrap;
@@ -361,6 +466,10 @@ body:not(.light) .text-effect__char {
 @media (max-width: 900px) {
     .hero-grid,
     .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-gallery {
         grid-template-columns: 1fr;
     }
 
