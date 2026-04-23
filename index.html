@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
             name="description"
-            content="Portfolio von Jan Westphal – Medien-Ingenieur, Game Dev, UI/UX, Rendering und Creative Coding."
+            content="Portfolio of Jan Westphal – Creative Human, Game Dev, Designer, Illustrator, Techie and definitely a human."
     />
-    <title>Jan Westphal – Portfolio</title>
+    <title>WESTPHAL</title>
 
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
 </head>
-<body>
+<body class="light">
 <header class="site-header">
     <div class="container nav">
         <a href="#top" class="logo">Jan Westphal</a>
-
-        <nav>
+        <nav class="nav-main">
             <ul class="nav-links">
                 <li><a href="#about">About me</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li class="nav-dropdown">
+                    <a href="#projects" class="nav-dropdown__trigger">Projects</a>
+                    <ul id="projects-dropdown" class="nav-dropdown__menu" aria-label="Projektliste"></ul>
+                </li>
 <!--                <li><a href="#skills">Skills</a></li>-->
                 <li><a href="#contact">Contact / Socials</a></li>
             </ul>
         </nav>
-
         <button id="theme-toggle" class="theme-toggle" aria-label="Theme wechseln">
             Cool Mode
         </button>
@@ -34,10 +35,10 @@
 
 <main id="top">
     <section class="hero">
-        <div class="container">
-            <p class="kicker" data-wavy>Portfolio</p>
-            <br>
-            <h1 data-wavy data-rainbow>Hier steht irgendwas Cooles.</h1>
+        <div class="container hero-container-wide">
+<!--            <p class="kicker" data-wavy>Portfolio</p>-->
+<!--            <br>-->
+            <h1 data-wavy data-rainbow>HI! I’m Jan, a Game Dev, Coder, Designer, Illustrator, Techie and definitely a human living in Kiel, Germany.</h1>
             <p class="hero-copy">
 
             </p>
@@ -60,36 +61,23 @@
                     </div>
                     <h3><a href="project.html#go-pony-go-c">Go Pony, Go C!</a></h3>
                     <p>
-                        Made with Godot and Aseprite, free 2 play. this game is a small homage to the old Flash games of the early 2000s. It features a cute pony racing through a colorful world, trying to reach lightspeed. The game is available on itch.io.
+                        Made with Godot and Aseprite, free 2 play and nothing to pay. This game is a small homage to the old Flash games of the early 2000s and to cope with physics calculations. It features a small pony getting faster, trying to reach lightspeed. The game is available on itch.io to play in a browser.
                     </p>
                     <a href="project.html#go-pony-go-c" class="link-button secondary">Projektseite</a>
                 </article>
 
                 <article class="work-item">
                     <div class="work-meta">
-                        <span>Creative Coding</span>
-                        <span>2026</span>
-                    </div>
-                    <h3><a href="project.html#creative-coding-experiments">Interaktive visuelle Experimente</a></h3>
-                    <p>
-                        Gestaltung und technische Umsetzung kleiner digitaler Arbeiten
-                        zwischen Motion, Form, Typografie und Echtzeit-Interaktion.
-                    </p>
-                    <a href="project.html#creative-coding-experiments" class="link-button secondary">Projektseite</a>
-                </article>
+                        <span>[Webgame] 2026</span>
 
-                <article class="work-item">
-                    <div class="work-meta">
-                        <span>Design Systems</span>
-                        <span>2025</span>
                     </div>
-                    <h3><a href="project.html#design-system-structure">Visuelle Struktur fuer skalierbare Produkte</a></h3>
+                    <h3><a href="project.html#go-pony-go-c">Go Pony, Go C!</a></h3>
                     <p>
-                        Entwicklung eines konsistenten Systems aus Typografie, Abständen,
-                        Komponenten und Regeln für digitale Produkte.
+                        Made with Godot and Aseprite, free 2 play and nothing to pay. This game is a small homage to the old Flash games of the early 2000s and to cope with physics calculations. It features a small pony getting faster, trying to reach lightspeed. The game is available on itch.io to play in a browser.
                     </p>
-                    <a href="project.html#design-system-structure" class="link-button secondary">Projektseite</a>
+                    <a href="project.html#go-pony-go-c" class="link-button secondary">Projektseite</a>
                 </article>
+<!--                article endet hier als container-->
             </div>
         </div>
     </section>
@@ -115,18 +103,45 @@
         <div class="container contact-block">
             <p class="kicker">Contact</p>
             <h2>You can contact me here.</h2>
-            <div class="contact-actions">
-                <a href="mailto:j.westphal@live.com" class="link-button">E-Mail</a>
-                <a href="https://github.com/JanWestphal91/" target="_blank" rel="noopener noreferrer" class="link-button secondary">GitHub</a>
-                <a href="https://jan-west.itch.io/" target="_blank" rel="noopener noreferrer" class="link-button secondary">Itch.IO</a>
-            </div>
+<!--            <p class="contact-copy">-->
+<!--                Schick mir direkt eine Nachricht — ganz ohne die E-Mail-Adresse offen auf der Seite zu zeigen.-->
+<!--            </p>-->
+
+            <form id="form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="5eb109d2-3a48-4e2c-a23e-3948f0f938ee">
+
+                <label>
+                    <span>Name</span>
+                    <input type="text" name="name" placeholder="What´s your name?" required>
+                </label>
+
+                <label>
+                    <span>E-Mail</span>
+                    <input type="email" name="email" placeholder="i will reply to this adress. (youradress@mail.com)" required>
+                </label>
+
+                <label>
+                    <span>Nachricht</span>
+                    <textarea name="message" placeholder="You can tell me something here. Add a joke if you want or tell me a secret. =)" required></textarea>
+                </label>
+
+                <button type="submit" class="contact-submit">Send</button>
+            </form>
+
+
         </div>
     </section>
 </main>
 
 <footer class="site-footer">
     <div class="container footer-row">
-        <p>© 2026 Jan Westphal</p>
+        <p class="footer-copy">2026 CE, made by me  </p>
+        <div class="contact-actions footer-actions">
+<!--            <a href="mailto:j.westphal@live.com" class="link-button">E-Mail senden</a>-->
+            <a href="https://github.com/JanWestphal91/" target="_blank" rel="noopener noreferrer" class="link-button secondary">GitHub</a>
+            <a href="https://jan-west.itch.io/" target="_blank" rel="noopener noreferrer" class="link-button secondary">Itch.IO</a>
+        </div>
+
     </div>
 </footer>
 </body>

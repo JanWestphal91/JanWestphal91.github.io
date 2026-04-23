@@ -1,14 +1,52 @@
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
-let isLightMode = body.classList.contains("light");
+const THEME_STORAGE_KEY = "janwestphal-theme";
+const DEFAULT_THEME = "light";
+
+function isValidTheme(theme) {
+    return theme === "light" || theme === "dark";
+}
+
+function readStoredTheme() {
+    try {
+        const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+        return isValidTheme(storedTheme) ? storedTheme : null;
+    } catch (_error) {
+        return null;
+    }
+}
+
+function storeTheme(theme) {
+    try {
+        localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch (_error) {
+        // Ignore storage errors (e.g. private mode restrictions).
+    }
+}
+
+function applyTheme(theme) {
+    const resolvedTheme = isValidTheme(theme) ? theme : DEFAULT_THEME;
+    const isLightMode = resolvedTheme === "light";
+
+    body.classList.toggle("light", isLightMode);
+
+    if (themeToggle) {
+        themeToggle.textContent = isLightMode ? "Cool Mode" : "Serious Mode";
+    }
+}
+
+function initTheme() {
+    const storedTheme = readStoredTheme();
+    applyTheme(storedTheme || DEFAULT_THEME);
+}
+
+initTheme();
 
 if (themeToggle) {
-    themeToggle.textContent = isLightMode ? "Cool Mode" : "Serious Mode";
-
     themeToggle.addEventListener("click", () => {
-        isLightMode = !isLightMode;
-        body.classList.toggle("light", isLightMode);
-        themeToggle.textContent = isLightMode ? "Cool Mode" : "Serious Mode";
+        const nextTheme = body.classList.contains("light") ? "dark" : "light";
+        applyTheme(nextTheme);
+        storeTheme(nextTheme);
     });
 }
 
@@ -38,25 +76,40 @@ const TEXT_EFFECTS = {
 
 function createEffectTextHTML(text, effectNames = []) {
     const validEffects = effectNames.filter((effectName) => TEXT_EFFECTS[effectName]);
+    let characterIndex = 0;
+    const tokens = String(text).split(/(\s+)/);
 
-    return Array.from(String(text)).map((character, index) => {
-        const displayCharacter = character === " " ? "&nbsp;" : escapeHtml(character);
-        const charClasses = ["text-effect__char"];
-        const animationValues = [];
-        const delayValues = [];
+    return tokens.map((token) => {
+        if (!token) {
+            return "";
+        }
 
-        validEffects.forEach((effectName) => {
-            const effect = TEXT_EFFECTS[effectName];
-            charClasses.push(effect.charClass);
-            animationValues.push(effect.animation);
-            delayValues.push(`${(effect.delayStep * index).toFixed(3)}s`);
-        });
+        if (/^\s+$/.test(token)) {
+            characterIndex += token.length;
+            return token;
+        }
 
-        const style = animationValues.length > 0
-            ? ` style="--effect-animations:${animationValues.join(",")};--effect-delays:${delayValues.join(",")}"`
-            : "";
+        const wordHtml = Array.from(token).map((character) => {
+            const charClasses = ["text-effect__char"];
+            const animationValues = [];
+            const delayValues = [];
 
-        return `<span class="${charClasses.join(" ")}"${style}>${displayCharacter}</span>`;
+            validEffects.forEach((effectName) => {
+                const effect = TEXT_EFFECTS[effectName];
+                charClasses.push(effect.charClass);
+                animationValues.push(effect.animation);
+                delayValues.push(`${(effect.delayStep * characterIndex).toFixed(3)}s`);
+            });
+
+            const style = animationValues.length > 0
+                ? ` style="--effect-animations:${animationValues.join(",")};--effect-delays:${delayValues.join(",")}"`
+                : "";
+
+            characterIndex += 1;
+            return `<span class="${charClasses.join(" ")}"${style}>${escapeHtml(character)}</span>`;
+        }).join("");
+
+        return `<span class="text-effect__word">${wordHtml}</span>`;
     }).join("");
 }
 
@@ -118,14 +171,9 @@ const PROJECT_DATA = {
         meta: [
             "Rolle: Game Design, Programming, Art Direction",
             "Tools: Godot, Aseprite",
-            "Status: Veroeffentlicht auf itch.io"
+            "Status: Released on itch.io"
         ],
         images: [
-            {
-                src: "Images/Backgroundfirework.png",
-                alt: "Farbiges Firework-Backgroundmotiv als visueller Moodshot",
-                caption: "Moodshot / Farbwelt"
-            },
             {
                 src: "Images/iconpatterndark.png",
                 alt: "Dunkles Icon-Pattern fuer das visuelle Interface",
@@ -238,6 +286,88 @@ function renderProjectPage() {
 }
 
 renderProjectPage();
+
+function buildProjectsDropdown() {
+    const dropdown = document.getElementById("projects-dropdown");
+
+    if (!dropdown) {
+        return;
+    }
+
+    const projectLinks = Array.from(document.querySelectorAll(".work-item h3 a"));
+    const uniqueProjects = [];
+    const seen = new Set();
+
+    projectLinks.forEach((link) => {
+        const label = (link.textContent || "").trim();
+        const href = (link.getAttribute("href") || "").trim();
+        const key = `${label}|${href}`;
+
+        if (!label || !href || seen.has(key)) {
+            return;
+        }
+
+        seen.add(key);
+        uniqueProjects.push({ label, href });
+    });
+
+    if (uniqueProjects.length === 0) {
+        dropdown.innerHTML = '<li class="nav-dropdown__empty">Noch keine Projekte</li>';
+        return;
+    }
+
+    dropdown.innerHTML = uniqueProjects
+        .map((project) => `<li><a href="${escapeHtml(project.href)}">${escapeHtml(project.label)}</a></li>`)
+        .join("");
+}
+
+buildProjectsDropdown();
+
+const form = document.getElementById("form") || document.querySelector(".contact-form");
+
+if (form) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        formData.append("access_key", "5eb109d2-3a48-4e2c-a23e-3948f0f938ee");
+
+        const originalText = submitBtn ? submitBtn.textContent : "";
+
+        if (submitBtn) {
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+        }
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert("Success! Your message has been sent.");
+                form.reset();
+            } else {
+                alert("Error: " + data.message);
+            }
+
+        } catch (_error) {
+            alert("Something went wrong. Please try again.");
+        } finally {
+            if (submitBtn) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+    });
+}
+
+
 
 const autoEffectSelector = Object.values(TEXT_EFFECTS)
     .map((effect) => `[${effect.dataAttribute}]`)
