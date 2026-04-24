@@ -332,7 +332,6 @@ if (form) {
         e.preventDefault();
 
         const formData = new FormData(form);
-        formData.append("access_key", "5eb109d2-3a48-4e2c-a23e-3948f0f938ee");
 
         const originalText = submitBtn ? submitBtn.textContent : "";
 
