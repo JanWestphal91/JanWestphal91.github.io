@@ -167,10 +167,14 @@ const PROJECT_DATA = {
     "go-pony-go-c": {
         title: "Go Pony, Go C!",
         category: "[Webgame] 2026",
-        summary: "Arcade-Racing mit Pixel-Art, Highspeed-Flow und einer klaren Retro-Flash-DNA.",
+        summary: "Made with Godot and Aseprite, free 2 play and nothing to pay." +
+            "This game is a small homage to the old Flash games of the early 2000s and to cope with physics calculations. " +
+            "It features a small pony getting faster, trying to reach lightspeed. " +
+            "The game is available on itch.io to play in a browser. ",
         meta: [
-            "Rolle: Game Design, Programming, Art Direction",
-            "Tools: Godot, Aseprite",
+            "Webgame",
+            "Solo project",
+            "Tools used: Godot, Aseprite, Adobe CC",
             "Status: Released on itch.io"
         ],
         images: [
@@ -184,11 +188,10 @@ const PROJECT_DATA = {
                 alt: "Helles Icon-Pattern fuer das visuelle Interface",
                 caption: "UI-Pattern Light"
             }
-        ],
-        content: [
-            "Das Projekt ist als kompakter Arcaderacer angelegt: schnell starten, Rhythmus finden und ueber direkte Bewegung belohnt werden.",
-            "Im Fokus standen Lesbarkeit im Tempo, charakterstarke Pixel-Art und eine klare Spielschleife, die sofort funktioniert."
-        ]
+         ]//,
+        // content: [
+        //     "Made with Godot and Aseprite, free 2 play and nothing to pay. This game is a small homage to the old Flash games of the early 2000s and to cope with physics calculations. It features a small pony getting faster, trying to reach lightspeed. The game is available on itch.io to play in a browser. ",
+        //     ]
     },
     "creative-coding-experiments": {
         title: "Interaktive visuelle Experimente",
@@ -390,3 +393,75 @@ window.applyWavyText = applyWavyText;
 window.createRainbowTextHTML = createRainbowTextHTML;
 window.applyRainbowText = applyRainbowText;
 
+/* ═══ Burger Menu Mobile Navigation ═══ */
+const burgerMenuToggle = document.getElementById("burger-menu-toggle");
+const navMain = document.querySelector(".nav-main");
+const navDropdown = document.querySelector(".nav-dropdown");
+const navDropdownTrigger = document.querySelector(".nav-dropdown__trigger");
+
+function closeBurgerMenu() {
+    if (navMain) {
+        navMain.classList.remove("active");
+    }
+    if (burgerMenuToggle) {
+        burgerMenuToggle.classList.remove("active");
+        burgerMenuToggle.setAttribute("aria-expanded", "false");
+    }
+    if (navDropdown) {
+        navDropdown.classList.remove("active");
+    }
+}
+
+function toggleBurgerMenu(event) {
+    event.preventDefault();
+    
+    if (navMain) {
+        const isActive = navMain.classList.toggle("active");
+        if (burgerMenuToggle) {
+            burgerMenuToggle.classList.toggle("active", isActive);
+            burgerMenuToggle.setAttribute("aria-expanded", isActive ? "true" : "false");
+        }
+    }
+}
+
+function toggleProjectsDropdown(event) {
+    event.preventDefault();
+    if (navDropdown) {
+        navDropdown.classList.toggle("active");
+    }
+}
+
+if (burgerMenuToggle) {
+    burgerMenuToggle.addEventListener("click", toggleBurgerMenu);
+}
+
+if (navDropdownTrigger) {
+    navDropdownTrigger.addEventListener("click", function (event) {
+        // Nur auf Mobile das Dropdown togglen
+        if (window.innerWidth <= 768) {
+            toggleProjectsDropdown(event);
+        }
+    });
+}
+
+// Nav-Links schließen das Menü beim Klick
+document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", closeBurgerMenu);
+});
+
+// Menü schließen wenn auf der Seite geklickt wird
+document.addEventListener("click", (event) => {
+    const isClickInsideNav = navMain && navMain.contains(event.target);
+    const isClickOnBurger = burgerMenuToggle && burgerMenuToggle.contains(event.target);
+    
+    if (!isClickInsideNav && !isClickOnBurger && navMain && navMain.classList.contains("active")) {
+        closeBurgerMenu();
+    }
+});
+
+// Menü schließen bei Fenster-Skalierung über 768px
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+        closeBurgerMenu();
+    }
+});

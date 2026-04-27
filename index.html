@@ -1,14 +1,52 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ═══ SEO Core ═══ -->
+    <title>Jan Westphal – Portfolio // Creative Coder from Kiel, Germany</title>
     <meta
             name="description"
-            content="Portfolio of Jan Westphal – Creative Human, Game Dev, Designer, Illustrator, Techie and definitely a human."
+            content="Portfolio of Jan Westphal – Creative coder from Kiel, Germany. Game dev, interactive media, hardware prototyping and design."
     />
-    <title>WESTPHAL</title>
+    <meta name="author" content="Jan Westphal" />
+    <meta name="robots" content="noindex, nofollow" /><!-- ← vor Launch auf "index, follow" ändern -->
+    <link rel="canonical" href="https://janwestphal.dev/" />
 
+    <!-- ═══ Open Graph ═══ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://janwestphal.dev/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Jan Westphal" />
+    <meta property="og:title" content="Jan Westphal – Creative Coder from Kiel, Germany" />
+    <meta
+            property="og:description"
+            content="Game dev, interactive media, hardware prototyping and design. Projects and work by Jan Westphal."
+    />
+    <meta property="og:image" content="https://janwestphal.dev/assets/og-preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Jan Westphal – Portfolio Preview" />
+
+    <!-- ═══ Twitter / X Card ═══ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jan Westphal – Creative Coder from Kiel, Germany" />
+    <meta
+            name="twitter:description"
+            content="Game dev, interactive media, hardware prototyping and design. Projects and work by Jan Westphal."
+    />
+    <meta name="twitter:image" content="https://janwestphal.dev/assets/og-preview.jpg" />
+
+    <!-- ═══ Theme & Favicon ═══ -->
+    <meta name="theme-color" content="#01696f" />
+<!--    favicon muss noch hinzugefügt werden-->
+<!--    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />-->
+<!--    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />-->
+<!--    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />-->
+
+    <!-- ═══ Assets ═══ -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
 </head>
@@ -18,7 +56,7 @@
         <a href="#top" class="logo">Jan Westphal</a>
         <nav class="nav-main">
             <ul class="nav-links">
-                <li><a href="#about">About me</a></li>
+<!--                <li><a href="#about">About me</a></li>-->
                 <li class="nav-dropdown">
                     <a href="#projects" class="nav-dropdown__trigger">Projects</a>
                     <ul id="projects-dropdown" class="nav-dropdown__menu" aria-label="Projektliste"></ul>
@@ -27,6 +65,11 @@
                 <li><a href="#contact">Contact / Socials</a></li>
             </ul>
         </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <button id="theme-toggle" class="theme-toggle" aria-label="Theme wechseln">
             Cool Mode
         </button>
@@ -38,7 +81,7 @@
         <div class="container hero-container-wide">
 <!--            <p class="kicker" data-wavy>Portfolio</p>-->
 <!--            <br>-->
-            <h1 data-wavy data-rainbow>HI! I’m Jan, a Game Dev, Coder, Designer, Illustrator, Techie and definitely a human living in Kiel, Germany.</h1>
+            <h1 data-wavy data-rainbow>HI! I’m Jan, a developer and designer living in Kiel, Germany.</h1>
             <p class="hero-copy">
 
             </p>
@@ -55,9 +98,11 @@
             <div class="work-list">
                 <!--ab hier mehrere vorgestellte projekte, article als js noch auslagern-->
                 <article class="work-item">
+                    <figure class="work-thumb">
+                        <img src="Images/iconpatternlight.png" alt="Go Pony, Go C! preview">
+                    </figure>
                     <div class="work-meta">
                         <span>[Webgame] 2026</span>
-
                     </div>
                     <h3><a href="project.html#go-pony-go-c">Go Pony, Go C!</a></h3>
                     <p>
@@ -67,6 +112,9 @@
                 </article>
 
                 <article class="work-item">
+                    <figure class="work-thumb">
+                        <img src="Images/iconpatterndark.png" alt="Project preview">
+                    </figure>
                     <div class="work-meta">
                         <span>[Webgame] 2026</span>
 
