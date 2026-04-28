@@ -1,54 +1,3 @@
-const themeToggle = document.getElementById("theme-toggle");
-const body = document.body;
-const THEME_STORAGE_KEY = "janwestphal-theme";
-const DEFAULT_THEME = "light";
-
-function isValidTheme(theme) {
-    return theme === "light" || theme === "dark";
-}
-
-function readStoredTheme() {
-    try {
-        const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-        return isValidTheme(storedTheme) ? storedTheme : null;
-    } catch (_error) {
-        return null;
-    }
-}
-
-function storeTheme(theme) {
-    try {
-        localStorage.setItem(THEME_STORAGE_KEY, theme);
-    } catch (_error) {
-        // Ignore storage errors (e.g. private mode restrictions).
-    }
-}
-
-function applyTheme(theme) {
-    const resolvedTheme = isValidTheme(theme) ? theme : DEFAULT_THEME;
-    const isLightMode = resolvedTheme === "light";
-
-    body.classList.toggle("light", isLightMode);
-
-    if (themeToggle) {
-        themeToggle.textContent = isLightMode ? "Cool Mode" : "Serious Mode";
-    }
-}
-
-function initTheme() {
-    const storedTheme = readStoredTheme();
-    applyTheme(storedTheme || DEFAULT_THEME);
-}
-
-initTheme();
-
-if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-        const nextTheme = body.classList.contains("light") ? "dark" : "light";
-        applyTheme(nextTheme);
-        storeTheme(nextTheme);
-    });
-}
 
 function escapeHtml(text) {
     return String(text)
@@ -464,3 +413,52 @@ window.addEventListener("resize", () => {
         closeBurgerMenu();
     }
 });
+
+function initAutoHideHeader() {
+    const header = document.querySelector(".site-header");
+
+    if (!header) {
+        return;
+    }
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    const directionThreshold = 6;
+
+    function setHeaderVisible(isVisible) {
+        header.classList.toggle("site-header--hidden", !isVisible);
+    }
+
+    setHeaderVisible(true);
+
+    function handleScrollDirection() {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY;
+        const menuIsOpen = navMain && navMain.classList.contains("active");
+
+        if (menuIsOpen || currentScrollY < 24) {
+            setHeaderVisible(true);
+            lastScrollY = currentScrollY;
+        } else if (Math.abs(delta) >= directionThreshold) {
+            if (delta > 0) {
+                setHeaderVisible(false);
+            } else {
+                setHeaderVisible(true);
+            }
+            lastScrollY = currentScrollY;
+        }
+
+        ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            window.requestAnimationFrame(handleScrollDirection);
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
+initAutoHideHeader();
+
+
