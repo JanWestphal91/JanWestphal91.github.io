@@ -542,4 +542,39 @@ function initAutoHideHeader() {
 
 initAutoHideHeader();
 
+/* ═══ Hero Name Modal ═══ */
+function initHeroModal() {
+    const heroNameLink = document.querySelector(".hero-name-link");
+    const modal = document.getElementById("hero-modal");
+    const modalOverlay = document.querySelector(".modal-overlay");
+    const modalClose = document.querySelector(".modal-close");
+
+    if (!heroNameLink || !modal) {
+        return;
+    }
+
+    function openModal(e) {
+        e.preventDefault();
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+
+    heroNameLink.addEventListener("click", openModal);
+    modalClose.addEventListener("click", closeModal);
+    modalOverlay.addEventListener("click", closeModal);
+
+    // Close modal on Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.style.display === "flex") {
+            closeModal();
+        }
+    });
+}
+
+initHeroModal();
 

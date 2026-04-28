@@ -73,7 +73,7 @@
 <main id="top">
     <section class="hero">
         <div class="container hero-container-wide">
-            <h1>Hi! I’m Jan Westphal, a developer and designer living in Kiel, Germany.</h1>
+            <h1>Hi! I'm <a href="#" class="hero-name-link">Jan Westphal</a>, a developer and designer living in Kiel, Germany.</h1>
         </div>
     </section>
 
@@ -89,52 +89,31 @@
 
             <div class="work-list">
                 <!--ab hier mehrere vorgestellte projekte, article als js noch auslagern-->
-                <div class="work-list">
-                    <a class="work-item-link" href="project.html#go-pony-go-c">
-                        <article class="work-item">
-                            <figure class="work-thumb">
-                                <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
-                            </figure>
+                <a class="work-item-link" href="project.html#go-pony-go-c">
+                    <article class="work-item">
+                        <figure class="work-thumb">
+                            <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
+                        </figure>
+                        <div class="work-meta">
+                            <span>[Web, Desktop, Game] 2026</span>
+                        </div>
+                        <h3>Go Pony, Go C!</h3>
+                        <p>Kurze Beschreibung des Projekts.</p>
+                    </article>
+                </a>
 
-                            <div class="work-meta">
-                                <span>[Web, Desktop, Game] 2026</span>
-                            </div>
-
-                            <h3>Go Pony, Go C!</h3>
-                            <p>Kurze Beschreibung des Projekts.</p>
-                        </article>
-                    </a>
-                </div>
-<!--    article geht bis hier-->
-                <div class="work-list">
-                    <a class="work-item-link" href="project.html#go-pony-go-c">
-                        <article class="work-item">
-                            <figure class="work-thumb">
-                                <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
-                            </figure>
-
-                            <div class="work-meta">
-                                <span>[Web, Desktop, Game] 2026</span>
-                            </div>
-
-                            <h3>Go Pony, Go C!</h3>
-                            <p>Kurze Beschreibung des Projekts.</p>
-                        </article>
-                    </a>
-                </div>
-
-                <article class="work-item">
-                    <figure class="work-thumb">
-                        <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
-                    </figure>
-                    <div class="work-meta">
-                        <span>[Web, Desktop, Game] 2026</span>
-                    </div>
-                    <h3><a href="project.html#go-pony-go-c">Go Pony, Go C!</a></h3>
-                </article>
-
-
-<!--                article endet hier als container-->
+                <a class="work-item-link" href="project.html#go-pony-go-c">
+                    <article class="work-item">
+                        <figure class="work-thumb">
+                            <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
+                        </figure>
+                        <div class="work-meta">
+                            <span>[Web] 2026</span>
+                        </div>
+                        <h3>Go Pony, Go C!</h3>
+                        <p>Kurze Beschreibung des Projekts.</p>
+                    </article>
+                </a>
             </div>
         </div>
     </section>
@@ -188,6 +167,21 @@
         </div>
     </section>
 </main>
+
+<!-- Modal Popup -->
+<div id="hero-modal" class="modal" style="display: none;">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Modal schließen">&times;</button>
+        <div class="modal-body">
+            <h3>Most people call me Jan, some friends call me West and my graffiti / dev nickname is Netro</h3>
+            <p>Want to know a little more about me?</p>
+            <p>I’m into experimental design, art, and prototyping. I love how different disciplines can work together to create something new. I enjoy drawing badly, messing around with electronics and video / audio gear, and graffiti culture is part of my roots, it was my first real connection to design. Doing large scale paintings has always felt incredibly satisfying to me.</p>
+            <p>Game development is one of the most interesting fields for me because it combines so many disciplines into one finished product. I’m also involved with the IF(GAME) S.H. association to help get more people into game development. My favorite games are Factorio, Slay the Spire, and good old Donkey Kong Country.</p>
+            <p>I’m married to a wonderful person who brings some much-needed order into my chaos, and we have two lovely kids together.</p>
+        </div>
+    </div>
+</div>
 
 <footer class="site-footer">
     <div class="container footer-row">
