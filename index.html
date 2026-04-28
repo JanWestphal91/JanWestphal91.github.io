@@ -53,16 +53,12 @@
 <body>
 <header class="site-header">
     <div class="container nav">
-        <a href="#top" class="logo">Jan Westphal</a>
+        <a href="#top" class="logo" >Jan Westphal</a>
         <nav class="nav-main">
             <ul class="nav-links">
 <!--                <li><a href="#about">About me</a></li>-->
-                <li class="nav-dropdown">
-                    <a href="#projects" class="nav-dropdown__trigger">Projects</a>
-                    <ul id="projects-dropdown" class="nav-dropdown__menu" aria-label="Projektliste"></ul>
-                </li>
-<!--                <li><a href="#skills">Skills</a></li>-->
-                <li><a href="#contact">Contact / Socials</a></li>
+                <li><a href="#projects" class="link-button secondary">Projects</a></li>
+                <li><a href="#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact / Socials</span><span class="nav-label nav-label--mobile">Contact ↗ </span></a></li>
             </ul>
         </nav>
         <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
@@ -73,85 +69,96 @@
     </div>
 </header>
 
+
 <main id="top">
     <section class="hero">
         <div class="container hero-container-wide">
-<!--            <p class="kicker" data-wavy>Portfolio</p>-->
-<!--            <br>-->
-            <h1 data-wavy data-rainbow>HI! I’m Jan, a developer and designer living in Kiel, Germany.</h1>
-            <p class="hero-copy">
-
-            </p>
+            <h1>Hi! I’m Jan Westphal, a developer and designer living in Kiel, Germany.</h1>
         </div>
     </section>
 
     <section id="projects" class="section">
         <div class="container">
             <div class="section-head">
-                <p class="kicker">Selected Work</p>
-                <h2>Projects</h2>
+                <h2>Check my latest projects👇</h2>
+            </div>
+
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
             </div>
 
             <div class="work-list">
                 <!--ab hier mehrere vorgestellte projekte, article als js noch auslagern-->
-                <article class="work-item">
-                    <figure class="work-thumb">
-                        <img src="Images/iconpatternlight.png" alt="Go Pony, Go C! preview">
-                    </figure>
-                    <div class="work-meta">
-                        <span>[Webgame] 2026</span>
-                    </div>
-                    <h3><a href="project.html#go-pony-go-c">Go Pony, Go C!</a></h3>
-                    <p>
-                        Made with Godot and Aseprite, free 2 play and nothing to pay. This game is a small homage to the old Flash games of the early 2000s and to cope with physics calculations. It features a small pony getting faster, trying to reach lightspeed. The game is available on itch.io to play in a browser.
-                    </p>
-                    <a href="project.html#go-pony-go-c" class="link-button secondary">Projektseite</a>
-                </article>
+                <div class="work-list">
+                    <a class="work-item-link" href="project.html#go-pony-go-c">
+                        <article class="work-item">
+                            <figure class="work-thumb">
+                                <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
+                            </figure>
+
+                            <div class="work-meta">
+                                <span>[Web, Desktop, Game] 2026</span>
+                            </div>
+
+                            <h3>Go Pony, Go C!</h3>
+                            <p>Kurze Beschreibung des Projekts.</p>
+                        </article>
+                    </a>
+                </div>
+<!--    article geht bis hier-->
+                <div class="work-list">
+                    <a class="work-item-link" href="project.html#go-pony-go-c">
+                        <article class="work-item">
+                            <figure class="work-thumb">
+                                <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
+                            </figure>
+
+                            <div class="work-meta">
+                                <span>[Web, Desktop, Game] 2026</span>
+                            </div>
+
+                            <h3>Go Pony, Go C!</h3>
+                            <p>Kurze Beschreibung des Projekts.</p>
+                        </article>
+                    </a>
+                </div>
 
                 <article class="work-item">
                     <figure class="work-thumb">
-                        <img src="Images/iconpatterndark.png" alt="Project preview">
+                        <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
                     </figure>
                     <div class="work-meta">
-                        <span>[Webgame] 2026</span>
-
+                        <span>[Web, Desktop, Game] 2026</span>
                     </div>
                     <h3><a href="project.html#go-pony-go-c">Go Pony, Go C!</a></h3>
-                    <p>
-                        Made with Godot and Aseprite, free 2 play and nothing to pay. This game is a small homage to the old Flash games of the early 2000s and to cope with physics calculations. It features a small pony getting faster, trying to reach lightspeed. The game is available on itch.io to play in a browser.
-                    </p>
-                    <a href="project.html#go-pony-go-c" class="link-button secondary">Projektseite</a>
                 </article>
+
+
 <!--                article endet hier als container-->
             </div>
         </div>
     </section>
 
-    <section id="about" class="section section-soft">
-        <div class="container about-grid">
-            <div>
-                <p class="kicker">About</p>
-                <h2>Irgendein Spruch.</h2>
-            </div>
-            <div>
-                <p>
-                    Irgendein längerer text.
-                </p>
-                <p>
-                    Noch mehr willkürlicher text.
-                </p>
-            </div>
-        </div>
-    </section>
+<!--    <section id="about" class="section section-soft">-->
+<!--        <div class="container about-grid">-->
+<!--            <div>-->
+<!--                <p class="kicker">About</p>-->
+<!--                <h2>Irgendein Spruch.</h2>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <p>-->
+<!--                    Irgendein längerer text.-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Noch mehr willkürlicher text.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 
     <section id="contact" class="section">
         <div class="container contact-block">
-            <p class="kicker">Contact</p>
-            <h2>You can contact me here.</h2>
-<!--            <p class="contact-copy">-->
-<!--                Schick mir direkt eine Nachricht — ganz ohne die E-Mail-Adresse offen auf der Seite zu zeigen.-->
-<!--            </p>-->
-
+            <h2>Drop your message here!</h2>
             <form id="form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="5eb109d2-3a48-4e2c-a23e-3948f0f938ee">
 
@@ -159,20 +166,24 @@
                     <span>Name</span>
                     <input type="text" name="name" placeholder="What´s your name?" required>
                 </label>
-
                 <label>
-                    <span>E-Mail</span>
+                    <span>E-mail</span>
                     <input type="email" name="email" placeholder="i will reply to this adress. (youradress@mail.com)" required>
                 </label>
 
                 <label>
-                    <span>Nachricht</span>
+                    <span>Message</span>
                     <textarea name="message" placeholder="You can tell me something here. Add a joke if you want or tell me a secret. =)" required></textarea>
                 </label>
-
                 <button type="submit" class="contact-submit">Send</button>
             </form>
-
+            <br>
+            <h2>Socials ↗
+            </h2>
+            <a href="https://github.com/JanWestphal91/" target="_blank" rel="noopener noreferrer" class="link-button secondary">GitHub</a>
+            <a href="https://jan-west.itch.io/" target="_blank" rel="noopener noreferrer" class="link-button secondary">Itch.io</a>
+            <a href="https://bsky.app/profile/jan-west.itch.io" target="_blank" rel="noopener noreferrer" class="link-button secondary">Bluesky</a>
+            <a href="https://www.youtube.com/@netrouberkitsch7044" target="_blank" rel="noopener noreferrer" class="link-button secondary">Youtube</a>
 
         </div>
     </section>
@@ -180,19 +191,12 @@
 
 <footer class="site-footer">
     <div class="container footer-row">
-        <p class="footer-copy">2026 Jan Westphal. All rights reserved.</p>
+        <p class="footer-copy">2026 Jan Westphal. All wrongs reserved.</p>
         <nav class="footer-nav" aria-label="Footer Navigation">
-            <ul class="footer-nav__list">
-                <li><a href="#projects" class="link-button secondary">Projects</a></li>
-                <li><a href="#about" class="link-button secondary">About</a></li>
-                <li><a href="#contact" class="link-button secondary">Contact</a></li>
-                <li><a href="https://github.com/JanWestphal91/" target="_blank" rel="noopener noreferrer" class="link-button secondary">GitHub</a></li>
-                <li><a href="https://jan-west.itch.io/" target="_blank" rel="noopener noreferrer" class="link-button secondary">Itch.IO</a></li>
-            </ul>
         </nav>
-
     </div>
 </footer>
+
 </body>
 </html>
 

@@ -24,7 +24,35 @@ const TEXT_EFFECTS = {
 };
 
 function createEffectTextHTML(text, effectNames = []) {
+function initLogoWavyHover() {
+    const logo = document.querySelector(".logo");
+
+    if (!logo) {
+        return;
+    }
+
+    const originalText = logo.textContent || "";
+
+    function applyLogoWavy() {
+        applyWavyText(logo, originalText);
+    }
+
+    function restoreLogoText() {
+        logo.textContent = originalText;
+        logo.classList.remove("text-effects");
+        logo.removeAttribute("aria-label");
+        delete logo.dataset.effectsOriginal;
+        delete logo.dataset.effects;
+    }
+
+    logo.addEventListener("mouseenter", applyLogoWavy);
+    logo.addEventListener("focus", applyLogoWavy);
+    logo.addEventListener("mouseleave", restoreLogoText);
+    logo.addEventListener("blur", restoreLogoText);
+}
+
     const validEffects = effectNames.filter((effectName) => TEXT_EFFECTS[effectName]);
+initLogoWavyHover();
     let characterIndex = 0;
     const tokens = String(text).split(/(\s+)/);
 
@@ -128,19 +156,31 @@ const PROJECT_DATA = {
         ],
         images: [
             {
-                src: "Images/iconpatterndark.png",
-                alt: "Dunkles Icon-Pattern fuer das visuelle Interface",
-                caption: "UI-Pattern Dark"
+                src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNi5wbmc=/original/1A9wjP.png",
+                alt: "Go Pony, Go C! screenshot 1 from itch.io",
+                caption: "Screenshot 1"
             },
             {
-                src: "Images/iconpatternlight.png",
-                alt: "Helles Icon-Pattern fuer das visuelle Interface",
-                caption: "UI-Pattern Light"
+                src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTg0NDY4OS5wbmc=/original/OY%2BX9f.png",
+                alt: "Go Pony, Go C! screenshot 2 from itch.io",
+                caption: "Screenshot 2"
+            },
+            {
+                src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzMy5wbmc=/original/lcI4Mo.png",
+                alt: "Go Pony, Go C! screenshot 3 from itch.io",
+                caption: "Screenshot 3"
+            },
+            {
+                src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNS5wbmc=/original/zmOtvE.png",
+                alt: "Go Pony, Go C! screenshot 4 from itch.io",
+                caption: "Screenshot 4"
             }
-         ]//,
-        // content: [
-        //     "Made with Godot and Aseprite, free 2 play and nothing to pay. This game is a small homage to the old Flash games of the early 2000s and to cope with physics calculations. It features a small pony getting faster, trying to reach lightspeed. The game is available on itch.io to play in a browser. ",
-        //     ]
+        ],
+        content: [
+            "Can you help a small pony reach its dream? Stay focused and show how fast you are.",
+            "Climb the leaderboard and become the fastest pony of them all!"
+        ],
+        embed: '<iframe frameborder="0" src="https://itch.io/embed/4287829" width="552" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe>'
     },
     "creative-coding-experiments": {
         title: "Interaktive visuelle Experimente",
@@ -208,7 +248,7 @@ function renderProjectPage() {
     const galleryElement = document.getElementById("project-gallery");
     const contentElement = document.getElementById("project-content");
 
-    if (!categoryElement || !titleElement || !summaryElement || !metaElement || !galleryElement || !contentElement) {
+    if (!categoryElement || !titleElement || !summaryElement || !metaElement || !galleryElement) {
         return;
     }
 
@@ -232,48 +272,109 @@ function renderProjectPage() {
         })
         .join("");
 
-    contentElement.innerHTML = project.content
-        .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
-        .join("");
+    if (contentElement && project.content) {
+        contentElement.innerHTML = project.content
+            .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
+            .join("");
+    }
+
+    const embedElement = document.getElementById("project-embed");
+    if (embedElement && project.embed) {
+        embedElement.innerHTML = project.embed;
+    }
 }
 
 renderProjectPage();
 
-function buildProjectsDropdown() {
-    const dropdown = document.getElementById("projects-dropdown");
 
-    if (!dropdown) {
+/* ═══ Project Filtering ═══ */
+function initProjectFilters() {
+    const workList = document.querySelector(".work-list");
+    const filterContainer = document.querySelector(".project-filters");
+
+    if (!workList || !filterContainer) {
         return;
     }
 
-    const projectLinks = Array.from(document.querySelectorAll(".work-item h3 a"));
-    const uniqueProjects = [];
-    const seen = new Set();
-
-    projectLinks.forEach((link) => {
-        const label = (link.textContent || "").trim();
-        const href = (link.getAttribute("href") || "").trim();
-        const key = `${label}|${href}`;
-
-        if (!label || !href || seen.has(key)) {
-            return;
+    // Get all unique project types from work items
+    const types = new Set();
+    workList.querySelectorAll(".work-item").forEach((item) => {
+        const metaSpan = item.querySelector(".work-meta span");
+        if (metaSpan) {
+            const text = metaSpan.textContent.trim();
+            // Extract the type part (everything inside brackets)
+            const match = text.match(/\[([^\]]+)\]/);
+            if (match) {
+                const typePart = match[1];
+                // Split by comma and add each type
+                typePart.split(",").forEach((type) => {
+                    types.add(type.trim());
+                });
+            }
         }
-
-        seen.add(key);
-        uniqueProjects.push({ label, href });
     });
 
-    if (uniqueProjects.length === 0) {
-        dropdown.innerHTML = '<li class="nav-dropdown__empty">Noch keine Projekte</li>';
-        return;
+    // Sort types alphabetically
+    const sortedTypes = Array.from(types).sort();
+
+    // Clear existing buttons (keep "All" button)
+    const existingButtons = filterContainer.querySelectorAll(".filter-btn:not([data-filter='all'])");
+    existingButtons.forEach((btn) => btn.remove());
+
+    // Add filter buttons for each type
+    sortedTypes.forEach((type) => {
+        const btn = document.createElement("button");
+        btn.className = "filter-btn";
+        btn.dataset.filter = type;
+        btn.textContent = type;
+        filterContainer.appendChild(btn);
+    });
+
+    // Filter function
+    function filterProjects(selectedType) {
+        workList.querySelectorAll(".work-item").forEach((item) => {
+            const metaSpan = item.querySelector(".work-meta span");
+            if (!metaSpan) {
+                item.classList.remove("hidden");
+                return;
+            }
+
+            const text = metaSpan.textContent.trim();
+            const match = text.match(/\[([^\]]+)\]/);
+
+            if (selectedType === "all") {
+                item.classList.remove("hidden");
+            } else if (match) {
+                const typePart = match[1];
+                const itemTypes = typePart.split(",").map((t) => t.trim());
+                if (itemTypes.includes(selectedType)) {
+                    item.classList.remove("hidden");
+                } else {
+                    item.classList.add("hidden");
+                }
+            } else {
+                item.classList.add("hidden");
+            }
+        });
     }
 
-    dropdown.innerHTML = uniqueProjects
-        .map((project) => `<li><a href="${escapeHtml(project.href)}">${escapeHtml(project.label)}</a></li>`)
-        .join("");
+    // Attach click listeners to filter buttons
+    filterContainer.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+            // Update active state
+            filterContainer.querySelectorAll(".filter-btn").forEach((b) => {
+                b.classList.remove("active");
+            });
+            btn.classList.add("active");
+
+            // Filter projects
+            const selectedType = btn.dataset.filter;
+            filterProjects(selectedType);
+        });
+    });
 }
 
-buildProjectsDropdown();
+initProjectFilters();
 
 const form = document.getElementById("form") || document.querySelector(".contact-form");
 
@@ -344,8 +445,6 @@ window.applyRainbowText = applyRainbowText;
 /* ═══ Burger Menu Mobile Navigation ═══ */
 const burgerMenuToggle = document.getElementById("burger-menu-toggle");
 const navMain = document.querySelector(".nav-main");
-const navDropdown = document.querySelector(".nav-dropdown");
-const navDropdownTrigger = document.querySelector(".nav-dropdown__trigger");
 
 function closeBurgerMenu() {
     if (navMain) {
@@ -354,9 +453,6 @@ function closeBurgerMenu() {
     if (burgerMenuToggle) {
         burgerMenuToggle.classList.remove("active");
         burgerMenuToggle.setAttribute("aria-expanded", "false");
-    }
-    if (navDropdown) {
-        navDropdown.classList.remove("active");
     }
 }
 
@@ -372,25 +468,10 @@ function toggleBurgerMenu(event) {
     }
 }
 
-function toggleProjectsDropdown(event) {
-    event.preventDefault();
-    if (navDropdown) {
-        navDropdown.classList.toggle("active");
-    }
-}
-
 if (burgerMenuToggle) {
     burgerMenuToggle.addEventListener("click", toggleBurgerMenu);
 }
 
-if (navDropdownTrigger) {
-    navDropdownTrigger.addEventListener("click", function (event) {
-        // Nur auf Mobile das Dropdown togglen
-        if (window.innerWidth <= 768) {
-            toggleProjectsDropdown(event);
-        }
-    });
-}
 
 // Nav-Links schließen das Menü beim Klick
 document.querySelectorAll(".nav-links a").forEach((link) => {
