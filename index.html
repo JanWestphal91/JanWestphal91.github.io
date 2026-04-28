@@ -67,7 +67,22 @@
             <span></span>
         </button>
     </div>
+
+    <div class="ticker-band">
+        <div class="ticker-content">
+        <span class="ticker-text">
+            • People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping •
+            What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Uncommented Code • Hot Glue Electronics • ❗Feed 🐟Glub🐟 now❗ •
+        </span>
+            <span class="ticker-text" aria-hidden="true">
+            • People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping •
+            What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Uncommented Code • Hot Glue Electronics • ❗Feed 🐟Glub🐟 now❗ •
+        </span>
+        </div>
+    </div>
+
 </header>
+
 
 
 <main id="top">
@@ -76,6 +91,12 @@
             <h1>Hi! I'm <a href="#" class="hero-name-link">Jan Westphal</a>, a developer and designer living in Kiel, Germany.</h1>
         </div>
     </section>
+
+    <!-- Draggable DIV -->
+    <div id="mydiv">
+        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+        <div id="mydivheader">Click here to move</div>
+    </div>
 
     <section id="projects" class="section">
         <div class="container">
@@ -90,29 +111,43 @@
             <div class="work-list">
                 <!--ab hier mehrere vorgestellte projekte, article als js noch auslagern-->
                 <a class="work-item-link" href="project.html#go-pony-go-c">
-                    <article class="work-item">
-                        <figure class="work-thumb">
-                            <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
-                        </figure>
-                        <div class="work-meta">
-                            <span>[Web, Desktop, Game] 2026</span>
+                    <div class="flip-card" tabindex="0">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <figure class="work-thumb">
+                                    <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
+                                </figure>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="work-item-back-content">
+                                    <div class="work-meta"><span>[Web, Desktop, Game] 2026</span></div>
+                                    <h3>Go Pony, Go C!</h3>
+                                    <p>Kurze Beschreibung des Projekts. Klick um zur Projektseite zu gelangen.</p>
+<!--                                    <span class="link-button secondary">Projektseite</span>-->
+                                </div>
+                            </div>
                         </div>
-                        <h3>Go Pony, Go C!</h3>
-                        <p>Kurze Beschreibung des Projekts.</p>
-                    </article>
+                    </div>
                 </a>
 
                 <a class="work-item-link" href="project.html#go-pony-go-c">
-                    <article class="work-item">
-                        <figure class="work-thumb">
-                            <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
-                        </figure>
-                        <div class="work-meta">
-                            <span>[Web] 2026</span>
+                    <div class="flip-card" tabindex="0">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <figure class="work-thumb">
+                                    <img src="https://img.itch.zone/aW1nLzI1ODQ0NjgxLmdpZg==/original/iQSEKO.gif" alt="Go Pony, Go C! preview">
+                                </figure>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="work-item-back-content">
+                                    <div class="work-meta"><span>[Web] 2026</span></div>
+                                    <h3>Go Pony, Go C!</h3>
+                                    <p>Kurze Beschreibung des Projekts. Klick um zur Projektseite zu gelangen.</p>
+<!--                                    <span class="link-button secondary">Projektseite</span>-->
+                                </div>
+                            </div>
                         </div>
-                        <h3>Go Pony, Go C!</h3>
-                        <p>Kurze Beschreibung des Projekts.</p>
-                    </article>
+                    </div>
                 </a>
             </div>
         </div>
@@ -176,8 +211,8 @@
         <div class="modal-body">
             <h3>Most people call me Jan, some friends call me West and my graffiti / dev nickname is Netro</h3>
             <p>Want to know a little more about me?</p>
-            <p>I’m into experimental design, art, and prototyping. I love how different disciplines can work together to create something new. I enjoy drawing badly, messing around with electronics and video / audio gear, and graffiti culture is part of my roots, it was my first real connection to design. Doing large scale paintings has always felt incredibly satisfying to me.</p>
-            <p>Game development is one of the most interesting fields for me because it combines so many disciplines into one finished product. I’m also involved with the IF(GAME) S.H. association to help get more people into game development. My favorite games are Factorio, Slay the Spire, and good old Donkey Kong Country.</p>
+            <p>I’m into experimental design, art, and prototyping. I love how different disciplines can work together to create something new. I enjoy drawing badly, messing around with electronics, video / audio gear and graffiti culture is part of my roots, it was my first real connection to design illustration. Doing large scale paintings has always felt incredibly satisfying to me.</p>
+            <p>Game development is one of the most interesting fields for me because it combines so many disciplines into one finished product. I’m also involved with the IF(game)SH e.V. to help get more people into game development. My favorite games are Factorio, Slay the Spire, and good old Donkey Kong Country.</p>
             <p>I’m married to a wonderful person who brings some much-needed order into my chaos, and we have two lovely kids together.</p>
         </div>
     </div>

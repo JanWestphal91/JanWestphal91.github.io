@@ -27,6 +27,49 @@ html {
     overflow-x: hidden;
 }
 
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-75%);
+    }
+}
+.ticker-band {
+    overflow: hidden;
+    width: 100%;
+    background: #000;
+}
+
+.ticker-content {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    width: max-content;
+    animation: ticker-scroll 30s linear infinite; /* Dauer hier einstellen */
+}
+
+.ticker-text {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding-right: 3rem;
+    text-transform: uppercase;
+    word-spacing: 0.6em;
+    color: white;
+}
+
+@keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ticker-content {
+        animation: none;
+        transform: translateX(0);
+    }
+}
+
 body {
     margin: 0;
     font-family: 'Clash Display', sans-serif;
@@ -523,6 +566,7 @@ button,
     display: block;
     color: inherit;
     text-decoration: none;
+    height: 100%;
 }
 
 .work-item.hidden,
@@ -530,31 +574,96 @@ button,
     display: none;
 }
 
-.work-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 3rem;
-    overflow: hidden;
-    padding: 0.95rem;
+.work-item-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Flip card implementation for project cards */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    min-height: 480px;
+    position: relative;
+    /*border: 1px solid var(--border);*/
+    perspective: 1000px;
+    display: block;
+}
+
+.flip-card-inner {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* flip on hover / focus */
+@media (hover: hover) {
+    .flip-card:hover .flip-card-inner,
+    .flip-card:focus-within .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+}
+
+.flip-card-front {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    cursor: help;
-    transition: transform 0.2s ease, background 1s ease, color 1s ease, border-color 1s ease;
+    justify-content: stretch;
+    align-items: stretch;
+    background: var(--surface);
+    border-radius: var(--radius);
+    border:hidden;
+    overflow: hidden;
+}
+
+.flip-card-back {
+    background: black;
+    color: var(--bg);
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.25rem;
+    border: hidden;
+    border-radius: var(--radius);
+    overflow: auto;
 }
 
 .work-thumb {
     width: 100%;
-    margin: 0 0 0.8rem 0;
+    margin: 0;
     overflow: hidden;
-    border-radius: 2rem;
+    border-radius: 0;
+    height: 100%;
 }
 
 .work-thumb img {
     width: 100%;
-    height: 240px;
+    height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.work-item-back-content {
+    width: 100%;
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
 }
 
 .work-item h3 {
@@ -563,21 +672,6 @@ button,
 
 .work-item p {
     color: var(--muted);
-    flex-grow: 1;
-}
-
-.work-item-link {
-    display: grid;
-    text-decoration: none;
-    color: inherit;
-}
-
-.work-item-link:hover .work-item,
-.work-item-link:focus-visible .work-item {
-    transform: translateY(-4px);
-    /*border-color: var(--accent);*/
-    background: var(--accent);
-    transition: background 1s ease, color 1s ease, border-color 1s ease;
 }
 
 .project-card p {
@@ -586,6 +680,7 @@ button,
 
 .project-card a {
     display: inline-block;
+    border: hidden;
     margin-top: 1rem;
     color: var(--accent);
     font-weight: 600;
@@ -876,6 +971,26 @@ button,
 .hero-name-link:hover {
     color: var(--accent);
 }
+/*movable div*/
+#mydiv {
+    position: absolute;
+    top: 100px;   /* Startposition setzen */
+    left: 100px;
+    z-index: 9;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+#mydivheader {
+    padding: 10px;
+    cursor:grab;
+    z-index: 10;
+    background-color: var(--accent);
+    color: #fff;
+}
+
+
 
 @media (max-width: 600px) {
     .hero {

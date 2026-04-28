@@ -298,7 +298,7 @@ function initProjectFilters() {
 
     // Get all unique project types from work items
     const types = new Set();
-    workList.querySelectorAll(".work-item").forEach((item) => {
+    workList.querySelectorAll(".work-item-link").forEach((item) => {
         const metaSpan = item.querySelector(".work-meta span");
         if (metaSpan) {
             const text = metaSpan.textContent.trim();
@@ -332,7 +332,7 @@ function initProjectFilters() {
 
     // Filter function
     function filterProjects(selectedType) {
-        workList.querySelectorAll(".work-item").forEach((item) => {
+        workList.querySelectorAll(".work-item-link").forEach((item) => {
             const metaSpan = item.querySelector(".work-meta span");
             if (!metaSpan) {
                 item.classList.remove("hidden");
@@ -578,3 +578,49 @@ function initHeroModal() {
 
 initHeroModal();
 
+// Make the DIV element draggable:
+dragElement(document.getElementById("mydiv"));
+
+function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elmnt.id + "header")) {
+        // if present, the header is where you move the DIV from:
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    } else {
+        // otherwise, move the DIV from anywhere inside the DIV:
+        elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // Maus oder Touch
+        pos3 = e.clientX ?? e.touches[0].clientX;
+        pos4 = e.clientY ?? e.touches[0].clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+        // Touch-Events zusätzlich
+        document.ontouchend = closeDragElement;
+        document.ontouchmove = elementDrag;
+    }
+
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        const clientX = e.clientX ?? e.touches[0].clientX;
+        const clientY = e.clientY ?? e.touches[0].clientY;
+        pos1 = pos3 - clientX;
+        pos2 = pos4 - clientY;
+        pos3 = clientX;
+        pos4 = clientY;
+        elmnt.style.top  = (elmnt.offsetTop  - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+        // stop moving when mouse button is released:
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+    dragElement(document.getElementById("mydiv"));
+}
