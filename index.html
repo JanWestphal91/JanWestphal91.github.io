@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ═══ SEO Core ═══ -->
+    <!--SEO Core-->
     <title>Jan Westphal – Portfolio // Creative Coder from Kiel, Germany</title>
     <meta
             name="description"
@@ -14,7 +14,7 @@
     <meta name="robots" content="noindex, nofollow" /><!-- ← vor Launch auf "index, follow" ändern -->
     <link rel="canonical" href="https://janwestphal.dev/" />
 
-    <!-- ═══ Open Graph ═══ -->
+    <!--Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://janwestphal.dev/" />
     <meta property="og:locale" content="en_US" />
@@ -29,7 +29,7 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Jan Westphal – Portfolio Preview" />
 
-    <!-- ═══ Twitter / X Card ═══ -->
+    <!--Twitter / X Card-->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Jan Westphal – Creative Coder from Kiel, Germany" />
     <meta
@@ -38,7 +38,7 @@
     />
     <meta name="twitter:image" content="https://janwestphal.dev/assets/og-preview.jpg" />
 
-    <!-- ═══ Theme & Favicon ═══ -->
+    <!--Theme & Favicon-->
     <meta name="theme-color" content="#ffffff" />
 <!--    favicon muss noch hinzugefügt werden-->
 <!--    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />-->
@@ -72,11 +72,11 @@
         <div class="ticker-content">
         <span class="ticker-text">
             • People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping •
-            What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Uncommented Code • Hot Glue Electronics • ❗Feed 🐟Glub🐟 now❗ •
+            Latest Game : 🐎 Go Pony, Go C ! 🐎 • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below
         </span>
             <span class="ticker-text" aria-hidden="true">
             • People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping •
-            What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Uncommented Code • Hot Glue Electronics • ❗Feed 🐟Glub🐟 now❗ •
+                Latest Game : 🐎 Go Pony, Go C ! 🐎 • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below
         </span>
         </div>
     </div>
@@ -93,10 +93,13 @@
     </section>
 
     <!-- Draggable DIV -->
-    <div id="mydiv">
-        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-        <div id="mydivheader">Click here to move</div>
-    </div>
+<!--    <div id="mydiv">-->
+<!--        &lt;!&ndash; Include a header DIV with the same name as the draggable DIV, followed by "header" &ndash;&gt;-->
+<!--        <div id="mydivheader">Click here to move</div>-->
+<!--    </div>-->
+
+
+
 
     <section id="projects" class="section">
         <div class="container">
@@ -120,9 +123,11 @@
                             </div>
                             <div class="flip-card-back">
                                 <div class="work-item-back-content">
-                                    <div class="work-meta"><span>[Web, Desktop, Game] 2026</span></div>
+                                    <div class="work-meta"><span>[Web, Game, 2D] 2026</span></div>
                                     <h3>Go Pony, Go C!</h3>
-                                    <p>Kurze Beschreibung des Projekts. Klick um zur Projektseite zu gelangen.</p>
+                                    <hr>
+                                    <p>Tools: Godot game engine, Aseprite, Adobe CC</p>
+
 <!--                                    <span class="link-button secondary">Projektseite</span>-->
                                 </div>
                             </div>
@@ -200,7 +205,39 @@
             <a href="https://www.youtube.com/@netrouberkitsch7044" target="_blank" rel="noopener noreferrer" class="link-button secondary">Youtube</a>
 
         </div>
+
     </section>
+
+
+    <!-- ═══ Fish Scene ═══ -->
+    <canvas id="pellet-layer"></canvas>
+
+    <div id="food-can" tabindex="0" aria-label="FoodCan">
+        <div class="can-top">
+            <div class="can-holes">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="can-body">
+            <div class="can-label">
+                <strong>FISH FOOD</strong>
+                <!--                <small>for 🐟 Glub</small>-->
+            </div>
+        </div>
+    </div>
+
+    <div id="fish-bowl-wrap">
+        <div id="fish-bowl">
+            <div class="bowl-water">
+                <span id="fish">🐟</span>
+            </div>
+            <!--            <div class="bowl-shine"></div>-->
+        </div>
+        <p id="bowl-label">❗ Feed Glub now ❗</p>
+    </div>
+
+
+
 </main>
 
 <!-- Modal Popup -->

@@ -78,6 +78,12 @@ body {
     line-height: 1.6;
 }
 
+main#top {
+    position: relative;
+    /* Reserve space so fish bowl + food can sit above footer */
+    padding-bottom: 11rem;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -243,6 +249,13 @@ img {
     color: var(--muted);
     text-align: center;
     white-space: nowrap;
+}
+
+.hr{
+    background-color: red;
+    height: 100px;
+    width: 100%;
+    display: block;
 }
 
 .burger-menu-toggle {
@@ -557,8 +570,9 @@ button,
 /* Projects list: show items in a responsive grid */
 .work-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.25rem;
+    /* kleinere Karten, immer quadratisch */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
     margin-top: 1.25rem;
 }
 
@@ -584,7 +598,8 @@ button,
 .flip-card {
     background-color: transparent;
     width: 100%;
-    min-height: 480px;
+    /* immer quadratisch halten */
+    aspect-ratio: 1 / 1;
     position: relative;
     /*border: 1px solid var(--border);*/
     perspective: 1000px;
@@ -649,7 +664,8 @@ button,
     margin: 0;
     overflow: hidden;
     border-radius: 0;
-    height: 100%;
+    /* Bild-Container quadratisch innerhalb der Karte */
+    aspect-ratio: 1 / 1;
 }
 
 .work-thumb img {
@@ -664,6 +680,13 @@ button,
     display: grid;
     gap: 0.75rem;
     align-content: start;
+}
+
+.work-item-back-content hr {
+    border: none;
+    border-top: 2px solid rgb(255 255 255 / 0.85);
+    margin: 0.5rem 0;
+    width: 100%;
 }
 
 .work-item h3 {
@@ -891,6 +914,38 @@ button,
     .site-header .nav-links a[href$="#projects"]::after {
         content: " ↗";
     }
+
+    /* Mobile: flip on tap via .is-flipped class, adjust back content for readability */
+    .flip-card {
+        /* keep square but slightly smaller on mobile */
+        aspect-ratio: 1 / 1;
+        min-height: 0;
+    }
+
+    /* when JS toggles .is-flipped, rotate inner */
+    .flip-card.is-flipped .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    /* increase padding and adjust typography on back side for mobile */
+    .flip-card-back {
+        padding: 1rem;
+    }
+
+    .work-item-back-content {
+        gap: 0.5rem;
+    }
+
+    .work-item-back-content p {
+        color: rgba(255,255,255,0.95);
+        font-size: 0.95rem;
+        line-height: 1.45;
+    }
+
+    .work-item-back-content hr {
+        border-top: 1px solid rgba(255,255,255,0.6);
+        margin: 0.5rem 0;
+    }
 }
 
 /* Modal Popup */
@@ -974,7 +1029,7 @@ button,
 /*movable div*/
 #mydiv {
     position: absolute;
-    top: 100px;   /* Startposition setzen */
+    top: 100px;
     left: 100px;
     z-index: 9;
     background-color: var(--surface);
@@ -984,10 +1039,18 @@ button,
 
 #mydivheader {
     padding: 10px;
-    cursor:grab;
     z-index: 10;
     background-color: var(--accent);
     color: #fff;
+    cursor: grab;
+}
+
+#mydivheader:hover {
+    cursor: grab;
+}
+
+#mydivheader.dragging {
+    cursor: grabbing;
 }
 
 
@@ -1009,3 +1072,212 @@ button,
         width: 100%;
     }
 }
+
+/* ═══ Fish Scene ═══ */
+
+body.is-dragging,
+body.is-dragging * {
+    cursor: grabbing !important;
+}
+
+#pellet-layer {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* ── Food Can ── */
+#food-can {
+    position: absolute;
+    left: auto;
+    /* Place can left beside the bowl at the bottom end of the page */
+    right: calc(1.5rem + 140px + 1rem);
+    top: auto;
+    bottom: 1.5rem;
+    width: 78px;
+    height: 108px;
+    z-index: 500;
+    touch-action: none;
+    user-select: none;
+    cursor: grab;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    background: linear-gradient(160deg, #ffd97a 0%, #f5a623 100%);
+    box-shadow: none;
+    transform-origin: 50% 10%;
+    transition: box-shadow 0.2s ease;
+}
+
+#food-can:not(.is-dragging):hover {
+    box-shadow: none;
+}
+
+#food-can.is-dragging {
+    cursor: grabbing;
+    box-shadow: none;
+    transition: none;
+}
+
+.can-top {
+    background: rgba(0,0,0,0.15);
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.can-holes {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.can-holes span {
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(30,20,10,0.55);
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.can-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem;
+}
+
+.can-label {
+    background: rgba(255,255,255,0.35);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    border-radius: 0.5rem;
+    padding: 0.35rem 0.4rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    color: rgba(50,30,0,0.85);
+}
+
+.can-label strong {
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+}
+
+.can-label small {
+    font-size: 0.65rem;
+    display: block;
+}
+
+/* ── Fish Bowl ── */
+#fish-bowl-wrap {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#fish-bowl {
+    width: 140px;
+    height: 140px;
+    border-radius: 50% 50% 45% 45% / 50% 50% 55% 55%;
+    border: 2.5px solid var(--border);
+    background:
+            radial-gradient(circle at 32% 22%, rgba(255,255,255,0.78) 0%, transparent 22%),
+            linear-gradient(180deg,
+            rgba(255,255,255,0.35) 0% 18%,
+            rgba(176,225,255,0.6) 18% 38%,
+            #7fd0f5 38% 100%
+            );
+    position: relative;
+    overflow: hidden;
+    /*box-shadow:*/
+    /*        inset 0 0 0 6px rgba(255,255,255,0.2),*/
+    /*        0 10px 28px rgba(0,0,0,0.12);*/
+}
+
+.bowl-water {
+    position: absolute;
+    bottom: 4%;
+    left: 6%;
+    right: 6%;
+    height: 68%;
+    border-radius: 0 0 44% 44%;
+    overflow: hidden;
+}
+
+.bowl-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+#fish {
+    position: absolute;
+    font-size: 1.6rem;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    transition:
+            left  0.45s cubic-bezier(0.25, 1, 0.5, 1),
+            top   0.45s cubic-bezier(0.25, 1, 0.5, 1),
+            transform 0.2s ease;
+    will-change: left, top;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+}
+
+#bowl-label {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.7rem;
+    background: rgba(255,255,255,0.78);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+    margin: 0;
+    transition: opacity 0.3s;
+    display: none;
+}
+
+@media (max-width: 600px) {
+    #food-can {
+        left: auto;
+        right: calc(0.75rem + 110px + 0.75rem);
+        top: auto;
+        bottom: 0.75rem;
+        width: 68px;
+        height: 94px;
+    }
+
+    #fish-bowl-wrap {
+        right: 0.75rem;
+        bottom: 0.75rem;
+    }
+
+    #fish-bowl {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+

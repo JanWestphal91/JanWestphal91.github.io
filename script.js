@@ -376,6 +376,32 @@ function initProjectFilters() {
 
 initProjectFilters();
 
+/* ═══ Mobile: tap to flip cards (first tap flips, second tap follows link) ═══ */
+function initMobileCardFlip() {
+    // Attach click handlers to work-item links for small viewports
+    document.querySelectorAll('.work-item-link').forEach((link) => {
+        const card = link.querySelector('.flip-card');
+        if (!card) return;
+
+        link.addEventListener('click', function (e) {
+            // Only intercept on touch / small screens
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                if (!card.classList.contains('is-flipped')) {
+                    // Prevent navigation and flip the card
+                    e.preventDefault();
+                    // close other flipped cards
+                    document.querySelectorAll('.flip-card.is-flipped').forEach((c) => c.classList.remove('is-flipped'));
+                    card.classList.add('is-flipped');
+                } else {
+                    // allow navigation on second tap
+                }
+            }
+        });
+    });
+}
+
+initMobileCardFlip();
+
 const form = document.getElementById("form") || document.querySelector(".contact-form");
 
 if (form) {
@@ -578,49 +604,340 @@ function initHeroModal() {
 
 initHeroModal();
 
-// Make the DIV element draggable:
-dragElement(document.getElementById("mydiv"));
+// Make the optional demo DIV draggable only when it exists.
+const demoDraggable = document.getElementById("mydiv");
+if (demoDraggable) {
+    dragElement(demoDraggable);
+}
 
 function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.getElementById(elmnt.id + "header")) {
-        // if present, the header is where you move the DIV from:
-        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    if (!elmnt) {
+        return;
+    }
+
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    const header = document.getElementById(elmnt.id + "header");
+
+    if (header) {
+        header.onmousedown = dragMouseDown;
     } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
         elmnt.onmousedown = dragMouseDown;
     }
 
     function dragMouseDown(e) {
         e = e || window.event;
         e.preventDefault();
-        // Maus oder Touch
-        pos3 = e.clientX ?? e.touches[0].clientX;
-        pos4 = e.clientY ?? e.touches[0].clientY;
+
+        if (header) {
+            header.classList.add("dragging");
+        }
+
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
-        // Touch-Events zusätzlich
-        document.ontouchend = closeDragElement;
-        document.ontouchmove = elementDrag;
     }
 
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
-        const clientX = e.clientX ?? e.touches[0].clientX;
-        const clientY = e.clientY ?? e.touches[0].clientY;
-        pos1 = pos3 - clientX;
-        pos2 = pos4 - clientY;
-        pos3 = clientX;
-        pos4 = clientY;
-        elmnt.style.top  = (elmnt.offsetTop  - pos2) + "px";
+
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
     }
 
     function closeDragElement() {
-        // stop moving when mouse button is released:
+        if (header) {
+            header.classList.remove("dragging");
+        }
+
         document.onmouseup = null;
         document.onmousemove = null;
     }
-    dragElement(document.getElementById("mydiv"));
 }
+
+
+
+
+/* ═══ Fish Scene — Feed Glub ═══ */
+function initFishScene() {
+    const can       = document.getElementById('food-can');
+    const bowl      = document.getElementById('fish-bowl');
+    const fishEl    = document.getElementById('fish');
+    const bowlLabel = document.getElementById('bowl-label');
+    const canvas    = document.getElementById('pellet-layer');
+    const sceneRoot = document.getElementById('top');
+
+    if (!can || !bowl || !fishEl || !canvas || !sceneRoot) return;
+
+    const ctx = canvas.getContext('2d');
+
+    // ── Canvas resize ──
+    function resizeCanvas() {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // ── Init can position from CSS (converts bottom → top) ──
+    function getRootPageOffset() {
+        const r = sceneRoot.getBoundingClientRect();
+        return {
+            x: r.left + window.scrollX,
+            y: r.top + window.scrollY
+        };
+    }
+
+    const canRect = can.getBoundingClientRect();
+    const rootOffset = getRootPageOffset();
+    // Keep absolute positioning relative to #top so elements stay above the footer.
+    can.style.top    = (canRect.top + window.scrollY - rootOffset.y) + 'px';
+    can.style.left   = (canRect.left + window.scrollX - rootOffset.x) + 'px';
+    can.style.bottom = 'auto';
+
+    let canX = canRect.left;
+    let canY = canRect.top;
+    let isDragging = false;
+    let offsetX = 0, offsetY = 0;
+    let prevX = 0, prevY = 0;
+    let velX = 0, velY = 0;
+    let angle = 0;
+
+    function getPointerPagePos(e) {
+        return {
+            x: e.pageX ?? (e.clientX + window.scrollX),
+            y: e.pageY ?? (e.clientY + window.scrollY)
+        };
+    }
+
+    // ── Pellets ──
+    const pellets = [];
+
+    function spawnPellets(n) {
+        const holesEl = can.querySelector('.can-holes');
+        const hr = (holesEl || can).getBoundingClientRect();
+        const sx = hr.left + hr.width / 2;
+        const sy = hr.top  + hr.height / 2;
+
+        for (let i = 0; i < n; i++) {
+            pellets.push({
+                x:      sx + (Math.random() - 0.5) * 14,
+                y:      sy + (Math.random() - 0.5) * 8,
+                vx:     (Math.random() - 0.5) * 2.5 + velX * 0.12,
+                vy:     Math.random() * 1.5 + 0.5,
+                r:      Math.random() * 2.5 + 2.5,
+                color:  Math.random() > 0.5 ? '#b8732a' : '#d4954a',
+                inBowl: false,
+                eaten:  false,
+                alpha:  1,
+            });
+        }
+    }
+
+    // ── Drag ──
+    can.addEventListener('pointerdown', e => {
+        isDragging = true;
+        can.setPointerCapture(e.pointerId);
+        can.classList.add('is-dragging');
+        document.body.classList.add('is-dragging');
+
+        const pointer = getPointerPagePos(e);
+        const r = can.getBoundingClientRect();
+        const canLeft = r.left + window.scrollX;
+        const canTop = r.top + window.scrollY;
+        offsetX = pointer.x - canLeft;
+        offsetY = pointer.y - canTop;
+        prevX = pointer.x;
+        prevY = pointer.y;
+        e.preventDefault();
+    });
+
+    can.addEventListener('pointermove', e => {
+        if (!isDragging) return;
+
+        const pointer = getPointerPagePos(e);
+
+        velX = pointer.x - prevX;
+        velY = pointer.y - prevY;
+        prevX = pointer.x;
+        prevY = pointer.y;
+
+        const rootPos = getRootPageOffset();
+        canX = pointer.x - offsetX;
+        canY = pointer.y - offsetY;
+        can.style.left = (canX - rootPos.x) + 'px';
+        can.style.top  = (canY - rootPos.y) + 'px';
+
+        // Smooth tilt
+        const targetAngle = Math.max(-72, Math.min(72, velX * 5));
+        angle += (targetAngle - angle) * 0.35;
+        can.style.transform = `rotate(${angle}deg)`;
+
+        // Spawn when shaking fast + tilted
+        const speed = Math.sqrt(velX * velX + velY * velY);
+        if (speed > 7 && Math.abs(angle) > 20) {
+            spawnPellets(Math.max(1, Math.ceil(speed / 9)));
+        }
+        e.preventDefault();
+    });
+
+    function stopDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        can.classList.remove('is-dragging');
+        document.body.classList.remove('is-dragging');
+        angle = 0;
+        can.style.transform = 'rotate(0deg)';
+        velX = 0;
+        velY = 0;
+    }
+
+    can.addEventListener('pointerup',     stopDrag);
+    can.addEventListener('pointercancel', stopDrag);
+
+    // ── Bowl ellipse collision ──
+    function isInBowl(px, py) {
+        const b  = bowl.getBoundingClientRect();
+        const cx = b.left + b.width  / 2;
+        const cy = b.top  + b.height / 2;
+        const rx = b.width  / 2 * 0.82;
+        const ry = b.height / 2 * 0.82;
+        return ((px - cx) / rx) ** 2 + ((py - cy) / ry) ** 2 < 1;
+    }
+
+    // ── Fish state ──
+    let fishX = 50, fishY = 45;
+    let fishTX = 50, fishTY = 45;
+    let fishFacingLeft = false;
+    let wanderTimer = 0;
+    let fedCount = 0;
+
+    const messages = [
+        '🐟 *blub blub*',
+        '😊 Glub says thanks!',
+        '❤️ Glub loves you!',
+        '😋 Yummy!',
+        '🐟 More please!',
+        '🫧 So tasty!',
+        '🐠 Glub is full!',
+        '🎉 Best day ever!',
+    ];
+
+    function showMessage(msg) {
+        bowlLabel.textContent = msg;
+        clearTimeout(bowlLabel._t);
+        bowlLabel._t = setTimeout(() => {
+            bowlLabel.textContent = '❗ Feed Glub now ❗';
+        }, 2500);
+    }
+
+    // ── Fish pixel position in screen space ──
+    function fishScreenPos() {
+        const water = bowl.querySelector('.bowl-water');
+        const wr    = water.getBoundingClientRect();
+        return {
+            x: wr.left + (fishX / 100) * wr.width,
+            y: wr.top  + (fishY / 100) * wr.height,
+        };
+    }
+
+    // ── Main loop ──
+    function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Update + draw pellets
+        for (let i = pellets.length - 1; i >= 0; i--) {
+            const p = pellets[i];
+            if (p.eaten) { pellets.splice(i, 1); continue; }
+
+            if (p.inBowl) {
+                const fp   = fishScreenPos();
+                const dx   = fp.x - p.x;
+                const dy   = fp.y - p.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 26) {
+                    p.eaten = true;
+                    fedCount++;
+                    fishTX = 15 + Math.random() * 70;
+                    fishTY = 10 + Math.random() * 72;
+                    showMessage(messages[fedCount % messages.length]);
+                    continue;
+                }
+
+                // Pellet drifts toward fish
+                p.vx += (dx / dist) * 0.4;
+                p.vy += (dy / dist) * 0.4;
+                p.vx *= 0.88;
+                p.vy *= 0.88;
+
+            } else {
+                // Gravity
+                p.vy += 0.3;
+                p.vx *= 0.99;
+
+                if (isInBowl(p.x, p.y)) {
+                    p.inBowl = true;
+                    p.vy *= -0.15;
+                    p.vx *=  0.4;
+                }
+
+                if (p.y > canvas.height + 30) {
+                    pellets.splice(i, 1);
+                    continue;
+                }
+            }
+
+            p.x += p.vx;
+            p.y += p.vy;
+
+            ctx.save();
+            ctx.globalAlpha = p.alpha;
+            ctx.beginPath();
+            ctx.ellipse(p.x, p.y, p.r, p.r * 0.65, 0, 0, Math.PI * 2);
+            ctx.fillStyle   = p.color;
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(0,0,0,0.18)';
+            ctx.lineWidth   = 0.5;
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        // Fish movement (smooth lerp)
+        const prevFX = fishX;
+        fishX += (fishTX - fishX) * 0.055;
+        fishY += (fishTY - fishY) * 0.055;
+
+        if (Math.abs(fishTX - fishX) > 0.3) {
+            fishFacingLeft = fishTX < prevFX;
+        }
+
+        fishEl.style.left      = fishX + '%';
+        fishEl.style.top       = fishY + '%';
+        fishEl.style.transform = `translate(-50%, -50%) scaleX(${fishFacingLeft ? -1 : 1})`;
+
+        // Idle wander
+        wanderTimer++;
+        if (wanderTimer > 130) {
+            wanderTimer = 0;
+            const hasPelletInBowl = pellets.some(p => p.inBowl);
+            if (!hasPelletInBowl) {
+                fishTX = 12 + Math.random() * 76;
+                fishTY =  8 + Math.random() * 76;
+            }
+        }
+
+        requestAnimationFrame(loop);
+    }
+
+    requestAnimationFrame(loop);
+}
+
+initFishScene();
