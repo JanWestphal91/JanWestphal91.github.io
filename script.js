@@ -147,7 +147,7 @@ const PROJECT_DATA = {
         summary: "Made with Godot and Aseprite, free 2 play and nothing to pay." +
             "This game is a small homage to the old Flash games of the early 2000s and to cope with physics calculations. " +
             "It features a small pony getting faster, trying to reach lightspeed. " +
-            "The game is available on itch.io to play in a browser. ",
+            "The game is available on itch.io to play in a browser, "+"It has a online leaderboard, controler or keyboard input detection and audio intensity and transitions.",
         meta: [
             "Webgame",
             "Solo project",
@@ -158,54 +158,59 @@ const PROJECT_DATA = {
             {
                 src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNi5wbmc=/original/1A9wjP.png",
                 alt: "Go Pony, Go C! screenshot 1 from itch.io",
-                caption: "Screenshot 1"
+                caption: "Intro sequence with a small dialog."
             },
             {
                 src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTg0NDY4OS5wbmc=/original/OY%2BX9f.png",
                 alt: "Go Pony, Go C! screenshot 2 from itch.io",
-                caption: "Screenshot 2"
+                caption: "First Area with active turbo mode."
             },
             {
                 src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzMy5wbmc=/original/lcI4Mo.png",
                 alt: "Go Pony, Go C! screenshot 3 from itch.io",
-                caption: "Screenshot 3"
+                caption: "Second Area."
             },
             {
                 src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNS5wbmc=/original/zmOtvE.png",
                 alt: "Go Pony, Go C! screenshot 4 from itch.io",
-                caption: "Screenshot 4"
+                caption: "Last Area preparing for lightspeed."
             }
         ],
         content: [
             "Can you help a small pony reach its dream? Stay focused and show how fast you are.",
             "Climb the leaderboard and become the fastest pony of them all!"
         ],
-        embed: '<iframe frameborder="0" src="https://itch.io/embed/4287829" width="552" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe>'
+        embed: '<iframe frameborder="0" src="https://itch.io/embed/4287829" width="208" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe>'
     },
-    "creative-coding-experiments": {
-        title: "Interaktive visuelle Experimente",
-        category: "Creative Coding 2026",
-        summary: "Prototypische Arbeiten zwischen Motion, Typografie und Echtzeit-Interaktion.",
+
+    "Chonky-Bee-Audio-Synth": {
+        title: "Chonky Bee Audio Synth",
+        category: "[Electronic] 2026",
+        summary: "Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick."+
+            "The 7 buttons at the bottom are for playing nots or chords, with both rotary knobs the sound can be modulated one changes the octave the other changes the waveform. " +
+        "With the joystick you can control a vibrato and pitch shift. ",
         meta: [
-            "Rolle: Creative Coding, Visual Design",
-            "Fokus: Echtzeit-Input, Formexploration",
-            "Status: Laufende Sammlung"
+            "Electronic",
+            "Protoype",
+            "Audio",
+            "Solo project",
+            "Status: WIP"
         ],
         images: [
             {
-                src: "Images/iconpatterndark.png",
-                alt: "Abstraktes dunkles Pattern als visuelle Studie",
-                caption: "Pattern Study Dark"
+                src: "Images/ArduinoSynthWip.jpg",
+                alt: "Arduino Wip picture",
+                caption: "WIP breadboard testing."
             },
-            {
-                src: "Images/iconpatternlight.png",
-                alt: "Abstraktes helles Pattern als visuelle Studie",
-                caption: "Pattern Study Light"
-            }
+            // {
+            //     src: "Images/iconpatternlight.png",
+            //     alt: "Abstraktes helles Pattern als visuelle Studie",
+            //     caption: "Pattern Study Light"
+            // }
         ],
         content: [
-            "Die Experimente dienen als Sandbox fuer Bewegungsprinzipien, Farbkonzepte und systematische Typo-Animation.",
-            "Einzelne Studien lassen sich spaeter als Module in groessere Projekte uebernehmen."
+        //     "Die Experimente dienen als Sandbox fuer Bewegungsprinzipien, Farbkonzepte und systematische Typo-Animation.",
+        //     "Einzelne Studien lassen sich spaeter als Module in groessere Projekte uebernehmen."
         ]
     },
     "design-system-structure": {
