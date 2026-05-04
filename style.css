@@ -1278,6 +1278,27 @@ body.is-dragging * {
     display: none;
 }
 
+/* ── Hearts Animation ── */
+.heart {
+    position: fixed;
+    font-size: 1.2rem;
+    pointer-events: none;
+    user-select: none;
+    z-index: 999;
+    animation: float-up 2s ease-out forwards;
+}
+
+@keyframes float-up {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, -80px) scale(0.7);
+    }
+}
+
 @media (max-width: 600px) {
     #food-can {
         left: auto;

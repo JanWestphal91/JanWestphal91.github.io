@@ -198,7 +198,7 @@ const PROJECT_DATA = {
         ],
         images: [
             {
-                src: "Images/ArduinoSynthWip.jpg",
+                src: "Images/ArduinoSynthWip.jpeg",
                 alt: "Arduino Wip picture",
                 caption: "WIP breadboard testing."
             },
@@ -213,6 +213,32 @@ const PROJECT_DATA = {
         //     "Einzelne Studien lassen sich spaeter als Module in groessere Projekte uebernehmen."
         ]
     },
+
+    "e-zine-graffiti-doc": {
+        title: "E-Zine #1 // Graffiti Archive 2015-2019",
+        category: "[Design, Archive] 2019",
+        summary: "A digital e-zine documenting graffiti and street art from 2015-2019. An archive of visual culture and creative expression.",
+        meta: [
+            "Design",
+            "Archive",
+            "Publication",
+            "Graffiti Culture",
+            "2015-2019"
+        ],
+        images: [
+            {
+                src: "https://img.itch.zone/aW1nLzQwODA3MDguanBn/original/OctT5m.jpg",
+                alt: "E-Zine Graffiti Archive preview",
+                caption: "E-Zine #1 // Graffiti Archive"
+            }
+        ],
+        content: [
+            "A documentation of graffiti and street art from the years 2015 to 2019.",
+            "An archive capturing creative visual expression and culture."
+        ],
+        embed: '<iframe frameborder="0" src="https://itch.io/embed/4455766" width="208" height="167"><a href="https://jan-west.itch.io/e-zine-graffiti-doc-15-19">E-Zine #1 // Graffiti Archive 2015-2019 by Netro</a></iframe>'
+    },
+
     "design-system-structure": {
         title: "Visuelle Struktur fuer skalierbare Produkte",
         category: "Design Systems 2025",
@@ -843,6 +869,21 @@ function initFishScene() {
         }, 2500);
     }
 
+    // ── Spawn heart animation ──
+    function spawnHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = '❤️';
+        
+        const fp = fishScreenPos();
+        heart.style.left = fp.x + 'px';
+        heart.style.top = fp.y + 'px';
+        
+        document.body.appendChild(heart);
+        
+        setTimeout(() => heart.remove(), 2000);
+    }
+
     // ── Fish pixel position in screen space ──
     function fishScreenPos() {
         const water = bowl.querySelector('.bowl-water');
@@ -874,6 +915,7 @@ function initFishScene() {
                     fishTX = 15 + Math.random() * 70;
                     fishTY = 10 + Math.random() * 72;
                     showMessage(messages[fedCount % messages.length]);
+                    spawnHeart();
                     continue;
                 }
 
