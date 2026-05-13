@@ -184,16 +184,15 @@ const PROJECT_DATA = {
     },
 
     "Chonky-Bee-Audio-Synth": {
-        title: "Chonky Bee Audio Synth",
+        title: "Audio Dingo Synth",
         category: "[Electronic] 2026",
         summary: "Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick."+
-            "The 7 buttons at the bottom are for playing nots or chords, with both rotary knobs the sound can be modulated one changes the octave the other changes the waveform. " +
-        "With the joystick you can control a vibrato and pitch shift. ",
+            "The 7 buttons at the bottom are for playing notes or chords, with both rotary knobs the sound can be modulated, one changes the octave the other changes the waveform. " +
+        "With the joystick you can control the tone of the sound and the 3 control buttons are for recording, playback and magic functions. ",
         meta: [
             "Electronic",
             "Protoype",
             "Audio",
-            "Solo project",
             "Status: WIP"
         ],
         images: [
@@ -216,20 +215,34 @@ const PROJECT_DATA = {
 
     "e-zine-graffiti-doc": {
         title: "E-Zine #1 // Graffiti Archive 2015-2019",
-        category: "[Design, Archive] 2019",
-        summary: "A digital e-zine documenting graffiti and street art from 2015-2019. An archive of visual culture and creative expression.",
+        category: "[Illustration] 2019",
+        summary: "A digital e-zine documenting graffiti and street art from 2015-2019.",
         meta: [
             "Design",
-            "Archive",
-            "Publication",
-            "Graffiti Culture",
-            "2015-2019"
+            "Print",
+            "Illustration"
         ],
+        // Include local screenshots so the project page gallery shows the same images as the project card
         images: [
+            // {
+            //     src: "Images/Graffzine1/TitleGraffzine1.png",
+            //     alt: "Graffzine 1 - Title",
+            //     caption: "Cover / Title Image"
+            // },
             {
-                src: "https://img.itch.zone/aW1nLzQwODA3MDguanBn/original/OctT5m.jpg",
-                alt: "E-Zine Graffiti Archive preview",
-                caption: "E-Zine #1 // Graffiti Archive"
+                src: "Images/Graffzine1/Screenshot 2026-04-10 124314.png",
+                alt: "Graffzine screenshot 1",
+                caption: "First spread with characters"
+            },
+            {
+                src: "Images/Graffzine1/Screenshot 2026-04-10 131834.png",
+                alt: "Graffzine screenshot 2",
+                caption: "Site 57 with some optical paintings."
+            },
+            {
+                src: "Images/Graffzine1/Screenshot 2026-04-10 132013.png",
+                alt: "Graffzine screenshot 3",
+                caption: "Site 145 with ambient pics."
             }
         ],
         content: [
@@ -316,6 +329,7 @@ function renderProjectPage() {
 }
 
 renderProjectPage();
+
 
 
 /* ═══ Project Filtering ═══ */

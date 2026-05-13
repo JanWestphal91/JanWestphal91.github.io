@@ -567,11 +567,14 @@ button,
     }
 }
 
-/* Projects list: show items in a responsive grid */
+/* Projects list: show items in a responsive grid
+   Use auto-fill instead of auto-fit so that column tracks remain even when items
+   are hidden by the filter. This preserves tile size when filtering. */
 .work-list {
     display: grid;
+    /* etwas größere Karten: min width +80px */
     /* kleinere Karten, immer quadratisch */
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
     margin-top: 1.25rem;
 }
@@ -948,6 +951,32 @@ button,
     }
 }
 
+/* Make project grid two columns on mobile so tiles appear in 2-up layout */
+@media (max-width: 768px) {
+    .work-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+}
+
+/* Footer: allow wrapping and make footer text a two-line block on small screens */
+@media (max-width: 768px) {
+    .footer-copy {
+        /* allow the copyright text to wrap instead of overflowing */
+        white-space: normal;
+        /* make it span the full width so it breaks into two lines reliably */
+        width: 100%;
+        /* center for better appearance on small screens */
+        text-align: center;
+        margin: 0 0 0.25rem 0;
+    }
+    .footer-nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
 /* Modal Popup */
 .modal {
     position: fixed;
@@ -1018,13 +1047,16 @@ button,
 }
 
 .modal-portrait {
+    /* Make the portrait larger on desktop while keeping it left-aligned
+       Use clamp() so it scales reasonably between small and large viewports */
     float: left;
-    width: 180px;
+    width: clamp(180px, 22vw, 340px);
     height: auto;
     margin-right: 1.5rem;
     margin-bottom: 1rem;
     border-radius: var(--radius);
     border: 1px solid var(--border);
+    object-fit: cover;
 }
 
 @media (max-width: 600px) {
