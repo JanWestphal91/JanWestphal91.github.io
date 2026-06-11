@@ -40,12 +40,31 @@
 
     <!--Theme & Favicon-->
     <meta name="theme-color" content="#ffffff" />
-<!--    favicon muss noch hinzugefügt werden-->
-<!--    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />-->
-<!--    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />-->
-<!--    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />-->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+
+    <!--Structured Data-->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jan Westphal",
+      "alternateName": "Netro",
+      "url": "https://janwestphal.dev",
+      "sameAs": [
+        "https://github.com/JanWestphal91",
+        "https://jan-west.itch.io",
+        "https://bsky.app/profile/jan-west.itch.io",
+        "https://www.youtube.com/@netrouberkitsch7044"
+      ],
+      "jobTitle": "Creative Coder & Designer",
+      "address": { "@type": "PostalAddress", "addressLocality": "Kiel", "addressCountry": "DE" }
+    }
+    </script>
 
     <!-- ═══ Assets ═══ -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>

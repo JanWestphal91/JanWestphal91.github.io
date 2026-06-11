@@ -1,0 +1,16 @@
+Folgende Bilddateien muessen in diesen Ordner (assets/) gelegt werden:
+
+1. og-preview.jpg        — 1200 x 630 px, Screenshot der Startseite
+                           Wird beim Teilen der URL angezeigt (Discord, Slack, etc.)
+
+2. favicon.svg           — Vektorversion des Favicons (bevorzugt)
+                           Tipp: einfaches Icon oder Initiale "J" oder "JW"
+
+3. favicon-32.png        — 32 x 32 px PNG-Version des Favicons
+                           Fuer Browser-Tab und Lesezeichen
+
+4. apple-touch-icon.png  — 180 x 180 px PNG
+                           Wird angezeigt wenn jemand die Seite auf dem iPhone-Homescreen speichert
+
+Tipp fuer schnelle Favicons: https://favicon.io/
+Tipp fuer OG-Image: Screenshot mit Browser-Zoom 100%, dann auf 1200x630 zuschneiden (z.B. in Photoshop oder GIMP)
