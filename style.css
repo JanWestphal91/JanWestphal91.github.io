@@ -185,6 +185,31 @@ img {
     color: var(--accent-link);
 }
 
+.lang-toggle {
+    font-size: 0.8rem;
+    min-width: 2.5rem;
+    margin-left: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .lang-toggle {
+        display: inline;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        font-weight: 400;
+        border-radius: 0;
+        min-width: 0;
+        margin-left: 0;
+    }
+
+    .lang-toggle:hover,
+    .lang-toggle:focus-visible {
+        background: transparent;
+    }
+}
+
 .nav-dropdown {
     position: relative;
 }

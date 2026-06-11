@@ -8,6 +8,79 @@ function escapeHtml(text) {
         .replace(/'/g, "&#39;");
 }
 
+/* ═══ i18n ═══ */
+const LANG_STORAGE_KEY = 'preferred-lang';
+
+function detectLang() {
+    const stored = localStorage.getItem(LANG_STORAGE_KEY);
+    if (stored === 'de' || stored === 'en') return stored;
+    return (navigator.language || '').toLowerCase().startsWith('de') ? 'de' : 'en';
+}
+
+let currentLang = detectLang();
+
+function t(key) {
+    const dict = window.TRANSLATIONS;
+    if (!dict) return key;
+    return (dict[currentLang] && dict[currentLang][key])
+        || (dict.en && dict.en[key])
+        || key;
+}
+
+function applyTranslations(lang, skipProjectRender) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        el.textContent = t(el.dataset.i18n);
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        el.placeholder = t(el.dataset.i18nPlaceholder);
+    });
+
+    document.querySelectorAll('[data-i18n-aria]').forEach(function(el) {
+        el.setAttribute('aria-label', t(el.dataset.i18nAria));
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(el) {
+        el.alt = t(el.dataset.i18nAlt);
+    });
+
+    const tickerText = t('ticker');
+    document.querySelectorAll('.ticker-text').forEach(function(el) {
+        el.textContent = tickerText;
+    });
+
+    const bowlLabel = document.getElementById('bowl-label');
+    if (bowlLabel && !bowlLabel._fishMsgActive) {
+        bowlLabel.textContent = t('bowl.label');
+    }
+
+    const toggle = document.getElementById('lang-toggle');
+    if (toggle) toggle.textContent = lang === 'de' ? 'EN' : 'DE';
+
+    if (document.body.dataset.page !== 'project') {
+        document.title = lang === 'de'
+            ? 'Jan Westphal – Portfolio | Creative Coder & Designer aus Kiel'
+            : 'Jan Westphal – Portfolio | Creative Coder & Designer from Kiel';
+    }
+
+    if (!skipProjectRender && document.body.dataset.page === 'project') {
+        renderProjectPage(lang);
+    }
+}
+
+function initLangToggle() {
+    const toggle = document.getElementById('lang-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function() {
+        const next = currentLang === 'de' ? 'en' : 'de';
+        localStorage.setItem(LANG_STORAGE_KEY, next);
+        applyTranslations(next);
+    });
+}
+
 const TEXT_EFFECTS = {
     wavy: {
         dataAttribute: "data-wavy",
@@ -116,10 +189,10 @@ const PROJECT_DATA = {
     "go-pony-go-c": {
         title: "Go Pony, Go C!",
         category: "[Webgame] 2026",
-        summary: "Made with Godot and Aseprite, free 2 play and nothing to pay." +
-            "This game is a small homage to the old Flash games of the early 2000s and to cope with physics calculations. " +
+        summary: "Made with Godot and Aseprite, free to play. " +
+            "This game is a small homage to the old Flash games of the early 2000s and an experiment with physics calculations. " +
             "It features a small pony getting faster, trying to reach lightspeed. " +
-            "The game is available on itch.io to play in a browser, "+"It has a online leaderboard, controler or keyboard input detection and audio intensity and transitions.",
+            "Available on itch.io to play in a browser, with an online leaderboard, controller or keyboard input, and audio intensity transitions.",
         meta: [
             "Webgame",
             "Solo project",
@@ -152,7 +225,38 @@ const PROJECT_DATA = {
             "Can you help a small pony reach its dream? Stay focused and show how fast you are.",
             "Climb the leaderboard and become the fastest pony of them all!"
         ],
-        embed: '<iframe frameborder="0" src="https://itch.io/embed/4287829" width="208" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe>'
+        embed: '<iframe frameborder="0" src="https://itch.io/embed/4287829" width="208" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe>',
+        de: {
+            summary: "Entwickelt mit Godot und Aseprite, kostenlos spielbar. Eine kleine Hommage an die Flash-Spiele der frühen 2000er und ein Experiment mit Physikberechnungen. Ein kleines Pony wird immer schneller und versucht, die Lichtgeschwindigkeit zu erreichen. Spielbar auf itch.io, mit Online-Bestenliste, Controller- und Tastatursteuerung sowie Audio-Intensität und Übergängen.",
+            meta: [
+                "Webgame",
+                "Solo-Projekt",
+                "Tools: Godot, Aseprite, Adobe CC",
+                "Status: Veröffentlicht auf itch.io"
+            ],
+            images: [
+                { caption: "Intro-Sequenz mit kurzem Dialog." },
+                { caption: "Erster Abschnitt mit aktivem Turbo-Modus." },
+                { caption: "Zweiter Abschnitt." },
+                { caption: "Letzter Abschnitt – Vorbereitung für Lichtgeschwindigkeit." }
+            ],
+            content: [
+                "Kannst du einem kleinen Pony helfen, seinen Traum zu verwirklichen? Bleib fokussiert und zeig, wie schnell du bist.",
+                "Erklimme die Bestenliste und werde das schnellste Pony von allen!"
+            ]
+        },
+        schema: {
+            "@type": "SoftwareApplication",
+            "name": "Go Pony, Go C!",
+            "applicationCategory": "Game",
+            "applicationSubCategory": "Arcade",
+            "operatingSystem": "Web Browser",
+            "description": "A small game about a pony racing to lightspeed. Made with Godot and Aseprite, free to play with an online leaderboard.",
+            "url": "https://jan-west.itch.io/go-pony-go-c",
+            "author": { "@type": "Person", "name": "Jan Westphal" },
+            "datePublished": "2026",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+        }
     },
 
     "Chonky-Bee-Audio-Synth": {
@@ -163,7 +267,7 @@ const PROJECT_DATA = {
         "With the joystick you can control the tone of the sound and the 3 control buttons are for recording, playback and magic functions. ",
         meta: [
             "Electronic",
-            "Protoype",
+            "Prototype",
             "Audio",
             "Status: WIP"
         ],
@@ -182,7 +286,22 @@ const PROJECT_DATA = {
         content: [
         //     "Die Experimente dienen als Sandbox fuer Bewegungsprinzipien, Farbkonzepte und systematische Typo-Animation.",
         //     "Einzelne Studien lassen sich spaeter als Module in groessere Projekte uebernehmen."
-        ]
+        ],
+        de: {
+            summary: "Entwickelt mit einem Arduino Uno R4 Minima. Er hat 10 Tasten, 2 Drehencoder, ein kleines OLED-Display und einen Joystick. Die 7 Tasten unten dienen zum Spielen von Noten oder Akkorden; mit den Encodern lässt sich der Sound modulieren – einer wechselt die Oktave, der andere die Wellenform. Mit dem Joystick steuert man die Tonhöhe, die 3 Steuertasten übernehmen Aufnahme, Wiedergabe und Sonderfunktionen.",
+            meta: ["Elektronik", "Prototyp", "Audio", "Status: In Arbeit"],
+            images: [
+                { caption: "WIP Breadboard-Testaufbau." }
+            ],
+            content: []
+        },
+        schema: {
+            "@type": "CreativeWork",
+            "name": "Audio Dingo Synth",
+            "description": "Arduino Uno R4 Minima based synthesizer with buttons, encoders, OLED display and joystick for note playing, sound modulation and recording.",
+            "author": { "@type": "Person", "name": "Jan Westphal" },
+            "dateCreated": "2026"
+        }
     },
 
     "e-zine-graffiti-doc": {
@@ -221,7 +340,29 @@ const PROJECT_DATA = {
             "A documentation of graffiti and street art from the years 2015 to 2019.",
             "An archive capturing creative visual expression and culture."
         ],
-        embed: '<iframe frameborder="0" src="https://itch.io/embed/4455766" width="208" height="167"><a href="https://jan-west.itch.io/e-zine-graffiti-doc-15-19">E-Zine #1 // Graffiti Archive 2015-2019 by Netro</a></iframe>'
+        embed: '<iframe frameborder="0" src="https://itch.io/embed/4455766" width="208" height="167"><a href="https://jan-west.itch.io/e-zine-graffiti-doc-15-19">E-Zine #1 // Graffiti Archive 2015-2019 by Netro</a></iframe>',
+        de: {
+            summary: "Ein digitales E-Zine mit Graffiti und Street Art aus den Jahren 2015–2019.",
+            meta: ["Design", "Druck", "Illustration"],
+            images: [
+                { caption: "Erster Spread mit Charakteren." },
+                { caption: "Seite 57 mit optischen Gemälden." },
+                { caption: "Seite 145 mit Umgebungsfotos." }
+            ],
+            content: [
+                "Eine Dokumentation von Graffiti und Street Art aus den Jahren 2015 bis 2019.",
+                "Ein Archiv, das kreative visuelle Ausdrucksformen und Kultur festhält."
+            ]
+        },
+        schema: {
+            "@type": "VisualArtwork",
+            "name": "E-Zine #1 // Graffiti Archive 2015-2019",
+            "description": "A digital e-zine documenting graffiti and street art painted from 2015 to 2019.",
+            "artform": "Graffiti, Illustration, Digital Publishing",
+            "author": { "@type": "Person", "name": "Jan Westphal" },
+            "dateCreated": "2019",
+            "url": "https://jan-west.itch.io/e-zine-graffiti-doc-15-19"
+        }
     },
 
     "design-system-structure": {
@@ -247,7 +388,9 @@ const PROJECT_DATA = {
     }
 };
 
-function renderProjectPage() {
+function renderProjectPage(lang) {
+    lang = lang || currentLang || 'en';
+
     if (document.body.dataset.page !== "project") {
         return;
     }
@@ -269,20 +412,32 @@ function renderProjectPage() {
         return;
     }
 
+    const langData = (lang === 'de' && project.de) ? project.de : null;
+    const projectSummary = (langData && langData.summary) || project.summary;
+    const projectMeta   = (langData && langData.meta)    || project.meta;
+    const projectContent = (langData && langData.content) || project.content;
+    const projectImages = project.images.map(function(img, i) {
+        return Object.assign({}, img, {
+            caption: (langData && langData.images && langData.images[i])
+                ? langData.images[i].caption
+                : img.caption
+        });
+    });
+
     categoryElement.textContent = project.category;
     titleElement.textContent = project.title;
-    summaryElement.textContent = project.summary;
+    summaryElement.textContent = projectSummary;
     document.title = `${project.title} - Jan Westphal`;
 
     if (galleryHeadingElement) {
-        galleryHeadingElement.textContent = `${project.title} — Gallery`;
+        galleryHeadingElement.textContent = `${project.title} — ${t('project.gallery-label')}`;
     }
 
-    metaElement.innerHTML = project.meta
+    metaElement.innerHTML = projectMeta
         .map((item) => `<li>${escapeHtml(item)}</li>`)
         .join("");
 
-    galleryElement.innerHTML = project.images
+    galleryElement.innerHTML = projectImages
         .map((image) => {
             return `
                 <figure class="project-gallery__item">
@@ -293,8 +448,8 @@ function renderProjectPage() {
         })
         .join("");
 
-    if (contentElement && project.content) {
-        contentElement.innerHTML = project.content
+    if (contentElement && projectContent) {
+        contentElement.innerHTML = projectContent
             .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
             .join("");
     }
@@ -303,9 +458,33 @@ function renderProjectPage() {
     if (embedElement && project.embed) {
         embedElement.innerHTML = project.embed;
     }
+
+    // Update per-project meta for SEO
+    const metaDescEl = document.querySelector('meta[name="description"]');
+    if (metaDescEl) metaDescEl.setAttribute('content', project.summary.substring(0, 155));
+    const ogTitleEl = document.querySelector('meta[property="og:title"]');
+    if (ogTitleEl) ogTitleEl.setAttribute('content', `${project.title} – Jan Westphal`);
+    const ogDescEl = document.querySelector('meta[property="og:description"]');
+    if (ogDescEl) ogDescEl.setAttribute('content', project.summary.substring(0, 155));
+    const canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (canonicalEl) canonicalEl.setAttribute('href', `https://janwestphal.dev/project.html?id=${id}`);
+    const ogUrlEl = document.querySelector('meta[property="og:url"]');
+    if (ogUrlEl) ogUrlEl.setAttribute('content', `https://janwestphal.dev/project.html?id=${id}`);
+
+    // Inject CreativeWork schema
+    const existingSchema = document.getElementById('project-schema');
+    if (existingSchema) existingSchema.remove();
+    if (project.schema) {
+        const schemaEl = document.createElement('script');
+        schemaEl.type = 'application/ld+json';
+        schemaEl.id = 'project-schema';
+        schemaEl.textContent = JSON.stringify({ "@context": "https://schema.org", ...project.schema });
+        document.head.appendChild(schemaEl);
+    }
 }
 
-renderProjectPage();
+renderProjectPage(currentLang);
+applyTranslations(currentLang, true);
 
 
 
@@ -437,7 +616,7 @@ if (form) {
         const originalText = submitBtn ? submitBtn.textContent : "";
 
         if (submitBtn) {
-            submitBtn.textContent = "Sending...";
+            submitBtn.textContent = t("contact.submit.sending");
             submitBtn.disabled = true;
         }
 
@@ -450,14 +629,14 @@ if (form) {
             const data = await response.json();
 
             if (response.ok) {
-                alert("Success! Your message has been sent.");
+                alert(t("contact.success"));
                 form.reset();
             } else {
-                alert("Error: " + data.message);
+                alert(t("contact.error-prefix") + data.message);
             }
 
         } catch (_error) {
-            alert("Something went wrong. Please try again.");
+            alert(t("contact.network-error"));
         } finally {
             if (submitBtn) {
                 submitBtn.textContent = originalText;
@@ -870,22 +1049,13 @@ function initFishScene() {
     let wanderTimer = 0;
     let fedCount = 0;
 
-    const messages = [
-        '🐟 *blub blub*',
-        '😊 Glub says thanks!',
-        '❤️ Glub loves you!',
-        '😋 Yummy!',
-        '🐟 More please!',
-        '🫧 So tasty!',
-        '🐠 Glub is full!',
-        '🎉 Best day ever!',
-    ];
-
     function showMessage(msg) {
         bowlLabel.textContent = msg;
+        bowlLabel._fishMsgActive = true;
         clearTimeout(bowlLabel._t);
         bowlLabel._t = setTimeout(() => {
-            bowlLabel.textContent = '❗ Feed Glub now ❗';
+            bowlLabel._fishMsgActive = false;
+            bowlLabel.textContent = t('bowl.label');
         }, 2500);
     }
 
@@ -934,7 +1104,7 @@ function initFishScene() {
                     fedCount++;
                     fishTX = 15 + Math.random() * 70;
                     fishTY = 10 + Math.random() * 72;
-                    showMessage(messages[fedCount % messages.length]);
+                    showMessage(t('bowl.msg' + (fedCount % 8)));
                     spawnHeart();
                     continue;
                 }
@@ -1008,3 +1178,4 @@ function initFishScene() {
 }
 
 initFishScene();
+initLangToggle();

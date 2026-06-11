@@ -3,23 +3,36 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Project by Jan Westphal – Creative Coder & Designer from Kiel, Germany." />
+    <meta name="description" content="Project detail page by Jan Westphal – Creative Coder &amp; Designer from Kiel." />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
-    <title>Project - Jan Westphal</title>
+    <meta name="geo.region" content="DE-SH" />
+    <meta name="geo.placename" content="Kiel" />
+    <title>Project – Jan Westphal</title>
+    <link rel="canonical" href="https://janwestphal.dev/project.html" />
+    <link rel="alternate" hreflang="de" href="https://janwestphal.dev/project.html" />
+    <link rel="alternate" hreflang="en" href="https://janwestphal.dev/project.html" />
+    <link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/project.html" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
     <!--Open Graph-->
     <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://janwestphal.dev/project.html" />
     <meta property="og:site_name" content="Jan Westphal" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="Project - Jan Westphal" />
-    <meta property="og:description" content="Project by Jan Westphal – Creative Coder & Designer from Kiel, Germany." />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:title" content="Project – Jan Westphal" />
+    <meta property="og:description" content="Project by Jan Westphal – Creative Coder &amp; Designer from Kiel." />
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Jan Westphal – Portfolio Preview" />
 
     <!--Twitter / X Card-->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Project - Jan Westphal" />
-    <meta name="twitter:description" content="Project by Jan Westphal – Creative Coder & Designer from Kiel, Germany." />
+    <meta name="twitter:title" content="Project – Jan Westphal" />
+    <meta name="twitter:description" content="Project by Jan Westphal – Creative Coder &amp; Designer from Kiel." />
     <meta name="twitter:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
 
     <!--Favicon-->
@@ -30,19 +43,21 @@
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <script src="translations.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body data-page="project">
 <header class="site-header">
     <div class="container nav">
         <a href="index.html#top" class="logo">Jan Westphal</a>
-        <nav class="nav-main">
+        <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="index.html#projects" class="link-button secondary">Projects</a></li>
-                <li><a href="index.html#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact / Socials</span><span class="nav-label nav-label--mobile">Contact</span></a></li>
+                <li><a href="index.html#projects" class="link-button secondary" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="index.html#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
             </ul>
+            <button id="lang-toggle" class="lang-toggle link-button secondary" aria-label="Switch language">DE</button>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
+        <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -53,10 +68,10 @@
 <main class="project-page">
     <section class="section project-hero" id="go-pony-go-c">
         <div class="container">
-            <a class="back-link" href="index.html#projects"><h2>← </h2> </a>
+            <a class="back-link" href="index.html#projects" data-i18n-aria="project.back-aria" aria-label="Back to projects"><h2>← </h2> </a>
             <p id="project-category" class="kicker">Project</p>
-            <h1 id="project-title" data-wavy data-rainbow>Projektname</h1>
-            <p id="project-summary" class="project-summary">Kurzbeschreibung des Projekts.</p>
+            <h1 id="project-title" data-wavy data-rainbow>Project – Jan Westphal</h1>
+            <p id="project-summary" class="project-summary">A project by Jan Westphal – Creative Coder &amp; Designer from Kiel, Germany.</p>
             <ul id="project-meta" class="project-meta"></ul>
         </div>
     </section>
@@ -76,24 +91,7 @@
     <section class="section">
         <div class="container">
             <h2 id="project-gallery-heading">Gallery</h2>
-            <div id="project-gallery" class="project-gallery">
-                <figure class="project-gallery__item">
-                    <img src="Images/Graffzine1/TitleGraffzine1.png" alt="Graffzine 1 - Title">
-                    <figcaption>Cover / Title Image</figcaption>
-                </figure>
-                <figure class="project-gallery__item">
-                    <img src="Images/Graffzine1/Screenshot 2026-04-10 124314.png" alt="Graffzine screenshot 1">
-                    <figcaption>Page / Spread 1</figcaption>
-                </figure>
-                <figure class="project-gallery__item">
-                    <img src="Images/Graffzine1/Screenshot 2026-04-10 131834.png" alt="Graffzine screenshot 2">
-                    <figcaption>Page / Spread 2</figcaption>
-                </figure>
-                <figure class="project-gallery__item">
-                    <img src="Images/Graffzine1/Screenshot 2026-04-10 132013.png" alt="Graffzine screenshot 3">
-                    <figcaption>Page / Spread 3</figcaption>
-                </figure>
-            </div>
+            <div id="project-gallery" class="project-gallery"></div>
         </div>
     </section>
 </main>

@@ -1,0 +1,109 @@
+window.TRANSLATIONS = {
+    en: {
+        "nav.projects":              "Projects",
+        "nav.contact.desktop":       "Contact / Socials",
+        "nav.contact.mobile":        "Contact ↗",
+        "burger.aria":               "Open menu",
+
+        "hero.greeting":             "Hi! I'm ",
+        "hero.location":             ", a developer and designer living in Kiel, Germany.",
+
+        "projects.heading":          "Check my latest projects👇",
+        "filter.all":                "All",
+
+        "card.go-pony.desc":         "A small game about a pony racing to lightspeed.",
+        "card.synth.desc":           "Arduino Uno R4 Minima based synthesizer with buttons, encoders, OLED display and joystick.",
+        "card.zine.desc":            "Digital documentation of graffiti and street art painted by me from 2015-2019.",
+
+        "contact.heading":           "Drop your message here!",
+        "contact.name-label":        "Name",
+        "contact.email-label":       "E-mail",
+        "contact.message-label":     "Message",
+        "contact.name-ph":           "What´s your name?",
+        "contact.email-ph":          "i will reply to this adress. (youradress@mail.com)",
+        "contact.message-ph":        "You can tell me something here. Add a joke if you want or tell me a secret. =)",
+        "contact.submit":            "Send",
+        "contact.submit.sending":    "Sending...",
+        "contact.socials":           "Socials ↗",
+        "contact.success":           "Success! Your message has been sent.",
+        "contact.error-prefix":      "Error: ",
+        "contact.network-error":     "Something went wrong. Please try again.",
+
+        "modal.heading":   "Most people call me Jan, some friends call me West and my graffiti / dev nickname is Netro",
+        "modal.subtitle":  "Want to know a little more about me?",
+        "modal.p1":        "I'm into experimental design, art, and prototyping. I love how different disciplines can work together to create something new. I enjoy drawing badly, messing around with electronics, video / audio gear and graffiti culture is part of my roots, it was my first real connection to illustration. Doing large scale paintings has always felt incredibly satisfying to me.",
+        "modal.p2":        "Game development is one of the most interesting fields for me because it combines so many disciplines into one finished product. I'm also involved with the IF(game)SH e.V. to help get more people into game development. My favorite games are Factorio, Slay the Spire, and good old Donkey Kong Country.",
+        "modal.p3":        "I'm married to a wonderful person who brings some much-needed order into my chaos, and we have two lovely kids together.",
+        "modal.img-alt":   "Jan Westphal – Creative Coder and Designer from Kiel",
+
+        "bowl.label":  "❗ Feed Glub now ❗",
+        "bowl.msg0":   "🐟 *blub blub*",
+        "bowl.msg1":   "😊 Glub says thanks!",
+        "bowl.msg2":   "❤️ Glub loves you!",
+        "bowl.msg3":   "😋 Yummy!",
+        "bowl.msg4":   "🐟 More please!",
+        "bowl.msg5":   "🫧 So tasty!",
+        "bowl.msg6":   "🐠 Glub is full!",
+        "bowl.msg7":   "🎉 Best day ever!",
+
+        "ticker": "• People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping • Latest Game : 🐎 Go Pony, Go C ! 🐎 • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below",
+
+        "project.kicker":       "Project",
+        "project.gallery-label":"Gallery",
+        "project.back-aria":    "Back to projects",
+    },
+
+    de: {
+        "nav.projects":              "Projekte",
+        "nav.contact.desktop":       "Kontakt / Socials",
+        "nav.contact.mobile":        "Kontakt ↗",
+        "burger.aria":               "Menü öffnen",
+
+        "hero.greeting":             "Hi! Ich bin ",
+        "hero.location":             ", Entwickler und Designer aus Kiel.",
+
+        "projects.heading":          "Meine neuesten Projekte👇",
+        "filter.all":                "Alle",
+
+        "card.go-pony.desc":         "Ein kleines Spiel über ein Pony auf dem Weg zur Lichtgeschwindigkeit.",
+        "card.synth.desc":           "Arduino-Uno-R4-Minima-basierter Synthesizer mit Tasten, Encodern, OLED-Display und Joystick.",
+        "card.zine.desc":            "Digitale Dokumentation von Graffiti und Street Art, von mir gemalt zwischen 2015 und 2019.",
+
+        "contact.heading":           "Schreib mir!",
+        "contact.name-label":        "Name",
+        "contact.email-label":       "E-Mail",
+        "contact.message-label":     "Nachricht",
+        "contact.name-ph":           "Wie heißt du?",
+        "contact.email-ph":          "Ich antworte an diese Adresse. (deineadresse@mail.com)",
+        "contact.message-ph":        "Erzähl mir etwas – ein Witz oder ein Geheimnis. =)",
+        "contact.submit":            "Senden",
+        "contact.submit.sending":    "Wird gesendet...",
+        "contact.socials":           "Socials ↗",
+        "contact.success":           "Erfolgreich! Deine Nachricht wurde gesendet.",
+        "contact.error-prefix":      "Fehler: ",
+        "contact.network-error":     "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+
+        "modal.heading":   "Die meisten nennen mich Jan, manche Freunde West – mein Graffiti / Dev-Nickname ist Netro",
+        "modal.subtitle":  "Willst du mehr über mich wissen?",
+        "modal.p1":        "Ich beschäftige mich mit experimentellem Design, Kunst und Prototyping. Ich liebe es, wie verschiedene Disziplinen zusammenwirken können, um etwas Neues zu schaffen. Ich zeichne gerne schlecht, bastle an Elektronik, Video- und Audioequipment – und Graffiti-Kultur ist Teil meiner Wurzeln, meine erste echte Verbindung zur Illustration. Großflächige Bilder zu malen hat mich schon immer unglaublich befriedigt.",
+        "modal.p2":        "Game-Entwicklung ist eines der interessantesten Felder für mich, weil es so viele Disziplinen in ein fertiges Produkt vereint. Ich engagiere mich auch bei IF(game)SH e.V., um mehr Menschen in die Spieleentwicklung zu bringen. Meine Lieblingsspiele sind Factorio, Slay the Spire und das gute alte Donkey Kong Country.",
+        "modal.p3":        "Ich bin verheiratet mit einer wunderbaren Person, die etwas dringend benötigte Ordnung in mein Chaos bringt – und wir haben zwei wundervolle Kinder.",
+        "modal.img-alt":   "Jan Westphal – Creative Coder und Designer aus Kiel",
+
+        "bowl.label":  "❗ Glub jetzt füttern ❗",
+        "bowl.msg0":   "🐟 *blub blub*",
+        "bowl.msg1":   "😊 Glub sagt Danke!",
+        "bowl.msg2":   "❤️ Glub liebt dich!",
+        "bowl.msg3":   "😋 Lecker!",
+        "bowl.msg4":   "🐟 Mehr bitte!",
+        "bowl.msg5":   "🫧 So lecker!",
+        "bowl.msg6":   "🐠 Glub ist satt!",
+        "bowl.msg7":   "🎉 Bester Tag ever!",
+
+        "ticker": "• Das sagen andere über mich 👉 • UI / UX Design • Creative Coding • Game Dev • Grafikdesign • Motion / 3D Grafik • Prototyping • Aktuelles Spiel : 🐎 Go Pony, Go C ! 🐎 • Was ich wirklich mache 👉 • Schlechte Zeichnungen • Laute Musik • Hacky Code • Heißkleber-Elektronik • 🐟Glub🐟 jetzt füttern",
+
+        "project.kicker":        "Projekt",
+        "project.gallery-label": "Galerie",
+        "project.back-aria":     "Zurück zu den Projekten",
+    }
+};
