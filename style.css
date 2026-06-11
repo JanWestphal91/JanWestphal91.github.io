@@ -134,6 +134,7 @@ img {
 
 .nav-main {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     min-width: 0;
 }
@@ -165,9 +166,10 @@ img {
     flex-wrap: wrap;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-links li button {
     color: var(--muted);
-    transition: color 0.2s ease;
+    transition: background 1s ease, color 1s ease, border-color 1s ease;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -181,34 +183,6 @@ img {
     display: none;
 }
 
-.nav-links a:hover {
-    color: var(--accent-link);
-}
-
-.lang-toggle {
-    font-size: 0.8rem;
-    min-width: 2.5rem;
-    margin-left: 0.25rem;
-}
-
-@media (max-width: 768px) {
-    .lang-toggle {
-        display: inline;
-        padding: 0;
-        border: 0;
-        background: transparent;
-        color: var(--muted);
-        font-weight: 400;
-        border-radius: 0;
-        min-width: 0;
-        margin-left: 0;
-    }
-
-    .lang-toggle:hover,
-    .lang-toggle:focus-visible {
-        background: transparent;
-    }
-}
 
 .nav-dropdown {
     position: relative;
@@ -875,6 +849,7 @@ button,
 
     .nav-main {
         display: flex;
+        align-items: center;
         justify-content: flex-end;
         padding-right: 0.75rem;
     }
@@ -892,11 +867,13 @@ button,
         width: auto;
     }
 
-    .nav-links a {
+    .nav-links a,
+    .nav-links li button {
         margin-top: 0;
     }
 
-    .nav-links a.link-button {
+    .nav-links a.link-button,
+    .nav-links li button.link-button {
         display: inline;
         padding: 0;
         border: 0;
@@ -915,8 +892,11 @@ button,
     }
 
     .nav-links a.link-button:hover,
-    .nav-links a.link-button:focus-visible {
+    .nav-links a.link-button:focus-visible,
+    .nav-links li button.link-button:hover,
+    .nav-links li button.link-button:focus-visible {
         background: transparent;
+        color: var(--muted);
     }
 
     .site-header .nav-links a[href$="#projects"]::after {
