@@ -24,35 +24,7 @@ const TEXT_EFFECTS = {
 };
 
 function createEffectTextHTML(text, effectNames = []) {
-function initLogoWavyHover() {
-    const logo = document.querySelector(".logo");
-
-    if (!logo) {
-        return;
-    }
-
-    const originalText = logo.textContent || "";
-
-    function applyLogoWavy() {
-        applyWavyText(logo, originalText);
-    }
-
-    function restoreLogoText() {
-        logo.textContent = originalText;
-        logo.classList.remove("text-effects");
-        logo.removeAttribute("aria-label");
-        delete logo.dataset.effectsOriginal;
-        delete logo.dataset.effects;
-    }
-
-    logo.addEventListener("mouseenter", applyLogoWavy);
-    logo.addEventListener("focus", applyLogoWavy);
-    logo.addEventListener("mouseleave", restoreLogoText);
-    logo.addEventListener("blur", restoreLogoText);
-}
-
     const validEffects = effectNames.filter((effectName) => TEXT_EFFECTS[effectName]);
-initLogoWavyHover();
     let characterIndex = 0;
     const tokens = String(text).split(/(\s+)/);
 
@@ -290,6 +262,7 @@ function renderProjectPage() {
     const summaryElement = document.getElementById("project-summary");
     const metaElement = document.getElementById("project-meta");
     const galleryElement = document.getElementById("project-gallery");
+    const galleryHeadingElement = document.getElementById("project-gallery-heading");
     const contentElement = document.getElementById("project-content");
 
     if (!categoryElement || !titleElement || !summaryElement || !metaElement || !galleryElement) {
@@ -300,6 +273,10 @@ function renderProjectPage() {
     titleElement.textContent = project.title;
     summaryElement.textContent = project.summary;
     document.title = `${project.title} - Jan Westphal`;
+
+    if (galleryHeadingElement) {
+        galleryHeadingElement.textContent = `${project.title} — Gallery`;
+    }
 
     metaElement.innerHTML = project.meta
         .map((item) => `<li>${escapeHtml(item)}</li>`)
@@ -648,6 +625,35 @@ function initHeroModal() {
 }
 
 initHeroModal();
+
+function initLogoWavyHover() {
+    const logo = document.querySelector(".logo");
+
+    if (!logo) {
+        return;
+    }
+
+    const originalText = logo.textContent || "";
+
+    function applyLogoWavy() {
+        applyWavyText(logo, originalText);
+    }
+
+    function restoreLogoText() {
+        logo.textContent = originalText;
+        logo.classList.remove("text-effects");
+        logo.removeAttribute("aria-label");
+        delete logo.dataset.effectsOriginal;
+        delete logo.dataset.effects;
+    }
+
+    logo.addEventListener("mouseenter", applyLogoWavy);
+    logo.addEventListener("focus", applyLogoWavy);
+    logo.addEventListener("mouseleave", restoreLogoText);
+    logo.addEventListener("blur", restoreLogoText);
+}
+
+initLogoWavyHover();
 
 // Make the optional demo DIV draggable only when it exists.
 const demoDraggable = document.getElementById("mydiv");

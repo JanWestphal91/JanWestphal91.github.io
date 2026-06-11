@@ -27,14 +27,6 @@ html {
     overflow-x: hidden;
 }
 
-@keyframes ticker-scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-75%);
-    }
-}
 .ticker-band {
     overflow: hidden;
     width: 100%;
@@ -104,11 +96,6 @@ a:not(.link-button):hover {
 img {
     max-width: 100%;
     display: block;
-}
-
-.container {
-    width: min(100% - 2rem, var(--container));
-    margin-inline: auto;
 }
 
 .site-header {
@@ -195,7 +182,7 @@ img {
 }
 
 .nav-links a:hover {
-    color: var(--accent);
+    color: var(--accent-link);
 }
 
 .nav-dropdown {
@@ -249,13 +236,6 @@ img {
     color: var(--muted);
     text-align: center;
     white-space: nowrap;
-}
-
-.hr{
-    background-color: red;
-    height: 100px;
-    width: 100%;
-    display: block;
 }
 
 .burger-menu-toggle {
@@ -778,7 +758,7 @@ button,
 }
 
 .back-link:hover {
-    color: var(--accent);
+    color: var(--accent-link);
 }
 
 .project-summary {
@@ -1032,7 +1012,7 @@ button,
 }
 
 .modal-close:hover {
-    color: var(--accent);
+    color: var(--accent-link);
 }
 
 .modal-body h2 {
@@ -1075,7 +1055,7 @@ button,
 }
 
 .hero-name-link:hover {
-    color: var(--accent);
+    color: var(--accent-link);
 }
 /*movable div*/
 #mydiv {
