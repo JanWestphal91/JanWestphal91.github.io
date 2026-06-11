@@ -86,7 +86,9 @@
 
     <!-- ═══ Assets ═══ -->
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap"></noscript>
     <link rel="stylesheet" href="style.css" />
     <script src="translations.js" defer></script>
     <script src="script.js" defer></script>
@@ -184,7 +186,7 @@
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <figure class="work-thumb">
-                                    <img src="Images/ArduinoSynthWip.jpeg" alt="Chonky Bee Audio Synth preview" loading="lazy" width="300" height="300">
+                                    <img src="Images/ArduinoSynthWip.webp" alt="Chonky Bee Audio Synth preview" loading="lazy" width="300" height="300">
                                 </figure>
                             </div>
                             <div class="flip-card-back">
@@ -205,7 +207,7 @@
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <figure class="work-thumb">
-                                    <img src="Images/Graffzine1/TitleGraffzine1.png" alt="E-Zine Graffiti Archive preview" loading="lazy" width="300" height="300">
+                                    <img src="Images/Graffzine1/TitleGraffzine1.webp" alt="E-Zine Graffiti Archive preview" loading="lazy" width="300" height="300">
                                 </figure>
                             </div>
                             <div class="flip-card-back">

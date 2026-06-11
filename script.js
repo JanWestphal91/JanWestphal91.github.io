@@ -273,7 +273,7 @@ const PROJECT_DATA = {
         ],
         images: [
             {
-                src: "Images/ArduinoSynthWip.jpeg",
+                src: "Images/ArduinoSynthWip.webp",
                 alt: "Arduino Wip picture",
                 caption: "WIP breadboard testing."
             },
@@ -321,17 +321,17 @@ const PROJECT_DATA = {
             //     caption: "Cover / Title Image"
             // },
             {
-                src: "Images/Graffzine1/Screenshot 2026-04-10 124314.png",
+                src: "Images/Graffzine1/Screenshot 2026-04-10 124314.webp",
                 alt: "Graffzine screenshot 1",
                 caption: "First spread with characters"
             },
             {
-                src: "Images/Graffzine1/Screenshot 2026-04-10 131834.png",
+                src: "Images/Graffzine1/Screenshot 2026-04-10 131834.webp",
                 alt: "Graffzine screenshot 2",
                 caption: "Site 57 with some optical paintings."
             },
             {
-                src: "Images/Graffzine1/Screenshot 2026-04-10 132013.png",
+                src: "Images/Graffzine1/Screenshot 2026-04-10 132013.webp",
                 alt: "Graffzine screenshot 3",
                 caption: "Site 145 with ambient pics."
             }
