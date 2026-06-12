@@ -1,6 +1,8 @@
-window.TRANSLATIONS = {
+﻿window.TRANSLATIONS = {
     en: {
         "nav.projects":              "Projects",
+        "nav.projects.mobile":       "Projects ↗",
+        "nav.blog.mobile":           "Blog ↗",
         "nav.contact.desktop":       "Contact / Socials",
         "nav.contact.mobile":        "Contact ↗",
         "burger.aria":               "Open menu",
@@ -63,6 +65,8 @@ window.TRANSLATIONS = {
 
     de: {
         "nav.projects":              "Projekte",
+        "nav.projects.mobile":       "Projekte ↗",
+        "nav.blog.mobile":           "Blog ↗",
         "nav.contact.desktop":       "Kontakt / Socials",
         "nav.contact.mobile":        "Kontakt ↗",
         "burger.aria":               "Menü öffnen",
