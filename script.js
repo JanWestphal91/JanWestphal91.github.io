@@ -1,0 +1,1199 @@
+
+function escapeHtml(text) {
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+/* ═══ i18n ═══ */
+const LANG_STORAGE_KEY = 'preferred-lang';
+
+function detectLang() {
+    const stored = localStorage.getItem(LANG_STORAGE_KEY);
+    if (stored === 'de' || stored === 'en') return stored;
+    return (navigator.language || '').toLowerCase().startsWith('de') ? 'de' : 'en';
+}
+
+let currentLang = detectLang();
+
+function t(key) {
+    const dict = window.TRANSLATIONS;
+    if (!dict) return key;
+    return (dict[currentLang] && dict[currentLang][key])
+        || (dict.en && dict.en[key])
+        || key;
+}
+
+function applyTranslations(lang, skipProjectRender) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        el.textContent = t(el.dataset.i18n);
+    });
+
+    document.querySelectorAll('[data-en]').forEach(function(el) {
+        el.textContent = lang === 'de' && el.dataset.de ? el.dataset.de : el.dataset.en;
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        el.placeholder = t(el.dataset.i18nPlaceholder);
+    });
+
+    document.querySelectorAll('[data-i18n-aria]').forEach(function(el) {
+        el.setAttribute('aria-label', t(el.dataset.i18nAria));
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(el) {
+        el.alt = t(el.dataset.i18nAlt);
+    });
+
+    const tickerText = t('ticker');
+    document.querySelectorAll('.ticker-text').forEach(function(el) {
+        el.textContent = tickerText;
+    });
+
+    const bowlLabel = document.getElementById('bowl-label');
+    if (bowlLabel && !bowlLabel._fishMsgActive) {
+        bowlLabel.textContent = t('bowl.label');
+    }
+
+    const toggle = document.getElementById('lang-toggle');
+    if (toggle) toggle.textContent = lang === 'de' ? 'EN' : 'DE';
+
+    if (document.body.dataset.page !== 'project') {
+        document.title = lang === 'de'
+            ? 'Jan Westphal – Portfolio | Creative Coder & Designer aus Kiel'
+            : 'Jan Westphal – Portfolio | Creative Coder & Designer from Kiel';
+    }
+
+    if (!skipProjectRender && document.body.dataset.page === 'project') {
+        renderProjectPage(lang);
+    }
+}
+
+function initLangToggle() {
+    const toggle = document.getElementById('lang-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function() {
+        const next = currentLang === 'de' ? 'en' : 'de';
+        localStorage.setItem(LANG_STORAGE_KEY, next);
+        applyTranslations(next);
+    });
+}
+
+const TEXT_EFFECTS = {
+    wavy: {
+        dataAttribute: "data-wavy",
+        charClass: "wavy-text__char",
+        animation: "wavy-bounce 1.2s ease-in-out infinite",
+        delayStep: 0.08
+    },
+    rainbow: {
+        dataAttribute: "data-rainbow",
+        charClass: "rainbow-text__char",
+        animation: "rainbow-cycle 2.1s linear infinite",
+        delayStep: 0.08
+    }
+};
+
+function createEffectTextHTML(text, effectNames = []) {
+    const validEffects = effectNames.filter((effectName) => TEXT_EFFECTS[effectName]);
+    let characterIndex = 0;
+    const tokens = String(text).split(/(\s+)/);
+
+    return tokens.map((token) => {
+        if (!token) {
+            return "";
+        }
+
+        if (/^\s+$/.test(token)) {
+            characterIndex += token.length;
+            return token;
+        }
+
+        const wordHtml = Array.from(token).map((character) => {
+            const charClasses = ["text-effect__char"];
+            const animationValues = [];
+            const delayValues = [];
+
+            validEffects.forEach((effectName) => {
+                const effect = TEXT_EFFECTS[effectName];
+                charClasses.push(effect.charClass);
+                animationValues.push(effect.animation);
+                delayValues.push(`${(effect.delayStep * characterIndex).toFixed(3)}s`);
+            });
+
+            const style = animationValues.length > 0
+                ? ` style="--effect-animations:${animationValues.join(",")};--effect-delays:${delayValues.join(",")}"`
+                : "";
+
+            characterIndex += 1;
+            return `<span class="${charClasses.join(" ")}"${style}>${escapeHtml(character)}</span>`;
+        }).join("");
+
+        return `<span class="text-effect__word">${wordHtml}</span>`;
+    }).join("");
+}
+
+function applyTextEffects(target, effectNames, text = null) {
+    if (!target) {
+        return "";
+    }
+
+    const element = typeof target === "string" ? document.querySelector(target) : target;
+
+    if (!element) {
+        return "";
+    }
+
+    const validEffects = Array.from(new Set(effectNames.filter((effectName) => TEXT_EFFECTS[effectName])));
+
+    if (validEffects.length === 0) {
+        return "";
+    }
+
+    const originalText = text ?? element.dataset.effectsOriginal ?? element.textContent ?? "";
+
+    element.dataset.effectsOriginal = originalText;
+    element.dataset.effects = validEffects.join(" ");
+    element.classList.add("text-effects");
+    element.setAttribute("aria-label", originalText);
+    element.innerHTML = createEffectTextHTML(originalText, validEffects);
+
+    return element.innerHTML;
+}
+
+function createWavyTextHTML(text) {
+    return createEffectTextHTML(text, ["wavy"]);
+}
+
+function createRainbowTextHTML(text) {
+    return createEffectTextHTML(text, ["rainbow"]);
+}
+
+function applyWavyText(target, text = null) {
+    return applyTextEffects(target, ["wavy"], text);
+}
+
+function applyRainbowText(target, text = null) {
+    return applyTextEffects(target, ["rainbow"], text);
+}
+
+function getElementEffects(element) {
+    return Object.keys(TEXT_EFFECTS).filter((effectName) => {
+        return element.hasAttribute(TEXT_EFFECTS[effectName].dataAttribute);
+    });
+}
+
+let PROJECT_DATA = {};
+
+const _PROJECT_DATA_LEGACY = {
+    "go-pony-go-c": {
+        title: "Go Pony, Go C!",
+        category: "[Webgame] 2026",
+        summary: "Made with Godot and Aseprite, free to play. " +
+            "This game is a small homage to the old Flash games of the early 2000s and an experiment with physics calculations. " +
+            "It features a small pony getting faster, trying to reach lightspeed. " +
+            "Available on itch.io to play in a browser, with an online leaderboard, controller or keyboard input, and audio intensity transitions.",
+        meta: [
+            "Webgame",
+            "Solo project",
+            "Tools used: Godot, Aseprite, Adobe CC",
+            "Status: Released on itch.io"
+        ],
+        images: [
+            {
+                src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNi5wbmc=/original/1A9wjP.png",
+                alt: "Go Pony, Go C! screenshot 1 from itch.io",
+                caption: "Intro sequence with a small dialog."
+            },
+            {
+                src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTg0NDY4OS5wbmc=/original/OY%2BX9f.png",
+                alt: "Go Pony, Go C! screenshot 2 from itch.io",
+                caption: "First Area with active turbo mode."
+            },
+            {
+                src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzMy5wbmc=/original/lcI4Mo.png",
+                alt: "Go Pony, Go C! screenshot 3 from itch.io",
+                caption: "Second Area."
+            },
+            {
+                src: "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNS5wbmc=/original/zmOtvE.png",
+                alt: "Go Pony, Go C! screenshot 4 from itch.io",
+                caption: "Last Area preparing for lightspeed."
+            }
+        ],
+        content: [
+            "Can you help a small pony reach its dream? Stay focused and show how fast you are.",
+            "Climb the leaderboard and become the fastest pony of them all!"
+        ],
+        embed: '<iframe frameborder="0" src="https://itch.io/embed/4287829" width="208" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe>',
+        de: {
+            summary: "Entwickelt mit Godot und Aseprite, kostenlos spielbar. Eine kleine Hommage an die Flash-Spiele der frühen 2000er und ein Experiment mit Physikberechnungen. Ein kleines Pony wird immer schneller und versucht, die Lichtgeschwindigkeit zu erreichen. Spielbar auf itch.io, mit Online-Bestenliste, Controller- und Tastatursteuerung sowie Audio-Intensität und Übergängen.",
+            meta: [
+                "Webgame",
+                "Solo-Projekt",
+                "Tools: Godot, Aseprite, Adobe CC",
+                "Status: Veröffentlicht auf itch.io"
+            ],
+            images: [
+                { caption: "Intro-Sequenz mit kurzem Dialog." },
+                { caption: "Erster Abschnitt mit aktivem Turbo-Modus." },
+                { caption: "Zweiter Abschnitt." },
+                { caption: "Letzter Abschnitt – Vorbereitung für Lichtgeschwindigkeit." }
+            ],
+            content: [
+                "Kannst du einem kleinen Pony helfen, seinen Traum zu verwirklichen? Bleib fokussiert und zeig, wie schnell du bist.",
+                "Erklimme die Bestenliste und werde das schnellste Pony von allen!"
+            ]
+        },
+        schema: {
+            "@type": "SoftwareApplication",
+            "name": "Go Pony, Go C!",
+            "applicationCategory": "Game",
+            "applicationSubCategory": "Arcade",
+            "operatingSystem": "Web Browser",
+            "description": "A small game about a pony racing to lightspeed. Made with Godot and Aseprite, free to play with an online leaderboard.",
+            "url": "https://jan-west.itch.io/go-pony-go-c",
+            "author": { "@type": "Person", "name": "Jan Westphal" },
+            "datePublished": "2026",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+        }
+    },
+
+    "Chonky-Bee-Audio-Synth": {
+        title: "Audio Dingo Synth",
+        category: "[Electronic] 2026",
+        summary: "Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick."+
+            "The 7 buttons at the bottom are for playing notes or chords, with both rotary knobs the sound can be modulated, one changes the octave the other changes the waveform. " +
+        "With the joystick you can control the tone of the sound and the 3 control buttons are for recording, playback and magic functions. ",
+        meta: [
+            "Electronic",
+            "Prototype",
+            "Audio",
+            "Status: WIP"
+        ],
+        images: [
+            {
+                src: "Images/ArduinoSynthWip.webp",
+                alt: "Arduino Wip picture",
+                caption: "WIP breadboard testing."
+            },
+            // {
+            //     src: "Images/iconpatternlight.png",
+            //     alt: "Abstraktes helles Pattern als visuelle Studie",
+            //     caption: "Pattern Study Light"
+            // }
+        ],
+        content: [
+        //     "Die Experimente dienen als Sandbox fuer Bewegungsprinzipien, Farbkonzepte und systematische Typo-Animation.",
+        //     "Einzelne Studien lassen sich spaeter als Module in groessere Projekte uebernehmen."
+        ],
+        de: {
+            summary: "Entwickelt mit einem Arduino Uno R4 Minima. Er hat 10 Tasten, 2 Drehencoder, ein kleines OLED-Display und einen Joystick. Die 7 Tasten unten dienen zum Spielen von Noten oder Akkorden; mit den Encodern lässt sich der Sound modulieren – einer wechselt die Oktave, der andere die Wellenform. Mit dem Joystick steuert man die Tonhöhe, die 3 Steuertasten übernehmen Aufnahme, Wiedergabe und Sonderfunktionen.",
+            meta: ["Elektronik", "Prototyp", "Audio", "Status: In Arbeit"],
+            images: [
+                { caption: "WIP Breadboard-Testaufbau." }
+            ],
+            content: []
+        },
+        schema: {
+            "@type": "CreativeWork",
+            "name": "Audio Dingo Synth",
+            "description": "Arduino Uno R4 Minima based synthesizer with buttons, encoders, OLED display and joystick for note playing, sound modulation and recording.",
+            "author": { "@type": "Person", "name": "Jan Westphal" },
+            "dateCreated": "2026"
+        }
+    },
+
+    "e-zine-graffiti-doc": {
+        title: "E-Zine #1 // Graffiti Archive 2015-2019",
+        category: "[Illustration] 2019",
+        summary: "A digital e-zine documenting graffiti and street art from 2015-2019.",
+        meta: [
+            "Design",
+            "Print",
+            "Illustration"
+        ],
+        // Include local screenshots so the project page gallery shows the same images as the project card
+        images: [
+            // {
+            //     src: "Images/Graffzine1/TitleGraffzine1.png",
+            //     alt: "Graffzine 1 - Title",
+            //     caption: "Cover / Title Image"
+            // },
+            {
+                src: "Images/Graffzine1/Screenshot 2026-04-10 124314.webp",
+                alt: "Graffzine screenshot 1",
+                caption: "First spread with characters"
+            },
+            {
+                src: "Images/Graffzine1/Screenshot 2026-04-10 131834.webp",
+                alt: "Graffzine screenshot 2",
+                caption: "Site 57 with some optical paintings."
+            },
+            {
+                src: "Images/Graffzine1/Screenshot 2026-04-10 132013.webp",
+                alt: "Graffzine screenshot 3",
+                caption: "Site 145 with ambient pics."
+            }
+        ],
+        content: [
+            "A documentation of graffiti and street art from the years 2015 to 2019.",
+            "An archive capturing creative visual expression and culture."
+        ],
+        embed: '<iframe frameborder="0" src="https://itch.io/embed/4455766" width="208" height="167"><a href="https://jan-west.itch.io/e-zine-graffiti-doc-15-19">E-Zine #1 // Graffiti Archive 2015-2019 by Netro</a></iframe>',
+        de: {
+            summary: "Ein digitales E-Zine mit Graffiti und Street Art aus den Jahren 2015–2019.",
+            meta: ["Design", "Druck", "Illustration"],
+            images: [
+                { caption: "Erster Spread mit Charakteren." },
+                { caption: "Seite 57 mit optischen Gemälden." },
+                { caption: "Seite 145 mit Umgebungsfotos." }
+            ],
+            content: [
+                "Eine Dokumentation von Graffiti und Street Art aus den Jahren 2015 bis 2019.",
+                "Ein Archiv, das kreative visuelle Ausdrucksformen und Kultur festhält."
+            ]
+        },
+        schema: {
+            "@type": "VisualArtwork",
+            "name": "E-Zine #1 // Graffiti Archive 2015-2019",
+            "description": "A digital e-zine documenting graffiti and street art painted from 2015 to 2019.",
+            "artform": "Graffiti, Illustration, Digital Publishing",
+            "author": { "@type": "Person", "name": "Jan Westphal" },
+            "dateCreated": "2019",
+            "url": "https://jan-west.itch.io/e-zine-graffiti-doc-15-19"
+        }
+    },
+
+    "design-system-structure": {
+        title: "Visuelle Struktur fuer skalierbare Produkte",
+        category: "Design Systems 2025",
+        summary: "Ein modulares Set aus Regeln und Komponenten fuer konsistente UI-Entwicklung.",
+        meta: [
+            "Rolle: UX/UI, System Design",
+            "Fokus: Skalierbarkeit und Konsistenz",
+            "Status: Konzept + Dokumentation"
+        ],
+        images: [
+            {
+                src: "Images/iconpatternlight.png",
+                alt: "Helles Pattern als Basis fuer ein Design-System",
+                caption: "System Pattern"
+            }
+        ],
+        content: [
+            "Das Design-System definiert Typografie, Spacing, Komponenten-Hierarchien und klare Einsatzregeln fuer Teams.",
+            "Dadurch entstehen schnellere Iterationen und ein durchgaengig stimmiges Nutzererlebnis ueber mehrere Features hinweg."
+        ]
+    }
+};
+
+function renderProjectPage(lang) {
+    lang = lang || currentLang || 'en';
+
+    if (document.body.dataset.page !== "project") {
+        return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const hashId = window.location.hash.replace(/^#/, "");
+    const id = params.get("id") || hashId || "go-pony-go-c";
+    const project = PROJECT_DATA[id] || PROJECT_DATA["go-pony-go-c"];
+    if (!project) return;
+
+    const categoryElement = document.getElementById("project-category");
+    const titleElement = document.getElementById("project-title");
+    const summaryElement = document.getElementById("project-summary");
+    const metaElement = document.getElementById("project-meta");
+    const galleryElement = document.getElementById("project-gallery");
+    const galleryHeadingElement = document.getElementById("project-gallery-heading");
+    const contentElement = document.getElementById("project-content");
+
+    if (!categoryElement || !titleElement || !summaryElement || !metaElement || !galleryElement) {
+        return;
+    }
+
+    const langData = (lang === 'de' && project.de) ? project.de : null;
+    const projectSummary = (langData && langData.summary) || project.summary;
+    const projectMeta   = (langData && langData.meta)    || project.meta;
+    const projectContent = (langData && langData.content) || project.content;
+    const projectImages = project.images.map(function(img, i) {
+        return Object.assign({}, img, {
+            caption: (langData && langData.images && langData.images[i])
+                ? langData.images[i].caption
+                : img.caption
+        });
+    });
+
+    categoryElement.textContent = project.category;
+    titleElement.textContent = project.title;
+    summaryElement.textContent = projectSummary;
+    document.title = `${project.title} - Jan Westphal`;
+
+    if (galleryHeadingElement) {
+        galleryHeadingElement.textContent = `${project.title} — ${t('project.gallery-label')}`;
+    }
+
+    metaElement.innerHTML = projectMeta
+        .map((item) => `<li>${escapeHtml(item)}</li>`)
+        .join("");
+
+    galleryElement.innerHTML = projectImages
+        .map((image) => {
+            return `
+                <figure class="project-gallery__item">
+                    <img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" loading="lazy">
+                    <figcaption>${escapeHtml(image.caption)}</figcaption>
+                </figure>
+            `;
+        })
+        .join("");
+
+    if (contentElement && projectContent) {
+        contentElement.innerHTML = projectContent
+            .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
+            .join("");
+    }
+
+    const embedElement = document.getElementById("project-embed");
+    if (embedElement && project.embed) {
+        embedElement.innerHTML = project.embed;
+    }
+
+    // Update per-project meta for SEO
+    const metaDescEl = document.querySelector('meta[name="description"]');
+    if (metaDescEl) metaDescEl.setAttribute('content', project.summary.substring(0, 155));
+    const ogTitleEl = document.querySelector('meta[property="og:title"]');
+    if (ogTitleEl) ogTitleEl.setAttribute('content', `${project.title} – Jan Westphal`);
+    const ogDescEl = document.querySelector('meta[property="og:description"]');
+    if (ogDescEl) ogDescEl.setAttribute('content', project.summary.substring(0, 155));
+    const canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (canonicalEl) canonicalEl.setAttribute('href', `https://janwestphal.dev/project.html?id=${id}`);
+    const ogUrlEl = document.querySelector('meta[property="og:url"]');
+    if (ogUrlEl) ogUrlEl.setAttribute('content', `https://janwestphal.dev/project.html?id=${id}`);
+
+    // Inject CreativeWork schema
+    const existingSchema = document.getElementById('project-schema');
+    if (existingSchema) existingSchema.remove();
+    if (project.schema) {
+        const schemaEl = document.createElement('script');
+        schemaEl.type = 'application/ld+json';
+        schemaEl.id = 'project-schema';
+        schemaEl.textContent = JSON.stringify({ "@context": "https://schema.org", ...project.schema });
+        document.head.appendChild(schemaEl);
+    }
+}
+
+applyTranslations(currentLang, true);
+
+if (document.body.dataset.page === 'project') {
+    fetch('/projects.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            PROJECT_DATA = data;
+            renderProjectPage(currentLang);
+        })
+        .catch(function() {
+            renderProjectPage(currentLang);
+        });
+}
+
+
+
+/* ═══ Project Filtering ═══ */
+function initProjectFilters() {
+    const workList = document.querySelector(".work-list");
+    const filterContainer = document.querySelector(".project-filters");
+
+    if (!workList || !filterContainer) {
+        return;
+    }
+
+    // Get all unique project types from work items
+    const types = new Set();
+    workList.querySelectorAll(".work-item-link").forEach((item) => {
+        const metaSpan = item.querySelector(".work-meta span");
+        if (metaSpan) {
+            const text = metaSpan.textContent.trim();
+            // Extract the type part (everything inside brackets)
+            const match = text.match(/\[([^\]]+)\]/);
+            if (match) {
+                const typePart = match[1];
+                // Split by comma and add each type
+                typePart.split(",").forEach((type) => {
+                    types.add(type.trim());
+                });
+            }
+        }
+    });
+
+    // Sort types alphabetically
+    const sortedTypes = Array.from(types).sort();
+
+    // Clear existing buttons (keep "All" button)
+    const existingButtons = filterContainer.querySelectorAll(".filter-btn:not([data-filter='all'])");
+    existingButtons.forEach((btn) => btn.remove());
+
+    // Add filter buttons for each type
+    sortedTypes.forEach((type) => {
+        const btn = document.createElement("button");
+        btn.className = "filter-btn";
+        btn.dataset.filter = type;
+        btn.textContent = type;
+        filterContainer.appendChild(btn);
+    });
+
+    // Filter function
+    function filterProjects(selectedType) {
+        workList.querySelectorAll(".work-item-link").forEach((item) => {
+            const metaSpan = item.querySelector(".work-meta span");
+            if (!metaSpan) {
+                item.classList.remove("hidden");
+                return;
+            }
+
+            const text = metaSpan.textContent.trim();
+            const match = text.match(/\[([^\]]+)\]/);
+
+            if (selectedType === "all") {
+                item.classList.remove("hidden");
+            } else if (match) {
+                const typePart = match[1];
+                const itemTypes = typePart.split(",").map((t) => t.trim());
+                if (itemTypes.includes(selectedType)) {
+                    item.classList.remove("hidden");
+                } else {
+                    item.classList.add("hidden");
+                }
+            } else {
+                item.classList.add("hidden");
+            }
+        });
+    }
+
+    // Attach click listeners to filter buttons
+    filterContainer.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+            // Update active state
+            filterContainer.querySelectorAll(".filter-btn").forEach((b) => {
+                b.classList.remove("active");
+            });
+            btn.classList.add("active");
+
+            // Filter projects
+            const selectedType = btn.dataset.filter;
+            filterProjects(selectedType);
+        });
+    });
+}
+
+initProjectFilters();
+
+/* ═══ Mobile: tap to flip cards (first tap flips, second tap follows link) ═══ */
+function initMobileCardFlip() {
+    // Attach click handlers to work-item links for small viewports
+    document.querySelectorAll('.work-item-link').forEach((link) => {
+        const card = link.querySelector('.flip-card');
+        if (!card) return;
+
+        link.addEventListener('click', function (e) {
+            // Only intercept on touch / small screens
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                if (!card.classList.contains('is-flipped')) {
+                    // Prevent navigation and flip the card
+                    e.preventDefault();
+                    // close other flipped cards
+                    document.querySelectorAll('.flip-card.is-flipped').forEach((c) => c.classList.remove('is-flipped'));
+                    card.classList.add('is-flipped');
+                } else {
+                    // allow navigation on second tap
+                }
+            }
+        });
+    });
+}
+
+initMobileCardFlip();
+
+const form = document.getElementById("form") || document.querySelector(".contact-form");
+
+if (form) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        const originalText = submitBtn ? submitBtn.textContent : "";
+
+        if (submitBtn) {
+            submitBtn.textContent = t("contact.submit.sending");
+            submitBtn.disabled = true;
+        }
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(t("contact.success"));
+                form.reset();
+            } else {
+                alert(t("contact.error-prefix") + data.message);
+            }
+
+        } catch (_error) {
+            alert(t("contact.network-error"));
+        } finally {
+            if (submitBtn) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+    });
+}
+
+
+
+const autoEffectSelector = Object.values(TEXT_EFFECTS)
+    .map((effect) => `[${effect.dataAttribute}]`)
+    .join(",");
+
+document.querySelectorAll(autoEffectSelector).forEach((element) => {
+    const elementEffects = getElementEffects(element);
+    const effectText = elementEffects
+        .map((effectName) => element.getAttribute(TEXT_EFFECTS[effectName].dataAttribute))
+        .find((value) => value !== null && value !== "");
+
+    applyTextEffects(element, elementEffects, effectText ?? null);
+});
+
+window.TEXT_EFFECTS = TEXT_EFFECTS;
+window.createEffectTextHTML = createEffectTextHTML;
+window.applyTextEffects = applyTextEffects;
+window.createWavyTextHTML = createWavyTextHTML;
+window.applyWavyText = applyWavyText;
+window.createRainbowTextHTML = createRainbowTextHTML;
+window.applyRainbowText = applyRainbowText;
+
+/* ═══ Burger Menu Mobile Navigation ═══ */
+const burgerMenuToggle = document.getElementById("burger-menu-toggle");
+const navMain = document.querySelector(".nav-main");
+
+function closeBurgerMenu() {
+    if (navMain) {
+        navMain.classList.remove("active");
+    }
+    if (burgerMenuToggle) {
+        burgerMenuToggle.classList.remove("active");
+        burgerMenuToggle.setAttribute("aria-expanded", "false");
+    }
+}
+
+function toggleBurgerMenu(event) {
+    event.preventDefault();
+    
+    if (navMain) {
+        const isActive = navMain.classList.toggle("active");
+        if (burgerMenuToggle) {
+            burgerMenuToggle.classList.toggle("active", isActive);
+            burgerMenuToggle.setAttribute("aria-expanded", isActive ? "true" : "false");
+        }
+    }
+}
+
+if (burgerMenuToggle) {
+    burgerMenuToggle.addEventListener("click", toggleBurgerMenu);
+}
+
+
+// Nav-Links schließen das Menü beim Klick
+document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", closeBurgerMenu);
+});
+
+// Menü schließen wenn auf der Seite geklickt wird
+document.addEventListener("click", (event) => {
+    const isClickInsideNav = navMain && navMain.contains(event.target);
+    const isClickOnBurger = burgerMenuToggle && burgerMenuToggle.contains(event.target);
+    
+    if (!isClickInsideNav && !isClickOnBurger && navMain && navMain.classList.contains("active")) {
+        closeBurgerMenu();
+    }
+});
+
+// Menü schließen bei Fenster-Skalierung über 768px
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+        closeBurgerMenu();
+    }
+});
+
+function initAutoHideHeader() {
+    const header = document.querySelector(".site-header");
+
+    if (!header) {
+        return;
+    }
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    const directionThreshold = 6;
+
+    function setHeaderVisible(isVisible) {
+        header.classList.toggle("site-header--hidden", !isVisible);
+    }
+
+    setHeaderVisible(true);
+
+    function handleScrollDirection() {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY;
+        const menuIsOpen = navMain && navMain.classList.contains("active");
+
+        if (menuIsOpen || currentScrollY < 24) {
+            setHeaderVisible(true);
+            lastScrollY = currentScrollY;
+        } else if (Math.abs(delta) >= directionThreshold) {
+            if (delta > 0) {
+                setHeaderVisible(false);
+            } else {
+                setHeaderVisible(true);
+            }
+            lastScrollY = currentScrollY;
+        }
+
+        ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            window.requestAnimationFrame(handleScrollDirection);
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
+initAutoHideHeader();
+
+/* ═══ Hero Name Modal ═══ */
+function initHeroModal() {
+    const heroNameLink = document.querySelector(".hero-name-link");
+    const modal = document.getElementById("hero-modal");
+    const modalOverlay = document.querySelector(".modal-overlay");
+    const modalClose = document.querySelector(".modal-close");
+
+    if (!heroNameLink || !modal) {
+        return;
+    }
+
+    function openModal(e) {
+        e.preventDefault();
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+
+    heroNameLink.addEventListener("click", openModal);
+    modalClose.addEventListener("click", closeModal);
+    modalOverlay.addEventListener("click", closeModal);
+
+    // Close modal on Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.style.display === "flex") {
+            closeModal();
+        }
+    });
+}
+
+initHeroModal();
+
+function initLogoWavyHover() {
+    const logo = document.querySelector(".logo");
+
+    if (!logo) {
+        return;
+    }
+
+    const originalText = logo.textContent || "";
+
+    function applyLogoWavy() {
+        applyWavyText(logo, originalText);
+    }
+
+    function restoreLogoText() {
+        logo.textContent = originalText;
+        logo.classList.remove("text-effects");
+        logo.removeAttribute("aria-label");
+        delete logo.dataset.effectsOriginal;
+        delete logo.dataset.effects;
+    }
+
+    logo.addEventListener("mouseenter", applyLogoWavy);
+    logo.addEventListener("focus", applyLogoWavy);
+    logo.addEventListener("mouseleave", restoreLogoText);
+    logo.addEventListener("blur", restoreLogoText);
+}
+
+initLogoWavyHover();
+
+// Make the optional demo DIV draggable only when it exists.
+const demoDraggable = document.getElementById("mydiv");
+if (demoDraggable) {
+    dragElement(demoDraggable);
+}
+
+function dragElement(elmnt) {
+    if (!elmnt) {
+        return;
+    }
+
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    const header = document.getElementById(elmnt.id + "header");
+
+    if (header) {
+        header.onmousedown = dragMouseDown;
+    } else {
+        elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+
+        if (header) {
+            header.classList.add("dragging");
+        }
+
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+        if (header) {
+            header.classList.remove("dragging");
+        }
+
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
+
+
+
+
+/* ═══ Fish Scene — Feed Glub ═══ */
+function initFishScene() {
+    const can       = document.getElementById('food-can');
+    const bowl      = document.getElementById('fish-bowl');
+    const fishEl    = document.getElementById('fish');
+    const bowlLabel = document.getElementById('bowl-label');
+    const canvas    = document.getElementById('pellet-layer');
+    const sceneRoot = document.getElementById('top');
+
+    if (!can || !bowl || !fishEl || !canvas || !sceneRoot) return;
+
+    const ctx = canvas.getContext('2d');
+
+    // ── Canvas resize ──
+    function resizeCanvas() {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // ── Init can position from CSS (converts bottom → top) ──
+    function getRootPageOffset() {
+        const r = sceneRoot.getBoundingClientRect();
+        return {
+            x: r.left + window.scrollX,
+            y: r.top + window.scrollY
+        };
+    }
+
+    const canRect = can.getBoundingClientRect();
+    const rootOffset = getRootPageOffset();
+    // Keep absolute positioning relative to #top so elements stay above the footer.
+    can.style.top    = (canRect.top + window.scrollY - rootOffset.y) + 'px';
+    can.style.left   = (canRect.left + window.scrollX - rootOffset.x) + 'px';
+    can.style.bottom = 'auto';
+
+    let canX = canRect.left;
+    let canY = canRect.top;
+    let isDragging = false;
+    let offsetX = 0, offsetY = 0;
+    let prevX = 0, prevY = 0;
+    let velX = 0, velY = 0;
+    let angle = 0;
+
+    function getPointerPagePos(e) {
+        return {
+            x: e.pageX ?? (e.clientX + window.scrollX),
+            y: e.pageY ?? (e.clientY + window.scrollY)
+        };
+    }
+
+    // ── Pellets ──
+    const pellets = [];
+
+    function spawnPellets(n) {
+        const holesEl = can.querySelector('.can-holes');
+        const hr = (holesEl || can).getBoundingClientRect();
+        const sx = hr.left + hr.width / 2;
+        const sy = hr.top  + hr.height / 2;
+
+        for (let i = 0; i < n; i++) {
+            pellets.push({
+                x:      sx + (Math.random() - 0.5) * 14,
+                y:      sy + (Math.random() - 0.5) * 8,
+                vx:     (Math.random() - 0.5) * 2.5 + velX * 0.12,
+                vy:     Math.random() * 1.5 + 0.5,
+                r:      Math.random() * 2.5 + 2.5,
+                color:  Math.random() > 0.5 ? '#b8732a' : '#d4954a',
+                inBowl: false,
+                eaten:  false,
+                alpha:  1,
+            });
+        }
+    }
+
+    // ── Drag ──
+    can.addEventListener('pointerdown', e => {
+        isDragging = true;
+        can.setPointerCapture(e.pointerId);
+        can.classList.add('is-dragging');
+        document.body.classList.add('is-dragging');
+
+        const pointer = getPointerPagePos(e);
+        const r = can.getBoundingClientRect();
+        const canLeft = r.left + window.scrollX;
+        const canTop = r.top + window.scrollY;
+        offsetX = pointer.x - canLeft;
+        offsetY = pointer.y - canTop;
+        prevX = pointer.x;
+        prevY = pointer.y;
+        e.preventDefault();
+    });
+
+    can.addEventListener('pointermove', e => {
+        if (!isDragging) return;
+
+        const pointer = getPointerPagePos(e);
+
+        velX = pointer.x - prevX;
+        velY = pointer.y - prevY;
+        prevX = pointer.x;
+        prevY = pointer.y;
+
+        const rootPos = getRootPageOffset();
+        canX = pointer.x - offsetX;
+        canY = pointer.y - offsetY;
+        can.style.left = (canX - rootPos.x) + 'px';
+        can.style.top  = (canY - rootPos.y) + 'px';
+
+        // Smooth tilt
+        const targetAngle = Math.max(-72, Math.min(72, velX * 5));
+        angle += (targetAngle - angle) * 0.35;
+        can.style.transform = `rotate(${angle}deg)`;
+
+        // Spawn when shaking fast + tilted
+        const speed = Math.sqrt(velX * velX + velY * velY);
+        if (speed > 7 && Math.abs(angle) > 20) {
+            spawnPellets(Math.max(1, Math.ceil(speed / 9)));
+        }
+        e.preventDefault();
+    });
+
+    function stopDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        can.classList.remove('is-dragging');
+        document.body.classList.remove('is-dragging');
+        angle = 0;
+        can.style.transform = 'rotate(0deg)';
+        velX = 0;
+        velY = 0;
+    }
+
+    can.addEventListener('pointerup',     stopDrag);
+    can.addEventListener('pointercancel', stopDrag);
+
+    // ── Bowl ellipse collision ──
+    function isInBowl(px, py) {
+        const b  = bowl.getBoundingClientRect();
+        const cx = b.left + b.width  / 2;
+        const cy = b.top  + b.height / 2;
+        const rx = b.width  / 2 * 0.82;
+        const ry = b.height / 2 * 0.82;
+        return ((px - cx) / rx) ** 2 + ((py - cy) / ry) ** 2 < 1;
+    }
+
+    // ── Fish state ──
+    let fishX = 50, fishY = 45;
+    let fishTX = 50, fishTY = 45;
+    let fishFacingLeft = false;
+    let wanderTimer = 0;
+    let fedCount = 0;
+
+    function showMessage(msg) {
+        bowlLabel.textContent = msg;
+        bowlLabel._fishMsgActive = true;
+        clearTimeout(bowlLabel._t);
+        bowlLabel._t = setTimeout(() => {
+            bowlLabel._fishMsgActive = false;
+            bowlLabel.textContent = t('bowl.label');
+        }, 2500);
+    }
+
+    // ── Spawn heart animation ──
+    function spawnHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = '❤️';
+        
+        const fp = fishScreenPos();
+        heart.style.left = fp.x + 'px';
+        heart.style.top = fp.y + 'px';
+        
+        document.body.appendChild(heart);
+        
+        setTimeout(() => heart.remove(), 2000);
+    }
+
+    // ── Fish pixel position in screen space ──
+    function fishScreenPos() {
+        const water = bowl.querySelector('.bowl-water');
+        const wr    = water.getBoundingClientRect();
+        return {
+            x: wr.left + (fishX / 100) * wr.width,
+            y: wr.top  + (fishY / 100) * wr.height,
+        };
+    }
+
+    // ── Main loop ──
+    function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Update + draw pellets
+        for (let i = pellets.length - 1; i >= 0; i--) {
+            const p = pellets[i];
+            if (p.eaten) { pellets.splice(i, 1); continue; }
+
+            if (p.inBowl) {
+                const fp   = fishScreenPos();
+                const dx   = fp.x - p.x;
+                const dy   = fp.y - p.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 26) {
+                    p.eaten = true;
+                    fedCount++;
+                    fishTX = 15 + Math.random() * 70;
+                    fishTY = 10 + Math.random() * 72;
+                    showMessage(t('bowl.msg' + (fedCount % 8)));
+                    spawnHeart();
+                    continue;
+                }
+
+                // Pellet drifts toward fish
+                p.vx += (dx / dist) * 0.4;
+                p.vy += (dy / dist) * 0.4;
+                p.vx *= 0.88;
+                p.vy *= 0.88;
+
+            } else {
+                // Gravity
+                p.vy += 0.3;
+                p.vx *= 0.99;
+
+                if (isInBowl(p.x, p.y)) {
+                    p.inBowl = true;
+                    p.vy *= -0.15;
+                    p.vx *=  0.4;
+                }
+
+                if (p.y > canvas.height + 30) {
+                    pellets.splice(i, 1);
+                    continue;
+                }
+            }
+
+            p.x += p.vx;
+            p.y += p.vy;
+
+            ctx.save();
+            ctx.globalAlpha = p.alpha;
+            ctx.beginPath();
+            ctx.ellipse(p.x, p.y, p.r, p.r * 0.65, 0, 0, Math.PI * 2);
+            ctx.fillStyle   = p.color;
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(0,0,0,0.18)';
+            ctx.lineWidth   = 0.5;
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        // Fish movement (smooth lerp)
+        const prevFX = fishX;
+        fishX += (fishTX - fishX) * 0.055;
+        fishY += (fishTY - fishY) * 0.055;
+
+        if (Math.abs(fishTX - fishX) > 0.3) {
+            fishFacingLeft = fishTX < prevFX;
+        }
+
+        fishEl.style.left      = fishX + '%';
+        fishEl.style.top       = fishY + '%';
+        fishEl.style.transform = `translate(-50%, -50%) scaleX(${fishFacingLeft ? -1 : 1})`;
+
+        // Idle wander
+        wanderTimer++;
+        if (wanderTimer > 130) {
+            wanderTimer = 0;
+            const hasPelletInBowl = pellets.some(p => p.inBowl);
+            if (!hasPelletInBowl) {
+                fishTX = 12 + Math.random() * 76;
+                fishTY =  8 + Math.random() * 76;
+            }
+        }
+
+        requestAnimationFrame(loop);
+    }
+
+    requestAnimationFrame(loop);
+}
+
+initFishScene();
+initLangToggle();
