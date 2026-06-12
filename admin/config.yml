@@ -94,3 +94,71 @@ collections:
         format: "YYYY-MM-DD"
         date_format: "YYYY-MM-DD"
         time_format: false
+
+  - name: blog
+    label: Blog
+    label_singular: Post
+    folder: content/blog
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Titel (EN)"
+        name: title
+        widget: string
+
+      - label: "Titel (DE)"
+        name: title_de
+        widget: string
+        required: false
+
+      - label: "Datum"
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+
+      - label: "Kurzbeschreibung (EN)"
+        name: description
+        widget: text
+        hint: "Wird auf der Blog-Übersicht angezeigt"
+
+      - label: "Kurzbeschreibung (DE)"
+        name: description_de
+        widget: text
+        required: false
+
+      - label: "Titelbild"
+        name: cover_image
+        widget: image
+        required: false
+
+      - label: "Titelbild Alt-Text"
+        name: cover_image_alt
+        widget: string
+        required: false
+
+      - label: "Tags"
+        name: tags
+        widget: list
+        required: false
+        hint: "z.B. Game Dev, Design, Werkstatt"
+
+      - label: "Weitere Bilder"
+        name: images
+        widget: list
+        required: false
+        fields:
+          - { label: "Bild", name: src, widget: image }
+          - { label: "Alt-Text", name: alt, widget: string }
+          - { label: "Bildunterschrift", name: caption, widget: string, required: false }
+
+      - label: "Text (EN)"
+        name: body
+        widget: markdown
+
+      - label: "Text (DE)"
+        name: body_de
+        widget: markdown
+        required: false

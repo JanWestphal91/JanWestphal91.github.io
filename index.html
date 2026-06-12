@@ -92,6 +92,19 @@
     <link rel="stylesheet" href="style.css" />
     <script src="translations.js" defer></script>
     <script src="script.js" defer></script>
+    <style>
+        .blog-preview { display: flex; flex-direction: column; gap: 0; margin-top: 1.5rem; }
+        a.blog-preview-link { display: flex; align-items: baseline; gap: 1rem; padding: 0.6rem 0.5rem; margin: 0 -0.5rem; border-bottom: 1px solid rgba(128,128,128,0.15); text-decoration: none; color: inherit; transition: background 0.3s ease, color 0.3s ease; }
+        a.blog-preview-link:first-child { border-top: 1px solid rgba(128,128,128,0.15); }
+        .blog-preview-link__date { font-size: 0.78rem; opacity: 0.5; white-space: nowrap; flex-shrink: 0; }
+        .blog-preview-link__title { font-size: 0.95rem; }
+        @media (hover: hover) {
+            a.blog-preview-link:hover { background: #000; color: #fff; }
+        }
+        .section-head-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+        .section-head-link { font-size: 0.9rem; opacity: 0.6; text-decoration: none; transition: opacity 0.15s; }
+        .section-head-link:hover { opacity: 1; }
+    </style>
 </head>
 <body>
 <header class="site-header">
@@ -99,7 +112,8 @@
         <a href="#top" class="logo" >Jan Westphal</a>
         <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="#projects" class="link-button secondary" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="/projects/" class="link-button secondary" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="/blog/" class="link-button secondary">Blog</a></li>
                 <li><a href="#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗ </span></a></li>
                 <li> <button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
             </ul>
@@ -138,8 +152,9 @@
 
     <section id="projects" class="section">
         <div class="container">
-            <div class="section-head">
+            <div class="section-head section-head-row">
                 <h2 data-i18n="projects.heading">Check my latest projects👇</h2>
+                <a href="/projects/" class="section-head-link" data-i18n="projects.view-all">View all →</a>
             </div>
 
             <div class="project-filters">
@@ -205,6 +220,24 @@
                     </div>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <section id="blog-preview" class="section">
+        <div class="container">
+            <div class="section-head section-head-row">
+                <h2 data-i18n="blog.heading">Latest from the Blog</h2>
+                <a href="/blog/" class="section-head-link" data-i18n="blog.view-all">View all →</a>
+            </div>
+            
+            <div class="blog-preview">
+                <a class="blog-preview-link" href="/blog/hello-blog/">
+                    <span class="blog-preview-link__date" data-lang-show="en">June 12, 2026</span>
+                    <span class="blog-preview-link__date" data-lang-show="de">12. Juni 2026</span>
+                    <span class="blog-preview-link__title" data-en="Welcome to the Blog" data-de="Willkommen im Blog">Welcome to the Blog</span>
+                </a>
+            </div>
+            
         </div>
     </section>
 

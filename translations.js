@@ -51,6 +51,14 @@ window.TRANSLATIONS = {
         "project.kicker":       "Project",
         "project.gallery-label":"Gallery",
         "project.back-aria":    "Back to projects",
+        "project.back-link":    "← Projects",
+
+        "blog.heading":         "Latest from the Blog",
+        "blog.view-all":        "View all →",
+        "blog.back":            "← Blog",
+        "projects.view-all":    "View all →",
+        "projects.back":        "← Home",
+        "blog.back-home":       "← Home",
     },
 
     de: {
@@ -105,5 +113,13 @@ window.TRANSLATIONS = {
         "project.kicker":        "Projekt",
         "project.gallery-label": "Galerie",
         "project.back-aria":     "Zurück zu den Projekten",
+        "project.back-link":     "← Projekte",
+
+        "blog.heading":          "Neuestes aus dem Blog",
+        "blog.view-all":         "Alle anzeigen →",
+        "blog.back":             "← Blog",
+        "projects.view-all":     "Alle anzeigen →",
+        "projects.back":         "← Start",
+        "blog.back-home":        "← Start",
     }
 };
