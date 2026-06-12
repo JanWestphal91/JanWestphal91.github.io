@@ -2,8 +2,6 @@ backend:
   name: github
   repo: JanWestphal91/JanWestphal91.github.io
   branch: main
-  auth_type: pkce
-  app_id: Ov23liUbdr9xcOPYCem2
 
 media_folder: "Images"
 public_folder: "/Images"
