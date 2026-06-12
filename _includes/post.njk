@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }} – Jan Westphal</title>
+    <meta name="description" content="{{ description }}" />
+    <meta name="author" content="Jan Westphal" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://janwestphal.dev/blog/{{ page.fileSlug }}/" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://janwestphal.dev/blog/{{ page.fileSlug }}/" />
+    <meta property="og:site_name" content="Jan Westphal" />
+    <meta property="og:title" content="{{ title }} – Jan Westphal" />
+    <meta property="og:description" content="{{ description }}" />
+    {% if cover_image %}
+    <meta property="og:image" content="https://janwestphal.dev{{ cover_image | imgPath }}" />
+    {% else %}
+    <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
+    {% endif %}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ title }} – Jan Westphal" />
+    <meta name="twitter:description" content="{{ description }}" />
+
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
+    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap"></noscript>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+    <style>
+        .post-page { padding-bottom: 4rem; }
+        .post-meta { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1.5rem; }
+        .post-date { opacity: 0.6; font-size: 0.9rem; }
+        .post-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; margin: 0; }
+        .post-tags li { font-size: 0.8rem; padding: 0.2rem 0.6rem; border: 1px solid currentColor; border-radius: 2rem; opacity: 0.7; }
+        .post-cover { width: 100%; max-height: 480px; object-fit: cover; border-radius: 4px; display: block; }
+        .post-body { max-width: 72ch; }
+        .post-body h2, .post-body h3 { margin-top: 2rem; }
+        .post-body p { line-height: 1.7; margin-bottom: 1rem; }
+        .post-body img { max-width: 100%; border-radius: 4px; }
+        .post-body a { text-decoration: underline; }
+        .post-body ul, .post-body ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+        .post-body blockquote { border-left: 3px solid currentColor; margin: 0; padding-left: 1rem; opacity: 0.75; }
+        .post-body code { font-family: monospace; font-size: 0.9em; padding: 0.1em 0.3em; background: rgba(128,128,128,0.1); border-radius: 3px; }
+        .post-body pre { overflow-x: auto; padding: 1rem; background: rgba(128,128,128,0.1); border-radius: 4px; }
+    </style>
+</head>
+<body data-page="post">
+
+<header class="site-header">
+    <div class="container nav">
+        <a href="/" class="logo">Jan Westphal</a>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/projects/" class="link-button secondary" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="/blog/" class="link-button secondary">Blog</a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
+                <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
+            </ul>
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main class="post-page">
+    <section class="section project-hero">
+        <div class="container">
+            <a class="back-link" href="/blog/" aria-label="Back to blog" data-i18n="blog.back"><h2>←</h2></a>
+            <div class="post-meta">
+                <span class="post-date" data-lang-show="en">{{ date | postDate("en-US") }}</span>
+                <span class="post-date" data-lang-show="de">{{ date | postDate("de-DE") }}</span>
+                {% if tags %}
+                <ul class="post-tags">
+                    {% for tag in tags %}<li>{{ tag }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <h1 data-wavy data-en="{{ title }}" data-de="{{ title_de or title }}">{{ title }}</h1>
+            <p class="project-summary" data-en="{{ description }}" data-de="{{ description_de or description }}">{{ description }}</p>
+        </div>
+    </section>
+
+    {% if cover_image %}
+    <section class="section">
+        <div class="container">
+            <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" class="post-cover" loading="eager">
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="section">
+        <div class="container">
+            <div class="post-body" data-lang-show="en">
+                {{ content | safe }}
+            </div>
+            {% if body_de %}
+            <div class="post-body" data-lang-show="de" hidden>
+                {{ body_de | md | safe }}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    {% if images and images.length %}
+    <section class="section">
+        <div class="container">
+            <div class="project-gallery">
+                {% for img in images %}
+                <figure class="project-gallery__item">
+                    <img src="{{ img.src }}" alt="{{ img.alt }}" loading="lazy">
+                    {% if img.caption %}<figcaption>{{ img.caption }}</figcaption>{% endif %}
+                </figure>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">2026 Jan Westphal. All wrongs reserved.</p>
+        <nav class="footer-nav" aria-label="Footer Navigation"></nav>
+    </div>
+</footer>
+
+</body>
+</html>

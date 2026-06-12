@@ -39,6 +39,10 @@ function applyTranslations(lang, skipProjectRender) {
         el.textContent = lang === 'de' && el.dataset.de ? el.dataset.de : el.dataset.en;
     });
 
+    document.querySelectorAll('[data-lang-show]').forEach(function(el) {
+        el.hidden = el.dataset.langShow !== lang;
+    });
+
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
         el.placeholder = t(el.dataset.i18nPlaceholder);
     });

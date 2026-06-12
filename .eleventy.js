@@ -1,4 +1,8 @@
+const markdownIt = require("markdown-it");
+const md = markdownIt({ html: true, breaks: false, linkify: true });
+
 module.exports = function(eleventyConfig) {
+    eleventyConfig.addFilter("md", content => content ? md.render(content) : '');
     // Static assets — must be explicit in Eleventy 3
     eleventyConfig.addPassthroughCopy("Images");
     eleventyConfig.addPassthroughCopy("style.css");
@@ -13,6 +17,26 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addCollection("projects", function(collectionApi) {
         return collectionApi.getFilteredByGlob("content/projects/*.md")
             .sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+    });
+
+    eleventyConfig.addCollection("blog", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("content/blog/*.md")
+            .sort((a, b) => b.date - a.date);
+    });
+
+    eleventyConfig.addFilter("postDate", function(date, locale) {
+        return new Date(date).toLocaleDateString(locale || "en-US", {
+            year: "numeric", month: "long", day: "numeric"
+        });
+    });
+
+    eleventyConfig.addFilter("limit", function(arr, n) {
+        return arr.slice(0, n);
+    });
+
+    eleventyConfig.addFilter("imgPath", function(path) {
+        if (!path) return path;
+        return path.startsWith('/') ? path : '/' + path;
     });
 
     eleventyConfig.addFilter("projectsToJson", function(projects) {

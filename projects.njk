@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects – Jan Westphal</title>
+    <meta name="description" content="All projects by Jan Westphal – Creative Coder &amp; Designer from Kiel. Game development, interactive design, hardware prototyping and graphic design." />
+    <meta name="author" content="Jan Westphal" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://janwestphal.dev/projects/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://janwestphal.dev/projects/" />
+    <meta property="og:site_name" content="Jan Westphal" />
+    <meta property="og:title" content="Projects – Jan Westphal" />
+    <meta property="og:description" content="All projects by Jan Westphal – Game development, interactive design, hardware prototyping and graphic design." />
+    <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
+
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
+    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap"></noscript>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav">
+        <a href="/" class="logo">Jan Westphal</a>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/projects/" class="link-button secondary" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="/blog/" class="link-button secondary">Blog</a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
+                <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
+            </ul>
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container hero-container-wide">
+            <a class="back-link" href="/" data-i18n="projects.back">← Home</a>
+            <h1 data-i18n="nav.projects">Projects</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="work-list">
+                {%- for project in collections.projects %}
+                <a class="work-item-link" href="/project.html?id={{ project.data.slug }}">
+                    <div class="flip-card" tabindex="0">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <figure class="work-thumb">
+                                    <img src="{{ project.data.cover_image | imgPath }}" alt="{{ project.data.cover_image_alt }}" loading="{% if loop.first %}eager{% else %}lazy{% endif %}" width="300" height="300">
+                                </figure>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="work-item-back-content">
+                                    <div class="work-meta"><span>{{ project.data.category }}</span></div>
+                                    <h3>{{ project.data.title }}</h3>
+                                    <hr>
+                                    <p data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {%- endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">2026 Jan Westphal. All wrongs reserved.</p>
+        <nav class="footer-nav" aria-label="Footer Navigation"></nav>
+    </div>
+</footer>
+
+</body>
+</html>

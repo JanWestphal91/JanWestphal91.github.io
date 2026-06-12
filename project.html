@@ -45,15 +45,21 @@
     <link rel="stylesheet" href="style.css" />
     <script src="translations.js" defer></script>
     <script src="script.js" defer></script>
+    <style>
+        .project-meta { gap: 0.4rem; margin-top: 0; }
+        .project-meta li { font-size: 0.8rem; padding: 0.2rem 0.6rem; border: 1px solid currentColor; border-radius: 2rem; opacity: 0.7; }
+        #project-category { font-size: 0.9rem; opacity: 0.55; }
+    </style>
 </head>
 <body data-page="project">
 <header class="site-header">
     <div class="container nav">
-        <a href="index.html#top" class="logo">Jan Westphal</a>
+        <a href="/" class="logo">Jan Westphal</a>
         <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="index.html#projects" class="link-button secondary" data-i18n="nav.projects">Projects</a></li>
-                <li><a href="index.html#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
+                <li><a href="/projects/" class="link-button secondary" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="/blog/" class="link-button secondary">Blog</a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
                 <li> <button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
             </ul>
         </nav>
@@ -68,11 +74,13 @@
 <main class="project-page">
     <section class="section project-hero" id="go-pony-go-c">
         <div class="container">
-            <a class="back-link" href="index.html#projects" data-i18n-aria="project.back-aria" aria-label="Back to projects"><h2>← </h2> </a>
-            <p id="project-category" class="kicker">Project</p>
+            <a class="back-link" href="/projects/" data-i18n="project.back-link" data-i18n-aria="project.back-aria" aria-label="Back to projects"><h2>←</h2></a>
+            <div class="post-meta">
+                <span id="project-category"></span>
+                <ul id="project-meta" class="project-meta"></ul>
+            </div>
             <h1 id="project-title" data-wavy data-rainbow>Project – Jan Westphal</h1>
             <p id="project-summary" class="project-summary">A project by Jan Westphal – Creative Coder &amp; Designer from Kiel, Germany.</p>
-            <ul id="project-meta" class="project-meta"></ul>
         </div>
     </section>
 
