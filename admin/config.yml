@@ -1,0 +1,98 @@
+backend:
+  name: github
+  repo: JanWestphal91/JanWestphal91.github.io
+  branch: main
+  auth_type: pkce
+  app_id: Ov23liUbdr9xcOPYCem2
+
+media_folder: "Images"
+public_folder: "/Images"
+
+collections:
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    create: true
+    delete: true
+    slug: "{{fields.slug}}"
+    fields:
+      - label: "Title"
+        name: title
+        widget: string
+
+      - label: "Slug (URL-ID)"
+        name: slug
+        widget: string
+        hint: "z.B. my-cool-project — wird in der URL verwendet"
+
+      - label: "Kategorie / Jahr"
+        name: category
+        widget: string
+        hint: "z.B. [Game, Code] 2026"
+
+      - label: "Reihenfolge"
+        name: order
+        widget: number
+        default: 10
+        hint: "Kleinere Zahl = weiter vorne"
+
+      - label: "Coverbild"
+        name: cover_image
+        widget: image
+
+      - label: "Coverbild Alt-Text"
+        name: cover_image_alt
+        widget: string
+
+      - label: "Kurzbeschreibung (EN)"
+        name: summary_card
+        widget: text
+        hint: "Wird auf der Rückseite der Projektkarte angezeigt"
+
+      - label: "Kurzbeschreibung (DE)"
+        name: summary_card_de
+        widget: text
+        required: false
+
+      - label: "Vollständige Beschreibung (EN)"
+        name: summary
+        widget: text
+
+      - label: "Vollständige Beschreibung (DE)"
+        name: summary_de
+        widget: text
+        required: false
+
+      - label: "Meta-Tags"
+        name: meta
+        widget: list
+        hint: "z.B. Webgame, Solo-Projekt, Status: Veröffentlicht"
+
+      - label: "Meta-Tags (DE)"
+        name: meta_de
+        widget: list
+        required: false
+
+      - label: "Bilder"
+        name: images
+        widget: list
+        required: false
+        fields:
+          - { label: "Bild-URL oder Pfad", name: src, widget: string }
+          - { label: "Alt-Text", name: alt, widget: string }
+          - { label: "Bildunterschrift (EN)", name: caption, widget: string }
+          - { label: "Bildunterschrift (DE)", name: caption_de, widget: string, required: false }
+
+      - label: "Embed-Code"
+        name: embed
+        widget: text
+        required: false
+        hint: "z.B. itch.io iframe"
+
+      - label: "Datum"
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
