@@ -1055,7 +1055,8 @@ button,
 
 .hero-name-link {
     cursor: help;
-    /*text-decoration: underline;*/
+    text-decoration: underline dashed ;
+    text-decoration-thickness: from-font;
     transition: color 0.2s ease;
 }
 

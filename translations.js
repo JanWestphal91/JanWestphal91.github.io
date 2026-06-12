@@ -75,7 +75,7 @@ window.TRANSLATIONS = {
         "contact.message-label":     "Nachricht",
         "contact.name-ph":           "Wie heißt du?",
         "contact.email-ph":          "Ich antworte an diese Adresse. (deineadresse@mail.com)",
-        "contact.message-ph":        "Erzähl mir etwas – ein Witz oder ein Geheimnis. =)",
+        "contact.message-ph":        "Erzähl mir etwas - vielleicht einen Witz oder ein Geheimnis. =)",
         "contact.submit":            "Senden",
         "contact.submit.sending":    "Wird gesendet...",
         "contact.socials":           "Socials ↗",
@@ -83,10 +83,10 @@ window.TRANSLATIONS = {
         "contact.error-prefix":      "Fehler: ",
         "contact.network-error":     "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
 
-        "modal.heading":   "Die meisten nennen mich Jan, manche Freunde West – mein Graffiti / Dev-Nickname ist Netro",
+        "modal.heading":   "Die meisten nennen mich Jan, manche Freunde West – mein Graffiti / Dev-Spitzname ist Netro",
         "modal.subtitle":  "Willst du mehr über mich wissen?",
-        "modal.p1":        "Ich beschäftige mich mit experimentellem Design, Kunst und Prototyping. Ich liebe es, wie verschiedene Disziplinen zusammenwirken können, um etwas Neues zu schaffen. Ich zeichne gerne schlecht, bastle an Elektronik, Video- und Audioequipment – und Graffiti-Kultur ist Teil meiner Wurzeln, meine erste echte Verbindung zur Illustration. Großflächige Bilder zu malen hat mich schon immer unglaublich befriedigt.",
-        "modal.p2":        "Game-Entwicklung ist eines der interessantesten Felder für mich, weil es so viele Disziplinen in ein fertiges Produkt vereint. Ich engagiere mich auch bei IF(game)SH e.V., um mehr Menschen in die Spieleentwicklung zu bringen. Meine Lieblingsspiele sind Factorio, Slay the Spire und das gute alte Donkey Kong Country.",
+        "modal.p1":        "Ich beschäftige mich mit experimentellem Design, Kunst und Prototyping. Ich liebe es, wie verschiedene Disziplinen zusammenwirken können, um etwas Neues zu schaffen. Ich zeichne gerne ohne Anspruch, bastle an Elektronik sowie Video- und Audioequipment. Die Graffiti-Kultur ist Teil meiner Wurzeln, meine erste echte Verbindung zur Illustration und Gestaltung. Großflächige Bilder zu malen hat einen besonderen Reiz der mich seit jeher fasziniert.",
+        "modal.p2":        "Game-Entwicklung ist eines der interessantesten Felder für mich, weil es so viele Disziplinen in ein fertiges Produkt vereint. Ich engagiere mich auch bei IF(game)SH e.V., um mehr Menschen in die Spieleentwicklung zu bringen und den Austausch untereinander zu fördern. Meine Lieblingsspiele sind Factorio, Slay the Spire und das gute alte Donkey Kong Country.",
         "modal.p3":        "Ich bin verheiratet mit einer wunderbaren Person, die etwas dringend benötigte Ordnung in mein Chaos bringt – und wir haben zwei wundervolle Kinder.",
         "modal.img-alt":   "Jan Westphal – Creative Coder und Designer aus Kiel",
 
@@ -100,7 +100,7 @@ window.TRANSLATIONS = {
         "bowl.msg6":   "🐠 Glub ist satt!",
         "bowl.msg7":   "🎉 Bester Tag ever!",
 
-        "ticker": "• Das sagen andere über mich 👉 • UI / UX Design • Creative Coding • Game Dev • Grafikdesign • Motion / 3D Grafik • Prototyping • Aktuelles Spiel : 🐎 Go Pony, Go C ! 🐎 • Was ich wirklich mache 👉 • Schlechte Zeichnungen • Laute Musik • Hacky Code • Heißkleber-Elektronik • 🐟Glub🐟 jetzt füttern",
+        "ticker": "• Andere sagen ich kann das 👉 • UI / UX Design • Creative Coding • Game Dev • Grafikdesign • Motion / 3D Grafik • Prototyping • Aktuelles Spiel : 🐎 Go Pony, Go C ! 🐎 • Was ich wirklich mache 👉 • Schlechte Zeichnungen • rauschige Musik • Sphagetti Code • Heißkleber-Elektronik • 🐟Glub🐟 gleich unten füttern",
 
         "project.kicker":        "Projekt",
         "project.gallery-label": "Galerie",
