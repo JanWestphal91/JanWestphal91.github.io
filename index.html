@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--SEO Core-->
+    <title>Jan Westphal – Portfolio | Creative Coder &amp; Designer from Kiel</title>
+    <meta
+            name="description"
+            content="Portfolio of Jan Westphal – Creative Coder &amp; Designer from Kiel. Game development, interactive design, hardware prototyping and graphic design."
+    />
+    <meta name="author" content="Jan Westphal" />
+    <meta name="robots" content="index, follow" />
+    <meta name="geo.region" content="DE-SH" />
+    <meta name="geo.placename" content="Kiel" />
+    <link rel="canonical" href="https://janwestphal.dev/" />
+    <link rel="alternate" hreflang="de" href="https://janwestphal.dev/" />
+    <link rel="alternate" hreflang="en" href="https://janwestphal.dev/" />
+    <link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!--Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://janwestphal.dev/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:site_name" content="Jan Westphal" />
+    <meta property="og:title" content="Jan Westphal – Creative Coder &amp; Designer from Kiel" />
+    <meta
+            property="og:description"
+            content="Portfolio of Jan Westphal – Game development, interactive design, hardware prototyping and graphic design."
+    />
+    <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Jan Westphal – Portfolio Preview" />
+
+    <!--Twitter / X Card-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jan Westphal – Creative Coder &amp; Designer from Kiel" />
+    <meta
+            name="twitter:description"
+            content="Portfolio of Jan Westphal – Game development, interactive design, hardware prototyping and graphic design."
+    />
+    <meta name="twitter:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
+
+    <!--Theme & Favicon-->
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./Images/favicon32.png" />
+    <link rel="apple-touch-icon" href="./Images/favicon180.png" />
+
+    <!--Structured Data-->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jan Westphal",
+      "alternateName": "Netro",
+      "description": "Creative Coder and Designer from Kiel with roots in graffiti and illustration. Working in game development, interactive design, hardware prototyping and graphic design. Member of IF(game)SH e.V.",
+      "url": "https://janwestphal.dev",
+      "image": "https://janwestphal.dev/Images/myself.jpeg",
+      "sameAs": [
+        "https://github.com/JanWestphal91",
+        "https://jan-west.itch.io",
+        "https://bsky.app/profile/jan-west.itch.io",
+        "https://www.youtube.com/@netrouberkitsch7044"
+      ],
+      "jobTitle": "Creative Coder & Designer",
+      "address": { "@type": "PostalAddress", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "knowsAbout": [
+        "Game Development",
+        "Creative Coding",
+        "UI/UX Design",
+        "Illustration",
+        "Graffiti Art",
+        "Hardware Prototyping",
+        "Arduino",
+        "Godot Engine",
+        "Motion Graphics",
+        "Graphic Design"
+      ]
+    }
+    </script>
+
+    <!-- ═══ Assets ═══ -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap"></noscript>
+    <link rel="stylesheet" href="style.css" />
+    <script src="translations.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+    <div class="container nav">
+        <a href="#top" class="logo" >Jan Westphal</a>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+<!--                <li><a href="#about">About me</a></li>-->
+                <li><a href="#projects" class="link-button secondary" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗ </span></a></li>
+                <li> <button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
+            </ul>
+
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="ticker-band">
+        <div class="ticker-content">
+        <span class="ticker-text">
+            • People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping •
+            Latest Game : 🐎 Go Pony, Go C ! 🐎 • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below
+        </span>
+            <span class="ticker-text" aria-hidden="true">
+            • People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping •
+                Latest Game : 🐎 Go Pony, Go C ! 🐎 • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below
+        </span>
+        </div>
+    </div>
+
+</header>
+
+
+
+<main id="top">
+    <section class="hero">
+        <div class="container hero-container-wide">
+            <h1><span data-i18n="hero.greeting">Hi! I'm </span><a href="#" class="hero-name-link">Jan Westphal</a><span data-i18n="hero.location">, a developer and designer living in Kiel, Germany.</span></h1>
+        </div>
+    </section>
+
+    <!-- Draggable DIV -->
+<!--    <div id="mydiv">-->
+<!--        &lt;!&ndash; Include a header DIV with the same name as the draggable DIV, followed by "header" &ndash;&gt;-->
+<!--        <div id="mydivheader">Click here to move</div>-->
+<!--    </div>-->
+
+
+
+
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-head">
+                <h2 data-i18n="projects.heading">Check my latest projects👇</h2>
+            </div>
+
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all" data-i18n="filter.all">All</button>
+            </div>
+
+            <div class="work-list">
+                <!--ab hier mehrere vorgestellte projekte, article als js noch auslagern-->
+                <a class="work-item-link" href="project.html?id=go-pony-go-c">
+                    <div class="flip-card" tabindex="0">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <figure class="work-thumb">
+                                    <img src="Images/resizedpony.gif" alt="Go Pony, Go C! preview" loading="eager" width="300" height="300">
+                                </figure>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="work-item-back-content">
+                                    <div class="work-meta"><span>[Game, Illustration, Code] 2026</span></div>
+                                    <h3>Go Pony, Go C!</h3>
+                                    <hr>
+                                    <p data-i18n="card.go-pony.desc">A small game about a pony racing to lightspeed.</p>
+
+<!--                                    <span class="link-button secondary">Projektseite</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+
+                <a class="work-item-link" href="project.html?id=Chonky-Bee-Audio-Synth">
+                    <div class="flip-card" tabindex="0">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <figure class="work-thumb">
+                                    <img src="Images/ArduinoSynthWip.webp" alt="Chonky Bee Audio Synth preview" loading="lazy" width="300" height="300">
+                                </figure>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="work-item-back-content">
+                                    <div class="work-meta"><span>[Electronic, Audio, Code] 2026</span></div>
+                                    <h3>Audio Dingo Synth</h3>
+                                    <hr>
+                                    <p data-i18n="card.synth.desc">Arduino Uno R4 Minima based synthesizer with buttons, encoders, OLED display and joystick.</p>
+<!--                                    <span class="link-button secondary">Projektseite</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="work-item-link" href="project.html?id=e-zine-graffiti-doc">
+                    <div class="flip-card" tabindex="0">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <figure class="work-thumb">
+                                    <img src="Images/Graffzine1/TitleGraffzine1.webp" alt="E-Zine Graffiti Archive preview" loading="lazy" width="300" height="300">
+                                </figure>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="work-item-back-content">
+                                    <div class="work-meta"><span>[Illustration, Print, Code] 2019</span></div>
+                                    <h3>E-Zine #1 // Graffiti Archive</h3>
+                                    <hr>
+                                    <p data-i18n="card.zine.desc">Digital documentation of graffiti and street art painted by me from 2015-2019.</p>
+<!--                                    <span class="link-button secondary">Projektseite</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!--    <section id="about" class="section section-soft">-->
+<!--        <div class="container about-grid">-->
+<!--            <div>-->
+<!--                <p class="kicker">About</p>-->
+<!--                <h2>Irgendein Spruch.</h2>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <p>-->
+<!--                    Irgendein längerer text.-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Noch mehr willkürlicher text.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+    <section id="contact" class="section">
+        <div class="container contact-block">
+            <h2 data-i18n="contact.heading">Drop your message here!</h2>
+            <form id="form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="5eb109d2-3a48-4e2c-a23e-3948f0f938ee">
+
+                <label>
+                    <span data-i18n="contact.name-label">Name</span>
+                    <input type="text" name="name" data-i18n-placeholder="contact.name-ph" placeholder="What´s your name?" required>
+                </label>
+                <label>
+                    <span data-i18n="contact.email-label">E-mail</span>
+                    <input type="email" name="email" data-i18n-placeholder="contact.email-ph" placeholder="i will reply to this adress. (youradress@mail.com)" required>
+                </label>
+
+                <label>
+                    <span data-i18n="contact.message-label">Message</span>
+                    <textarea name="message" data-i18n-placeholder="contact.message-ph" placeholder="You can tell me something here. Add a joke if you want or tell me a secret. =)" required></textarea>
+                </label>
+                <button type="submit" class="contact-submit" data-i18n="contact.submit">Send</button>
+            </form>
+            <br>
+            <h2 data-i18n="contact.socials">Socials ↗</h2>
+            <a href="https://github.com/JanWestphal91/" target="_blank" rel="noopener noreferrer" class="link-button secondary">GitHub</a>
+            <a href="https://jan-west.itch.io/" target="_blank" rel="noopener noreferrer" class="link-button secondary">Itch.io</a>
+            <a href="https://bsky.app/profile/jan-west.itch.io" target="_blank" rel="noopener noreferrer" class="link-button secondary">Bluesky</a>
+            <a href="https://www.youtube.com/@netrouberkitsch7044" target="_blank" rel="noopener noreferrer" class="link-button secondary">Youtube</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ═══ Fish Scene ═══ -->
+    <canvas id="pellet-layer"></canvas>
+
+    <div id="food-can" tabindex="0" aria-label="FoodCan">
+        <div class="can-top">
+            <div class="can-holes">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="can-body">
+            <div class="can-label">
+                <strong>FISH FOOD</strong>
+                <!--                <small>for 🐟 Glub</small>-->
+            </div>
+        </div>
+    </div>
+
+    <div id="fish-bowl-wrap">
+        <div id="fish-bowl">
+            <div class="bowl-water">
+                <span id="fish">🐟</span>
+            </div>
+            <!--            <div class="bowl-shine"></div>-->
+        </div>
+        <p id="bowl-label" data-i18n="bowl.label">❗ Feed Glub now ❗</p>
+    </div>
+
+
+
+</main>
+
+<!-- Modal Popup -->
+<div id="hero-modal" class="modal" style="display: none;">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <div class="modal-body">
+            <h3 data-i18n="modal.heading">Most people call me Jan, some friends call me West and my graffiti / dev nickname is Netro</h3>
+            <p data-i18n="modal.subtitle">Want to know a little more about me?</p>
+            <img src="Images/myself.jpeg" data-i18n-alt="modal.img-alt" alt="Jan Westphal – Creative Coder and Designer from Kiel" class="modal-portrait" loading="lazy">
+            <p data-i18n="modal.p1">I’m into experimental design, art, and prototyping. I love how different disciplines can work together to create something new. I enjoy drawing badly, messing around with electronics, video / audio gear and graffiti culture is part of my roots, it was my first real connection to illustration. Doing large scale paintings has always felt incredibly satisfying to me.</p>
+            <p data-i18n="modal.p2">Game development is one of the most interesting fields for me because it combines so many disciplines into one finished product. I’m also involved with the IF(game)SH e.V. to help get more people into game development. My favorite games are Factorio, Slay the Spire, and good old Donkey Kong Country.</p>
+            <p data-i18n="modal.p3">I’m married to a wonderful person who brings some much-needed order into my chaos, and we have two lovely kids together.</p>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">2026 Jan Westphal. All wrongs reserved.</p>
+        <nav class="footer-nav" aria-label="Footer Navigation">
+        </nav>
+    </div>
+</footer>
+
+</body>
+</html>
+
