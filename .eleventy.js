@@ -1,7 +1,14 @@
 module.exports = function(eleventyConfig) {
-    eleventyConfig.addPassthroughCopy("css");
-    eleventyConfig.addPassthroughCopy("assets");
+    // Static assets — must be explicit in Eleventy 3
+    eleventyConfig.addPassthroughCopy("Images");
+    eleventyConfig.addPassthroughCopy("style.css");
+    eleventyConfig.addPassthroughCopy("script.js");
+    eleventyConfig.addPassthroughCopy("translations.js");
+    eleventyConfig.addPassthroughCopy("CNAME");
     eleventyConfig.addPassthroughCopy("admin");
+    // Copy as-is so the URL stays /project.html (not /project/)
+    eleventyConfig.addPassthroughCopy("project.html");
+    eleventyConfig.addPassthroughCopy("google1fb37088e637c525.html");
 
     eleventyConfig.addCollection("projects", function(collectionApi) {
         return collectionApi.getFilteredByGlob("content/projects/*.md")
