@@ -1,28 +1,29 @@
 ---
-title: "Audio Dingo Synth"
-slug: "Chonky-Bee-Audio-Synth"
-category: "[Electronic] 2026"
+title: Audio Dingo Synth
+slug: Audio-Dingo-Synth
+category: '[Electronic] 2026'
 order: 2
-cover_image: "Images/ArduinoSynthWip.webp"
-cover_image_alt: "Chonky Bee Audio Synth preview"
-summary_card: "Arduino Uno R4 Minima based synthesizer with buttons, encoders, OLED display and joystick."
-summary_card_de: "Auf dem Arduino Uno R4 Minima basierender Synthesizer mit Tasten, Encodern, OLED-Display und Joystick."
-summary: "Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing notes or chords, with both rotary knobs the sound can be modulated, one changes the octave the other changes the waveform. With the joystick you can control the tone of the sound and the 3 control buttons are for recording, playback and magic functions."
-summary_de: "Entwickelt mit einem Arduino Uno R4 Minima. Er hat 10 Tasten, 2 Drehencoder, ein kleines OLED-Display und einen Joystick. Die 7 Tasten unten dienen zum Spielen von Noten oder Akkorden; mit den Encodern lässt sich der Sound modulieren – einer wechselt die Oktave, der andere die Wellenform. Mit dem Joystick steuert man die Tonhöhe, die 3 Steuertasten übernehmen Aufnahme, Wiedergabe und Sonderfunktionen."
+cover_image: Images/ArduinoSynthWip.webp
+cover_image_alt: Chonky Bee Audio Synth preview
+summary_card: Arduino Uno R4 Minima based synthesizer with buttons, encoders, OLED display and joystick.
+summary_card_de: Auf dem Arduino Uno R4 Minima basierender Synthesizer mit Tasten, Encodern, OLED-Display und Joystick.
+summary: Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing notes or chords, with both rotary knobs the sound can be modulated, one changes the octave the other changes the waveform. With the joystick you can control the tone of the sound and the 3 control buttons are for recording, playback and magic functions.
+summary_de: Entwickelt mit einem Arduino Uno R4 Minima. Er hat 10 Tasten, 2 Drehencoder, ein kleines OLED-Display und einen Joystick. Die 7 Tasten unten dienen zum Spielen von Noten oder Akkorden; mit den Encodern lässt sich der Sound modulieren – einer wechselt die Oktave, der andere die Wellenform. Mit dem Joystick steuert man die Tonhöhe, die 3 Steuertasten übernehmen Aufnahme, Wiedergabe und Sonderfunktionen.
 meta:
-  - "Electronic"
-  - "Prototype"
-  - "Audio"
-  - "Status: WIP"
+  - Electronic
+  - Prototype
+  - Audio
+  - 'Status: WIP'
 meta_de:
-  - "Elektronik"
-  - "Prototyp"
-  - "Audio"
-  - "Status: In Arbeit"
+  - Elektronik
+  - Prototyp
+  - Audio
+  - 'Status: In Arbeit'
 images:
-  - src: "Images/ArduinoSynthWip.webp"
-    alt: "Arduino WIP picture"
-    caption: "WIP breadboard testing."
-    caption_de: "WIP Breadboard-Testaufbau."
+  - src: Images/ArduinoSynthWip.webp
+    alt: Arduino WIP picture
+    caption: WIP breadboard testing.
+    caption_de: WIP Breadboard-Testaufbau.
+embed: ''
 date: 2026-01-02
 ---
