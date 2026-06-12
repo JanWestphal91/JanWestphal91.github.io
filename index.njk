@@ -99,7 +99,6 @@
         <a href="#top" class="logo" >Jan Westphal</a>
         <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
-<!--                <li><a href="#about">About me</a></li>-->
                 <li><a href="#projects" class="link-button secondary" data-i18n="nav.projects">Projects</a></li>
                 <li><a href="#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗ </span></a></li>
                 <li> <button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
@@ -137,15 +136,6 @@
         </div>
     </section>
 
-    <!-- Draggable DIV -->
-<!--    <div id="mydiv">-->
-<!--        &lt;!&ndash; Include a header DIV with the same name as the draggable DIV, followed by "header" &ndash;&gt;-->
-<!--        <div id="mydivheader">Click here to move</div>-->
-<!--    </div>-->
-
-
-
-
     <section id="projects" class="section">
         <div class="container">
             <div class="section-head">
@@ -157,91 +147,30 @@
             </div>
 
             <div class="work-list">
-                <!--ab hier mehrere vorgestellte projekte, article als js noch auslagern-->
-                <a class="work-item-link" href="project.html?id=go-pony-go-c">
+                {%- for project in collections.projects %}
+                <a class="work-item-link" href="project.html?id={{ project.data.slug }}">
                     <div class="flip-card" tabindex="0">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <figure class="work-thumb">
-                                    <img src="Images/resizedpony.gif" alt="Go Pony, Go C! preview" loading="eager" width="300" height="300">
+                                    <img src="{{ project.data.cover_image }}" alt="{{ project.data.cover_image_alt }}" loading="{% if loop.first %}eager{% else %}lazy{% endif %}" width="300" height="300">
                                 </figure>
                             </div>
                             <div class="flip-card-back">
                                 <div class="work-item-back-content">
-                                    <div class="work-meta"><span>[Game, Illustration, Code] 2026</span></div>
-                                    <h3>Go Pony, Go C!</h3>
+                                    <div class="work-meta"><span>{{ project.data.category }}</span></div>
+                                    <h3>{{ project.data.title }}</h3>
                                     <hr>
-                                    <p data-i18n="card.go-pony.desc">A small game about a pony racing to lightspeed.</p>
-
-<!--                                    <span class="link-button secondary">Projektseite</span>-->
+                                    <p data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </a>
-
-
-                <a class="work-item-link" href="project.html?id=Chonky-Bee-Audio-Synth">
-                    <div class="flip-card" tabindex="0">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <figure class="work-thumb">
-                                    <img src="Images/ArduinoSynthWip.webp" alt="Chonky Bee Audio Synth preview" loading="lazy" width="300" height="300">
-                                </figure>
-                            </div>
-                            <div class="flip-card-back">
-                                <div class="work-item-back-content">
-                                    <div class="work-meta"><span>[Electronic, Audio, Code] 2026</span></div>
-                                    <h3>Audio Dingo Synth</h3>
-                                    <hr>
-                                    <p data-i18n="card.synth.desc">Arduino Uno R4 Minima based synthesizer with buttons, encoders, OLED display and joystick.</p>
-<!--                                    <span class="link-button secondary">Projektseite</span>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a class="work-item-link" href="project.html?id=e-zine-graffiti-doc">
-                    <div class="flip-card" tabindex="0">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <figure class="work-thumb">
-                                    <img src="Images/Graffzine1/TitleGraffzine1.webp" alt="E-Zine Graffiti Archive preview" loading="lazy" width="300" height="300">
-                                </figure>
-                            </div>
-                            <div class="flip-card-back">
-                                <div class="work-item-back-content">
-                                    <div class="work-meta"><span>[Illustration, Print, Code] 2019</span></div>
-                                    <h3>E-Zine #1 // Graffiti Archive</h3>
-                                    <hr>
-                                    <p data-i18n="card.zine.desc">Digital documentation of graffiti and street art painted by me from 2015-2019.</p>
-<!--                                    <span class="link-button secondary">Projektseite</span>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                {%- endfor %}
             </div>
         </div>
     </section>
-
-<!--    <section id="about" class="section section-soft">-->
-<!--        <div class="container about-grid">-->
-<!--            <div>-->
-<!--                <p class="kicker">About</p>-->
-<!--                <h2>Irgendein Spruch.</h2>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <p>-->
-<!--                    Irgendein längerer text.-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Noch mehr willkürlicher text.-->
-<!--                </p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
 
     <section id="contact" class="section">
         <div class="container contact-block">
@@ -288,7 +217,6 @@
         <div class="can-body">
             <div class="can-label">
                 <strong>FISH FOOD</strong>
-                <!--                <small>for 🐟 Glub</small>-->
             </div>
         </div>
     </div>
@@ -298,7 +226,6 @@
             <div class="bowl-water">
                 <span id="fish">🐟</span>
             </div>
-            <!--            <div class="bowl-shine"></div>-->
         </div>
         <p id="bowl-label" data-i18n="bowl.label">❗ Feed Glub now ❗</p>
     </div>
@@ -316,9 +243,9 @@
             <h3 data-i18n="modal.heading">Most people call me Jan, some friends call me West and my graffiti / dev nickname is Netro</h3>
             <p data-i18n="modal.subtitle">Want to know a little more about me?</p>
             <img src="Images/myself.jpeg" data-i18n-alt="modal.img-alt" alt="Jan Westphal – Creative Coder and Designer from Kiel" class="modal-portrait" loading="lazy">
-            <p data-i18n="modal.p1">I’m into experimental design, art, and prototyping. I love how different disciplines can work together to create something new. I enjoy drawing badly, messing around with electronics, video / audio gear and graffiti culture is part of my roots, it was my first real connection to illustration. Doing large scale paintings has always felt incredibly satisfying to me.</p>
-            <p data-i18n="modal.p2">Game development is one of the most interesting fields for me because it combines so many disciplines into one finished product. I’m also involved with the IF(game)SH e.V. to help get more people into game development. My favorite games are Factorio, Slay the Spire, and good old Donkey Kong Country.</p>
-            <p data-i18n="modal.p3">I’m married to a wonderful person who brings some much-needed order into my chaos, and we have two lovely kids together.</p>
+            <p data-i18n="modal.p1">I'm into experimental design, art, and prototyping. I love how different disciplines can work together to create something new. I enjoy drawing badly, messing around with electronics, video / audio gear and graffiti culture is part of my roots, it was my first real connection to illustration. Doing large scale paintings has always felt incredibly satisfying to me.</p>
+            <p data-i18n="modal.p2">Game development is one of the most interesting fields for me because it combines so many disciplines into one finished product. I'm also involved with the IF(game)SH e.V. to help get more people into game development. My favorite games are Factorio, Slay the Spire, and good old Donkey Kong Country.</p>
+            <p data-i18n="modal.p3">I'm married to a wonderful person who brings some much-needed order into my chaos, and we have two lovely kids together.</p>
         </div>
     </div>
 </div>
@@ -333,4 +260,3 @@
 
 </body>
 </html>
-

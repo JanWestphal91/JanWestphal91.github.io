@@ -35,6 +35,10 @@ function applyTranslations(lang, skipProjectRender) {
         el.textContent = t(el.dataset.i18n);
     });
 
+    document.querySelectorAll('[data-en]').forEach(function(el) {
+        el.textContent = lang === 'de' && el.dataset.de ? el.dataset.de : el.dataset.en;
+    });
+
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
         el.placeholder = t(el.dataset.i18nPlaceholder);
     });
@@ -185,7 +189,9 @@ function getElementEffects(element) {
     });
 }
 
-const PROJECT_DATA = {
+let PROJECT_DATA = {};
+
+const _PROJECT_DATA_LEGACY = {
     "go-pony-go-c": {
         title: "Go Pony, Go C!",
         category: "[Webgame] 2026",
@@ -399,6 +405,7 @@ function renderProjectPage(lang) {
     const hashId = window.location.hash.replace(/^#/, "");
     const id = params.get("id") || hashId || "go-pony-go-c";
     const project = PROJECT_DATA[id] || PROJECT_DATA["go-pony-go-c"];
+    if (!project) return;
 
     const categoryElement = document.getElementById("project-category");
     const titleElement = document.getElementById("project-title");
@@ -483,8 +490,19 @@ function renderProjectPage(lang) {
     }
 }
 
-renderProjectPage(currentLang);
 applyTranslations(currentLang, true);
+
+if (document.body.dataset.page === 'project') {
+    fetch('/projects.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            PROJECT_DATA = data;
+            renderProjectPage(currentLang);
+        })
+        .catch(function() {
+            renderProjectPage(currentLang);
+        });
+}
 
 
 
