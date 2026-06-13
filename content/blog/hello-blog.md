@@ -1,7 +1,7 @@
 ---
 title: Development process of a DIY synthesizer
 title_de: Entwicklungsprozess eines DIY Synthesizers
-date: 2026-06-12
+date: 2026-06-13
 description: From circuit to working prototype.
 description_de: Von einer Schaltung zum funktionierenden Prototyp.
 cover_image: /Images/1000015078.jpg
