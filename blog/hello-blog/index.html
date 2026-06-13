@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to the Blog – Jan Westphal</title>
-    <meta name="description" content="A short introduction to the new blog section – what you&#39;ll find here." />
+    <title>Development process of a DIY synthesizer – Jan Westphal</title>
+    <meta name="description" content="From circuit to working prototype." />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://janwestphal.dev/blog/hello-blog/" />
@@ -12,15 +12,15 @@
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://janwestphal.dev/blog/hello-blog/" />
     <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="Welcome to the Blog – Jan Westphal" />
-    <meta property="og:description" content="A short introduction to the new blog section – what you&#39;ll find here." />
+    <meta property="og:title" content="Development process of a DIY synthesizer – Jan Westphal" />
+    <meta property="og:description" content="From circuit to working prototype." />
     
-    <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
+    <meta property="og:image" content="https://janwestphal.dev/Images/1000015078.jpg" />
     
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Welcome to the Blog – Jan Westphal" />
-    <meta name="twitter:description" content="A short introduction to the new blog section – what you&#39;ll find here." />
+    <meta name="twitter:title" content="Development process of a DIY synthesizer – Jan Westphal" />
+    <meta name="twitter:description" content="From circuit to working prototype." />
 
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
@@ -63,36 +63,70 @@
                 <span class="post-date" data-lang-show="de">12. Juni 2026</span>
                 
                 <ul class="post-tags">
-                    <li>Update</li>
+                    <li>Devlog, Electronic</li>
                 </ul>
                 
             </div>
-            <h1 data-wavy data-en="Welcome to the Blog" data-de="Willkommen im Blog">Welcome to the Blog</h1>
-            <p class="project-summary" data-en="A short introduction to the new blog section – what you&#39;ll find here." data-de="Ein kurzer Einstieg in den neuen Blog-Bereich – was hier zu finden sein wird.">A short introduction to the new blog section – what you&#39;ll find here.</p>
+            <h1 data-wavy data-en="Development process of a DIY synthesizer" data-de="Entwicklungsprozess eines DIY Synthesizers">Development process of a DIY synthesizer</h1>
+            <p class="project-summary" data-en="From circuit to working prototype." data-de="Von einer Schaltung zum funktionierenden Prototyp.">From circuit to working prototype.</p>
         </div>
     </section>
 
+    
+    <section class="section">
+        <div class="container">
+            <img src="/Images/1000015078.jpg" alt="Arduino Prototype" class="post-cover" loading="eager">
+        </div>
+    </section>
     
 
     <section class="section">
         <div class="container">
             <div class="post-body" data-lang-show="en">
-                <p>Hello! This is the first entry in the blog.</p>
-<p>This section is still a work in progress — process updates, small projects and thoughts on design, code and game dev will land here in the future.</p>
-<p>Check back soon.</p>
+                <p>Hello, and welcome to the first post on my blog. :)</p>
+<p>In this article, I want to document the development process behind my DIY synthesizer project based on the Arduino R4 Minima, from the first breadboard prototypes and early case prints to the overall concept and design process.</p>
+<p>Once the initial idea was in place, the first step was to define the project requirements. I wanted to build a device capable of generating tones while integrating smoothly into my existing setup of other synthesizers. Portability was also an important factor, so it became clear early on that the device would need to run on battery power.</p>
+<p>For the playing interface, I chose 7 note keys, since a standard scale consists of 7 notes. In addition, the device includes 3 function buttons and 2 rotary encoders for modifying and shaping the generated sound. I also wanted to include a display to provide visual feedback for the current settings and the parameter being edited. To make the synthesizer usable as a standalone device, I added a built-in speaker. At the same time, a headphone jack was included so it could also be connected to other synths as part of a larger setup.</p>
+<p>After defining the requirements, I created and tested an initial circuit simulation on Wokwi. The next step was to determine which components would be suitable for the project and which ones would work together reliably. This involved a fair amount of research, comparing parts, checking compatibility, and sourcing everything from different online shops. Once all the components had arrived, I could finally begin assembling the first hardware prototype.</p>
+<p>As soon as I had a rough understanding of the circuit layout and had written the first basic version of the code, I moved on to designing the enclosure in Fusion. For the first 3D print, I only produced the main body of the case in black and installed all the components to get a first impression of the overall form and layout of the device.</p>
+<p>From there, the project moved into the next iteration phase. I began soldering the components, refining the code, and improving the sound generation. For audio synthesis, I used the Mozzi library, which proved to be a very useful tool for this type of Arduino-based project. At the same time, the enclosure design was revised as well.</p>
+<p>In the following iteration, the case became noticeably wider and deeper. I also adjusted the dimensions for the buttons, cutouts, and connectors to improve the overall fit. This time, the second print turned out to fit properly, which was a very satisfying milestone in the process.</p>
+<p>At the moment, the project is in its final stages. The code is still being refined, and the remaining small parts are being printed and added step by step.</p>
+<p>Et voilà, a new synthesizer is born. :)</p>
+<p>(update coming soon)</p>
 
             </div>
             
             <div class="post-body" data-lang-show="de" hidden>
-                <p>Hallo! Das hier ist der erste Eintrag im Blog.</p>
-<p>Dieser Bereich ist noch im Aufbau – hier werden zukünftig Prozess-Updates, kleine Projekte und Gedanken rund um Design, Code und Game Dev landen.</p>
-<p>Schau gerne öfter mal rein.</p>
+                <p>Hallo! Das hier ist der erste Eintrag im Blog. :)</p>
+<p>In diesem Beitrag dokumentiere ich die Schritte und Entwicklungen rund um das Projekt eines DIY-Synthesizers mit einem Arduino R4 Minima,  von den ersten Breadboard-Schaltungen über den ersten Gehäusedruck bis hin zur Konzeption des gesamten Prozesses.</p>
+<p>Nachdem die Idee entstanden war, ging es zuerst ins Anforderungsmanagement. Dafür habe ich grob umrissen, was das Gerät können soll. Ich wollte ein Gerät bauen, das Töne abspielen kann und sich nahtlos in mein Setup aus anderen Synthesizern integrieren lässt. Außerdem ist mir Mobilität wichtig, daher stand schon früh fest, dass es einen Akkubetrieb braucht.</p>
+<p>Zum Spielen habe ich mich für 7 Tontasten entschieden, weil eine Tonleiter aus 7 Tönen besteht. Dazu kommen noch 3 Funktionstasten sowie 2 Rotary Encoder, um den ausgegebenen Ton modulieren zu können. Außerdem sollte ein Display anzeigen, wie die Einstellungen aktuell stehen und welchen Wert ich gerade bearbeite. Hinzu kommt ein Lautsprecher, damit das Gerät auch standalone genutzt werden kann, sowie ein Klinkenausgang, um es mit anderen Synths in Reihe schalten zu können.</p>
+<p>Nachdem ich alle Anforderungen ermittelt hatte, habe ich eine Testschaltung auf <a href="http://Wokwi.com">Wokwi.com</a> simuliert. Im nächsten Schritt musste ich erst einmal herausfinden, welche Komponenten ich nutzen kann und welche miteinander kompatibel sind. Nach einer aufwendigen Recherche in diversen Onlineshops und nachdem schließlich alle Teile angekommen waren, ging es los mit dem Zusammenstecken.</p>
+<p>Sobald ich dann einen groben Überblick über meine Schaltung hatte und den ersten grundlegenden Code geschrieben hatte, habe ich angefangen, das Gehäuse in Fusion zu designen. Beim ersten Druck habe ich lediglich den Grundkörper des Gehäuses in Schwarz gedruckt und alle Teile eingebaut, um einen ersten Eindruck vom Gerät zu bekommen.</p>
+<p>Danach ging es mit den Optimierungen weiter: Ich habe angefangen, die Komponenten zu verlöten und den Code zu überarbeiten. Zur Klangerzeugung habe ich die Mozzi-Bibliothek genutzt, und auch das Gehäuse wurde noch einmal angepasst.</p>
+<p>Bei der nächsten Iteration ist das Gehäuse deutlich breiter und tiefer geworden. Außerdem wurden die Maße für alle Knöpfe, Aussparungen und Anschlüsse überarbeitet. Tatsächlich war das Gehäuse beim zweiten Druck dann auch passend. Im nun letzten Arbeitsschritt wird noch der Code weiter überarbeitet und alle Kleinteile werden gedruckt und ergänzt.</p>
+<p>Et voilà, ein neuer Synthesizer ist geboren :)</p>
+<p>(Update folgt bald)</p>
 
             </div>
             
         </div>
     </section>
 
+    
+    <section class="section">
+        <div class="container">
+            <div class="project-gallery">
+                
+                <figure class="project-gallery__item">
+                    <img src="/Images/ArduinoSynthWip.webp" alt="Breadboard Schaltung" loading="lazy">
+                    <figcaption>Breadboard Schaltung Prototyping</figcaption>
+                </figure>
+                
+            </div>
+        </div>
+    </section>
     
 </main>
 
