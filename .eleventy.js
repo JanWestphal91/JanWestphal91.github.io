@@ -13,6 +13,9 @@ module.exports = function(eleventyConfig) {
     // Copy as-is so the URL stays /project.html (not /project/)
     eleventyConfig.addPassthroughCopy("project.html");
     eleventyConfig.addPassthroughCopy("google1fb37088e637c525.html");
+    eleventyConfig.addPassthroughCopy("sitemap.xml");
+    eleventyConfig.addPassthroughCopy("robots.txt");
+    eleventyConfig.addPassthroughCopy("BingSiteAuth.xml");
 
     eleventyConfig.addCollection("projects", function(collectionApi) {
         return collectionApi.getFilteredByGlob("content/projects/*.md")
