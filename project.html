@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Project detail page by Jan Westphal – Creative Coder &amp; Designer from Kiel." />
     <meta name="author" content="Jan Westphal" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="noindex, follow" />
     <meta name="geo.region" content="DE-SH" />
     <meta name="geo.placename" content="Kiel" />
     <title>Project – Jan Westphal</title>
@@ -43,6 +43,18 @@
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <script>
+        (function() {
+            var id = new URLSearchParams(window.location.search).get('id');
+            var map = {
+                'go-pony-go-c': '/projects/go-pony-go-c/',
+                'Chonky-Bee-Audio-Synth': '/projects/Audio-Dingo-Synth/',
+                'Audio-Dingo-Synth': '/projects/Audio-Dingo-Synth/',
+                'e-zine-graffiti-doc': '/projects/e-zine-graffiti-doc/'
+            };
+            if (id && map[id]) window.location.replace(map[id]);
+        })();
+    </script>
     <script src="translations.js" defer></script>
     <script src="script.js" defer></script>
 </head>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Dingo Synth – Jan Westphal</title>
+    <meta name="description" content="Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing..." />
+    <meta name="author" content="Jan Westphal" />
+    <meta name="robots" content="index, follow" />
+    <meta name="geo.region" content="DE-SH" />
+    <meta name="geo.placename" content="Kiel" />
+    <link rel="canonical" href="https://janwestphal.dev/projects/Audio-Dingo-Synth/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://janwestphal.dev/projects/Audio-Dingo-Synth/" />
+    <meta property="og:site_name" content="Jan Westphal" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:title" content="Audio Dingo Synth – Jan Westphal" />
+    <meta property="og:description" content="Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing..." />
+    
+    <meta property="og:image" content="https://janwestphal.dev/Images/ArduinoSynthWip.webp" />
+    <meta name="twitter:image" content="https://janwestphal.dev/Images/ArduinoSynthWip.webp" />
+    
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Audio Dingo Synth – Jan Westphal Preview" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Audio Dingo Synth – Jan Westphal" />
+    <meta name="twitter:description" content="Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing..." />
+
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
+    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap"></noscript>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+</head>
+<body data-page="project-static">
+
+<header class="site-header">
+    <div class="container nav">
+        <a href="/" class="logo">Jan Westphal</a>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.projects">Projects</span><span class="nav-label nav-label--mobile" data-i18n="nav.projects.mobile">Projects ↗</span></a></li>
+                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile" data-i18n="nav.blog.mobile">Blog ↗</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
+                <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
+            </ul>
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main class="project-page">
+    <section class="section project-hero">
+        <div class="container">
+            <a class="back-link" href="/projects/" data-i18n="project.back-link" aria-label="Back to projects"><h2>←</h2></a>
+            <div class="post-meta">
+                <span>[Electronic] 2026</span>
+                <ul class="project-meta" data-lang-show="en">
+                    <li>Electronic</li><li>Prototype</li><li>Audio</li><li>Status: WIP</li>
+                </ul>
+                
+                <ul class="project-meta" data-lang-show="de" hidden>
+                    <li>Elektronik</li><li>Prototyp</li><li>Audio</li><li>Status: In Arbeit</li>
+                </ul>
+                
+            </div>
+            <h1 data-wavy data-rainbow>Audio Dingo Synth</h1>
+            <p class="project-summary" data-en="Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing notes or chords, with both rotary knobs the sound can be modulated, one changes the octave the other changes the waveform. With the joystick you can control the tone of the sound and the 3 control buttons are for recording, playback and magic functions." data-de="Entwickelt mit einem Arduino Uno R4 Minima. Er hat 10 Tasten, 2 Drehencoder, ein kleines OLED-Display und einen Joystick. Die 7 Tasten unten dienen zum Spielen von Noten oder Akkorden; mit den Encodern lässt sich der Sound modulieren – einer wechselt die Oktave, der andere die Wellenform. Mit dem Joystick steuert man die Tonhöhe, die 3 Steuertasten übernehmen Aufnahme, Wiedergabe und Sonderfunktionen.">Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing notes or chords, with both rotary knobs the sound can be modulated, one changes the octave the other changes the waveform. With the joystick you can control the tone of the sound and the 3 control buttons are for recording, playback and magic functions.</p>
+        </div>
+    </section>
+
+    
+
+    
+    <section class="section">
+        <div class="container">
+            <h2>Audio Dingo Synth — <span data-i18n="project.gallery-label">Gallery</span></h2>
+            <div class="project-gallery">
+                
+                <figure class="project-gallery__item">
+                    
+                    <img src="/Images/ArduinoSynthWip.webp" alt="Arduino WIP picture" loading="lazy">
+                    
+                    
+                    <figcaption data-en="WIP breadboard testing." data-de="WIP Breadboard-Testaufbau.">WIP breadboard testing.</figcaption>
+                    
+                </figure>
+                
+            </div>
+        </div>
+    </section>
+    
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">2026 Jan Westphal. All wrongs reserved.</p>
+        <nav class="footer-nav" aria-label="Footer Navigation"></nav>
+    </div>
+</footer>
+
+</body>
+</html>
