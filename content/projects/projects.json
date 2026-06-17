@@ -1,3 +1,4 @@
 {
-  "permalink": false
+  "layout": "project-detail.njk",
+  "permalink": "/projects/{{ slug }}/"
 }

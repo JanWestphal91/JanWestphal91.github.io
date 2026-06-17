@@ -68,7 +68,7 @@ function applyTranslations(lang, skipProjectRender) {
     const toggle = document.getElementById('lang-toggle');
     if (toggle) toggle.textContent = lang === 'de' ? 'EN' : 'DE';
 
-    if (document.body.dataset.page !== 'project') {
+    if (document.body.dataset.page !== 'project' && document.body.dataset.page !== 'project-static') {
         document.title = lang === 'de'
             ? 'Jan Westphal – Portfolio | Creative Coder & Designer aus Kiel'
             : 'Jan Westphal – Portfolio | Creative Coder & Designer from Kiel';
@@ -269,7 +269,7 @@ const _PROJECT_DATA_LEGACY = {
         }
     },
 
-    "Chonky-Bee-Audio-Synth": {
+    "Audio-Dingo-Synth": {
         title: "Audio Dingo Synth",
         category: "[Electronic] 2026",
         summary: "Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick."+
