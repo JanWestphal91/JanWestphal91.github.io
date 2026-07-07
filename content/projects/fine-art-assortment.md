@@ -13,7 +13,39 @@ meta:
   - Canvas, Found material, Assortment, Painting, Carving, Print, Commission, free work
 meta_de:
   - Leinwand, gefundenes Material, Sammlung, Malerei, Schnitzerei, Druck, Auftragsarbeiten, freie Arbeiten
-images: []
+images:
+  - src: /images/FineArt/1000015908.webp
+    alt: Paintings on metal
+    caption: small paintings on metal sheet
+    caption_de: kleine Malereien auf Metallplatten
+  - src: /images/FineArt/1000015914.webp
+    alt: Paintings on metal 2
+    caption: more small paintings on metal sheet
+    caption_de: mehr kleine Malereien auf Metallplatten
+  - src: /images/FineArt/1000015915.webp
+    alt: Illustration acrylic ink and ink
+    caption: Acrylic ink and ink on paper
+    caption_de: Acrylmarker und Tinte auf Papier
+  - src: /images/FineArt/1000015913.webp
+    alt: bigsize canvas
+    caption: comissioned, Acryl on Canvas 100 cm x 150 cm
+    caption_de: Auftragsleinwand, Acryl auf Leinwand 100 cm x 150 cm
+  - src: /images/FineArt/1000015912.webp
+    alt: KaffeeGang Canvas
+    caption: small canvas painted during coffee klatch with KaffeeGang
+    caption_de: Acryl auf Leinwand, entstanden während Kaffeekränzchen für die KaffeeGang
+  - src: /images/FineArt/1000015911.webp
+    alt: Vinyl carving
+    caption: Vinyl carving for printing
+    caption_de: Vinyl Schnitzerei zum drucken
+  - src: /images/FineArt/1000015910.webp
+    alt: lantern at evening
+    caption: Acryl on canvas
+    caption_de: Acryl auf Leinwand
+  - src: /images/FineArt/1000015909.webp
+    alt: canvas medium size
+    caption: Acryl and ink on canvas
+    caption_de: Acryl und Tinte auf Leinwand
 embed: ''
 date: 2026-07-07
 ---
