@@ -775,6 +775,10 @@ button,
     margin: 0;
 }
 
+.project-meta[hidden] {
+    display: none;
+}
+
 .project-meta li {
     padding: 0.5rem 0.8rem;
     border: 1px solid var(--border);
@@ -801,8 +805,8 @@ button,
 
 .project-gallery__item img {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
+    height: auto;
+    display: block;
 }
 
 .project-gallery__item figcaption {
