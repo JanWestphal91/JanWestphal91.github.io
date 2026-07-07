@@ -3,3 +3,12 @@ _site/
 /.claude/
 /.idea/
 /Images/Graffzine1/BookSites/
+
+# Large source photos/renders — only the generated .webp versions are used on the site
+/Images/Audiodingo/*.png
+/Images/Audiodingo/*.jpeg
+/Images/Audiodingo/*.jpg
+/Images/Graffzine1/*.png
+/Images/PocketKnight/*.png
+/Images/PocketKnight/*.jpg
+/Images/PocketKnight/*.JPG
