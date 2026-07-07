@@ -468,6 +468,7 @@ function renderProjectPage(lang) {
     const embedElement = document.getElementById("project-embed");
     if (embedElement && project.embed) {
         embedElement.innerHTML = project.embed;
+        window.dispatchEvent(new CustomEvent('project-embed-rendered', { detail: { id } }));
     }
 
     // Update per-project meta for SEO
