@@ -57,5 +57,3 @@ In the following iteration, the case became noticeably wider and deeper. I also 
 At the moment, the project is in its final stages. The code is still being refined, and the remaining small parts are being printed and added step by step.
 
 Et voilà, a new synthesizer is born. :)
-
-(update coming soon)
