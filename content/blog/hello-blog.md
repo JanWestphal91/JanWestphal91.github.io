@@ -4,7 +4,7 @@ title_de: Entwicklung eines DIY Synthesizers
 date: 2026-06-13
 description: From circuit to working prototype.
 description_de: Von einer Schaltung zum funktionierenden Prototyp.
-cover_image: /Images/1000015078.jpg
+cover_image: /Images/Audiodingo/audiodingostanding.webp
 cover_image_alt: Arduino Prototype
 tags:
   - Devlog, Electronic
@@ -12,6 +12,12 @@ images:
   - src: /Images/ArduinoSynthWip.webp
     alt: Breadboard Schaltung
     caption: Breadboard Schaltung Prototyping
+  - src: /Images/Audiodingo/DingofirstCase.webp
+    alt: Erstes gedrucktes Gehäuse
+    caption: Erstes gedrucktes Gehäuse
+  - src: /Images/Audiodingo/DingoinFusion.webp
+    alt: Fusion Screenshot
+    caption: Gehäuse Entwurf in Fusion
 body_de: |-
   Hallo! Das hier ist der erste Eintrag im Blog. :)
 
