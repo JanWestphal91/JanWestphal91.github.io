@@ -36,8 +36,6 @@ body_de: |-
   Bei der nächsten Iteration ist das Gehäuse deutlich breiter und tiefer geworden. Außerdem wurden die Maße für alle Knöpfe, Aussparungen und Anschlüsse überarbeitet. Tatsächlich war das Gehäuse beim zweiten Druck dann auch passend. Im nun letzten Arbeitsschritt wird noch der Code weiter überarbeitet und alle Kleinteile werden gedruckt und ergänzt.
 
   Et voilà, ein neuer Synthesizer ist geboren :)
-
-  (Update folgt bald)
 ---
 
 Hello, and welcome to the first post on my blog. :)
