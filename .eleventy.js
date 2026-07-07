@@ -20,12 +20,12 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("flipbook.js");
 
     eleventyConfig.addCollection("projects", function(collectionApi) {
-        return collectionApi.getFilteredByGlob("content/projects/*.md")
+        return collectionApi.getFilteredByGlob("content/projects/*/index.md")
             .sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
     });
 
     eleventyConfig.addCollection("blog", function(collectionApi) {
-        return collectionApi.getFilteredByGlob("content/blog/*.md")
+        return collectionApi.getFilteredByGlob("content/blog/*/index.md")
             .sort((a, b) => b.date - a.date);
     });
 

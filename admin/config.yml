@@ -14,6 +14,9 @@ collections:
     create: true
     delete: true
     slug: "{{fields.slug}}"
+    path: "{{slug}}/index"
+    media_folder: "/Images/projects/{{slug}}"
+    public_folder: "/Images/projects/{{slug}}"
     fields:
       - label: "Title"
         name: title
@@ -77,7 +80,7 @@ collections:
         widget: list
         required: false
         fields:
-          - { label: "Bild-URL oder Pfad", name: src, widget: string }
+          - { label: "Bild", name: src, widget: image }
           - { label: "Alt-Text", name: alt, widget: string }
           - { label: "Bildunterschrift (EN)", name: caption, widget: string }
           - { label: "Bildunterschrift (DE)", name: caption_de, widget: string, required: false }
@@ -102,6 +105,9 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: "/Images/blog/{{slug}}"
+    public_folder: "/Images/blog/{{slug}}"
     fields:
       - label: "Titel (EN)"
         name: title
