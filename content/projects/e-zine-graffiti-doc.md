@@ -7,8 +7,8 @@ cover_image: Images/Graffzine1/buchstandingspaced.webp
 cover_image_alt: E-Zine Graffiti Archive printed book mockup
 summary_card: Digital documentation of graffiti and street art painted by me from 2015-2019.
 summary_card_de: Digitale Dokumentation von Graffiti und Street Art aus den Jahren 2015–2019.
-summary: A digital e-zine documenting graffiti and street art from 2015-2019.
-summary_de: Ein digitales E-Zine mit Graffiti und Street Art aus den Jahren 2015–2019.
+summary: A book documenting graffiti and street art from 2015-2019.
+summary_de: Ein Buch mit Graffiti und Street Art aus den Jahren 2015–2019.
 meta:
   - Design
   - Print
