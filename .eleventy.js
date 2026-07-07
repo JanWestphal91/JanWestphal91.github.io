@@ -16,6 +16,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("sitemap.xml");
     eleventyConfig.addPassthroughCopy("robots.txt");
     eleventyConfig.addPassthroughCopy("BingSiteAuth.xml");
+    eleventyConfig.addPassthroughCopy("page-flip.browser.js");
+    eleventyConfig.addPassthroughCopy("flipbook.js");
 
     eleventyConfig.addCollection("projects", function(collectionApi) {
         return collectionApi.getFilteredByGlob("content/projects/*.md")
