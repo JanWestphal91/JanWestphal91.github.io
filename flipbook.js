@@ -119,9 +119,49 @@
 
         flipbook.on("init", function () {
             buildControls(flipbook, bookElement);
+            installDebugHud(flipbook, bookElement);
         });
 
         flipbook.loadFromHTML(bookElement.querySelectorAll(".flipbook-page"));
+    }
+
+    // TEMPORARY diagnostics for the "jumps to header" bug — remove once
+    // found. Renders a live on-screen log (so it's readable on a phone
+    // without needing devtools) of scrollY, document height, #book's own
+    // rendered height, and the URL hash, on every relevant event. The goal
+    // is to see, at the moment of the jump, whether scrollHeight actually
+    // shrank (layout collapse), whether the hash changed (anchor
+    // navigation), or neither (something calling scrollTo directly).
+    function installDebugHud(flipbook, bookElement) {
+        const hud = document.createElement("pre");
+        hud.id = "flipbook-debug-hud";
+        hud.style.cssText =
+            "position:fixed;left:0;right:0;bottom:0;max-height:45vh;" +
+            "margin:0;padding:6px;overflow:auto;z-index:99999;" +
+            "background:rgba(0,0,0,0.88);color:#5f5;" +
+            "font:11px/1.45 monospace;white-space:pre-wrap;pointer-events:none;";
+        document.body.appendChild(hud);
+
+        const lines = [];
+        function record(label) {
+            const entry =
+                performance.now().toFixed(0) + "ms " + label +
+                " scrollY=" + window.scrollY +
+                " docH=" + document.documentElement.scrollHeight +
+                " bookH=" + Math.round(bookElement.getBoundingClientRect().height) +
+                " hash=" + JSON.stringify(location.hash);
+            lines.push(entry);
+            if (lines.length > 50) lines.shift();
+            hud.textContent = lines.join("\n");
+        }
+
+        record("hud-installed");
+        flipbook.on("changeState", function (e) { record("changeState:" + e.data); });
+        flipbook.on("flip", function (e) { record("flip:" + e.data); });
+        window.addEventListener("scroll", function () { record("scroll-event"); }, { passive: true });
+        window.addEventListener("hashchange", function () { record("hashchange"); });
+        new MutationObserver(function () { record("book-dom-mutated"); })
+            .observe(bookElement, { childList: true, subtree: true });
     }
 
     document.addEventListener("DOMContentLoaded", function () {
