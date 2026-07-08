@@ -111,9 +111,59 @@
 
         flipbook.on("init", function () {
             buildControls(flipbook, bookElement);
+            guardScrollPositionDuringFlips(bookElement);
         });
 
         flipbook.loadFromHTML(bookElement.querySelectorAll(".flipbook-page"));
+    }
+
+    // On every page turn, PageFlip rewrites the DOM inside #book (it appends
+    // the newly rendered page, then later removes the old one). On mobile
+    // Chrome this DOM churn is followed — a frame or two later — by the
+    // browser silently resetting window.scrollY, which reads as "the page
+    // jumps to the header". It's most visible on short pages (nothing below
+    // the book to scroll into), but happens on every page regardless.
+    // CSS `overflow-anchor: none` does not prevent it. Re-reading scrollY on
+    // every DOM mutation doesn't work either — by the time a later mutation
+    // fires, the browser may have already applied (part of) the reset, so
+    // that "known good" value is already corrupted.
+    // Instead: anchor to the scroll position at touchstart, before PageFlip
+    // has touched the DOM at all, and keep re-asserting that single value
+    // for the duration of the flip — unless the touch is a real vertical
+    // drag (mobileScrollSupport's own way of letting you scroll the page
+    // through the book), in which case we back off immediately.
+    function guardScrollPositionDuringFlips(bookElement) {
+        const guardDurationMs = 1000;
+        let anchorScrollY = window.scrollY;
+        let guardDeadline = 0;
+        let userIsScrolling = false;
+        let touchStartY = null;
+
+        function tick() {
+            if (performance.now() >= guardDeadline) {
+                return;
+            }
+            if (!userIsScrolling && window.scrollY !== anchorScrollY) {
+                window.scrollTo(0, anchorScrollY);
+            }
+            requestAnimationFrame(tick);
+        }
+
+        bookElement.addEventListener("touchstart", function (e) {
+            anchorScrollY = window.scrollY;
+            guardDeadline = performance.now() + guardDurationMs;
+            userIsScrolling = false;
+            touchStartY = e.touches.length > 0 ? e.touches[0].clientY : null;
+            requestAnimationFrame(tick);
+        }, { passive: true });
+
+        bookElement.addEventListener("touchmove", function (e) {
+            if (touchStartY !== null && e.touches.length > 0) {
+                if (Math.abs(e.touches[0].clientY - touchStartY) > 10) {
+                    userIsScrolling = true;
+                }
+            }
+        }, { passive: true });
     }
 
     document.addEventListener("DOMContentLoaded", function () {
