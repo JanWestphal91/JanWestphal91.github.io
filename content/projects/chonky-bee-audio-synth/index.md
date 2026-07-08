@@ -13,12 +13,10 @@ meta:
   - Electronic
   - Prototype
   - Audio
-  - 'Status: WIP'
 meta_de:
   - Elektronik
   - Prototyp
   - Audio
-  - 'Status: In Arbeit'
 images:
   - src: Images/Audiodingo/standingdingo.webp
     alt: Audio Dingo Synth front view
