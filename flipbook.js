@@ -105,74 +105,27 @@
             drawShadow: true,
             maxShadowOpacity: 0.5,
             flippingTime: 700,
-            mobileScrollSupport: true,
+            // false, not true: with mobileScrollSupport enabled, PageFlip's
+            // own touch handler only decides whether to call
+            // preventDefault() *after* it sees which way the drag goes,
+            // which races the browser's native scroll gesture and is the
+            // cause of a well-known upstream bug where the page jumps to
+            // the top mid-flip on mobile Chrome
+            // (https://github.com/Nodlik/StPageFlip/issues/38, unresolved).
+            // With it false, preventDefault() fires synchronously on
+            // touchstart, so native scroll never arms in the first place.
+            // This matches the StPageFlip demo's own primary example
+            // (https://nodlik.github.io/StPageFlip/), which uses the same
+            // width/height/size here and has no scroll-jump issue.
+            mobileScrollSupport: false,
             usePortrait: true,
         });
 
         flipbook.on("init", function () {
             buildControls(flipbook, bookElement);
-            guardScrollPositionDuringFlips(flipbook);
         });
 
         flipbook.loadFromHTML(bookElement.querySelectorAll(".flipbook-page"));
-    }
-
-    // On every page turn, PageFlip rewrites the DOM inside #book (it appends
-    // the newly rendered page, then later removes the old one). On mobile
-    // Chrome this DOM churn is followed — a frame or two later — by the
-    // browser silently resetting window.scrollY, which reads as "the page
-    // jumps to the header". It's most visible on short pages (nothing below
-    // the book to scroll into), but happens on every page regardless.
-    // CSS `overflow-anchor: none` does not prevent it.
-    //
-    // A previous version of this guard tried to detect "is the user actually
-    // scrolling" from raw touch deltas on #book, and backed off past a 10px
-    // vertical threshold. That heuristic was wrong on two counts: (1) real
-    // page-flip swipes wobble vertically by more than 10px too, so it backed
-    // off mid-flip, right when the jump happens; (2) it only listened on
-    // #book, but the page slider in buildControls() is inserted *after*
-    // #book as a sibling, so dragging it to flip pages was never guarded at
-    // all. PageFlip's own "changeState" event is ground truth for whether a
-    // flip is in progress (it fires "read" | "user_fold" | "flipping" |
-    // "fold_corner") — while it's anything but "read", PageFlip's own touch
-    // handler is already calling preventDefault() on every touchmove, so
-    // real scrolling is physically impossible and it's always safe to pin
-    // scrollY. We keep pinning for a short grace period after returning to
-    // "read" too, since the browser's scroll reset lands a frame or two
-    // after the DOM settles, not synchronously with the state change.
-    function guardScrollPositionDuringFlips(flipbook) {
-        const graceMs = 250;
-        let anchorScrollY = window.scrollY;
-        let flipping = false;
-        let guardUntil = 0;
-
-        window.addEventListener("scroll", function () {
-            if (!flipping && performance.now() >= guardUntil) {
-                anchorScrollY = window.scrollY;
-            }
-        }, { passive: true });
-
-        function tick() {
-            if (window.scrollY !== anchorScrollY) {
-                window.scrollTo(window.scrollX, anchorScrollY);
-            }
-            if (flipping || performance.now() < guardUntil) {
-                requestAnimationFrame(tick);
-            }
-        }
-
-        flipbook.on("changeState", function (e) {
-            if (e.data !== "read") {
-                if (!flipping) {
-                    anchorScrollY = window.scrollY;
-                    requestAnimationFrame(tick);
-                }
-                flipping = true;
-            } else {
-                flipping = false;
-                guardUntil = performance.now() + graceMs;
-            }
-        });
     }
 
     document.addEventListener("DOMContentLoaded", function () {
