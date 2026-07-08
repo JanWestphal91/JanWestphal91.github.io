@@ -139,11 +139,34 @@
             "position:fixed;left:0;right:0;bottom:0;max-height:45vh;" +
             "margin:0;padding:6px;overflow:auto;z-index:99999;" +
             "background:rgba(0,0,0,0.88);color:#5f5;" +
-            "font:11px/1.45 monospace;white-space:pre-wrap;pointer-events:none;";
+            "font:11px/1.45 monospace;white-space:pre-wrap;pointer-events:auto;";
         document.body.appendChild(hud);
 
         const lines = [];
-        function record(label) {
+        let lastJumpIndex = -1;
+        let lastScrollY = window.scrollY;
+        let lastScrollLogTime = 0;
+        let frozenUntil = 0;
+
+        function escapeHtml(s) {
+            return s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+        }
+
+        function render() {
+            hud.innerHTML = lines.map(function (text, i) {
+                const isJump = i === lastJumpIndex;
+                const attrs = isJump ? ' id="hud-jump-marker" style="color:#f55;font-weight:bold"' : "";
+                return "<div" + attrs + ">" + escapeHtml(text) + "</div>";
+            }).join("");
+            const marker = document.getElementById("hud-jump-marker");
+            if (marker) {
+                hud.scrollTop = marker.offsetTop - 10;
+            } else {
+                hud.scrollTop = hud.scrollHeight;
+            }
+        }
+
+        function record(label, isJump) {
             const entry =
                 performance.now().toFixed(0) + "ms " + label +
                 " scrollY=" + window.scrollY +
@@ -151,17 +174,43 @@
                 " bookH=" + Math.round(bookElement.getBoundingClientRect().height) +
                 " hash=" + JSON.stringify(location.hash);
             lines.push(entry);
-            if (lines.length > 50) lines.shift();
-            hud.textContent = lines.join("\n");
+            // Cap generously, not at 50 — scroll-event floods were pushing
+            // the actual changeState/flip trigger and the jump itself out
+            // of the buffer before it could be screenshotted.
+            if (lines.length > 300) {
+                lines.shift();
+                if (lastJumpIndex >= 0) lastJumpIndex -= 1;
+            }
+            if (isJump) lastJumpIndex = lines.length - 1;
+            render();
         }
 
         record("hud-installed");
         flipbook.on("changeState", function (e) { record("changeState:" + e.data); });
         flipbook.on("flip", function (e) { record("flip:" + e.data); });
-        window.addEventListener("scroll", function () { record("scroll-event"); }, { passive: true });
         window.addEventListener("hashchange", function () { record("hashchange"); });
         new MutationObserver(function () { record("book-dom-mutated"); })
             .observe(bookElement, { childList: true, subtree: true });
+
+        window.addEventListener("scroll", function () {
+            const now = performance.now();
+            const y = window.scrollY;
+            const delta = y - lastScrollY;
+            const isJump = Math.abs(delta) > 80;
+
+            if (isJump) {
+                record("!!! JUMP !!! delta=" + delta.toFixed(1) + " from=" + lastScrollY.toFixed(1), true);
+                // Freeze routine scroll logging for a few seconds so the
+                // jump stays visible instead of getting buried under the
+                // dense recovery-scroll noise that follows it.
+                frozenUntil = now + 4000;
+            } else if (now >= frozenUntil && now - lastScrollLogTime > 60) {
+                record("scroll-event");
+                lastScrollLogTime = now;
+            }
+
+            lastScrollY = y;
+        }, { passive: true });
     }
 
     document.addEventListener("DOMContentLoaded", function () {
