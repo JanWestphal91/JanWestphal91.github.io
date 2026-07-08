@@ -826,6 +826,27 @@ button,
     overflow-anchor: none;
 }
 
+@media (max-width: 700px) {
+    /* size:"stretch" normally holds #book's height via a padding-bottom
+       percentage that PageFlip sets on the *inner* .stf__wrapper — #book
+       itself is only auto-height, i.e. derived from that child. Because
+       PageFlip clears and rebuilds the page DOM on every flip (see
+       comment above), there's a window where the derivation can come out
+       wrong and #book's rendered height genuinely shrinks for a frame,
+       which shrinks the whole document's scrollable height and forces
+       the browser to clamp scrollY — the actual jump, independent of any
+       touch/gesture handling. Pinning the ratio here, directly on #book,
+       makes its height a pure function of its own width in the layout
+       engine, with no dependency on child content at all, so it cannot
+       collapse no matter what PageFlip does to its children mid-flip.
+       Scoped to phone widths only: on wider viewports PageFlip may switch
+       to a two-page landscape spread with a different (wider) ratio, and
+       this single portrait ratio would fight that. */
+    #book {
+        aspect-ratio: 550 / 733;
+    }
+}
+
 .flipbook-page {
     background: var(--surface);
 }

@@ -105,19 +105,15 @@
             drawShadow: true,
             maxShadowOpacity: 0.5,
             flippingTime: 700,
-            // false, not true: with mobileScrollSupport enabled, PageFlip's
-            // own touch handler only decides whether to call
-            // preventDefault() *after* it sees which way the drag goes,
-            // which races the browser's native scroll gesture and is the
-            // cause of a well-known upstream bug where the page jumps to
-            // the top mid-flip on mobile Chrome
-            // (https://github.com/Nodlik/StPageFlip/issues/38, unresolved).
-            // With it false, preventDefault() fires synchronously on
-            // touchstart, so native scroll never arms in the first place.
-            // This matches the StPageFlip demo's own primary example
-            // (https://nodlik.github.io/StPageFlip/), which uses the same
-            // width/height/size here and has no scroll-jump issue.
-            mobileScrollSupport: false,
+            // Tried mobileScrollSupport:false here to force preventDefault()
+            // synchronously on touchstart, ruling out a touch-gesture race
+            // as the cause of the "jumps to header" bug — it made no
+            // difference, which is exactly what you'd expect if scroll is
+            // physically blocked from the first touch and the page still
+            // jumps: the cause isn't touch-gesture handling at all, it's a
+            // real height collapse (see #book's aspect-ratio in style.css).
+            // Left true so touching the book can still scroll the page.
+            mobileScrollSupport: true,
             usePortrait: true,
         });
 
