@@ -34,7 +34,7 @@ images:
     alt: KaffeeGang Canvas
     caption: small canvas painted during coffee klatch with KaffeeGang
     caption_de: Acryl auf Leinwand, entstanden während Kaffeekränzchen für die KaffeeGang
-  - src: /images/FineArt/1000015911.webp
+  - src: /Images/FineArt/1000015911.webp
     alt: Vinyl carving
     caption: Vinyl carving for printing
     caption_de: Vinyl Schnitzerei zum drucken
