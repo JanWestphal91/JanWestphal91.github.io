@@ -6,13 +6,13 @@ order: 4
 cover_image: Images/PocketKnight/prototypehardware.webp
 cover_image_alt: Pocket Knight Pedometer Device
 summary_card: A mini game device with a pedometer utilized as core mechanic.
-summary_card_de: Ein Spielgerät mit einem Schrittzähler als Kernmechanik
-summary: A pocket-sized handheld game console running a turn-based battle game, built from scratch around a small microcontroller, an OLED display and a handful of buttons. The knight and its opponents face off with Attack and Block commands while HP bars tick down on screen, all packed into a hand-soldered protoboard build.
-summary_de: Eine Handheld-Konsole im Taschenformat mit einem rundenbasierten Kampfspiel, komplett selbst entwickelt rund um einen kleinen Mikrocontroller, ein OLED-Display und ein paar Taster. Ritter und Gegner treten mit den Befehlen Angriff und Block gegeneinander an, während die HP-Balken auf dem Display mitzählen – alles auf einer handgelöteten Lochrasterplatine.
+summary_card_de: Ein Spielgerät mit einem Schrittzähler als Kernmechanik.
+summary: A small pocket-sized device. As you collect steps throughout the day, events are unlocked, leading to different encounters and battles. With each battle, the player gains experience, improves their equipment, and becomes stronger. The events are collected so they can be played one after another in the evening, while the device only needs to be carried during the day.
+summary_de: Ein kleines Gerät im Hosentaschenformat. Durch die Schritte die man über den Tag sammelt werden Events freigeschaltet wodurch man dann auf unterschiedliche Ereignisse und Kämpfe trifft. Mit jedem Kampf sammelt der Spieler Erfahrung und verbessert seine Ausrüstung und wird Stärker. Die Ereignisse werden gesammelt so das man Abends in Ruhe alle nacheinander spielen kann und das gerät nur tagsüber bei sich tragen kann.
 meta:
   - Electronic
   - Prototype
-  - Handheld game
+  - Game
   - 'Status: WIP'
 meta_de:
   - Elektronik
@@ -22,12 +22,12 @@ meta_de:
 images:
   - src: Images/PocketKnight/handheldactive.webp
     alt: Pocket Knight OLED display showing the battle screen
-    caption: The battle screen in action, mid-fight.
-    caption_de: Der Kampfbildschirm in Aktion, mitten im Gefecht.
+    caption: Current prototyped object
+    caption_de: Der aktuelle Prototyp
   - src: Images/PocketKnight/handheldbreadboard.webp
     alt: Pocket Knight breadboard prototype
-    caption: Early breadboard prototype with the OLED display and buttons wired up.
-    caption_de: Früher Breadboard-Prototyp mit verkabeltem OLED-Display und Tastern.
+    caption: Early breadboard prototype
+    caption_de: Früher Breadboard Prototyp
 embed: ''
-date: 2026-01-03
+date: 2026-07-08
 ---
