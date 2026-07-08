@@ -819,6 +819,11 @@ button,
     border: 1px solid rgba(23, 26, 33, 0.22);
     border-radius: var(--radius);
     box-shadow: 0 10px 30px rgba(20, 30, 50, 0.15);
+    /* page-flip rebuilds its page DOM (innerHTML = "") on every flip.
+       Without this, Chrome/Safari's scroll anchoring loses its reference
+       node during that rebuild and falls back to scrolling to the top
+       of the document — the "jumps to header" bug on mobile taps. */
+    overflow-anchor: none;
 }
 
 .flipbook-page {
