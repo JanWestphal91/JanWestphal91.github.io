@@ -111,7 +111,7 @@
 
         flipbook.on("init", function () {
             buildControls(flipbook, bookElement);
-            guardScrollPositionDuringFlips(bookElement);
+            guardScrollPositionDuringFlips(flipbook);
         });
 
         flipbook.loadFromHTML(bookElement.querySelectorAll(".flipbook-page"));
@@ -123,47 +123,56 @@
     // browser silently resetting window.scrollY, which reads as "the page
     // jumps to the header". It's most visible on short pages (nothing below
     // the book to scroll into), but happens on every page regardless.
-    // CSS `overflow-anchor: none` does not prevent it. Re-reading scrollY on
-    // every DOM mutation doesn't work either — by the time a later mutation
-    // fires, the browser may have already applied (part of) the reset, so
-    // that "known good" value is already corrupted.
-    // Instead: anchor to the scroll position at touchstart, before PageFlip
-    // has touched the DOM at all, and keep re-asserting that single value
-    // for the duration of the flip — unless the touch is a real vertical
-    // drag (mobileScrollSupport's own way of letting you scroll the page
-    // through the book), in which case we back off immediately.
-    function guardScrollPositionDuringFlips(bookElement) {
-        const guardDurationMs = 1000;
+    // CSS `overflow-anchor: none` does not prevent it.
+    //
+    // A previous version of this guard tried to detect "is the user actually
+    // scrolling" from raw touch deltas on #book, and backed off past a 10px
+    // vertical threshold. That heuristic was wrong on two counts: (1) real
+    // page-flip swipes wobble vertically by more than 10px too, so it backed
+    // off mid-flip, right when the jump happens; (2) it only listened on
+    // #book, but the page slider in buildControls() is inserted *after*
+    // #book as a sibling, so dragging it to flip pages was never guarded at
+    // all. PageFlip's own "changeState" event is ground truth for whether a
+    // flip is in progress (it fires "read" | "user_fold" | "flipping" |
+    // "fold_corner") — while it's anything but "read", PageFlip's own touch
+    // handler is already calling preventDefault() on every touchmove, so
+    // real scrolling is physically impossible and it's always safe to pin
+    // scrollY. We keep pinning for a short grace period after returning to
+    // "read" too, since the browser's scroll reset lands a frame or two
+    // after the DOM settles, not synchronously with the state change.
+    function guardScrollPositionDuringFlips(flipbook) {
+        const graceMs = 250;
         let anchorScrollY = window.scrollY;
-        let guardDeadline = 0;
-        let userIsScrolling = false;
-        let touchStartY = null;
+        let flipping = false;
+        let guardUntil = 0;
+
+        window.addEventListener("scroll", function () {
+            if (!flipping && performance.now() >= guardUntil) {
+                anchorScrollY = window.scrollY;
+            }
+        }, { passive: true });
 
         function tick() {
-            if (performance.now() >= guardDeadline) {
-                return;
+            if (window.scrollY !== anchorScrollY) {
+                window.scrollTo(window.scrollX, anchorScrollY);
             }
-            if (!userIsScrolling && window.scrollY !== anchorScrollY) {
-                window.scrollTo(0, anchorScrollY);
+            if (flipping || performance.now() < guardUntil) {
+                requestAnimationFrame(tick);
             }
-            requestAnimationFrame(tick);
         }
 
-        bookElement.addEventListener("touchstart", function (e) {
-            anchorScrollY = window.scrollY;
-            guardDeadline = performance.now() + guardDurationMs;
-            userIsScrolling = false;
-            touchStartY = e.touches.length > 0 ? e.touches[0].clientY : null;
-            requestAnimationFrame(tick);
-        }, { passive: true });
-
-        bookElement.addEventListener("touchmove", function (e) {
-            if (touchStartY !== null && e.touches.length > 0) {
-                if (Math.abs(e.touches[0].clientY - touchStartY) > 10) {
-                    userIsScrolling = true;
+        flipbook.on("changeState", function (e) {
+            if (e.data !== "read") {
+                if (!flipping) {
+                    anchorScrollY = window.scrollY;
+                    requestAnimationFrame(tick);
                 }
+                flipping = true;
+            } else {
+                flipping = false;
+                guardUntil = performance.now() + graceMs;
             }
-        }, { passive: true });
+        });
     }
 
     document.addEventListener("DOMContentLoaded", function () {
