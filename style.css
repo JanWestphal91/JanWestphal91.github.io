@@ -821,6 +821,17 @@ button,
     box-shadow: 0 10px 30px rgba(20, 30, 50, 0.15);
 }
 
+.flipbook-page {
+    background: var(--surface);
+}
+
+.flipbook-page img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: fill;
+}
+
 .flipbook-controls {
     display: flex;
     align-items: center;

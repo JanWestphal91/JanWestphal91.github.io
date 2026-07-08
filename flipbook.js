@@ -70,14 +70,37 @@
             return;
         }
 
+        // Render pages as real <img> elements (loadFromHTML) rather than
+        // drawing onto <canvas> (loadFromImages). The canvas path in this
+        // library sizes its buffer in CSS pixels only — it never accounts
+        // for devicePixelRatio — so on high-DPR phones the page image is
+        // rasterized undersized and then upscaled, which looks blurry.
+        // <img> elements are scaled by the browser itself, which is DPR-correct.
+        imagePaths.forEach(function (path, index) {
+            const page = document.createElement("div");
+            page.className = "flipbook-page";
+            if (index === 0 || index === imagePaths.length - 1) {
+                page.dataset.density = "hard";
+            }
+
+            const img = document.createElement("img");
+            img.src = path;
+            img.alt = "";
+            img.loading = "lazy";
+            img.decoding = "async";
+
+            page.appendChild(img);
+            bookElement.appendChild(page);
+        });
+
         const flipbook = new St.PageFlip(bookElement, {
             width: 550,
             height: 733,
             size: "stretch",
             minWidth: 280,
-            maxWidth: 1000,
+            maxWidth: 1200,
             minHeight: 375,
-            maxHeight: 1350,
+            maxHeight: 1600,
             showCover: true,
             drawShadow: true,
             maxShadowOpacity: 0.5,
@@ -90,7 +113,7 @@
             buildControls(flipbook, bookElement);
         });
 
-        flipbook.loadFromImages(imagePaths);
+        flipbook.loadFromHTML(bookElement.querySelectorAll(".flipbook-page"));
     }
 
     document.addEventListener("DOMContentLoaded", function () {
