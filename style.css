@@ -25,6 +25,14 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    /* PageFlip rebuilds #book's page DOM on every flip. overflow-anchor
+       scoped to #book alone only stops that subtree from being *chosen*
+       as the scroll anchor — it doesn't stop the browser from anchoring
+       to some other node in reaction to #book's mutation. The property
+       has to sit on the actual scrolling context (html) to fully disable
+       scroll-anchor selection for the document and stop it from
+       resetting scrollY to 0 mid-flip. */
+    overflow-anchor: none;
 }
 
 .ticker-band {
