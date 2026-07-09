@@ -1200,5 +1200,108 @@ function initFishScene() {
     requestAnimationFrame(loop);
 }
 
+/* ═══ Header Ticker: click to pause/resume, drag to scrub ═══ */
+function initTicker() {
+    const band = document.querySelector(".ticker-band");
+    const content = band ? band.querySelector(".ticker-content") : null;
+
+    if (!band || !content) {
+        return;
+    }
+
+    // Take over from the CSS keyframe animation so pausing and dragging can
+    // share a single offset. Read the current animated position first so the
+    // handover is seamless (script.js is deferred — the CSS animation has
+    // usually been running for a moment already).
+    let x = 0;
+    const computedTransform = getComputedStyle(content).transform;
+    if (computedTransform && computedTransform !== "none") {
+        x = -new DOMMatrixReadOnly(computedTransform).m41;
+    }
+    content.style.animation = "none";
+
+    // Width of ONE of the two duplicated .ticker-text spans — the loop point.
+    let half = 0;
+    function measure() {
+        half = content.scrollWidth / 2;
+    }
+    measure();
+    window.addEventListener("resize", measure);
+    // The language toggle rewrites the .ticker-text contents.
+    new MutationObserver(measure).observe(content, { childList: true, subtree: true, characterData: true });
+
+    // Match the old CSS timing: 50% of the content per 30s.
+    const LOOP_SECONDS = 30;
+    let paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let pointerIsDown = false;
+    let lastTime = performance.now();
+
+    function apply() {
+        if (half > 0) {
+            x = ((x % half) + half) % half;
+        }
+        content.style.transform = "translateX(" + (-x) + "px)";
+    }
+    apply();
+
+    function loop(now) {
+        const dt = (now - lastTime) / 1000;
+        lastTime = now;
+        if (!paused && !pointerIsDown && half > 0) {
+            x += (half / LOOP_SECONDS) * dt;
+            apply();
+        }
+        requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    // Pointer events cover mouse and touch alike. touch-action: pan-y (CSS)
+    // keeps vertical page scrolling native; horizontal moves are ours.
+    let downX = 0;
+    let startX = 0;
+    let dragged = false;
+
+    band.addEventListener("pointerdown", function (e) {
+        pointerIsDown = true; // freezes the ticker immediately
+        dragged = false;
+        downX = e.clientX;
+        startX = x;
+        band.setPointerCapture(e.pointerId);
+    });
+
+    band.addEventListener("pointermove", function (e) {
+        if (!pointerIsDown) {
+            return;
+        }
+        const dx = e.clientX - downX;
+        if (Math.abs(dx) > 4) {
+            dragged = true;
+        }
+        if (dragged) {
+            x = startX - dx;
+            apply();
+        }
+    });
+
+    function release(e) {
+        if (!pointerIsDown) {
+            return;
+        }
+        pointerIsDown = false;
+        // A plain click (no drag) toggles pause/resume; after a real drag the
+        // previous state is kept, so dragging a running ticker lets it resume
+        // from wherever it was dropped.
+        if (e.type === "pointerup" && !dragged) {
+            paused = !paused;
+        }
+        band.classList.toggle("ticker-band--paused", paused);
+    }
+
+    band.addEventListener("pointerup", release);
+    band.addEventListener("pointercancel", release);
+}
+
+initTicker();
+
 initFishScene();
 initLangToggle();
