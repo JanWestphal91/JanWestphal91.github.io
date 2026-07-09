@@ -626,6 +626,16 @@ function initMobileCardFlip() {
 
 initMobileCardFlip();
 
+// Returning via the browser/phone back button restores the page from the
+// back-forward cache exactly as it was left — including a card still stuck
+// in its tapped "is-flipped" state. pageshow fires on bfcache restores too
+// (unlike DOMContentLoaded), so reset all cards there.
+window.addEventListener("pageshow", function () {
+    document.querySelectorAll(".flip-card.is-flipped").forEach(function (card) {
+        card.classList.remove("is-flipped");
+    });
+});
+
 const form = document.getElementById("form") || document.querySelector(".contact-form");
 
 if (form) {
