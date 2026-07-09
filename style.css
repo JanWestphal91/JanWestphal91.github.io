@@ -39,6 +39,16 @@ html {
     overflow: hidden;
     width: 100%;
     background: #000;
+    /* Click pauses, drag scrubs (script.js initTicker). pan-y keeps vertical
+       page scrolling native on touch while horizontal drags go to the ticker. */
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.ticker-band:active {
+    cursor: grabbing;
 }
 
 .ticker-content {
