@@ -838,34 +838,42 @@ function initHeroModal() {
 
 initHeroModal();
 
-function initLogoWavyHover() {
-    const logo = document.querySelector(".logo");
-
-    if (!logo) {
+function initWavyHover(element) {
+    if (!element) {
         return;
     }
 
-    const originalText = logo.textContent || "";
+    const originalText = element.textContent || "";
 
-    function applyLogoWavy() {
-        applyWavyText(logo, originalText);
+    function applyEffect() {
+        // Don't re-apply if the effect is already active. Without this guard,
+        // clicking the link swallowed the first click: hovering applies the
+        // wavy spans, then mousedown moves focus to the link and the focus
+        // handler rebuilt the innerHTML *between mousedown and mouseup* — the
+        // span under the pointer got replaced mid-click, so the browser never
+        // dispatched the click and the link only reacted on the second try.
+        if (element.dataset.effects) {
+            return;
+        }
+        applyWavyText(element, originalText);
     }
 
-    function restoreLogoText() {
-        logo.textContent = originalText;
-        logo.classList.remove("text-effects");
-        logo.removeAttribute("aria-label");
-        delete logo.dataset.effectsOriginal;
-        delete logo.dataset.effects;
+    function restoreText() {
+        element.textContent = originalText;
+        element.classList.remove("text-effects");
+        element.removeAttribute("aria-label");
+        delete element.dataset.effectsOriginal;
+        delete element.dataset.effects;
     }
 
-    logo.addEventListener("mouseenter", applyLogoWavy);
-    logo.addEventListener("focus", applyLogoWavy);
-    logo.addEventListener("mouseleave", restoreLogoText);
-    logo.addEventListener("blur", restoreLogoText);
+    element.addEventListener("mouseenter", applyEffect);
+    element.addEventListener("focus", applyEffect);
+    element.addEventListener("mouseleave", restoreText);
+    element.addEventListener("blur", restoreText);
 }
 
-initLogoWavyHover();
+initWavyHover(document.querySelector(".logo"));
+initWavyHover(document.querySelector(".hero-name-link"));
 
 // Make the optional demo DIV draggable only when it exists.
 const demoDraggable = document.getElementById("mydiv");
