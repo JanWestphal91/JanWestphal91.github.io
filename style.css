@@ -832,6 +832,23 @@ button,
        node during that rebuild and falls back to scrolling to the top
        of the document — the "jumps to header" bug on mobile taps. */
     overflow-anchor: none;
+    /* THE actual fix for the mobile scroll-jump-to-header bug (verified in
+       headless mobile Chrome): during a *soft*-page flip, PageFlip's
+       .stf__outerShadow / .stf__innerShadow divs (sized 2× the book
+       height, rotated/translated every frame) and the rotating temporary
+       page copy are absolutely positioned but never clipped, so their
+       invisible (clip-path'ed) boxes stick out far below #book. That
+       inflates document.scrollHeight by hundreds of px for the duration
+       of the flip, and mobile browsers respond to that layout churn by
+       resetting window.scrollY — independent of scroll anchoring
+       (overflow-anchor does not prevent it) and of lazy loading. Hard
+       pages (the cover) use different shadow elements, which is why only
+       content-page flips jumped. `contain: paint` clips all descendant
+       painting/overflow at #book's border box, so a flip can no longer
+       change the document height. The clipped regions were invisible
+       anyway — verified mid-flip on mobile portrait and desktop
+       landscape spreads. */
+    contain: paint;
 }
 
 @media (max-width: 700px) {
