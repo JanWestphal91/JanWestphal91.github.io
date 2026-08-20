@@ -20,6 +20,10 @@ meta_de:
   - Game
   - 'Status: veröffentlicht'
 images:
+  - src: /Images/projects/pocket-knight/pocketknightspriteposter.webp
+    alt: pocket Knight sprite poster
+    caption: Pocket Knight - spriteposter
+    caption_de: Pocket Knight - Spriteposter
   - src: /Images/projects/pocket-knight/pocketknightposter3.webp
     alt: Pockt knight poster
     caption: Pocket Knight - a holy grail
