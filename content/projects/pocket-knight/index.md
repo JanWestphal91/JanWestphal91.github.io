@@ -33,5 +33,5 @@ images:
     caption: Pocket Knight - a holy grail
     caption_de: Pocket Knight - Der heilige Gral
 embed: ''
-date: 2026-07-08
+date: 2026-08-20
 ---
