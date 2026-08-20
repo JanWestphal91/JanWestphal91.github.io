@@ -11,10 +11,15 @@ summary: WIP!
 summary_de: |-
   Im Rahmen der jährlichen Summer Gamejam vom IF(game)SH e.V. habe ich ein Spiel in einem dreier Team für den Gameboy Advance über ein Wochenende entwickelt. Ich war hauptsächlich für die Pixelart, den Webemulator und das Itch.io site styling zuständig. Meine Teampartner haben sich mit der technischen Machbarkeit und der Gameplayprogrammierung auseinander gesetzt. Wir haben das Spiel in der Programmiersprache Rust entwickelt mit der agb Bibliothek, durch die agb bibliothek konnten wir auch direkt Aseprite (Pixelart Editor) files laden ohne exportieren zu müssen. Dadurch konnten wir am Ende eine ROM kompilieren und diese dann über eine micro sd Karte in ein Flashmodul einlegen und auf dem Gameboy dann tatsächlich testen.
 
-  Link zur gamesite: https://jan-west.itch.io/chirping-on-trust
+  Link zur gamesite: 
+  https://jan-west.itch.io/chirping-on-trust
+
   Link zu den Teampartnern: 
   Gracl: https://gracl.itch.io/
   Zoltankost: https://zoltankost.itch.io/
+
+  Link zum Blogbeitrag über meine Erfahrung bei der Gamejam:
+  https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/
 meta:
   - Gamejam, Group project, released
 meta_de:
