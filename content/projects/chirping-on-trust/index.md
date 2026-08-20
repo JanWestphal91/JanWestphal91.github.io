@@ -1,8 +1,8 @@
 ---
 title: Chirping on Trust for GBA
 slug: chirping-on-trust
-category: Game, Art
-order: 10
+category: '[Game, Art] 2026'
+order: 1
 cover_image: /Images/projects/chirping-on-trust/webshot.webp
 cover_image_alt: Game running on a GBA
 summary_card: WIP!
