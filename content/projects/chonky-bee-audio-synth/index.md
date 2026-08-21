@@ -22,18 +22,6 @@ images:
     alt: Audio Dingo Synth front view
     caption: The finished enclosure, front view.
     caption_de: Das fertige Gehäuse, Frontalansicht.
-  - src: Images/Audiodingo/DingoFirstBreadboard.webp
-    alt: Audio Dingo Synth breadboard prototype
-    caption: Early breadboard prototype with the Arduino, OLED and controls.
-    caption_de: Früher Breadboard-Prototyp mit Arduino, OLED-Display und Bedienelementen.
-  - src: Images/Audiodingo/DingoinFusion.webp
-    alt: Audio Dingo Synth enclosure CAD model
-    caption: Designing the 3D-printed enclosure in Fusion 360.
-    caption_de: Konstruktion des 3D-gedruckten Gehäuses in Fusion 360.
-  - src: Images/Audiodingo/DingofirstCase.webp
-    alt: Audio Dingo Synth first printed case
-    caption: The first 3D-printed case, fresh off the printer.
-    caption_de: Das erste 3D-gedruckte Gehäuse, frisch vom Drucker.
 embed: ''
 date: 2026-01-02
 ---
