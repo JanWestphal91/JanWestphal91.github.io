@@ -8,7 +8,10 @@ cover_image: /Images/blog/development-process-of-pocket-knight/closeshotpocketkn
 cover_image_alt: Photo of the finished device
 tags:
   - Game Dev, Prototyping, Electronics
-images: []
+images:
+  - src: /Images/PocketKnight/handheldactive.webp
+    alt: Finalizing electronics
+    caption: finalizing electronics layout
 body_de: WIP!
 ---
 
