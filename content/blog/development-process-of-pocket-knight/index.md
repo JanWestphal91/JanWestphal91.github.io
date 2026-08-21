@@ -1,6 +1,6 @@
 ---
 title: Development process of Pocket Knight
-title_de: Entwicklungsprozess des Mini Roquelike Spielgeräts Pocket Knight
+title_de: Entwicklungsprozess des Mini Spielgeräts Pocket Knight
 date: 2026-08-20
 description: Detailed Development process of a handheld device.
 description_de: Dokumentation des Entwicklungsprozess für ein Handheld Gerät.
