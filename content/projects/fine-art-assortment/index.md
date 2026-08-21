@@ -1,4 +1,5 @@
 ---
+published: true
 title: Fine Art Assortment
 slug: fine-art-assortment
 category: '[Illustration]'

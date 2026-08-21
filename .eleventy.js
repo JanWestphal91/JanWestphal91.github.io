@@ -2,6 +2,17 @@ const markdownIt = require("markdown-it");
 const md = markdownIt({ html: true, breaks: false, linkify: true });
 
 module.exports = function(eleventyConfig) {
+    // ── Entwürfe ──────────────────────────────────────────────────────
+    // Beiträge mit "published: false" werden beim Build komplett
+    // übersprungen: keine Seite, kein Eintrag in den Übersichten.
+    // Beim lokalen Vorschau-Server (npx @11ty/eleventy --serve) sind sie
+    // dagegen sichtbar, damit du Entwürfe ansehen kannst.
+    eleventyConfig.addPreprocessor("drafts", "md", (data) => {
+        if (data.published === false && process.env.ELEVENTY_RUN_MODE === "build") {
+            return false;
+        }
+    });
+
     eleventyConfig.addFilter("md", content => content ? md.render(content) : '');
     // Static assets — must be explicit in Eleventy 3
     eleventyConfig.addPassthroughCopy("Images");

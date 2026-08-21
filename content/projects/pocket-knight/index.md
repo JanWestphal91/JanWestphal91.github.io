@@ -1,4 +1,5 @@
 ---
+published: true
 title: Pocket Knight
 slug: pocket-knight
 category: '[Electronic, Game] 2026'

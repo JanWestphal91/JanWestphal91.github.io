@@ -1,4 +1,5 @@
 ---
+published: true
 title: Audio Dingo Synth
 slug: Audio-Dingo-Synth
 category: '[Electronic] 2026'

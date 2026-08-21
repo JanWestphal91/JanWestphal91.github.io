@@ -1,4 +1,5 @@
 ---
+published: true
 title: Experiences and impressions from the Media Literacy Gamejam in Leck
 title_de: Erfahrungen und Eindrücke von der Medienkompetenz GameJam in Leck
 date: 2026-08-20

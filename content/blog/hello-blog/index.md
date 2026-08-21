@@ -1,4 +1,5 @@
 ---
+published: true
 title: Development process of a DIY synthesizer
 title_de: Entwicklung eines DIY Synthesizers
 date: 2026-06-13

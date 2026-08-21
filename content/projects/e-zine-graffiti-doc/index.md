@@ -1,4 +1,5 @@
 ---
+published: true
 title: Book#1 // Graffiti Archive 2015-2019
 slug: e-zine-graffiti-doc
 category: '[Illustration] 2019'

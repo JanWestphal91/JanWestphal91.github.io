@@ -1,4 +1,5 @@
 ---
+published: true
 title: Development process of Pocket Knight
 title_de: Entwicklungsprozess des Mini Spielgeräts Pocket Knight
 date: 2026-08-20

@@ -1,4 +1,5 @@
 ---
+published: true
 title: Hidden Walls in Lost Places
 slug: hidden-walls-in-lost-places
 category: '[Illustration] 2020-2021'

@@ -1,4 +1,5 @@
 ---
+published: true
 title: Chirping on Trust for GBA
 slug: chirping-on-trust
 category: '[Game] 2026'

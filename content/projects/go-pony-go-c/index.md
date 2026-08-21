@@ -1,4 +1,5 @@
 ---
+published: true
 title: Go Pony, Go C!
 slug: go-pony-go-c
 category: '[Game] 2026'
@@ -8,7 +9,7 @@ cover_image_alt: Go Pony, Go C! preview
 summary_card: A small game about a pony racing to lightspeed.
 summary_card_de: Ein kleines Spiel über ein Pony, das zur Lichtgeschwindigkeit rennt.
 summary: Made with Godot and Aseprite, free to play. This game is a small homage to the old Flash games of the early 2000s and an experiment with physics calculations. It features a small pony getting faster, trying to reach lightspeed. Available on itch.io to play in a browser, with an online leaderboard, controller or keyboard input, and audio intensity transitions.
-summary_de: Entwickelt mit Godot und Aseprite, kostenlos spielbar. Eine kleine Hommage an die Flash-Spiele der frühen 2000er und ein Experiment mit Physikberechnungen. Ein kleines Pony wird immer schneller und versucht, die Lichtgeschwindigkeit zu erreichen. Spielbar auf itch.io, mit Online-Bestenliste, Controller- und Tastatursteuerung sowie Audio-Intensität und Übergängen.
+summary_de: Entwickelt mit Godot und Aseprite, kostenlos spielbar. Eine kleine Hommage an die Flash-Spiele der frühen 2000er und ein Experiment mit Physikberechnungen. Ein kleines Pony wird immer schneller und versucht, die Lichtgeschwindigkeit zu erreichen. Spielbar auf [itch.io](https://jan-west.itch.io/go-pony-go-c), mit Online-Bestenliste, Controller- und Tastatursteuerung sowie Audio-Intensität und Übergängen.
 meta:
   - Webgame
   - Solo project
