@@ -31,6 +31,6 @@ images:
     alt: Title screen from the game
     caption: Title screen from the game
     caption_de: Titelbildschirm des Spiels
-embed: ''
+embed: <iframe frameborder="0" src="https://itch.io/embed/4878195?border_width=0&amp;bg_color=9badb7&amp;fg_color=3f3f74&amp;link_color=5b6ee1&amp;border_color=798b95" width="206" height="165"><a href="https://jan-west.itch.io/chirping-on-trust">Chirping on trust by Netro, Gracl, zoltankost</a></iframe>
 date: 2026-08-15
 ---
