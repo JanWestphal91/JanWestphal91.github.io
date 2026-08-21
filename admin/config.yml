@@ -2,14 +2,11 @@ backend:
   name: github
   repo: JanWestphal91/JanWestphal91.github.io
   branch: main
-  # Beim Veröffentlichen werden alle Zwischen-Commits eines Entwurfs
-  # zu einem einzigen Commit zusammengefasst.
-  squash_merges: true
 
-# Entwurfs-Modus: Speichern legt einen Branch + Pull Request an, statt direkt
-# auf main zu committen. Erst "Veröffentlichen" merged nach main und startet
-# den Deploy. Status: Entwurf → In Prüfung → Bereit.
-publish_mode: editorial_workflow
+# Entwürfe laufen über das Feld "Veröffentlicht" in jedem Beitrag, nicht über
+# Branches und Pull Requests. Gespeichert wird also immer direkt auf main;
+# ob ein Beitrag auf der Website landet, entscheidet der Schalter.
+# (publish_mode: editorial_workflow ist bewusst nicht gesetzt.)
 
 site_url: https://janwestphal.dev
 
@@ -100,7 +97,20 @@ collections:
     preview_path: "projects/{{slug}}/"
     media_folder: "/Images/projects/{{slug}}"
     public_folder: "/Images/projects/{{slug}}"
+    view_filters:
+      - label: "Nur Entwürfe"
+        field: published
+        pattern: false
+      - label: "Nur veröffentlichte"
+        field: published
+        pattern: true
     fields:
+      - label: "Veröffentlicht"
+        name: published
+        widget: boolean
+        default: true
+        hint: "Aus = Entwurf. Wird gespeichert, erscheint aber nicht auf der Website."
+
       - label: "Title"
         name: title
         widget: string
@@ -193,7 +203,20 @@ collections:
     preview_path: "blog/{{slug}}/"
     media_folder: "/Images/blog/{{slug}}"
     public_folder: "/Images/blog/{{slug}}"
+    view_filters:
+      - label: "Nur Entwürfe"
+        field: published
+        pattern: false
+      - label: "Nur veröffentlichte"
+        field: published
+        pattern: true
     fields:
+      - label: "Veröffentlicht"
+        name: published
+        widget: boolean
+        default: true
+        hint: "Aus = Entwurf. Wird gespeichert, erscheint aber nicht auf der Website."
+
       - label: "Titel (EN)"
         name: title
         widget: string
