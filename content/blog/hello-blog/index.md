@@ -9,7 +9,7 @@ cover_image_alt: Arduino Prototype
 tags:
   - Devlog, Electronic
 images:
-  - src: /Images/ArduinoSynthWip.webp
+  - src: /Images/Audiodingo/DingoFirstBreadboard.webp
     alt: Breadboard Schaltung
     caption: Breadboard Schaltung Prototyping
   - src: /Images/Audiodingo/DingofirstCase.webp
