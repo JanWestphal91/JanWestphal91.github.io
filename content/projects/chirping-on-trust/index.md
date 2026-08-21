@@ -17,8 +17,7 @@ summary: |-
   Gracl: gracl.itch.io
   Zoltankost: zoltankost.itch.io
 
-  Blog post about my experience at the game jam:
-  https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/
+  Here´s a [blog ](https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/)about my expierence at the gamejam.
 summary_de: |-
   Im Rahmen der jährlichen Summer Gamejam vom IF(game)SH e.V. habe ich ein Spiel in einem dreier Team für den Gameboy Advance über ein Wochenende entwickelt. Ich war hauptsächlich für die Pixelart, den Webemulator und das Itch.io site styling zuständig. Meine Teampartner haben sich mit der technischen Machbarkeit und der Gameplayprogrammierung auseinander gesetzt. Wir haben das Spiel in der Programmiersprache Rust entwickelt mit der agb Bibliothek, durch die agb bibliothek konnten wir auch direkt Aseprite (Pixelart Editor) files laden ohne exportieren zu müssen. Dadurch konnten wir am Ende eine ROM kompilieren und diese dann über eine micro sd Karte in ein Flashmodul einlegen und auf dem Gameboy dann tatsächlich testen.
 
