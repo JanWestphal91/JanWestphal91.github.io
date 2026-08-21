@@ -1,4 +1,11 @@
-﻿window.TRANSLATIONS = {
+﻿/*
+ * UI-Strings der Website.
+ *
+ * NICHT hier gepflegt: der Text im "Über mich"-Popup und der Ticker im Header.
+ * Diese Texte kommen aus _data/sitetext.json und werden im CMS unter
+ * "Website-Texte → Über mich & Ticker" bearbeitet.
+ */
+window.TRANSLATIONS = {
     en: {
         "nav.projects":              "Projects",
         "nav.projects.mobile":       "Projects ↗",
@@ -31,13 +38,6 @@
         "contact.error-prefix":      "Error: ",
         "contact.network-error":     "Something went wrong. Please try again.",
 
- "modal.heading":   "Most people call me Jan, some friends call me West – my graffiti / dev nickname is Netro",
-"modal.subtitle":  "Want to know more about me?",
-"modal.p1":        "I'm into experimental design, art, and prototyping. I'm fascinated by how different disciplines interlock to create something new. I love to draw, and I tinker with electronics as well as video and audio equipment. Graffiti culture is part of my roots – it was my first real connection to illustration and design. Painting large-scale pieces has a special appeal that has never let go of me.",
-"modal.p2":        "My path here wasn't a straight one: six semesters of communication design gave me a solid foundation in visual design, even though I never finished the degree. Instead, I worked as a graphic designer for several years – and realized that beyond the visual side, the technology behind it intrigues me just as much. That's why I'm now studying media engineering, bringing both worlds together.",
-"modal.p3":        "Game development is one of the most exciting fields for me, because it brings so many disciplines together into one finished product – design, code, sound, storytelling. My favorite games are Oxygen Not Included, Slay the Spire, and good old Donkey Kong Country. Beyond that, I enjoy playing small indie games and checking out amateur projects.",
-"modal.p4":        "I'm married to a wonderful person who brings some much-needed order into my chaos – and we have two wonderful kids.",
-        "modal.img-alt":   "Jan Westphal – Creative Coder and Designer from Kiel",
 
         "bowl.label":  "❗ Feed Glub now ❗",
         "bowl.msg0":   "🐟 *blub blub*",
@@ -49,7 +49,6 @@
         "bowl.msg6":   "🐠 Glub is full!",
         "bowl.msg7":   "🎉 Best day ever!",
 
-        "ticker": "• People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping • Latest Game : ⚔️ Pocket Knight ⚔️ • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below",
 
         "project.kicker":       "Project",
         "project.gallery-label":"Gallery",
@@ -96,13 +95,6 @@
         "contact.error-prefix":      "Fehler: ",
         "contact.network-error":     "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
 
-        "modal.heading":   "Die meisten nennen mich Jan, manche Freunde West – mein Graffiti- / Dev-Spitzname ist Netro",
-"modal.subtitle":  "Willst du mehr über mich wissen?",
-"modal.p1":        "Ich beschäftige mich mit experimentellem Design, Kunst und Prototyping. Mich fasziniert, wie verschiedene Disziplinen ineinandergreifen und dabei etwas Neues entsteht. Ich zeichne gerne, bastle an Elektronik sowie Video- und Audioequipment. Die Graffiti-Kultur gehört zu meinen Wurzeln, sie war meine erste echte Verbindung zur Illustration und Gestaltung. Großflächige Bilder zu malen hat einen besonderen Reiz, der mich bis heute nicht loslässt.",
-"modal.p2":        "Mein Weg dorthin war kein gerader, sechs Semester Kommunikationsdesign haben mir das gestalterische Fundament gegeben, auch wenn ich das Studium nie abgeschlossen habe. Stattdessen habe ich einige Jahre als Grafiker gearbeitet und dabei gemerkt, dass mich neben dem Visuellen auch die Technik dahinter reizt. Deshalb studiere ich inzwischen Medieningenieurwesen und verbinde so beide Welten.",
-"modal.p3":        "Game-Entwicklung ist für mich eines der spannendsten Felder überhaupt, weil dort so viele Disziplinen in einem fertigen Produkt zusammenlaufen – Design, Code, Sound, Storytelling. Meine Lieblingsspiele sind Oxygen Not Included, Slay the Spire und das gute alte Donkey Kong Country. Ansonsten spiele ich gerne kleine Indiespiele und schaue mir gerne Amateurspiele an.",
-"modal.p4":        "Ich bin verheiratet mit einer wunderbaren Person, die dringend benötigte Ordnung in mein Chaos bringt – und wir haben zwei wundervolle Kinder.",
-        "modal.img-alt":   "Jan Westphal – Creative Coder und Designer aus Kiel",
 
         "bowl.label":  "❗ Glub jetzt füttern ❗",
         "bowl.msg0":   "🐟 *blub blub*",
@@ -114,7 +106,6 @@
         "bowl.msg6":   "🐠 Glub ist satt!",
         "bowl.msg7":   "🎉 Bester Tag ever!",
 
-        "ticker": "• Andere sagen ich kann das 👉 • UI / UX Design • Creative Coding • Game Dev • Grafikdesign • Motion / 3D Grafik • Prototyping • Aktuelles Spiel : ⚔️ Pocket Knight ⚔️ • Was ich wirklich mache 👉 • Schlechte Zeichnungen • rauschige Musik • Sphagetti Code • Heißkleber-Elektronik • 🐟Glub🐟 gleich unten füttern",
 
         "project.kicker":        "Projekt",
         "project.gallery-label": "Galerie",
