@@ -49,7 +49,7 @@
         "bowl.msg6":   "🐠 Glub is full!",
         "bowl.msg7":   "🎉 Best day ever!",
 
-        "ticker": "• People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping • Latest Game : 🐎 Go Pony, Go C ! 🐎 • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below",
+        "ticker": "• People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping • Latest Game : ⚔️ Pocket Knight ⚔️ • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below",
 
         "project.kicker":       "Project",
         "project.gallery-label":"Gallery",
@@ -114,7 +114,7 @@
         "bowl.msg6":   "🐠 Glub ist satt!",
         "bowl.msg7":   "🎉 Bester Tag ever!",
 
-        "ticker": "• Andere sagen ich kann das 👉 • UI / UX Design • Creative Coding • Game Dev • Grafikdesign • Motion / 3D Grafik • Prototyping • Aktuelles Spiel : 🐎 Go Pony, Go C ! 🐎 • Was ich wirklich mache 👉 • Schlechte Zeichnungen • rauschige Musik • Sphagetti Code • Heißkleber-Elektronik • 🐟Glub🐟 gleich unten füttern",
+        "ticker": "• Andere sagen ich kann das 👉 • UI / UX Design • Creative Coding • Game Dev • Grafikdesign • Motion / 3D Grafik • Prototyping • Aktuelles Spiel : ⚔️ Pocket Knight ⚔️ • Was ich wirklich mache 👉 • Schlechte Zeichnungen • rauschige Musik • Sphagetti Code • Heißkleber-Elektronik • 🐟Glub🐟 gleich unten füttern",
 
         "project.kicker":        "Projekt",
         "project.gallery-label": "Galerie",
