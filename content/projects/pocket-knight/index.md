@@ -11,16 +11,14 @@ summary: |-
   A small, pocket-sized device. It is a mini roguelike designed for on the go, where players make progress by walking. The steps collected throughout the day unlock events, which lead to different encounters and battles. With every battle, the player gains experience, improves their equipment, and grows stronger.
 
   The events are stored so that players can go through them one by one in the evening at their own pace, while only needing to carry the device with them during the day.
-
-  Link to the blog post about the development process:
-  <a https://janwestphal.dev/blog/development-process-of-pocket-knight/ </a>
+  I´m writing a bit more in depth about the development process in this 
+  <a href="https://janwestphal.dev/blog/development-process-of-pocket-knight/">blogarticle</a>.
 summary_de: |-
   Ein kleines Gerät im Hosentaschenformat. Es ist ein Mini-Roquelike für unterwegs bei dem man durch Schritte Fortschritt macht. Durch die Schritte die man über den Tag sammelt werden Events freigeschaltet wodurch man dann auf unterschiedliche Ereignisse und Kämpfe trifft. Mit jedem Kampf sammelt der Spieler Erfahrung und verbessert seine Ausrüstung und wird Stärker. 
 
   Die Ereignisse werden gesammelt so das man Abends in Ruhe alle nacheinander spielen kann und das gerät nur tagsüber bei sich tragen kann.
-
-  Link zum Blogbeitrag über den Entwicklungsprozess: 
-  https://janwestphal.dev/blog/development-process-of-pocket-knight/
+  Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem 
+  <a href="https://janwestphal.dev/blog/development-process-of-pocket-knight/">Blogbeitrag </a>.
 meta:
   - Electronic
   - Prototype
