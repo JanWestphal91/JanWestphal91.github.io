@@ -13,6 +13,15 @@ images:
   - src: /Images/PocketKnight/handheldactive.webp
     alt: Finalizing electronics
     caption: finalizing electronics layout
+    caption_de: ''
+  - src: /Images/pocketknightposter3.webp
+    alt: HolyGrail poster
+    caption: silly holy grail poster
+    caption_de: leicht albernes heiliger Gral Poster
+  - src: /Images/blog/development-process-of-pocket-knight/pocketknight2.webp
+    alt: silly knight giving
+    caption: giving the grace.
+    caption_de: die Gnade wird gegeben.
 body_de: WIP!
 ---
 
