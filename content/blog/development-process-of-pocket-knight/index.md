@@ -2,11 +2,12 @@
 title: Development process of Pocket Knight
 title_de: Entwicklungsprozess des Mini Roquelike Spielgeräts Pocket Knight
 date: 2026-08-20
-description: WIP!
-description_de: WIP!
+description: Detailed Development process of a handheld device.
+description_de: Dokumentation des Entwicklungsprozess für ein Handheld Gerät.
 cover_image: /Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png
-cover_image_alt: ''
-tags: []
+cover_image_alt: Photo of the finished device
+tags:
+  - Game Dev, Prototyping, Electronics
 images: []
 body_de: WIP!
 ---
