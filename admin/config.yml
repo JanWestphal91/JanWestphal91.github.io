@@ -2,6 +2,16 @@ backend:
   name: github
   repo: JanWestphal91/JanWestphal91.github.io
   branch: main
+  # Beim Veröffentlichen werden alle Zwischen-Commits eines Entwurfs
+  # zu einem einzigen Commit zusammengefasst.
+  squash_merges: true
+
+# Entwurfs-Modus: Speichern legt einen Branch + Pull Request an, statt direkt
+# auf main zu committen. Erst "Veröffentlichen" merged nach main und startet
+# den Deploy. Status: Entwurf → In Prüfung → Bereit.
+publish_mode: editorial_workflow
+
+site_url: https://janwestphal.dev
 
 media_folder: "Images"
 public_folder: "/Images"
@@ -87,6 +97,7 @@ collections:
     delete: true
     slug: "{{fields.slug}}"
     path: "{{slug}}/index"
+    preview_path: "projects/{{slug}}/"
     media_folder: "/Images/projects/{{slug}}"
     public_folder: "/Images/projects/{{slug}}"
     fields:
@@ -130,11 +141,12 @@ collections:
 
       - label: "Vollständige Beschreibung (EN)"
         name: summary
-        widget: text
+        widget: markdown
+        hint: "Absätze, Links, Listen und Fettung sind möglich. Für einen Link Text markieren und den Link-Button nutzen."
 
       - label: "Vollständige Beschreibung (DE)"
         name: summary_de
-        widget: text
+        widget: markdown
         required: false
 
       - label: "Meta-Tags"
@@ -178,6 +190,7 @@ collections:
     delete: true
     slug: "{{slug}}"
     path: "{{slug}}/index"
+    preview_path: "blog/{{slug}}/"
     media_folder: "/Images/blog/{{slug}}"
     public_folder: "/Images/blog/{{slug}}"
     fields:

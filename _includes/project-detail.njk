@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }} – Jan Westphal</title>
-    <meta name="description" content="{{ summary | truncate(155) }}" />
+    <meta name="description" content="{{ summary | md | striptags | truncate(155) }}" />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
     <meta name="geo.region" content="DE-SH" />
@@ -18,7 +18,7 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="de_DE" />
     <meta property="og:title" content="{{ title }} – Jan Westphal" />
-    <meta property="og:description" content="{{ summary | truncate(155) }}" />
+    <meta property="og:description" content="{{ summary | md | striptags | truncate(155) }}" />
     {% if cover_image %}
     <meta property="og:image" content="https://janwestphal.dev{{ cover_image | imgPath }}" />
     <meta name="twitter:image" content="https://janwestphal.dev{{ cover_image | imgPath }}" />
@@ -32,7 +32,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ title }} – Jan Westphal" />
-    <meta name="twitter:description" content="{{ summary | truncate(155) }}" />
+    <meta name="twitter:description" content="{{ summary | md | striptags | truncate(155) }}" />
 
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
@@ -81,7 +81,8 @@
                 {% endif %}
             </div>
             <h1 data-wavy data-rainbow>{{ title }}</h1>
-            <p class="project-summary" data-en="{{ summary }}" data-de="{{ summary_de or summary }}">{{ summary }}</p>
+            <div class="project-summary" data-lang-show="en">{{ summary | md | safe }}</div>
+            <div class="project-summary" data-lang-show="de" hidden>{{ (summary_de or summary) | md | safe }}</div>
         </div>
     </section>
 

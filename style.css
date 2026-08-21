@@ -784,6 +784,33 @@ button,
     margin-bottom: 1.25rem;
 }
 
+/* Projektbeschreibung wird aus Markdown gerendert und kann daher Absätze,
+   Links, Listen und Hervorhebungen enthalten. */
+.project-summary p {
+    line-height: 1.7;
+    margin: 0 0 1rem;
+}
+
+.project-summary > :last-child {
+    margin-bottom: 0;
+}
+
+.project-summary a {
+    color: var(--accent-link);
+    text-decoration: underline;
+    overflow-wrap: anywhere;
+}
+
+.project-summary ul,
+.project-summary ol {
+    padding-left: 1.5rem;
+    margin: 0 0 1rem;
+}
+
+.project-summary li {
+    line-height: 1.7;
+}
+
 .project-meta {
     list-style: none;
     display: flex;
