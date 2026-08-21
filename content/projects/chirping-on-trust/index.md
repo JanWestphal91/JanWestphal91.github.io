@@ -9,27 +9,19 @@ cover_image_alt: Game running on a GBA
 summary_card: A groupproject developed at a in person gamejam on a weekend.
 summary_card_de: Ein Gruppenprojekt im Rahmen einer Gamejam über ein Wochenende.
 summary: |-
-  As part of the annual Summer Game Jam by IF(game)SH e.V., I developed a game for the Game Boy Advance over the course of a weekend in a team of three. My main responsibilities were pixel art, the web emulator, and the styling of the itch.io page. My teammates focused on technical feasibility and gameplay programming. We developed the game in Rust using the agb library, which also allowed us to load Aseprite files directly without having to export them first. In the end, this enabled us to compile a ROM and test it on an actual Game Boy by loading it via a microSD card into a flash cartridge.
+  As part of the annual Summer Game Jam by IF(game)SH e.V., I developed a game for the Game Boy Advance over the course of a weekend in a team of three. My main responsibilities were pixel art, the web emulator, and the styling of the [itch.io page](https://jan-west.itch.io/chirping-on-trust). My teammates focused on technical feasibility and gameplay programming. We developed the game in Rust using the agb library, which also allowed us to load Aseprite files directly without having to export them first. In the end, this enabled us to compile a ROM and test it on an actual Game Boy by loading it via a microSD card into a flash cartridge.
 
-  Game page: chirping-on-trust
+  My team members were [Gracl](gracl.itch.io) & [Zoltankost](zoltankost.itch.io) and it was really fun to work with them!
 
-  Team members:
-  Gracl: gracl.itch.io
-  Zoltankost: zoltankost.itch.io
-
-  Here´s a [blog ](https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/)about my expierence at the gamejam.
+  Here´s a [blog ](https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/)about my expierience at the gamejam.
 summary_de: |-
-  Im Rahmen der jährlichen Summer Gamejam vom IF(game)SH e.V. habe ich ein Spiel in einem dreier Team für den Gameboy Advance über ein Wochenende entwickelt. Ich war hauptsächlich für die Pixelart, den Webemulator und das Itch.io site styling zuständig. Meine Teampartner haben sich mit der technischen Machbarkeit und der Gameplayprogrammierung auseinander gesetzt. Wir haben das Spiel in der Programmiersprache Rust entwickelt mit der agb Bibliothek, durch die agb bibliothek konnten wir auch direkt Aseprite (Pixelart Editor) files laden ohne exportieren zu müssen. Dadurch konnten wir am Ende eine ROM kompilieren und diese dann über eine micro sd Karte in ein Flashmodul einlegen und auf dem Gameboy dann tatsächlich testen.
+  Im Rahmen der jährlichen Summer Gamejam vom IF(game)SH e.V. habe ich ein Spiel in einem dreier Team für den Gameboy Advance über ein Wochenende entwickelt. Ich war hauptsächlich für die Pixelart, den Webemulator und das [Itch.io site](https://jan-west.itch.io/chirping-on-trust) styling zuständig. Meine Teampartner haben sich mit der technischen Machbarkeit und der Gameplayprogrammierung auseinander gesetzt. Wir haben das Spiel in der Programmiersprache Rust entwickelt mit der agb Bibliothek, durch die agb bibliothek konnten wir auch direkt Aseprite (Pixelart Editor) files laden ohne exportieren zu müssen. Dadurch konnten wir am Ende eine ROM kompilieren und diese dann über eine micro sd Karte in ein Flashmodul einlegen und auf dem Gameboy dann tatsächlich testen.
 
-  Link zur gamesite: 
-  https://jan-west.itch.io/chirping-on-trust
+  Check doch gerne mal die [Gamesite](https://jan-west.itch.io/chirping-on-trust).
 
-  Link zu den Teampartnern: 
-  Gracl: https://gracl.itch.io/
-  Zoltankost: https://zoltankost.itch.io/
+  Meine Teampartner für das Spiel waren [Gracl ](gracl.itch.io)& [Zoltankost](zoltankost.itch.io), es war eine sehr witzige Runde und ich hatte jede Menge Spaß während der Gamejam! 
 
-  Link zum Blogbeitrag über meine Erfahrung bei der Gamejam:
-  https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/
+  In diesem [Blogbeitrag ](https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/)schreibe ich auch noch etwas ausführlicher über die Gamejam.
 meta:
   - Gamejam, Group project, released
 meta_de:
