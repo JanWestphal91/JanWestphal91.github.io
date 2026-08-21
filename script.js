@@ -55,10 +55,21 @@ function applyTranslations(lang, skipProjectRender) {
         el.alt = t(el.dataset.i18nAlt);
     });
 
-    const tickerText = t('ticker');
-    document.querySelectorAll('.ticker-text').forEach(function(el) {
-        el.textContent = tickerText;
+    // Alt texts that come straight from the CMS (_data/sitetext.json) instead
+    // of a translation key.
+    document.querySelectorAll('[data-alt-en]').forEach(function(el) {
+        el.alt = lang === 'de' && el.dataset.altDe ? el.dataset.altDe : el.dataset.altEn;
     });
+
+    // The ticker text is rendered by Eleventy from _data/sitetext.json and
+    // carries data-en / data-de, so the generic handler above already
+    // translated it. Legacy fallback for markup without those attributes:
+    if (window.TRANSLATIONS && window.TRANSLATIONS.en && window.TRANSLATIONS.en.ticker) {
+        const tickerText = t('ticker');
+        document.querySelectorAll('.ticker-text:not([data-en])').forEach(function(el) {
+            el.textContent = tickerText;
+        });
+    }
 
     const bowlLabel = document.getElementById('bowl-label');
     if (bowlLabel && !bowlLabel._fishMsgActive) {

@@ -1,0 +1,33 @@
+{
+  "modal": {
+    "heading_en": "Most people call me Jan, some friends call me West – my graffiti / dev nickname is Netro",
+    "heading_de": "Die meisten nennen mich Jan, manche Freunde West – mein Graffiti- / Dev-Spitzname ist Netro",
+    "subtitle_en": "Want to know more about me?",
+    "subtitle_de": "Willst du mehr über mich wissen?",
+    "image": "/Images/myself.jpeg",
+    "image_alt_en": "Jan Westphal – Creative Coder and Designer from Kiel",
+    "image_alt_de": "Jan Westphal – Creative Coder und Designer aus Kiel",
+    "paragraphs": [
+      {
+        "en": "I'm into experimental design, art, and prototyping. I'm fascinated by how different disciplines interlock to create something new. I love to draw, and I tinker with electronics as well as video and audio equipment. Graffiti culture is part of my roots – it was my first real connection to illustration and design. Painting large-scale pieces has a special appeal that has never let go of me.",
+        "de": "Ich beschäftige mich mit experimentellem Design, Kunst und Prototyping. Mich fasziniert, wie verschiedene Disziplinen ineinandergreifen und dabei etwas Neues entsteht. Ich zeichne gerne, bastle an Elektronik sowie Video- und Audioequipment. Die Graffiti-Kultur gehört zu meinen Wurzeln, sie war meine erste echte Verbindung zur Illustration und Gestaltung. Großflächige Bilder zu malen hat einen besonderen Reiz, der mich bis heute nicht loslässt."
+      },
+      {
+        "en": "My path here wasn't a straight one: six semesters of communication design gave me a solid foundation in visual design, even though I never finished the degree. Instead, I worked as a graphic designer for several years – and realized that beyond the visual side, the technology behind it intrigues me just as much. That's why I'm now studying media engineering, bringing both worlds together.",
+        "de": "Mein Weg dorthin war kein gerader, sechs Semester Kommunikationsdesign haben mir das gestalterische Fundament gegeben, auch wenn ich das Studium nie abgeschlossen habe. Stattdessen habe ich einige Jahre als Grafiker gearbeitet und dabei gemerkt, dass mich neben dem Visuellen auch die Technik dahinter reizt. Deshalb studiere ich inzwischen Medieningenieurwesen und verbinde so beide Welten."
+      },
+      {
+        "en": "Game development is one of the most exciting fields for me, because it brings so many disciplines together into one finished product – design, code, sound, storytelling. My favorite games are Oxygen Not Included, Slay the Spire, and good old Donkey Kong Country. Beyond that, I enjoy playing small indie games and checking out amateur projects.",
+        "de": "Game-Entwicklung ist für mich eines der spannendsten Felder überhaupt, weil dort so viele Disziplinen in einem fertigen Produkt zusammenlaufen – Design, Code, Sound, Storytelling. Meine Lieblingsspiele sind Oxygen Not Included, Slay the Spire und das gute alte Donkey Kong Country. Ansonsten spiele ich gerne kleine Indiespiele und schaue mir gerne Amateurspiele an."
+      },
+      {
+        "en": "I'm married to a wonderful person who brings some much-needed order into my chaos – and we have two wonderful kids.",
+        "de": "Ich bin verheiratet mit einer wunderbaren Person, die dringend benötigte Ordnung in mein Chaos bringt – und wir haben zwei wundervolle Kinder."
+      }
+    ]
+  },
+  "ticker": {
+    "en": "• People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping • Latest Game : ⚔️ Pocket Knight ⚔️ • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below",
+    "de": "• Andere sagen ich kann das 👉 • UI / UX Design • Creative Coding • Game Dev • Grafikdesign • Motion / 3D Grafik • Prototyping • Aktuelles Spiel : ⚔️ Pocket Knight ⚔️ • Was ich wirklich mache 👉 • Schlechte Zeichnungen • rauschige Musik • Sphagetti Code • Heißkleber-Elektronik • 🐟Glub🐟 gleich unten füttern"
+  }
+}

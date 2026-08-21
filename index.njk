@@ -113,16 +113,12 @@
         </button>
     </div>
 
+    {%- set tickerEn = sitetext.ticker.en %}
+    {%- set tickerDe = sitetext.ticker.de or sitetext.ticker.en %}
     <div class="ticker-band">
         <div class="ticker-content">
-        <span class="ticker-text">
-            • People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping •
-            Latest Game : 🐎 Go Pony, Go C ! 🐎 • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below
-        </span>
-            <span class="ticker-text" aria-hidden="true">
-            • People say I can do this 👉 • UI / UX Design • Creative Coding • Game Dev • Graphic Design • Motion / 3D Graphics • Prototyping •
-                Latest Game : 🐎 Go Pony, Go C ! 🐎 • What I actually do 👉 • Lousy Drawings • Noisy Music • Hacky Code • Hot Glue Electronics • Feed 🐟Glub🐟 now below
-        </span>
+            <span class="ticker-text" data-en="{{ tickerEn }}" data-de="{{ tickerDe }}">{{ tickerEn }}</span>
+            <span class="ticker-text" aria-hidden="true" data-en="{{ tickerEn }}" data-de="{{ tickerDe }}">{{ tickerEn }}</span>
         </div>
     </div>
 
@@ -264,12 +260,18 @@
     <div class="modal-content">
         <button class="modal-close" aria-label="Close modal">&times;</button>
         <div class="modal-body">
-            <h3 data-i18n="modal.heading">Most people call me Jan, some friends call me West and my graffiti / dev nickname is Netro</h3>
-            <p data-i18n="modal.subtitle">Want to know a little more about me?</p>
-            <img src="Images/myself.jpeg" data-i18n-alt="modal.img-alt" alt="Jan Westphal – Creative Coder and Designer from Kiel" class="modal-portrait" loading="lazy">
-            <p data-i18n="modal.p1">I'm into experimental design, art, and prototyping. I love how different disciplines can work together to create something new. I enjoy drawing badly, messing around with electronics, video / audio gear and graffiti culture is part of my roots, it was my first real connection to illustration. Doing large scale paintings has always felt incredibly satisfying to me.</p>
-            <p data-i18n="modal.p2">Game development is one of the most interesting fields for me because it combines so many disciplines into one finished product. I'm also involved with the IF(game)SH e.V. to help get more people into game development. My favorite games are Factorio, Slay the Spire, and good old Donkey Kong Country.</p>
-            <p data-i18n="modal.p3">I'm married to a wonderful person who brings some much-needed order into my chaos, and we have two lovely kids together.</p>
+            <h3 data-en="{{ sitetext.modal.heading_en }}" data-de="{{ sitetext.modal.heading_de or sitetext.modal.heading_en }}">{{ sitetext.modal.heading_en }}</h3>
+            <p data-en="{{ sitetext.modal.subtitle_en }}" data-de="{{ sitetext.modal.subtitle_de or sitetext.modal.subtitle_en }}">{{ sitetext.modal.subtitle_en }}</p>
+            {% if sitetext.modal.image %}
+            <img src="{{ sitetext.modal.image | imgPath }}"
+                 alt="{{ sitetext.modal.image_alt_en }}"
+                 data-alt-en="{{ sitetext.modal.image_alt_en }}"
+                 data-alt-de="{{ sitetext.modal.image_alt_de or sitetext.modal.image_alt_en }}"
+                 class="modal-portrait" loading="lazy">
+            {% endif %}
+            {%- for para in sitetext.modal.paragraphs %}
+            <p data-en="{{ para.en }}" data-de="{{ para.de or para.en }}">{{ para.en }}</p>
+            {%- endfor %}
         </div>
     </div>
 </div>

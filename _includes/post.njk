@@ -101,8 +101,10 @@
             <div class="project-gallery">
                 {% for img in images %}
                 <figure class="project-gallery__item">
-                    <img src="{{ img.src }}" alt="{{ img.alt }}" loading="lazy">
-                    {% if img.caption %}<figcaption>{{ img.caption }}</figcaption>{% endif %}
+                    <img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" loading="lazy">
+                    {% if img.caption %}
+                    <figcaption data-en="{{ img.caption }}" data-de="{{ img.caption_de or img.caption }}">{{ img.caption }}</figcaption>
+                    {% endif %}
                 </figure>
                 {% endfor %}
             </div>

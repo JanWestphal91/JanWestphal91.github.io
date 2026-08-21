@@ -7,6 +7,78 @@ media_folder: "Images"
 public_folder: "/Images"
 
 collections:
+  - name: site
+    label: "Website-Texte"
+    files:
+      - name: sitetext
+        label: "Über mich & Ticker"
+        file: "_data/sitetext.json"
+        format: json
+        description: "Texte für das Über-mich-Popup auf der Startseite und die Laufschrift im Header."
+        fields:
+          - label: "Über-mich-Popup"
+            name: modal
+            widget: object
+            collapsed: false
+            fields:
+              - label: "Überschrift (EN)"
+                name: heading_en
+                widget: string
+
+              - label: "Überschrift (DE)"
+                name: heading_de
+                widget: string
+                required: false
+
+              - label: "Unterzeile (EN)"
+                name: subtitle_en
+                widget: string
+
+              - label: "Unterzeile (DE)"
+                name: subtitle_de
+                widget: string
+                required: false
+
+              - label: "Portraitfoto"
+                name: image
+                widget: image
+                required: false
+
+              - label: "Portrait Alt-Text (EN)"
+                name: image_alt_en
+                widget: string
+                required: false
+
+              - label: "Portrait Alt-Text (DE)"
+                name: image_alt_de
+                widget: string
+                required: false
+
+              - label: "Absätze"
+                name: paragraphs
+                widget: list
+                label_singular: "Absatz"
+                summary: "{{fields.en}}"
+                hint: "Reihenfolge per Drag & Drop, Absätze lassen sich hinzufügen und entfernen."
+                fields:
+                  - { label: "Text (EN)", name: en, widget: text }
+                  - { label: "Text (DE)", name: de, widget: text, required: false }
+
+          - label: "Ticker (Laufschrift im Header)"
+            name: ticker
+            widget: object
+            collapsed: false
+            fields:
+              - label: "Ticker-Text (EN)"
+                name: en
+                widget: text
+                hint: "Eine Zeile, Einträge mit • trennen. Emojis sind erlaubt."
+
+              - label: "Ticker-Text (DE)"
+                name: de
+                widget: text
+                required: false
+
   - name: projects
     label: Projects
     label_singular: Project
@@ -158,7 +230,8 @@ collections:
         fields:
           - { label: "Bild", name: src, widget: image }
           - { label: "Alt-Text", name: alt, widget: string }
-          - { label: "Bildunterschrift", name: caption, widget: string, required: false }
+          - { label: "Bildunterschrift (EN)", name: caption, widget: string, required: false }
+          - { label: "Bildunterschrift (DE)", name: caption_de, widget: string, required: false }
 
       - label: "Text (EN)"
         name: body
