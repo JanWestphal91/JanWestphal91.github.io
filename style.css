@@ -1508,6 +1508,99 @@ a.blog-preview-link:first-child { border-top: 1px solid rgba(128,128,128,0.15); 
 .post-body code { font-family: monospace; font-size: 0.9em; padding: 0.1em 0.3em; background: rgba(128,128,128,0.1); border-radius: 3px; }
 .post-body pre { overflow-x: auto; padding: 1rem; background: rgba(128,128,128,0.1); border-radius: 4px; }
 
+/* ── Bilder im Fließtext ─────────────────────────────────────────────
+   Aus ![Alt](/bild.webp#klein "Unterschrift") baut .eleventy.js eine
+   <figure>. Die Vorschau bleibt klein, ein Klick öffnet sie groß.      */
+
+.post-figure {
+    margin: 1.75rem 0;
+}
+
+.post-figure--klein  { max-width: 15rem; }
+.post-figure--mittel { max-width: 24rem; }
+.post-figure--gross  { max-width: 100%; }
+
+.post-body .post-figure__link {
+    display: block;
+    text-decoration: none;
+    cursor: zoom-in;
+}
+
+.post-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.post-figure figcaption {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ── Lightbox ────────────────────────────────────────────────────────
+   Wird von script.js erzeugt, für Fließtext- und Galeriebilder.        */
+
+.project-gallery__item img { cursor: zoom-in; }
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    background: rgba(0, 0, 0, 0.88);
+    cursor: zoom-out;
+}
+
+.lightbox__figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 100%;
+    cursor: default;
+}
+
+.lightbox__figure img {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.lightbox__figure figcaption {
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 60ch;
+}
+
+.lightbox__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
 /* ── Project detail overrides ───────────────────────────────────── */
 
 .project-meta { gap: 0.4rem; margin-top: 0; }

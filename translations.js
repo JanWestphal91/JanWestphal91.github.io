@@ -50,6 +50,8 @@ window.TRANSLATIONS = {
         "bowl.msg7":   "🎉 Best day ever!",
 
 
+        "lightbox.close":       "Close image",
+
         "project.kicker":       "Project",
         "project.gallery-label":"Gallery",
         "project.back-aria":    "Back to projects",
@@ -106,6 +108,8 @@ window.TRANSLATIONS = {
         "bowl.msg6":   "🐠 Glub ist satt!",
         "bowl.msg7":   "🎉 Bester Tag ever!",
 
+
+        "lightbox.close":        "Bild schließen",
 
         "project.kicker":        "Projekt",
         "project.gallery-label": "Galerie",

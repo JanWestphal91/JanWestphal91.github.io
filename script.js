@@ -1332,5 +1332,71 @@ function initTicker() {
 
 initTicker();
 
+/* ═══ Lightbox: Bilder im Fließtext und in Galerien groß anzeigen ═══ */
+function initLightbox() {
+    let overlay = null;
+
+    function onKeydown(event) {
+        if (event.key === "Escape") close();
+    }
+
+    function close() {
+        if (!overlay) return;
+        overlay.remove();
+        overlay = null;
+        document.body.style.overflow = "";
+        document.removeEventListener("keydown", onKeydown);
+    }
+
+    function open(src, alt, caption) {
+        if (!src) return;
+        close();
+
+        overlay = document.createElement("div");
+        overlay.className = "lightbox";
+        overlay.innerHTML =
+            '<button class="lightbox__close" aria-label="' + escapeHtml(t("lightbox.close")) + '">&times;</button>' +
+            '<figure class="lightbox__figure">' +
+            '<img src="' + escapeHtml(src) + '" alt="' + escapeHtml(alt || "") + '">' +
+            (caption ? "<figcaption>" + escapeHtml(caption) + "</figcaption>" : "") +
+            "</figure>";
+
+        overlay.addEventListener("click", function (event) {
+            if (event.target === overlay || event.target.closest(".lightbox__close")) {
+                close();
+            }
+        });
+
+        document.body.appendChild(overlay);
+        document.body.style.overflow = "hidden";
+        document.addEventListener("keydown", onKeydown);
+    }
+
+    document.addEventListener("click", function (event) {
+        if (!(event.target instanceof Element)) return;
+
+        // Bilder im Fließtext sind in einen Link gewickelt.
+        const figureLink = event.target.closest(".post-figure__link");
+        if (figureLink) {
+            event.preventDefault();
+            const image = figureLink.querySelector("img");
+            const figure = figureLink.closest("figure");
+            const caption = figure ? figure.querySelector("figcaption") : null;
+            open(figureLink.getAttribute("href"), image ? image.alt : "", caption ? caption.textContent : "");
+            return;
+        }
+
+        // Galeriebilder auf Projekt- und Blogseiten.
+        const galleryImage = event.target.closest(".project-gallery__item img");
+        if (galleryImage) {
+            const figure = galleryImage.closest("figure");
+            const caption = figure ? figure.querySelector("figcaption") : null;
+            open(galleryImage.getAttribute("src"), galleryImage.alt, caption ? caption.textContent : "");
+        }
+    });
+}
+
+initLightbox();
+
 initFishScene();
 initLangToggle();
