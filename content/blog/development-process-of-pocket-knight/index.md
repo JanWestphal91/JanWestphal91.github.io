@@ -46,10 +46,16 @@ body_de: |-
   Nachdem ich ungefähr einen Plan hatte und alle Teile zusammengesucht habe, habe ich angefangen auf einem Breadboard erstmal alles zusammenzustecken und mich erstmal dem Code gewidmet.
 
   Dabei gab es mehrere Hürden die mich mehrfach zum verzweifeln gebracht haben, die Integration des Schrittzählers, die Sleep Funktion während trotzdem Schritte gezählt werden, das Laden und Darstellen von Pixelgrafiken und die Animationen. Alles andere war auch schwer, was hab ich mir nur gedacht?!
-
+   
   ![BreadboardPocketknight](/Images/pcoketknightbreadboard.webp "Breadboard Prototyping")
 
-  Nachdem ich dann irgendwann einen halbwegs brauchbaren Code hatte und die Breadboard Schaltung soweit finalisiert war habe gings ans Löten.
+  Nachdem ich dann irgendwann einen halbwegs brauchbaren Code hatte und die Breadboard Schaltung soweit finalisiert war gings ans Löten. Ich habe dabei versucht alle Komponenten so kompakt wie möglich zusammenzukriegen, was auch soweit ganz gut geklappt hat.
+
+  ![finished Electronic](/Images/PocketKnight/handheldactive.webp "fertig gelötetes Teil")
+
+  Im nächsten Schritt habe ich dann noch weiter am Gameloop, am Content und den Sprites gearbeitet um daraus ein "rundes" Spiel zu bekommen. Nebenbei habe ich angefangen das gehäuse in Fusion zu entwerfen und es dann anschließend im [Kieler FabLab](https://fablab.sh/) gedruckt. 
+
+  ![3dPrinter-printing](/Images/blog/development-process-of-pocket-knight/Printfablab.webp "Druckvorgang vom Deckel")
 ---
 
 WIP!
