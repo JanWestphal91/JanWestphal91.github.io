@@ -111,6 +111,22 @@
 <p><img src="/Images/PocketKnight/handheldactive.webp" alt="finished Electronic" title="fertig gelötetes Teil"></p>
 <p>Im nächsten Schritt habe ich dann noch weiter am Gameloop, am Content und den Sprites gearbeitet um daraus ein &quot;rundes&quot; Spiel zu bekommen. Nebenbei habe ich angefangen das gehäuse in Fusion zu entwerfen und es dann anschließend im <a href="https://fablab.sh/">Kieler FabLab</a> gedruckt.</p>
 <p><img src="/Images/blog/development-process-of-pocket-knight/Printfablab.webp" alt="3dPrinter-printing" title="Druckvorgang vom Deckel"></p>
+<p>Und dann war es endlich soweit und das Gerät näherte sich der Fertigstellung, insgesamt hat das ganze wieder deutlich länger gedauert als geplant und ich habe bummelig 3 Monate Freizeit in das Projekt reingesteckt.</p>
+<p>Ich hatte noch einige Ideen die ich gerne noch implementiert hätte, die ich aber aus Zeit- und Lustmangel erstmal gestrichen habe.</p>
+<p>Hier die gestrichenen Features:</p>
+<ul>
+<li>Multiplayer: Coop und Kompetitiv über ESP-NOW</li>
+<li>Online Leaderboard über Wlanverbindung</li>
+<li>Coolere Animationen und Effektübergänge zwischen Screens</li>
+<li>Unterschiedliche Starklassen (ich wollte zuerst zwei Geräte bauen, eins mit Ritter und eins mit Zauberer für den Coopmodus)</li>
+</ul>
+<p>Und jetzt erstmal zu dem eigentlich interessanten Teil, dem Spiel!</p>
+<p>Der Gameloop läuft so:</p>
+<p>Der Spieler startet mit einem Ritter auf LVL 1, alle 250 Schritte wird ein Event getriggert, es vibriert und piept wenn das gerät nicht im Schlafmodus ist.</p>
+<p>So können insgesamt 20 Events gesammelt werden die dann nacheinander am Stück gespielt werden können sobald man Zeit dafür findet.</p>
+<p>Die Events laufen so ab dass man eine Auswahl zwischen zwei zufälligen Begegnungen bekommt, nach 10 Events gibt es einen Boss Kampf. Für jedes Event gibt es eine Belohnung die aus Erfahrung, Gold, einem Gegenstand oder einer Statuserhöhung besteht. Beim Level up des Spielers gibt es ebenfalls Statuserhöhungen und einen Gegenstand, dabei hat der Spieler immer die Wahl aus einem von 3 Gegenständen. Insgesamt gilt es somit 50 Events abzuschließen und den Endgegner zu besiegen. Sobald der Spieler einen Kampf verliert oder auf andere Weise die Lebenspunkte auf 0 gehen wird ein neuer Run gestartet. Am Ende eines Runs gibt es noch eine bestimmte Anzahl an Metawährung womit neue Items und Gegenstände oder Startboni freigeschaltet werden können die dann verfügbar werden.</p>
+<p>Abschließend ist hier noch eine Übersicht mit allen Eventsprites und Gegnern und ein paar weniger ernste Poster. :)</p>
+<p>Danke fürs lesen!</p>
 
             </div>
             
@@ -123,13 +139,6 @@
             <div class="project-gallery">
                 
                 <figure class="project-gallery__item">
-                    <img src="/Images/PocketKnight/handheldactive.webp" alt="Finalizing electronics" loading="lazy">
-                    
-                    <figcaption data-en="finalizing electronics layout" data-de="finalizing electronics layout">finalizing electronics layout</figcaption>
-                    
-                </figure>
-                
-                <figure class="project-gallery__item">
                     <img src="/Images/pocketknightposter3.webp" alt="HolyGrail poster" loading="lazy">
                     
                     <figcaption data-en="silly holy grail poster" data-de="leicht albernes heiliger Gral Poster">silly holy grail poster</figcaption>
@@ -140,6 +149,20 @@
                     <img src="/Images/blog/development-process-of-pocket-knight/pocketknight2.webp" alt="silly knight giving" loading="lazy">
                     
                     <figcaption data-en="giving the grace." data-de="die Gnade wird gegeben.">giving the grace.</figcaption>
+                    
+                </figure>
+                
+                <figure class="project-gallery__item">
+                    <img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="pocketKnightDevice" loading="lazy">
+                    
+                    <figcaption data-en="Pocket Knight finished device" data-de="Pocket Knight fertiges Gerät">Pocket Knight finished device</figcaption>
+                    
+                </figure>
+                
+                <figure class="project-gallery__item">
+                    <img src="/Images/blog/development-process-of-pocket-knight/pocketknightspriteposter.webp" alt="PocketknightSprites" loading="lazy">
+                    
+                    <figcaption data-en="Pocket Knight Sprites" data-de="Pocket Knight Sprites">Pocket Knight Sprites</figcaption>
                     
                 </figure>
                 
