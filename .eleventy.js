@@ -4,17 +4,31 @@ const md = markdownIt({ html: true, breaks: false, linkify: true });
 // ── Bilder im Fließtext ───────────────────────────────────────────────
 // Ein Bild, das allein in einem Absatz steht, wird zu einer <figure>:
 //
-//   ![Alt-Text](/Images/blog/slug/bild.webp "Bildunterschrift")
+//   ![Alt-Text](/Images/blog/slug/bild.webp "Bildunterschrift |klein")
 //
-// Der Titel in Anführungszeichen wird zur Bildunterschrift. Die Größe
-// steuert ein Zusatz hinter dem Dateinamen: bild.webp#klein / #mittel /
-// #gross. Ohne Angabe gilt #mittel. Das Bild wird anklickbar und öffnet
-// sich groß (Lightbox in script.js, ohne JS als direkter Link).
+// Der Titel in Anführungszeichen wird zur Bildunterschrift. Ein optionales
+// "|klein" oder "|gross" am Ende bestimmt die Größe und wird aus der
+// sichtbaren Unterschrift entfernt; ohne Angabe gilt "mittel". Geschrieben
+// wird das im CMS über die Editor-Komponente "Bild mit Bildunterschrift"
+// (siehe admin/index.html), von Hand muss man das nicht tippen.
+// Das Bild wird anklickbar und öffnet sich groß (Lightbox in script.js,
+// ohne JavaScript als direkter Link auf die Bilddatei).
 const FIGURE_SIZES = {
     klein: "klein",   small: "klein",
     mittel: "mittel", medium: "mittel",
     gross: "gross",   "groß": "gross", large: "gross"
 };
+
+// Trennt "Bildunterschrift |klein" in Unterschrift und Größe.
+function splitCaption(title) {
+    const raw = String(title || "");
+    const match = raw.match(/^(.*?)\s*\|\s*([\wäöüß]+)\s*$/i);
+
+    if (match && FIGURE_SIZES[match[2].toLowerCase()]) {
+        return { caption: match[1].trim(), size: FIGURE_SIZES[match[2].toLowerCase()] };
+    }
+    return { caption: raw.trim(), size: null };
+}
 
 function imageFigures(mdInstance) {
     mdInstance.core.ruler.push("image_figures", function (state) {
@@ -37,17 +51,24 @@ function imageFigures(mdInstance) {
 
             const image = meaningful[0];
             let src = image.attrGet("src") || "";
-            let size = "mittel";
+            let size = null;
 
+            // Bevorzugt: Größe steht am Ende der Bildunterschrift.
+            const parsed = splitCaption(image.attrGet("title"));
+            const caption = parsed.caption;
+            if (parsed.size) size = parsed.size;
+
+            // Rückfalloption: älteres "bild.webp#klein" am Dateipfad.
             const hash = src.indexOf("#");
             if (hash !== -1) {
                 const key = src.slice(hash + 1).toLowerCase();
-                if (FIGURE_SIZES[key]) size = FIGURE_SIZES[key];
+                if (FIGURE_SIZES[key] && !size) size = FIGURE_SIZES[key];
                 src = src.slice(0, hash);
                 image.attrSet("src", src);
             }
 
-            const caption = image.attrGet("title");
+            if (!size) size = "mittel";
+
             if (image.attrs) {
                 image.attrs = image.attrs.filter(function (attr) { return attr[0] !== "title"; });
             }
