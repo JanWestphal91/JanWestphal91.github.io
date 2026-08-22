@@ -27,11 +27,11 @@ images:
     caption: giving the grace.
     caption_de: die Gnade wird gegeben.
 body_de: |-
-  Hallo! Ich hatte schon länger  den Wunsch ein Gerät zu bauen das an die Digimon Digivice Spielzeuge erinnert, ich fand die Teile richtig cool als Kind obwohl ich selbst nie eins hatte, aber das hab ich ja nun auf eine andere Art und Weise nachgeholt :) 
+  Hallo! Ich hatte schon länger den Wunsch ein Gerät zu bauen das an die Digimon Digivice Spielzeuge erinnert, ich fand die Teile richtig cool als Kind obwohl ich selbst nie eins hatte, aber das hab ich ja nun auf eine andere Art und Weise nachgeholt :) 
 
   [![digivice device](/Images/blog/development-process-of-pocket-knight/Digivice_ver1_1.webp "Das besagte Spielzeug, Bildquelle: https://wikimon.net/images/9/99/Digivice_ver1_1.jpg")](https://wikimon.net/images/9/99/Digivice_ver1_1.jpg)
 
-  Das besagte Spielzeug, [Bildquelle ](https://wikimon.net/images/9/99/Digivice_ver1_1.jpg)
+  #
 
   Also habe ich angefangen erstmal ein Konzept auszuarbeiten und mir überlegt welche Teile ich denn nehmen könnte, diesmal habe ich mich für einen DFRobot Firebeetle v2 ESP32 entschieden weil er bereits die Stromversorgung auf dem Board hat und ich nur noch einen Akku anklemmen musste.
 
@@ -61,13 +61,9 @@ body_de: |-
 
   ![finished Electronic](/Images/PocketKnight/handheldactive.webp "fertig gelötetes Teil")
 
-  Das gelötete Teil
-
   Im nächsten Schritt habe ich dann noch weiter am Gameloop, am Content und den Sprites gearbeitet um daraus ein "rundes" Spiel zu bekommen. Nebenbei habe ich angefangen das gehäuse in Fusion zu entwerfen und es dann anschließend im [Kieler FabLab](https://fablab.sh/) gedruckt.
 
-  ![3dPrinter-printing](/Images/blog/development-process-of-pocket-knight/Printfablab.webp "Druckvorgang vom Deckel")
-
-  Druckvorgang auf einem Prusa Mini
+  ![3dPrinter-printing](/Images/blog/development-process-of-pocket-knight/Printfablab.webp "Druckvorgang vom Deckel  am Prusa Mini")
 
   Und dann war es endlich soweit und das Gerät näherte sich der Fertigstellung, insgesamt hat das ganze wieder deutlich länger gedauert als geplant und ich habe bummelig 3 Monate Freizeit in das Projekt reingesteckt. 
 
