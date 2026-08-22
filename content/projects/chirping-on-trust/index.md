@@ -11,7 +11,7 @@ summary_card_de: Ein Gruppenprojekt im Rahmen einer Gamejam über ein Wochenende
 summary: |-
   As part of the annual Summer Game Jam by IF(game)SH e.V., I developed a game for the Game Boy Advance over the course of a weekend in a team of three. My main responsibilities were pixel art, the web emulator, and the styling of the [itch.io page](https://jan-west.itch.io/chirping-on-trust). My teammates focused on technical feasibility and gameplay programming. We developed the game in Rust using the agb library, which also allowed us to load Aseprite files directly without having to export them first. In the end, this enabled us to compile a ROM and test it on an actual Game Boy by loading it via a microSD card into a flash cartridge.
 
-  My team members were [Gracl](gracl.itch.io) & [Zoltankost](zoltankost.itch.io) and it was really fun to work with them!
+  My team members were [Gracl](https://gracl.itch.io/)[ ](https://gracl.itch.io/)& [Zoltankost](https://zoltankost.itch.io/)[ ](https://zoltankost.itch.io/)and it was really fun to work with them!
 
   Here´s a [blog ](https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/)about my expierience at the gamejam.
 summary_de: |-
@@ -19,7 +19,7 @@ summary_de: |-
 
   Check doch gerne mal die [Gamesite](https://jan-west.itch.io/chirping-on-trust).
 
-  Meine Teampartner für das Spiel waren [Gracl ](gracl.itch.io)& [Zoltankost](zoltankost.itch.io), es war eine sehr witzige Runde und ich hatte jede Menge Spaß während der Gamejam! 
+  Meine Teampartner für das Spiel waren [Gracl ](https://gracl.itch.io/)& [Zoltankost](https://zoltankost.itch.io/), es war eine sehr witzige Runde und ich hatte jede Menge Spaß während der Gamejam! 
 
   In diesem [Blogbeitrag ](https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/)schreibe ich auch noch etwas ausführlicher über die Gamejam.
 meta:
