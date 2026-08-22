@@ -88,7 +88,26 @@
             </div>
             
             <div class="post-body" data-lang-show="de" hidden>
-                <p>WIP!</p>
+                <p>Hallo! Ich hatte schon länger  den Wunsch ein Gerät zu bauen das an die Digimon Digivice Spielzeuge erinnert, ich fand die Teile richtig cool als Kind obwohl ich selbst nie eins hatte, aber das hab ich ja nun auf eine andere Art und Weise nachgeholt :)</p>
+<p><a href="https://wikimon.net/images/9/99/Digivice_ver1_1.jpg"><img src="/Images/blog/development-process-of-pocket-knight/Digivice_ver1_1.webp" alt="digivice device" title="Das besagte Spielzeug, Bildquelle: https://wikimon.net/images/9/99/Digivice_ver1_1.jpg"></a></p>
+<p>Also habe ich angefangen erstmal ein Konzept auszuarbeiten und mir überlegt welche Teile ich denn nehmen könnte, diesmal habe ich mich für einen DFRobot Firebeetle v2 ESP32 entschieden weil er bereits die Stromversorgung auf dem Board hat und ich nur noch einen Akku anklemmen musste.</p>
+<p>Dadurch dass das Gerät eben auch hosentaschentauglich sein sollte, habe ich versucht das ganze möglichst minimalistisch zu halten.</p>
+<p>Weitere Komponenten die ich genutzt habe sind:</p>
+<ul>
+<li>128 x 64 Pixel Oled Display</li>
+<li>seeed Grove - Pedometer (BMA456) (Schrittzähler)</li>
+<li>Piezo Buzzer (Soundausgabe)</li>
+<li>Mini Vibrationsmotor (fürs haptische Feedback)</li>
+<li>3 kleine Schalter (Inputs)</li>
+<li>1800 mAh Li-ion Akku (deutlich kleiner hätte es auch getan)</li>
+<li>PLA Filament für das Gehäuse</li>
+<li>eine Lochrasterplatine, Litze und Lötzinn</li>
+<li>Sekundenkleber und Heißklebe :)</li>
+</ul>
+<p>Nachdem ich ungefähr einen Plan hatte und alle Teile zusammengesucht habe, habe ich angefangen auf einem Breadboard erstmal alles zusammenzustecken und mich erstmal dem Code gewidmet.</p>
+<p>Dabei gab es mehrere Hürden die mich mehrfach zum verzweifeln gebracht haben, die Integration des Schrittzählers, die Sleep Funktion während trotzdem Schritte gezählt werden, das Laden und Darstellen von Pixelgrafiken und die Animationen. Alles andere war auch schwer, was hab ich mir nur gedacht?!</p>
+<p><img src="/Images/pcoketknightbreadboard.webp" alt="BreadboardPocketknight" title="Breadboard Prototyping"></p>
+<p>Nachdem ich dann irgendwann einen halbwegs brauchbaren Code hatte und die Breadboard Schaltung soweit finalisiert war habe gings ans Löten.</p>
 
             </div>
             
