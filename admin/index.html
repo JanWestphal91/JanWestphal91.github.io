@@ -8,5 +8,117 @@
 </head>
 <body>
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  <script>
+    /*
+     * Editor-Komponente "Bild mit Bildunterschrift".
+     *
+     * Fügt im Markdown-Editor einen Button ein, der ein Formular öffnet:
+     * Bild auswählen, Alt-Text, Bildunterschrift und Größe (klein / mittel /
+     * groß). Gespeichert wird ganz normales Markdown:
+     *
+     *   ![Alt-Text](/Images/blog/slug/bild.webp "Bildunterschrift |klein")
+     *
+     * Der Dateipfad bleibt also unangetastet — die Größe steht hinten in der
+     * Bildunterschrift und wird beim Build von .eleventy.js herausgelöst.
+     * Bei "mittel" wird gar keine Größe geschrieben, das ist der Standard.
+     */
+    (function registerFigureComponent(attempt) {
+      if (!window.CMS || !window.CMS.registerEditorComponent) {
+        if (attempt > 100) return;
+        window.setTimeout(function () { registerFigureComponent(attempt + 1); }, 50);
+        return;
+      }
+
+      var SIZES = ['klein', 'mittel', 'gross'];
+
+      function splitTitle(title) {
+        var match = String(title || '').match(/^(.*?)\s*\|\s*(klein|mittel|gross|groß)\s*$/i);
+        if (!match) {
+          return { caption: String(title || ''), size: 'mittel' };
+        }
+        var size = match[2].toLowerCase().replace('groß', 'gross');
+        return {
+          caption: match[1].trim(),
+          size: SIZES.indexOf(size) === -1 ? 'mittel' : size
+        };
+      }
+
+      window.CMS.registerEditorComponent({
+        id: 'bild',
+        label: 'Bild mit Bildunterschrift',
+        icon: 'image',
+        fields: [
+          {
+            label: 'Bild',
+            name: 'src',
+            widget: 'image'
+          },
+          {
+            label: 'Alt-Text',
+            name: 'alt',
+            widget: 'string',
+            required: false,
+            hint: 'Beschreibung für Screenreader und falls das Bild nicht lädt.'
+          },
+          {
+            label: 'Bildunterschrift',
+            name: 'caption',
+            widget: 'string',
+            required: false,
+            hint: 'Steht sichtbar unter dem Bild. Kann leer bleiben.'
+          },
+          {
+            label: 'Größe',
+            name: 'size',
+            widget: 'select',
+            default: 'mittel',
+            options: [
+              { label: 'Klein', value: 'klein' },
+              { label: 'Mittel', value: 'mittel' },
+              { label: 'Groß (volle Textbreite)', value: 'gross' }
+            ]
+          }
+        ],
+        pattern: /^!\[(.*?)\]\(([^\s)]+)(?:\s+"([^"]*)")?\)$/,
+        fromBlock: function (match) {
+          var parts = splitTitle(match[3]);
+          return {
+            alt: match[1] || '',
+            src: match[2] || '',
+            caption: parts.caption,
+            size: parts.size
+          };
+        },
+        toBlock: function (data) {
+          var src = data.src || '';
+          var alt = data.alt || '';
+          var caption = (data.caption || '').trim();
+          var size = SIZES.indexOf(data.size) === -1 ? 'mittel' : data.size;
+
+          var title = caption;
+          if (size !== 'mittel') {
+            title = caption ? caption + ' |' + size : '|' + size;
+          }
+
+          return '![' + alt + '](' + src +
+            (title ? ' "' + title.replace(/"/g, "'") + '"' : '') + ')';
+        },
+        toPreview: function (data) {
+          var widths = { klein: '180px', mittel: '320px', gross: '100%' };
+          var size = SIZES.indexOf(data.size) === -1 ? 'mittel' : data.size;
+          var caption = (data.caption || '').trim();
+
+          return '<figure style="margin:1rem 0;max-width:' + widths[size] + '">' +
+            '<img src="' + (data.src || '') + '" alt="' + (data.alt || '') +
+            '" style="width:100%;height:auto;border-radius:4px;display:block">' +
+            (caption
+              ? '<figcaption style="margin-top:.4rem;font-size:.85rem;opacity:.7">' +
+                caption + '</figcaption>'
+              : '') +
+            '</figure>';
+        }
+      });
+    })(0);
+  </script>
 </body>
 </html>

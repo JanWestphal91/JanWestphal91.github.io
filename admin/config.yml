@@ -273,16 +273,15 @@ collections:
         name: body
         widget: markdown
         hint: >-
-          Bild im Text mit Bildunterschrift:
-          ![Alt-Text](/Images/blog/slug/bild.webp "Bildunterschrift") —
-          die Größe steuert ein Zusatz direkt hinter dem Dateinamen:
-          bild.webp#klein, #mittel (Standard) oder #gross.
-          Ein Klick auf das Bild öffnet es groß.
+          Für Bilder im Text den Button "Bild mit Bildunterschrift" in der
+          Editor-Leiste nutzen: dort lassen sich Alt-Text, Bildunterschrift
+          und Größe (klein / mittel / groß) auswählen. Auf der Website ist
+          das Bild anklickbar und öffnet sich groß.
 
       - label: "Text (DE)"
         name: body_de
         widget: markdown
         required: false
         hint: >-
-          Gleiche Schreibweise wie oben:
-          ![Alt-Text](/Images/blog/slug/bild.webp#klein "Bildunterschrift")
+          Bilder wie oben über den Button "Bild mit Bildunterschrift"
+          einfügen.
