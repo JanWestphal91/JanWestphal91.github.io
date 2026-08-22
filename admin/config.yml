@@ -272,8 +272,17 @@ collections:
       - label: "Text (EN)"
         name: body
         widget: markdown
+        hint: >-
+          Bild im Text mit Bildunterschrift:
+          ![Alt-Text](/Images/blog/slug/bild.webp "Bildunterschrift") —
+          die Größe steuert ein Zusatz direkt hinter dem Dateinamen:
+          bild.webp#klein, #mittel (Standard) oder #gross.
+          Ein Klick auf das Bild öffnet es groß.
 
       - label: "Text (DE)"
         name: body_de
         widget: markdown
         required: false
+        hint: >-
+          Gleiche Schreibweise wie oben:
+          ![Alt-Text](/Images/blog/slug/bild.webp#klein "Bildunterschrift")

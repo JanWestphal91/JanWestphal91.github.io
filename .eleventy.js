@@ -1,7 +1,90 @@
 const markdownIt = require("markdown-it");
 const md = markdownIt({ html: true, breaks: false, linkify: true });
 
+// ── Bilder im Fließtext ───────────────────────────────────────────────
+// Ein Bild, das allein in einem Absatz steht, wird zu einer <figure>:
+//
+//   ![Alt-Text](/Images/blog/slug/bild.webp "Bildunterschrift")
+//
+// Der Titel in Anführungszeichen wird zur Bildunterschrift. Die Größe
+// steuert ein Zusatz hinter dem Dateinamen: bild.webp#klein / #mittel /
+// #gross. Ohne Angabe gilt #mittel. Das Bild wird anklickbar und öffnet
+// sich groß (Lightbox in script.js, ohne JS als direkter Link).
+const FIGURE_SIZES = {
+    klein: "klein",   small: "klein",
+    mittel: "mittel", medium: "mittel",
+    gross: "gross",   "groß": "gross", large: "gross"
+};
+
+function imageFigures(mdInstance) {
+    mdInstance.core.ruler.push("image_figures", function (state) {
+        const tokens = state.tokens;
+
+        for (let i = 1; i < tokens.length - 1; i++) {
+            const inline = tokens[i];
+
+            if (inline.type !== "inline") continue;
+            if (tokens[i - 1].type !== "paragraph_open") continue;
+            if (tokens[i + 1].type !== "paragraph_close") continue;
+
+            // Nur Absätze, die ausschließlich ein Bild enthalten.
+            const meaningful = (inline.children || []).filter(function (child) {
+                if (child.type === "softbreak" || child.type === "hardbreak") return false;
+                if (child.type === "text" && !child.content.trim()) return false;
+                return true;
+            });
+            if (meaningful.length !== 1 || meaningful[0].type !== "image") continue;
+
+            const image = meaningful[0];
+            let src = image.attrGet("src") || "";
+            let size = "mittel";
+
+            const hash = src.indexOf("#");
+            if (hash !== -1) {
+                const key = src.slice(hash + 1).toLowerCase();
+                if (FIGURE_SIZES[key]) size = FIGURE_SIZES[key];
+                src = src.slice(0, hash);
+                image.attrSet("src", src);
+            }
+
+            const caption = image.attrGet("title");
+            if (image.attrs) {
+                image.attrs = image.attrs.filter(function (attr) { return attr[0] !== "title"; });
+            }
+            image.attrSet("loading", "lazy");
+
+            const linkOpen = new state.Token("html_inline", "", 0);
+            linkOpen.content = '<a class="post-figure__link" data-lightbox href="'
+                + mdInstance.utils.escapeHtml(src) + '">';
+            const linkClose = new state.Token("html_inline", "", 0);
+            linkClose.content = "</a>";
+
+            const children = [linkOpen, image, linkClose];
+            if (caption) {
+                const figcaption = new state.Token("html_inline", "", 0);
+                figcaption.content = "<figcaption>"
+                    + mdInstance.utils.escapeHtml(caption) + "</figcaption>";
+                children.push(figcaption);
+            }
+            inline.children = children;
+
+            // <p> wird zu <figure> — sonst wäre das Markup ungültig.
+            tokens[i - 1].type = "figure_open";
+            tokens[i - 1].tag = "figure";
+            tokens[i - 1].attrSet("class", "post-figure post-figure--" + size);
+            tokens[i + 1].type = "figure_close";
+            tokens[i + 1].tag = "figure";
+        }
+    });
+}
+
+imageFigures(md);
+
 module.exports = function(eleventyConfig) {
+    // Eleventy soll dieselbe Markdown-Instanz benutzen wie der "md"-Filter,
+    // damit englische und deutsche Texte identisch gerendert werden.
+    eleventyConfig.setLibrary("md", md);
+
     // ── Entwürfe ──────────────────────────────────────────────────────
     // Beiträge mit "published: false" werden beim Build komplett
     // übersprungen: keine Seite, kein Eintrag in den Übersichten.
