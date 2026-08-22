@@ -90,6 +90,7 @@
             <div class="post-body" data-lang-show="de" hidden>
                 <p>Hallo! Ich hatte schon länger  den Wunsch ein Gerät zu bauen das an die Digimon Digivice Spielzeuge erinnert, ich fand die Teile richtig cool als Kind obwohl ich selbst nie eins hatte, aber das hab ich ja nun auf eine andere Art und Weise nachgeholt :)</p>
 <p><a href="https://wikimon.net/images/9/99/Digivice_ver1_1.jpg"><img src="/Images/blog/development-process-of-pocket-knight/Digivice_ver1_1.webp" alt="digivice device" title="Das besagte Spielzeug, Bildquelle: https://wikimon.net/images/9/99/Digivice_ver1_1.jpg"></a></p>
+<p>Das besagte Spielzeug, <a href="https://wikimon.net/images/9/99/Digivice_ver1_1.jpg">Bildquelle </a></p>
 <p>Also habe ich angefangen erstmal ein Konzept auszuarbeiten und mir überlegt welche Teile ich denn nehmen könnte, diesmal habe ich mich für einen DFRobot Firebeetle v2 ESP32 entschieden weil er bereits die Stromversorgung auf dem Board hat und ich nur noch einen Akku anklemmen musste.</p>
 <p>Dadurch dass das Gerät eben auch hosentaschentauglich sein sollte, habe ich versucht das ganze möglichst minimalistisch zu halten.</p>
 <p>Weitere Komponenten die ich genutzt habe sind:</p>
@@ -107,10 +108,13 @@
 <p>Nachdem ich ungefähr einen Plan hatte und alle Teile zusammengesucht habe, habe ich angefangen auf einem Breadboard erstmal alles zusammenzustecken und mich erstmal dem Code gewidmet.</p>
 <p>Dabei gab es mehrere Hürden die mich mehrfach zum verzweifeln gebracht haben, die Integration des Schrittzählers, die Sleep Funktion während trotzdem Schritte gezählt werden, das Laden und Darstellen von Pixelgrafiken und die Animationen. Alles andere war auch schwer, was hab ich mir nur gedacht?!</p>
 <p><img src="/Images/pcoketknightbreadboard.webp" alt="BreadboardPocketknight" title="Breadboard Prototyping"></p>
+<p>Breadboard Prototyp</p>
 <p>Nachdem ich dann irgendwann einen halbwegs brauchbaren Code hatte und die Breadboard Schaltung soweit finalisiert war gings ans Löten. Ich habe dabei versucht alle Komponenten so kompakt wie möglich zusammenzukriegen, was auch soweit ganz gut geklappt hat.</p>
 <p><img src="/Images/PocketKnight/handheldactive.webp" alt="finished Electronic" title="fertig gelötetes Teil"></p>
+<p>Das gelötete Teil</p>
 <p>Im nächsten Schritt habe ich dann noch weiter am Gameloop, am Content und den Sprites gearbeitet um daraus ein &quot;rundes&quot; Spiel zu bekommen. Nebenbei habe ich angefangen das gehäuse in Fusion zu entwerfen und es dann anschließend im <a href="https://fablab.sh/">Kieler FabLab</a> gedruckt.</p>
 <p><img src="/Images/blog/development-process-of-pocket-knight/Printfablab.webp" alt="3dPrinter-printing" title="Druckvorgang vom Deckel"></p>
+<p>Druckvorgang auf einem Prusa Mini</p>
 <p>Und dann war es endlich soweit und das Gerät näherte sich der Fertigstellung, insgesamt hat das ganze wieder deutlich länger gedauert als geplant und ich habe bummelig 3 Monate Freizeit in das Projekt reingesteckt.</p>
 <p>Ich hatte noch einige Ideen die ich gerne noch implementiert hätte, die ich aber aus Zeit- und Lustmangel erstmal gestrichen habe.</p>
 <p>Hier die gestrichenen Features:</p>
@@ -119,11 +123,20 @@
 <li>Online Leaderboard über Wlanverbindung</li>
 <li>Coolere Animationen und Effektübergänge zwischen Screens</li>
 <li>Unterschiedliche Starklassen (ich wollte zuerst zwei Geräte bauen, eins mit Ritter und eins mit Zauberer für den Coopmodus)</li>
+<li>Lokalisierung auf englisch, ich habe erstmal alle Strings auf deutsch geschrieben und bin aus Bequemlichkeit nun dabei geblieben.</li>
 </ul>
+<p>Fehler die noch angegangen werden müssten:</p>
+<ul>
+<li>Texte sind manchmal abgeschnitten weil sie zu lang sind, 128 px sind einfach echt nicht viel für Informationen.</li>
+<li>Manche Elemente, Mechaniken und Items sind untererklärt.</li>
+<li>Nicht alle Gegner haben eine Animation</li>
+</ul>
+<p>Beim nächsten mal würde ich auch einen viel kleineren Akku nehmen, der macht ein Großteil des Gewichts aus, ich hab das Gerät nun einige Wochen getestet und wenn ich die Akkunutzung hochrechne komme ich auf eine Laufzeit von ungefähr 3-4 Monaten mit einer Akkuladung das ist zwar recht komfortabel aber schon eher überdimensioniert.</p>
 <p>Und jetzt erstmal zu dem eigentlich interessanten Teil, dem Spiel!</p>
 <p>Der Gameloop läuft so:</p>
 <p>Der Spieler startet mit einem Ritter auf LVL 1, alle 250 Schritte wird ein Event getriggert, es vibriert und piept wenn das gerät nicht im Schlafmodus ist.</p>
 <p>So können insgesamt 20 Events gesammelt werden die dann nacheinander am Stück gespielt werden können sobald man Zeit dafür findet.</p>
+<p>Im Kampf ist der Spieler zu erst dran und hat 3 Skillpunkte für den ganzen Kampf, er kann Angreifen, Blocken und Skills (die jeweils einen Punkt kosten) einsetzen. Die Intention des Gegners wird bereits angezeigt, danach ist der gegner dran und führt eine Akiton aus, (Angreifen, Blocken, Aufladen für starken Angriff) das geht dann so hin und her bis einer besiegt ist.</p>
 <p>Die Events laufen so ab dass man eine Auswahl zwischen zwei zufälligen Begegnungen bekommt, nach 10 Events gibt es einen Boss Kampf. Für jedes Event gibt es eine Belohnung die aus Erfahrung, Gold, einem Gegenstand oder einer Statuserhöhung besteht. Beim Level up des Spielers gibt es ebenfalls Statuserhöhungen und einen Gegenstand, dabei hat der Spieler immer die Wahl aus einem von 3 Gegenständen. Insgesamt gilt es somit 50 Events abzuschließen und den Endgegner zu besiegen. Sobald der Spieler einen Kampf verliert oder auf andere Weise die Lebenspunkte auf 0 gehen wird ein neuer Run gestartet. Am Ende eines Runs gibt es noch eine bestimmte Anzahl an Metawährung womit neue Items und Gegenstände oder Startboni freigeschaltet werden können die dann verfügbar werden.</p>
 <p>Abschließend ist hier noch eine Übersicht mit allen Eventsprites und Gegnern und ein paar weniger ernste Poster. :)</p>
 <p>Danke fürs lesen!</p>
@@ -139,6 +152,20 @@
             <div class="project-gallery">
                 
                 <figure class="project-gallery__item">
+                    <img src="/Images/blog/development-process-of-pocket-knight/pocketknightcloth.webp" alt="pocketKnightDevice" loading="lazy">
+                    
+                    <figcaption data-en="Pocket Knight finished device" data-de="Pocket Knight fertiges Gerät">Pocket Knight finished device</figcaption>
+                    
+                </figure>
+                
+                <figure class="project-gallery__item">
+                    <img src="/Images/blog/development-process-of-pocket-knight/pocketknightspriteposter.webp" alt="PocketknightSprites" loading="lazy">
+                    
+                    <figcaption data-en="Pocket Knight Sprites" data-de="Pocket Knight Sprites">Pocket Knight Sprites</figcaption>
+                    
+                </figure>
+                
+                <figure class="project-gallery__item">
                     <img src="/Images/pocketknightposter3.webp" alt="HolyGrail poster" loading="lazy">
                     
                     <figcaption data-en="silly holy grail poster" data-de="leicht albernes heiliger Gral Poster">silly holy grail poster</figcaption>
@@ -149,20 +176,6 @@
                     <img src="/Images/blog/development-process-of-pocket-knight/pocketknight2.webp" alt="silly knight giving" loading="lazy">
                     
                     <figcaption data-en="giving the grace." data-de="die Gnade wird gegeben.">giving the grace.</figcaption>
-                    
-                </figure>
-                
-                <figure class="project-gallery__item">
-                    <img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="pocketKnightDevice" loading="lazy">
-                    
-                    <figcaption data-en="Pocket Knight finished device" data-de="Pocket Knight fertiges Gerät">Pocket Knight finished device</figcaption>
-                    
-                </figure>
-                
-                <figure class="project-gallery__item">
-                    <img src="/Images/blog/development-process-of-pocket-knight/pocketknightspriteposter.webp" alt="PocketknightSprites" loading="lazy">
-                    
-                    <figcaption data-en="Pocket Knight Sprites" data-de="Pocket Knight Sprites">Pocket Knight Sprites</figcaption>
                     
                 </figure>
                 
