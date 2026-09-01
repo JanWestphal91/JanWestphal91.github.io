@@ -31,8 +31,6 @@ body_de: |-
 
   [![digivice device](/Images/blog/development-process-of-pocket-knight/Digivice_ver1_1.webp "Das besagte Spielzeug, Bildquelle: https://wikimon.net/images/9/99/Digivice_ver1_1.jpg")](https://wikimon.net/images/9/99/Digivice_ver1_1.jpg)
 
-  #
-
   Also habe ich angefangen erstmal ein Konzept auszuarbeiten und mir überlegt welche Teile ich denn nehmen könnte, diesmal habe ich mich für einen DFRobot Firebeetle v2 ESP32 entschieden weil er bereits die Stromversorgung auf dem Board hat und ich nur noch einen Akku anklemmen musste.
 
   Dadurch dass das Gerät eben auch hosentaschentauglich sein sollte, habe ich versucht das ganze möglichst minimalistisch zu halten. 
@@ -54,8 +52,6 @@ body_de: |-
   Dabei gab es mehrere Hürden die mich mehrfach zum verzweifeln gebracht haben, die Integration des Schrittzählers, die Sleep Funktion während trotzdem Schritte gezählt werden, das Laden und Darstellen von Pixelgrafiken und die Animationen. Alles andere war auch schwer, was hab ich mir nur gedacht?!
 
   ![BreadboardPocketknight](/Images/pcoketknightbreadboard.webp "Breadboard Prototyping")
-
-  Breadboard Prototyp
 
   Nachdem ich dann irgendwann einen halbwegs brauchbaren Code hatte und die Breadboard Schaltung soweit finalisiert war gings ans Löten. Ich habe dabei versucht alle Komponenten so kompakt wie möglich zusammenzukriegen, was auch soweit ganz gut geklappt hat.
 
@@ -102,4 +98,60 @@ body_de: |-
   Danke fürs lesen!
 ---
 
-WIP!
+Hi! For quite a while now I'd wanted to build a device that brings to mind the Digimon Digivice toys. I thought those things were really cool as a kid, even though I never owned one, but I've made up for that now in my own way :)
+
+[![Digive Toy](/Images/blog/development-process-of-pocket-knight/Digivice_ver1_1.webp "The toy i talk about, Bildquelle: https://wikimon.net/images/9/99/Digivice_ver1_1.jpg")](https://wikimon.net/images/9/99/Digivice_ver1_1.jpg)
+
+So I started by working out a concept and thinking about which parts I could use. This time I went with a DFRobot FireBeetle v2 ESP32, because it already has the power supply on the board and all I had to do was hook up a battery. Since the device was also meant to be pocket-friendly, I tried to keep the whole thing as minimal as possible.
+
+Other components I used:
+
+- 128 x 64 pixel OLED display
+- Seeed Grove – Pedometer (BMA456) (step counter)
+- Piezo buzzer (sound output)
+- Mini vibration motor (for haptic feedback)
+- 3 small switches (inputs)
+- 1800 mAh Li-ion battery (something much smaller would have done the job)
+- PLA filament for the enclosure
+- a piece of perfboard, wire and solder
+- superglue and hot glue :)
+
+Once I had a rough plan and had gathered all the parts, I started by putting everything together on a breadboard and turned to the code first. There were several hurdles along the way that drove me to despair more than once: integrating the step counter, the sleep function while still counting steps, loading and displaying pixel graphics, and the animations. Everything else was hard too, what was I thinking?!
+
+![BreadboardKnight](/Images/PocketKnight/handheldbreadboard.webp "Breadboard Prototyping")
+
+Once I eventually had halfway usable code and the breadboard circuit was more or less finalised, it was time to solder. I tried to get all the components packed together as compactly as possible, which worked out pretty well.
+
+![](/Images/PocketKnight/handheldactive.webp "The soldered and glued thing")
+
+In the next step I kept working on the game loop, the content and the sprites to turn it into a "rounded" game. Alongside that I started designing the enclosure in Fusion and then printed it at the [Kiel FabLab](https://fablab.sh/).
+
+![](/Images/blog/development-process-of-pocket-knight/Printfablab.webp "Printing the case on a Prusa Mini")
+
+And then the time had finally come and the device was nearing completion. All in all it took considerably longer than planned again and I sank roughly 3 months of my free time into the project. I had a few more ideas I would have liked to implement, but I've cut them for now due to a lack of time and motivation.
+
+Here are the cut features:
+
+- Multiplayer: co-op and competitive over ESP-NOW
+- Online leaderboard over a WiFi connection
+- Cooler animations and transition effects between screens
+- Different starting classes (originally I wanted to build two devices, one with a knight and one with a wizard, for the co-op mode)
+- English localisation, I wrote all the strings in German to begin with and out of convenience I've stuck with it.
+
+Bugs that still need dealing with:
+
+- Text sometimes gets cut off because it's too long, 128 px really isn't much space for information.
+- Some elements, mechanics and items are under explained.
+- Not all enemies have an animation.
+
+Next time I'd also go for a much smaller battery, it makes up a large part of the weight. I've been testing the device for a few weeks now, and extrapolating from the battery usage I end up with a runtime of roughly 3 – 4 months on a single charge. That's quite convenient, but definitely overkill.
+
+And now for the actually interesting part: the game!
+
+The game loop works like this: the player starts with a knight at level 1. Every 250 steps an event is triggered, the device vibrates and beeps if it isn't in sleep mode. Up to 20 events can be collected this way, which can then be played through one after another in one go whenever you find the time.
+
+In combat the player goes first and has 3 skill points for the entire fight. They can attack, block, or use skills (each of which costs one point). The enemy's intention is shown in advance, then it's the enemy's turn and they carry out an action (attack, block, charge up for a strong attack). This goes back and forth until one of them is defeated.
+
+Events work like this: you get a choice between two random encounters, and after 10 events there's a boss fight. Each event gives a reward consisting of experience, gold, an item or a stat increase. Levelling up also gives the player stat increases and an item, always with a choice of one out of 3 items. In total that means completing 50 events and defeating the final boss. As soon as the player loses a fight, or their health drops to 0 some other way, a new run starts. At the end of a run there's a certain amount of meta currency, which can be spent on unlocking new items and equipment or starting bonuses that then become available.
+
+To finish off, here's an overview of all the event sprites and enemies, plus a few less serious posters. :) Thanks for reading!
