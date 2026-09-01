@@ -15,7 +15,7 @@ body_de: |-
 
   Die Gamejam wurde vom IF(game)SH Verein organisiert, besonders eine handvoll engagierte (ehrenamtliche!) Leute die sich lange vorher um die ganze Orga und Finanzierung gekümmert haben. Die Gamejam wurde auch mit Fördergeldern unterstützt, wodurch das ganze überhaupt erst möglich wurde, wir waren ungefähr 30-40 Teilnehmende und hatten eine Vollverpflegung  und Unterkunft und sogar Spritgeld wurde erstattet. Dadurch das es auch eine Kollaboration mit dänischen Entwickelnden gab waren wir ein bunt gemischter Haufen. 
 
-  Am Freitag gab es erstmal einiges an Input
+  Am Freitag gab es erstmal einiges an Input.... Weiterer Text folgt bald WIP WIP WIP! Ausrufezeichen !
 ---
 
 At first, here are [all games developed during the jam](https://itch.io/c/7976774/meko-jam-2026-between-the-lines) in a collection.
