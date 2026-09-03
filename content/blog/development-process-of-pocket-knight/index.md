@@ -96,6 +96,8 @@ body_de: |-
   Abschließend ist hier noch eine Übersicht mit allen Eventsprites und Gegnern und ein paar weniger ernste Poster. :) 
 
   Danke fürs lesen!
+
+  <figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><iframe width="560" height="315" src="https://www.youtube.com/embed/YMT1BVRyX4g?si=meBRJPO7GS6B1Fek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></figure>
 ---
 
 Hi! For quite a while now I'd wanted to build a device that brings to mind the Digimon Digivice toys. I thought those things were really cool as a kid, even though I never owned one, but I've made up for that now in my own way :)
@@ -155,3 +157,5 @@ In combat the player goes first and has 3 skill points for the entire fight. The
 Events work like this: you get a choice between two random encounters, and after 10 events there's a boss fight. Each event gives a reward consisting of experience, gold, an item or a stat increase. Levelling up also gives the player stat increases and an item, always with a choice of one out of 3 items. In total that means completing 50 events and defeating the final boss. As soon as the player loses a fight, or their health drops to 0 some other way, a new run starts. At the end of a run there's a certain amount of meta currency, which can be spent on unlocking new items and equipment or starting bonuses that then become available.
 
 To finish off, here's an overview of all the event sprites and enemies, plus a few less serious posters. :) Thanks for reading!
+
+<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><iframe width="560" height="315" src="https://www.youtube.com/embed/YMT1BVRyX4g?si=meBRJPO7GS6B1Fek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></figure>
