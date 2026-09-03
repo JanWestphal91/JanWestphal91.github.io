@@ -13,12 +13,15 @@ images:
   - src: /Images/Audiodingo/DingoFirstBreadboard.webp
     alt: Breadboard Schaltung
     caption: Breadboard Schaltung Prototyping
+    caption_de: ''
   - src: /Images/Audiodingo/DingofirstCase.webp
     alt: Erstes gedrucktes Gehäuse
     caption: Erstes gedrucktes Gehäuse
+    caption_de: ''
   - src: /Images/Audiodingo/DingoinFusion.webp
     alt: Fusion Screenshot
     caption: Gehäuse Entwurf in Fusion
+    caption_de: ''
 body_de: |-
   Hallo! Das hier ist der erste Eintrag im Blog. :)
 
@@ -37,6 +40,8 @@ body_de: |-
   Bei der nächsten Iteration ist das Gehäuse deutlich breiter und tiefer geworden. Außerdem wurden die Maße für alle Knöpfe, Aussparungen und Anschlüsse überarbeitet. Tatsächlich war das Gehäuse beim zweiten Druck dann auch passend. Im nun letzten Arbeitsschritt wird noch der Code weiter überarbeitet und alle Kleinteile werden gedruckt und ergänzt.
 
   Et voilà, ein neuer Synthesizer ist geboren :)
+
+  <figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><iframe width="560" height="315" src="https://www.youtube.com/embed/iitkykF2S_k?si=zE1UXlFt0ZZfB-AN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></figure>
 ---
 
 Hello, and welcome to the first post on my blog. :)
@@ -58,3 +63,5 @@ In the following iteration, the case became noticeably wider and deeper. I also 
 At the moment, the project is in its final stages. The code is still being refined, and the remaining small parts are being printed and added step by step.
 
 Et voilà, a new synthesizer is born. :)
+
+<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><iframe width="560" height="315" src="https://www.youtube.com/embed/iitkykF2S_k?si=zE1UXlFt0ZZfB-AN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></figure>
