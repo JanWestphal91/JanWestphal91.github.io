@@ -41,6 +41,6 @@ images:
     alt: Pockt knight poster
     caption: Pocket Knight - a holy grail
     caption_de: Pocket Knight - Der heilige Gral
-embed: ''
+embed: <iframe width="560" height="315" src="https://www.youtube.com/embed/YMT1BVRyX4g?si=-3MBMNdEbFsba26u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 date: 2026-08-20
 ---
