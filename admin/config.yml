@@ -273,15 +273,16 @@ collections:
         name: body
         widget: markdown
         hint: >-
-          Für Bilder im Text den Button "Bild mit Bildunterschrift" in der
-          Editor-Leiste nutzen: dort lassen sich Alt-Text, Bildunterschrift
-          und Größe (klein / mittel / groß) auswählen. Auf der Website ist
-          das Bild anklickbar und öffnet sich groß.
+          "Bild mit Bildunterschrift" in der Editor-Leiste setzt ein Bild
+          mit Alt-Text, Unterschrift und Größe (klein / mittel / groß) —
+          auf der Website öffnet es sich per Klick groß.
+          "Einbettung (iframe)" fügt YouTube-, itch.io- oder ähnliche
+          Einbettungen ein.
 
       - label: "Text (DE)"
         name: body_de
         widget: markdown
         required: false
         hint: >-
-          Bilder wie oben über den Button "Bild mit Bildunterschrift"
-          einfügen.
+          Bilder und Einbettungen wie oben über die Buttons in der
+          Editor-Leiste einfügen.
