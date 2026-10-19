@@ -79,10 +79,13 @@ function applyTranslations(lang, skipProjectRender) {
     const toggle = document.getElementById('lang-toggle');
     if (toggle) toggle.textContent = lang === 'de' ? 'EN' : 'DE';
 
-    if (document.body.dataset.page !== 'project' && document.body.dataset.page !== 'project-static') {
+    // Den Titel nur ändern, wenn jemand die Sprache selbst gewählt hat.
+    // So sehen Suchmaschinen (ohne gespeicherte Wahl) immer den Titel aus
+    // dem HTML, der zur Beschreibung in index.njk passt.
+    if (document.body.classList.contains('page-home') && localStorage.getItem(LANG_STORAGE_KEY)) {
         document.title = lang === 'de'
-            ? 'Jan Westphal – Portfolio | Creative Coder & Designer aus Kiel'
-            : 'Jan Westphal – Portfolio | Creative Coder & Designer from Kiel';
+            ? 'Jan Westphal – Portfolio | Entwickler & Designer aus Kiel'
+            : 'Jan Westphal – Portfolio | Developer & Designer from Kiel';
     }
 
     if (!skipProjectRender && document.body.dataset.page === 'project') {
@@ -246,7 +249,7 @@ const _PROJECT_DATA_LEGACY = {
             "Can you help a small pony reach its dream? Stay focused and show how fast you are.",
             "Climb the leaderboard and become the fastest pony of them all!"
         ],
-        embed: '<iframe frameborder="0" src="https://itch.io/embed/4287829" width="208" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe>',
+        embed: '<iframe style="border:0" src="https://itch.io/embed/4287829" width="208" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe>',
         de: {
             summary: "Entwickelt mit Godot und Aseprite, kostenlos spielbar. Eine kleine Hommage an die Flash-Spiele der frühen 2000er und ein Experiment mit Physikberechnungen. Ein kleines Pony wird immer schneller und versucht, die Lichtgeschwindigkeit zu erreichen. Spielbar auf itch.io, mit Online-Bestenliste, Controller- und Tastatursteuerung sowie Audio-Intensität und Übergängen.",
             meta: [
@@ -361,7 +364,7 @@ const _PROJECT_DATA_LEGACY = {
             "A documentation of graffiti and street art from the years 2015 to 2019.",
             "An archive capturing creative visual expression and culture."
         ],
-        embed: '<iframe frameborder="0" src="https://itch.io/embed/4455766" width="208" height="167"><a href="https://jan-west.itch.io/e-zine-graffiti-doc-15-19">E-Zine #1 // Graffiti Archive 2015-2019 by Netro</a></iframe>',
+        embed: '<iframe style="border:0" src="https://itch.io/embed/4455766" width="208" height="167"><a href="https://jan-west.itch.io/e-zine-graffiti-doc-15-19">E-Zine #1 // Graffiti Archive 2015-2019 by Netro</a></iframe>',
         de: {
             summary: "Ein digitales E-Zine mit Graffiti und Street Art aus den Jahren 2015–2019.",
             meta: ["Design", "Druck", "Illustration"],
@@ -1400,3 +1403,17 @@ initLightbox();
 
 initFishScene();
 initLangToggle();
+
+/* ═══ Zwei-Klick-Einbettungen ═══
+   Externe iframes (YouTube, itch.io) werden beim Build durch einen
+   Platzhalter ersetzt (.eleventy.js → consentEmbeds). Erst nach Klick
+   wird das iframe aus dem <template> eingesetzt und lädt Inhalte vom
+   Fremdanbieter. */
+document.addEventListener("click", function (event) {
+    const button = event.target.closest(".jw-consent__button");
+    if (!button) return;
+    const box = button.closest(".jw-consent");
+    const template = box ? box.querySelector("template") : null;
+    if (!template) return;
+    box.replaceWith(template.content.cloneNode(true));
+});

@@ -131,6 +131,13 @@ collections:
         default: 10
         hint: "Kleinere Zahl = weiter vorne"
 
+      - label: "Auf der Startseite hervorheben"
+        name: featured
+        widget: boolean
+        default: false
+        required: false
+        hint: "An = erscheint als große Karte oben auf der Startseite (höchstens zwei Projekte)."
+
       - label: "Coverbild"
         name: cover_image
         widget: image

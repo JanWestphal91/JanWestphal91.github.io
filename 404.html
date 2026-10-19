@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 – Jan Westphal</title>
+    <meta name="robots" content="noindex" />
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png" />
+    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/theme.css" />
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-404">
+
+<header class="site-header">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="/" class="logo">Jan Westphal</a>
+        </div>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.projects">Projects</span><span class="nav-label nav-label--mobile" data-i18n="nav.projects.mobile">Projects ↗</span></a></li>
+                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile" data-i18n="nav.blog.mobile">Blog ↗</span></a></li>
+                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span data-en="About" data-de="Über mich">About</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Contact" data-de="Kontakt">Contact</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
+                <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
+            </ul>
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+
+<main>
+    <section class="jw-wrap jw-page-head jw-404" aria-labelledby="jw-page-title">
+        <p class="jw-label">[ Error 404 ]</p>
+        <div class="jw-page-head__row">
+            <h1 id="jw-page-title" data-en="Page not found" data-de="Seite nicht gefunden">Page not found</h1>
+            <p class="jw-page-head__intro" data-en="This page doesn't exist (anymore). Maybe one of these helps:" data-de="Diese Seite gibt es nicht (mehr). Vielleicht hilft eins davon weiter:">This page doesn't exist (anymore). Maybe one of these helps:</p>
+        </div>
+        <div class="jw-404__actions">
+            <a href="/" class="jw-cta__button"><span data-en="Back to start" data-de="Zur Startseite">Back to start</span>&nbsp;↗</a>
+            <a href="/projects/" class="jw-more">[&nbsp;<span data-en="Projects" data-de="Projekte">Projects</span>&nbsp;]</a>
+            <a href="/blog/" class="jw-more">[&nbsp;Blog&nbsp;]</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/impressum/" data-en="Imprint" data-de="Impressum">Imprint</a></li>
+            <li><a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+</body>
+</html>

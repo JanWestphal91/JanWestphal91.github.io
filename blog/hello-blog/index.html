@@ -22,67 +22,76 @@
     <meta name="twitter:title" content="Development process of a DIY synthesizer – Jan Westphal" />
     <meta name="twitter:description" content="From circuit to working prototype." />
 
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
-    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
 
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
-    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap"></noscript>
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png" />
+    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/style.css" />
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/theme.css" />
     <script src="/translations.js" defer></script>
     <script src="/script.js" defer></script>
 
 </head>
-<body data-page="post">
+<body class="theme page-post" data-page="post">
 
 <header class="site-header">
     <div class="container nav">
-        <a href="/" class="logo">Jan Westphal</a>
+        <div class="jw-brand">
+            <a href="/" class="logo">Jan Westphal</a>
+        </div>
         <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
                 <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.projects">Projects</span><span class="nav-label nav-label--mobile" data-i18n="nav.projects.mobile">Projects ↗</span></a></li>
-                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile" data-i18n="nav.blog.mobile">Blog ↗</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
+                <li><a href="/blog/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile" data-i18n="nav.blog.mobile">Blog ↗</span></a></li>
+                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span data-en="About" data-de="Über mich">About</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Contact" data-de="Kontakt">Contact</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
                 <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
             </ul>
         </nav>
         <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
     </div>
 </header>
 
 <main class="post-page">
-    <section class="section project-hero">
-        <div class="container">
-            <a class="back-link" href="/blog/" aria-label="Back to blog" data-i18n="blog.back"><h2>←</h2></a>
-            <div class="post-meta">
-                <span class="post-date" data-lang-show="en">June 13, 2026</span>
-                <span class="post-date" data-lang-show="de">13. Juni 2026</span>
-                
-                <ul class="post-tags">
-                    <li>Devlog, Electronic</li>
-                </ul>
-                
-            </div>
-            <h1 data-wavy data-en="Development process of a DIY synthesizer" data-de="Entwicklung eines DIY Synthesizers">Development process of a DIY synthesizer</h1>
-            <p class="project-summary" data-en="From circuit to working prototype." data-de="Von einer Schaltung zum funktionierenden Prototyp.">From circuit to working prototype.</p>
-        </div>
-    </section>
+    <article>
+        <header class="jw-wrap jw-post-head">
+            <nav class="jw-crumb" aria-label="Breadcrumb">
+                <a href="/blog/">Blog</a>
+                <span aria-hidden="true">/</span>
+                <span data-lang-show="en">June 13, 2026</span><span data-lang-show="de" hidden>13. Juni 2026</span>
+            </nav>
+            <h1 data-en="Development process of a DIY synthesizer" data-de="Entwicklung eines DIY Synthesizers">Development process of a DIY synthesizer</h1>
+            
+            <p class="jw-lead" data-en="From circuit to working prototype." data-de="Von einer Schaltung zum funktionierenden Prototyp.">From circuit to working prototype.</p>
+            
+            
+            <p class="jw-tags jw-post-head__tags">Devlog · Electronic</p>
+            
+        </header>
 
-    
-    <section class="section">
-        <div class="container">
-            <img src="/Images/Audiodingo/audiodingostanding.webp" alt="Arduino Prototype" class="post-cover" loading="eager">
+        
+        <div class="jw-wrap jw-post-cover-wrap">
+            <figure class="jw-post-cover">
+                <img src="/Images/Audiodingo/audiodingostanding.webp" alt="Arduino Prototype" class="post-cover" loading="eager">
+            </figure>
         </div>
-    </section>
-    
+        
 
-    <section class="section">
-        <div class="container">
-            <div class="post-body" data-lang-show="en">
+        <div class="jw-wrap">
+            
+            <div class="post-body jw-prose" data-lang-show="en">
                 <p>Hello, and welcome to the first post on my blog. :)</p>
 <p>In this article, I want to document the development process behind my DIY synthesizer project based on the Arduino R4 Minima, from the first breadboard prototypes and early case prints to the overall concept and design process.</p>
 <p>Once the initial idea was in place, the first step was to define the project requirements. I wanted to build a device capable of generating tones while integrating smoothly into my existing setup of other synthesizers. Portability was also an important factor, so it became clear early on that the device would need to run on battery power.</p>
@@ -93,11 +102,10 @@
 <p>In the following iteration, the case became noticeably wider and deeper. I also adjusted the dimensions for the buttons, cutouts, and connectors to improve the overall fit. This time, the second print turned out to fit properly, which was a very satisfying milestone in the process.</p>
 <p>At the moment, the project is in its final stages. The code is still being refined, and the remaining small parts are being printed and added step by step.</p>
 <p>Et voilà, a new synthesizer is born. :)</p>
-<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><iframe width="560" height="315" src="https://www.youtube.com/embed/iitkykF2S_k?si=zE1UXlFt0ZZfB-AN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></figure>
+<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span data-en="This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google)." data-de="Dieses Video ist von YouTube eingebunden. Beim Laden werden Daten wie deine IP-Adresse an YouTube (Google) übertragen.">This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).</span> <a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></p><button type="button" class="jw-consent__button" data-en="Load video" data-de="Video laden">Load video</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/iitkykF2S_k?si=zE1UXlFt0ZZfB-AN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div></figure>
 
             </div>
-            
-            <div class="post-body" data-lang-show="de" hidden>
+            <div class="post-body jw-prose" data-lang-show="de" hidden>
                 <p>Hallo! Das hier ist der erste Eintrag im Blog. :)</p>
 <p>In diesem Beitrag dokumentiere ich die Schritte und Entwicklungen rund um das Projekt eines DIY-Synthesizers mit einem Arduino R4 Minima,  von den ersten Breadboard-Schaltungen über den ersten Gehäusedruck bis hin zur Konzeption des gesamten Prozesses.</p>
 <p>Nachdem die Idee entstanden war, ging es zuerst ins Anforderungsmanagement. Dafür habe ich grob umrissen, was das Gerät können soll. Ich wollte ein Gerät bauen, das Töne abspielen kann und sich nahtlos in mein Setup aus anderen Synthesizern integrieren lässt. Außerdem ist mir Mobilität wichtig, daher stand schon früh fest, dass es einen Akkubetrieb braucht.</p>
@@ -107,50 +115,70 @@
 <p>Danach ging es mit den Optimierungen weiter: Ich habe angefangen, die Komponenten zu verlöten und den Code zu überarbeiten. Zur Klangerzeugung habe ich die Mozzi-Bibliothek genutzt, und auch das Gehäuse wurde noch einmal angepasst.</p>
 <p>Bei der nächsten Iteration ist das Gehäuse deutlich breiter und tiefer geworden. Außerdem wurden die Maße für alle Knöpfe, Aussparungen und Anschlüsse überarbeitet. Tatsächlich war das Gehäuse beim zweiten Druck dann auch passend. Im nun letzten Arbeitsschritt wird noch der Code weiter überarbeitet und alle Kleinteile werden gedruckt und ergänzt.</p>
 <p>Et voilà, ein neuer Synthesizer ist geboren :)</p>
-<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><iframe width="560" height="315" src="https://www.youtube.com/embed/iitkykF2S_k?si=zE1UXlFt0ZZfB-AN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></figure>
+<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span data-en="This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google)." data-de="Dieses Video ist von YouTube eingebunden. Beim Laden werden Daten wie deine IP-Adresse an YouTube (Google) übertragen.">This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).</span> <a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></p><button type="button" class="jw-consent__button" data-en="Load video" data-de="Video laden">Load video</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/iitkykF2S_k?si=zE1UXlFt0ZZfB-AN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div></figure>
             </div>
             
         </div>
-    </section>
 
-    
-    <section class="section">
-        <div class="container">
-            <div class="project-gallery">
+        
+        <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
+            <h2 id="jw-gallery-title" class="jw-label jw-rule"><span data-i18n="project.gallery-label">Gallery</span> (03)</h2>
+            <div class="project-gallery jw-gallery">
                 
                 <figure class="project-gallery__item">
                     <img src="/Images/Audiodingo/DingoFirstBreadboard.webp" alt="Breadboard Schaltung" loading="lazy">
-                    
-                    <figcaption data-en="Breadboard Schaltung Prototyping" data-de="Breadboard Schaltung Prototyping">Breadboard Schaltung Prototyping</figcaption>
-                    
+                    <figcaption><span class="jw-fig">Fig. 01</span> <span data-en="Breadboard Schaltung Prototyping" data-de="Breadboard Schaltung Prototyping">Breadboard Schaltung Prototyping</span></figcaption>
                 </figure>
                 
                 <figure class="project-gallery__item">
                     <img src="/Images/Audiodingo/DingofirstCase.webp" alt="Erstes gedrucktes Gehäuse" loading="lazy">
-                    
-                    <figcaption data-en="Erstes gedrucktes Gehäuse" data-de="Erstes gedrucktes Gehäuse">Erstes gedrucktes Gehäuse</figcaption>
-                    
+                    <figcaption><span class="jw-fig">Fig. 02</span> <span data-en="Erstes gedrucktes Gehäuse" data-de="Erstes gedrucktes Gehäuse">Erstes gedrucktes Gehäuse</span></figcaption>
                 </figure>
                 
                 <figure class="project-gallery__item">
                     <img src="/Images/Audiodingo/DingoinFusion.webp" alt="Fusion Screenshot" loading="lazy">
-                    
-                    <figcaption data-en="Gehäuse Entwurf in Fusion" data-de="Gehäuse Entwurf in Fusion">Gehäuse Entwurf in Fusion</figcaption>
-                    
+                    <figcaption><span class="jw-fig">Fig. 03</span> <span data-en="Gehäuse Entwurf in Fusion" data-de="Gehäuse Entwurf in Fusion">Gehäuse Entwurf in Fusion</span></figcaption>
                 </figure>
                 
             </div>
-        </div>
-    </section>
-    
+        </section>
+        
+    </article>
+
+    <nav class="jw-wrap jw-pager" aria-label="More posts">
+        
+        <a class="jw-pager__link" href="/blog/">
+            <span class="jw-label" data-en="← All posts" data-de="← Alle Beiträge">← All posts</span>
+            <span class="jw-pager__title" data-en="Back to blog" data-de="Zurück zum Blog">Back to blog</span>
+        </a>
+        
+        
+        <a class="jw-pager__link jw-pager__link--next" href="/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">
+            <span class="jw-label" data-en="Newer post →" data-de="Neuerer Beitrag →">Newer post →</span>
+            <span class="jw-pager__title" data-en="Experiences and impressions from the Media Literacy Gamejam in Leck" data-de="Erfahrungen und Eindrücke von der Medienkompetenz GameJam in Leck">Experiences and impressions from the Media Literacy Gamejam in Leck</span>
+        </a>
+        
+    </nav>
+
+    <section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text" data-en="Questions, ideas or feedback? I’d love to hear from you." data-de="Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.">Questions, ideas or feedback? I’d love to hear from you.</p>
+        <a href="/#contact" class="jw-cta__button"><span data-en="Drop a message" data-de="Schreib mir">Drop a message</span>&nbsp;↗</a>
+    </div>
+</section>
+
 </main>
 
 <footer class="site-footer">
     <div class="container footer-row">
-        <p class="footer-copy">2026 Jan Westphal. All wrongs reserved.</p>
-        <nav class="footer-nav" aria-label="Footer Navigation"></nav>
+        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/impressum/" data-en="Imprint" data-de="Impressum">Imprint</a></li>
+            <li><a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></li>
+        </ul>
     </div>
 </footer>
+
 
 </body>
 </html>

@@ -31,77 +31,120 @@
     <meta name="twitter:title" content="Hidden Walls in Lost Places – Jan Westphal" />
     <meta name="twitter:description" content="A digital collection of painted walls in abandoned places." />
 
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
-    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
 
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
-    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap"></noscript>
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png" />
+    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/style.css" />
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/theme.css" />
     <script src="/translations.js" defer></script>
     <script src="/script.js" defer></script>
+
 </head>
-<body data-page="project-static">
+<body class="theme page-project" data-page="project-static">
 
 <header class="site-header">
     <div class="container nav">
-        <a href="/" class="logo">Jan Westphal</a>
+        <div class="jw-brand">
+            <a href="/" class="logo">Jan Westphal</a>
+        </div>
         <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.projects">Projects</span><span class="nav-label nav-label--mobile" data-i18n="nav.projects.mobile">Projects ↗</span></a></li>
+                <li><a href="/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop" data-i18n="nav.projects">Projects</span><span class="nav-label nav-label--mobile" data-i18n="nav.projects.mobile">Projects ↗</span></a></li>
                 <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile" data-i18n="nav.blog.mobile">Blog ↗</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
+                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span data-en="About" data-de="Über mich">About</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Contact" data-de="Kontakt">Contact</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
                 <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
             </ul>
         </nav>
         <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
     </div>
 </header>
 
 <main class="project-page">
-    <section class="section project-hero">
-        <div class="container">
-            <a class="back-link" href="/projects/" data-i18n="project.back-link" aria-label="Back to projects"><h2>←</h2></a>
-            <div class="post-meta">
-                <span>[Illustration] 2020-2021</span>
-                <ul class="project-meta" data-lang-show="en">
-                    <li>Illustration</li>
-                </ul>
-                
-                <ul class="project-meta" data-lang-show="de" hidden>
-                    <li>Illustration</li>
-                </ul>
-                
+    <section class="jw-wrap jw-detail-head" aria-labelledby="jw-page-title">
+        <nav class="jw-crumb" aria-label="Breadcrumb">
+            <a href="/projects/" data-i18n="nav.projects">Projects</a>
+            <span aria-hidden="true">/</span>
+            <span>07</span>
+        </nav>
+        <div class="jw-detail-head__row">
+            <div class="jw-detail-head__main">
+                <h1 id="jw-page-title">Hidden Walls in Lost Places</h1>
+                <div class="project-summary jw-lead" data-lang-show="en"><p>A digital collection of painted walls in abandoned places.</p>
+</div>
+                <div class="project-summary jw-lead" data-lang-show="de" hidden><p>Ein eMagazin mit einer Sammlung bemalter Wände in verlassenen Orten.</p>
+</div>
             </div>
-            <h1 data-wavy data-rainbow>Hidden Walls in Lost Places</h1>
-            <div class="project-summary" data-lang-show="en"><p>A digital collection of painted walls in abandoned places.</p>
-</div>
-            <div class="project-summary" data-lang-show="de" hidden><p>Ein eMagazin mit einer Sammlung bemalter Wände in verlassenen Orten.</p>
-</div>
+            <dl class="jw-facts">
+                <div><dt data-en="Type" data-de="Art">Type</dt><dd>Illustration</dd></div>
+                <div><dt data-en="Year" data-de="Jahr">Year</dt><dd>2020-2021</dd></div>
+                <div>
+                    <dt data-en="Details" data-de="Details">Details</dt>
+                    <dd>
+                        <span data-lang-show="en">Illustration</span>
+                        <span data-lang-show="de" hidden>Illustration</span>
+                    </dd>
+                </div>
+            </dl>
         </div>
     </section>
 
     
-    <section class="section">
-        <div class="container">
-            <div id="project-embed"><div id="book" data-flipbook-images="/Images/Graffzine2/graffzine2.webp,/Images/Graffzine2/graffzine22.webp,/Images/Graffzine2/graffzine23.webp,/Images/Graffzine2/graffzine24.webp,/Images/Graffzine2/graffzine25.webp,/Images/Graffzine2/graffzine26.webp,/Images/Graffzine2/graffzine27.webp,/Images/Graffzine2/graffzine28.webp,/Images/Graffzine2/graffzine29.webp,/Images/Graffzine2/graffzine210.webp,/Images/Graffzine2/graffzine211.webp,/Images/Graffzine2/graffzine212.webp,/Images/Graffzine2/graffzine213.webp,/Images/Graffzine2/graffzine214.webp,/Images/Graffzine2/graffzine215.webp,/Images/Graffzine2/graffzine216.webp,/Images/Graffzine2/graffzine217.webp,/Images/Graffzine2/graffzine218.webp,/Images/Graffzine2/graffzine219.webp,/Images/Graffzine2/graffzine220.webp,/Images/Graffzine2/graffzine221.webp,/Images/Graffzine2/graffzine222.webp,/Images/Graffzine2/graffzine223.webp,/Images/Graffzine2/graffzine224.webp,/Images/Graffzine2/graffzine225.webp,/Images/Graffzine2/graffzine226.webp,/Images/Graffzine2/graffzine227.webp,/Images/Graffzine2/graffzine228.webp,/Images/Graffzine2/graffzine229.webp"></div></div>
-        </div>
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
+        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span data-en="Media" data-de="Medien">Media</span></h2>
+        <div id="project-embed" class="jw-embed"><div id="book" data-flipbook-images="/Images/Graffzine2/graffzine2.webp,/Images/Graffzine2/graffzine22.webp,/Images/Graffzine2/graffzine23.webp,/Images/Graffzine2/graffzine24.webp,/Images/Graffzine2/graffzine25.webp,/Images/Graffzine2/graffzine26.webp,/Images/Graffzine2/graffzine27.webp,/Images/Graffzine2/graffzine28.webp,/Images/Graffzine2/graffzine29.webp,/Images/Graffzine2/graffzine210.webp,/Images/Graffzine2/graffzine211.webp,/Images/Graffzine2/graffzine212.webp,/Images/Graffzine2/graffzine213.webp,/Images/Graffzine2/graffzine214.webp,/Images/Graffzine2/graffzine215.webp,/Images/Graffzine2/graffzine216.webp,/Images/Graffzine2/graffzine217.webp,/Images/Graffzine2/graffzine218.webp,/Images/Graffzine2/graffzine219.webp,/Images/Graffzine2/graffzine220.webp,/Images/Graffzine2/graffzine221.webp,/Images/Graffzine2/graffzine222.webp,/Images/Graffzine2/graffzine223.webp,/Images/Graffzine2/graffzine224.webp,/Images/Graffzine2/graffzine225.webp,/Images/Graffzine2/graffzine226.webp,/Images/Graffzine2/graffzine227.webp,/Images/Graffzine2/graffzine228.webp,/Images/Graffzine2/graffzine229.webp"></div></div>
     </section>
     
 
     
+
+    <nav class="jw-wrap jw-pager" aria-label="More projects">
+        
+        <a class="jw-pager__link" href="/projects/fine-art-assortment/">
+            <span class="jw-label" data-en="← Previous project" data-de="← Vorheriges Projekt">← Previous project</span>
+            <span class="jw-pager__title">Fine Art Assortment</span>
+        </a>
+        
+        
+        <a class="jw-pager__link jw-pager__link--next" href="/projects/">
+            <span class="jw-label" data-en="All projects →" data-de="Alle Projekte →">All projects →</span>
+            <span class="jw-pager__title" data-en="Back to index" data-de="Zur Übersicht">Back to index</span>
+        </a>
+        
+    </nav>
+
+    <section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text" data-en="Questions, ideas or feedback? I’d love to hear from you." data-de="Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.">Questions, ideas or feedback? I’d love to hear from you.</p>
+        <a href="/#contact" class="jw-cta__button"><span data-en="Drop a message" data-de="Schreib mir">Drop a message</span>&nbsp;↗</a>
+    </div>
+</section>
+
 </main>
 
 <footer class="site-footer">
     <div class="container footer-row">
-        <p class="footer-copy">2026 Jan Westphal. All wrongs reserved.</p>
-        <nav class="footer-nav" aria-label="Footer Navigation"></nav>
+        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/impressum/" data-en="Imprint" data-de="Impressum">Imprint</a></li>
+            <li><a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></li>
+        </ul>
     </div>
 </footer>
+
 
 <script src="/page-flip.browser.js" defer></script>
 <script src="/flipbook.js" defer></script>
