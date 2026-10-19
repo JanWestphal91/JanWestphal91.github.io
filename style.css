@@ -82,7 +82,7 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
