@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--SEO Core-->
-    <title>Jan Westphal – Portfolio | Creative Coder &amp; Designer from Kiel</title>
+    <title>Jan Westphal – Portfolio | Entwickler &amp; Designer aus Kiel</title>
     <meta
             name="description"
-            content="Portfolio of Jan Westphal – Creative Coder &amp; Designer from Kiel. Game development, interactive design, hardware prototyping and graphic design."
+            content="Portfolio von Jan Westphal aus Kiel: Spiele, selbstgebaute Elektronik, Illustration und Grafikdesign – mit Projekten, Prozessen und Devlogs."
     />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
@@ -26,10 +26,10 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="de_DE" />
     <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="Jan Westphal – Creative Coder &amp; Designer from Kiel" />
+    <meta property="og:title" content="Jan Westphal – Entwickler &amp; Designer aus Kiel" />
     <meta
             property="og:description"
-            content="Portfolio of Jan Westphal – Game development, interactive design, hardware prototyping and graphic design."
+            content="Portfolio von Jan Westphal aus Kiel: Spiele, selbstgebaute Elektronik, Illustration und Grafikdesign – mit Projekten, Prozessen und Devlogs."
     />
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -39,17 +39,14 @@
 
     <!--Twitter / X Card-->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Jan Westphal – Creative Coder &amp; Designer from Kiel" />
+    <meta name="twitter:title" content="Jan Westphal – Entwickler &amp; Designer aus Kiel" />
     <meta
             name="twitter:description"
-            content="Portfolio of Jan Westphal – Game development, interactive design, hardware prototyping and graphic design."
+            content="Portfolio von Jan Westphal aus Kiel: Spiele, selbstgebaute Elektronik, Illustration und Grafikdesign – mit Projekten, Prozessen und Devlogs."
     />
     <meta name="twitter:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
 
     <!--Theme & Favicon-->
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./Images/favicon32.png" />
-    <link rel="apple-touch-icon" href="./Images/favicon180.png" />
 
     <!--Structured Data-->
     <script type="application/ld+json">
@@ -65,7 +62,9 @@
         "https://github.com/JanWestphal91",
         "https://jan-west.itch.io",
         "https://bsky.app/profile/jan-west.itch.io",
-        "https://www.youtube.com/@netrouberkitsch7044"
+        "https://www.youtube.com/@netroslab",
+        "https://www.instagram.com/netroslab/",
+        "https://www.tiktok.com/@netroslab"
       ],
       "jobTitle": "Creative Coder & Designer",
       "address": { "@type": "PostalAddress", "addressLocality": "Kiel", "addressCountry": "DE" },
@@ -84,148 +83,272 @@
     }
     </script>
 
-    <!-- ═══ Assets ═══ -->
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
-    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap"></noscript>
-    <link rel="stylesheet" href="style.css" />
-    <script src="translations.js" defer></script>
-    <script src="script.js" defer></script>
+{% include "partials/head-assets.njk" %}
 </head>
-<body>
-<header class="site-header">
-    <div class="container nav">
-        <a href="#top" class="logo" >Jan Westphal</a>
-        <nav class="nav-main" aria-label="Main navigation">
-            <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.projects">Projects</span><span class="nav-label nav-label--mobile" data-i18n="nav.projects.mobile">Projects ↗</span></a></li>
-                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile" data-i18n="nav.blog.mobile">Blog ↗</span></a></li>
-                <li><a href="#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗ </span></a></li>
-                <li> <button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
-            </ul>
+<body class="theme page-home">
+{%- set active = "home" %}
+{%- set ticker = true %}
+{% include "partials/site-header.njk" %}
 
-        </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-
-    {%- set tickerEn = sitetext.ticker.en %}
-    {%- set tickerDe = sitetext.ticker.de or sitetext.ticker.en %}
-    <div class="ticker-band">
-        <div class="ticker-content">
-            <span class="ticker-text" data-en="{{ tickerEn }}" data-de="{{ tickerDe }}">{{ tickerEn }}</span>
-            <span class="ticker-text" aria-hidden="true" data-en="{{ tickerEn }}" data-de="{{ tickerDe }}">{{ tickerEn }}</span>
-        </div>
-    </div>
-
-</header>
-
-
+{%- set latest = collections.projects[0] %}
 
 <main id="top">
-    <section class="hero">
-        <div class="container hero-container-wide">
-            <h1><span data-i18n="hero.greeting">Hi! I'm </span><a href="#" class="hero-name-link">Jan Westphal</a><span data-i18n="hero.location">, a developer and designer living in Kiel, Germany.</span></h1>
+
+    <!-- ═══ Hero ═══ -->
+    <section class="jw-wrap jw-hero" aria-labelledby="jw-title">
+        <div class="jw-hero__main">
+            <p class="jw-hero__kicker"><span data-en="Hi! I'm" data-de="Hi! Ich bin">Hi! I'm</span> <a href="#about" class="hero-name-link">Jan Westphal</a></p>
+            <h1 id="jw-title"><span data-en="Developer" data-de="Entwickler">Developer</span> <span class="jw-accent">&amp;</span><br><span data-en="designer" data-de="Designer">designer</span><br><span data-en="from Kiel" data-de="aus Kiel">from Kiel</span></h1>
+            <p class="jw-hero__lead" data-en="I build games, small electronic devices and graphics, and I feel most at home where those three overlap." data-de="Ich baue Spiele, kleine elektronische Geräte und Grafiken und fühle mich dort am wohlsten, wo sich die drei überschneiden.">I build games, small electronic devices and graphics, and I feel most at home where those three overlap.</p>
         </div>
+        <dl class="jw-facts">
+            <div><dt data-en="Based in" data-de="Wohnort">Based in</dt><dd>Kiel, DE · 54.32°N 10.14°E</dd></div>
+            <div><dt data-en="Local time" data-de="Ortszeit">Local time</dt><dd><time id="jw-clock">–</time></dd></div>
+            <div><dt data-en="Currently" data-de="Aktuell">Currently</dt><dd data-en="B.Eng. Media Engineering, HAW Kiel" data-de="B.Eng. Medieningenieurwesen, HAW Kiel">B.Eng. Media Engineering, HAW Kiel</dd></div>
+            {%- if latest %}
+            <div><dt data-en="Latest" data-de="Neuestes">Latest</dt><dd><a href="/projects/{{ latest.data.slug }}/">{{ latest.data.title }}</a></dd></div>
+            {%- endif %}
+            <div><dt data-en="Open to" data-de="Offen für">Open to</dt><dd><span class="jw-dot" aria-hidden="true"></span><span data-en="Internships &amp; collabs" data-de="Praktika &amp; Kollaborationen">Internships &amp; collabs</span></dd></div>
+        </dl>
     </section>
 
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-head section-head-row">
-                <h2 data-i18n="projects.heading">Check my latest projects👇</h2>
-                <a href="/projects/" class="section-head-link" data-i18n="projects.view-all">View all →</a>
+    <!-- ═══ Projekte ═══ -->
+    <section id="projects" class="jw-wrap jw-section" aria-labelledby="jw-projects-title">
+        <div class="jw-head">
+            <div>
+                <p class="jw-label">01 — <span data-en="Selected work" data-de="Auswahl">Selected work</span></p>
+                <h2 id="jw-projects-title" data-en="Things I made" data-de="Meine Arbeiten">Things I made</h2>
             </div>
-
-            <div class="project-filters">
+            <div class="project-filters" role="group" aria-label="Filter">
                 <button class="filter-btn active" data-filter="all" data-i18n="filter.all">All</button>
             </div>
+        </div>
 
-            <div class="work-list">
-                {%- for project in collections.projects %}
-                <a class="work-item-link" href="/projects/{{ project.data.slug }}/">
-                    <div class="flip-card" tabindex="0">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <figure class="work-thumb">
-                                    <img src="{{ project.data.cover_image }}" alt="{{ project.data.cover_image_alt }}" loading="{% if loop.first %}eager{% else %}lazy{% endif %}" width="300" height="300">
-                                </figure>
-                            </div>
-                            <div class="flip-card-back">
-                                <div class="work-item-back-content">
-                                    <div class="work-meta"><span>{{ project.data.category }}</span></div>
-                                    <h3>{{ project.data.title }}</h3>
-                                    <hr>
-                                    <p data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</p>
-                                </div>
-                            </div>
+        {#- Jedes Projekt hat zwei Darstellungen: große Karte und Listenzeile.
+            Ein kleines Skript unten wählt nach jedem Filterklick die ersten
+            zwei sichtbaren Projekte als Karten aus (bei „Alle“: die im CMS
+            hervorgehobenen), alle übrigen erscheinen als Zeilen. -#}
+        {%- set split = collections.projects | splitFeatured(2) %}
+        <ul class="work-list jw-works">
+            {%- for project in split.featured.concat(split.rest) %}
+            {%- set isFeatured = loop.index <= split.featured.length %}
+            <li class="jw-work{% if isFeatured %} is-featured{% elif loop.index == split.featured.length + 1 %} is-first-row{% endif %}" data-index="{{ collections.projects.indexOf(project) }}" data-featured="{{ '1' if isFeatured else '0' }}">
+                <a class="work-item-link jw-card" href="/projects/{{ project.data.slug }}/">
+                    <span class="work-meta" hidden><span>{{ project.data.category }}</span></span>
+                    <figure class="jw-card__media">
+                        <img src="{{ project.data.cover_image | imgPath }}" alt="{{ project.data.cover_image_alt }}" loading="{% if isFeatured %}eager{% else %}lazy{% endif %}" width="800" height="600">
+                    </figure>
+                    <div class="jw-card__head">
+                        <div class="jw-card__title">
+                            <span class="jw-num">{{ loop.index | pad2 }}</span>
+                            <h3>{{ project.data.title }}</h3>
                         </div>
+                        <span class="jw-tags">{{ project.data.category | catTypes }}{% if project.data.category | catYear %} · {{ project.data.category | catYear }}{% endif %}</span>
                     </div>
+                    <p data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</p>
                 </a>
-                {%- endfor %}
-            </div>
-        </div>
-    </section>
-
-    <section id="blog-preview" class="section">
-        <div class="container">
-            <div class="section-head section-head-row">
-                <h2 data-i18n="blog.heading">Latest from the Blog</h2>
-                <a href="/blog/" class="section-head-link" data-i18n="blog.view-all">View all →</a>
-            </div>
-            {% if collections.blog and collections.blog.length %}
-            <div class="blog-preview">
-                {%- for post in collections.blog | limit(6) %}
-                <a class="blog-preview-link" href="{{ post.url }}">
-                    <span class="blog-preview-link__date" data-lang-show="en">{{ post.date | postDate("en-US") }}</span>
-                    <span class="blog-preview-link__date" data-lang-show="de">{{ post.date | postDate("de-DE") }}</span>
-                    <span class="blog-preview-link__title" data-en="{{ post.data.title }}" data-de="{{ post.data.title_de or post.data.title }}">{{ post.data.title }}</span>
+                <a class="work-item-link jw-row" href="/projects/{{ project.data.slug }}/">
+                    <span class="work-meta" hidden><span>{{ project.data.category }}</span></span>
+                    <span class="jw-num">{{ loop.index | pad2 }}</span>
+                    <span class="jw-row__title">{{ project.data.title }}</span>
+                    <span class="jw-row__info">
+                        <span class="jw-tags">{{ project.data.category | catTypes }}</span>
+                        <span class="jw-tags">{{ project.data.category | catYear or "—" }}</span>
+                    </span>
+                    <span class="jw-row__arrow" aria-hidden="true">↗</span>
                 </a>
-                {%- endfor %}
+            </li>
+            {%- endfor %}
+        </ul>
+
+        <a href="/projects/" class="jw-more">[&nbsp;<span data-en="All projects →" data-de="Alle Projekte →">All projects →</span>&nbsp;]</a>
+    </section>
+
+    <!-- ═══ Über mich ═══ -->
+    <section id="about" class="jw-about" aria-labelledby="jw-about-title">
+        <div class="jw-wrap jw-section">
+            <div class="jw-head">
+                <div>
+                    <p class="jw-label">02 — <span data-en="About" data-de="Über mich">About</span></p>
+                    <h2 id="jw-about-title" data-en="Hi, nice to meet you" data-de="Hi, schön dich kennenzulernen">Hi, nice to meet you</h2>
+                </div>
             </div>
-            {% else %}
-            <p style="opacity:0.5">No posts yet — check back soon.</p>
-            {% endif %}
+
+            <div class="jw-about__grid">
+                <figure class="jw-profile">
+                    {%- if sitetext.modal.image %}
+                    <div class="jw-profile__photo">
+                        <img src="{{ sitetext.modal.image | imgPath }}"
+                             alt="{{ sitetext.modal.image_alt_en }}"
+                             data-alt-en="{{ sitetext.modal.image_alt_en }}"
+                             data-alt-de="{{ sitetext.modal.image_alt_de or sitetext.modal.image_alt_en }}"
+                             loading="lazy" width="480" height="600">
+                    </div>
+                    {%- endif %}
+                    <ul class="jw-names">
+                        <li><span class="jw-names__name">Jan</span><span class="jw-names__note" data-en="what most people call me" data-de="so nennen mich die meisten">what most people call me</span></li>
+                        <li><span class="jw-names__name">West</span><span class="jw-names__note" data-en="what friends call me" data-de="so nennen mich Freunde">what friends call me</span></li>
+                        <li><span class="jw-names__name">Netro</span><span class="jw-names__note" data-en="graffiti &amp; dev alias" data-de="Graffiti- &amp; Dev-Alias">graffiti &amp; dev alias</span></li>
+                    </ul>
+                </figure>
+
+                <div class="jw-about__text">
+                    {%- for para in sitetext.modal.paragraphs %}
+                    {%- if loop.first %}
+                    <p class="jw-about__lead" data-en="{{ para.en }}" data-de="{{ para.de or para.en }}">{{ para.en }}</p>
+                    <div class="jw-about__more">
+                    {%- else %}
+                        <p data-en="{{ para.en }}" data-de="{{ para.de or para.en }}">{{ para.en }}</p>
+                    {%- endif %}
+                    {%- if loop.last %}
+                    </div>
+                    {%- endif %}
+                    {%- endfor %}
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="contact" class="section">
-        <div class="container contact-block">
-            <h2 data-i18n="contact.heading">Drop your message here!</h2>
-            <form id="form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="5eb109d2-3a48-4e2c-a23e-3948f0f938ee">
-
-                <label>
-                    <span data-i18n="contact.name-label">Name</span>
-                    <input type="text" name="name" data-i18n-placeholder="contact.name-ph" placeholder="What´s your name?" required>
-                </label>
-                <label>
-                    <span data-i18n="contact.email-label">E-mail</span>
-                    <input type="email" name="email" data-i18n-placeholder="contact.email-ph" placeholder="i will reply to this adress. (youradress@mail.com)" required>
-                </label>
-
-                <label>
-                    <span data-i18n="contact.message-label">Message</span>
-                    <textarea name="message" data-i18n-placeholder="contact.message-ph" placeholder="You can tell me something here. Add a joke if you want or tell me a secret. =)" required></textarea>
-                </label>
-                <button type="submit" class="contact-submit" data-i18n="contact.submit">Send</button>
-            </form>
-            <br>
-            <h2 data-i18n="contact.socials">Socials ↗</h2>
-            <a href="https://github.com/JanWestphal91/" target="_blank" rel="noopener noreferrer" class="link-button secondary">GitHub</a>
-            <a href="https://jan-west.itch.io/" target="_blank" rel="noopener noreferrer" class="link-button secondary">Itch.io</a>
-            <a href="https://bsky.app/profile/jan-west.itch.io" target="_blank" rel="noopener noreferrer" class="link-button secondary">Bluesky</a>
-            <a href="https://www.youtube.com/@netrouberkitsch7044" target="_blank" rel="noopener noreferrer" class="link-button secondary">Youtube</a>
-
+    <!-- ═══ Werdegang ═══ -->
+    <section id="path" class="jw-wrap jw-section" aria-labelledby="jw-path-title">
+        <div class="jw-head">
+            <div>
+                <p class="jw-label">03 — <span data-en="Background" data-de="Hintergrund">Background</span></p>
+                <h2 id="jw-path-title" data-en="Path" data-de="Werdegang">Path</h2>
+            </div>
         </div>
 
+        <div class="jw-cv">
+            <ol class="jw-cv__list">
+                <li class="jw-cv__row">
+                    <span class="jw-num">01</span>
+                    <span class="jw-cv__title" data-en="Painter" data-de="Maler">Painter</span>
+                    <span class="jw-cv__sub" data-en="Apprenticeship" data-de="Ausbildung">Apprenticeship</span>
+                    <span class="jw-tags" data-en="Completed" data-de="Abgeschlossen">Completed</span>
+                </li>
+                <li class="jw-cv__row">
+                    <span class="jw-num">02</span>
+                    <span class="jw-cv__title" data-en="Communication design" data-de="Kommunikationsdesign">Communication design</span>
+                    <span class="jw-cv__sub" data-en="University studies – visual foundation" data-de="Studium – gestalterisches Fundament">University studies – visual foundation</span>
+                    <span class="jw-tags" data-en="6 semesters" data-de="6 Semester">6 semesters</span>
+                </li>
+                <li class="jw-cv__row">
+                    <span class="jw-num">03</span>
+                    <span class="jw-cv__title" data-en="Graphic designer" data-de="Grafiker">Graphic designer</span>
+                    <span class="jw-cv__sub" data-en="Professional work in graphic design" data-de="Berufstätigkeit im Grafikdesign">Professional work in graphic design</span>
+                    <span class="jw-tags" data-en="Several years" data-de="Mehrere Jahre">Several years</span>
+                </li>
+                <li class="jw-cv__row">
+                    <span class="jw-num">04</span>
+                    <span class="jw-cv__title" data-en="Media Engineering (B.Eng.)" data-de="Medieningenieurwesen (B.Eng.)">Media Engineering (B.Eng.)</span>
+                    <span class="jw-cv__sub">HAW Kiel</span>
+                    <span class="jw-tags"><span class="jw-dot" aria-hidden="true"></span><span data-en="Now" data-de="Aktuell">Now</span></span>
+                </li>
+            </ol>
+
+            <aside class="jw-cv__side">
+                <h3 class="jw-label">Toolbox</h3>
+                <ul class="jw-chips" aria-label="Tools">
+                    <li>Godot</li>
+                    <li>Unity</li>
+                    <li>Arduino &amp; ESP32</li>
+                    <li>Adobe Suite</li>
+                    <li>Figma</li>
+                    <li>Blender</li>
+                    <li>Aseprite</li>
+                    <li data-en="3D printing" data-de="3D-Druck">3D printing</li>
+                </ul>
+
+                <h3 class="jw-label" data-en="Languages" data-de="Programmiersprachen">Languages</h3>
+                <ul class="jw-chips" aria-label="Programming languages" data-aria-en="Programming languages" data-aria-de="Programmiersprachen">
+                    <li>Python</li>
+                    <li>C#</li>
+                    <li>GDScript</li>
+                </ul>
+
+                <h3 class="jw-label" data-en="Courses — opencampus.sh" data-de="Kurse — opencampus.sh">Courses — opencampus.sh</h3>
+                <ul class="jw-cv__notes">
+                    <li>Game Dev Sessions</li>
+                    <li>Become a Maker <span class="jw-tags">(FabLab)</span></li>
+                    <li><span data-en="Project management sessions" data-de="Projektmanagement-Sessions">Project management sessions</span> <span class="jw-tags">WS 2026/27</span></li>
+                    <li>Kiel Robot League <span class="jw-tags">(FabLab) · WS 2026/27</span></li>
+                </ul>
+
+                <h3 class="jw-label" data-en="Community" data-de="Engagement">Community</h3>
+                <ul class="jw-cv__notes">
+                    <li data-en="Member of IF(game)SH e.V. – initiative for Schleswig-Holstein as a games location" data-de="Mitglied im IF(game)SH e.V. – Initiative für den Games-Standort Schleswig-Holstein">Member of IF(game)SH e.V. – initiative for Schleswig-Holstein as a games location</li>
+                </ul>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ═══ Blog ═══ -->
+    <section id="blog-preview" class="jw-wrap jw-section" aria-labelledby="jw-blog-title">
+        <div class="jw-head">
+            <div>
+                <p class="jw-label">04 — <span data-en="Latest posts" data-de="Neueste Beiträge">Latest posts</span></p>
+                <h2 id="jw-blog-title">Blog</h2>
+            </div>
+            <a href="/blog/" class="jw-more">[&nbsp;<span data-en="All posts →" data-de="Alle Beiträge →">All posts →</span>&nbsp;]</a>
+        </div>
+        {% if collections.blog and collections.blog.length %}
+        <ul class="jw-posts">
+            {%- for post in collections.blog | limit(3) %}
+            <li>
+                <a class="jw-post" href="{{ post.url }}">
+                    <span class="jw-post__date" data-lang-show="en">{{ post.date | postDate("en-US") }}</span>
+                    <span class="jw-post__date" data-lang-show="de" hidden>{{ post.date | postDate("de-DE") }}</span>
+                    <span class="jw-post__title" data-en="{{ post.data.title }}" data-de="{{ post.data.title_de or post.data.title }}">{{ post.data.title }}</span>
+                </a>
+            </li>
+            {%- endfor %}
+        </ul>
+        {% else %}
+        <p class="jw-label">No posts yet — check back soon.</p>
+        {% endif %}
+    </section>
+
+    <!-- ═══ Kontakt ═══ -->
+    <section id="contact" class="jw-wrap jw-section" aria-labelledby="jw-contact-title">
+        <p class="jw-label">05 — <span data-en="Contact" data-de="Kontakt">Contact</span></p>
+        <div class="jw-contact__grid">
+            <div class="jw-contact__box">
+                <h2 id="jw-contact-title" data-i18n="contact.heading">Drop your message here!</h2>
+                <form id="form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="5eb109d2-3a48-4e2c-a23e-3948f0f938ee">
+
+                    <label>
+                        <span data-i18n="contact.name-label">Name</span>
+                        <input type="text" name="name" autocomplete="name" data-i18n-placeholder="contact.name-ph" placeholder="Your name" required>
+                    </label>
+                    <label>
+                        <span data-i18n="contact.email-label">E-mail</span>
+                        <input type="email" name="email" autocomplete="email" data-i18n-placeholder="contact.email-ph" placeholder="name@example.com" required>
+                    </label>
+                    <label>
+                        <span data-i18n="contact.message-label">Message</span>
+                        <textarea name="message" data-i18n-placeholder="contact.message-ph" placeholder="Your message – a project idea, a question or just a hello" required></textarea>
+                    </label>
+                    <p class="jw-form-note"><span data-en="Your details are only used to reply to your message. More in the" data-de="Deine Angaben werden nur zur Beantwortung deiner Nachricht verwendet. Mehr dazu in der">Your details are only used to reply to your message. More in the</span> <a href="/datenschutz/" data-en="privacy policy" data-de="Datenschutzerklärung">privacy policy</a>.</p>
+                    <button type="submit" class="contact-submit" data-i18n="contact.submit">Send</button>
+                </form>
+            </div>
+
+            <div class="jw-socials">
+                <h2 class="jw-label" data-i18n="contact.socials">Socials ↗</h2>
+                <a href="https://github.com/JanWestphal91/" target="_blank" rel="noopener noreferrer" class="jw-social">GitHub<span aria-hidden="true">↗</span></a>
+                <a href="https://jan-west.itch.io/" target="_blank" rel="noopener noreferrer" class="jw-social">Itch.io<span aria-hidden="true">↗</span></a>
+                <a href="https://bsky.app/profile/jan-west.itch.io" target="_blank" rel="noopener noreferrer" class="jw-social">Bluesky<span aria-hidden="true">↗</span></a>
+                <a href="https://www.instagram.com/netroslab/" target="_blank" rel="noopener noreferrer" class="jw-social">Instagram<span aria-hidden="true">↗</span></a>
+                <a href="https://www.tiktok.com/@netroslab" target="_blank" rel="noopener noreferrer" class="jw-social">TikTok<span aria-hidden="true">↗</span></a>
+                <a href="https://www.youtube.com/@netroslab" target="_blank" rel="noopener noreferrer" class="jw-social">YouTube<span aria-hidden="true">↗</span></a>
+            </div>
+        </div>
     </section>
 
 
-    <!-- ═══ Fish Scene ═══ -->
+    {#- ═══ Fish Scene – vorerst deaktiviert. Zum Reaktivieren die
+        Nunjucks-Kommentarzeichen davor und danach entfernen. ═══
     <canvas id="pellet-layer"></canvas>
 
     <div id="food-can" tabindex="0" aria-label="FoodCan">
@@ -249,40 +372,87 @@
         </div>
         <p id="bowl-label" data-i18n="bowl.label">❗ Feed Glub now ❗</p>
     </div>
-
-
+    -#}
 
 </main>
 
-<!-- Modal Popup -->
-<div id="hero-modal" class="modal" style="display: none;">
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-        <button class="modal-close" aria-label="Close modal">&times;</button>
-        <div class="modal-body">
-            <h3 data-en="{{ sitetext.modal.heading_en }}" data-de="{{ sitetext.modal.heading_de or sitetext.modal.heading_en }}">{{ sitetext.modal.heading_en }}</h3>
-            <p data-en="{{ sitetext.modal.subtitle_en }}" data-de="{{ sitetext.modal.subtitle_de or sitetext.modal.subtitle_en }}">{{ sitetext.modal.subtitle_en }}</p>
-            {% if sitetext.modal.image %}
-            <img src="{{ sitetext.modal.image | imgPath }}"
-                 alt="{{ sitetext.modal.image_alt_en }}"
-                 data-alt-en="{{ sitetext.modal.image_alt_en }}"
-                 data-alt-de="{{ sitetext.modal.image_alt_de or sitetext.modal.image_alt_en }}"
-                 class="modal-portrait" loading="lazy">
-            {% endif %}
-            {%- for para in sitetext.modal.paragraphs %}
-            <p data-en="{{ para.en }}" data-de="{{ para.de or para.en }}">{{ para.en }}</p>
-            {%- endfor %}
-        </div>
-    </div>
-</div>
+{% include "partials/site-footer.njk" %}
 
-<footer class="site-footer">
-    <div class="container footer-row">
-        <p class="footer-copy">2026 Jan Westphal. All wrongs reserved.</p>
-        <nav class="footer-nav" aria-label="Footer Navigation">
-        </nav>
-    </div>
-</footer>
+<script>
+    // Ortszeit Kiel im Hero (aktualisiert sich jede Minute)
+    (function () {
+        var el = document.getElementById("jw-clock");
+        if (!el || !window.Intl) return;
+        function tick() {
+            var now = new Date();
+            el.textContent = new Intl.DateTimeFormat("en-GB", {
+                hour: "2-digit", minute: "2-digit", timeZone: "Europe/Berlin", timeZoneName: "short"
+            }).format(now);
+            el.setAttribute("datetime", now.toISOString());
+        }
+        tick();
+        setInterval(tick, 30000);
+    })();
+</script>
+
+<script>
+    // Projekte: nach jedem Filterklick zwei sichtbare Projekte als große
+    // Karten zeigen (im CMS hervorgehobene zuerst), den Rest als Zeilen. Das Ein-/Ausblenden
+    // selbst übernimmt initProjectFilters() in script.js (Klasse "hidden");
+    // dieser Listener hängt am Container und läuft daher danach (Bubbling).
+    (function () {
+        var list = document.querySelector(".jw-works");
+        var bar = document.querySelector(".project-filters");
+        if (!list || !bar) return;
+
+        var items = Array.prototype.slice.call(list.children).sort(function (a, b) {
+            return Number(a.dataset.index) - Number(b.dataset.index);
+        });
+
+        function isVisible(li) {
+            var link = li.querySelector(".work-item-link");
+            return link && !link.classList.contains("hidden");
+        }
+
+        function layout(filter) {
+            var visible = items.filter(isVisible);
+            // Zuerst die im CMS hervorgehobenen Projekte, dann auffüllen.
+            var featured = visible.filter(function (li) { return li.dataset.featured === "1"; }).slice(0, 2);
+            visible.forEach(function (li) {
+                if (featured.length < 2 && featured.indexOf(li) === -1) featured.push(li);
+            });
+
+            var ordered = featured.concat(items.filter(function (li) { return featured.indexOf(li) === -1; }));
+            var number = 0;
+            var firstRowDone = false;
+
+            ordered.forEach(function (li) {
+                var shown = visible.indexOf(li) !== -1;
+                var isFeatured = featured.indexOf(li) !== -1;
+                li.classList.toggle("is-hidden", !shown);
+                li.classList.toggle("is-featured", isFeatured);
+                li.classList.remove("is-first-row");
+
+                if (shown) {
+                    number += 1;
+                    li.querySelectorAll(".jw-num").forEach(function (el) {
+                        el.textContent = String(number).padStart(2, "0");
+                    });
+                    if (!isFeatured && !firstRowDone) {
+                        li.classList.add("is-first-row");
+                        firstRowDone = true;
+                    }
+                }
+                list.appendChild(li);
+            });
+        }
+
+        bar.addEventListener("click", function (event) {
+            var button = event.target.closest(".filter-btn");
+            if (button) layout(button.dataset.filter);
+        });
+    })();
+</script>
 
 </body>
 </html>

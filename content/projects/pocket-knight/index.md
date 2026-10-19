@@ -4,6 +4,7 @@ title: Pocket Knight
 slug: pocket-knight
 category: '[Electronic, Game] 2026'
 order: 0
+featured: true
 cover_image: /Images/projects/pocket-knight/pocketknightcloth.webp
 cover_image_alt: Pocket Knight Pedometer Device
 summary_card: A mini game device with a pedometer utilized as core mechanic.

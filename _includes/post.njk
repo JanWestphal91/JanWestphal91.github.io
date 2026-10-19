@@ -24,101 +24,98 @@
     <meta name="twitter:title" content="{{ title }} – Jan Westphal" />
     <meta name="twitter:description" content="{{ description }}" />
 
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
-    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
 
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
-    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap"></noscript>
-    <link rel="stylesheet" href="/style.css" />
-    <script src="/translations.js" defer></script>
-    <script src="/script.js" defer></script>
-
+{% include "partials/head-assets.njk" %}
 </head>
-<body data-page="post">
+<body class="theme page-post" data-page="post">
+{%- set active = "post" %}
+{% include "partials/site-header.njk" %}
 
-<header class="site-header">
-    <div class="container nav">
-        <a href="/" class="logo">Jan Westphal</a>
-        <nav class="nav-main" aria-label="Main navigation">
-            <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.projects">Projects</span><span class="nav-label nav-label--mobile" data-i18n="nav.projects.mobile">Projects ↗</span></a></li>
-                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile" data-i18n="nav.blog.mobile">Blog ↗</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
-                <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
-            </ul>
-        </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</header>
-
+{%- set nb = collections.blog | neighbors(page.url) %}
 <main class="post-page">
-    <section class="section project-hero">
-        <div class="container">
-            <a class="back-link" href="/blog/" aria-label="Back to blog" data-i18n="blog.back"><h2>←</h2></a>
-            <div class="post-meta">
-                <span class="post-date" data-lang-show="en">{{ date | postDate("en-US") }}</span>
-                <span class="post-date" data-lang-show="de">{{ date | postDate("de-DE") }}</span>
-                {% if tags %}
-                <ul class="post-tags">
-                    {% for tag in tags %}<li>{{ tag }}</li>{% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-            <h1 data-wavy data-en="{{ title }}" data-de="{{ title_de or title }}">{{ title }}</h1>
-            <p class="project-summary" data-en="{{ description }}" data-de="{{ description_de or description }}">{{ description }}</p>
-        </div>
-    </section>
+    <article>
+        <header class="jw-wrap jw-post-head">
+            <nav class="jw-crumb" aria-label="Breadcrumb">
+                <a href="/blog/">Blog</a>
+                <span aria-hidden="true">/</span>
+                <span data-lang-show="en">{{ date | postDate("en-US") }}</span><span data-lang-show="de" hidden>{{ date | postDate("de-DE") }}</span>
+            </nav>
+            <h1 data-en="{{ title }}" data-de="{{ title_de or title }}">{{ title }}</h1>
+            {% if description %}
+            <p class="jw-lead" data-en="{{ description }}" data-de="{{ description_de or description }}">{{ description }}</p>
+            {% endif %}
+            {% if tags %}
+            <p class="jw-tags jw-post-head__tags">{{ tags | join(", ") | replace(", ", " · ") }}</p>
+            {% endif %}
+        </header>
 
-    {% if cover_image %}
-    <section class="section">
-        <div class="container">
-            <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" class="post-cover" loading="eager">
+        {% if cover_image %}
+        <div class="jw-wrap jw-post-cover-wrap">
+            <figure class="jw-post-cover">
+                <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" class="post-cover" loading="eager">
+            </figure>
         </div>
-    </section>
-    {% endif %}
+        {% endif %}
 
-    <section class="section">
-        <div class="container">
-            <div class="post-body" data-lang-show="en">
+        <div class="jw-wrap">
+            {% if body_de %}
+            <div class="post-body jw-prose" data-lang-show="en">
                 {{ content | safe }}
             </div>
-            {% if body_de %}
-            <div class="post-body" data-lang-show="de" hidden>
+            <div class="post-body jw-prose" data-lang-show="de" hidden>
                 {{ body_de | md | safe }}
+            </div>
+            {% else %}
+            <div class="post-body jw-prose">
+                {{ content | safe }}
             </div>
             {% endif %}
         </div>
-    </section>
 
-    {% if images and images.length %}
-    <section class="section">
-        <div class="container">
-            <div class="project-gallery">
+        {% if images and images.length %}
+        <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
+            <h2 id="jw-gallery-title" class="jw-label jw-rule"><span data-i18n="project.gallery-label">Gallery</span> ({{ images.length | pad2 }})</h2>
+            <div class="project-gallery jw-gallery">
                 {% for img in images %}
                 <figure class="project-gallery__item">
                     <img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" loading="lazy">
-                    {% if img.caption %}
-                    <figcaption data-en="{{ img.caption }}" data-de="{{ img.caption_de or img.caption }}">{{ img.caption }}</figcaption>
-                    {% endif %}
+                    <figcaption><span class="jw-fig">Fig. {{ loop.index | pad2 }}</span>{% if img.caption %} <span data-en="{{ img.caption }}" data-de="{{ img.caption_de or img.caption }}">{{ img.caption }}</span>{% endif %}</figcaption>
                 </figure>
                 {% endfor %}
             </div>
-        </div>
-    </section>
-    {% endif %}
+        </section>
+        {% endif %}
+    </article>
+
+    <nav class="jw-wrap jw-pager" aria-label="More posts">
+        {% if nb.next %}
+        <a class="jw-pager__link" href="{{ nb.next.url }}">
+            <span class="jw-label" data-en="← Older post" data-de="← Älterer Beitrag">← Older post</span>
+            <span class="jw-pager__title" data-en="{{ nb.next.data.title }}" data-de="{{ nb.next.data.title_de or nb.next.data.title }}">{{ nb.next.data.title }}</span>
+        </a>
+        {% else %}
+        <a class="jw-pager__link" href="/blog/">
+            <span class="jw-label" data-en="← All posts" data-de="← Alle Beiträge">← All posts</span>
+            <span class="jw-pager__title" data-en="Back to blog" data-de="Zurück zum Blog">Back to blog</span>
+        </a>
+        {% endif %}
+        {% if nb.prev %}
+        <a class="jw-pager__link jw-pager__link--next" href="{{ nb.prev.url }}">
+            <span class="jw-label" data-en="Newer post →" data-de="Neuerer Beitrag →">Newer post →</span>
+            <span class="jw-pager__title" data-en="{{ nb.prev.data.title }}" data-de="{{ nb.prev.data.title_de or nb.prev.data.title }}">{{ nb.prev.data.title }}</span>
+        </a>
+        {% else %}
+        <a class="jw-pager__link jw-pager__link--next" href="/blog/">
+            <span class="jw-label" data-en="All posts →" data-de="Alle Beiträge →">All posts →</span>
+            <span class="jw-pager__title" data-en="Back to blog" data-de="Zurück zum Blog">Back to blog</span>
+        </a>
+        {% endif %}
+    </nav>
+
+    {% include "partials/cta.njk" %}
 </main>
 
-<footer class="site-footer">
-    <div class="container footer-row">
-        <p class="footer-copy">2026 Jan Westphal. All wrongs reserved.</p>
-        <nav class="footer-nav" aria-label="Footer Navigation"></nav>
-    </div>
-</footer>
+{% include "partials/site-footer.njk" %}
 
 </body>
 </html>

@@ -16,81 +16,56 @@
     <meta property="og:description" content="All projects by Jan Westphal – Game development, interactive design, hardware prototyping and graphic design." />
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
 
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
-    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
 
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
-    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,1&display=swap"></noscript>
-    <link rel="stylesheet" href="/style.css" />
-    <script src="/translations.js" defer></script>
-    <script src="/script.js" defer></script>
-
+{% include "partials/head-assets.njk" %}
 </head>
-<body>
-
-<header class="site-header">
-    <div class="container nav">
-        <a href="/" class="logo">Jan Westphal</a>
-        <nav class="nav-main" aria-label="Main navigation">
-            <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.projects">Projects</span><span class="nav-label nav-label--mobile" data-i18n="nav.projects.mobile">Projects ↗</span></a></li>
-                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile" data-i18n="nav.blog.mobile">Blog ↗</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-i18n="nav.contact.desktop">Contact / Socials</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
-                <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
-            </ul>
-        </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</header>
+<body class="theme page-projects">
+{%- set active = "projects" %}
+{% include "partials/site-header.njk" %}
 
 <main>
-    <section class="hero">
-        <div class="container hero-container-wide">
-            <a class="back-link" href="/" data-i18n="projects.back">← Home</a>
-            <h1 data-i18n="nav.projects">Projects</h1>
+    <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
+        <p class="jw-label">[ Index — {{ collections.projects.length | pad2 }} <span data-en="projects" data-de="Projekte">projects</span> ]</p>
+        <div class="jw-page-head__row">
+            <h1 id="jw-page-title"><span data-i18n="nav.projects">Projects</span></h1>
+            <p class="jw-page-head__intro" data-en="Games, electronics and illustration – each project page shows what it is and how it came together." data-de="Spiele, Elektronik und Illustration – jede Projektseite zeigt, was es ist und wie es entstanden ist.">Games, electronics and illustration – each project page shows what it is and how it came together.</p>
+        </div>
+        <div class="project-filters jw-filterbar" role="group" aria-label="Filter">
+            <button class="filter-btn active" data-filter="all" data-i18n="filter.all">All</button>
         </div>
     </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="work-list">
-                {%- for project in collections.projects %}
-                <a class="work-item-link" href="/projects/{{ project.data.slug }}/">
-                    <div class="flip-card" tabindex="0">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <figure class="work-thumb">
-                                    <img src="{{ project.data.cover_image | imgPath }}" alt="{{ project.data.cover_image_alt }}" loading="{% if loop.first %}eager{% else %}lazy{% endif %}" width="300" height="300">
-                                </figure>
-                            </div>
-                            <div class="flip-card-back">
-                                <div class="work-item-back-content">
-                                    <div class="work-meta"><span>{{ project.data.category }}</span></div>
-                                    <h3>{{ project.data.title }}</h3>
-                                    <hr>
-                                    <p data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</p>
-                                </div>
-                            </div>
+    <section class="jw-wrap jw-page-body" aria-label="Project list">
+        <ul class="work-list jw-plist">
+            {%- for project in collections.projects %}
+            <li>
+                <a class="work-item-link jw-prow" href="/projects/{{ project.data.slug }}/">
+                    <span class="work-meta" hidden><span>{{ project.data.category }}</span></span>
+                    <figure class="jw-prow__thumb">
+                        <img src="{{ project.data.cover_image | imgPath }}" alt="{{ project.data.cover_image_alt }}" loading="{% if loop.index <= 3 %}eager{% else %}lazy{% endif %}" width="400" height="300">
+                    </figure>
+                    <div class="jw-prow__body">
+                        <div class="jw-prow__title">
+                            <span class="jw-num">{{ loop.index | pad2 }}</span>
+                            <h2>{{ project.data.title }}</h2>
                         </div>
+                        <p data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</p>
                     </div>
+                    <div class="jw-prow__meta">
+                        <span class="jw-tags">{{ project.data.category | catTypes }}</span>
+                        <span class="jw-tags">{{ project.data.category | catYear or "—" }}</span>
+                    </div>
+                    <span class="jw-prow__arrow" aria-hidden="true">↗</span>
                 </a>
-                {%- endfor %}
-            </div>
-        </div>
+            </li>
+            {%- endfor %}
+        </ul>
     </section>
+
+    {% include "partials/cta.njk" %}
 </main>
 
-<footer class="site-footer">
-    <div class="container footer-row">
-        <p class="footer-copy">2026 Jan Westphal. All wrongs reserved.</p>
-        <nav class="footer-nav" aria-label="Footer Navigation"></nav>
-    </div>
-</footer>
+{% include "partials/site-footer.njk" %}
 
 </body>
 </html>

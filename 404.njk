@@ -1,0 +1,36 @@
+---
+permalink: /404.html
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 – Jan Westphal</title>
+    <meta name="robots" content="noindex" />
+{% include "partials/head-assets.njk" %}
+</head>
+<body class="theme page-404">
+{%- set active = "404" %}
+{% include "partials/site-header.njk" %}
+
+<main>
+    <section class="jw-wrap jw-page-head jw-404" aria-labelledby="jw-page-title">
+        <p class="jw-label">[ Error 404 ]</p>
+        <div class="jw-page-head__row">
+            <h1 id="jw-page-title" data-en="Page not found" data-de="Seite nicht gefunden">Page not found</h1>
+            <p class="jw-page-head__intro" data-en="This page doesn't exist (anymore). Maybe one of these helps:" data-de="Diese Seite gibt es nicht (mehr). Vielleicht hilft eins davon weiter:">This page doesn't exist (anymore). Maybe one of these helps:</p>
+        </div>
+        <div class="jw-404__actions">
+            <a href="/" class="jw-cta__button"><span data-en="Back to start" data-de="Zur Startseite">Back to start</span>&nbsp;↗</a>
+            <a href="/projects/" class="jw-more">[&nbsp;<span data-en="Projects" data-de="Projekte">Projects</span>&nbsp;]</a>
+            <a href="/blog/" class="jw-more">[&nbsp;Blog&nbsp;]</a>
+        </div>
+    </section>
+</main>
+
+{% include "partials/site-footer.njk" %}
+
+</body>
+</html>
