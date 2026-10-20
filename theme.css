@@ -54,7 +54,8 @@ body.theme {
     --muted: #55524C;
     --line: #C9C5BC;
     --paper: #F8F7F3;
-    --accent-color: #EA580C;      /* der eine Orange-Ton der Seite */
+    --accent-color: #962E5C;      /* der eine Akzentton der Seite: Weinrot, passend zum T-Shirt im Portrait */
+    --on-accent: #F8F7F3;         /* Text auf Akzentflächen (Buttons, Markierungen) */
     --about-bg: #DCD9D1;   /* Grau für „Über mich“ */
     --about-line: #BDB9AF;
     --on-dark: #EEECE6;
@@ -225,11 +226,8 @@ body.theme {
 
 .theme .hero-name-link {
     font-weight: 700;
-    color: var(--ink);
-    text-decoration: underline;
-    text-decoration-color: var(--accent-color);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 .jw-hero h1 {
@@ -834,7 +832,7 @@ body.theme {
     border: 0;
     border-radius: 0;
     background: var(--accent-color);
-    color: var(--ink);
+    color: var(--on-accent);
     font-family: var(--mono);
     font-size: 15px;
     font-weight: 700;
@@ -1380,7 +1378,7 @@ body.theme {
     min-height: 56px;
     padding: 0 28px;
     background: var(--accent-color);
-    color: var(--ink);
+    color: var(--on-accent);
     font-family: var(--mono);
     font-size: 15px;
     font-weight: 700;
@@ -1412,9 +1410,8 @@ body.theme {
 }
 
 .theme .jw-crumb a {
-    color: var(--muted);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 .jw-detail-head__row {
@@ -1466,11 +1463,8 @@ body.theme {
 
 .theme .jw-lead a,
 .theme .post-body a {
-    color: var(--ink);
-    text-decoration: underline;
-    text-decoration-color: var(--accent-color);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 .jw-post-head__tags {
@@ -1864,10 +1858,8 @@ body.theme {
 }
 
 .theme .jw-consent__text a {
-    color: var(--ink);
-    text-decoration: underline;
-    text-decoration-color: var(--accent-color);
-    text-underline-offset: 3px;
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 .theme .jw-consent__button {
@@ -1876,7 +1868,7 @@ body.theme {
     border: 0;
     border-radius: 0;
     background: var(--accent-color);
-    color: var(--ink);
+    color: var(--on-accent);
     font-family: var(--mono);
     font-size: 14px;
     font-weight: 700;
@@ -1945,11 +1937,8 @@ body.theme {
 }
 
 .theme .jw-legal a {
-    color: var(--ink);
-    text-decoration: underline;
-    text-decoration-color: var(--accent-color);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
+    color: var(--accent-color);
+    text-decoration: none;
     overflow-wrap: anywhere;
 }
 
@@ -1981,9 +1970,8 @@ body.theme {
 }
 
 .theme .jw-footer-links a {
-    color: var(--muted);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 .jw-form-note {
@@ -1995,9 +1983,8 @@ body.theme {
 }
 
 .theme .jw-form-note a {
-    color: var(--ink-2);
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 /* Hinweis im Formular nicht wie die Feld-Labels (Mono, Versalien) setzen */
@@ -2112,7 +2099,7 @@ body.theme {
     align-self: flex-start;
     padding: 4px 8px;
     background: var(--accent-color);
-    color: #fff;
+    color: var(--on-accent);
     font-family: var(--mono);
     font-size: 11px;
     font-weight: 500;
@@ -2225,4 +2212,18 @@ body.theme {
     margin: 0 !important;
     opacity: 0;
     pointer-events: none;
+}
+
+/* Links ohne Unterstreichung: in der Akzentfarbe, beim Hover dunkel. */
+@media (hover: hover) {
+    .theme .hero-name-link:hover,
+    .theme .jw-crumb a:hover,
+    .theme .jw-lead a:hover,
+    .theme .post-body a:hover,
+    .theme .jw-consent__text a:hover,
+    .theme .jw-legal a:hover,
+    .theme .jw-footer-links a:hover,
+    .theme .jw-form-note a:hover {
+        color: var(--ink);
+    }
 }
