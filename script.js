@@ -658,7 +658,9 @@ if (form) {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const formData = new FormData(form);
+        // Formspark erwartet JSON; das Fangfeld _honeypot wird mitgeschickt,
+        // damit Formspark Bot-Nachrichten erkennen kann.
+        const payload = Object.fromEntries(new FormData(form).entries());
 
         const originalText = submitBtn ? submitBtn.textContent : "";
 
@@ -668,18 +670,20 @@ if (form) {
         }
 
         try {
-            const response = await fetch("https://api.web3forms.com/submit", {
+            const response = await fetch(form.action, {
                 method: "POST",
-                body: formData
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(payload)
             });
-
-            const data = await response.json();
 
             if (response.ok) {
                 alert(t("contact.success"));
                 form.reset();
             } else {
-                alert(t("contact.error-prefix") + data.message);
+                alert(t("contact.error-prefix") + response.status);
             }
 
         } catch (_error) {
