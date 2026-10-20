@@ -444,11 +444,20 @@ body.theme {
     gap: 8px 16px;
 }
 
+.theme .jw-card {
+    --card-num: 20px;
+    --card-gap: 14px;
+}
+
 .jw-card__title {
     display: flex;
     align-items: baseline;
-    gap: 14px;
+    gap: var(--card-gap);
     min-width: 0;
+}
+
+.jw-card__title .jw-num {
+    flex: 0 0 var(--card-num);
 }
 
 .jw-card h3 {
@@ -461,6 +470,8 @@ body.theme {
 
 .jw-card p {
     margin: 0;
+    /* bündig mit dem Titel: Breite der Nummer + Abstand */
+    padding-left: calc(var(--card-num) + var(--card-gap));
     max-width: 46ch;
     font-size: 17px;
     line-height: 1.5;
