@@ -1,250 +1,250 @@
 {
   "seo": {
     "title": {
-      "en": "Jan Westphal – Portfolio | Developer & Designer from Kiel",
-      "de": "Jan Westphal – Portfolio | Entwickler & Designer aus Kiel"
+      "de": "Jan Westphal – Portfolio | Entwickler & Designer aus Kiel",
+      "en": "Jan Westphal – Portfolio | Developer & Designer from Kiel"
     },
     "description": "Portfolio von Jan Westphal aus Kiel: Spiele, selbstgebaute Elektronik, Illustration und Grafikdesign – mit Projekten, Prozessen und Devlogs.",
     "share_title": "Jan Westphal – Entwickler & Designer aus Kiel"
   },
   "hero": {
     "greeting": {
-      "en": "Hi! I'm",
-      "de": "Hi! Ich bin"
+      "de": "Hi! Ich bin",
+      "en": "Hi! I'm"
     },
     "title_1": {
-      "en": "Developer",
-      "de": "Entwickler"
+      "de": "Entwickler",
+      "en": "Developer"
     },
     "title_2": {
-      "en": "designer",
-      "de": "Designer"
+      "de": "Designer",
+      "en": "designer"
     },
     "title_3": {
-      "en": "from Kiel",
-      "de": "aus Kiel"
+      "de": "aus Kiel",
+      "en": "from Kiel"
     },
     "lead": {
-      "en": "I build games, small electronic devices and graphics, and I feel most at home where those three overlap.",
-      "de": "Ich baue Spiele, kleine elektronische Geräte und Grafiken und fühle mich dort am wohlsten, wo sich die drei überschneiden."
+      "de": "Ich entwickle Spiele, elektronische Geräte und Grafiken, ich fühle mich dort am wohlsten, wo sich die drei überschneiden.",
+      "en": "I build games, electronic devices and graphics, I feel most at home where those three overlap."
     }
   },
   "facts": {
     "location_label": {
-      "en": "Based in",
-      "de": "Wohnort"
+      "de": "Wohnort",
+      "en": "Based in"
     },
     "location": {
-      "en": "Kiel, DE · 54.32°N 10.14°E",
-      "de": "Kiel, DE · 54.32°N 10.14°E"
+      "de": "Kiel, DE · 54.32°N 10.14°E",
+      "en": "Kiel, DE · 54.32°N 10.14°E"
     },
     "time_label": {
-      "en": "Local time",
-      "de": "Ortszeit"
+      "de": "Ortszeit",
+      "en": "Local time"
     },
     "currently_label": {
-      "en": "Currently",
-      "de": "Aktuell"
+      "de": "Aktuell",
+      "en": "Currently"
     },
     "currently": {
-      "en": "B.Eng. Media Engineering, HAW Kiel",
-      "de": "B.Eng. Medieningenieurwesen, HAW Kiel"
+      "de": "B.Eng. Medieningenieurwesen, HAW Kiel",
+      "en": "B.Eng. Media Engineering, HAW Kiel"
     },
     "latest_label": {
-      "en": "Latest",
-      "de": "Neuestes"
+      "de": "Neuestes",
+      "en": "Latest"
     },
     "open_label": {
-      "en": "Open to",
-      "de": "Offen für"
+      "de": "Offen für",
+      "en": "Open to"
     },
     "open": {
-      "en": "Internships & collabs",
-      "de": "Praktika & Kollaborationen"
+      "de": "Praktika & Kollaborationen",
+      "en": "Internships & collabs"
     }
   },
   "projects": {
     "label": {
-      "en": "Selected work",
-      "de": "Auswahl"
+      "de": "Auswahl",
+      "en": "Selected work"
     },
     "heading": {
-      "en": "Things I made",
-      "de": "Meine Arbeiten"
+      "de": "Meine Arbeiten",
+      "en": "Things I made"
     },
     "more": {
-      "en": "All projects →",
-      "de": "Alle Projekte →"
+      "de": "Alle Projekte →",
+      "en": "All projects →"
     }
   },
   "about": {
     "label": {
-      "en": "About",
-      "de": "Über mich"
+      "de": "Über mich",
+      "en": "About"
     },
     "heading": {
-      "en": "Hi, nice to meet you",
-      "de": "Hi, schön dich kennenzulernen"
+      "de": "Hi, schön dich kennenzulernen",
+      "en": "Hi, nice to meet you"
     },
     "photo": "/Images/myself.jpeg",
     "photo_alt": {
-      "en": "Jan Westphal – Creative Coder and Designer from Kiel",
-      "de": "Jan Westphal – Creative Coder und Designer aus Kiel"
+      "de": "Jan Westphal – Creative Coder und Designer aus Kiel",
+      "en": "Jan Westphal – Creative Coder and Designer from Kiel"
     },
     "names": [
       {
         "name": "Jan",
         "note": {
-          "en": "what most people call me",
-          "de": "so nennen mich die meisten"
+          "de": "so nennen mich die meisten",
+          "en": "what most people call me"
         }
       },
       {
         "name": "West",
         "note": {
-          "en": "what friends call me",
-          "de": "so nennen mich Freunde"
+          "de": "so nennen mich Freunde",
+          "en": "what friends call me"
         }
       },
       {
         "name": "Netro",
         "note": {
-          "en": "graffiti & dev alias",
-          "de": "Graffiti- & Dev-Alias"
+          "de": "Graffiti- & Dev-Alias",
+          "en": "graffiti & dev alias"
         }
       }
     ],
     "paragraphs": [
       {
-        "en": "I'm into experimental design, art, and prototyping. I'm fascinated by how different disciplines interlock to create something new. I love to draw, and I tinker with electronics as well as video and audio equipment. Graffiti culture is part of my roots – it was my first real connection to illustration and design. Painting large-scale pieces has a special appeal that has never let go of me.",
-        "de": "Ich beschäftige mich mit experimentellem Design, Kunst und Prototyping. Mich fasziniert, wie verschiedene Disziplinen ineinandergreifen und dabei etwas Neues entsteht. Ich zeichne gerne, bastle an Elektronik sowie Video- und Audioequipment. Die Graffiti-Kultur gehört zu meinen Wurzeln, sie war meine erste echte Verbindung zur Illustration und Gestaltung. Großflächige Bilder zu malen hat einen besonderen Reiz, der mich bis heute nicht loslässt."
+        "de": "Ich beschäftige mich mit experimentellem Design, Kunst und Prototyping. Mich fasziniert, wie verschiedene Disziplinen ineinandergreifen und dabei etwas Neues entsteht. Ich zeichne gerne, bastle an Elektronik sowie Video- und Audioequipment. Die Graffiti-Kultur gehört zu meinen Wurzeln, sie war meine erste echte Verbindung zur Illustration und Gestaltung. Großflächige Bilder zu malen hat einen besonderen Reiz, der mich bis heute nicht loslässt.",
+        "en": "I'm into experimental design, art, and prototyping. I'm fascinated by how different disciplines interlock to create something new. I love to draw, and I tinker with electronics as well as video and audio equipment. Graffiti culture is part of my roots – it was my first real connection to illustration and design. Painting large-scale pieces has a special appeal that has never let go of me."
       },
       {
-        "en": "My path here wasn't a straight one: six semesters of communication design gave me a solid foundation in visual design, even though I never finished the degree. Instead, I worked as a graphic designer for several years – and realized that beyond the visual side, the technology behind it intrigues me just as much. That's why I'm now studying media engineering, bringing both worlds together.",
-        "de": "Mein Weg dorthin war kein gerader, sechs Semester Kommunikationsdesign haben mir das gestalterische Fundament gegeben, auch wenn ich das Studium nie abgeschlossen habe. Stattdessen habe ich einige Jahre als Grafiker gearbeitet und dabei gemerkt, dass mich neben dem Visuellen auch die Technik dahinter reizt. Deshalb studiere ich inzwischen Medieningenieurwesen und verbinde so beide Welten."
+        "de": "Mein Weg dorthin war kein gerader, sechs Semester Kommunikationsdesign haben mir das gestalterische Fundament gegeben, auch wenn ich das Studium nie abgeschlossen habe. Stattdessen habe ich einige Jahre als Grafiker gearbeitet und dabei gemerkt, dass mich neben dem Visuellen auch die Technik dahinter reizt. Deshalb studiere ich inzwischen Medieningenieurwesen und verbinde so beide Welten.",
+        "en": "My path here wasn't a straight one: six semesters of communication design gave me a solid foundation in visual design, even though I never finished the degree. Instead, I worked as a graphic designer for several years – and realized that beyond the visual side, the technology behind it intrigues me just as much. That's why I'm now studying media engineering, bringing both worlds together."
       },
       {
-        "en": "Game development is one of the most exciting fields for me, because it brings so many disciplines together into one finished product – design, code, sound, storytelling. My favorite games are Oxygen Not Included, Slay the Spire, and good old Donkey Kong Country. Beyond that, I enjoy playing small indie games and checking out amateur projects.",
-        "de": "Game-Entwicklung ist für mich eines der spannendsten Felder überhaupt, weil dort so viele Disziplinen in einem fertigen Produkt zusammenlaufen – Design, Code, Sound, Storytelling. Meine Lieblingsspiele sind Oxygen Not Included, Slay the Spire und das gute alte Donkey Kong Country. Ansonsten spiele ich gerne kleine Indiespiele und schaue mir gerne Amateurspiele an."
+        "de": "Game-Entwicklung ist für mich eines der spannendsten Felder überhaupt, weil dort so viele Disziplinen in einem fertigen Produkt zusammenlaufen – Design, Code, Sound, Storytelling. Meine Lieblingsspiele sind Oxygen Not Included, Slay the Spire und das gute alte Donkey Kong Country. Ansonsten spiele ich gerne kleine Indiespiele und schaue mir gerne Amateurspiele an.",
+        "en": "Game development is one of the most exciting fields for me, because it brings so many disciplines together into one finished product – design, code, sound, storytelling. My favorite games are Oxygen Not Included, Slay the Spire, and good old Donkey Kong Country. Beyond that, I enjoy playing small indie games and checking out amateur projects."
       },
       {
-        "en": "I'm married to a wonderful person who brings some much-needed order into my chaos – and we have two wonderful kids.",
-        "de": "Ich bin verheiratet mit einer wunderbaren Person, die dringend benötigte Ordnung in mein Chaos bringt – und wir haben zwei wundervolle Kinder."
+        "de": "Ich bin verheiratet mit einer wunderbaren Person, die dringend benötigte Ordnung in mein Chaos bringt – und wir haben zwei wundervolle Kinder.",
+        "en": "I'm married to a wonderful person who brings some much-needed order into my chaos – and we have two wonderful kids."
       }
     ]
   },
   "path": {
     "label": {
-      "en": "Background",
-      "de": "Hintergrund"
+      "de": "Hintergrund",
+      "en": "Background"
     },
     "heading": {
-      "en": "Path",
-      "de": "Werdegang"
+      "de": "Werdegang",
+      "en": "Path"
     },
     "entries": [
       {
         "title": {
-          "en": "Painter",
-          "de": "Maler"
+          "de": "Maler",
+          "en": "Painter"
         },
         "sub": {
-          "en": "Apprenticeship",
-          "de": "Ausbildung"
+          "de": "Ausbildung",
+          "en": "Apprenticeship"
         },
         "tag": {
-          "en": "Completed",
-          "de": "Abgeschlossen"
+          "de": "Abgeschlossen",
+          "en": "Completed"
         },
         "current": false
       },
       {
         "title": {
-          "en": "Communication design",
-          "de": "Kommunikationsdesign"
+          "de": "Kommunikationsdesign",
+          "en": "Communication design"
         },
         "sub": {
-          "en": "University studies – visual foundation",
-          "de": "Studium – gestalterisches Fundament"
+          "de": "Studium – gestalterisches Fundament",
+          "en": "University studies – visual foundation"
         },
         "tag": {
-          "en": "6 semesters",
-          "de": "6 Semester"
+          "de": "6 Semester",
+          "en": "6 semesters"
         },
         "current": false
       },
       {
         "title": {
-          "en": "Graphic designer",
-          "de": "Grafiker"
+          "de": "Grafiker",
+          "en": "Graphic designer"
         },
         "sub": {
-          "en": "Professional work in graphic design",
-          "de": "Berufstätigkeit im Grafikdesign"
+          "de": "Berufstätigkeit im Grafikdesign",
+          "en": "Professional work in graphic design"
         },
         "tag": {
-          "en": "Several years",
-          "de": "Mehrere Jahre"
+          "de": "Mehrere Jahre",
+          "en": "Several years"
         },
         "current": false
       },
       {
         "title": {
-          "en": "Media Engineering (B.Eng.)",
-          "de": "Medieningenieurwesen (B.Eng.)"
+          "de": "Medieningenieurwesen (B.Eng.)",
+          "en": "Media Engineering (B.Eng.)"
         },
         "sub": {
-          "en": "HAW Kiel",
-          "de": "HAW Kiel"
+          "de": "HAW Kiel",
+          "en": "HAW Kiel"
         },
         "tag": {
-          "en": "Now",
-          "de": "Aktuell"
+          "de": "Aktuell",
+          "en": "Now"
         },
         "current": true
       }
     ],
     "toolbox_heading": {
-      "en": "Toolbox",
-      "de": "Toolbox"
+      "de": "Toolbox",
+      "en": "Toolbox"
     },
     "toolbox": [
       {
-        "en": "Godot",
-        "de": "Godot"
+        "de": "Godot",
+        "en": "Godot"
       },
       {
-        "en": "Unity",
-        "de": "Unity"
+        "de": "Unity",
+        "en": "Unity"
       },
       {
-        "en": "Arduino & ESP32",
-        "de": "Arduino & ESP32"
+        "de": "Arduino & ESP32",
+        "en": "Arduino & ESP32"
       },
       {
-        "en": "Adobe Suite",
-        "de": "Adobe Suite"
+        "de": "Adobe Suite",
+        "en": "Adobe Suite"
       },
       {
-        "en": "Figma",
-        "de": "Figma"
+        "de": "Figma",
+        "en": "Figma"
       },
       {
-        "en": "Blender",
-        "de": "Blender"
+        "de": "Blender",
+        "en": "Blender"
       },
       {
-        "en": "Aseprite",
-        "de": "Aseprite"
+        "de": "Aseprite",
+        "en": "Aseprite"
       },
       {
-        "en": "3D printing",
-        "de": "3D-Druck"
+        "de": "3D-Druck",
+        "en": "3D printing"
       }
     ],
     "languages_heading": {
-      "en": "Languages",
-      "de": "Programmiersprachen"
+      "de": "Programmiersprachen",
+      "en": "Languages"
     },
     "languages": [
       "Python",
@@ -252,132 +252,132 @@
       "GDScript"
     ],
     "courses_heading": {
-      "en": "Courses — opencampus.sh",
-      "de": "Kurse — opencampus.sh"
+      "de": "Kurse — opencampus.sh",
+      "en": "Courses — opencampus.sh"
     },
     "courses": [
       {
         "text": {
-          "en": "Game Dev Sessions",
-          "de": "Game Dev Sessions"
+          "de": "Game Dev Sessions",
+          "en": "Game Dev Sessions"
         },
         "note": ""
       },
       {
         "text": {
-          "en": "Become a Maker",
-          "de": "Become a Maker"
+          "de": "Become a Maker",
+          "en": "Become a Maker"
         },
         "note": "(FabLab)"
       },
       {
         "text": {
-          "en": "Project management sessions",
-          "de": "Projektmanagement-Sessions"
+          "de": "Projektmanagement-Sessions",
+          "en": "Project management sessions"
         },
         "note": "WS 2026/27"
       },
       {
         "text": {
-          "en": "Kiel Robot League",
-          "de": "Kiel Robot League"
+          "de": "Kiel Robot League",
+          "en": "Kiel Robot League"
         },
         "note": "(FabLab) · WS 2026/27"
       }
     ],
     "community_heading": {
-      "en": "Community",
-      "de": "Engagement"
+      "de": "Engagement",
+      "en": "Community"
     },
     "community": [
       {
-        "en": "Member of IF(game)SH e.V. – initiative for Schleswig-Holstein as a games location",
-        "de": "Mitglied im IF(game)SH e.V. – Initiative für den Games-Standort Schleswig-Holstein"
+        "de": "Mitglied im IF(game)SH e.V. – Initiative für den Games-Standort Schleswig-Holstein",
+        "en": "Member of IF(game)SH e.V. – initiative for Schleswig-Holstein as a games location"
       }
     ]
   },
   "blog": {
     "label": {
-      "en": "Latest posts",
-      "de": "Neueste Beiträge"
+      "de": "Neueste Beiträge",
+      "en": "Latest posts"
     },
     "heading": {
-      "en": "Blog",
-      "de": "Blog"
+      "de": "Blog",
+      "en": "Blog"
     },
     "more": {
-      "en": "All posts →",
-      "de": "Alle Beiträge →"
+      "de": "Alle Beiträge →",
+      "en": "All posts →"
     },
     "empty": {
-      "en": "No posts yet — check back soon.",
-      "de": "Noch keine Beiträge – schau bald wieder vorbei."
+      "de": "Noch keine Beiträge – schau bald wieder vorbei.",
+      "en": "No posts yet — check back soon."
     }
   },
   "contact": {
     "label": {
-      "en": "Contact",
-      "de": "Kontakt"
+      "de": "Kontakt",
+      "en": "Contact"
     },
     "heading": {
-      "en": "Drop your message here!",
-      "de": "Schreib mir!"
+      "de": "Schreib mir!",
+      "en": "Drop your message here!"
     },
     "name_label": {
-      "en": "Name",
-      "de": "Name"
+      "de": "Name",
+      "en": "Name"
     },
     "name_placeholder": {
-      "en": "Your name",
-      "de": "Dein Name"
+      "de": "Dein Name",
+      "en": "Your name"
     },
     "email_label": {
-      "en": "E-mail",
-      "de": "E-Mail"
+      "de": "E-Mail",
+      "en": "E-mail"
     },
     "email_placeholder": {
-      "en": "name@example.com",
-      "de": "name@beispiel.de"
+      "de": "name@beispiel.de",
+      "en": "name@example.com"
     },
     "message_label": {
-      "en": "Message",
-      "de": "Nachricht"
+      "de": "Nachricht",
+      "en": "Message"
     },
     "message_placeholder": {
-      "en": "Your message – a project idea, a question or just a hello",
-      "de": "Deine Nachricht – eine Projektidee, eine Frage oder einfach ein Hallo"
+      "de": "Deine Nachricht – eine Projektidee, eine Frage oder einfach ein Hallo",
+      "en": "Your message – a project idea, a question or just a hello"
     },
     "note": {
-      "en": "Your details are only used to reply to your message. More in the",
-      "de": "Deine Angaben werden nur zur Beantwortung deiner Nachricht verwendet. Mehr dazu in der"
+      "de": "Deine Angaben werden nur zur Beantwortung deiner Nachricht verwendet. Mehr dazu in der",
+      "en": "Your details are only used to reply to your message. More in the"
     },
     "note_link": {
-      "en": "privacy policy",
-      "de": "Datenschutzerklärung"
+      "de": "Datenschutzerklärung",
+      "en": "privacy policy"
     },
     "submit": {
-      "en": "Send",
-      "de": "Senden"
+      "de": "Senden",
+      "en": "Send"
     },
     "sending": {
-      "en": "Sending...",
-      "de": "Wird gesendet..."
+      "de": "Wird gesendet...",
+      "en": "Sending..."
     },
     "success": {
-      "en": "Success! Your message has been sent.",
-      "de": "Erfolgreich! Deine Nachricht wurde gesendet."
+      "de": "Erfolgreich! Deine Nachricht wurde gesendet.",
+      "en": "Success! Your message has been sent."
     },
     "error": {
-      "en": "Error: ",
-      "de": "Fehler: "
+      "de": "Fehler:",
+      "en": "Error:"
     },
     "network_error": {
-      "en": "Something went wrong. Please try again.",
-      "de": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+      "de": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      "en": "Something went wrong. Please try again."
     },
     "socials_heading": {
-      "en": "Socials ↗",
-      "de": "Socials ↗"
+      "de": "Socials ↗",
+      "en": "Socials ↗"
     }
   }
 }
