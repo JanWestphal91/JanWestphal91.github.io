@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {#- Texte: _data/pages/projects.json (CMS: Seiten-Texte → Projekte-Übersicht) #}
+    {%- set pg = pages.projects %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects – Jan Westphal</title>
-    <meta name="description" content="All projects by Jan Westphal – Creative Coder &amp; Designer from Kiel. Game development, interactive design, hardware prototyping and graphic design." />
+    <title>{{ pg.seo.title }}</title>
+    <meta name="description" content="{{ pg.seo.description }}" />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://janwestphal.dev/projects/" />
@@ -12,8 +14,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://janwestphal.dev/projects/" />
     <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="Projects – Jan Westphal" />
-    <meta property="og:description" content="All projects by Jan Westphal – Game development, interactive design, hardware prototyping and graphic design." />
+    <meta property="og:title" content="{{ pg.seo.title }}" />
+    <meta property="og:description" content="{{ pg.seo.description }}" />
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
 
 
@@ -25,13 +27,13 @@
 
 <main>
     <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
-        <p class="jw-label">[ Index — {{ collections.projects.length | pad2 }} <span data-en="projects" data-de="Projekte">projects</span> ]</p>
+        <p class="jw-label">[ Index — {{ collections.projects.length | pad2 }} <span {% i18n pg.count_label %}>{{ pg.count_label.en }}</span> ]</p>
         <div class="jw-page-head__row">
-            <h1 id="jw-page-title"><span data-i18n="nav.projects">Projects</span></h1>
-            <p class="jw-page-head__intro" data-en="Games, electronics and illustration – each project page shows what it is and how it came together." data-de="Spiele, Elektronik und Illustration – jede Projektseite zeigt, was es ist und wie es entstanden ist.">Games, electronics and illustration – each project page shows what it is and how it came together.</p>
+            <h1 id="jw-page-title" {% i18n pg.heading %}>{{ pg.heading.en }}</h1>
+            <p class="jw-page-head__intro" {% i18n pg.intro %}>{{ pg.intro.en }}</p>
         </div>
         <div class="project-filters jw-filterbar" role="group" aria-label="Filter">
-            <button class="filter-btn active" data-filter="all" data-i18n="filter.all">All</button>
+            <button class="filter-btn active" data-filter="all" {% i18n global.ui.filter_all %}>{{ global.ui.filter_all.en }}</button>
         </div>
     </section>
 

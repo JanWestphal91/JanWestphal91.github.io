@@ -41,11 +41,13 @@
 {%- set active = "project" %}
 {% include "partials/site-header.njk" %}
 
+{#- Feste Texte: _data/pages/project.json (CMS: Seiten-Texte → Projekt-Detailseite) #}
+{%- set pt = pages.project %}
 {%- set nb = collections.projects | neighbors(page.url) %}
 <main class="project-page">
     <section class="jw-wrap jw-detail-head" aria-labelledby="jw-page-title">
         <nav class="jw-crumb" aria-label="Breadcrumb">
-            <a href="/projects/" data-i18n="nav.projects">Projects</a>
+            <a href="/projects/" {% i18n global.nav.projects %}>{{ global.nav.projects.en }}</a>
             <span aria-hidden="true">/</span>
             <span>{{ nb.index | pad2 }}</span>
         </nav>
@@ -57,14 +59,14 @@
             </div>
             <dl class="jw-facts">
                 {%- if category | catTypes %}
-                <div><dt data-en="Type" data-de="Art">Type</dt><dd>{{ category | catTypes }}</dd></div>
+                <div><dt {% i18n pt.type %}>{{ pt.type.en }}</dt><dd>{{ category | catTypes }}</dd></div>
                 {%- endif %}
                 {%- if category | catYear %}
-                <div><dt data-en="Year" data-de="Jahr">Year</dt><dd>{{ category | catYear }}</dd></div>
+                <div><dt {% i18n pt.year %}>{{ pt.year.en }}</dt><dd>{{ category | catYear }}</dd></div>
                 {%- endif %}
                 {%- if meta and meta.length %}
                 <div>
-                    <dt data-en="Details" data-de="Details">Details</dt>
+                    <dt {% i18n pt.details %}>{{ pt.details.en }}</dt>
                     <dd>
                         <span data-lang-show="en">{{ meta | join(" · ") }}</span>
                         <span data-lang-show="de" hidden>{{ (meta_de or meta) | join(" · ") }}</span>
@@ -77,7 +79,7 @@
 
     {% if embed %}
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
-        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span data-en="Media" data-de="Medien">Media</span></h2>
+        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span {% i18n pt.media %}>{{ pt.media.en }}</span></h2>
         <div id="project-embed" class="jw-embed">{{ embed | safe }}</div>
     </section>
     {% elif cover_image %}
@@ -90,7 +92,7 @@
 
     {% if images and images.length %}
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
-        <h2 id="jw-gallery-title" class="jw-label jw-rule">{{ "02" if embed else "01" }} — <span data-i18n="project.gallery-label">Gallery</span> ({{ images.length | pad2 }})</h2>
+        <h2 id="jw-gallery-title" class="jw-label jw-rule">{{ "02" if embed else "01" }} — <span {% i18n global.ui.gallery %}>{{ global.ui.gallery.en }}</span> ({{ images.length | pad2 }})</h2>
         <div class="project-gallery jw-gallery">
             {% for img in images %}
             <figure class="project-gallery__item">
@@ -109,24 +111,24 @@
     <nav class="jw-wrap jw-pager" aria-label="More projects">
         {% if nb.prev %}
         <a class="jw-pager__link" href="{{ nb.prev.url }}">
-            <span class="jw-label" data-en="← Previous project" data-de="← Vorheriges Projekt">← Previous project</span>
+            <span class="jw-label" {% i18n pt.prev %}>{{ pt.prev.en }}</span>
             <span class="jw-pager__title">{{ nb.prev.data.title }}</span>
         </a>
         {% else %}
         <a class="jw-pager__link" href="/projects/">
-            <span class="jw-label" data-en="← All projects" data-de="← Alle Projekte">← All projects</span>
-            <span class="jw-pager__title" data-en="Back to index" data-de="Zur Übersicht">Back to index</span>
+            <span class="jw-label" {% i18n pt.all_prev %}>{{ pt.all_prev.en }}</span>
+            <span class="jw-pager__title" {% i18n pt.back %}>{{ pt.back.en }}</span>
         </a>
         {% endif %}
         {% if nb.next %}
         <a class="jw-pager__link jw-pager__link--next" href="{{ nb.next.url }}">
-            <span class="jw-label" data-en="Next project →" data-de="Nächstes Projekt →">Next project →</span>
+            <span class="jw-label" {% i18n pt.next %}>{{ pt.next.en }}</span>
             <span class="jw-pager__title">{{ nb.next.data.title }}</span>
         </a>
         {% else %}
         <a class="jw-pager__link jw-pager__link--next" href="/projects/">
-            <span class="jw-label" data-en="All projects →" data-de="Alle Projekte →">All projects →</span>
-            <span class="jw-pager__title" data-en="Back to index" data-de="Zur Übersicht">Back to index</span>
+            <span class="jw-label" {% i18n pt.all_next %}>{{ pt.all_next.en }}</span>
+            <span class="jw-pager__title" {% i18n pt.back %}>{{ pt.back.en }}</span>
         </a>
         {% endif %}
     </nav>

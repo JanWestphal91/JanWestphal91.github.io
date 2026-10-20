@@ -1,0 +1,22 @@
+{
+  "older": {
+    "en": "← Older post",
+    "de": "← Älterer Beitrag"
+  },
+  "newer": {
+    "en": "Newer post →",
+    "de": "Neuerer Beitrag →"
+  },
+  "all_prev": {
+    "en": "← All posts",
+    "de": "← Alle Beiträge"
+  },
+  "all_next": {
+    "en": "All posts →",
+    "de": "Alle Beiträge →"
+  },
+  "back": {
+    "en": "Back to blog",
+    "de": "Zurück zum Blog"
+  }
+}

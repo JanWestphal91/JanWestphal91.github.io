@@ -1,0 +1,26 @@
+{
+  "label": {
+    "en": "Error 404",
+    "de": "Error 404"
+  },
+  "heading": {
+    "en": "Page not found",
+    "de": "Seite nicht gefunden"
+  },
+  "intro": {
+    "en": "This page doesn't exist (anymore). Maybe one of these helps:",
+    "de": "Diese Seite gibt es nicht (mehr). Vielleicht hilft eins davon weiter:"
+  },
+  "home_button": {
+    "en": "Back to start",
+    "de": "Zur Startseite"
+  },
+  "projects_link": {
+    "en": "Projects",
+    "de": "Projekte"
+  },
+  "blog_link": {
+    "en": "Blog",
+    "de": "Blog"
+  }
+}

@@ -1,295 +1,1981 @@
+# Sveltia CMS – Konfiguration für janwestphal.dev
+#
+# Aufbau im CMS:
+#   Seiten-Texte    alle festen Texte der Seiten (Deutsch + Englisch)
+#   Projekte        Projektseiten
+#   Blog            Blogbeiträge
+#   Social-Profile  Links zu Instagram, TikTok & Co.
+#   Rechtliches     Impressum und Datenschutz
+#
+# Die Texte liegen als JSON in _data/ und werden beim Build in die Seiten
+# eingesetzt. Gespeichert wird immer direkt auf main; ob ein Projekt oder
+# Beitrag erscheint, entscheidet der Schalter „Veröffentlicht“.
+
 backend:
   name: github
   repo: JanWestphal91/JanWestphal91.github.io
   branch: main
-
-# Entwürfe laufen über das Feld "Veröffentlicht" in jedem Beitrag, nicht über
-# Branches und Pull Requests. Gespeichert wird also immer direkt auf main;
-# ob ein Beitrag auf der Website landet, entscheidet der Schalter.
-# (publish_mode: editorial_workflow ist bewusst nicht gesetzt.)
-
 site_url: https://janwestphal.dev
-
-media_folder: "Images"
-public_folder: "/Images"
-
+media_folder: Images
+public_folder: /Images
 collections:
-  - name: site
-    label: "Website-Texte"
-    files:
-      - name: sitetext
-        label: "Über mich & Ticker"
-        file: "_data/sitetext.json"
-        format: json
-        description: "Texte für das Über-mich-Popup auf der Startseite und die Laufschrift im Header."
-        fields:
-          - label: "Über-mich-Popup"
-            name: modal
-            widget: object
-            collapsed: false
-            fields:
-              - label: "Überschrift (EN)"
-                name: heading_en
-                widget: string
-
-              - label: "Überschrift (DE)"
-                name: heading_de
-                widget: string
-                required: false
-
-              - label: "Unterzeile (EN)"
-                name: subtitle_en
-                widget: string
-
-              - label: "Unterzeile (DE)"
-                name: subtitle_de
-                widget: string
-                required: false
-
-              - label: "Portraitfoto"
-                name: image
-                widget: image
-                required: false
-
-              - label: "Portrait Alt-Text (EN)"
-                name: image_alt_en
-                widget: string
-                required: false
-
-              - label: "Portrait Alt-Text (DE)"
-                name: image_alt_de
-                widget: string
-                required: false
-
-              - label: "Absätze"
-                name: paragraphs
-                widget: list
-                label_singular: "Absatz"
-                summary: "{{fields.en}}"
-                hint: "Reihenfolge per Drag & Drop, Absätze lassen sich hinzufügen und entfernen."
-                fields:
-                  - { label: "Text (EN)", name: en, widget: text }
-                  - { label: "Text (DE)", name: de, widget: text, required: false }
-
-          - label: "Ticker (Laufschrift im Header)"
-            name: ticker
-            widget: object
-            collapsed: false
-            fields:
-              - label: "Ticker-Text (EN)"
-                name: en
-                widget: text
-                hint: "Eine Zeile, Einträge mit • trennen. Emojis sind erlaubt."
-
-              - label: "Ticker-Text (DE)"
-                name: de
-                widget: text
-                required: false
-
-  - name: projects
-    label: Projects
-    label_singular: Project
-    folder: content/projects
-    create: true
-    delete: true
-    slug: "{{fields.slug}}"
-    path: "{{slug}}/index"
-    preview_path: "projects/{{slug}}/"
-    media_folder: "/Images/projects/{{slug}}"
-    public_folder: "/Images/projects/{{slug}}"
-    view_filters:
-      - label: "Nur Entwürfe"
-        field: published
-        pattern: false
-      - label: "Nur veröffentlichte"
-        field: published
-        pattern: true
+- name: pages
+  label: Seiten-Texte
+  description: Alle festen Texte der Website, jeweils auf Deutsch und Englisch.
+  icon: article
+  files:
+  - name: global
+    label: Allgemein (Menü, Laufband, Footer …)
+    file: _data/global.json
+    format: json
+    editor: &id001
+      preview: false
     fields:
-      - label: "Veröffentlicht"
-        name: published
-        widget: boolean
-        default: true
-        hint: "Aus = Entwurf. Wird gespeichert, erscheint aber nicht auf der Website."
-
-      - label: "Title"
-        name: title
-        widget: string
-
-      - label: "Slug (URL-ID)"
-        name: slug
-        widget: string
-        hint: "z.B. my-cool-project — wird in der URL verwendet"
-
-      - label: "Kategorie / Jahr"
-        name: category
-        widget: string
-        hint: "z.B. [Game, Code] 2026"
-
-      - label: "Reihenfolge"
-        name: order
-        widget: number
-        default: 10
-        hint: "Kleinere Zahl = weiter vorne"
-
-      - label: "Auf der Startseite hervorheben"
-        name: featured
-        widget: boolean
-        default: false
-        required: false
-        hint: "An = erscheint als große Karte oben auf der Startseite (höchstens zwei Projekte)."
-
-      - label: "Coverbild"
-        name: cover_image
-        widget: image
-
-      - label: "Coverbild Alt-Text"
-        name: cover_image_alt
-        widget: string
-
-      - label: "Kurzbeschreibung (EN)"
-        name: summary_card
-        widget: text
-        hint: "Wird auf der Rückseite der Projektkarte angezeigt"
-
-      - label: "Kurzbeschreibung (DE)"
-        name: summary_card_de
-        widget: text
-        required: false
-
-      - label: "Vollständige Beschreibung (EN)"
-        name: summary
-        widget: markdown
-        hint: "Absätze, Links, Listen und Fettung sind möglich. Für einen Link Text markieren und den Link-Button nutzen."
-
-      - label: "Vollständige Beschreibung (DE)"
-        name: summary_de
-        widget: markdown
-        required: false
-
-      - label: "Meta-Tags"
-        name: meta
-        widget: list
-        hint: "z.B. Webgame, Solo-Projekt, Status: Veröffentlicht"
-
-      - label: "Meta-Tags (DE)"
-        name: meta_de
-        widget: list
-        required: false
-
-      - label: "Bilder"
-        name: images
-        widget: list
-        required: false
+    - label: Menü
+      name: nav
+      widget: object
+      collapsed: true
+      fields:
+      - label: Projekte
+        name: projects
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
         fields:
-          - { label: "Bild", name: src, widget: image }
-          - { label: "Alt-Text", name: alt, widget: string }
-          - { label: "Bildunterschrift (EN)", name: caption, widget: string }
-          - { label: "Bildunterschrift (DE)", name: caption_de, widget: string, required: false }
-
-      - label: "Embed-Code"
-        name: embed
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Blog
+        name: blog
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Über mich
+        name: about
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Kontakt
+        name: contact
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Menü-Button (für Screenreader)
+        name: menu
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: Wird nicht angezeigt, nur vorgelesen.
+    - label: Laufband (nur Startseite)
+      name: ticker
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
         widget: text
-        required: false
-        hint: "z.B. itch.io iframe"
-
-      - label: "Datum"
-        name: date
-        widget: datetime
-        format: "YYYY-MM-DD"
-        date_format: "YYYY-MM-DD"
-        time_format: false
-
-  - name: blog
-    label: Blog
-    label_singular: Post
-    folder: content/blog
-    create: true
-    delete: true
-    slug: "{{slug}}"
-    path: "{{slug}}/index"
-    preview_path: "blog/{{slug}}/"
-    media_folder: "/Images/blog/{{slug}}"
-    public_folder: "/Images/blog/{{slug}}"
-    view_filters:
-      - label: "Nur Entwürfe"
-        field: published
-        pattern: false
-      - label: "Nur veröffentlichte"
-        field: published
-        pattern: true
+      - label: Englisch
+        name: en
+        widget: text
+      hint: Eine Zeile, Einträge mit • trennen. Emojis sind erlaubt.
+    - label: Kontakt-Aufruf am Seitenende
+      name: cta
+      widget: object
+      collapsed: true
+      fields:
+      - label: Text
+        name: text
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Button
+        name: button
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      hint: Der schwarze/graue Block unten auf Projekt-, Blog- und Detailseiten.
+    - label: Footer
+      name: footer
+      widget: object
+      collapsed: true
+      fields:
+      - label: Copyright-Zeile
+        name: copyright
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Link Impressum
+        name: imprint
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Link Datenschutz
+        name: privacy
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+    - label: Hinweise bei Einbettungen (YouTube, itch.io)
+      name: embeds
+      widget: object
+      collapsed: true
+      fields:
+      - label: YouTube – Hinweistext
+        name: youtube_text
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
+      - label: YouTube – Button
+        name: youtube_button
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: itch.io – Hinweistext
+        name: itch_text
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
+      - label: itch.io – Button
+        name: itch_button
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Link zur Datenschutzerklärung
+        name: privacy_link
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      hint: Erscheint anstelle von Videos und Spiele-Widgets, bis man auf den Button klickt.
+    - label: Kleine Bedienelemente
+      name: ui
+      widget: object
+      collapsed: true
+      fields:
+      - label: Filter „Alle“
+        name: filter_all
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Überschrift Galerie
+        name: gallery
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Bild schließen (Screenreader)
+        name: lightbox_close
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+  - name: home
+    label: Startseite
+    file: _data/home.json
+    format: json
+    editor: *id001
     fields:
-      - label: "Veröffentlicht"
-        name: published
-        widget: boolean
-        default: true
-        hint: "Aus = Entwurf. Wird gespeichert, erscheint aber nicht auf der Website."
-
-      - label: "Titel (EN)"
+    - label: Suchmaschinen & Link-Vorschau
+      name: seo
+      widget: object
+      collapsed: true
+      fields:
+      - label: Seitentitel (Browser-Tab)
         name: title
-        widget: string
-
-      - label: "Titel (DE)"
-        name: title_de
-        widget: string
-        required: false
-
-      - label: "Datum"
-        name: date
-        widget: datetime
-        format: "YYYY-MM-DD"
-        date_format: "YYYY-MM-DD"
-        time_format: false
-
-      - label: "Kurzbeschreibung (EN)"
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Beschreibung
         name: description
         widget: text
-        hint: "Wird auf der Blog-Übersicht angezeigt"
-
-      - label: "Kurzbeschreibung (DE)"
-        name: description_de
-        widget: text
-        required: false
-
-      - label: "Titelbild"
-        name: cover_image
+        hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst. Am besten 140–160
+          Zeichen, auf Deutsch.
+      - label: Titel in Link-Vorschauen
+        name: share_title
+        widget: string
+      hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst.
+    - label: Kopfbereich
+      name: hero
+      widget: object
+      collapsed: false
+      fields:
+      - label: Begrüßung vor dem Namen
+        name: greeting
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: z. B. „Hi! Ich bin“ – danach folgt automatisch „Jan Westphal“.
+      - label: Überschrift – Zeile 1 (vor dem orangen &)
+        name: title_1
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Überschrift – Zeile 2
+        name: title_2
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Überschrift – Zeile 3
+        name: title_3
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Einleitungssatz
+        name: lead
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
+    - label: Steckbrief rechts im Kopfbereich
+      name: facts
+      widget: object
+      collapsed: true
+      fields:
+      - label: Wohnort – Bezeichnung
+        name: location_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Wohnort – Wert
+        name: location
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Ortszeit – Bezeichnung
+        name: time_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: Die Uhrzeit selbst wird automatisch eingesetzt.
+      - label: Aktuell – Bezeichnung
+        name: currently_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Aktuell – Wert
+        name: currently
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Neuestes – Bezeichnung
+        name: latest_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: Das neueste Projekt wird automatisch eingesetzt.
+      - label: Offen für – Bezeichnung
+        name: open_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Offen für – Wert
+        name: open
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+    - label: 01 Projekte
+      name: projects
+      widget: object
+      collapsed: true
+      fields:
+      - label: Kleine Zeile über der Überschrift
+        name: label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Überschrift
+        name: heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Link zur Übersicht
+        name: more
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+    - label: 02 Über mich
+      name: about
+      widget: object
+      collapsed: true
+      fields:
+      - label: Kleine Zeile über der Überschrift
+        name: label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Überschrift
+        name: heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Portraitfoto
+        name: photo
         widget: image
         required: false
-
-      - label: "Titelbild Alt-Text"
-        name: cover_image_alt
+      - label: Alt-Text des Fotos
+        name: photo_alt
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: Beschreibung für Screenreader.
+      - label: Namen neben dem Foto
+        name: names
+        widget: list
+        label_singular: Name
+        collapsed: true
+        summary: '{{fields.name}}'
+        fields:
+        - label: Name
+          name: name
+          widget: string
+        - label: Erklärung
+          name: note
+          widget: object
+          collapsed: false
+          summary: '{{fields.de}}'
+          fields:
+          - label: Deutsch
+            name: de
+            widget: string
+          - label: Englisch
+            name: en
+            widget: string
+      - label: Absätze
+        name: paragraphs
+        widget: list
+        label_singular: Absatz
+        collapsed: true
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
+        hint: Der erste Absatz wird größer dargestellt. Reihenfolge per Drag & Drop.
+    - label: 03 Werdegang
+      name: path
+      widget: object
+      collapsed: true
+      fields:
+      - label: Kleine Zeile über der Überschrift
+        name: label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Überschrift
+        name: heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Stationen
+        name: entries
+        widget: list
+        label_singular: Station
+        collapsed: true
+        summary: '{{fields.title.de}}'
+        fields:
+        - label: Titel
+          name: title
+          widget: object
+          collapsed: false
+          summary: '{{fields.de}}'
+          fields:
+          - label: Deutsch
+            name: de
+            widget: string
+          - label: Englisch
+            name: en
+            widget: string
+        - label: Unterzeile
+          name: sub
+          widget: object
+          collapsed: false
+          summary: '{{fields.de}}'
+          fields:
+          - label: Deutsch
+            name: de
+            widget: string
+          - label: Englisch
+            name: en
+            widget: string
+        - label: Rechte Spalte (Dauer/Status)
+          name: tag
+          widget: object
+          collapsed: false
+          summary: '{{fields.de}}'
+          fields:
+          - label: Deutsch
+            name: de
+            widget: string
+          - label: Englisch
+            name: en
+            widget: string
+        - label: Aktuelle Station (oranger Punkt)
+          name: current
+          widget: boolean
+          required: false
+          default: false
+        hint: Nummern werden automatisch vergeben.
+      - label: Überschrift Toolbox
+        name: toolbox_heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Toolbox
+        name: toolbox
+        widget: list
+        label_singular: Tool
+        collapsed: true
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Überschrift Programmiersprachen
+        name: languages_heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Programmiersprachen
+        name: languages
+        widget: list
+        hint: Eine Sprache pro Eintrag; leer lassen blendet den Block aus.
+        required: false
+      - label: Überschrift Kurse
+        name: courses_heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Kurse
+        name: courses
+        widget: list
+        label_singular: Kurs
+        collapsed: true
+        summary: '{{fields.text.de}}'
+        fields:
+        - label: Kurs
+          name: text
+          widget: object
+          collapsed: false
+          summary: '{{fields.de}}'
+          fields:
+          - label: Deutsch
+            name: de
+            widget: string
+          - label: Englisch
+            name: en
+            widget: string
+        - label: Zusatz (klein, grau)
+          name: note
+          widget: string
+          required: false
+          hint: z. B. (FabLab) oder WS 2026/27
+      - label: Überschrift Engagement
+        name: community_heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Engagement
+        name: community
+        widget: list
+        label_singular: Eintrag
+        collapsed: true
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
+    - label: 04 Blog
+      name: blog
+      widget: object
+      collapsed: true
+      fields:
+      - label: Kleine Zeile über der Überschrift
+        name: label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Überschrift
+        name: heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Link zur Übersicht
+        name: more
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Text, wenn es keine Beiträge gibt
+        name: empty
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+    - label: 05 Kontakt
+      name: contact
+      widget: object
+      collapsed: true
+      fields:
+      - label: Kleine Zeile über der Überschrift
+        name: label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Überschrift
+        name: heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Feld Name – Bezeichnung
+        name: name_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Feld Name – Platzhalter
+        name: name_placeholder
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Feld E-Mail – Bezeichnung
+        name: email_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Feld E-Mail – Platzhalter
+        name: email_placeholder
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Feld Nachricht – Bezeichnung
+        name: message_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Feld Nachricht – Platzhalter
+        name: message_placeholder
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Datenschutz-Hinweis unter dem Formular
+        name: note
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
+        hint: Danach folgt automatisch der Link zur Datenschutzerklärung.
+      - label: Text des Datenschutz-Links
+        name: note_link
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Button Senden
+        name: submit
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Meldung: wird gesendet'
+        name: sending
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Meldung: erfolgreich gesendet'
+        name: success
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Meldung: Fehler (davor)'
+        name: error
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: Danach folgt der Fehlercode.
+      - label: 'Meldung: Verbindungsfehler'
+        name: network_error
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Überschrift Socials
+        name: socials_heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: Die Profile selbst bearbeitest du unter „Social-Profile“.
+  - name: projects_page
+    label: Projekte-Übersicht
+    file: _data/pages/projects.json
+    format: json
+    editor: *id001
+    fields:
+    - label: Suchmaschinen & Link-Vorschau
+      name: seo
+      widget: object
+      collapsed: true
+      fields:
+      - label: Seitentitel
+        name: title
+        widget: string
+      - label: Beschreibung
+        name: description
+        widget: text
+      hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst.
+    - label: Zähler-Wort
+      name: count_label
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+      hint: 'Steht hinter der Anzahl: „[ Index — 07 Projekte ]“.'
+    - label: Überschrift
+      name: heading
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Einleitung
+      name: intro
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: text
+      - label: Englisch
+        name: en
+        widget: text
+  - name: project_page
+    label: Projekt-Detailseite
+    file: _data/pages/project.json
+    format: json
+    editor: *id001
+    fields:
+    - label: 'Steckbrief: Art'
+      name: type
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Steckbrief: Jahr'
+      name: year
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Steckbrief: Details'
+      name: details
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Überschrift Medien
+      name: media
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Link: vorheriges Projekt'
+      name: prev
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Link: nächstes Projekt'
+      name: next
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Link: alle Projekte (links)'
+      name: all_prev
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Link: alle Projekte (rechts)'
+      name: all_next
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Zurück zur Übersicht
+      name: back
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+  - name: blog_page
+    label: Blog-Übersicht
+    file: _data/pages/blog.json
+    format: json
+    editor: *id001
+    fields:
+    - label: Suchmaschinen & Link-Vorschau
+      name: seo
+      widget: object
+      collapsed: true
+      fields:
+      - label: Seitentitel
+        name: title
+        widget: string
+      - label: Beschreibung
+        name: description
+        widget: text
+      hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst.
+    - label: Zähler-Wort
+      name: count_label
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+      hint: 'Steht hinter der Anzahl: „[ Blog — 03 Beiträge ]“.'
+    - label: Überschrift
+      name: heading
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Einleitung
+      name: intro
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: text
+      - label: Englisch
+        name: en
+        widget: text
+    - label: Markierung neuester Beitrag
+      name: latest_badge
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Link „Lesen“
+      name: read
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Überschrift Archiv
+      name: all_posts
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Text, wenn es keine Beiträge gibt
+      name: empty
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+  - name: post_page
+    label: Blogbeitrag
+    file: _data/pages/post.json
+    format: json
+    editor: *id001
+    fields:
+    - label: 'Link: älterer Beitrag'
+      name: older
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Link: neuerer Beitrag'
+      name: newer
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Link: alle Beiträge (links)'
+      name: all_prev
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Link: alle Beiträge (rechts)'
+      name: all_next
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Zurück zum Blog
+      name: back
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+  - name: links_page
+    label: Linkseite (/links/)
+    file: _data/pages/links.json
+    format: json
+    editor: *id001
+    fields:
+    - label: Suchmaschinen & Link-Vorschau
+      name: seo
+      widget: object
+      collapsed: true
+      fields:
+      - label: Seitentitel
+        name: title
+        widget: string
+      - label: Beschreibung
+        name: description
+        widget: text
+      - label: Beschreibung in Link-Vorschauen
+        name: share_description
+        widget: text
+        required: false
+      hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst.
+    - label: Foto
+      name: photo
+      widget: image
+      required: false
+    - label: Alt-Text des Fotos
+      name: photo_alt
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Alias
+      name: alias
+      widget: string
+      required: false
+      hint: z. B. „aka Netro“
+    - label: Unterzeile
+      name: subtitle
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Hervorgehobenes Spiel
+      name: game
+      widget: object
+      collapsed: false
+      fields:
+      - label: Abschnittsname
+        name: label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Markierung (orange)
+        name: tag
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: z. B. „Bald auf Steam“. Leer lassen blendet sie aus.
+      - label: Titel
+        name: title
+        widget: string
+      - label: Beschreibung
+        name: text
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Plattform
+        name: platform
         widget: string
         required: false
-
-      - label: "Tags"
-        name: tags
-        widget: list
-        required: false
-        hint: "z.B. Game Dev, Design, Werkstatt"
-
-      - label: "Weitere Bilder"
-        name: images
-        widget: list
-        required: false
+        hint: Erscheint klein hinter der Beschreibung.
+      - label: Link
+        name: url
+        widget: string
+    - label: Writeups
+      name: writeups
+      widget: object
+      collapsed: true
+      fields:
+      - label: Abschnittsname
+        name: label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
         fields:
-          - { label: "Bild", name: src, widget: image }
-          - { label: "Alt-Text", name: alt, widget: string }
-          - { label: "Bildunterschrift (EN)", name: caption, widget: string, required: false }
-          - { label: "Bildunterschrift (DE)", name: caption_de, widget: string, required: false }
-
-      - label: "Text (EN)"
-        name: body
-        widget: markdown
-        hint: >-
-          "Bild mit Bildunterschrift" in der Editor-Leiste setzt ein Bild
-          mit Alt-Text, Unterschrift und Größe (klein / mittel / groß) —
-          auf der Website öffnet es sich per Klick groß.
-          "Einbettung (iframe)" fügt YouTube-, itch.io- oder ähnliche
-          Einbettungen ein.
-
-      - label: "Text (DE)"
-        name: body_de
-        widget: markdown
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Einträge
+        name: items
+        widget: list
+        label_singular: Eintrag
+        collapsed: true
+        summary: '{{fields.title}}'
+        fields:
+        - label: Titel
+          name: title
+          widget: string
+        - label: Beschreibung
+          name: text
+          widget: object
+          collapsed: false
+          summary: '{{fields.de}}'
+          fields:
+          - label: Deutsch
+            name: de
+            widget: string
+          - label: Englisch
+            name: en
+            widget: string
+        - label: Link
+          name: url
+          widget: string
+          hint: Interne Seiten mit / beginnen, z. B. /blog/hello-blog/
+        - label: Vorschaubild
+          name: image
+          widget: image
+          required: false
+    - label: Abschnittsname Socials
+      name: socials_label
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Website-Links
+      name: website
+      widget: object
+      collapsed: true
+      fields:
+      - label: Abschnittsname
+        name: label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Einträge
+        name: items
+        widget: list
+        label_singular: Eintrag
+        collapsed: true
+        summary: '{{fields.title.de}}'
+        fields:
+        - label: Titel
+          name: title
+          widget: object
+          collapsed: false
+          summary: '{{fields.de}}'
+          fields:
+          - label: Deutsch
+            name: de
+            widget: string
+          - label: Englisch
+            name: en
+            widget: string
+        - label: Zusatz rechts
+          name: note
+          widget: object
+          collapsed: false
+          summary: '{{fields.de}}'
+          fields:
+          - label: Deutsch
+            name: de
+            widget: string
+          - label: Englisch
+            name: en
+            widget: string
+        - label: Link
+          name: url
+          widget: string
+  - name: notfound_page
+    label: 404-Seite
+    file: _data/pages/notfound.json
+    format: json
+    editor: *id001
+    fields:
+    - label: Kleine Zeile über der Überschrift
+      name: label
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Überschrift
+      name: heading
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Einleitung
+      name: intro
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: text
+      - label: Englisch
+        name: en
+        widget: text
+    - label: Button Startseite
+      name: home_button
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Link Projekte
+      name: projects_link
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Link Blog
+      name: blog_link
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+  - name: legal_page
+    label: Rechtliches – Rahmen
+    file: _data/pages/legal.json
+    format: json
+    editor: *id001
+    fields:
+    - label: Kleine Zeile über der Überschrift
+      name: label
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Hinweis in der englischen Ansicht
+      name: english_notice
+      widget: string
+    - label: Bezeichnung „Stand“
+      name: stand_label
+      widget: string
+  - name: contact_form
+    label: Kontaktformular (Technik)
+    file: _data/contact.json
+    format: json
+    editor: *id001
+    fields:
+    - label: Formspark-Formular-ID
+      name: formsparkId
+      widget: string
+      hint: Steht im Formspark-Dashboard in der Adresse https://submit-form.com/…
+- name: projects
+  label: Projekte
+  label_singular: Projekt
+  folder: content/projects
+  create: true
+  delete: true
+  slug: '{{fields.slug}}'
+  path: '{{slug}}/index'
+  preview_path: projects/{{slug}}/
+  media_folder: /Images/projects/{{slug}}
+  public_folder: /Images/projects/{{slug}}
+  view_filters:
+  - label: Nur Entwürfe
+    field: published
+    pattern: false
+  - label: Nur veröffentlichte
+    field: published
+    pattern: true
+  fields:
+  - label: Veröffentlicht
+    name: published
+    widget: boolean
+    default: true
+    hint: Aus = Entwurf. Wird gespeichert, erscheint aber nicht auf der Website.
+  - label: Title
+    name: title
+    widget: string
+  - label: Slug (URL-ID)
+    name: slug
+    widget: string
+    hint: z.B. my-cool-project — wird in der URL verwendet
+  - label: Kategorie / Jahr
+    name: category
+    widget: string
+    hint: z.B. [Game, Code] 2026
+  - label: Reihenfolge
+    name: order
+    widget: number
+    default: 10
+    hint: Kleinere Zahl = weiter vorne
+  - label: Auf der Startseite hervorheben
+    name: featured
+    widget: boolean
+    default: false
+    required: false
+    hint: An = erscheint als große Karte oben auf der Startseite (höchstens zwei Projekte).
+  - label: Coverbild
+    name: cover_image
+    widget: image
+  - label: Coverbild Alt-Text
+    name: cover_image_alt
+    widget: string
+  - label: Kurzbeschreibung (EN)
+    name: summary_card
+    widget: text
+    hint: Wird auf der Rückseite der Projektkarte angezeigt
+  - label: Kurzbeschreibung (DE)
+    name: summary_card_de
+    widget: text
+    required: false
+  - label: Vollständige Beschreibung (EN)
+    name: summary
+    widget: markdown
+    hint: Absätze, Links, Listen und Fettung sind möglich. Für einen Link Text markieren und den Link-Button
+      nutzen.
+  - label: Vollständige Beschreibung (DE)
+    name: summary_de
+    widget: markdown
+    required: false
+  - label: Meta-Tags
+    name: meta
+    widget: list
+    hint: 'z.B. Webgame, Solo-Projekt, Status: Veröffentlicht'
+  - label: Meta-Tags (DE)
+    name: meta_de
+    widget: list
+    required: false
+  - label: Bilder
+    name: images
+    widget: list
+    required: false
+    fields:
+    - label: Bild
+      name: src
+      widget: image
+    - label: Alt-Text
+      name: alt
+      widget: string
+    - label: Bildunterschrift (EN)
+      name: caption
+      widget: string
+    - label: Bildunterschrift (DE)
+      name: caption_de
+      widget: string
+      required: false
+  - label: Embed-Code
+    name: embed
+    widget: text
+    required: false
+    hint: z.B. itch.io iframe
+  - label: Datum
+    name: date
+    widget: datetime
+    format: YYYY-MM-DD
+    date_format: YYYY-MM-DD
+    time_format: false
+  icon: deployed_code
+- name: blog
+  label: Blog
+  label_singular: Beitrag
+  folder: content/blog
+  create: true
+  delete: true
+  slug: '{{slug}}'
+  path: '{{slug}}/index'
+  preview_path: blog/{{slug}}/
+  media_folder: /Images/blog/{{slug}}
+  public_folder: /Images/blog/{{slug}}
+  view_filters:
+  - label: Nur Entwürfe
+    field: published
+    pattern: false
+  - label: Nur veröffentlichte
+    field: published
+    pattern: true
+  fields:
+  - label: Veröffentlicht
+    name: published
+    widget: boolean
+    default: true
+    hint: Aus = Entwurf. Wird gespeichert, erscheint aber nicht auf der Website.
+  - label: Titel (EN)
+    name: title
+    widget: string
+  - label: Titel (DE)
+    name: title_de
+    widget: string
+    required: false
+  - label: Datum
+    name: date
+    widget: datetime
+    format: YYYY-MM-DD
+    date_format: YYYY-MM-DD
+    time_format: false
+  - label: Kurzbeschreibung (EN)
+    name: description
+    widget: text
+    hint: Wird auf der Blog-Übersicht angezeigt
+  - label: Kurzbeschreibung (DE)
+    name: description_de
+    widget: text
+    required: false
+  - label: Titelbild
+    name: cover_image
+    widget: image
+    required: false
+  - label: Titelbild Alt-Text
+    name: cover_image_alt
+    widget: string
+    required: false
+  - label: Tags
+    name: tags
+    widget: list
+    required: false
+    hint: z.B. Game Dev, Design, Werkstatt
+  - label: Weitere Bilder
+    name: images
+    widget: list
+    required: false
+    fields:
+    - label: Bild
+      name: src
+      widget: image
+    - label: Alt-Text
+      name: alt
+      widget: string
+    - label: Bildunterschrift (EN)
+      name: caption
+      widget: string
+      required: false
+    - label: Bildunterschrift (DE)
+      name: caption_de
+      widget: string
+      required: false
+  - label: Text (EN)
+    name: body
+    widget: markdown
+    hint: '"Bild mit Bildunterschrift" in der Editor-Leiste setzt ein Bild mit Alt-Text, Unterschrift
+      und Größe (klein / mittel / groß) — auf der Website öffnet es sich per Klick groß. "Einbettung (iframe)"
+      fügt YouTube-, itch.io- oder ähnliche Einbettungen ein.'
+  - label: Text (DE)
+    name: body_de
+    widget: markdown
+    required: false
+    hint: Bilder und Einbettungen wie oben über die Buttons in der Editor-Leiste einfügen.
+  icon: edit_note
+- name: socials
+  label: Social-Profile
+  icon: share
+  files:
+  - name: socials
+    label: Social-Profile
+    file: _data/socials.json
+    format: json
+    editor: *id001
+    fields:
+    - label: Profile
+      name: items
+      widget: list
+      label_singular: Profil
+      collapsed: true
+      summary: '{{fields.name}}'
+      fields:
+      - label: Name
+        name: name
+        widget: string
+        hint: z. B. Instagram
+      - label: Handle
+        name: handle
+        widget: string
         required: false
-        hint: >-
-          Bilder und Einbettungen wie oben über die Buttons in der
-          Editor-Leiste einfügen.
+        hint: z. B. @netroslab – nur auf der Linkseite sichtbar
+      - label: Link
+        name: url
+        widget: string
+- name: legal
+  label: Rechtliches
+  icon: gavel
+  description: Impressum und Datenschutzerklärung. Bei neuen Diensten (Formulare, Einbettungen, Statistik)
+    die Datenschutzerklärung anpassen.
+  editor: *id001
+  files:
+  - name: impressum
+    label: Impressum
+    file: content/legal/impressum.md
+    format: frontmatter
+    fields:
+    - label: Titel
+      name: title
+      widget: string
+    - label: Stand
+      name: stand
+      widget: string
+      required: false
+      hint: z. B. Oktober 2026 – leer lassen blendet die Zeile aus.
+    - label: Text
+      name: body
+      widget: markdown
+  - name: datenschutz
+    label: Datenschutzerklärung
+    file: content/legal/datenschutz.md
+    format: frontmatter
+    fields:
+    - label: Titel
+      name: title
+      widget: string
+    - label: Stand
+      name: stand
+      widget: string
+      required: false
+      hint: z. B. Oktober 2026
+    - label: Text
+      name: body
+      widget: markdown
+      hint: Überschriften mit „##“, Zeilenumbruch innerhalb eines Absatzes mit Umschalt+Enter.

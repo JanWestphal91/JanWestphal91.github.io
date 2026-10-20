@@ -8,21 +8,26 @@
 {% include "partials/head-assets.njk" %}
 </head>
 <body class="theme page-legal">
+{#- Inhalt: content/legal/*.md (CMS: Rechtliches), feste Texte: _data/pages/legal.json -#}
+{%- set lg = pages.legal %}
 {%- set active = "legal" %}
 {% include "partials/site-header.njk" %}
 
 <main>
     <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
-        <p class="jw-label">[ <span data-en="Legal" data-de="Rechtliches">Legal</span> ]</p>
+        <p class="jw-label">[ <span {% i18n lg.label %}>{{ lg.label.en }}</span> ]</p>
         <div class="jw-page-head__row">
             <h1 id="jw-page-title">{{ title }}</h1>
-            <p class="jw-page-head__intro" data-lang-show="en">This page is only available in German.</p>
+            <p class="jw-page-head__intro" data-lang-show="en">{{ lg.english_notice }}</p>
         </div>
     </section>
 
     <article class="jw-wrap jw-page-body">
         <div class="jw-legal">
             {{ content | safe }}
+            {%- if stand %}
+            <p class="jw-legal__stand">{{ lg.stand_label }}: {{ stand }}</p>
+            {%- endif %}
         </div>
     </article>
 </main>

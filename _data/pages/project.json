@@ -1,0 +1,38 @@
+{
+  "type": {
+    "en": "Type",
+    "de": "Art"
+  },
+  "year": {
+    "en": "Year",
+    "de": "Jahr"
+  },
+  "details": {
+    "en": "Details",
+    "de": "Details"
+  },
+  "media": {
+    "en": "Media",
+    "de": "Medien"
+  },
+  "prev": {
+    "en": "← Previous project",
+    "de": "← Vorheriges Projekt"
+  },
+  "next": {
+    "en": "Next project →",
+    "de": "Nächstes Projekt →"
+  },
+  "all_prev": {
+    "en": "← All projects",
+    "de": "← Alle Projekte"
+  },
+  "all_next": {
+    "en": "All projects →",
+    "de": "Alle Projekte →"
+  },
+  "back": {
+    "en": "Back to index",
+    "de": "Zur Übersicht"
+  }
+}

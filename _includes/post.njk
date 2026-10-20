@@ -31,12 +31,14 @@
 {%- set active = "post" %}
 {% include "partials/site-header.njk" %}
 
+{#- Feste Texte: _data/pages/post.json (CMS: Seiten-Texte → Blogbeitrag) #}
+{%- set pt = pages.post %}
 {%- set nb = collections.blog | neighbors(page.url) %}
 <main class="post-page">
     <article>
         <header class="jw-wrap jw-post-head">
             <nav class="jw-crumb" aria-label="Breadcrumb">
-                <a href="/blog/">Blog</a>
+                <a href="/blog/" {% i18n global.nav.blog %}>{{ global.nav.blog.en }}</a>
                 <span aria-hidden="true">/</span>
                 <span data-lang-show="en">{{ date | postDate("en-US") }}</span><span data-lang-show="de" hidden>{{ date | postDate("de-DE") }}</span>
             </nav>
@@ -74,7 +76,7 @@
 
         {% if images and images.length %}
         <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
-            <h2 id="jw-gallery-title" class="jw-label jw-rule"><span data-i18n="project.gallery-label">Gallery</span> ({{ images.length | pad2 }})</h2>
+            <h2 id="jw-gallery-title" class="jw-label jw-rule"><span {% i18n global.ui.gallery %}>{{ global.ui.gallery.en }}</span> ({{ images.length | pad2 }})</h2>
             <div class="project-gallery jw-gallery">
                 {% for img in images %}
                 <figure class="project-gallery__item">
@@ -90,24 +92,24 @@
     <nav class="jw-wrap jw-pager" aria-label="More posts">
         {% if nb.next %}
         <a class="jw-pager__link" href="{{ nb.next.url }}">
-            <span class="jw-label" data-en="← Older post" data-de="← Älterer Beitrag">← Older post</span>
+            <span class="jw-label" {% i18n pt.older %}>{{ pt.older.en }}</span>
             <span class="jw-pager__title" data-en="{{ nb.next.data.title }}" data-de="{{ nb.next.data.title_de or nb.next.data.title }}">{{ nb.next.data.title }}</span>
         </a>
         {% else %}
         <a class="jw-pager__link" href="/blog/">
-            <span class="jw-label" data-en="← All posts" data-de="← Alle Beiträge">← All posts</span>
-            <span class="jw-pager__title" data-en="Back to blog" data-de="Zurück zum Blog">Back to blog</span>
+            <span class="jw-label" {% i18n pt.all_prev %}>{{ pt.all_prev.en }}</span>
+            <span class="jw-pager__title" {% i18n pt.back %}>{{ pt.back.en }}</span>
         </a>
         {% endif %}
         {% if nb.prev %}
         <a class="jw-pager__link jw-pager__link--next" href="{{ nb.prev.url }}">
-            <span class="jw-label" data-en="Newer post →" data-de="Neuerer Beitrag →">Newer post →</span>
+            <span class="jw-label" {% i18n pt.newer %}>{{ pt.newer.en }}</span>
             <span class="jw-pager__title" data-en="{{ nb.prev.data.title }}" data-de="{{ nb.prev.data.title_de or nb.prev.data.title }}">{{ nb.prev.data.title }}</span>
         </a>
         {% else %}
         <a class="jw-pager__link jw-pager__link--next" href="/blog/">
-            <span class="jw-label" data-en="All posts →" data-de="Alle Beiträge →">All posts →</span>
-            <span class="jw-pager__title" data-en="Back to blog" data-de="Zurück zum Blog">Back to blog</span>
+            <span class="jw-label" {% i18n pt.all_next %}>{{ pt.all_next.en }}</span>
+            <span class="jw-pager__title" {% i18n pt.back %}>{{ pt.back.en }}</span>
         </a>
         {% endif %}
     </nav>

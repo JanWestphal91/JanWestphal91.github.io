@@ -108,30 +108,43 @@ imageFigures(md);
 // das originale iframe steckt in einem <template> (wird nicht geladen)
 // und wird erst nach Klick von script.js eingesetzt. YouTube läuft
 // zusätzlich über youtube-nocookie.com.
-const CONSENT_PROVIDERS = [
-    {
-        test: /(^|\.)(youtube\.com|youtube-nocookie\.com|youtu\.be)$/i,
-        kind: "video",
-        en: "This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).",
-        de: "Dieses Video ist von YouTube eingebunden. Beim Laden werden Daten wie deine IP-Adresse an YouTube (Google) übertragen.",
-        buttonEn: "Load video",
-        buttonDe: "Video laden"
-    },
-    {
-        test: /(^|\.)itch\.io$/i,
-        kind: "widget",
-        en: "Embedded from itch.io. Loading sends data to itch.io.",
-        de: "Von itch.io eingebunden. Beim Laden werden Daten an itch.io übertragen.",
-        buttonEn: "Load",
-        buttonDe: "Laden"
-    }
-];
+// Texte der Hinweise kommen aus _data/global.json (CMS: Seiten-Texte →
+// Allgemein → Einbettungen). Sie werden bei jedem Build frisch gelesen.
+const fs = require("fs");
+const path = require("path");
+
+function loadEmbedTexts() {
+    const file = path.join(__dirname, "_data", "global.json");
+    return JSON.parse(fs.readFileSync(file, "utf8")).embeds || {};
+}
+
+function consentProviders() {
+    const t = loadEmbedTexts();
+    const pick = function (v, lang) { return (v && (v[lang] || v.en)) || ""; };
+    return [
+        {
+            test: /(^|\.)(youtube\.com|youtube-nocookie\.com|youtu\.be)$/i,
+            kind: "video",
+            en: pick(t.youtube_text, "en"), de: pick(t.youtube_text, "de"),
+            buttonEn: pick(t.youtube_button, "en"), buttonDe: pick(t.youtube_button, "de"),
+            privacyEn: pick(t.privacy_link, "en"), privacyDe: pick(t.privacy_link, "de")
+        },
+        {
+            test: /(^|\.)itch\.io$/i,
+            kind: "widget",
+            en: pick(t.itch_text, "en"), de: pick(t.itch_text, "de"),
+            buttonEn: pick(t.itch_button, "en"), buttonDe: pick(t.itch_button, "de"),
+            privacyEn: pick(t.privacy_link, "en"), privacyDe: pick(t.privacy_link, "de")
+        }
+    ];
+}
 
 function escapeAttr(text) {
-    return String(text).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+    return String(text).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 }
 
 function consentEmbeds(html) {
+    const providers = consentProviders();
     return html.replace(/<iframe\b[^>]*>[\s\S]*?<\/iframe>/gi, function (tag) {
         const srcMatch = tag.match(/\ssrc="([^"]+)"/i);
         if (!srcMatch) return tag;
@@ -143,7 +156,7 @@ function consentEmbeds(html) {
             return tag;
         }
 
-        const provider = CONSENT_PROVIDERS.find(function (p) { return p.test.test(host); });
+        const provider = providers.find(function (p) { return p.test.test(host); });
         if (!provider) return tag;
 
         let iframe = tag;
@@ -159,9 +172,9 @@ function consentEmbeds(html) {
             : ' style="width:' + width + 'px;min-height:' + (height || 0) + 'px"';
 
         return '<div class="jw-consent jw-consent--' + provider.kind + '"' + style + '>' +
-            '<p class="jw-consent__text"><span data-en="' + escapeAttr(provider.en) + '" data-de="' + escapeAttr(provider.de) + '">' + provider.en + '</span> ' +
-            '<a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></p>' +
-            '<button type="button" class="jw-consent__button" data-en="' + escapeAttr(provider.buttonEn) + '" data-de="' + escapeAttr(provider.buttonDe) + '">' + provider.buttonEn + '</button>' +
+            '<p class="jw-consent__text"><span data-en="' + escapeAttr(provider.en) + '" data-de="' + escapeAttr(provider.de) + '">' + escapeAttr(provider.en) + '</span> ' +
+            '<a href="/datenschutz/" data-en="' + escapeAttr(provider.privacyEn) + '" data-de="' + escapeAttr(provider.privacyDe) + '">' + provider.privacyEn + '</a></p>' +
+            '<button type="button" class="jw-consent__button" data-en="' + escapeAttr(provider.buttonEn) + '" data-de="' + escapeAttr(provider.buttonDe) + '">' + escapeAttr(provider.buttonEn) + '</button>' +
             '<template>' + iframe + '</template>' +
             '</div>';
     });
@@ -181,6 +194,15 @@ module.exports = function(eleventyConfig) {
         return content;
     });
 
+    // Rechtstexte (content/legal): Markdown macht aus „itch.io“ automatisch
+    // einen Link. Dort unerwünscht – solche Auto-Links wieder zu Text machen.
+    // Ausdrücklich gesetzte Links [Text](https://…) bleiben erhalten.
+    eleventyConfig.addTransform("legalNoAutolinks", function (content) {
+        const input = (this.page && this.page.inputPath) || "";
+        if (!input.includes("content/legal/")) return content;
+        return content.replace(/<a href="http:\/\/([^"]+)">\1<\/a>/g, "$1");
+    });
+
     // ── Entwürfe ──────────────────────────────────────────────────────
     // Beiträge mit "published: false" werden beim Build komplett
     // übersprungen: keine Seite, kein Eintrag in den Übersichten.
@@ -193,6 +215,20 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addFilter("md", content => content ? md.render(content) : '');
+
+    // ── Zweisprachige Texte ───────────────────────────────────────────
+    // Alle Seitentexte liegen in _data/ als { "en": "…", "de": "…" }.
+    // {% i18n text %} schreibt daraus data-en="…" data-de="…"; script.js
+    // tauscht beim Sprachwechsel den Inhalt aus. Mit zweitem Argument für
+    // Attribute: {% i18n text, "placeholder" %} → data-placeholder-en/-de
+    // (ebenso "aria" und "alt"). Fehlt der deutsche Text, gilt der englische.
+    eleventyConfig.addShortcode("i18n", function (value, attr) {
+        if (!value || typeof value !== "object") return "";
+        const en = value.en || "";
+        const de = value.de || en;
+        const prefix = attr ? "data-" + attr + "-" : "data-";
+        return prefix + 'en="' + escapeAttr(en) + '" ' + prefix + 'de="' + escapeAttr(de) + '"';
+    });
     // Static assets — must be explicit in Eleventy 3
     eleventyConfig.addPassthroughCopy("Images");
     eleventyConfig.addPassthroughCopy("style.css");
@@ -201,7 +237,6 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("favicon.ico");
     eleventyConfig.addPassthroughCopy("site.webmanifest");
     eleventyConfig.addPassthroughCopy("script.js");
-    eleventyConfig.addPassthroughCopy("translations.js");
     eleventyConfig.addPassthroughCopy("CNAME");
     eleventyConfig.addPassthroughCopy("admin");
     eleventyConfig.addPassthroughCopy("google1fb37088e637c525.html");
@@ -261,6 +296,11 @@ module.exports = function(eleventyConfig) {
         if (!featured.length) featured = items.slice(0, max);
         const rest = items.filter(function(item) { return featured.indexOf(item) === -1; });
         return { featured: featured, rest: rest };
+    });
+
+    // Liste von Objekten → Liste eines Feldes, z. B. socials.items | pluck("url")
+    eleventyConfig.addFilter("pluck", function(list, key) {
+        return (list || []).map(function(item) { return item && item[key]; }).filter(Boolean);
     });
 
     // 1 → "01"

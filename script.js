@@ -55,21 +55,21 @@ function applyTranslations(lang, skipProjectRender) {
         el.alt = t(el.dataset.i18nAlt);
     });
 
-    // Alt texts that come straight from the CMS (_data/sitetext.json) instead
-    // of a translation key.
+    // Attribute aus den CMS-Texten (_data/*.json), geschrieben vom
+    // Eleventy-Shortcode {% i18n text, "alt" | "placeholder" | "aria" %}.
+    const pickLang = function(el, name) {
+        const de = el.dataset[name + 'De'];
+        return lang === 'de' && de ? de : el.dataset[name + 'En'];
+    };
     document.querySelectorAll('[data-alt-en]').forEach(function(el) {
-        el.alt = lang === 'de' && el.dataset.altDe ? el.dataset.altDe : el.dataset.altEn;
+        el.alt = pickLang(el, 'alt');
     });
-
-    // The ticker text is rendered by Eleventy from _data/sitetext.json and
-    // carries data-en / data-de, so the generic handler above already
-    // translated it. Legacy fallback for markup without those attributes:
-    if (window.TRANSLATIONS && window.TRANSLATIONS.en && window.TRANSLATIONS.en.ticker) {
-        const tickerText = t('ticker');
-        document.querySelectorAll('.ticker-text:not([data-en])').forEach(function(el) {
-            el.textContent = tickerText;
-        });
-    }
+    document.querySelectorAll('[data-placeholder-en]').forEach(function(el) {
+        el.placeholder = pickLang(el, 'placeholder');
+    });
+    document.querySelectorAll('[data-aria-en]').forEach(function(el) {
+        el.setAttribute('aria-label', pickLang(el, 'aria'));
+    });
 
     const bowlLabel = document.getElementById('bowl-label');
     if (bowlLabel && !bowlLabel._fishMsgActive) {
@@ -82,10 +82,11 @@ function applyTranslations(lang, skipProjectRender) {
     // Den Titel nur ändern, wenn jemand die Sprache selbst gewählt hat.
     // So sehen Suchmaschinen (ohne gespeicherte Wahl) immer den Titel aus
     // dem HTML, der zur Beschreibung in index.njk passt.
-    if (document.body.classList.contains('page-home') && localStorage.getItem(LANG_STORAGE_KEY)) {
-        document.title = lang === 'de'
-            ? 'Jan Westphal – Portfolio | Entwickler & Designer aus Kiel'
-            : 'Jan Westphal – Portfolio | Developer & Designer from Kiel';
+    // Die Titel stehen als data-title-en / data-title-de am <body>.
+    if (document.body.dataset.titleEn && localStorage.getItem(LANG_STORAGE_KEY)) {
+        document.title = lang === 'de' && document.body.dataset.titleDe
+            ? document.body.dataset.titleDe
+            : document.body.dataset.titleEn;
     }
 }
 

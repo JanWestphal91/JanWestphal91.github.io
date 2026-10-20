@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "projects": { "en": "Projects", "de": "Projekte" },
+    "blog": { "en": "Blog", "de": "Blog" },
+    "about": { "en": "About", "de": "Über mich" },
+    "contact": { "en": "Contact", "de": "Kontakt" },
+    "menu": { "en": "Open menu", "de": "Menü öffnen" }
+  },
+  "ticker": {
+    "en": "• People say I can do this 👉 • Creative Coding • Game Dev • Graphic Design • 3D Graphics • Prototyping • UI / UX • Latest Game : ⚔️ Pocket Knight ⚔️ • Feed 🐟Glub🐟 now below",
+    "de": "• Andere sagen ich kann das 👉 • Creative Coding • Game Dev • Grafikdesign • 3D Grafik • Prototyping • UI / UX • Aktuelles Spiel : ⚔️ Pocket Knight ⚔️ • 🐟Glub🐟 gleich unten füttern"
+  },
+  "cta": {
+    "text": { "en": "Questions, ideas or feedback? I’d love to hear from you.", "de": "Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht." },
+    "button": { "en": "Drop a message", "de": "Schreib mir" }
+  },
+  "footer": {
+    "copyright": { "en": "© 2026 Jan Westphal. All wrongs reserved.", "de": "© 2026 Jan Westphal. All wrongs reserved." },
+    "imprint": { "en": "Imprint", "de": "Impressum" },
+    "privacy": { "en": "Privacy", "de": "Datenschutz" }
+  },
+  "embeds": {
+    "youtube_text": { "en": "This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).", "de": "Dieses Video ist von YouTube eingebunden. Beim Laden werden Daten wie deine IP-Adresse an YouTube (Google) übertragen." },
+    "youtube_button": { "en": "Load video", "de": "Video laden" },
+    "itch_text": { "en": "Embedded from itch.io. Loading sends data to itch.io.", "de": "Von itch.io eingebunden. Beim Laden werden Daten an itch.io übertragen." },
+    "itch_button": { "en": "Load", "de": "Laden" },
+    "privacy_link": { "en": "Privacy", "de": "Datenschutz" }
+  },
+  "ui": {
+    "filter_all": { "en": "All", "de": "Alle" },
+    "gallery": { "en": "Gallery", "de": "Galerie" },
+    "lightbox_close": { "en": "Close image", "de": "Bild schließen" }
+  }
+}

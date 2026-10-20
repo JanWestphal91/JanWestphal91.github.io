@@ -1,9 +1,10 @@
-{#- Gemeinsamer Header.
+{#- Gemeinsamer Header. Texte: _data/global.json (CMS: Seiten-Texte → Allgemein).
     Vor dem Include setzen:
       active = "home" | "projects" | "blog" | "project" | "post"
       ticker = true  → Laufband anzeigen (nur Startseite) -#}
 {%- set onHome = (active == "home") %}
 {%- set homeBase = "" if onHome else "/" %}
+{%- set nav = global.nav %}
 <header class="site-header">
     <div class="container nav">
         <div class="jw-brand">
@@ -11,26 +12,24 @@
         </div>
         <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary"{% if active == "projects" or active == "project" %} aria-current="{{ 'page' if active == 'projects' else 'true' }}"{% endif %}><span class="nav-label nav-label--desktop" data-i18n="nav.projects">Projects</span><span class="nav-label nav-label--mobile" data-i18n="nav.projects.mobile">Projects ↗</span></a></li>
-                <li><a href="/blog/" class="link-button secondary"{% if active == "blog" or active == "post" %} aria-current="{{ 'page' if active == 'blog' else 'true' }}"{% endif %}><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile" data-i18n="nav.blog.mobile">Blog ↗</span></a></li>
-                <li class="jw-nav-about"><a href="{{ homeBase }}#about" class="link-button secondary"><span data-en="About" data-de="Über mich">About</span></a></li>
-                <li><a href="{{ homeBase }}#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Contact" data-de="Kontakt">Contact</span><span class="nav-label nav-label--mobile" data-i18n="nav.contact.mobile">Contact ↗</span></a></li>
+                <li><a href="/projects/" class="link-button secondary"{% if active == "projects" or active == "project" %} aria-current="{{ 'page' if active == 'projects' else 'true' }}"{% endif %}><span class="nav-label nav-label--desktop" {% i18n nav.projects %}>{{ nav.projects.en }}</span><span class="nav-label nav-label--mobile"><span {% i18n nav.projects %}>{{ nav.projects.en }}</span> ↗</span></a></li>
+                <li><a href="/blog/" class="link-button secondary"{% if active == "blog" or active == "post" %} aria-current="{{ 'page' if active == 'blog' else 'true' }}"{% endif %}><span class="nav-label nav-label--desktop" {% i18n nav.blog %}>{{ nav.blog.en }}</span><span class="nav-label nav-label--mobile"><span {% i18n nav.blog %}>{{ nav.blog.en }}</span> ↗</span></a></li>
+                <li class="jw-nav-about"><a href="{{ homeBase }}#about" class="link-button secondary"><span {% i18n nav.about %}>{{ nav.about.en }}</span></a></li>
+                <li><a href="{{ homeBase }}#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" {% i18n nav.contact %}>{{ nav.contact.en }}</span><span class="nav-label nav-label--mobile"><span {% i18n nav.contact %}>{{ nav.contact.en }}</span> ↗</span></a></li>
                 <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" data-i18n-aria="burger.aria" aria-label="Open menu" aria-expanded="false">
+        <button id="burger-menu-toggle" class="burger-menu-toggle" {% i18n nav.menu, "aria" %} aria-label="{{ nav.menu.en }}" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </button>
     </div>
     {%- if ticker %}
-    {%- set tickerEn = sitetext.ticker.en %}
-    {%- set tickerDe = sitetext.ticker.de or sitetext.ticker.en %}
     <div class="ticker-band">
         <div class="ticker-content">
-            <span class="ticker-text" data-en="{{ tickerEn }}" data-de="{{ tickerDe }}">{{ tickerEn }}</span>
-            <span class="ticker-text" aria-hidden="true" data-en="{{ tickerEn }}" data-de="{{ tickerDe }}">{{ tickerEn }}</span>
+            <span class="ticker-text" {% i18n global.ticker %}>{{ global.ticker.en }}</span>
+            <span class="ticker-text" aria-hidden="true" {% i18n global.ticker %}>{{ global.ticker.en }}</span>
         </div>
     </div>
     {%- endif %}

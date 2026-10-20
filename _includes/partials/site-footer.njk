@@ -1,9 +1,10 @@
+{%- set f = global.footer %}
 <footer class="site-footer">
     <div class="container footer-row">
-        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <p class="footer-copy" {% i18n f.copyright %}>{{ f.copyright.en }}</p>
         <ul class="jw-footer-links">
-            <li><a href="/impressum/" data-en="Imprint" data-de="Impressum">Imprint</a></li>
-            <li><a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></li>
+            <li><a href="/impressum/" {% i18n f.imprint %}>{{ f.imprint.en }}</a></li>
+            <li><a href="/datenschutz/" {% i18n f.privacy %}>{{ f.privacy.en }}</a></li>
         </ul>
     </div>
 </footer>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {#- Texte: _data/pages/blog.json (CMS: Seiten-Texte → Blog-Übersicht) #}
+    {%- set pg = pages.blog %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog – Jan Westphal</title>
-    <meta name="description" content="Thoughts, process notes and updates by Jan Westphal – Creative Coder &amp; Designer from Kiel." />
+    <title>{{ pg.seo.title }}</title>
+    <meta name="description" content="{{ pg.seo.description }}" />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://janwestphal.dev/blog/" />
@@ -12,8 +14,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://janwestphal.dev/blog/" />
     <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="Blog – Jan Westphal" />
-    <meta property="og:description" content="Thoughts, process notes and updates by Jan Westphal." />
+    <meta property="og:title" content="{{ pg.seo.title }}" />
+    <meta property="og:description" content="{{ pg.seo.description }}" />
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
 
 
@@ -26,10 +28,10 @@
 {%- set posts = collections.blog or [] %}
 <main>
     <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
-        <p class="jw-label">[ Blog — {{ posts.length | pad2 }} <span data-en="posts" data-de="Beiträge">posts</span> ]</p>
+        <p class="jw-label">[ Blog — {{ posts.length | pad2 }} <span {% i18n pg.count_label %}>{{ pg.count_label.en }}</span> ]</p>
         <div class="jw-page-head__row">
-            <h1 id="jw-page-title">Blog</h1>
-            <p class="jw-page-head__intro" data-en="Devlogs, build processes and game jam reports – how the projects actually came together." data-de="Devlogs, Bauprozesse und Game-Jam-Berichte – wie die Projekte tatsächlich entstanden sind.">Devlogs, build processes and game jam reports – how the projects actually came together.</p>
+            <h1 id="jw-page-title" {% i18n pg.heading %}>{{ pg.heading.en }}</h1>
+            <p class="jw-page-head__intro" {% i18n pg.intro %}>{{ pg.intro.en }}</p>
         </div>
     </section>
 
@@ -46,7 +48,7 @@
             </figure>
             <div class="jw-feature__body">
                 <div class="jw-feature__text">
-                    <span class="jw-badge" data-en="Latest" data-de="Neu">Latest</span>
+                    <span class="jw-badge" {% i18n pg.latest_badge %}>{{ pg.latest_badge.en }}</span>
                     <h2 data-en="{{ latest.data.title }}" data-de="{{ latest.data.title_de or latest.data.title }}">{{ latest.data.title }}</h2>
                     {% if latest.data.description %}
                     <p data-en="{{ latest.data.description }}" data-de="{{ latest.data.description_de or latest.data.description }}">{{ latest.data.description }}</p>
@@ -56,7 +58,7 @@
                     <span class="jw-tags">
                         <span data-lang-show="en">{{ latest.date | postDate("en-US") }}</span><span data-lang-show="de" hidden>{{ latest.date | postDate("de-DE") }}</span>{% if latest.data.tags %} · {{ latest.data.tags | join(", ") | replace(", ", " · ") }}{% endif %}
                     </span>
-                    <span class="jw-feature__read"><span data-en="Read" data-de="Lesen">Read</span>&nbsp;↗</span>
+                    <span class="jw-feature__read"><span {% i18n pg.read %}>{{ pg.read.en }}</span>&nbsp;↗</span>
                 </div>
             </div>
         </a>
@@ -64,7 +66,7 @@
 
     {% if posts.length > 1 %}
     <section class="jw-wrap jw-page-body" aria-labelledby="jw-archive-title">
-        <h2 id="jw-archive-title" class="jw-label" data-en="All posts" data-de="Alle Beiträge">All posts</h2>
+        <h2 id="jw-archive-title" class="jw-label" {% i18n pg.all_posts %}>{{ pg.all_posts.en }}</h2>
         <ul class="jw-blist">
             {%- for post in posts %}
             {%- if not loop.first %}
@@ -90,7 +92,7 @@
     {% endif %}
     {% else %}
     <section class="jw-wrap jw-page-body">
-        <p class="jw-label">No posts yet — check back soon.</p>
+        <p class="jw-label" {% i18n pg.empty %}>{{ pg.empty.en }}</p>
     </section>
     {% endif %}
 

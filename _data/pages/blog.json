@@ -1,0 +1,34 @@
+{
+  "seo": {
+    "title": "Blog – Jan Westphal",
+    "description": "Thoughts, process notes and updates by Jan Westphal – Creative Coder & Designer from Kiel."
+  },
+  "count_label": {
+    "en": "posts",
+    "de": "Beiträge"
+  },
+  "heading": {
+    "en": "Blog",
+    "de": "Blog"
+  },
+  "intro": {
+    "en": "Devlogs, build processes and game jam reports – how the projects actually came together.",
+    "de": "Devlogs, Bauprozesse und Game-Jam-Berichte – wie die Projekte tatsächlich entstanden sind."
+  },
+  "latest_badge": {
+    "en": "Latest",
+    "de": "Neu"
+  },
+  "read": {
+    "en": "Read",
+    "de": "Lesen"
+  },
+  "all_posts": {
+    "en": "All posts",
+    "de": "Alle Beiträge"
+  },
+  "empty": {
+    "en": "No posts yet — check back soon.",
+    "de": "Noch keine Beiträge – schau bald wieder vorbei."
+  }
+}

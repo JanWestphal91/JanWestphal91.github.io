@@ -1,0 +1,28 @@
+---
+permalink: /translations.js
+eleventyExcludeFromCollections: true
+---
+{#- Texte, die script.js selbst setzt (Meldungen beim Senden, Lightbox).
+    Wird beim Build aus _data/home.json und _data/global.json erzeugt –
+    bearbeitet werden die Texte im CMS, nicht hier. -#}
+{%- set c = home.contact -%}
+{%- set ui = global.ui -%}
+{%- set dict = {
+    en: {
+        "contact.submit.sending": c.sending.en,
+        "contact.success": c.success.en,
+        "contact.error-prefix": c.error.en,
+        "contact.network-error": c.network_error.en,
+        "lightbox.close": ui.lightbox_close.en,
+        "filter.all": ui.filter_all.en
+    },
+    de: {
+        "contact.submit.sending": c.sending.de or c.sending.en,
+        "contact.success": c.success.de or c.success.en,
+        "contact.error-prefix": c.error.de or c.error.en,
+        "contact.network-error": c.network_error.de or c.network_error.en,
+        "lightbox.close": ui.lightbox_close.de or ui.lightbox_close.en,
+        "filter.all": ui.filter_all.de or ui.filter_all.en
+    }
+} -%}
+window.TRANSLATIONS = {{ dict | dump | safe }};

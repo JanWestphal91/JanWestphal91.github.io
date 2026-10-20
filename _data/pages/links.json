@@ -1,0 +1,94 @@
+{
+  "seo": {
+    "title": "Links – Jan Westphal (Netro)",
+    "description": "Alle Links von Jan Westphal (Netro): aktuelles Spiel, Projekt-Writeups und Social-Media-Kanäle.",
+    "share_description": "Aktuelles Spiel, Projekt-Writeups und Social-Media-Kanäle."
+  },
+  "photo": "/Images/myself.jpeg",
+  "photo_alt": {
+    "en": "Portrait of Jan Westphal",
+    "de": "Porträt von Jan Westphal"
+  },
+  "alias": "aka Netro",
+  "subtitle": {
+    "en": "Developer & designer from Kiel",
+    "de": "Entwickler & Designer aus Kiel"
+  },
+  "game": {
+    "label": {
+      "en": "New game",
+      "de": "Neues Spiel"
+    },
+    "tag": {
+      "en": "Steam soon",
+      "de": "Bald auf Steam"
+    },
+    "title": "Clap, Slap, Slash!",
+    "text": {
+      "en": "Fantasy roguelite, played with the mouse only",
+      "de": "Fantasy-Roguelite, nur mit der Maus gespielt"
+    },
+    "platform": "itch.io",
+    "url": "https://jan-west.itch.io/clapslapslash"
+  },
+  "writeups": {
+    "label": {
+      "en": "Writeups",
+      "de": "Writeups"
+    },
+    "items": [
+      {
+        "title": "Pocket Knight",
+        "text": {
+          "en": "Development process of a handheld pedometer game",
+          "de": "Entwicklungsprozess eines Schrittzähler-Spielgeräts"
+        },
+        "url": "/blog/development-process-of-pocket-knight/",
+        "image": "/Images/projects/pocket-knight/closeshotpocketknight.webp"
+      },
+      {
+        "title": "Audio Dingo",
+        "text": {
+          "en": "Building a DIY synthesizer",
+          "de": "Entwicklung eines DIY-Synthesizers"
+        },
+        "url": "/blog/hello-blog/",
+        "image": "/Images/Audiodingo/audiodingostanding.webp"
+      }
+    ]
+  },
+  "socials_label": {
+    "en": "Socials",
+    "de": "Socials"
+  },
+  "website": {
+    "label": {
+      "en": "Website",
+      "de": "Website"
+    },
+    "items": [
+      {
+        "title": {
+          "en": "Portfolio",
+          "de": "Portfolio"
+        },
+        "note": {
+          "en": "janwestphal.dev",
+          "de": "janwestphal.dev"
+        },
+        "url": "/"
+      },
+      {
+        "title": {
+          "en": "Contact",
+          "de": "Kontakt"
+        },
+        "note": {
+          "en": "Send a message",
+          "de": "Nachricht schreiben"
+        },
+        "url": "/#contact"
+      }
+    ]
+  }
+}
