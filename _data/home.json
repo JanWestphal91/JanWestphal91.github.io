@@ -145,7 +145,7 @@
     "entries": [
       {
         "title": {
-          "de": "Maler",
+          "de": "Maler und Lackierer",
           "en": "Painter"
         },
         "sub": {
@@ -160,15 +160,15 @@
       },
       {
         "title": {
-          "de": "Kommunikationsdesign",
+          "de": "Kommunikationsdesign (B.A.)",
           "en": "Communication design"
         },
         "sub": {
-          "de": "Studium – gestalterisches Fundament",
+          "de": "Muthesius Kunsthochschule",
           "en": "University studies – visual foundation"
         },
         "tag": {
-          "de": "6 Semester",
+          "de": "6 Semester, nicht abgeschlossen",
           "en": "6 semesters"
         },
         "current": false
@@ -179,8 +179,8 @@
           "en": "Graphic designer"
         },
         "sub": {
-          "de": "Berufstätigkeit im Grafikdesign",
-          "en": "Professional work in graphic design"
+          "de": "Berufstätigkeit (Grafikdesign / Drucktechnik)",
+          "en": "Professional work in graphic design and printing"
         },
         "tag": {
           "de": "Mehrere Jahre",
@@ -198,7 +198,7 @@
           "en": "HAW Kiel"
         },
         "tag": {
-          "de": "Aktuell",
+          "de": "Aktuell, 3/7 Semester",
           "en": "Now"
         },
         "current": true
@@ -249,7 +249,8 @@
     "languages": [
       "Python",
       "C#",
-      "GDScript"
+      "GDScript",
+      "Java"
     ],
     "courses_heading": {
       "de": "Kurse — opencampus.sh",
@@ -310,8 +311,8 @@
       "en": "All posts →"
     },
     "empty": {
-      "de": "Noch keine Beiträge – schau bald wieder vorbei.",
-      "en": "No posts yet — check back soon."
+      "de": "Noch keine Beiträge, schau bald wieder vorbei.",
+      "en": "No posts yet, check back soon."
     }
   },
   "contact": {
