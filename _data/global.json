@@ -1,34 +1,88 @@
 {
   "nav": {
-    "projects": { "en": "Projects", "de": "Projekte" },
-    "blog": { "en": "Blog", "de": "Blog" },
-    "about": { "en": "About", "de": "Über mich" },
-    "contact": { "en": "Contact", "de": "Kontakt" },
-    "menu": { "en": "Open menu", "de": "Menü öffnen" }
+    "projects": {
+      "de": "Projekte",
+      "en": "Projects"
+    },
+    "blog": {
+      "de": "Blog",
+      "en": "Blog"
+    },
+    "about": {
+      "de": "Über mich",
+      "en": "About"
+    },
+    "contact": {
+      "de": "Kontakt",
+      "en": "Contact"
+    },
+    "menu": {
+      "de": "Menü öffnen",
+      "en": "Open menu"
+    }
   },
   "ticker": {
-    "en": "• People say I can do this 👉 • Creative Coding • Game Dev • Graphic Design • 3D Graphics • Prototyping • UI / UX • Latest Game : ⚔️ Pocket Knight ⚔️ • Feed 🐟Glub🐟 now below",
-    "de": "• Andere sagen ich kann das 👉 • Creative Coding • Game Dev • Grafikdesign • 3D Grafik • Prototyping • UI / UX • Aktuelles Spiel : ⚔️ Pocket Knight ⚔️ • 🐟Glub🐟 gleich unten füttern"
+    "de": "• Andere sagen ich kann das 👉 • Creative Coding • Game Dev • Grafikdesign • 2D & 3D Grafik • Prototyping • UI / UX • Aktuelles Spiel : ⚔️ Pocket Knight ⚔️",
+    "en": "• People say I can do this 👉 • Creative Coding • Game Dev • Graphic Design • 2D & 3D Graphics • Prototyping • UI / UX • Latest Game : ⚔️ Pocket Knight ⚔️"
   },
   "cta": {
-    "text": { "en": "Questions, ideas or feedback? I’d love to hear from you.", "de": "Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht." },
-    "button": { "en": "Drop a message", "de": "Schreib mir" }
+    "text": {
+      "de": "Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.",
+      "en": "Questions, ideas or feedback? I’d love to hear from you."
+    },
+    "button": {
+      "de": "Schreib mir",
+      "en": "Drop a message"
+    }
   },
   "footer": {
-    "copyright": { "en": "© 2026 Jan Westphal. All wrongs reserved.", "de": "© 2026 Jan Westphal. All wrongs reserved." },
-    "imprint": { "en": "Imprint", "de": "Impressum" },
-    "privacy": { "en": "Privacy", "de": "Datenschutz" }
+    "copyright": {
+      "de": "© 2026 Jan Westphal. All wrongs reserved.",
+      "en": "© 2026 Jan Westphal. All wrongs reserved."
+    },
+    "imprint": {
+      "de": "Impressum",
+      "en": "Imprint"
+    },
+    "privacy": {
+      "de": "Datenschutz",
+      "en": "Privacy"
+    }
   },
   "embeds": {
-    "youtube_text": { "en": "This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).", "de": "Dieses Video ist von YouTube eingebunden. Beim Laden werden Daten wie deine IP-Adresse an YouTube (Google) übertragen." },
-    "youtube_button": { "en": "Load video", "de": "Video laden" },
-    "itch_text": { "en": "Embedded from itch.io. Loading sends data to itch.io.", "de": "Von itch.io eingebunden. Beim Laden werden Daten an itch.io übertragen." },
-    "itch_button": { "en": "Load", "de": "Laden" },
-    "privacy_link": { "en": "Privacy", "de": "Datenschutz" }
+    "youtube_text": {
+      "de": "Dieses Video ist von YouTube eingebunden. Beim Laden werden Daten wie deine IP-Adresse an YouTube (Google) übertragen.",
+      "en": "This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google)."
+    },
+    "youtube_button": {
+      "de": "Video laden",
+      "en": "Load video"
+    },
+    "itch_text": {
+      "de": "Von itch.io eingebunden. Beim Laden werden Daten an itch.io übertragen.",
+      "en": "Embedded from itch.io. Loading sends data to itch.io."
+    },
+    "itch_button": {
+      "de": "Laden",
+      "en": "Load"
+    },
+    "privacy_link": {
+      "de": "Datenschutz",
+      "en": "Privacy"
+    }
   },
   "ui": {
-    "filter_all": { "en": "All", "de": "Alle" },
-    "gallery": { "en": "Gallery", "de": "Galerie" },
-    "lightbox_close": { "en": "Close image", "de": "Bild schließen" }
+    "filter_all": {
+      "de": "Alle",
+      "en": "All"
+    },
+    "gallery": {
+      "de": "Galerie",
+      "en": "Gallery"
+    },
+    "lightbox_close": {
+      "de": "Bild schließen",
+      "en": "Close image"
+    }
   }
 }
