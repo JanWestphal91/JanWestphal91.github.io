@@ -2204,3 +2204,14 @@ body.theme {
     outline-offset: 3px;
 }
 
+
+/* Fangfeld im Kontaktformular – darf nie sichtbar sein. */
+.theme .contact-form .jw-honeypot {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 !important;
+    opacity: 0;
+    pointer-events: none;
+}
