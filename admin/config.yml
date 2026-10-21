@@ -971,7 +971,7 @@ collections:
         - label: Englisch
           name: en
           widget: string
-      - label: 'Meldung: Fehler (davor)'
+      - label: 'Meldung: Fehler (vor dem Fehlercode)'
         name: error
         widget: object
         collapsed: false
@@ -989,6 +989,19 @@ collections:
         widget: object
         collapsed: false
         summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Ersatz-Link bei Fehlern'
+        name: fallback
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        hint: Erscheint nach einer Fehlermeldung und öffnet eine E-Mail mit der getippten Nachricht.
         fields:
         - label: Deutsch
           name: de
@@ -1677,6 +1690,10 @@ collections:
       name: formsparkId
       widget: string
       hint: Steht im Formspark-Dashboard in der Adresse https://submit-form.com/…
+    - label: E-Mail-Adresse für den Ersatz-Link
+      name: email
+      widget: string
+      hint: Wird angeboten, wenn das Formular nicht senden kann.
 - name: projects
   label: Projekte
   label_singular: Projekt

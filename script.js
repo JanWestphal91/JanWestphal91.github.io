@@ -335,6 +335,30 @@ const form = document.getElementById("form") || document.querySelector(".contact
 
 if (form) {
     const submitBtn = form.querySelector('button[type="submit"]');
+    const status = form.querySelector(".jw-form-status");
+
+    // Rückmeldung direkt unter dem Button statt eines Browser-Popups.
+    // Bei einem Fehler gibt es einen Ersatzweg per E-Mail, mit der bereits
+    // getippten Nachricht als Vorlage.
+    function showStatus(kind, text, withMailLink) {
+        if (!status) return;
+        status.hidden = false;
+        status.className = "jw-form-status is-" + kind;
+        status.textContent = text;
+
+        const address = form.dataset.mail;
+        if (withMailLink && address) {
+            const data = new FormData(form);
+            const body = (data.get("message") || "") + "\n\n– " + (data.get("name") || "");
+            const link = document.createElement("a");
+            link.href = "mailto:" + address +
+                "?subject=" + encodeURIComponent("Nachricht über janwestphal.dev") +
+                "&body=" + encodeURIComponent(body);
+            link.textContent = t("contact.fallback") + " →";
+            status.appendChild(document.createTextNode(" "));
+            status.appendChild(link);
+        }
+    }
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -342,13 +366,13 @@ if (form) {
         // Formspark erwartet JSON; das Fangfeld _honeypot wird mitgeschickt,
         // damit Formspark Bot-Nachrichten erkennen kann.
         const payload = Object.fromEntries(new FormData(form).entries());
-
         const originalText = submitBtn ? submitBtn.textContent : "";
 
         if (submitBtn) {
             submitBtn.textContent = t("contact.submit.sending");
             submitBtn.disabled = true;
         }
+        if (status) status.hidden = true;
 
         try {
             const response = await fetch(form.action, {
@@ -361,14 +385,13 @@ if (form) {
             });
 
             if (response.ok) {
-                alert(t("contact.success"));
                 form.reset();
+                showStatus("success", t("contact.success"), false);
             } else {
-                alert(t("contact.error-prefix") + response.status);
+                showStatus("error", t("contact.error-prefix") + " " + response.status + ").", true);
             }
-
         } catch (_error) {
-            alert(t("contact.network-error"));
+            showStatus("error", t("contact.network-error"), true);
         } finally {
             if (submitBtn) {
                 submitBtn.textContent = originalText;
@@ -377,6 +400,7 @@ if (form) {
         }
     });
 }
+
 
 
 
