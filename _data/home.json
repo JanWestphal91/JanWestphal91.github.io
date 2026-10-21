@@ -31,14 +31,16 @@
     "images": [
       {
         "image": "/Images/projects/pocket-knight/closeshotpocketknight.webp",
+        "title": "Pocket Knight",
         "alt": {
-          "de": "Pocket Knight – selbstgebautes Spielgerät",
-          "en": "Pocket Knight – self-built game device"
+          "de": "Pocket Knight – selbstgebautes Spielgerät mit Schrittzähler",
+          "en": "Pocket Knight – self-built pedometer game device"
         },
         "link": "/projects/pocket-knight/"
       },
       {
         "image": "/Images/projects/chirping-on-trust/webshot.webp",
+        "title": "Chirping on Trust",
         "alt": {
           "de": "Chirping on Trust auf dem Game Boy Advance",
           "en": "Chirping on Trust on the Game Boy Advance"
@@ -46,14 +48,45 @@
         "link": "/projects/chirping-on-trust/"
       },
       {
-        "image": "/Images/Graffzine2/graffzine2thumb1.webp",
+        "image": "/Images/Audiodingo/audiodingostanding.webp",
+        "title": "Audio Dingo Synth",
         "alt": {
-          "de": "Bemalte Wand an einem verlassenen Ort",
-          "en": "Painted wall in an abandoned place"
+          "de": "Selbstgebauter Synthesizer Audio Dingo",
+          "en": "Self-built synthesizer Audio Dingo"
         },
-        "link": "/projects/hidden-walls-in-lost-places/"
+        "link": "/projects/Audio-Dingo-Synth/"
+      },
+      {
+        "image": "/Images/Graffzine1/buchstandingspaced.webp",
+        "title": "Graffiti Archive 2015–2019",
+        "alt": {
+          "de": "Gedrucktes Buch mit Graffiti-Dokumentation",
+          "en": "Printed book documenting graffiti"
+        },
+        "link": "/projects/e-zine-graffiti-doc/"
+      },
+      {
+        "image": "/Images/resizedpony.gif",
+        "title": "Go Pony, Go C!",
+        "alt": {
+          "de": "Szene aus dem Spiel Go Pony, Go C!",
+          "en": "Scene from the game Go Pony, Go C!"
+        },
+        "link": "/projects/go-pony-go-c/"
       }
-    ]
+    ],
+    "carousel_label": {
+      "de": "Ausgewählte Projekte",
+      "en": "Selected projects"
+    },
+    "carousel_prev": {
+      "de": "Vorheriges Projekt",
+      "en": "Previous project"
+    },
+    "carousel_next": {
+      "de": "Nächstes Projekt",
+      "en": "Next project"
+    }
   },
   "facts": {
     "currently_label": {

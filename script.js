@@ -1119,6 +1119,567 @@ initLightbox();
 initFishScene();
 initLangToggle();
 
+/* ═══ Karten-Karussell (Kopfbereich der Startseite) ═══
+   Eine Karte steht vorn, die Nachbarn schauen schräg dahinter hervor. Beim
+   Weiterblättern klappt die aktuelle Karte wie eine Buchseite zur Seite und
+   die nächste schwenkt nach vorn. „pos“ ist die aktuelle Position als
+   Kommazahl (beim Ziehen z. B. 0.4); daraus wird für jede Karte Abstand,
+   Drehung und Tiefe berechnet. Ohne JavaScript bleibt die erste Karte stehen. */
+(function () {
+    const root = document.querySelector('[data-flip]');
+    if (!root) return;
+
+    const stage = root.querySelector('.jw-flip__stage');
+    const cards = Array.from(root.querySelectorAll('.jw-flip__card'));
+    const caption = root.querySelector('.jw-flip__caption');
+    const count = root.querySelector('.jw-flip__count');
+    const n = cards.length;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    root.classList.add('is-ready');
+    if (n < 2) return;
+
+    let pos = 0;
+    let frame = null;
+    let current = -1;
+
+    // Kürzester Abstand im Kreis, damit nach der letzten Karte die erste kommt
+    function wrap(d) {
+        d = ((d % n) + n) % n;
+        return d > n / 2 ? d - n : d;
+    }
+
+    function updateMeta(index) {
+        cards.forEach(function (card, i) {
+            const active = i === index;
+            card.tabIndex = active ? 0 : -1;
+            if (active) card.removeAttribute('aria-hidden');
+            else card.setAttribute('aria-hidden', 'true');
+        });
+        if (caption) {
+            caption.textContent = (cards[index].dataset.title || '') + ' →';
+            caption.setAttribute('href', cards[index].getAttribute('href'));
+        }
+        if (count) {
+            count.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0');
+        }
+    }
+
+    function render() {
+        cards.forEach(function (card, i) {
+            const d = wrap(i - pos);
+            const a = Math.abs(d);
+            const side = Math.sign(d);
+            let x, rot, z, opacity;
+
+            if (reduce.matches) {
+                // Ruhige Variante: nur die aktuelle Karte, ohne 3D
+                x = 0; rot = 0; z = 0; opacity = a < 0.5 ? 1 : 0;
+            } else if (a <= 1) {
+                // Auf dem Weg zur Seite weit ausschwenken (Buch aufgeklappt),
+                // in Ruhe nur leicht hinter der vorderen Karte hervorschauen
+                x = side * (18 * a + 40 * Math.sin(Math.PI * a));
+                rot = -side * 40 * a;
+                z = -160 * a;
+                opacity = 1;
+            } else {
+                const t = Math.min(a - 1, 1);
+                x = side * (18 + 6 * t);
+                rot = -side * 40;
+                z = -160 - 80 * t;
+                opacity = 1 - t;
+            }
+
+            card.style.transform = 'translateX(' + x.toFixed(2) + '%) translateZ(' + z.toFixed(1) + 'px) rotateY(' + rot.toFixed(2) + 'deg)';
+            card.style.opacity = opacity.toFixed(3);
+            card.style.zIndex = String(100 - Math.round(a * 10));
+            card.style.visibility = opacity <= 0.01 ? 'hidden' : 'visible';
+        });
+
+        const index = ((Math.round(pos) % n) + n) % n;
+        if (index !== current) {
+            current = index;
+            updateMeta(index);
+        }
+    }
+
+    // Weiches Einrasten mit kleinem Nachschwingen
+    function ease(t) {
+        const c1 = 1.1, c3 = c1 + 1;
+        return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+    }
+
+    function animateTo(target) {
+        cancelAnimationFrame(frame);
+        const from = pos;
+        const distance = target - from;
+        if (reduce.matches || distance === 0) {
+            pos = target;
+            render();
+            return;
+        }
+        const duration = 700;
+        const start = performance.now();
+        function step(now) {
+            const t = Math.min((now - start) / duration, 1);
+            pos = from + distance * ease(t);
+            render();
+            if (t < 1) frame = requestAnimationFrame(step);
+            else { pos = target; render(); }
+        }
+        frame = requestAnimationFrame(step);
+    }
+
+    // Automatisch weiterblättern – pausiert bei Hover, Fokus, Ziehen,
+    // außerhalb des sichtbaren Bereichs und bei „Bewegung reduzieren“
+    let timer = null;
+    let resumeTimer = null;
+    let paused = false;
+    let inView = true;
+    let drag = null;
+
+    function startAuto() {
+        if (timer || reduce.matches) return;
+        timer = setInterval(function () {
+            if (!paused && inView && !document.hidden && !drag) animateTo(Math.round(pos) + 1);
+        }, 5000);
+    }
+    function stopAuto() {
+        clearInterval(timer);
+        timer = null;
+        clearTimeout(resumeTimer);
+    }
+    function resumeLater() {
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(startAuto, 6000);
+    }
+    function go(delta) {
+        stopAuto();
+        animateTo(Math.round(pos) + delta);
+        resumeLater();
+    }
+
+    root.querySelector('[data-flip-prev]').addEventListener('click', function () { go(-1); });
+    root.querySelector('[data-flip-next]').addEventListener('click', function () { go(1); });
+
+    stage.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') { event.preventDefault(); go(-1); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); go(1); }
+    });
+
+    // Ziehen mit Maus oder Finger. Das eingebaute Drag & Drop für Links und
+    // Bilder würde das Ziehen sonst abbrechen.
+    stage.addEventListener('dragstart', function (event) { event.preventDefault(); });
+    stage.addEventListener('pointerdown', function (event) {
+        if (event.button !== 0) return;
+        cancelAnimationFrame(frame);
+        stopAuto();
+        drag = { id: event.pointerId, x: event.clientX, start: pos, moved: false, last: event.clientX, lastTime: event.timeStamp, speed: 0 };
+    });
+
+    stage.addEventListener('pointermove', function (event) {
+        if (!drag || event.pointerId !== drag.id) return;
+        const dx = event.clientX - drag.x;
+        if (!drag.moved && Math.abs(dx) > 6) {
+            drag.moved = true;
+            stage.setPointerCapture(event.pointerId);
+            stage.classList.add('is-dragging');
+        }
+        if (!drag.moved) return;
+        pos = drag.start - dx / (stage.clientWidth * 0.7);
+        const dt = event.timeStamp - drag.lastTime || 16;
+        drag.speed = (event.clientX - drag.last) / dt;
+        drag.last = event.clientX;
+        drag.lastTime = event.timeStamp;
+        render();
+    });
+
+    function endDrag() {
+        if (!drag) return;
+        const d = drag;
+        drag = null;
+        stage.classList.remove('is-dragging');
+        if (d.moved) {
+            // Schneller Wisch zählt als Blättern, auch wenn die Strecke kurz war
+            const base = Math.round(d.start);
+            let target = Math.round(pos - d.speed * 0.3);
+            target = Math.max(base - 1, Math.min(base + 1, target));
+            animateTo(target);
+            stage.dataset.dragged = '1';
+            setTimeout(function () { delete stage.dataset.dragged; }, 80);
+        }
+        resumeLater();
+    }
+    stage.addEventListener('pointerup', endDrag);
+    stage.addEventListener('pointercancel', endDrag);
+
+    // Klick: nach dem Ziehen nichts öffnen; Klick auf eine Nachbarkarte blättert dorthin
+    stage.addEventListener('click', function (event) {
+        if (stage.dataset.dragged) { event.preventDefault(); return; }
+        const card = event.target.closest('.jw-flip__card');
+        if (!card) return;
+        const d = wrap(cards.indexOf(card) - pos);
+        if (Math.abs(d) > 0.5) {
+            event.preventDefault();
+            go(Math.round(d));
+        }
+    });
+
+    root.addEventListener('mouseenter', function () { paused = true; });
+    root.addEventListener('mouseleave', function () { paused = false; });
+    root.addEventListener('focusin', function () { paused = true; });
+    root.addEventListener('focusout', function () { paused = false; });
+
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+            inView = entries[0].isIntersecting;
+        }).observe(root);
+    }
+
+    if (reduce.addEventListener) {
+        reduce.addEventListener('change', function () {
+            stopAuto();
+            pos = Math.round(pos);
+            render();
+            startAuto();
+        });
+    }
+
+    render();
+    startAuto();
+})();
+
+/* ═══ Animationen: Sektions-Aufbau, Filter-Übergänge, Überschriften ═══
+   Alle drei bleiben aus, wenn im System „Bewegung reduzieren“ aktiv ist.
+   Ohne JavaScript ist die Seite vollständig sichtbar – die Ausgangszustände
+   (z. B. unsichtbare Linien) setzt erst das Skript über Klassen. */
+(function () {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (reduce) return;
+
+    /* ── 2. Sektionen bauen sich auf: Linie zieht sich auf, Label „entschlüsselt“ sich ── */
+    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/#_<>*';
+
+    function scramble(el) {
+        // Alle Textknoten im Label einsammeln und ihren Endtext merken
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) {
+            const node = walker.currentNode;
+            if (node.nodeValue.trim()) nodes.push({ node: node, text: node.nodeValue });
+        }
+        const total = nodes.reduce(function (sum, n) { return sum + n.text.length; }, 0);
+        const duration = 700;
+        const start = performance.now();
+
+        function step(time) {
+            const t = Math.min((time - start) / duration, 1);
+            let revealed = Math.floor(total * t);
+            nodes.forEach(function (n) {
+                // Wurde der Text inzwischen ersetzt (Sprachwechsel), nicht mehr anfassen
+                if (!n.node.isConnected) return;
+                let out = '';
+                for (let i = 0; i < n.text.length; i++) {
+                    const ch = n.text[i];
+                    if (revealed > 0 || ch === ' ' || ch === '—') out += ch;
+                    else out += CHARS[Math.floor(Math.random() * CHARS.length)];
+                    revealed--;
+                }
+                n.node.nodeValue = out;
+            });
+            if (t < 1) requestAnimationFrame(step);
+            else nodes.forEach(function (n) { if (n.node.isConnected) n.node.nodeValue = n.text; });
+        }
+        requestAnimationFrame(step);
+    }
+
+    // Elemente mit Linie oben (Startseite und Unterseiten) und freistehende Labels
+    const revealTargets = document.querySelectorAll([
+        '.jw-head', '#contact > .jw-label', '.jw-cv__group',
+        '.jw-filterbar', '.jw-plist', '.jw-blist', '.jw-rule', '.jw-pager__link',
+        '.jw-legal h2', '.jw-links__list',
+        '.jw-page-head > .jw-label', '.jw-links__group > .jw-label', '#jw-archive-title'
+    ].join(', '));
+    if (revealTargets.length && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('jw-reveal-ready');
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                const el = entry.target;
+                if (entry.isIntersecting) {
+                    if (el.classList.contains('is-revealed')) return;
+                    el.classList.add('is-revealed');
+                    const label = el.matches('.jw-label') ? el : el.querySelector('.jw-label');
+                    if (label) scramble(label);
+                    return;
+                }
+                // Verlässt die Sektion den Bildschirm nach unten (man scrollt hoch),
+                // fährt die Linie wieder ein und baut sich beim nächsten Mal neu auf.
+                const bottom = entry.rootBounds ? entry.rootBounds.bottom : window.innerHeight;
+                if (entry.boundingClientRect.top >= bottom) el.classList.remove('is-revealed');
+            });
+        }, { rootMargin: '0px 0px -12% 0px' });
+        revealTargets.forEach(function (el) { observer.observe(el); });
+    }
+
+    /* ── 4. Weiche Übergänge beim Filtern (FLIP-Technik) ──
+       Vor dem Filtern merkt sich das Skript die Position jedes Eintrags
+       (First), nach dem Filtern liest es die neue (Last), versetzt den
+       Eintrag optisch zurück an die alte Stelle (Invert) und lässt ihn an
+       die neue gleiten (Play). Neu sichtbare Einträge blenden weich ein. */
+    document.querySelectorAll('.project-filters').forEach(function (bar) {
+        const list = document.querySelector('.work-list');
+        if (!list) return;
+        function isShown(li) {
+            const r = li.getBoundingClientRect();
+            return r.height > 0 && r.width > 0;
+        }
+        // Capture-Phase: läuft vor den eigentlichen Filter-Handlern
+        bar.addEventListener('click', function (event) {
+            if (!event.target.closest('.filter-btn')) return;
+            const before = new Map();
+            Array.from(list.children).forEach(function (li) {
+                before.set(li, isShown(li) ? li.getBoundingClientRect() : null);
+            });
+            // Nach den Filter-Handlern, aber vor dem nächsten Bild
+            requestAnimationFrame(function () {
+                let delay = 0;
+                Array.from(list.children).forEach(function (li) {
+                    if (!isShown(li)) return;
+                    const old = before.get(li);
+                    const now = li.getBoundingClientRect();
+                    if (old) {
+                        const dx = old.left - now.left;
+                        const dy = old.top - now.top;
+                        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+                        li.animate([
+                            { transform: 'translate(' + dx + 'px, ' + dy + 'px)' },
+                            { transform: 'none' }
+                        ], { duration: 500, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)' });
+                    } else {
+                        li.animate([
+                            { opacity: 0, transform: 'translateY(14px)' },
+                            { opacity: 1, transform: 'none' }
+                        ], { duration: 380, delay: 60 + delay, easing: 'ease-out', fill: 'backwards' });
+                        delay += 40;
+                    }
+                });
+            });
+        }, true);
+    });
+
+    /* ── 3. Seitenüberschriften: Buchstaben schwellen unter dem Zeiger an ──
+       Bricolage Grotesque ist eine variable Schrift. Jeder Buchstabe bekommt
+       je nach Abstand zum Zeiger mehr Strichstärke (wght) und Breite (wdth).
+       Gilt für die große Überschrift jeder Seite (Start, Projekte, Blog,
+       Detailseiten, Links, Rechtliches, 404). */
+    if (finePointer) {
+        document.querySelectorAll('#jw-title, #jw-page-title, .jw-post-head h1, .jw-links__head h1').forEach(initWave);
+    }
+
+    function initWave(title) {
+        // Ausgangswerte aus dem CSS der jeweiligen Überschrift lesen
+        const style = getComputedStyle(title);
+        const baseWght = parseFloat(style.fontWeight) || 600;
+        const baseWdth = parseFloat(style.fontStretch) || 100;
+        const BASE = { wght: baseWght, wdth: baseWdth };
+        const PEAK = { wght: Math.min(800, baseWght + 100), wdth: Math.min(100, baseWdth + 10) };
+        let radius = 220;
+        let letters = [];
+        let rects = [];
+        let pointer = null;
+        let frame = null;
+        let splitting = false;
+
+        // Übersetzte Teile einzeln zerlegen; ohne Übersetzung die ganze Überschrift
+        function words() {
+            if (title.matches('[data-en]') || !title.querySelector('[data-en]')) return [title];
+            return Array.from(title.querySelectorAll('[data-en]'));
+        }
+
+        function settings(v) {
+            return '"wght" ' + v.wght.toFixed(0) + ', "wdth" ' + v.wdth.toFixed(1);
+        }
+
+        // Wörter in einzelne Buchstaben zerlegen; Screenreader lesen den Text am Stück
+        function split() {
+            splitting = true;
+            words().forEach(function (part) {
+                if (part.querySelector('.jw-letters')) return;
+                const text = part.textContent;
+                part.textContent = '';
+                const sr = document.createElement('span');
+                sr.className = 'jw-sr-only';
+                sr.textContent = text;
+                const visual = document.createElement('span');
+                visual.className = 'jw-letters';
+                visual.setAttribute('aria-hidden', 'true');
+                text.split(/( +)/).forEach(function (chunk) {
+                    if (!chunk) return;
+                    // Leerzeichen als normaler Text: dort darf die Zeile umbrechen
+                    if (chunk.trim() === '') { visual.appendChild(document.createTextNode(chunk)); return; }
+                    // Ein Wort bleibt zusammen, damit es nie zwischen zwei Buchstaben umbricht
+                    const word = document.createElement('span');
+                    word.className = 'jw-word';
+                    Array.from(chunk).forEach(function (ch) {
+                        const letter = document.createElement('span');
+                        letter.className = 'jw-letter';
+                        letter.textContent = ch;
+                        letter.current = { wght: BASE.wght, wdth: BASE.wdth };
+                        letter.style.fontVariationSettings = settings(BASE);
+                        word.appendChild(letter);
+                    });
+                    visual.appendChild(word);
+                });
+                part.appendChild(sr);
+                part.appendChild(visual);
+            });
+            letters = Array.from(title.querySelectorAll('.jw-letter'));
+            rects = [];
+            splitting = false;
+        }
+
+        function measure() {
+            // Wirkungsradius wächst mit der Schriftgröße
+            radius = Math.max(90, parseFloat(getComputedStyle(title).fontSize) * 1.5);
+            rects = letters.map(function (l) {
+                const r = l.getBoundingClientRect();
+                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+            });
+        }
+
+        function tick() {
+            if (!rects.length) measure();
+            let moving = false;
+            letters.forEach(function (letter, i) {
+                let k = 0;
+                if (pointer && rects[i]) {
+                    const dx = pointer.x - rects[i].x;
+                    const dy = pointer.y - rects[i].y;
+                    const d = Math.sqrt(dx * dx + dy * dy);
+                    k = Math.max(0, 1 - d / radius);
+                    k = k * k * (3 - 2 * k); // weiche Kurve
+                }
+                const goal = { wght: BASE.wght + (PEAK.wght - BASE.wght) * k, wdth: BASE.wdth + (PEAK.wdth - BASE.wdth) * k };
+                const c = letter.current;
+                c.wght += (goal.wght - c.wght) * 0.2;
+                c.wdth += (goal.wdth - c.wdth) * 0.2;
+                if (Math.abs(goal.wght - c.wght) > 0.5) moving = true;
+                letter.style.fontVariationSettings = settings(c);
+            });
+            frame = (pointer || moving) ? requestAnimationFrame(tick) : null;
+        }
+
+        const area = title.closest('.jw-hero, .jw-page-head, .jw-detail-head, .jw-post-head, .jw-links__head') || title;
+        area.addEventListener('pointermove', function (event) {
+            pointer = { x: event.clientX, y: event.clientY };
+            if (!frame) frame = requestAnimationFrame(tick);
+        });
+        area.addEventListener('pointerleave', function () {
+            pointer = null;
+            if (!frame) frame = requestAnimationFrame(tick);
+        });
+        window.addEventListener('scroll', function () { rects = []; }, { passive: true });
+        window.addEventListener('resize', function () { rects = []; });
+
+        // Beim Sprachwechsel ersetzt applyTranslations den Text – danach neu zerlegen
+        new MutationObserver(function () {
+            if (splitting) return;
+            const unsplit = words().some(function (part) {
+                return !part.querySelector('.jw-letters');
+            });
+            if (unsplit) {
+                split();
+                if (!frame) frame = requestAnimationFrame(tick);
+            }
+        }).observe(title, { childList: true, subtree: true });
+
+        split();
+    }
+})();
+
+/* ═══ Kein Springen beim Sprachwechsel ═══
+   Deutsche und englische Texte sind unterschiedlich lang. Damit beim
+   Umschalten nichts verrutscht, misst die Seite jeden Textblock in beiden
+   Sprachen und gibt ihm die Höhe der längeren Fassung (min-height).
+   Neu gemessen wird, wenn sich die Fensterbreite ändert. */
+function setLangTextsForMeasure(lang) {
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+        el.textContent = lang === 'de' && el.dataset.de ? el.dataset.de : el.dataset.en;
+    });
+    document.querySelectorAll('[data-lang-show]').forEach(function (el) {
+        el.hidden = el.dataset.langShow !== lang;
+    });
+}
+
+function lockBilingualHeights() {
+    const blocks = new Set();
+    function nearestBlock(el) {
+        let box = el;
+        while (box && box !== document.body) {
+            const display = getComputedStyle(box).display;
+            if (display !== 'inline' && display !== 'contents' && display !== 'none') return box;
+            box = box.parentElement;
+        }
+        return null;
+    }
+    function add(box) {
+        if (box && box !== document.body && !box.closest('.ticker-band')) blocks.add(box);
+    }
+    // Einzelne Texte: der umgebende Block
+    document.querySelectorAll('[data-en][data-de]').forEach(function (el) {
+        if (el.dataset.en !== el.dataset.de) add(nearestBlock(el));
+    });
+    // Paare (z. B. deutsche/englische Beschreibung, Datum): der gemeinsame Elternblock
+    document.querySelectorAll('[data-lang-show]').forEach(function (el) {
+        add(nearestBlock(el.parentElement));
+    });
+    // Zeilen, die je nach Textlänge umbrechen
+    document.querySelectorAll('.jw-cta__inner, .jw-feature__body, .jw-detail-head__row, .jw-page-head__row, .jw-pager').forEach(add);
+
+    const list = Array.from(blocks);
+    list.forEach(function (box) { box.style.minHeight = ''; });
+
+    const heights = new Map();
+    ['en', 'de'].forEach(function (lang) {
+        setLangTextsForMeasure(lang);
+        list.forEach(function (box) {
+            const h = box.getBoundingClientRect().height;
+            heights.set(box, Math.max(heights.get(box) || 0, h));
+        });
+    });
+    setLangTextsForMeasure(currentLang);
+
+    list.forEach(function (box) {
+        const h = heights.get(box);
+        if (h) box.style.minHeight = Math.ceil(h) + 'px';
+    });
+}
+
+(function () {
+    let timer;
+    function schedule() {
+        clearTimeout(timer);
+        timer = setTimeout(lockBilingualHeights, 150);
+    }
+    // Erst messen, wenn die Schriften geladen sind – sonst stimmen die Höhen nicht.
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(lockBilingualHeights);
+    } else {
+        window.addEventListener('load', lockBilingualHeights);
+    }
+    // Nachgeladene Bilder (z. B. im Blogtext) verändern Höhen – danach neu messen.
+    document.addEventListener('load', function (event) {
+        if (event.target && event.target.tagName === 'IMG') schedule();
+    }, true);
+    let lastWidth = window.innerWidth;
+    window.addEventListener('resize', function () {
+        if (window.innerWidth === lastWidth) return; // Mobile: Adressleiste ändert nur die Höhe
+        lastWidth = window.innerWidth;
+        schedule();
+    });
+})();
+
 /* ═══ Zwei-Klick-Einbettungen ═══
    Externe iframes (YouTube, itch.io) werden beim Build durch einen
    Platzhalter ersetzt (.eleventy.js → consentEmbeds). Erst nach Klick
