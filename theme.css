@@ -1840,7 +1840,8 @@ body.theme {
     aspect-ratio: 16 / 9;
 }
 
-.theme #book {
+.theme #book,
+.theme .jw-flipbook {
     border: 1px solid var(--line);
     border-radius: 0;
     box-shadow: none;
@@ -3099,4 +3100,211 @@ html.jw-motion-off {
 
 .jw-reveal-ready .jw-blist.jw-blist--home::before {
     content: none;
+}
+
+/* Hefte als Flipbooks auf einer Projektseite */
+.theme .jw-zine__text {
+    max-width: 62ch;
+    margin: 0 0 24px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-2);
+}
+
+/* Hefte mittig; die Breite begrenzt flipbook.js (max. 550 px pro Seite) */
+.theme .jw-flipbook {
+    margin-inline: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Galerie im Archiv-Stil (Projektseiten, ab 1024 px)
+   Index | Bildspalte | Details – Index und Details bleiben beim Scrollen
+   stehen (sticky), das Skript markiert das Bild in der Bildschirmmitte.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Schalter rechts in der Zeile der Überschrift, unter der Linie */
+.jw-gallery-head {
+    position: relative;
+}
+
+.jw-view-toggle {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    display: inline-flex;
+    border: 1.5px solid var(--ink);
+}
+
+.jw-view-toggle[hidden] {
+    display: none;
+}
+
+.theme .jw-gallery[hidden] {
+    display: none;
+}
+
+.theme .jw-view-toggle button {
+    min-height: 36px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.theme .jw-view-toggle button[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+.theme .jw-view-toggle button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.jw-archive {
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) minmax(0, 1.5fr) minmax(220px, 1fr);
+    gap: 48px;
+    align-items: start;
+    margin-top: 8px;
+}
+
+.jw-archive[hidden] {
+    display: none;
+}
+
+.jw-archive__index,
+.jw-archive__detail {
+    position: sticky;
+    top: calc(var(--jw-header-h, 72px) + 32px);
+}
+
+/* Index: Nummer und Titel, aktive Zeile in Weinrot */
+.jw-archive__index {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+}
+
+.jw-archive__index li {
+    border-bottom: 1px solid var(--line);
+}
+
+.theme .jw-archive__index button {
+    display: flex;
+    gap: 14px;
+    width: 100%;
+    padding: 8px 0;
+    border: 0;
+    background: none;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-align: left;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.jw-archive__num {
+    flex: 0 0 auto;
+}
+
+.jw-archive__name {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.theme .jw-archive__index button:hover {
+    color: var(--ink);
+}
+
+.theme .jw-archive__index button[aria-current] {
+    color: var(--ink);
+}
+
+.theme .jw-archive__index button[aria-current] .jw-archive__num {
+    color: var(--accent-color);
+}
+
+.theme .jw-archive__index button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Bildspalte */
+.jw-archive__stream {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+}
+
+.jw-archive__item {
+    margin: 0;
+}
+
+.jw-archive__code {
+    margin-bottom: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: pre;
+    transition: color 0.2s ease;
+}
+
+.jw-archive__item.is-active .jw-archive__code {
+    color: var(--accent-color);
+}
+
+.theme .jw-archive__item .post-figure__link img {
+    max-height: 78vh;
+    object-fit: contain;
+    background: var(--paper);
+}
+
+/* Detailfeld */
+.jw-archive__detail-head {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+}
+
+.jw-archive__detail-code {
+    color: var(--accent-color);
+}
+
+.jw-archive__detail-count {
+    color: var(--muted);
+}
+
+.theme .jw-archive__detail-title {
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--ink);
+    font-size: clamp(24px, 2.2vw, 32px);
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.theme .jw-archive__detail-text {
+    margin: 16px 0 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-2);
 }

@@ -90,10 +90,24 @@
         Steckbrief (Rolle, Zeitraum, Werkzeuge, Hardware, Links) und
         Abschnitte mit Text und Bild. Nummern laufen über alle Blöcke. -#}
     {%- set nMedia = 1 if embed else 0 %}
+    {%- set nBooks = flipbooks.length if flipbooks else 0 %}
     {%- set cs = case if (case and (case.role or case.sections)) else null %}
-    {%- set nFacts = nMedia + (1 if cs else 0) %}
+    {%- set nFacts = nMedia + nBooks + (1 if cs else 0) %}
     {%- set nSections = (cs.sections.length if (cs and cs.sections) else 0) %}
     {%- set nGallery = nFacts + nSections + 1 %}
+    {#- ═══ Flipbooks (optional, CMS: Projekt → Flipbooks) ═══
+        Mehrere Hefte auf einer Seite, jedes mit Titel, kurzem Text und
+        eigenem Blätterbuch (flipbook.js). Format pro Heft einstellbar. -#}
+    {%- for fb in flipbooks %}
+    <section class="jw-wrap jw-detail-block jw-zine" aria-labelledby="jw-zine-{{ loop.index }}">
+        <h2 id="jw-zine-{{ loop.index }}" class="jw-label jw-rule">{{ (nMedia + loop.index) | pad2 }} — {{ fb.title }}</h2>
+        {%- if fb.text %}
+        <p class="jw-zine__text" {% i18n fb.text %}>{{ fb.text.en }}</p>
+        {%- endif %}
+        <div class="jw-flipbook" data-flipbook-title="{{ fb.title }}"{% if fb.page_width and fb.page_height %} data-flipbook-width="{{ fb.page_width }}" data-flipbook-height="{{ fb.page_height }}"{% endif %} data-flipbook-images="{{ fb.pages | join(',') }}"></div>
+    </section>
+    {%- endfor %}
+
     {% if cs %}
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
         <h2 id="jw-facts-title" class="jw-label jw-rule">{{ nFacts | pad2 }} — <span {% i18n pt.case_label %}>{{ pt.case_label.en }}</span></h2>
@@ -141,8 +155,16 @@
 
     {% if images and images.length %}
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
-        <h2 id="jw-gallery-title" class="jw-label jw-rule">{{ nGallery | pad2 }} — <span {% i18n global.ui.gallery %}>{{ global.ui.gallery.en }}</span> ({{ images.length | pad2 }})</h2>
-        <div class="project-gallery jw-gallery">
+        <div class="jw-gallery-head">
+            <h2 id="jw-gallery-title" class="jw-label jw-rule">{{ nGallery | pad2 }} — <span {% i18n global.ui.gallery %}>{{ global.ui.gallery.en }}</span> ({{ images.length | pad2 }})</h2>
+            {#- Ansichten: Archiv (Index, Bildspalte, Details) oder Raster. Den
+                Schalter zeigt script.js erst, wenn das Archiv gebaut ist. -#}
+            <div class="jw-view-toggle" role="group" {% i18n global.ui.gallery_view, "aria" %} aria-label="{{ global.ui.gallery_view.en }}" hidden>
+                <button type="button" data-view="archive" aria-pressed="true" {% i18n global.ui.gallery_archive %}>{{ global.ui.gallery_archive.en }}</button>
+                <button type="button" data-view="grid" aria-pressed="false" {% i18n global.ui.gallery_grid %}>{{ global.ui.gallery_grid.en }}</button>
+            </div>
+        </div>
+        <div class="project-gallery jw-gallery" data-archive-code="{{ title | replace(' ', '') | truncate(2, true, '') | upper }}">
             {% for img in images %}
             <figure class="project-gallery__item">
                 {% if '://' in img.src %}

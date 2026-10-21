@@ -111,6 +111,18 @@
     "motion_label_short": {
       "de": "Anim.",
       "en": "Anim."
+    },
+    "gallery_view": {
+      "de": "Ansicht der Galerie",
+      "en": "Gallery view"
+    },
+    "gallery_archive": {
+      "de": "Archiv",
+      "en": "Archive"
+    },
+    "gallery_grid": {
+      "de": "Raster",
+      "en": "Grid"
     }
   },
   "categories": [

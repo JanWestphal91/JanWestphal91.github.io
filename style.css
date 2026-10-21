@@ -860,7 +860,8 @@ button,
     font-size: 0.92rem;
 }
 
-#book {
+#book,
+.jw-flipbook {
     border: 1px solid rgba(23, 26, 33, 0.22);
     border-radius: var(--radius);
     box-shadow: 0 10px 30px rgba(20, 30, 50, 0.15);
@@ -904,8 +905,9 @@ button,
        Scoped to phone widths only: on wider viewports PageFlip may switch
        to a two-page landscape spread with a different (wider) ratio, and
        this single portrait ratio would fight that. */
-    #book {
-        aspect-ratio: 550 / 733;
+    #book,
+    .jw-flipbook {
+        aspect-ratio: var(--book-ratio, 550 / 733);
     }
 }
 

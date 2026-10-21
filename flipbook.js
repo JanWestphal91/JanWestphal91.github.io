@@ -1,7 +1,7 @@
 // flipbook.js
 // Vanilla script (no ES import) — this site runs without a bundler.
 // Uses the global St.PageFlip exposed by page-flip.browser.js.
-// Activates on any page containing a #book element with data-flipbook-images.
+// Activates every #book or .jw-flipbook element with data-flipbook-images.
 
 (function () {
     function buildControls(flipbook, bookElement) {
@@ -15,7 +15,10 @@
         slider.type = "range";
         slider.className = "flipbook-controls__slider";
         slider.min = "0";
-        slider.setAttribute("aria-label", "Page");
+        // Beschriftung in der Seitensprache; mit Titel, wenn mehrere Hefte auf der Seite sind
+        const pageWord = document.documentElement.lang === "de" ? "Seite" : "Page";
+        const bookTitle = bookElement.dataset.flipbookTitle;
+        slider.setAttribute("aria-label", bookTitle ? bookTitle + " – " + pageWord : pageWord);
 
         const label = document.createElement("span");
         label.className = "flipbook-controls__label";
@@ -98,14 +101,29 @@
             bookElement.appendChild(page);
         });
 
+        // Optional page format per book: data-flipbook-width / -height
+        // (e.g. 1 / 1 for a square zine). Defaults to the original
+        // portrait format 550 × 733. Only the ratio matters; the min/max
+        // heights are derived from it so PageFlip never distorts pages.
+        const pageW = Number(bookElement.dataset.flipbookWidth) || 550;
+        const pageH = Number(bookElement.dataset.flipbookHeight) || 733;
+        const ratio = pageH / pageW;
+        bookElement.style.setProperty("--book-ratio", pageW + " / " + pageH);
+
+        // Größte Seitenbreite: Hefte (.jw-flipbook) höchstens 550 px pro Seite,
+        // damit eine Doppelseite auf den Bildschirm passt; per
+        // data-flipbook-max-width änderbar. Das alte Einzelbuch bleibt bei 1200.
+        const maxPage = Number(bookElement.dataset.flipbookMaxWidth) ||
+            (bookElement.classList.contains("jw-flipbook") ? 550 : 1200);
+
         const flipbook = new St.PageFlip(bookElement, {
             width: 550,
-            height: 733,
+            height: Math.round(550 * ratio),
             size: "stretch",
             minWidth: 280,
-            maxWidth: 1200,
-            minHeight: 375,
-            maxHeight: 1600,
+            maxWidth: maxPage,
+            minHeight: Math.round(280 * ratio),
+            maxHeight: Math.round(maxPage * ratio),
             showCover: true,
             drawShadow: true,
             maxShadowOpacity: 0.5,
@@ -121,10 +139,10 @@
         flipbook.loadFromHTML(bookElement.querySelectorAll(".flipbook-page"));
     }
 
+    // Alle Bücher der Seite starten: das alte Einzelbuch (#book im Feld
+    // „Einbettung“) und beliebig viele Hefte aus dem Feld „Flipbooks“
+    // (.jw-flipbook). Jedes Buch ist eine eigene PageFlip-Instanz.
     document.addEventListener("DOMContentLoaded", function () {
-        const bookElement = document.getElementById("book");
-        if (bookElement) {
-            initFlipbook(bookElement);
-        }
+        document.querySelectorAll("#book[data-flipbook-images], .jw-flipbook[data-flipbook-images]").forEach(initFlipbook);
     });
 })();
