@@ -391,43 +391,6 @@ collections:
       widget: object
       collapsed: true
       fields:
-      - label: Wohnort – Bezeichnung
-        name: location_label
-        widget: object
-        collapsed: false
-        summary: '{{fields.de}}'
-        fields:
-        - label: Deutsch
-          name: de
-          widget: string
-        - label: Englisch
-          name: en
-          widget: string
-      - label: Wohnort – Wert
-        name: location
-        widget: object
-        collapsed: false
-        summary: '{{fields.de}}'
-        fields:
-        - label: Deutsch
-          name: de
-          widget: string
-        - label: Englisch
-          name: en
-          widget: string
-      - label: Ortszeit – Bezeichnung
-        name: time_label
-        widget: object
-        collapsed: false
-        summary: '{{fields.de}}'
-        fields:
-        - label: Deutsch
-          name: de
-          widget: string
-        - label: Englisch
-          name: en
-          widget: string
-        hint: Die Uhrzeit selbst wird automatisch eingesetzt.
       - label: Aktuell – Bezeichnung
         name: currently_label
         widget: object
@@ -611,7 +574,7 @@ collections:
         - label: Englisch
           name: en
           widget: text
-        hint: Der erste Absatz wird größer dargestellt. Reihenfolge per Drag & Drop.
+        hint: Alle Absätze erscheinen gleich groß, auf dem Desktop in zwei Spalten. Reihenfolge per Drag & Drop.
     - label: 03 Werdegang
       name: path
       widget: object
