@@ -1214,6 +1214,161 @@ initLightbox();
 
 initFishScene();
 
+/* ═══ Galerie im Archiv-Stil (Projektseiten) ═══
+   Aus dem normalen Bildraster baut das Skript eine zweite Ansicht:
+   links ein Index aller Bilder, in der Mitte die Bilder untereinander,
+   rechts ein Detailfeld. Beim Scrollen zählt das Bild, das gerade die
+   Bildschirmmitte kreuzt (IntersectionObserver mit schmalem Band in der
+   Mitte); Index und Detailfeld folgen ihm. Ein Klick im Index scrollt zum
+   Bild, ein Klick aufs Bild öffnet die Lightbox. Die Wahl Archiv/Raster
+   merkt sich der Browser. Auf schmalen Bildschirmen bleibt das Raster. */
+(function () {
+    const VIEW_KEY = 'jw-gallery-view';
+    const MIN_ITEMS = 4;
+    const wide = window.matchMedia('(min-width: 1024px)');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function storedView() {
+        try { return localStorage.getItem(VIEW_KEY); } catch (error) { return null; }
+    }
+
+    document.querySelectorAll('.page-project .jw-gallery').forEach(function (grid) {
+        const figures = Array.from(grid.querySelectorAll('.project-gallery__item'));
+        if (figures.length < MIN_ITEMS) return;
+
+        const section = grid.closest('section');
+        const toggle = section ? section.querySelector('.jw-view-toggle') : null;
+        const prefix = (grid.dataset.archiveCode || 'IM').trim() || 'IM';
+
+        const items = figures.map(function (figure, i) {
+            const link = figure.querySelector('a');
+            const img = figure.querySelector('img');
+            const captionEl = figure.querySelector('figcaption span:not(.jw-fig)');
+            const caption = captionEl ? captionEl.textContent.trim() : '';
+            return {
+                code: prefix + '–' + pad(i + 1),
+                href: link ? link.getAttribute('href') : img.getAttribute('src'),
+                src: img.getAttribute('src'),
+                alt: img.getAttribute('alt') || '',
+                title: caption || ('Fig. ' + pad(i + 1))
+            };
+        });
+
+        // ── Gerüst ──
+        const archive = document.createElement('div');
+        archive.className = 'jw-archive';
+
+        const index = document.createElement('ol');
+        index.className = 'jw-archive__index';
+
+        const stream = document.createElement('div');
+        stream.className = 'jw-archive__stream';
+
+        const detail = document.createElement('aside');
+        detail.className = 'jw-archive__detail';
+        detail.innerHTML =
+            '<div class="jw-archive__detail-head"><span class="jw-archive__detail-code"></span><span class="jw-archive__detail-count"></span></div>' +
+            '<p class="jw-archive__detail-title"></p>' +
+            '<p class="jw-archive__detail-text"></p>';
+
+        items.forEach(function (item, i) {
+            const li = document.createElement('li');
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.innerHTML = '<span class="jw-archive__num">' + pad(i + 1) + '</span><span class="jw-archive__name"></span>';
+            button.querySelector('.jw-archive__name').textContent = item.title;
+            li.appendChild(button);
+            index.appendChild(li);
+
+            const fig = document.createElement('figure');
+            fig.className = 'jw-archive__item';
+            fig.dataset.index = String(i);
+            fig.innerHTML = '<figcaption class="jw-archive__code"></figcaption><a class="post-figure__link" data-lightbox><img loading="lazy" alt=""></a>';
+            fig.querySelector('figcaption').textContent = item.code + '  ' + item.title;
+            fig.querySelector('figcaption').dataset.code = item.code;
+            const a = fig.querySelector('a');
+            a.setAttribute('href', item.href);
+            const img = fig.querySelector('img');
+            img.setAttribute('src', item.src);
+            img.setAttribute('alt', item.alt);
+            stream.appendChild(fig);
+
+            button.addEventListener('click', function () {
+                fig.scrollIntoView({ block: 'center', behavior: motionOff() ? 'auto' : 'smooth' });
+                setActive(i);
+            });
+        });
+
+        archive.appendChild(index);
+        archive.appendChild(stream);
+        archive.appendChild(detail);
+        grid.after(archive);
+
+        // ── Aktives Bild ──
+        const buttons = Array.from(index.querySelectorAll('button'));
+        const streamItems = Array.from(stream.children);
+        let active = -1;
+
+        function setActive(i) {
+            if (i === active) return;
+            active = i;
+            buttons.forEach(function (b, j) {
+                if (j === i) b.setAttribute('aria-current', 'true');
+                else b.removeAttribute('aria-current');
+            });
+            streamItems.forEach(function (el, j) { el.classList.toggle('is-active', j === i); });
+            const item = items[i];
+            detail.querySelector('.jw-archive__detail-code').textContent = item.code;
+            detail.querySelector('.jw-archive__detail-count').textContent = pad(i + 1) + ' / ' + pad(items.length);
+            detail.querySelector('.jw-archive__detail-title').textContent = item.title;
+            detail.querySelector('.jw-archive__detail-text').textContent = item.alt;
+            if (!motionOff() && detail.animate) {
+                detail.querySelectorAll('.jw-archive__detail-title, .jw-archive__detail-text').forEach(function (el, k) {
+                    el.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
+                        { duration: 320, delay: k * 50, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)', fill: 'backwards' });
+                });
+            }
+        }
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) setActive(Number(entry.target.dataset.index));
+                });
+            }, { rootMargin: '-45% 0px -45% 0px' });
+            streamItems.forEach(function (el) { observer.observe(el); });
+        }
+        setActive(0);
+
+        // ── Ansicht umschalten ──
+        function apply(view) {
+            const useArchive = view === 'archive' && wide.matches;
+            archive.hidden = !useArchive;
+            grid.hidden = useArchive;
+            if (toggle) {
+                toggle.hidden = !wide.matches;
+                toggle.querySelectorAll('button').forEach(function (b) {
+                    b.setAttribute('aria-pressed', b.dataset.view === view ? 'true' : 'false');
+                });
+            }
+        }
+
+        let view = storedView() === 'grid' ? 'grid' : 'archive';
+        if (toggle) {
+            toggle.addEventListener('click', function (event) {
+                const button = event.target.closest('button[data-view]');
+                if (!button) return;
+                view = button.dataset.view;
+                try { localStorage.setItem(VIEW_KEY, view); } catch (error) { /* nur für diese Seite */ }
+                apply(view);
+            });
+        }
+        if (wide.addEventListener) wide.addEventListener('change', function () { apply(view); });
+        apply(view);
+    });
+})();
+
 /* ═══ Karten-Karussell (Kopfbereich der Startseite) ═══
    Eine Karte steht vorn, die Nachbarn schauen schräg dahinter hervor. Beim
    Weiterblättern klappt die aktuelle Karte wie eine Buchseite zur Seite und

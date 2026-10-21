@@ -276,6 +276,42 @@ collections:
         - label: Englisch
           name: en
           widget: string
+      - label: 'Galerie: Ansicht (Screenreader)'
+        name: gallery_view
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Galerie: Schalter Archiv'
+        name: gallery_archive
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Galerie: Schalter Raster'
+        name: gallery_grid
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
       - label: Bild schließen (Screenreader)
         name: lightbox_close
         widget: object
@@ -2198,6 +2234,49 @@ collections:
     name: meta_de
     widget: list
     required: false
+  - label: Flipbooks (Hefte)
+    name: flipbooks
+    widget: list
+    required: false
+    label_singular: Heft
+    summary: '{{fields.title}}'
+    collapsed: true
+    hint: Mehrere Hefte auf einer Projektseite, jedes als eigenes Blätterbuch. Erscheinen unter dem Video und vor der Case Study.
+    fields:
+    - label: Titel
+      name: title
+      widget: string
+    - label: Kurzer Text
+      name: text
+      widget: object
+      required: false
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+        required: false
+      - label: Englisch
+        name: en
+        widget: string
+        required: false
+    - label: Seiten
+      name: pages
+      widget: image
+      multiple: true
+      hint: Alle Seiten in Lesereihenfolge, erste und letzte sind der Umschlag.
+    - label: Seitenformat Breite
+      name: page_width
+      widget: number
+      required: false
+      value_type: int
+      hint: Nur das Verhältnis zählt, z. B. 1 und 1 für ein quadratisches Heft. Leer = Hochformat 3:4.
+    - label: Seitenformat Höhe
+      name: page_height
+      widget: number
+      required: false
+      value_type: int
   - label: Case Study
     name: case
     widget: object

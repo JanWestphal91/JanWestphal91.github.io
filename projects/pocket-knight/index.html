@@ -116,6 +116,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
         <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span>Dieses Video ist von YouTube eingebunden. Beim Laden werden Daten wie deine IP-Adresse an YouTube (Google) übertragen.</span> <a href="/datenschutz/">Datenschutz</a></p><button type="button" class="jw-consent__button">Video laden</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YMT1BVRyX4g?si=-3MBMNdEbFsba26u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div>
     </section>
     
+
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
         <h2 id="jw-facts-title" class="jw-label jw-rule">02 — <span>Steckbrief</span></h2>
@@ -207,8 +208,13 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
 
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
-        <h2 id="jw-gallery-title" class="jw-label jw-rule">08 — <span>Galerie</span> (03)</h2>
-        <div class="project-gallery jw-gallery">
+        <div class="jw-gallery-head">
+            <h2 id="jw-gallery-title" class="jw-label jw-rule">08 — <span>Galerie</span> (03)</h2><div class="jw-view-toggle" role="group" aria-label="Ansicht der Galerie" hidden>
+                <button type="button" data-view="archive" aria-pressed="true">Archiv</button>
+                <button type="button" data-view="grid" aria-pressed="false">Raster</button>
+            </div>
+        </div>
+        <div class="project-gallery jw-gallery" data-archive-code="PO">
             
             <figure class="project-gallery__item">
                 

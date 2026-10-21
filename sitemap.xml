@@ -168,4 +168,28 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/pocket-knight/"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/pocket-knight/"/>
     </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/zeichnungen/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/zeichnungen/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/zeichnungen/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/zeichnungen/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/zeichnungen/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/zeichnungen/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/zeichnungen/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/zeichnungen/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/zines/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/zines/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/zines/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/zines/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/zines/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/zines/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/zines/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/zines/"/>
+    </url>
 </urlset>
