@@ -353,20 +353,24 @@
       "en": "Sending..."
     },
     "success": {
-      "de": "Erfolgreich! Deine Nachricht wurde gesendet.",
-      "en": "Success! Your message has been sent."
+      "de": "Danke! Deine Nachricht ist angekommen, ich melde mich bald.",
+      "en": "Thanks! Your message has arrived – I’ll get back to you soon."
     },
     "error": {
-      "de": "Fehler:",
-      "en": "Error:"
+      "de": "Die Nachricht konnte nicht gesendet werden (Fehler",
+      "en": "Your message could not be sent (error"
     },
     "network_error": {
-      "de": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
-      "en": "Something went wrong. Please try again."
+      "de": "Das Formular ist gerade nicht erreichbar – manchmal blockiert ein Werbe- oder Virenfilter die Verbindung.",
+      "en": "The form can’t be reached right now – sometimes an ad blocker or antivirus filter blocks the connection."
     },
     "socials_heading": {
       "de": "Socials ↗",
       "en": "Socials ↗"
+    },
+    "fallback": {
+      "de": "Schreib mir stattdessen direkt eine E-Mail",
+      "en": "Send me an email directly instead"
     }
   }
 }

@@ -284,7 +284,7 @@
         <div class="jw-contact__grid">
             <div class="jw-contact__box">
                 <h2 id="jw-contact-title" {% i18n co.heading %}>{{ co.heading.en }}</h2>
-                <form id="form" class="contact-form" action="https://submit-form.com/{{ contact.formsparkId }}" method="POST">
+                <form id="form" class="contact-form" action="https://submit-form.com/{{ contact.formsparkId }}" method="POST" data-mail="{{ contact.email }}">
                     {#- Fangfeld für Spam-Bots: für Menschen unsichtbar, Formspark verwirft Nachrichten, in denen es ausgefüllt ist. -#}
                     <input type="checkbox" name="_honeypot" class="jw-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
@@ -302,6 +302,7 @@
                     </label>
                     <p class="jw-form-note"><span {% i18n co.note %}>{{ co.note.en }}</span> <a href="/datenschutz/" {% i18n co.note_link %}>{{ co.note_link.en }}</a>.</p>
                     <button type="submit" class="contact-submit" {% i18n co.submit %}>{{ co.submit.en }}</button>
+                    <p class="jw-form-status" role="status" aria-live="polite" hidden></p>
                 </form>
             </div>
 
