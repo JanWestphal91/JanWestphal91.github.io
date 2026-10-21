@@ -1305,6 +1305,12 @@ initFishScene();
         archive.appendChild(detail);
         grid.after(archive);
 
+        // Höhe des Detailfelds für die Zentrierung (CSS: --jw-detail-h)
+        function measureDetail() {
+            detail.style.setProperty('--jw-detail-h', Math.ceil(detail.getBoundingClientRect().height) + 'px');
+        }
+        if ('ResizeObserver' in window) new ResizeObserver(measureDetail).observe(detail);
+
         // ── Aktives Bild ──
         const buttons = Array.from(index.querySelectorAll('button'));
         const streamItems = Array.from(stream.children);

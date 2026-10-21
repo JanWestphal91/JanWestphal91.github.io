@@ -3185,6 +3185,13 @@ html.jw-motion-off {
     top: calc(var(--jw-header-h, 72px) + 32px);
 }
 
+/* Details stehen mittig im sichtbaren Bereich unter dem Header – dort,
+   wo das Bild im Fokus gerade die Mitte kreuzt. Die eigene Höhe misst script.js (--jw-detail-h);
+   unter den Header rutscht das Feld nie. */
+.jw-archive__detail {
+    top: max(calc(var(--jw-header-h, 72px) + 32px), calc(50vh + var(--jw-header-h, 72px) / 2 - var(--jw-detail-h, 200px) / 2));
+}
+
 /* Index: Nummer und Titel, aktive Zeile in Weinrot */
 .jw-archive__index {
     list-style: none;
