@@ -405,19 +405,23 @@ collections:
         - label: Englisch
           name: en
           widget: text
-      - label: Bilder (Collage rechts)
+      - label: Karten-Karussell (Bilder rechts)
         name: images
         widget: list
         label_singular: Bild
         collapsed: true
-        summary: '{{fields.image}}'
+        summary: '{{fields.title}}'
         required: false
-        hint: Bis zu drei Bilder. Das erste wird groß dargestellt. Am besten ruhige Fotos mit neutralem
+        hint: 4–6 Karten wirken am besten. Reihenfolge per Drag & Drop. Querformat-Bilder mit ruhigem
           Hintergrund.
         fields:
         - label: Bild
           name: image
           widget: image
+        - label: Titel unter der Karte
+          name: title
+          widget: string
+          hint: z. B. der Projektname
         - label: Alt-Text
           name: alt
           widget: object
@@ -431,11 +435,47 @@ collections:
             name: en
             widget: string
           hint: Beschreibung für Screenreader.
-        - label: Link (optional)
+        - label: Link
           name: link
           widget: string
           required: false
-          hint: z. B. /projects/pocket-knight/
+          hint: z. B. /projects/pocket-knight/ – Titel und Karte verlinken dorthin.
+      - label: Karussell – Name für Screenreader
+        name: carousel_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Karussell – Button zurück (Screenreader)
+        name: carousel_prev
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Karussell – Button weiter (Screenreader)
+        name: carousel_next
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
     - label: Steckbrief im Kopfbereich
       name: facts
       widget: object

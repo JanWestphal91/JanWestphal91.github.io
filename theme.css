@@ -206,6 +206,7 @@ body.theme {
 /* ── Hero ───────────────────────────────────────────────────────── */
 
 .jw-hero {
+    overflow-x: clip;             /* ausschwenkende Karussell-Karten erzeugen keinen Scrollbalken */
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -260,60 +261,106 @@ body.theme {
     min-width: 0;
 }
 
-/* Collage im Kopfbereich: ein großes Bild links, zwei kleine rechts */
-.jw-collage {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-    aspect-ratio: 5 / 4;
+/* Karten-Karussell im Kopfbereich: eine Karte vorn, die Nachbarn schauen
+   schräg dahinter hervor; beim Weiterblättern klappt die Karte wie eine
+   Buchseite zur Seite. Positionen setzt script.js („Karten-Karussell“). */
+.jw-flip {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
-.jw-collage__item {
+.jw-flip__stage {
     position: relative;
-    min-height: 0;
+    aspect-ratio: 4 / 3;
+    perspective: 1400px;
+    perspective-origin: 50% 45%;
+    touch-action: pan-y;          /* senkrecht scrollen bleibt möglich */
+    user-select: none;
+    cursor: grab;
+}
+
+.jw-flip__stage.is-dragging {
+    cursor: grabbing;
+}
+
+.jw-flip__stage:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 6px;
+}
+
+/* Spielkarten-Format 5:7. Bei einer 4:3-Bühne ergibt 88 % Höhe genau 47 %
+   Breite; so bleiben auch ausschwenkende Karten innerhalb der Bühne. */
+.jw-flip__card {
+    position: absolute;
+    top: 6%;
+    left: 26.5%;
+    width: 47%;
+    height: 88%;
     overflow: hidden;
     border: 1.5px solid var(--ink);
     background: var(--paper);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform;
+    -webkit-user-drag: none;
 }
 
-.jw-collage__item:first-child {
-    grid-row: 1 / 3;
-}
-
-/* Bilder absolut einpassen, damit ihre Eigengröße das Raster nicht aufbläht */
-.jw-collage__item a,
-.jw-collage__item img {
-    position: absolute;
-    inset: 0;
-}
-
-.jw-collage__item a {
-    display: block;
-}
-
-.jw-collage__item img {
+.jw-flip__card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    pointer-events: none;
 }
 
-/* Wenn die Collage unter den Titel rutscht: flacher, damit sie nicht den
-   ganzen Bildschirm füllt */
-@media (max-width: 1100px) {
-    .jw-collage {
-        aspect-ratio: 16 / 9;
-    }
+/* Ohne JavaScript nur die erste Karte zeigen */
+.jw-flip:not(.is-ready) .jw-flip__card:not(:first-child) {
+    visibility: hidden;
+}
+
+.jw-flip__bar {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) auto 44px;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme .jw-flip__btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
 @media (hover: hover) {
-    .jw-collage__item a:hover img {
-        transform: scale(1.04);
+    .theme .jw-flip__btn:hover {
+        background: var(--ink);
+        color: var(--bg);
     }
+}
+
+.theme .jw-flip__caption {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.jw-flip__count {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
 }
 
 .jw-facts {
@@ -894,6 +941,13 @@ body.theme {
 
 /* ── Kontakt ────────────────────────────────────────────────────── */
 
+/* Kontakt hat keine große Überschrift wie die anderen Sektionen – die
+   schwarze Linie trotzdem darüber setzen, damit der Rhythmus gleich bleibt. */
+#contact > .jw-label {
+    padding-top: 20px;
+    border-top: 2px solid var(--ink);
+}
+
 .jw-contact__grid {
     display: flex;
     flex-wrap: wrap;
@@ -1199,10 +1253,6 @@ body.theme {
 
     .jw-card__head > .jw-tags {
         padding-left: calc(var(--card-num) + var(--card-gap));
-    }
-
-    .jw-collage {
-        aspect-ratio: 16 / 10;
     }
 
     .theme .contact-form {
@@ -2488,4 +2538,241 @@ body.theme {
 .theme .contact-submit:disabled {
     opacity: 0.7;
     cursor: progress;
+}
+
+/* ── Animationen (gesteuert von script.js, aus bei „Bewegung reduzieren“) ── */
+
+/* 1. Vorschaubild in der Projektliste wird beim Überfahren größer.
+   Die Zeile behält ihre Höhe: Das Bild wächst aus seiner Mitte nach oben
+   und unten über die Nachbar-Vorschaubilder hinaus, Titel und Text rücken
+   nach rechts und bleiben frei. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (min-width: 901px) {
+    .theme .jw-row {
+        grid-template-columns: auto 40px minmax(0, 1fr) minmax(0, 200px) 96px 24px;
+    }
+
+    .theme .jw-prow {
+        grid-template-columns: auto minmax(0, 1fr) minmax(0, 200px) 24px;
+    }
+
+    .theme .jw-brow {
+        grid-template-columns: auto 170px minmax(0, 1fr) minmax(0, 220px) 24px;
+    }
+
+    .theme .jw-blist--home .jw-brow {
+        grid-template-columns: auto 170px minmax(0, 1fr) 24px;
+    }
+
+    .theme .jw-row .jw-row__thumb,
+    .theme .jw-brow .jw-brow__thumb,
+    .theme .jw-prow .jw-prow__thumb {
+        position: relative;
+        z-index: 1;
+        aspect-ratio: auto;
+        overflow: visible;
+        border: 0;
+        background: none;
+        transition: width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .theme .jw-row .jw-row__thumb,
+    .theme .jw-brow .jw-brow__thumb {
+        width: 88px;
+        height: 88px;
+    }
+
+    .theme .jw-prow .jw-prow__thumb {
+        width: 200px;
+        height: 150px;
+    }
+
+    .theme .jw-row .jw-row__thumb img,
+    .theme .jw-brow .jw-brow__thumb img,
+    .theme .jw-prow .jw-prow__thumb img {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        border: 1.5px solid var(--ink);
+        background: var(--paper);
+        object-fit: cover;
+        transform: translateY(-50%);
+        transition: box-shadow 0.45s ease;
+    }
+
+    .theme .jw-row .jw-row__thumb img,
+    .theme .jw-brow .jw-brow__thumb img {
+        aspect-ratio: 1;
+    }
+
+    .theme .jw-prow .jw-prow__thumb img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .theme .jw-row:hover .jw-row__thumb,
+    .theme .jw-brow:hover .jw-brow__thumb {
+        z-index: 6;
+        width: 200px;
+    }
+
+    .theme .jw-prow:hover .jw-prow__thumb {
+        z-index: 6;
+        width: 320px;
+    }
+
+    .theme .jw-row:hover .jw-row__thumb img,
+    .theme .jw-brow:hover .jw-brow__thumb img,
+    .theme .jw-prow:hover .jw-prow__thumb img {
+        box-shadow: 0 16px 36px rgb(17 17 17 / 0.28);
+    }
+}
+
+/* Buttons: beim Überfahren etwas größer und ein kurzes Wackeln */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .theme .filter-btn,
+    .theme .contact-submit,
+    .theme .jw-cta__button,
+    .theme .jw-button,
+    .theme .jw-consent__button,
+    .theme .jw-more {
+        transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease, color 0.15s ease;
+    }
+
+    .theme .filter-btn:hover,
+    .theme .contact-submit:not(:disabled):hover,
+    .theme .jw-cta__button:hover,
+    .theme .jw-button:hover,
+    .theme .jw-consent__button:hover,
+    .theme .jw-more:hover {
+        transform: scale(1.06);
+        animation: jw-wiggle 0.45s ease-in-out 1;
+    }
+
+    .theme .filter-btn:active,
+    .theme .contact-submit:not(:disabled):active,
+    .theme .jw-cta__button:active,
+    .theme .jw-button:active,
+    .theme .jw-consent__button:active {
+        transform: scale(0.97);
+    }
+}
+
+/* Runde Karussell-Pfeile: nur skalieren – eine Drehung sieht man bei Kreisen nicht */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .theme .jw-flip__btn {
+        transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease, color 0.15s ease;
+    }
+
+    .theme .jw-flip__btn:hover {
+        transform: scale(1.14);
+    }
+
+    .theme .jw-flip__btn:active {
+        transform: scale(0.94);
+    }
+}
+
+@keyframes jw-wiggle {
+    0%   { rotate: 0deg; }
+    25%  { rotate: -3deg; }
+    50%  { rotate: 2.5deg; }
+    75%  { rotate: -1.5deg; }
+    100% { rotate: 0deg; }
+}
+
+/* 2. Linien ziehen sich beim Hereinscrollen von links auf */
+.jw-reveal-ready .jw-head,
+.jw-reveal-ready #contact > .jw-label,
+.jw-reveal-ready .jw-cv__group,
+.jw-reveal-ready .jw-filterbar,
+.jw-reveal-ready .jw-plist,
+.jw-reveal-ready .jw-blist,
+.jw-reveal-ready .jw-rule,
+.jw-reveal-ready .jw-pager__link,
+.jw-reveal-ready .jw-legal h2,
+.jw-reveal-ready .jw-links__list {
+    position: relative;
+    border-top-color: transparent;
+}
+
+/* Liste auf der Link-Seite hat nur eine 1px-Linie */
+.jw-links__list {
+    --jw-line: 1px;
+}
+
+.jw-reveal-ready .jw-head::before,
+.jw-reveal-ready #contact > .jw-label::before,
+.jw-reveal-ready .jw-cv__group::before,
+.jw-reveal-ready .jw-filterbar::before,
+.jw-reveal-ready .jw-plist::before,
+.jw-reveal-ready .jw-blist::before,
+.jw-reveal-ready .jw-rule::before,
+.jw-reveal-ready .jw-pager__link::before,
+.jw-reveal-ready .jw-legal h2::before,
+.jw-reveal-ready .jw-links__list::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--jw-line, 2px) * -1);
+    left: 0;
+    right: 0;
+    height: var(--jw-line, 2px);
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.jw-reveal-ready .is-revealed::before {
+    transform: scaleX(1);
+}
+
+/* 3. Einzelne Buchstaben der Hero-Überschrift */
+.jw-letters {
+    display: inline;
+}
+
+.jw-word {
+    white-space: nowrap;
+}
+
+.jw-letter {
+    display: inline-block;
+}
+
+.jw-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* „Entwickler &“ bleibt zusammen, auch wenn die Buchstaben anschwellen */
+.jw-nowrap {
+    white-space: nowrap;
+}
+
+/* Link-Seite: Vorschaubild wächst beim Überfahren, die Zeile bleibt gleich hoch
+   (es wächst nach unten, damit das Label darüber frei bleibt; der negative
+   Außenabstand gleicht die zusätzliche Höhe aus) */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .theme .jw-links__row img {
+        position: relative;
+        align-self: flex-start;
+        transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), margin 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+    }
+    .theme .jw-links__row:hover img {
+        z-index: 6;
+        width: 112px;
+        height: 112px;
+        margin-bottom: -48px;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+    }
 }

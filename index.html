@@ -119,20 +119,34 @@
     <section class="jw-wrap jw-hero" aria-labelledby="jw-title">
         <div class="jw-hero__main">
             <p class="jw-hero__kicker"><span data-en="Hi! I'm" data-de="Hi! Ich bin">Hi! I&#39;m</span> <a href="#about" class="hero-name-link">Jan Westphal</a></p>
-            <h1 id="jw-title"><span data-en="Developer" data-de="Entwickler">Developer</span> <span class="jw-accent">&amp;</span><br><span data-en="designer" data-de="Designer">designer</span><br><span data-en="from Kiel" data-de="aus Kiel">from Kiel</span></h1>
+            <h1 id="jw-title"><span class="jw-nowrap"><span data-en="Developer" data-de="Entwickler">Developer</span> <span class="jw-accent">&amp;</span></span><br><span data-en="designer" data-de="Designer">designer</span><br><span data-en="from Kiel" data-de="aus Kiel">from Kiel</span></h1>
             <p class="jw-hero__lead" data-en="I build games, electronic devices and graphics, I feel most at home where those three overlap." data-de="Ich entwickle Spiele, elektronische Geräte und Grafiken, ich fühle mich dort am wohlsten, wo sich die drei überschneiden.">I build games, electronic devices and graphics, I feel most at home where those three overlap.</p>
         </div>
-        <div class="jw-hero__side"><ul class="jw-collage">
-                <li class="jw-collage__item"><a href="/projects/pocket-knight/" tabindex="-1">
-                    <img src="/Images/projects/pocket-knight/closeshotpocketknight.webp" alt="Pocket Knight – self-built game device" data-alt-en="Pocket Knight – self-built game device" data-alt-de="Pocket Knight – selbstgebautes Spielgerät" loading="eager" width="600" height="600"></a>
-                </li>
-                <li class="jw-collage__item"><a href="/projects/chirping-on-trust/" tabindex="-1">
-                    <img src="/Images/projects/chirping-on-trust/webshot.webp" alt="Chirping on Trust on the Game Boy Advance" data-alt-en="Chirping on Trust on the Game Boy Advance" data-alt-de="Chirping on Trust auf dem Game Boy Advance" loading="eager" width="600" height="600"></a>
-                </li>
-                <li class="jw-collage__item"><a href="/projects/hidden-walls-in-lost-places/" tabindex="-1">
-                    <img src="/Images/Graffzine2/graffzine2thumb1.webp" alt="Painted wall in an abandoned place" data-alt-en="Painted wall in an abandoned place" data-alt-de="Bemalte Wand an einem verlassenen Ort" loading="eager" width="600" height="600"></a>
-                </li>
-            </ul>
+        <div class="jw-hero__side"><div class="jw-flip" data-flip aria-roledescription="carousel" data-aria-en="Selected projects" data-aria-de="Ausgewählte Projekte" aria-label="Selected projects">
+                <div class="jw-flip__stage" tabindex="0">
+                    <a class="jw-flip__card" href="/projects/pocket-knight/" draggable="false" data-title="Pocket Knight" >
+                        <img src="/Images/projects/pocket-knight/closeshotpocketknight.webp" alt="Pocket Knight – self-built pedometer game device" data-alt-en="Pocket Knight – self-built pedometer game device" data-alt-de="Pocket Knight – selbstgebautes Spielgerät mit Schrittzähler" loading="eager" draggable="false" width="800" height="600">
+                    </a>
+                    <a class="jw-flip__card" href="/projects/chirping-on-trust/" draggable="false" data-title="Chirping on Trust" tabindex="-1" aria-hidden="true">
+                        <img src="/Images/projects/chirping-on-trust/webshot.webp" alt="Chirping on Trust on the Game Boy Advance" data-alt-en="Chirping on Trust on the Game Boy Advance" data-alt-de="Chirping on Trust auf dem Game Boy Advance" loading="eager" draggable="false" width="800" height="600">
+                    </a>
+                    <a class="jw-flip__card" href="/projects/Audio-Dingo-Synth/" draggable="false" data-title="Audio Dingo Synth" tabindex="-1" aria-hidden="true">
+                        <img src="/Images/Audiodingo/audiodingostanding.webp" alt="Self-built synthesizer Audio Dingo" data-alt-en="Self-built synthesizer Audio Dingo" data-alt-de="Selbstgebauter Synthesizer Audio Dingo" loading="lazy" draggable="false" width="800" height="600">
+                    </a>
+                    <a class="jw-flip__card" href="/projects/e-zine-graffiti-doc/" draggable="false" data-title="Graffiti Archive 2015–2019" tabindex="-1" aria-hidden="true">
+                        <img src="/Images/Graffzine1/buchstandingspaced.webp" alt="Printed book documenting graffiti" data-alt-en="Printed book documenting graffiti" data-alt-de="Gedrucktes Buch mit Graffiti-Dokumentation" loading="lazy" draggable="false" width="800" height="600">
+                    </a>
+                    <a class="jw-flip__card" href="/projects/go-pony-go-c/" draggable="false" data-title="Go Pony, Go C!" tabindex="-1" aria-hidden="true">
+                        <img src="/Images/resizedpony.gif" alt="Scene from the game Go Pony, Go C!" data-alt-en="Scene from the game Go Pony, Go C!" data-alt-de="Szene aus dem Spiel Go Pony, Go C!" loading="lazy" draggable="false" width="800" height="600">
+                    </a>
+                </div>
+                <div class="jw-flip__bar">
+                    <button type="button" class="jw-flip__btn" data-flip-prev data-aria-en="Previous project" data-aria-de="Vorheriges Projekt" aria-label="Previous project">←</button>
+                    <a class="jw-flip__caption" href="/projects/pocket-knight/">Pocket Knight&nbsp;→</a>
+                    <span class="jw-flip__count" aria-hidden="true">01 / 05</span>
+                    <button type="button" class="jw-flip__btn" data-flip-next data-aria-en="Next project" data-aria-de="Nächstes Projekt" aria-label="Next project">→</button>
+                </div>
+            </div>
             <dl class="jw-facts">
                 <div><dt data-en="Currently" data-de="Aktuell">Currently</dt><dd data-en="B.Eng. Media Engineering, HAW Kiel" data-de="B.Eng. Medieningenieur, HAW Kiel">B.Eng. Media Engineering, HAW Kiel</dd></div>
                 <div><dt data-en="Latest" data-de="Neuestes">Latest</dt><dd><a href="/projects/pocket-knight/">Pocket Knight →</a></dd></div>
