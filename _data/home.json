@@ -226,8 +226,8 @@
         "en": "Aseprite"
       },
       {
-        "de": "3D-Druck",
-        "en": "3D printing"
+        "de": "Fusion3D",
+        "en": "Fusion3D"
       }
     ],
     "languages_heading": {
@@ -241,8 +241,8 @@
       "Java"
     ],
     "courses_heading": {
-      "de": "Kurse — opencampus.sh",
-      "en": "Courses — opencampus.sh"
+      "de": "Kurse - opencampus.sh",
+      "en": "Courses - opencampus.sh"
     },
     "courses": [
       {
