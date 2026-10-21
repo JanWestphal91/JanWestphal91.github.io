@@ -30,18 +30,6 @@
     }
   },
   "facts": {
-    "location_label": {
-      "de": "Wohnort",
-      "en": "Based in"
-    },
-    "location": {
-      "de": "Kiel, DE · 54.32°N 10.14°E",
-      "en": "Kiel, DE · 54.32°N 10.14°E"
-    },
-    "time_label": {
-      "de": "Ortszeit",
-      "en": "Local time"
-    },
     "currently_label": {
       "de": "Aktuell",
       "en": "Currently"

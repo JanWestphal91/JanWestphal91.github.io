@@ -588,13 +588,6 @@ body.theme {
     border-top: 2px solid var(--ink);
 }
 
-.jw-about__text .jw-about__lead {
-    margin: 0 0 28px;
-    max-width: 34em;
-    font-size: clamp(19px, 1.8vw, 24px);
-    line-height: 1.5;
-}
-
 .jw-about__more {
     columns: 2 300px;
     column-gap: 40px;
@@ -610,16 +603,16 @@ body.theme {
 
 /* ── Werdegang ──────────────────────────────────────────────────── */
 
+/* Stationen über die volle Breite, darunter Toolbox, Kurse und Engagement
+   nebeneinander (auf schmalen Bildschirmen untereinander). */
 .jw-cv {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 48px clamp(32px, 5vw, 72px);
+    flex-direction: column;
+    gap: 56px;
     margin-top: 40px;
 }
 
 .jw-cv__list {
-    flex: 999 1 600px;
     min-width: 0;
     list-style: none;
     margin: 0;
@@ -655,9 +648,19 @@ body.theme {
 }
 
 .jw-cv__side {
-    flex: 1 1 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px clamp(32px, 5vw, 72px);
+    align-items: start;
+}
+
+.jw-cv__group {
     padding-top: 20px;
     border-top: 2px solid var(--ink);
+}
+
+.jw-cv__side .jw-cv__group > :last-child {
+    margin-bottom: 0;
 }
 
 .jw-cv__side .jw-label {
@@ -2227,3 +2230,4 @@ body.theme {
         color: var(--ink);
     }
 }
+
