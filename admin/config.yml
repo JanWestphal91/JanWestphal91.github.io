@@ -288,6 +288,25 @@ collections:
         - label: Englisch
           name: en
           widget: string
+    - label: Kategorien (Übersetzung)
+      name: categories
+      widget: list
+      label_singular: Kategorie
+      collapsed: true
+      summary: '{{fields.key}} → {{fields.de}}'
+      hint: Übersetzt die Kategorien aus den Projekten (z. B. „[Electronic, Game] 2026“) für Filter und
+        Projektlisten.
+      fields:
+      - label: Schlüssel wie im Projekt
+        name: key
+        widget: string
+        hint: Genau so geschrieben wie im Feld „Kategorie / Jahr“ des Projekts, z. B. Electronic
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
   - name: home
     label: Startseite
     file: _data/home.json
@@ -386,7 +405,38 @@ collections:
         - label: Englisch
           name: en
           widget: text
-    - label: Steckbrief rechts im Kopfbereich
+      - label: Bilder (Collage rechts)
+        name: images
+        widget: list
+        label_singular: Bild
+        collapsed: true
+        summary: '{{fields.image}}'
+        required: false
+        hint: Bis zu drei Bilder. Das erste wird groß dargestellt. Am besten ruhige Fotos mit neutralem
+          Hintergrund.
+        fields:
+        - label: Bild
+          name: image
+          widget: image
+        - label: Alt-Text
+          name: alt
+          widget: object
+          collapsed: false
+          summary: '{{fields.de}}'
+          fields:
+          - label: Deutsch
+            name: de
+            widget: string
+          - label: Englisch
+            name: en
+            widget: string
+          hint: Beschreibung für Screenreader.
+        - label: Link (optional)
+          name: link
+          widget: string
+          required: false
+          hint: z. B. /projects/pocket-knight/
+    - label: Steckbrief im Kopfbereich
       name: facts
       widget: object
       collapsed: true
@@ -428,30 +478,6 @@ collections:
           name: en
           widget: string
         hint: Das neueste Projekt wird automatisch eingesetzt.
-      - label: Offen für – Bezeichnung
-        name: open_label
-        widget: object
-        collapsed: false
-        summary: '{{fields.de}}'
-        fields:
-        - label: Deutsch
-          name: de
-          widget: string
-        - label: Englisch
-          name: en
-          widget: string
-      - label: Offen für – Wert
-        name: open
-        widget: object
-        collapsed: false
-        summary: '{{fields.de}}'
-        fields:
-        - label: Deutsch
-          name: de
-          widget: string
-        - label: Englisch
-          name: en
-          widget: string
     - label: 01 Projekte
       name: projects
       widget: object
@@ -539,18 +565,28 @@ collections:
           name: en
           widget: string
         hint: Beschreibung für Screenreader.
-      - label: Namen neben dem Foto
-        name: names
-        widget: list
-        label_singular: Name
-        collapsed: true
-        summary: '{{fields.name}}'
+      - label: Alias-Zeile unter dem Foto
+        name: alias
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
         fields:
-        - label: Name
-          name: name
-          widget: string
-        - label: Erklärung
-          name: note
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
+      - label: Verfügbarkeit unter dem Foto
+        name: availability
+        widget: list
+        label_singular: Zeile
+        collapsed: true
+        summary: '{{fields.label.de}}'
+        hint: z. B. Offen für, Studium, Ort. Reihenfolge per Drag & Drop.
+        fields:
+        - label: Bezeichnung
+          name: label
           widget: object
           collapsed: false
           summary: '{{fields.de}}'
@@ -561,6 +597,40 @@ collections:
           - label: Englisch
             name: en
             widget: string
+        - label: Wert
+          name: value
+          widget: object
+          collapsed: false
+          summary: '{{fields.de}}'
+          fields:
+          - label: Deutsch
+            name: de
+            widget: string
+          - label: Englisch
+            name: en
+            widget: string
+        - label: Mit farbigem Punkt
+          name: highlight
+          widget: boolean
+          required: false
+          default: false
+      - label: Lebenslauf (PDF)
+        name: cv_file
+        widget: file
+        required: false
+        hint: Hochladen → unter dem Foto erscheint ein Download-Button. Leer = kein Button.
+      - label: Beschriftung Lebenslauf-Button
+        name: cv_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
       - label: Absätze
         name: paragraphs
         widget: list
@@ -574,7 +644,8 @@ collections:
         - label: Englisch
           name: en
           widget: text
-        hint: Alle Absätze erscheinen gleich groß, auf dem Desktop in zwei Spalten. Reihenfolge per Drag & Drop.
+        hint: Alle Absätze erscheinen gleich groß, auf dem Desktop in zwei Spalten. Reihenfolge per Drag
+          & Drop.
     - label: 03 Werdegang
       name: path
       widget: object
@@ -635,7 +706,7 @@ collections:
           - label: Englisch
             name: en
             widget: string
-        - label: Rechte Spalte (Dauer/Status)
+        - label: Zeitraum (rechte Spalte)
           name: tag
           widget: object
           collapsed: false
@@ -647,6 +718,7 @@ collections:
           - label: Englisch
             name: en
             widget: string
+          hint: Am besten Jahreszahlen, z. B. 2008–2011 oder seit 2024.
         - label: Aktuelle Station (oranger Punkt)
           name: current
           widget: boolean
@@ -996,7 +1068,7 @@ collections:
         - label: Englisch
           name: en
           widget: string
-      - label: 'Ersatz-Link bei Fehlern'
+      - label: Ersatz-Link bei Fehlern
         name: fallback
         widget: object
         collapsed: false
@@ -1009,6 +1081,31 @@ collections:
         - label: Englisch
           name: en
           widget: string
+      - label: Überschrift über dem E-Mail-Button
+        name: direct_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: E-Mail-Button
+        name: direct_button
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: Öffnet das Mailprogramm. Die Adresse steht unter „Kontaktformular (Technik)“.
       - label: Überschrift Socials
         name: socials_heading
         widget: object
@@ -1021,7 +1118,7 @@ collections:
         - label: Englisch
           name: en
           widget: string
-        hint: Die Profile selbst bearbeitest du unter „Social-Profile“.
+        hint: Die Profile selbst bearbeitest du unter „Social-Profile“ (dort auch LinkedIn ergänzen).
   - name: projects_page
     label: Projekte-Übersicht
     file: _data/pages/projects.json

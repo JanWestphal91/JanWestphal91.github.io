@@ -1,1 +1,7 @@
 window.TRANSLATIONS = {"en":{"contact.submit.sending":"Sending...","contact.success":"Thanks! Your message has arrived – I’ll get back to you soon.","contact.error-prefix":"Your message could not be sent (error","contact.network-error":"The form can’t be reached right now – sometimes an ad blocker or antivirus filter blocks the connection.","contact.fallback":"Send me an email directly instead","lightbox.close":"Close image","filter.all":"All"},"de":{"contact.submit.sending":"Wird gesendet...","contact.success":"Danke! Deine Nachricht ist angekommen, ich melde mich bald.","contact.error-prefix":"Die Nachricht konnte nicht gesendet werden (Fehler","contact.network-error":"Das Formular ist gerade nicht erreichbar – manchmal blockiert ein Werbe- oder Virenfilter die Verbindung.","contact.fallback":"Schreib mir stattdessen direkt eine E-Mail","lightbox.close":"Bild schließen","filter.all":"Alle"}};
+window.TRANSLATIONS.en["cat.Electronic"] = "Electronic";
+window.TRANSLATIONS.de["cat.Electronic"] = "Elektronik";
+window.TRANSLATIONS.en["cat.Game"] = "Game";
+window.TRANSLATIONS.de["cat.Game"] = "Spiel";
+window.TRANSLATIONS.en["cat.Illustration"] = "Illustration";
+window.TRANSLATIONS.de["cat.Illustration"] = "Illustration";
