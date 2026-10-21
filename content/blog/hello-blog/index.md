@@ -1,27 +1,31 @@
 ---
 published: true
 title: Development process of a DIY synthesizer
-title_de: Entwicklung eines DIY Synthesizers
+title_de: Entwicklung eines DIY-Synthesizers
 date: 2026-06-13
 description: From circuit to working prototype.
 description_de: Von einer Schaltung zum funktionierenden Prototyp.
 cover_image: /Images/Audiodingo/audiodingostanding.webp
-cover_image_alt: Arduino Prototype
+cover_image_alt: "The finished Audio Dingo synthesizer standing upright"
+cover_image_alt_de: "Der fertige Audio-Dingo-Synthesizer, aufrecht stehend"
 tags:
   - Devlog, Electronic
 images:
   - src: /Images/Audiodingo/DingoFirstBreadboard.webp
-    alt: Breadboard Schaltung
-    caption: Breadboard Schaltung Prototyping
-    caption_de: ''
+    alt: "First breadboard prototype: Arduino, OLED display, joystick and rotary encoders connected with many jumper wires"
+    alt_de: "Erster Breadboard-Prototyp: Arduino, OLED-Display, Joystick und Drehencoder, verbunden mit vielen Steckkabeln"
+    caption: Breadboard circuit prototyping
+    caption_de: Prototyping der Breadboard-Schaltung
   - src: /Images/Audiodingo/DingofirstCase.webp
-    alt: Erstes gedrucktes Gehäuse
-    caption: Erstes gedrucktes Gehäuse
-    caption_de: ''
+    alt: "First 3D-printed case in black, with cut-outs for keys, knobs and the display"
+    alt_de: "Erstes 3D-gedrucktes Gehäuse in Schwarz mit Aussparungen für Tasten, Drehknöpfe und Display"
+    caption: First printed case
+    caption_de: Erstes gedrucktes Gehäuse
   - src: /Images/Audiodingo/DingoinFusion.webp
-    alt: Fusion Screenshot
-    caption: Gehäuse Entwurf in Fusion
-    caption_de: ''
+    alt: "Screenshot of the case design in Fusion 360"
+    alt_de: "Screenshot des Gehäuseentwurfs in Fusion 360"
+    caption: Case design in Fusion
+    caption_de: Gehäuseentwurf in Fusion
 body_de: |-
   Hallo! Das hier ist der erste Eintrag im Blog. :)
 

@@ -4,8 +4,14 @@
       "de": "Jan Westphal – Portfolio | Entwickler & Designer aus Kiel",
       "en": "Jan Westphal – Portfolio | Developer & Designer from Kiel"
     },
-    "description": "Portfolio von Jan Westphal aus Kiel: Spiele, selbstgebaute Elektronik, Illustration und Grafikdesign – mit Projekten, Prozessen und Devlogs.",
-    "share_title": "Jan Westphal – Entwickler & Designer aus Kiel"
+    "description": {
+      "de": "Portfolio von Jan Westphal aus Kiel: Spiele, selbstgebaute Elektronik, Illustration und Grafikdesign – mit Projekten, Prozessen und Devlogs.",
+      "en": "Portfolio of Jan Westphal from Kiel: games, self-built electronics, illustration and graphic design – with projects, processes and devlogs."
+    },
+    "share_title": {
+      "de": "Jan Westphal – Entwickler & Designer aus Kiel",
+      "en": "Jan Westphal – Developer & Designer from Kiel"
+    }
   },
   "hero": {
     "greeting": {
@@ -30,49 +36,36 @@
     },
     "images": [
       {
+        "project": "pocket-knight",
         "image": "/Images/projects/pocket-knight/closeshotpocketknight.webp",
-        "title": "Pocket Knight",
         "alt": {
           "de": "Pocket Knight – selbstgebautes Spielgerät mit Schrittzähler",
           "en": "Pocket Knight – self-built pedometer game device"
-        },
-        "link": "/projects/pocket-knight/"
+        }
       },
       {
+        "project": "chirping-on-trust",
         "image": "/Images/projects/chirping-on-trust/webshot.webp",
-        "title": "Chirping on Trust",
         "alt": {
           "de": "Chirping on Trust auf dem Game Boy Advance",
           "en": "Chirping on Trust on the Game Boy Advance"
-        },
-        "link": "/projects/chirping-on-trust/"
+        }
       },
       {
+        "project": "Audio-Dingo-Synth",
         "image": "/Images/Audiodingo/audiodingostanding.webp",
-        "title": "Audio Dingo Synth",
         "alt": {
           "de": "Selbstgebauter Synthesizer Audio Dingo",
           "en": "Self-built synthesizer Audio Dingo"
-        },
-        "link": "/projects/Audio-Dingo-Synth/"
+        }
       },
       {
-        "image": "/Images/Graffzine1/buchstandingspaced.webp",
-        "title": "Graffiti Archive 2015–2019",
-        "alt": {
-          "de": "Gedrucktes Buch mit Graffiti-Dokumentation",
-          "en": "Printed book documenting graffiti"
-        },
-        "link": "/projects/e-zine-graffiti-doc/"
-      },
-      {
+        "project": "go-pony-go-c",
         "image": "/Images/resizedpony.gif",
-        "title": "Go Pony, Go C!",
         "alt": {
           "de": "Szene aus dem Spiel Go Pony, Go C!",
           "en": "Scene from the game Go Pony, Go C!"
-        },
-        "link": "/projects/go-pony-go-c/"
+        }
       }
     ],
     "carousel_label": {
@@ -96,20 +89,16 @@
     "currently": {
       "de": "B.Eng. Medieningenieur, HAW Kiel",
       "en": "B.Eng. Media Engineering, HAW Kiel"
-    },
-    "latest_label": {
-      "de": "Neuestes",
-      "en": "Latest"
     }
   },
   "projects": {
     "label": {
-      "de": "Auswahl",
-      "en": "Selected work"
+      "de": "Projekte",
+      "en": "Projects"
     },
     "heading": {
-      "de": "Meine Arbeiten",
-      "en": "Things I made"
+      "de": "Weitere Projekte",
+      "en": "More projects"
     },
     "more": {
       "de": "Alle Projekte →",
@@ -167,6 +156,17 @@
           "en": "Working student · Internship · Freelance"
         },
         "highlight": true
+      },
+      {
+        "label": {
+          "de": "Umfang",
+          "en": "Hours"
+        },
+        "value": {
+          "de": "ca. 15 Std./Woche als Werkstudent",
+          "en": "approx. 15 hrs/week as a working student"
+        },
+        "highlight": false
       },
       {
         "label": {
@@ -314,7 +314,8 @@
       "Python",
       "C#",
       "GDScript",
-      "Java"
+      "Java",
+      "JavaScript"
     ],
     "courses_heading": {
       "de": "Kurse - opencampus.sh",
@@ -359,6 +360,13 @@
         "de": "Mitglied im IF(game)SH e.V. – Initiative für den Games-Standort Schleswig-Holstein",
         "en": "Member of IF(game)SH e.V. – initiative for Schleswig-Holstein as a games location"
       }
+    ],
+    "languages_basic_label": {
+      "de": "Grundlagen",
+      "en": "Basics"
+    },
+    "languages_basic": [
+      "C++ (Arduino, ESP32)"
     ]
   },
   "blog": {
@@ -455,6 +463,22 @@
     "direct_button": {
       "de": "E-Mail schreiben",
       "en": "Write an email"
+    },
+    "invalid_name": {
+      "de": "Bitte gib deinen Namen ein.",
+      "en": "Please enter your name."
+    },
+    "invalid_email_missing": {
+      "de": "Bitte gib deine E-Mail-Adresse ein, damit ich antworten kann.",
+      "en": "Please enter your email address so I can reply."
+    },
+    "invalid_email": {
+      "de": "Diese E-Mail-Adresse sieht unvollständig aus – zum Beispiel: name@beispiel.de",
+      "en": "This email address looks incomplete – for example: name@example.com"
+    },
+    "invalid_message": {
+      "de": "Bitte schreib eine Nachricht.",
+      "en": "Please write a message."
     }
   }
 }

@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }} – Jan Westphal</title>
-    <meta name="description" content="{{ summary | md | striptags | truncate(155) }}" />
+    <meta name="description" content="{{ summary | md | striptags | truncate(155) }}" data-content-en="{{ summary | md | striptags | truncate(155) }}" data-content-de="{{ (summary_de or summary) | md | striptags | truncate(155) }}" />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
     <meta name="geo.region" content="DE-SH" />
     <meta name="geo.placename" content="Kiel" />
-    <link rel="canonical" href="https://janwestphal.dev/projects/{{ slug }}/" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://janwestphal.dev/projects/{{ slug }}/" />
     <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:locale:alternate" content="de_DE" />
     <meta property="og:title" content="{{ title }} – Jan Westphal" />
-    <meta property="og:description" content="{{ summary | md | striptags | truncate(155) }}" />
+    <meta property="og:description" content="{{ summary | md | striptags | truncate(155) }}" data-content-en="{{ summary | md | striptags | truncate(155) }}" data-content-de="{{ (summary_de or summary) | md | striptags | truncate(155) }}" />
     {% if cover_image %}
     <meta property="og:image" content="https://janwestphal.dev{{ cover_image | imgPath }}" />
     <meta name="twitter:image" content="https://janwestphal.dev{{ cover_image | imgPath }}" />
@@ -32,7 +28,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ title }} – Jan Westphal" />
-    <meta name="twitter:description" content="{{ summary | md | striptags | truncate(155) }}" />
+    <meta name="twitter:description" content="{{ summary | md | striptags | truncate(155) }}" data-content-en="{{ summary | md | striptags | truncate(155) }}" data-content-de="{{ (summary_de or summary) | md | striptags | truncate(155) }}" />
 
 
 {% include "partials/head-assets.njk" %}
@@ -44,7 +40,7 @@
 {#- Feste Texte: _data/pages/project.json (CMS: Seiten-Texte → Projekt-Detailseite) #}
 {%- set pt = pages.project %}
 {%- set nb = collections.projects | neighbors(page.url) %}
-<main class="project-page">
+<main id="main" tabindex="-1" class="project-page">
     <section class="jw-wrap jw-detail-head" aria-labelledby="jw-page-title">
         <nav class="jw-crumb" aria-label="Breadcrumb">
             <a href="/projects/" {% i18n global.nav.projects %}>{{ global.nav.projects.en }}</a>
@@ -85,21 +81,74 @@
     {% elif cover_image %}
     <section class="jw-wrap jw-detail-block" aria-label="Cover">
         <figure class="jw-cover">
-            <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" loading="eager">
+            <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" data-alt-en="{{ cover_image_alt or title }}" data-alt-de="{{ cover_image_alt_de or cover_image_alt or title }}" loading="eager">
         </figure>
     </section>
     {% endif %}
 
+    {#- ═══ Case Study (optional, CMS: Projekt → Case Study) ═══
+        Steckbrief (Rolle, Zeitraum, Werkzeuge, Hardware, Links) und
+        Abschnitte mit Text und Bild. Nummern laufen über alle Blöcke. -#}
+    {%- set nMedia = 1 if embed else 0 %}
+    {%- set cs = case if (case and (case.role or case.sections)) else null %}
+    {%- set nFacts = nMedia + (1 if cs else 0) %}
+    {%- set nSections = (cs.sections.length if (cs and cs.sections) else 0) %}
+    {%- set nGallery = nFacts + nSections + 1 %}
+    {% if cs %}
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
+        <h2 id="jw-facts-title" class="jw-label jw-rule">{{ nFacts | pad2 }} — <span {% i18n pt.case_label %}>{{ pt.case_label.en }}</span></h2>
+        <dl class="jw-casefacts">
+            {%- if cs.role %}
+            <div><dt {% i18n pt.role %}>{{ pt.role.en }}</dt><dd {% i18n cs.role %}>{{ cs.role.en }}</dd></div>
+            {%- endif %}
+            {%- if cs.duration %}
+            <div><dt {% i18n pt.duration %}>{{ pt.duration.en }}</dt><dd {% i18n cs.duration %}>{{ cs.duration.en }}</dd></div>
+            {%- endif %}
+            {%- if cs.tools and cs.tools.length %}
+            <div><dt {% i18n pt.tools %}>{{ pt.tools.en }}</dt><dd><ul class="jw-skills">{% for t in cs.tools %}<li>{{ t }}</li>{% endfor %}</ul></dd></div>
+            {%- endif %}
+            {%- if cs.hardware and cs.hardware.length %}
+            <div><dt {% i18n pt.hardware %}>{{ pt.hardware.en }}</dt><dd><ul class="jw-casefacts__list">{% for hw in cs.hardware %}<li {% i18n hw %}>{{ hw.en }}</li>{% endfor %}</ul></dd></div>
+            {%- endif %}
+            {%- if cs.links and cs.links.length %}
+            <div><dt {% i18n pt.links %}>{{ pt.links.en }}</dt><dd><ul class="jw-casefacts__list">{% for l in cs.links %}<li><a href="{{ l.url }}"{% if '://' in l.url %} target="_blank" rel="noopener noreferrer"{% endif %}><span {% i18n l.label %}>{{ l.label.en }}</span>&nbsp;<span aria-hidden="true">{{ '↗' if '://' in l.url else '→' }}</span></a></li>{% endfor %}</ul></dd></div>
+            {%- endif %}
+        </dl>
+    </section>
+    {%- for sec in cs.sections %}
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-{{ loop.index }}">
+        <h2 id="jw-case-{{ loop.index }}" class="jw-label jw-rule">{{ (nFacts + loop.index) | pad2 }} — <span {% i18n sec.heading %}>{{ sec.heading.en }}</span></h2>
+        <div class="jw-case__grid{% if not sec.image %} jw-case__grid--text{% endif %}">
+            <div class="jw-prose jw-case__text">
+                <div data-lang-show="en">{{ sec.body.en | md | safe }}</div>
+                <div data-lang-show="de" hidden>{{ (sec.body.de or sec.body.en) | md | safe }}</div>
+            </div>
+            {%- if sec.image %}
+            {%- set capEn = sec.image_caption.en if sec.image_caption else "" %}
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox href="{{ sec.image | imgPath }}">
+                    <img src="{{ sec.image | imgPath }}" alt="{{ sec.image_alt.en if sec.image_alt else '' }}" data-alt-en="{{ sec.image_alt.en if sec.image_alt else '' }}" data-alt-de="{{ (sec.image_alt.de or sec.image_alt.en) if sec.image_alt else '' }}" loading="lazy">
+                </a>
+                {%- if capEn %}
+                <figcaption {% i18n sec.image_caption %}>{{ capEn }}</figcaption>
+                {%- endif %}
+            </figure>
+            {%- endif %}
+        </div>
+    </section>
+    {%- endfor %}
+    {% endif %}
+
     {% if images and images.length %}
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
-        <h2 id="jw-gallery-title" class="jw-label jw-rule">{{ "02" if embed else "01" }} — <span {% i18n global.ui.gallery %}>{{ global.ui.gallery.en }}</span> ({{ images.length | pad2 }})</h2>
+        <h2 id="jw-gallery-title" class="jw-label jw-rule">{{ nGallery | pad2 }} — <span {% i18n global.ui.gallery %}>{{ global.ui.gallery.en }}</span> ({{ images.length | pad2 }})</h2>
         <div class="project-gallery jw-gallery">
             {% for img in images %}
             <figure class="project-gallery__item">
                 {% if '://' in img.src %}
-                <img src="{{ img.src }}" alt="{{ img.alt }}" loading="lazy">
+                <a class="post-figure__link" data-lightbox href="{{ img.src }}"><img src="{{ img.src }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy"></a>
                 {% else %}
-                <img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" loading="lazy">
+                <a class="post-figure__link" data-lightbox href="{{ img.src | imgPath }}"><img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy"></a>
                 {% endif %}
                 <figcaption><span class="jw-fig">Fig. {{ loop.index | pad2 }}</span>{% if img.caption %} <span data-en="{{ img.caption }}" data-de="{{ img.caption_de or img.caption }}">{{ img.caption }}</span>{% endif %}</figcaption>
             </figure>

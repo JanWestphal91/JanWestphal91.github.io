@@ -8,16 +8,12 @@ function escapeHtml(text) {
         .replace(/'/g, "&#39;");
 }
 
-/* ═══ i18n ═══ */
-const LANG_STORAGE_KEY = 'preferred-lang';
-
-function detectLang() {
-    const stored = localStorage.getItem(LANG_STORAGE_KEY);
-    if (stored === 'de' || stored === 'en') return stored;
-    return (navigator.language || '').toLowerCase().startsWith('de') ? 'de' : 'en';
-}
-
-let currentLang = detectLang();
+/* ═══ Sprache ═══
+   Jede Seite gibt es zweimal: deutsch unter /…, englisch unter /en/….
+   Eleventy setzt die Texte schon beim Bauen ein (.eleventy.js →
+   languageVersions). Das Skript liest die Sprache nur noch aus <html lang>
+   und braucht sie für Texte, die es selbst erzeugt (Formular, Filter). */
+const currentLang = document.documentElement.lang === 'de' ? 'de' : 'en';
 
 function t(key) {
     const dict = window.TRANSLATIONS;
@@ -27,78 +23,52 @@ function t(key) {
         || key;
 }
 
-function applyTranslations(lang, skipProjectRender) {
-    currentLang = lang;
-    document.documentElement.lang = lang;
+/* ═══ Animationen an/aus ═══
+   Der Schalter im Header gilt seitenübergreifend (gespeichert im Browser).
+   Ohne eigene Wahl richtet sich die Seite nach der Systemeinstellung
+   „Bewegung reduzieren“. Ist Bewegung aus, trägt <html> die Klasse
+   jw-motion-off: das CSS schaltet dann Übergänge und Animationen ab, die
+   Skripte unten fragen motionOff() bei jedem Schritt ab. */
+const MOTION_KEY = 'jw-motion';
+const systemReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-        el.textContent = t(el.dataset.i18n);
-    });
+let motionChoice = null; // Wahl dieser Sitzung, falls der Browser-Speicher gesperrt ist
 
-    document.querySelectorAll('[data-en]').forEach(function(el) {
-        el.textContent = lang === 'de' && el.dataset.de ? el.dataset.de : el.dataset.en;
-    });
-
-    document.querySelectorAll('[data-lang-show]').forEach(function(el) {
-        el.hidden = el.dataset.langShow !== lang;
-    });
-
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
-        el.placeholder = t(el.dataset.i18nPlaceholder);
-    });
-
-    document.querySelectorAll('[data-i18n-aria]').forEach(function(el) {
-        el.setAttribute('aria-label', t(el.dataset.i18nAria));
-    });
-
-    document.querySelectorAll('[data-i18n-alt]').forEach(function(el) {
-        el.alt = t(el.dataset.i18nAlt);
-    });
-
-    // Attribute aus den CMS-Texten (_data/*.json), geschrieben vom
-    // Eleventy-Shortcode {% i18n text, "alt" | "placeholder" | "aria" %}.
-    const pickLang = function(el, name) {
-        const de = el.dataset[name + 'De'];
-        return lang === 'de' && de ? de : el.dataset[name + 'En'];
-    };
-    document.querySelectorAll('[data-alt-en]').forEach(function(el) {
-        el.alt = pickLang(el, 'alt');
-    });
-    document.querySelectorAll('[data-placeholder-en]').forEach(function(el) {
-        el.placeholder = pickLang(el, 'placeholder');
-    });
-    document.querySelectorAll('[data-aria-en]').forEach(function(el) {
-        el.setAttribute('aria-label', pickLang(el, 'aria'));
-    });
-
-    const bowlLabel = document.getElementById('bowl-label');
-    if (bowlLabel && !bowlLabel._fishMsgActive) {
-        bowlLabel.textContent = t('bowl.label');
-    }
-
-    const toggle = document.getElementById('lang-toggle');
-    if (toggle) toggle.textContent = lang === 'de' ? 'EN' : 'DE';
-
-    // Den Titel nur ändern, wenn jemand die Sprache selbst gewählt hat.
-    // So sehen Suchmaschinen (ohne gespeicherte Wahl) immer den Titel aus
-    // dem HTML, der zur Beschreibung in index.njk passt.
-    // Die Titel stehen als data-title-en / data-title-de am <body>.
-    if (document.body.dataset.titleEn && localStorage.getItem(LANG_STORAGE_KEY)) {
-        document.title = lang === 'de' && document.body.dataset.titleDe
-            ? document.body.dataset.titleDe
-            : document.body.dataset.titleEn;
-    }
+function storedMotion() {
+    if (motionChoice) return motionChoice;
+    try { return localStorage.getItem(MOTION_KEY); } catch (error) { return null; }
 }
 
-function initLangToggle() {
-    const toggle = document.getElementById('lang-toggle');
-    if (!toggle) return;
-    toggle.addEventListener('click', function() {
-        const next = currentLang === 'de' ? 'en' : 'de';
-        localStorage.setItem(LANG_STORAGE_KEY, next);
-        applyTranslations(next);
-    });
+function motionOff() {
+    const stored = storedMotion();
+    if (stored === 'off') return true;
+    if (stored === 'on') return false;
+    return systemReducedMotion.matches;
 }
+
+function applyMotionState() {
+    const off = motionOff();
+    document.documentElement.classList.toggle('jw-motion-off', off);
+    document.querySelectorAll('#motion-toggle').forEach(function (button) {
+        button.setAttribute('aria-pressed', off ? 'false' : 'true');
+    });
+    document.dispatchEvent(new CustomEvent('jw-motion-change', { detail: { off: off } }));
+}
+
+(function initMotionToggle() {
+    const button = document.getElementById('motion-toggle');
+    if (button) {
+        button.addEventListener('click', function () {
+            motionChoice = motionOff() ? 'on' : 'off';
+            try { localStorage.setItem(MOTION_KEY, motionChoice); } catch (error) { /* gilt dann nur bis zum Neuladen */ }
+            applyMotionState();
+        });
+    }
+    if (systemReducedMotion.addEventListener) {
+        systemReducedMotion.addEventListener('change', applyMotionState);
+    }
+    applyMotionState();
+})();
 
 const TEXT_EFFECTS = {
     wavy: {
@@ -204,8 +174,6 @@ function getElementEffects(element) {
     });
 }
 
-applyTranslations(currentLang, true);
-
 /* ═══ Project Filtering ═══ */
 function initProjectFilters() {
     const workList = document.querySelector(".work-list");
@@ -243,15 +211,12 @@ function initProjectFilters() {
     // Add filter buttons for each type
     sortedTypes.forEach((type) => {
         const btn = document.createElement("button");
+        btn.type = "button";
         btn.className = "filter-btn";
         btn.dataset.filter = type;
-        // Beschriftung zweisprachig (Übersetzung aus _data/global.json → categories)
-        const dict = window.TRANSLATIONS || {};
-        const en = (dict.en && dict.en["cat." + type]) || type;
-        const de = (dict.de && dict.de["cat." + type]) || en;
-        btn.dataset.en = en;
-        btn.dataset.de = de;
-        btn.textContent = currentLang === "de" ? de : en;
+        btn.setAttribute("aria-pressed", "false");
+        // Beschriftung in der Seitensprache (Übersetzung aus _data/global.json → categories)
+        btn.textContent = t("cat." + type) === "cat." + type ? type : t("cat." + type);
         filterContainer.appendChild(btn);
     });
 
@@ -283,20 +248,38 @@ function initProjectFilters() {
         });
     }
 
+    // Statuszeile „4 Projekte“: role="status" lässt Screenreader die neue
+    // Anzahl vorlesen, sehende Nutzer erkennen sofort, dass der Filter griff.
+    const status = document.querySelector(".jw-filter-status");
+    function updateStatus() {
+        if (!status) return;
+        const shown = Array.from(workList.children).filter(function (li) {
+            return Array.from(li.querySelectorAll(".work-item-link")).some(function (link) {
+                return !link.classList.contains("hidden");
+            });
+        }).length;
+        status.textContent = shown === 1 ? t("filter.count_one") : t("filter.count").replace("{n}", shown);
+    }
+
     // Attach click listeners to filter buttons
     filterContainer.querySelectorAll(".filter-btn").forEach((btn) => {
         btn.addEventListener("click", function () {
-            // Update active state
+            // Aktiver Filter: sichtbar per Klasse, für Screenreader per aria-pressed
             filterContainer.querySelectorAll(".filter-btn").forEach((b) => {
                 b.classList.remove("active");
+                b.setAttribute("aria-pressed", "false");
             });
             btn.classList.add("active");
+            btn.setAttribute("aria-pressed", "true");
 
             // Filter projects
             const selectedType = btn.dataset.filter;
             filterProjects(selectedType);
+            updateStatus();
         });
     });
+
+    updateStatus();
 }
 
 initProjectFilters();
@@ -366,8 +349,57 @@ if (form) {
         }
     }
 
+    // ── Eigene Prüfung der Felder ──
+    // Die Browser-Meldungen erscheinen in der Sprache des Browsers, nicht der
+    // Seite. Deshalb novalidate im HTML und hier eigene Texte: Fehler stehen
+    // unter dem Feld (aria-describedby), das Feld ist als ungültig markiert
+    // (aria-invalid), der Fokus springt ins erste fehlerhafte Feld.
+    const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function fieldError(field) {
+        const value = field.value.trim();
+        if (field.name === "name" && !value) return t("contact.invalid_name");
+        if (field.name === "email" && !value) return t("contact.invalid_email_missing");
+        if (field.name === "email" && !EMAIL_PATTERN.test(value)) return t("contact.invalid_email");
+        if (field.name === "message" && !value) return t("contact.invalid_message");
+        return "";
+    }
+
+    function showFieldError(field, message) {
+        const box = document.getElementById(field.id + "-error");
+        if (message) field.setAttribute("aria-invalid", "true");
+        else field.removeAttribute("aria-invalid");
+        if (!box) return;
+        box.textContent = message;
+        box.hidden = !message;
+    }
+
+    const fields = Array.from(form.querySelectorAll("input[required], textarea[required]"));
+    fields.forEach(function (field) {
+        // Fehler verschwindet, sobald die Eingabe passt; geprüft wird erst
+        // nach dem ersten Absendeversuch, damit niemand beim Tippen gestört wird.
+        field.addEventListener("input", function () {
+            if (field.getAttribute("aria-invalid") === "true") showFieldError(field, fieldError(field));
+        });
+        field.addEventListener("blur", function () {
+            if (field.getAttribute("aria-invalid") === "true") showFieldError(field, fieldError(field));
+        });
+    });
+
+    function validate() {
+        let first = null;
+        fields.forEach(function (field) {
+            const message = fieldError(field);
+            showFieldError(field, message);
+            if (message && !first) first = field;
+        });
+        if (first) first.focus();
+        return !first;
+    }
+
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
+        if (!validate()) return;
 
         // Formspark erwartet JSON; das Fangfeld _honeypot wird mitgeschickt,
         // damit Formspark Bot-Nachrichten erkennen kann.
@@ -484,52 +516,20 @@ window.addEventListener("resize", () => {
     }
 });
 
-function initAutoHideHeader() {
+/* ═══ Header-Höhe für Sprungziele ═══
+   Der Header bleibt oben stehen. Damit Anker (#about, #contact) und per
+   Tastatur fokussierte Elemente nicht darunter verschwinden, bekommt
+   <html> die gemessene Höhe als scroll-padding-top (CSS-Variable). */
+(function initHeaderOffset() {
     const header = document.querySelector(".site-header");
-
-    if (!header) {
-        return;
+    if (!header) return;
+    function measure() {
+        document.documentElement.style.setProperty("--jw-header-h", Math.ceil(header.getBoundingClientRect().height) + "px");
     }
-
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-    const directionThreshold = 6;
-
-    function setHeaderVisible(isVisible) {
-        header.classList.toggle("site-header--hidden", !isVisible);
-    }
-
-    setHeaderVisible(true);
-
-    function handleScrollDirection() {
-        const currentScrollY = window.scrollY;
-        const delta = currentScrollY - lastScrollY;
-        const menuIsOpen = navMain && navMain.classList.contains("active");
-
-        if (menuIsOpen || currentScrollY < 24) {
-            setHeaderVisible(true);
-            lastScrollY = currentScrollY;
-        } else if (Math.abs(delta) >= directionThreshold) {
-            if (delta > 0) {
-                setHeaderVisible(false);
-            } else {
-                setHeaderVisible(true);
-            }
-            lastScrollY = currentScrollY;
-        }
-
-        ticking = false;
-    }
-
-    window.addEventListener("scroll", () => {
-        if (!ticking) {
-            window.requestAnimationFrame(handleScrollDirection);
-            ticking = true;
-        }
-    }, { passive: true });
-}
-
-initAutoHideHeader();
+    measure();
+    window.addEventListener("resize", measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+})();
 
 /* ═══ Hero Name Modal ═══ */
 function initHeroModal() {
@@ -979,7 +979,8 @@ function initTicker() {
 
     // Match the old CSS timing: 50% of the content per 30s.
     const LOOP_SECONDS = 30;
-    let paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Animationen aus (Schalter im Header oder Systemeinstellung): Laufband steht
+    let paused = false;
     let pointerIsDown = false;
     let lastTime = performance.now();
 
@@ -994,7 +995,7 @@ function initTicker() {
     function loop(now) {
         const dt = (now - lastTime) / 1000;
         lastTime = now;
-        if (!paused && !pointerIsDown && half > 0) {
+        if (!paused && !pointerIsDown && !motionOff() && half > 0) {
             x += (half / LOOP_SECONDS) * dt;
             apply();
         }
@@ -1050,28 +1051,86 @@ function initTicker() {
 
 initTicker();
 
-/* ═══ Lightbox: Bilder im Fließtext und in Galerien groß anzeigen ═══ */
+/* ═══ Lightbox: Bilder im Fließtext und in Galerien groß anzeigen ═══
+   Übergang beim Öffnen und Schließen (FLIP): Das große Bild startet genau
+   an der Stelle und in der Größe des angeklickten Vorschaubilds und gleitet
+   von dort in die Bildmitte. Ist das Vorschaubild zugeschnitten
+   (object-fit: cover), wird das große Bild anfangs passend beschnitten
+   (clip-path), damit es nicht verzerrt. Beim Schließen läuft es zurück. */
 function initLightbox() {
     let overlay = null;
+    let source = null;      // angeklicktes Vorschaubild
+    let closing = false;
+    let returnFocus = null; // Fokus nach dem Schließen zurück auf den Bildlink
+    const DURATION = 420;
+    const EASING = "cubic-bezier(0.2, 0.8, 0.2, 1)";
 
     function onKeydown(event) {
         if (event.key === "Escape") close();
     }
 
-    function close() {
-        if (!overlay) return;
-        overlay.remove();
-        overlay = null;
-        document.body.style.overflow = "";
-        document.removeEventListener("keydown", onKeydown);
+    // Transformation, die das große Bild (final) auf das Vorschaubild (thumb) legt
+    function flipFrom(thumb, final) {
+        const scale = Math.max(thumb.width / final.width, thumb.height / final.height);
+        const dx = (thumb.left + thumb.width / 2) - (final.left + final.width / 2);
+        const dy = (thumb.top + thumb.height / 2) - (final.top + final.height / 2);
+        // Sichtbarer Ausschnitt in Koordinaten des großen Bilds (ungeschnitten)
+        const insetX = Math.max(0, (final.width - thumb.width / scale) / 2);
+        const insetY = Math.max(0, (final.height - thumb.height / scale) / 2);
+        return {
+            transform: "translate(" + dx + "px, " + dy + "px) scale(" + scale + ")",
+            clipPath: "inset(" + insetY + "px " + insetX + "px)"
+        };
     }
 
-    function open(src, alt, caption) {
+    function visibleRect(el) {
+        if (!el || !el.isConnected) return null;
+        const r = el.getBoundingClientRect();
+        if (r.width < 2 || r.height < 2 || r.bottom < 0 || r.top > window.innerHeight) return null;
+        return r;
+    }
+
+    function finish() {
+        if (overlay) overlay.remove();
+        if (source) source.style.visibility = "";
+        overlay = null;
+        source = null;
+        closing = false;
+        document.body.style.overflow = "";
+        document.removeEventListener("keydown", onKeydown);
+        if (returnFocus && returnFocus.isConnected) returnFocus.focus({ preventScroll: true });
+        returnFocus = null;
+    }
+
+    function close() {
+        if (!overlay || closing) return;
+        closing = true;
+        const img = overlay.querySelector(".lightbox__figure img");
+        const extras = overlay.querySelectorAll(".lightbox__close, figcaption");
+        const thumb = visibleRect(source);
+        if (motionOff() || !img) { finish(); return; }
+
+        extras.forEach(function (el) {
+            el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 150, fill: "forwards" });
+        });
+        overlay.animate([{ backgroundColor: "rgba(0, 0, 0, 0.88)" }, { backgroundColor: "rgba(0, 0, 0, 0)" }],
+            { duration: DURATION, easing: EASING, fill: "forwards" });
+        const frames = thumb
+            ? [{ transform: "none", clipPath: "inset(0px 0px)" }, flipFrom(thumb, img.getBoundingClientRect())]
+            : [{ opacity: 1, transform: "none" }, { opacity: 0, transform: "scale(0.96)" }];
+        img.animate(frames, { duration: thumb ? DURATION : 220, easing: EASING, fill: "forwards" })
+            .finished.then(finish, finish);
+    }
+
+    function open(src, alt, caption, thumbEl) {
         if (!src) return;
-        close();
+        if (overlay) finish();
 
         overlay = document.createElement("div");
         overlay.className = "lightbox";
+        overlay.setAttribute("role", "dialog");
+        overlay.setAttribute("aria-modal", "true");
+        if (alt) overlay.setAttribute("aria-label", alt);
         overlay.innerHTML =
             '<button class="lightbox__close" aria-label="' + escapeHtml(t("lightbox.close")) + '">&times;</button>' +
             '<figure class="lightbox__figure">' +
@@ -1085,31 +1144,68 @@ function initLightbox() {
             }
         });
 
+        source = thumbEl || null;
+        returnFocus = document.activeElement;
+        const img = overlay.querySelector(".lightbox__figure img");
+        const extras = overlay.querySelectorAll(".lightbox__close, figcaption");
+        const thumb = visibleRect(source);
+        const animated = !motionOff();
+
+        if (animated) {
+            // Bis das große Bild geladen und vermessen ist, nichts zeigen
+            overlay.style.backgroundColor = "rgba(0, 0, 0, 0)";
+            img.style.opacity = "0";
+            extras.forEach(function (el) { el.style.opacity = "0"; });
+        }
+
         document.body.appendChild(overlay);
         document.body.style.overflow = "hidden";
         document.addEventListener("keydown", onKeydown);
+        overlay.querySelector(".lightbox__close").focus({ preventScroll: true });
+        if (!animated) return;
+
+        const ready = img.decode ? img.decode().catch(function () {}) : Promise.resolve();
+        ready.then(function () {
+            if (!overlay || closing) return;
+            overlay.style.backgroundColor = "";
+            img.style.opacity = "";
+            extras.forEach(function (el) { el.style.opacity = ""; });
+            overlay.animate([{ backgroundColor: "rgba(0, 0, 0, 0)" }, { backgroundColor: "rgba(0, 0, 0, 0.88)" }],
+                { duration: DURATION, easing: EASING });
+            if (thumb) {
+                if (source) source.style.visibility = "hidden";
+                img.animate([flipFrom(thumb, img.getBoundingClientRect()), { transform: "none", clipPath: "inset(0px 0px)" }],
+                    { duration: DURATION, easing: EASING });
+            } else {
+                img.animate([{ opacity: 0, transform: "scale(0.96)" }, { opacity: 1, transform: "none" }],
+                    { duration: 260, easing: EASING });
+            }
+            extras.forEach(function (el) {
+                el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200, delay: DURATION - 120, fill: "backwards" });
+            });
+        });
     }
 
     document.addEventListener("click", function (event) {
         if (!(event.target instanceof Element)) return;
 
-        // Bilder im Fließtext sind in einen Link gewickelt.
+        // Bilder im Fließtext, in Galerien und in der Case Study sind in einen Link gewickelt.
         const figureLink = event.target.closest(".post-figure__link");
         if (figureLink) {
             event.preventDefault();
             const image = figureLink.querySelector("img");
             const figure = figureLink.closest("figure");
             const caption = figure ? figure.querySelector("figcaption") : null;
-            open(figureLink.getAttribute("href"), image ? image.alt : "", caption ? caption.textContent : "");
+            open(figureLink.getAttribute("href"), image ? image.alt : "", caption ? caption.textContent : "", image);
             return;
         }
 
-        // Galeriebilder auf Projekt- und Blogseiten.
+        // Ältere Galerien ohne Link um das Bild
         const galleryImage = event.target.closest(".project-gallery__item img");
         if (galleryImage) {
             const figure = galleryImage.closest("figure");
             const caption = figure ? figure.querySelector("figcaption") : null;
-            open(galleryImage.getAttribute("src"), galleryImage.alt, caption ? caption.textContent : "");
+            open(galleryImage.getAttribute("src"), galleryImage.alt, caption ? caption.textContent : "", galleryImage);
         }
     });
 }
@@ -1117,7 +1213,6 @@ function initLightbox() {
 initLightbox();
 
 initFishScene();
-initLangToggle();
 
 /* ═══ Karten-Karussell (Kopfbereich der Startseite) ═══
    Eine Karte steht vorn, die Nachbarn schauen schräg dahinter hervor. Beim
@@ -1134,14 +1229,26 @@ initLangToggle();
     const caption = root.querySelector('.jw-flip__caption');
     const count = root.querySelector('.jw-flip__count');
     const n = cards.length;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-
     root.classList.add('is-ready');
     if (n < 2) return;
 
     let pos = 0;
     let frame = null;
     let current = -1;
+
+    // Neigung der vorderen Karte zum Zeiger (Tilt). Feder: Die Karte läuft dem
+    // Ziel mit etwas Schwung hinterher und pendelt weich aus.
+    const TILT_MAX = 12;        // Grad in jede Richtung
+    const tilt = { x: 0, y: 0, vx: 0, vy: 0, tx: 0, ty: 0, gx: 50, gy: 50 };
+    let tiltFrame = null;
+
+    // Glanz-Ebene in jeder Karte, folgt dem Zeiger
+    cards.forEach(function (card) {
+        const shine = document.createElement('span');
+        shine.className = 'jw-flip__shine';
+        shine.setAttribute('aria-hidden', 'true');
+        card.appendChild(shine);
+    });
 
     // Kürzester Abstand im Kreis, damit nach der letzten Karte die erste kommt
     function wrap(d) {
@@ -1172,7 +1279,7 @@ initLangToggle();
             const side = Math.sign(d);
             let x, rot, z, opacity;
 
-            if (reduce.matches) {
+            if (motionOff()) {
                 // Ruhige Variante: nur die aktuelle Karte, ohne 3D
                 x = 0; rot = 0; z = 0; opacity = a < 0.5 ? 1 : 0;
             } else if (a <= 1) {
@@ -1190,7 +1297,17 @@ initLangToggle();
                 opacity = 1 - t;
             }
 
-            card.style.transform = 'translateX(' + x.toFixed(2) + '%) translateZ(' + z.toFixed(1) + 'px) rotateY(' + rot.toFixed(2) + 'deg)';
+            // Tilt nur für die Karte vorn, beim Weiterblättern blendet er aus
+            const w = Math.max(0, 1 - a * 2);
+            let extra = '';
+            if (w > 0 && (tilt.x || tilt.y)) {
+                extra = ' translateZ(' + (24 * w).toFixed(1) + 'px) rotateX(' + (tilt.x * w).toFixed(2) + 'deg) rotateY(' + (tilt.y * w).toFixed(2) + 'deg)';
+            }
+            card.style.transform = 'translateX(' + x.toFixed(2) + '%) translateZ(' + z.toFixed(1) + 'px) rotateY(' + rot.toFixed(2) + 'deg)' + extra;
+            const strength = w * Math.min(1, Math.hypot(tilt.x, tilt.y) / TILT_MAX);
+            card.style.setProperty('--jw-shine', strength.toFixed(3));
+            card.style.setProperty('--jw-gx', tilt.gx.toFixed(1) + '%');
+            card.style.setProperty('--jw-gy', tilt.gy.toFixed(1) + '%');
             card.style.opacity = opacity.toFixed(3);
             card.style.zIndex = String(100 - Math.round(a * 10));
             card.style.visibility = opacity <= 0.01 ? 'hidden' : 'visible';
@@ -1213,7 +1330,7 @@ initLangToggle();
         cancelAnimationFrame(frame);
         const from = pos;
         const distance = target - from;
-        if (reduce.matches || distance === 0) {
+        if (motionOff() || distance === 0) {
             pos = target;
             render();
             return;
@@ -1230,33 +1347,12 @@ initLangToggle();
         frame = requestAnimationFrame(step);
     }
 
-    // Automatisch weiterblättern – pausiert bei Hover, Fokus, Ziehen,
-    // außerhalb des sichtbaren Bereichs und bei „Bewegung reduzieren“
-    let timer = null;
-    let resumeTimer = null;
-    let paused = false;
-    let inView = true;
+    // Geblättert wird nur auf Wunsch: Pfeile, Pfeiltasten, Ziehen oder Klick
+    // auf eine Nachbarkarte. Kein automatisches Weiterlaufen.
     let drag = null;
 
-    function startAuto() {
-        if (timer || reduce.matches) return;
-        timer = setInterval(function () {
-            if (!paused && inView && !document.hidden && !drag) animateTo(Math.round(pos) + 1);
-        }, 5000);
-    }
-    function stopAuto() {
-        clearInterval(timer);
-        timer = null;
-        clearTimeout(resumeTimer);
-    }
-    function resumeLater() {
-        clearTimeout(resumeTimer);
-        resumeTimer = setTimeout(startAuto, 6000);
-    }
     function go(delta) {
-        stopAuto();
         animateTo(Math.round(pos) + delta);
-        resumeLater();
     }
 
     root.querySelector('[data-flip-prev]').addEventListener('click', function () { go(-1); });
@@ -1273,7 +1369,6 @@ initLangToggle();
     stage.addEventListener('pointerdown', function (event) {
         if (event.button !== 0) return;
         cancelAnimationFrame(frame);
-        stopAuto();
         drag = { id: event.pointerId, x: event.clientX, start: pos, moved: false, last: event.clientX, lastTime: event.timeStamp, speed: 0 };
     });
 
@@ -1308,7 +1403,6 @@ initLangToggle();
             stage.dataset.dragged = '1';
             setTimeout(function () { delete stage.dataset.dragged; }, 80);
         }
-        resumeLater();
     }
     stage.addEventListener('pointerup', endDrag);
     stage.addEventListener('pointercancel', endDrag);
@@ -1325,38 +1419,61 @@ initLangToggle();
         }
     });
 
-    root.addEventListener('mouseenter', function () { paused = true; });
-    root.addEventListener('mouseleave', function () { paused = false; });
-    root.addEventListener('focusin', function () { paused = true; });
-    root.addEventListener('focusout', function () { paused = false; });
-
-    if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (entries) {
-            inView = entries[0].isIntersecting;
-        }).observe(root);
+    // ── Tilt ──
+    function tiltStep() {
+        // Gedämpfte Feder: Beschleunigung zum Ziel, Reibung bremst
+        tilt.vx = (tilt.vx + (tilt.tx - tilt.x) * 0.12) * 0.74;
+        tilt.vy = (tilt.vy + (tilt.ty - tilt.y) * 0.12) * 0.74;
+        tilt.x += tilt.vx;
+        tilt.y += tilt.vy;
+        const settled = Math.abs(tilt.tx - tilt.x) < 0.02 && Math.abs(tilt.ty - tilt.y) < 0.02 &&
+            Math.abs(tilt.vx) < 0.02 && Math.abs(tilt.vy) < 0.02;
+        if (settled) { tilt.x = tilt.tx; tilt.y = tilt.ty; }
+        render();
+        tiltFrame = settled ? null : requestAnimationFrame(tiltStep);
     }
 
-    if (reduce.addEventListener) {
-        reduce.addEventListener('change', function () {
-            stopAuto();
-            pos = Math.round(pos);
-            render();
-            startAuto();
+    function setTilt(rx, ry) {
+        tilt.tx = rx;
+        tilt.ty = ry;
+        if (!tiltFrame) tiltFrame = requestAnimationFrame(tiltStep);
+    }
+
+    {
+        // Nur mit Maus/Stift – auf Touch würde der Tilt beim Wischen stören
+        stage.addEventListener('pointermove', function (event) {
+            if (event.pointerType === 'touch' || drag || motionOff() || current < 0) return;
+            const r = cards[current].getBoundingClientRect();
+            // -1 … 1 relativ zur Kartenmitte, außerhalb der Karte begrenzt
+            const px = Math.max(-1, Math.min(1, ((event.clientX - r.left) / r.width) * 2 - 1));
+            const py = Math.max(-1, Math.min(1, ((event.clientY - r.top) / r.height) * 2 - 1));
+            tilt.gx = (px + 1) * 50;
+            tilt.gy = (py + 1) * 50;
+            setTilt(-py * TILT_MAX, px * TILT_MAX);
         });
+        stage.addEventListener('pointerleave', function () { setTilt(0, 0); });
+        stage.addEventListener('pointerdown', function () { setTilt(0, 0); });
     }
+
+    document.addEventListener('jw-motion-change', function () {
+        cancelAnimationFrame(frame);
+        cancelAnimationFrame(tiltFrame);
+        tiltFrame = null;
+        tilt.x = tilt.y = tilt.tx = tilt.ty = tilt.vx = tilt.vy = 0;
+        pos = Math.round(pos);
+        render();
+    });
 
     render();
-    startAuto();
 })();
 
 /* ═══ Animationen: Sektions-Aufbau, Filter-Übergänge, Überschriften ═══
-   Alle drei bleiben aus, wenn im System „Bewegung reduzieren“ aktiv ist.
+   Alle bleiben still, wenn Animationen aus sind (motionOff(): Schalter im
+   Header oder Systemeinstellung „Bewegung reduzieren“).
    Ohne JavaScript ist die Seite vollständig sichtbar – die Ausgangszustände
    (z. B. unsichtbare Linien) setzt erst das Skript über Klassen. */
 (function () {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (reduce) return;
 
     /* ── 2. Sektionen bauen sich auf: Linie zieht sich auf, Label „entschlüsselt“ sich ── */
     const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/#_<>*';
@@ -1410,7 +1527,7 @@ initLangToggle();
                     if (el.classList.contains('is-revealed')) return;
                     el.classList.add('is-revealed');
                     const label = el.matches('.jw-label') ? el : el.querySelector('.jw-label');
-                    if (label) scramble(label);
+                    if (label && !motionOff()) scramble(label);
                     return;
                 }
                 // Verlässt die Sektion den Bildschirm nach unten (man scrollt hoch),
@@ -1436,7 +1553,7 @@ initLangToggle();
         }
         // Capture-Phase: läuft vor den eigentlichen Filter-Handlern
         bar.addEventListener('click', function (event) {
-            if (!event.target.closest('.filter-btn')) return;
+            if (!event.target.closest('.filter-btn') || motionOff()) return;
             const before = new Map();
             Array.from(list.children).forEach(function (li) {
                 before.set(li, isShown(li) ? li.getBoundingClientRect() : null);
@@ -1489,54 +1606,57 @@ initLangToggle();
         let rects = [];
         let pointer = null;
         let frame = null;
-        let splitting = false;
-
-        // Übersetzte Teile einzeln zerlegen; ohne Übersetzung die ganze Überschrift
-        function words() {
-            if (title.matches('[data-en]') || !title.querySelector('[data-en]')) return [title];
-            return Array.from(title.querySelectorAll('[data-en]'));
-        }
 
         function settings(v) {
             return '"wght" ' + v.wght.toFixed(0) + ', "wdth" ' + v.wdth.toFixed(1);
         }
 
-        // Wörter in einzelne Buchstaben zerlegen; Screenreader lesen den Text am Stück
+        // Jeden Textabschnitt der Überschrift in einzelne Buchstaben zerlegen.
+        // Zeilenumbrüche (<br>) und Auszeichnungen wie das farbige „&“ bleiben
+        // erhalten. Screenreader lesen den Text am Stück (jw-sr-only).
         function split() {
-            splitting = true;
-            words().forEach(function (part) {
-                if (part.querySelector('.jw-letters')) return;
-                const text = part.textContent;
-                part.textContent = '';
+            const walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT);
+            const nodes = [];
+            while (walker.nextNode()) {
+                if (walker.currentNode.nodeValue.trim()) nodes.push(walker.currentNode);
+            }
+            nodes.forEach(function (node) {
+                const text = node.nodeValue;
+                const frag = document.createDocumentFragment();
                 const sr = document.createElement('span');
                 sr.className = 'jw-sr-only';
                 sr.textContent = text;
                 const visual = document.createElement('span');
                 visual.className = 'jw-letters';
                 visual.setAttribute('aria-hidden', 'true');
-                text.split(/( +)/).forEach(function (chunk) {
+                text.split(/(\s+)/).forEach(function (chunk) {
                     if (!chunk) return;
                     // Leerzeichen als normaler Text: dort darf die Zeile umbrechen
                     if (chunk.trim() === '') { visual.appendChild(document.createTextNode(chunk)); return; }
-                    // Ein Wort bleibt zusammen, damit es nie zwischen zwei Buchstaben umbricht
-                    const word = document.createElement('span');
-                    word.className = 'jw-word';
-                    Array.from(chunk).forEach(function (ch) {
-                        const letter = document.createElement('span');
-                        letter.className = 'jw-letter';
-                        letter.textContent = ch;
-                        letter.current = { wght: BASE.wght, wdth: BASE.wdth };
-                        letter.style.fontVariationSettings = settings(BASE);
-                        word.appendChild(letter);
+                    // Ein Wort bleibt zusammen, damit es nie zwischen zwei Buchstaben
+                    // umbricht. Nach einem Bindestrich darf die Zeile weiterhin
+                    // umbrechen (<wbr>), z. B. bei „Medienkompetenz-Game-Jam“.
+                    chunk.split(/(?<=-)/).forEach(function (part, i) {
+                        if (i > 0) visual.appendChild(document.createElement('wbr'));
+                        const word = document.createElement('span');
+                        word.className = 'jw-word';
+                        Array.from(part).forEach(function (ch) {
+                            const letter = document.createElement('span');
+                            letter.className = 'jw-letter';
+                            letter.textContent = ch;
+                            letter.current = { wght: BASE.wght, wdth: BASE.wdth };
+                            letter.style.fontVariationSettings = settings(BASE);
+                            word.appendChild(letter);
+                        });
+                        visual.appendChild(word);
                     });
-                    visual.appendChild(word);
                 });
-                part.appendChild(sr);
-                part.appendChild(visual);
+                frag.appendChild(sr);
+                frag.appendChild(visual);
+                node.replaceWith(frag);
             });
             letters = Array.from(title.querySelectorAll('.jw-letter'));
             rects = [];
-            splitting = false;
         }
 
         function measure() {
@@ -1553,7 +1673,7 @@ initLangToggle();
             let moving = false;
             letters.forEach(function (letter, i) {
                 let k = 0;
-                if (pointer && rects[i]) {
+                if (pointer && rects[i] && !motionOff()) {
                     const dx = pointer.x - rects[i].x;
                     const dy = pointer.y - rects[i].y;
                     const d = Math.sqrt(dx * dx + dy * dy);
@@ -1582,102 +1702,8 @@ initLangToggle();
         window.addEventListener('scroll', function () { rects = []; }, { passive: true });
         window.addEventListener('resize', function () { rects = []; });
 
-        // Beim Sprachwechsel ersetzt applyTranslations den Text – danach neu zerlegen
-        new MutationObserver(function () {
-            if (splitting) return;
-            const unsplit = words().some(function (part) {
-                return !part.querySelector('.jw-letters');
-            });
-            if (unsplit) {
-                split();
-                if (!frame) frame = requestAnimationFrame(tick);
-            }
-        }).observe(title, { childList: true, subtree: true });
-
         split();
     }
-})();
-
-/* ═══ Kein Springen beim Sprachwechsel ═══
-   Deutsche und englische Texte sind unterschiedlich lang. Damit beim
-   Umschalten nichts verrutscht, misst die Seite jeden Textblock in beiden
-   Sprachen und gibt ihm die Höhe der längeren Fassung (min-height).
-   Neu gemessen wird, wenn sich die Fensterbreite ändert. */
-function setLangTextsForMeasure(lang) {
-    document.querySelectorAll('[data-en]').forEach(function (el) {
-        el.textContent = lang === 'de' && el.dataset.de ? el.dataset.de : el.dataset.en;
-    });
-    document.querySelectorAll('[data-lang-show]').forEach(function (el) {
-        el.hidden = el.dataset.langShow !== lang;
-    });
-}
-
-function lockBilingualHeights() {
-    const blocks = new Set();
-    function nearestBlock(el) {
-        let box = el;
-        while (box && box !== document.body) {
-            const display = getComputedStyle(box).display;
-            if (display !== 'inline' && display !== 'contents' && display !== 'none') return box;
-            box = box.parentElement;
-        }
-        return null;
-    }
-    function add(box) {
-        if (box && box !== document.body && !box.closest('.ticker-band')) blocks.add(box);
-    }
-    // Einzelne Texte: der umgebende Block
-    document.querySelectorAll('[data-en][data-de]').forEach(function (el) {
-        if (el.dataset.en !== el.dataset.de) add(nearestBlock(el));
-    });
-    // Paare (z. B. deutsche/englische Beschreibung, Datum): der gemeinsame Elternblock
-    document.querySelectorAll('[data-lang-show]').forEach(function (el) {
-        add(nearestBlock(el.parentElement));
-    });
-    // Zeilen, die je nach Textlänge umbrechen
-    document.querySelectorAll('.jw-cta__inner, .jw-feature__body, .jw-detail-head__row, .jw-page-head__row, .jw-pager').forEach(add);
-
-    const list = Array.from(blocks);
-    list.forEach(function (box) { box.style.minHeight = ''; });
-
-    const heights = new Map();
-    ['en', 'de'].forEach(function (lang) {
-        setLangTextsForMeasure(lang);
-        list.forEach(function (box) {
-            const h = box.getBoundingClientRect().height;
-            heights.set(box, Math.max(heights.get(box) || 0, h));
-        });
-    });
-    setLangTextsForMeasure(currentLang);
-
-    list.forEach(function (box) {
-        const h = heights.get(box);
-        if (h) box.style.minHeight = Math.ceil(h) + 'px';
-    });
-}
-
-(function () {
-    let timer;
-    function schedule() {
-        clearTimeout(timer);
-        timer = setTimeout(lockBilingualHeights, 150);
-    }
-    // Erst messen, wenn die Schriften geladen sind – sonst stimmen die Höhen nicht.
-    if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(lockBilingualHeights);
-    } else {
-        window.addEventListener('load', lockBilingualHeights);
-    }
-    // Nachgeladene Bilder (z. B. im Blogtext) verändern Höhen – danach neu messen.
-    document.addEventListener('load', function (event) {
-        if (event.target && event.target.tagName === 'IMG') schedule();
-    }, true);
-    let lastWidth = window.innerWidth;
-    window.addEventListener('resize', function () {
-        if (window.innerWidth === lastWidth) return; // Mobile: Adressleiste ändert nur die Höhe
-        lastWidth = window.innerWidth;
-        schedule();
-    });
 })();
 
 /* ═══ Zwei-Klick-Einbettungen ═══

@@ -5,17 +5,18 @@ slug: Audio-Dingo-Synth
 category: '[Electronic] 2026'
 order: 2
 cover_image: Images/Audiodingo/audiodingostanding.webp
-cover_image_alt: Audio Dingo Synth finished device
+cover_image_alt: "The finished Audio Dingo synthesizer standing upright"
+cover_image_alt_de: "Der fertige Audio-Dingo-Synthesizer, aufrecht stehend"
 summary_card: Arduino Uno R4 Minima based synthesizer with buttons, encoders, OLED display and joystick.
 summary_card_de: Auf dem Arduino Uno R4 Minima basierender Synthesizer mit Tasten, Encodern, OLED-Display und Joystick.
 summary: |-
   Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing notes or chords, with both rotary knobs the sound can be modulated, one changes the octave the other changes the waveform. With the joystick you can control the tone of the sound and the 3 control buttons are for recording, playback and magic functions.
 
-  wrote a bit more about the [development process in a blog post](https://janwestphal.dev/blog/hello-blog/), and there´s also a public [Github repository](https://github.com/JanWestphal91/Audio-Dingo-Synth).
+  I wrote a bit more about the [development process in a blog post](https://janwestphal.dev/blog/hello-blog/), and there’s also a public [GitHub repository](https://github.com/JanWestphal91/Audio-Dingo-Synth).
 summary_de: |-
   Entwickelt mit einem Arduino Uno R4 Minima. Er hat 10 Tasten, 2 Drehencoder, ein kleines OLED-Display und einen Joystick. Die 7 Tasten unten dienen zum Spielen von Noten oder Akkorden; mit den Encodern lässt sich der Sound modulieren – einer wechselt die Oktave, der andere die Wellenform. Mit dem Joystick steuert man die Tonhöhe, die 3 Steuertasten übernehmen Aufnahme, Wiedergabe und Sonderfunktionen.
 
-  Ich habe in meinem [Blog Beitrag](https://janwestphal.dev/blog/hello-blog/) noch etwas mehr über den Entwicklungsprozess geschrieben und das [Github Repository](https://github.com/JanWestphal91/Audio-Dingo-Synth) ist auch öffentlich.
+  In meinem [Blogbeitrag](https://janwestphal.dev/blog/hello-blog/) habe ich noch etwas mehr über den Entwicklungsprozess geschrieben, und das [GitHub-Repository](https://github.com/JanWestphal91/Audio-Dingo-Synth) ist auch öffentlich.
 meta:
   - Electronic
   - Prototype
@@ -26,7 +27,8 @@ meta_de:
   - Audio
 images:
   - src: Images/Audiodingo/standingdingo.webp
-    alt: Audio Dingo Synth front view
+    alt: "Audio Dingo from the front: grey case with an orange speaker grille, two orange knobs, black keys and a small OLED display"
+    alt_de: "Audio Dingo von vorn: graues Gehäuse mit orangem Lautsprechergitter, zwei orangen Drehknöpfen, schwarzen Tasten und kleinem OLED-Display"
     caption: The finished enclosure, front view.
     caption_de: Das fertige Gehäuse, Frontalansicht.
 embed: <iframe width="560" height="315" src="https://www.youtube.com/embed/iitkykF2S_k?si=r0XPnJhy53a7T4wm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

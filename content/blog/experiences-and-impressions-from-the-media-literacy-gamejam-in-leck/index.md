@@ -1,19 +1,20 @@
 ---
 published: true
-title: Experiences and impressions from the Media Literacy Gamejam in Leck
-title_de: Erfahrungen und Eindrücke von der Medienkompetenz GameJam in Leck
+title: Experiences and impressions from the Media Literacy Game Jam in Leck
+title_de: Erfahrungen und Eindrücke vom Medienkompetenz-Game-Jam in Leck
 date: 2026-08-20
 description: I attended a game jam over the weekend and write about it.
-description_de: Ich war auf einer Gamejam übers Wochenende und berichte darüber.
+description_de: Ich war ein Wochenende lang auf einem Game Jam und berichte darüber.
 cover_image: /Images/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/gamejamwork.webp
-cover_image_alt: wip
+cover_image_alt: "Work table at the game jam with laptops, snacks and paper prototypes"
+cover_image_alt_de: "Arbeitstisch beim Game Jam mit Laptops, Snacks und Papierprototypen"
 tags:
-  - Game Dev, Design, Prototyping, Gamejam, if(game)SH e.V., Media Literacy
+  - Game Dev, Design, Prototyping, Game Jam, if(game)SH e.V., Media Literacy
 images: []
 body_de: |-
-  Erstmal vorab, hier sind [alle Spiele die während der Gamejam entstanden sind](https://itch.io/c/7976774/meko-jam-2026-between-the-lines) in einer Kollektion.
+  Erstmal vorab, hier sind [alle Spiele die während des Game Jams entstanden sind](https://itch.io/c/7976774/meko-jam-2026-between-the-lines) in einer Kollektion.
 
-  Die Gamejam wurde vom IF(game)SH Verein organisiert, besonders von einer Handvoll engagierter (ehrenamtliche!) Leute die sich lange vorher um die ganze Orga und Finanzierung gekümmert haben. Die Gamejam wurde auch mit Fördergeldern unterstützt, wodurch das Ganze überhaupt erst möglich wurde, wir waren ungefähr 30-40 Teilnehmende und hatten eine Vollverpflegung  und Unterkunft. Dadurch, dass es auch eine Kollaboration mit dänischen Entwickelnden gab waren wir ein bunt gemischter Haufen. 
+  Der Game Jam wurde vom IF(game)SH Verein organisiert, besonders von einer Handvoll engagierter (ehrenamtliche!) Leute die sich lange vorher um die ganze Orga und Finanzierung gekümmert haben. Der Game Jam wurde auch mit Fördergeldern unterstützt, wodurch das Ganze überhaupt erst möglich wurde, wir waren ungefähr 30-40 Teilnehmende und hatten eine Vollverpflegung  und Unterkunft. Dadurch, dass es auch eine Kollaboration mit dänischen Entwickelnden gab waren wir ein bunt gemischter Haufen. 
 
   Am Freitag gab es erstmal einiges an Input, es gab einen Workshop mit drei Stationen zu den Themen: Topics of Media Literacy, Effects of Media und Gender and Identity. Dazu gab es dann noch drei Impulsvorträge in denen tiefer auf die Themen eingegangen wurde. 
 

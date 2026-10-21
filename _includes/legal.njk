@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+{#- Seitenname je Sprache aus den Footer-Texten (Impressum/Imprint, Datenschutz/Privacy) #}
+{%- set legalName = global.footer.imprint if page.fileSlug == "impressum" else global.footer.privacy %}
 <html lang="de">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }} – Jan Westphal</title>
+    <title data-en="{{ legalName.en }} – Jan Westphal" data-de="{{ legalName.de }} – Jan Westphal">{{ legalName.en }} – Jan Westphal</title>
     <meta name="robots" content="noindex, follow" />
 {% include "partials/head-assets.njk" %}
 </head>
@@ -13,17 +15,17 @@
 {%- set active = "legal" %}
 {% include "partials/site-header.njk" %}
 
-<main>
+<main id="main" tabindex="-1">
     <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
         <p class="jw-label">[ <span {% i18n lg.label %}>{{ lg.label.en }}</span> ]</p>
         <div class="jw-page-head__row">
-            <h1 id="jw-page-title">{{ title }}</h1>
+            <h1 id="jw-page-title" {% i18n legalName %}>{{ legalName.en }}</h1>
             <p class="jw-page-head__intro" data-lang-show="en">{{ lg.english_notice }}</p>
         </div>
     </section>
 
     <article class="jw-wrap jw-page-body">
-        <div class="jw-legal">
+        <div class="jw-legal" lang="de">
             {{ content | safe }}
             {%- if stand %}
             <p class="jw-legal__stand">{{ lg.stand_label }}: {{ stand }}</p>

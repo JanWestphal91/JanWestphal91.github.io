@@ -15,7 +15,13 @@ eleventyExcludeFromCollections: true
         "contact.network-error": c.network_error.en,
         "contact.fallback": c.fallback.en,
         "lightbox.close": ui.lightbox_close.en,
-        "filter.all": ui.filter_all.en
+        "filter.all": ui.filter_all.en,
+        "filter.count": ui.filter_count.en,
+        "filter.count_one": ui.filter_count_one.en,
+        "contact.invalid_name": c.invalid_name.en,
+        "contact.invalid_email_missing": c.invalid_email_missing.en,
+        "contact.invalid_email": c.invalid_email.en,
+        "contact.invalid_message": c.invalid_message.en
     },
     de: {
         "contact.submit.sending": c.sending.de or c.sending.en,
@@ -24,7 +30,13 @@ eleventyExcludeFromCollections: true
         "contact.network-error": c.network_error.de or c.network_error.en,
         "contact.fallback": c.fallback.de or c.fallback.en,
         "lightbox.close": ui.lightbox_close.de or ui.lightbox_close.en,
-        "filter.all": ui.filter_all.de or ui.filter_all.en
+        "filter.all": ui.filter_all.de or ui.filter_all.en,
+        "filter.count": ui.filter_count.de or ui.filter_count.en,
+        "filter.count_one": ui.filter_count_one.de or ui.filter_count_one.en,
+        "contact.invalid_name": c.invalid_name.de or c.invalid_name.en,
+        "contact.invalid_email_missing": c.invalid_email_missing.de or c.invalid_email_missing.en,
+        "contact.invalid_email": c.invalid_email.de or c.invalid_email.en,
+        "contact.invalid_message": c.invalid_message.de or c.invalid_message.en
     }
 } -%}
 window.TRANSLATIONS = {{ dict | dump | safe }};

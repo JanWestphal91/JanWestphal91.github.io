@@ -6,21 +6,19 @@ eleventyExcludeFromCollections: true
     Social-Profile: _data/socials.json (CMS: Social-Profile). -#}
 {%- set pg = pages.links -%}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ pg.seo.title }}</title>
-    <meta name="description" content="{{ pg.seo.description }}" />
+    <title {% i18n pg.seo.title %}>{{ pg.seo.title.en }}</title>
+    <meta name="description" {% i18n pg.seo.description, "content" %} content="{{ pg.seo.description.en }}" />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://janwestphal.dev/links/" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://janwestphal.dev/links/" />
     <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="{{ pg.seo.title }}" />
-    <meta property="og:description" content="{{ pg.seo.share_description or pg.seo.description }}" />
+    <meta property="og:title" {% i18n pg.seo.title, "content" %} content="{{ pg.seo.title.en }}" />
+    <meta property="og:description" {% i18n pg.seo.share_description, "content" %} content="{{ pg.seo.share_description.en }}" />
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
 {% include "partials/head-assets.njk" %}
 </head>
@@ -28,7 +26,7 @@ eleventyExcludeFromCollections: true
 {%- set active = "links" %}
 {% include "partials/site-header.njk" %}
 
-<main class="jw-links">
+<main id="main" tabindex="-1" class="jw-links">
     <header class="jw-links__head">
         {%- if pg.photo %}
         <img class="jw-links__photo" src="{{ pg.photo | imgPath }}" alt="{{ pg.photo_alt.en }}" {% i18n pg.photo_alt, "alt" %} width="96" height="96">

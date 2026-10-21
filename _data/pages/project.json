@@ -34,5 +34,29 @@
   "back": {
     "en": "Back to index",
     "de": "Zur Übersicht"
+  },
+  "case_label": {
+    "en": "Fact sheet",
+    "de": "Steckbrief"
+  },
+  "role": {
+    "en": "Role",
+    "de": "Rolle"
+  },
+  "duration": {
+    "en": "Time frame",
+    "de": "Zeitraum"
+  },
+  "tools": {
+    "en": "Tools",
+    "de": "Werkzeuge"
+  },
+  "hardware": {
+    "en": "Hardware",
+    "de": "Hardware"
+  },
+  "links": {
+    "en": "Links",
+    "de": "Links"
   }
 }

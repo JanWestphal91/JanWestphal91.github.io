@@ -1,7 +1,13 @@
 {
   "seo": {
-    "title": "Blog – Jan Westphal",
-    "description": "Thoughts, process notes and updates by Jan Westphal – Creative Coder & Designer from Kiel."
+    "title": {
+      "de": "Blog – Jan Westphal",
+      "en": "Blog – Jan Westphal"
+    },
+    "description": {
+      "de": "Gedanken, Prozessnotizen und Neuigkeiten von Jan Westphal – Creative Coder und Designer aus Kiel.",
+      "en": "Thoughts, process notes and updates by Jan Westphal – Creative Coder & Designer from Kiel."
+    }
   },
   "count_label": {
     "en": "posts",

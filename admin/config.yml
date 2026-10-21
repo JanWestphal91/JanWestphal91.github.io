@@ -288,14 +288,98 @@ collections:
         - label: Englisch
           name: en
           widget: string
+      - label: Skip-Link (erstes Element, nur per Tastatur sichtbar)
+        name: skip_link
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Schalter Animationen – Beschriftung
+        name: motion_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Schalter Animationen – kurze Beschriftung (Handy)
+        name: motion_label_short
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Schalter Animationen – Zustand an
+        name: motion_on
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Schalter Animationen – Zustand aus
+        name: motion_off
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Filter: Anzahl bei einem Projekt'
+        name: filter_count_one
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Filter: Anzahl bei mehreren Projekten'
+        name: filter_count
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: '{n} wird durch die Zahl ersetzt, z. B. „{n} Projekte“.'
     - label: Kategorien (Übersetzung)
       name: categories
       widget: list
       label_singular: Kategorie
       collapsed: true
       summary: '{{fields.key}} → {{fields.de}}'
-      hint: Übersetzt die Kategorien aus den Projekten (z. B. „[Electronic, Game] 2026“) für Filter und
-        Projektlisten.
+      hint: Übersetzt die Kategorien aus den Projekten (z. B. „[Electronic, Game] 2026“) für Filter und Projektlisten.
       fields:
       - label: Schlüssel wie im Projekt
         name: key
@@ -332,12 +416,29 @@ collections:
           widget: string
       - label: Beschreibung
         name: description
-        widget: text
-        hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst. Am besten 140–160
-          Zeichen, auf Deutsch.
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
+        hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst. Am besten 140–160 Zeichen je Sprache.
       - label: Titel in Link-Vorschauen
         name: share_title
-        widget: string
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
       hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst.
     - label: Kopfbereich
       name: hero
@@ -405,41 +506,46 @@ collections:
         - label: Englisch
           name: en
           widget: text
-      - label: Karten-Karussell (Bilder rechts)
+      - label: 'Karten-Karussell: Lieblingsprojekte'
         name: images
         widget: list
-        label_singular: Bild
+        label_singular: Projekt
         collapsed: true
-        summary: '{{fields.title}}'
+        summary: '{{fields.project}}'
         required: false
-        hint: 4–6 Karten wirken am besten. Reihenfolge per Drag & Drop. Querformat-Bilder mit ruhigem
-          Hintergrund.
+        hint: 3–4 Projekte wirken am besten. Reihenfolge per Drag & Drop. Projekte, die hier stehen, erscheinen unter „Weitere Projekte“ nicht noch einmal.
         fields:
+        - label: Projekt
+          name: project
+          widget: relation
+          collection: projects
+          value_field: slug
+          search_fields:
+          - title
+          display_fields:
+          - title
+          hint: Titel und Link der Karte kommen vom Projekt.
         - label: Bild
           name: image
           widget: image
-        - label: Titel unter der Karte
-          name: title
-          widget: string
-          hint: z. B. der Projektname
+          required: false
+          hint: Leer lassen, um das Coverbild des Projekts zu nehmen. Hochformat passt am besten zur Kartenform.
         - label: Alt-Text
           name: alt
           widget: object
-          collapsed: false
+          required: false
+          collapsed: true
           summary: '{{fields.de}}'
+          hint: Beschreibung für Screenreader. Leer lassen, um den Alt-Text des Coverbilds zu nehmen.
           fields:
           - label: Deutsch
             name: de
             widget: string
+            required: false
           - label: Englisch
             name: en
             widget: string
-          hint: Beschreibung für Screenreader.
-        - label: Link
-          name: link
-          widget: string
-          required: false
-          hint: z. B. /projects/pocket-knight/ – Titel und Karte verlinken dorthin.
+            required: false
       - label: Karussell – Name für Screenreader
         name: carousel_label
         widget: object
@@ -505,19 +611,6 @@ collections:
         - label: Englisch
           name: en
           widget: string
-      - label: Neuestes – Bezeichnung
-        name: latest_label
-        widget: object
-        collapsed: false
-        summary: '{{fields.de}}'
-        fields:
-        - label: Deutsch
-          name: de
-          widget: string
-        - label: Englisch
-          name: en
-          widget: string
-        hint: Das neueste Projekt wird automatisch eingesetzt.
     - label: 01 Projekte
       name: projects
       widget: object
@@ -559,6 +652,7 @@ collections:
         - label: Englisch
           name: en
           widget: string
+      hint: Hier erscheinen alle Projekte, die nicht schon im Karten-Karussell stehen.
     - label: 02 Über mich
       name: about
       widget: object
@@ -684,8 +778,7 @@ collections:
         - label: Englisch
           name: en
           widget: text
-        hint: Alle Absätze erscheinen gleich groß, auf dem Desktop in zwei Spalten. Reihenfolge per Drag
-          & Drop.
+        hint: Alle Absätze erscheinen gleich groß, auf dem Desktop in zwei Spalten. Reihenfolge per Drag & Drop.
     - label: 03 Werdegang
       name: path
       widget: object
@@ -807,6 +900,23 @@ collections:
         widget: list
         hint: Eine Sprache pro Eintrag; leer lassen blendet den Block aus.
         required: false
+      - label: Programmiersprachen – Überschrift Grundlagen
+        name: languages_basic_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Programmiersprachen – Grundlagen
+        name: languages_basic
+        widget: list
+        required: false
+        hint: Sprachen, die du kennst, aber noch nicht sicher beherrschst. Erscheinen getrennt unter „Grundlagen“.
       - label: Überschrift Kurse
         name: courses_heading
         widget: object
@@ -1108,6 +1218,54 @@ collections:
         - label: Englisch
           name: en
           widget: string
+      - label: 'Fehler: Name fehlt'
+        name: invalid_name
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Fehler: E-Mail fehlt'
+        name: invalid_email_missing
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Fehler: E-Mail ungültig'
+        name: invalid_email
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: 'Fehler: Nachricht fehlt'
+        name: invalid_message
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
       - label: Ersatz-Link bei Fehlern
         name: fallback
         widget: object
@@ -1172,10 +1330,28 @@ collections:
       fields:
       - label: Seitentitel
         name: title
-        widget: string
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
       - label: Beschreibung
         name: description
-        widget: text
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
       hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst.
     - label: Zähler-Wort
       name: count_label
@@ -1328,6 +1504,78 @@ collections:
       - label: Englisch
         name: en
         widget: string
+    - label: 'Case Study: Überschrift Steckbrief'
+      name: case_label
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Case Study: Rolle'
+      name: role
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Case Study: Zeitraum'
+      name: duration
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Case Study: Werkzeuge'
+      name: tools
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Case Study: Hardware'
+      name: hardware
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Case Study: Links'
+      name: links
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
   - name: blog_page
     label: Blog-Übersicht
     file: _data/pages/blog.json
@@ -1341,10 +1589,28 @@ collections:
       fields:
       - label: Seitentitel
         name: title
-        widget: string
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
       - label: Beschreibung
         name: description
-        widget: text
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
       hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst.
     - label: Zähler-Wort
       name: count_label
@@ -1510,14 +1776,40 @@ collections:
       fields:
       - label: Seitentitel
         name: title
-        widget: string
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
       - label: Beschreibung
         name: description
-        widget: text
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
       - label: Beschreibung in Link-Vorschauen
         name: share_description
-        widget: text
-        required: false
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
       hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst.
     - label: Foto
       name: photo
@@ -1871,18 +2163,17 @@ collections:
     widget: number
     default: 10
     hint: Kleinere Zahl = weiter vorne
-  - label: Auf der Startseite hervorheben
-    name: featured
-    widget: boolean
-    default: false
-    required: false
-    hint: An = erscheint als große Karte oben auf der Startseite (höchstens zwei Projekte).
   - label: Coverbild
     name: cover_image
     widget: image
-  - label: Coverbild Alt-Text
+  - label: Coverbild Alt-Text (EN)
     name: cover_image_alt
     widget: string
+    hint: Beschreibt, was auf dem Bild zu sehen ist – für Screenreader und wenn das Bild nicht lädt. Auf Übersichtsseiten wird es nicht vorgelesen, weil der Linktext den Titel schon nennt.
+  - label: Coverbild Alt-Text (DE)
+    name: cover_image_alt_de
+    widget: string
+    required: false
   - label: Kurzbeschreibung (EN)
     name: summary_card
     widget: text
@@ -1894,8 +2185,7 @@ collections:
   - label: Vollständige Beschreibung (EN)
     name: summary
     widget: markdown
-    hint: Absätze, Links, Listen und Fettung sind möglich. Für einen Link Text markieren und den Link-Button
-      nutzen.
+    hint: Absätze, Links, Listen und Fettung sind möglich. Für einen Link Text markieren und den Link-Button nutzen.
   - label: Vollständige Beschreibung (DE)
     name: summary_de
     widget: markdown
@@ -1908,6 +2198,155 @@ collections:
     name: meta_de
     widget: list
     required: false
+  - label: Case Study
+    name: case
+    widget: object
+    required: false
+    collapsed: true
+    hint: Optional. Steckbrief und Abschnitte erscheinen unter dem Video und vor der Galerie. Leere Felder werden ausgeblendet.
+    fields:
+    - label: Rolle
+      name: role
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+        required: false
+      - label: Englisch
+        name: en
+        widget: string
+        required: false
+      hint: 'Was du gemacht hast, z. B. „Soloprojekt: Konzept, Elektronik, Firmware“.'
+      required: false
+    - label: Zeitraum
+      name: duration
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+        required: false
+      - label: Englisch
+        name: en
+        widget: string
+        required: false
+      hint: z. B. „Rund 3 Monate in meiner Freizeit, 2026“.
+      required: false
+    - label: Werkzeuge
+      name: tools
+      widget: list
+      required: false
+      hint: Programme, Sprachen, Maschinen – ein Eintrag pro Werkzeug.
+    - label: Hardware
+      name: hardware
+      widget: list
+      required: false
+      label_singular: Bauteil
+      summary: '{{fields.de}}'
+      collapsed: true
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Links
+      name: links
+      widget: list
+      required: false
+      label_singular: Link
+      summary: '{{fields.url}}'
+      collapsed: true
+      hint: z. B. GitHub-Repository, itch.io-Seite, Devlog. Interne Seiten mit /…/ beginnen.
+      fields:
+      - label: Beschriftung
+        name: label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Adresse
+        name: url
+        widget: string
+    - label: Abschnitte
+      name: sections
+      widget: list
+      required: false
+      label_singular: Abschnitt
+      summary: '{{fields.heading.de}}'
+      collapsed: true
+      hint: 'Bewährte Reihenfolge: Idee → Vorgehen → Herausforderungen → Ergebnis und Ausblick.'
+      fields:
+      - label: Überschrift
+        name: heading
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Text
+        name: body
+        widget: object
+        collapsed: false
+        fields:
+        - label: Deutsch
+          name: de
+          widget: markdown
+        - label: Englisch
+          name: en
+          widget: markdown
+      - label: Bild
+        name: image
+        widget: image
+        required: false
+      - label: Alt-Text des Bilds
+        name: image_alt
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+          required: false
+        - label: Englisch
+          name: en
+          widget: string
+          required: false
+        hint: Beschreibt, was auf dem Bild zu sehen ist.
+        required: false
+      - label: Bildunterschrift
+        name: image_caption
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+          required: false
+        - label: Englisch
+          name: en
+          widget: string
+          required: false
+        required: false
   - label: Bilder
     name: images
     widget: list
@@ -1916,9 +2355,14 @@ collections:
     - label: Bild
       name: src
       widget: image
-    - label: Alt-Text
+    - label: Alt-Text (EN)
       name: alt
       widget: string
+      hint: Beschreibt, was auf dem Bild zu sehen ist – für Screenreader und wenn das Bild nicht lädt.
+    - label: Alt-Text (DE)
+      name: alt_de
+      widget: string
+      required: false
     - label: Bildunterschrift (EN)
       name: caption
       widget: string
@@ -1987,8 +2431,13 @@ collections:
     name: cover_image
     widget: image
     required: false
-  - label: Titelbild Alt-Text
+  - label: Titelbild Alt-Text (EN)
     name: cover_image_alt
+    widget: string
+    required: false
+    hint: Beschreibt, was auf dem Bild zu sehen ist – für Screenreader und wenn das Bild nicht lädt. Auf Übersichtsseiten wird es nicht vorgelesen, weil der Linktext den Titel schon nennt.
+  - label: Titelbild Alt-Text (DE)
+    name: cover_image_alt_de
     widget: string
     required: false
   - label: Tags
@@ -2004,9 +2453,14 @@ collections:
     - label: Bild
       name: src
       widget: image
-    - label: Alt-Text
+    - label: Alt-Text (EN)
       name: alt
       widget: string
+      hint: Beschreibt, was auf dem Bild zu sehen ist – für Screenreader und wenn das Bild nicht lädt.
+    - label: Alt-Text (DE)
+      name: alt_de
+      widget: string
+      required: false
     - label: Bildunterschrift (EN)
       name: caption
       widget: string
@@ -2018,9 +2472,7 @@ collections:
   - label: Text (EN)
     name: body
     widget: markdown
-    hint: '"Bild mit Bildunterschrift" in der Editor-Leiste setzt ein Bild mit Alt-Text, Unterschrift
-      und Größe (klein / mittel / groß) — auf der Website öffnet es sich per Klick groß. "Einbettung (iframe)"
-      fügt YouTube-, itch.io- oder ähnliche Einbettungen ein.'
+    hint: '"Bild mit Bildunterschrift" in der Editor-Leiste setzt ein Bild mit Alt-Text, Unterschrift und Größe (klein / mittel / groß) — auf der Website öffnet es sich per Klick groß. "Einbettung (iframe)" fügt YouTube-, itch.io- oder ähnliche Einbettungen ein.'
   - label: Text (DE)
     name: body_de
     widget: markdown
@@ -2059,8 +2511,7 @@ collections:
 - name: legal
   label: Rechtliches
   icon: gavel
-  description: Impressum und Datenschutzerklärung. Bei neuen Diensten (Formulare, Einbettungen, Statistik)
-    die Datenschutzerklärung anpassen.
+  description: Impressum und Datenschutzerklärung. Bei neuen Diensten (Formulare, Einbettungen, Statistik) die Datenschutzerklärung anpassen.
   editor: *id001
   files:
   - name: impressum

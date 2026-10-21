@@ -1,31 +1,36 @@
 ---
 published: true
 title: Development process of Pocket Knight
-title_de: Entwicklungsprozess des Mini Spielgeräts Pocket Knight
+title_de: Entwicklungsprozess des Mini-Spielgeräts Pocket Knight
 date: 2026-08-20
-description: Detailed Development process of a handheld device.
-description_de: Dokumentation des Entwicklungsprozess für ein Handheld Gerät.
+description: Detailed development process of a handheld device.
+description_de: Dokumentation des Entwicklungsprozesses eines Handheld-Geräts.
 cover_image: /Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png
-cover_image_alt: Photo of the finished device
+cover_image_alt: "The finished Pocket Knight device standing on a stone surface"
+cover_image_alt_de: "Das fertige Pocket-Knight-Gerät auf einer Steinoberfläche"
 tags:
   - Game Dev, Prototyping, Electronics
 images:
   - src: /Images/blog/development-process-of-pocket-knight/pocketknightcloth.webp
-    alt: pocketKnightDevice
+    alt: "Close-up of the finished Pocket Knight device with OLED screen, blue buttons and a keychain charm"
+    alt_de: "Nahaufnahme des fertigen Pocket-Knight-Geräts mit OLED-Display, blauen Tasten und Schlüsselanhänger"
     caption: Pocket Knight finished device
-    caption_de: Pocket Knight fertiges Gerät
+    caption_de: Das fertige Pocket-Knight-Gerät
   - src: /Images/blog/development-process-of-pocket-knight/pocketknightspriteposter.webp
-    alt: PocketknightSprites
+    alt: "Poster of all Pocket Knight pixel sprites: the knight, events, enemies and bosses"
+    alt_de: "Poster mit allen Pixel-Sprites von Pocket Knight: Ritter, Ereignisse, Gegner und Bosse"
     caption: Pocket Knight Sprites
     caption_de: Pocket Knight Sprites
   - src: /Images/pocketknightposter3.webp
-    alt: HolyGrail poster
-    caption: silly holy grail poster
-    caption_de: leicht albernes heiliger Gral Poster
+    alt: "Pocket Knight poster: knights in a classical painting reach for the device like a holy grail"
+    alt_de: "Pocket-Knight-Poster: Ritter in einem klassischen Gemälde greifen nach dem Gerät wie nach dem heiligen Gral"
+    caption: A slightly silly holy grail poster
+    caption_de: Ein leicht albernes Heiliger-Gral-Poster
   - src: /Images/blog/development-process-of-pocket-knight/pocketknight2.webp
-    alt: silly knight giving
-    caption: giving the grace.
-    caption_de: die Gnade wird gegeben.
+    alt: "Pocket Knight collage: a medieval fresco in which a pope hands over the device to a kneeling monk"
+    alt_de: "Pocket-Knight-Collage: ein mittelalterliches Fresko, in dem ein Papst einem knienden Mönch das Gerät überreicht"
+    caption: Giving the grace.
+    caption_de: Die Gnade wird erteilt.
 body_de: |-
   Hallo! Ich hatte schon länger den Wunsch ein Gerät zu bauen das an die Digimon Digivice Spielzeuge erinnert, ich fand die Teile richtig cool als Kind obwohl ich selbst nie eins hatte, aber das hab ich ja nun auf eine andere Art und Weise nachgeholt :) 
 

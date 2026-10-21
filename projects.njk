@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     {#- Texte: _data/pages/projects.json (CMS: Seiten-Texte → Projekte-Übersicht) #}
     {%- set pg = pages.projects %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ pg.seo.title }}</title>
-    <meta name="description" content="{{ pg.seo.description }}" />
+    <title {% i18n pg.seo.title %}>{{ pg.seo.title.en }}</title>
+    <meta name="description" {% i18n pg.seo.description, "content" %} content="{{ pg.seo.description.en }}" />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://janwestphal.dev/projects/" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://janwestphal.dev/projects/" />
     <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="{{ pg.seo.title }}" />
-    <meta property="og:description" content="{{ pg.seo.description }}" />
+    <meta property="og:title" {% i18n pg.seo.title, "content" %} content="{{ pg.seo.title.en }}" />
+    <meta property="og:description" {% i18n pg.seo.description, "content" %} content="{{ pg.seo.description.en }}" />
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
 
 
@@ -25,7 +23,7 @@
 {%- set active = "projects" %}
 {% include "partials/site-header.njk" %}
 
-<main>
+<main id="main" tabindex="-1">
     <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
         <p class="jw-label">[ Index — {{ collections.projects.length | pad2 }} <span {% i18n pg.count_label %}>{{ pg.count_label.en }}</span> ]</p>
         <div class="jw-page-head__row">
@@ -33,8 +31,9 @@
             <p class="jw-page-head__intro" {% i18n pg.intro %}>{{ pg.intro.en }}</p>
         </div>
         <div class="project-filters jw-filterbar" role="group" aria-label="Filter">
-            <button class="filter-btn active" data-filter="all" {% i18n global.ui.filter_all %}>{{ global.ui.filter_all.en }}</button>
+            <button class="filter-btn active" aria-pressed="true" data-filter="all" {% i18n global.ui.filter_all %}>{{ global.ui.filter_all.en }}</button>
         </div>
+        <p class="jw-filter-status" role="status"></p>
     </section>
 
     <section class="jw-wrap jw-page-body" aria-label="Project list">
@@ -44,7 +43,7 @@
                 <a class="work-item-link jw-prow" href="/projects/{{ project.data.slug }}/">
                     <span class="work-meta" hidden><span>{{ project.data.category }}</span></span>
                     <figure class="jw-prow__thumb">
-                        <img src="{{ project.data.cover_image | imgPath }}" alt="{{ project.data.cover_image_alt }}" loading="{% if loop.index <= 3 %}eager{% else %}lazy{% endif %}" width="400" height="300">
+                        <img src="{{ project.data.cover_image | imgPath }}" alt="" loading="{% if loop.index <= 3 %}eager{% else %}lazy{% endif %}" width="400" height="300">
                     </figure>
                     <div class="jw-prow__body">
                         <div class="jw-prow__title">

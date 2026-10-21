@@ -1,8 +1,17 @@
 {
   "seo": {
-    "title": "Links – Jan Westphal (Netro)",
-    "description": "Alle Links von Jan Westphal (Netro): aktuelles Spiel, Projekt-Writeups und Social-Media-Kanäle.",
-    "share_description": "Aktuelles Spiel, Projekt-Writeups und Social-Media-Kanäle."
+    "title": {
+      "de": "Links – Jan Westphal (Netro)",
+      "en": "Links – Jan Westphal (Netro)"
+    },
+    "description": {
+      "de": "Alle Links von Jan Westphal (Netro): aktuelles Spiel, Projekt-Writeups und Social-Media-Kanäle.",
+      "en": "All links by Jan Westphal (Netro): current game, project write-ups and social media channels."
+    },
+    "share_description": {
+      "de": "Aktuelles Spiel, Projekt-Writeups und Social-Media-Kanäle.",
+      "en": "Current game, project write-ups and social media channels."
+    }
   },
   "photo": "/Images/myself.jpeg",
   "photo_alt": {

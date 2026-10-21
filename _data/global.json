@@ -83,6 +83,34 @@
     "lightbox_close": {
       "de": "Bild schließen",
       "en": "Close image"
+    },
+    "skip_link": {
+      "de": "Zum Inhalt springen",
+      "en": "Skip to content"
+    },
+    "motion_label": {
+      "de": "Animationen",
+      "en": "Motion"
+    },
+    "motion_on": {
+      "de": "an",
+      "en": "on"
+    },
+    "motion_off": {
+      "de": "aus",
+      "en": "off"
+    },
+    "filter_count_one": {
+      "de": "1 Projekt",
+      "en": "1 project"
+    },
+    "filter_count": {
+      "de": "{n} Projekte",
+      "en": "{n} projects"
+    },
+    "motion_label_short": {
+      "de": "Anim.",
+      "en": "Anim."
     }
   },
   "categories": [

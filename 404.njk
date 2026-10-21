@@ -3,7 +3,7 @@ permalink: /404.html
 eleventyExcludeFromCollections: true
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,7 +17,7 @@ eleventyExcludeFromCollections: true
 {%- set active = "404" %}
 {% include "partials/site-header.njk" %}
 
-<main>
+<main id="main" tabindex="-1">
     <section class="jw-wrap jw-page-head jw-404" aria-labelledby="jw-page-title">
         <p class="jw-label">[ <span {% i18n pg.label %}>{{ pg.label.en }}</span> ]</p>
         <div class="jw-page-head__row">

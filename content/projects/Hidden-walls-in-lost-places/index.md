@@ -5,8 +5,9 @@ slug: hidden-walls-in-lost-places
 category: '[Illustration] 2020-2021'
 order: 8
 cover_image: /Images/Graffzine2/graffzine2thumb1.webp
-cover_image_alt: titlesite emagazine
-summary_card: Another collection of painted walls
+cover_image_alt: "Cover page of the e-magazine “Hidden Walls in Lost Places”"
+cover_image_alt_de: "Titelseite des E-Magazins „Hidden Walls in Lost Places“"
+summary_card: Another collection of painted walls.
 summary_card_de: Eine weitere Sammlung bemalter Wände.
 summary: A digital collection of painted walls in abandoned places.
 summary_de: Ein eMagazin mit einer Sammlung bemalter Wände in verlassenen Orten.

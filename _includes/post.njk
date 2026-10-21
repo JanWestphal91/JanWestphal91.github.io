@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }} – Jan Westphal</title>
-    <meta name="description" content="{{ description }}" />
+    <title data-en="{{ title }} – Jan Westphal" data-de="{{ title_de or title }} – Jan Westphal">{{ title }} – Jan Westphal</title>
+    <meta name="description" content="{{ description }}" data-content-en="{{ description }}" data-content-de="{{ description_de or description }}" />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://janwestphal.dev/blog/{{ page.fileSlug }}/" />
 
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://janwestphal.dev/blog/{{ page.fileSlug }}/" />
     <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="{{ title }} – Jan Westphal" />
-    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:title" content="{{ title }} – Jan Westphal" data-content-en="{{ title }} – Jan Westphal" data-content-de="{{ title_de or title }} – Jan Westphal" />
+    <meta property="og:description" content="{{ description }}" data-content-en="{{ description }}" data-content-de="{{ description_de or description }}" />
     {% if cover_image %}
     <meta property="og:image" content="https://janwestphal.dev{{ cover_image | imgPath }}" />
     {% else %}
@@ -21,8 +19,8 @@
     {% endif %}
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ title }} – Jan Westphal" />
-    <meta name="twitter:description" content="{{ description }}" />
+    <meta name="twitter:title" content="{{ title }} – Jan Westphal" data-content-en="{{ title }} – Jan Westphal" data-content-de="{{ title_de or title }} – Jan Westphal" />
+    <meta name="twitter:description" content="{{ description }}" data-content-en="{{ description }}" data-content-de="{{ description_de or description }}" />
 
 
 {% include "partials/head-assets.njk" %}
@@ -34,7 +32,7 @@
 {#- Feste Texte: _data/pages/post.json (CMS: Seiten-Texte → Blogbeitrag) #}
 {%- set pt = pages.post %}
 {%- set nb = collections.blog | neighbors(page.url) %}
-<main class="post-page">
+<main id="main" tabindex="-1" class="post-page">
     <article>
         <header class="jw-wrap jw-post-head">
             <nav class="jw-crumb" aria-label="Breadcrumb">
@@ -54,7 +52,7 @@
         {% if cover_image %}
         <div class="jw-wrap jw-post-cover-wrap">
             <figure class="jw-post-cover">
-                <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" class="post-cover" loading="eager">
+                <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" data-alt-en="{{ cover_image_alt or title }}" data-alt-de="{{ cover_image_alt_de or cover_image_alt or title_de or title }}" class="post-cover" loading="eager">
             </figure>
         </div>
         {% endif %}
@@ -80,7 +78,7 @@
             <div class="project-gallery jw-gallery">
                 {% for img in images %}
                 <figure class="project-gallery__item">
-                    <img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" loading="lazy">
+                    <a class="post-figure__link" data-lightbox href="{{ img.src | imgPath }}"><img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy"></a>
                     <figcaption><span class="jw-fig">Fig. {{ loop.index | pad2 }}</span>{% if img.caption %} <span data-en="{{ img.caption }}" data-de="{{ img.caption_de or img.caption }}">{{ img.caption }}</span>{% endif %}</figcaption>
                 </figure>
                 {% endfor %}

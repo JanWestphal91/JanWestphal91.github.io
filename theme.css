@@ -313,6 +313,16 @@ body.theme {
     pointer-events: none;
 }
 
+/* Glanz beim Neigen: heller Fleck, der dem Zeiger folgt (Stärke per JS) */
+.jw-flip__shine {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--jw-gx, 50%) var(--jw-gy, 50%), rgb(255 255 255 / 0.45), rgb(255 255 255 / 0) 60%);
+    mix-blend-mode: soft-light;
+    opacity: var(--jw-shine, 0);
+}
+
 /* Ohne JavaScript nur die erste Karte zeigen */
 .jw-flip:not(.is-ready) .jw-flip__card:not(:first-child) {
     visibility: hidden;
@@ -737,8 +747,16 @@ body.theme {
     color: var(--ink);
 }
 
+.theme .jw-button--accent {
+    border: 1.5px solid var(--accent-color);
+    background: var(--accent-color);
+    color: var(--on-accent);
+}
+
 @media (hover: hover) {
-    .theme .jw-button--outline:hover {
+    .theme .jw-button--outline:hover,
+    .theme .jw-button--accent:hover {
+        border-color: var(--ink);
         background: var(--ink);
         color: var(--bg);
     }
@@ -858,6 +876,24 @@ body.theme {
 }
 
 .jw-cv__side .jw-label + .jw-skills {
+    margin-bottom: 36px;
+}
+
+/* Programmiersprachen in zwei Stufen: sicher und Grundlagen */
+.jw-cv__side .jw-label + .jw-skills:has(+ .jw-skills__level) {
+    margin-bottom: 14px;
+}
+
+.jw-skills__level {
+    margin: 0 0 4px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.jw-cv__side .jw-skills--basic {
     margin-bottom: 36px;
 }
 
@@ -987,8 +1023,34 @@ body.theme {
     gap: 8px;
 }
 
-.theme .contact-form label:nth-of-type(3) {
+.theme .contact-form .jw-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.theme .contact-form .jw-field--wide {
     grid-column: 1 / -1;
+}
+
+/* Fehlermeldung unter dem Feld; Rahmen wird rot und dicker */
+.theme .jw-field-error {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #A1262C;               /* ≥ 6:1 auf dem Seitenhintergrund */
+}
+
+.theme .jw-field-error::before {
+    content: "! ";
+    font-family: var(--mono);
+    font-weight: 700;
+}
+
+.theme .contact-form [aria-invalid="true"] {
+    border-color: #A1262C;
+    box-shadow: inset 0 0 0 1px #A1262C;
 }
 
 .theme .contact-form span {
@@ -1547,8 +1609,19 @@ body.theme {
     transition: background 0.15s ease, color 0.15s ease;
 }
 
-.jw-blist--home .jw-brow {
-    grid-template-columns: 88px 170px minmax(0, 1fr) 24px;
+/* Startseite: gleiche Spalten wie auf der Blogseite. Die Spalte für die Tags
+   bleibt leer, damit der Titel genauso schmal ist und gleich zweizeilig
+   umbricht – sonst springt er beim Überfahren, wenn das Bild breiter wird. */
+@media (min-width: 901px) {
+    .jw-blist--home .jw-brow__arrow {
+        grid-column: 5;
+    }
+
+    /* Jeder Titel hält zwei Zeilen frei, damit alle Einträge gleich aufgebaut
+       sind – auch wenn ein Titel in einer Zeile Platz hat. */
+    .jw-brow__title {
+        min-height: calc(2em * 1.15);
+    }
 }
 
 .theme .jw-blist--home {
@@ -2559,10 +2632,6 @@ body.theme {
         grid-template-columns: auto 170px minmax(0, 1fr) minmax(0, 220px) 24px;
     }
 
-    .theme .jw-blist--home .jw-brow {
-        grid-template-columns: auto 170px minmax(0, 1fr) 24px;
-    }
-
     .theme .jw-row .jw-row__thumb,
     .theme .jw-brow .jw-brow__thumb,
     .theme .jw-prow .jw-prow__thumb {
@@ -2626,6 +2695,26 @@ body.theme {
     .theme .jw-brow:hover .jw-brow__thumb img,
     .theme .jw-prow:hover .jw-prow__thumb img {
         box-shadow: 0 16px 36px rgb(17 17 17 / 0.28);
+    }
+
+    /* Die Textspalte hält rechts so viel Platz frei, wie das Bild beim
+       Überfahren dazugewinnt, und gibt ihn im selben Takt wieder ab.
+       Die Textbreite bleibt dadurch gleich – der Titel bricht nicht um. */
+    .theme .jw-row .jw-row__main,
+    .theme .jw-brow .jw-brow__main {
+        padding-right: 112px;
+        transition: padding-right 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .theme .jw-prow .jw-prow__body {
+        padding-right: 120px;
+        transition: padding-right 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .theme .jw-row:hover .jw-row__main,
+    .theme .jw-brow:hover .jw-brow__main,
+    .theme .jw-prow:hover .jw-prow__body {
+        padding-right: 0;
     }
 }
 
@@ -2724,7 +2813,8 @@ body.theme {
     transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.jw-reveal-ready .is-revealed::before {
+.jw-reveal-ready .is-revealed::before,
+.jw-reveal-ready #contact > .jw-label.is-revealed::before {   /* ID-Selektor oben braucht eigene Regel */
     transform: scaleX(1);
 }
 
@@ -2775,4 +2865,238 @@ body.theme {
         margin-bottom: -48px;
         box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
     }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Barrierefreiheit
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Sprungziele (#about, #contact) und fokussierte Elemente landen unter
+   dem Header statt dahinter. Die Höhe misst script.js (--jw-header-h). */
+html {
+    scroll-padding-top: calc(var(--jw-header-h, 72px) + 16px);
+}
+
+/* Skip-Link: erst bei Tastaturfokus sichtbar, oben links über allem */
+.theme .jw-skip {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2000;
+    padding: 12px 16px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--mono);
+    font-size: 14px;
+    text-decoration: none;
+    transform: translateY(-200%);
+}
+
+.theme .jw-skip:focus,
+.theme .jw-skip:focus-visible {
+    transform: none;
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Ziel des Skip-Links bekommt den Fokus, braucht aber keinen Rahmen */
+main[tabindex="-1"]:focus {
+    outline: none;
+}
+
+/* Statuszeile der Filter („4 Projekte“) */
+.theme .jw-filter-status {
+    margin: 12px 0 0;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+/* Schalter „Animationen an/aus“ im Header */
+.jw-motion-toggle__state {
+    margin-left: 0.5em;
+}
+
+.jw-motion-toggle__off,
+.jw-motion-off .jw-motion-toggle__on {
+    display: none;
+}
+
+.jw-motion-off .jw-motion-toggle__off {
+    display: inline;
+}
+
+/* Animationen aus: keine Übergänge, keine Keyframes, kein weiches Scrollen.
+   Linien und Labels stehen sofort fertig da, Buttons wachsen nicht. */
+html.jw-motion-off {
+    scroll-behavior: auto;
+}
+
+.jw-motion-off *,
+.jw-motion-off *::before,
+.jw-motion-off *::after {
+    animation: none !important;
+    transition: none !important;
+}
+
+.jw-motion-off.jw-reveal-ready :is(.jw-head, #contact > .jw-label, .jw-cv__group, .jw-filterbar, .jw-plist, .jw-blist, .jw-rule, .jw-pager__link, .jw-legal h2, .jw-links__list)::before {
+    transform: scaleX(1);
+}
+
+.jw-motion-off :is(.filter-btn, .contact-submit, .jw-cta__button, .jw-button, .jw-consent__button, .jw-more, .jw-flip__btn):is(:hover, :active) {
+    transform: none !important;
+}
+
+@media (max-width: 400px) {
+    .theme .nav-links {
+        gap: 0 14px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Case Study auf Projektseiten: Steckbrief und Abschnitte
+   ═══════════════════════════════════════════════════════════════════ */
+
+.jw-casefacts {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0 40px;
+}
+
+.jw-casefacts > div {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.jw-casefacts dt {
+    margin-bottom: 6px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.jw-casefacts dd {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.jw-casefacts .jw-skills {
+    font-size: 15px;
+}
+
+.jw-casefacts__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.jw-casefacts__list li + li {
+    margin-top: 4px;
+}
+
+.theme .jw-casefacts a {
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.jw-case__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 72px);
+    align-items: start;
+}
+
+.jw-case__grid--text {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.theme .jw-case .jw-prose {
+    padding-bottom: 0;
+}
+
+.theme .jw-case .jw-prose p {
+    margin: 0 0 1em;
+}
+
+.theme .jw-case .jw-prose ul {
+    margin: 0 0 1em;
+    padding-left: 1.2em;
+}
+
+.theme .jw-case .jw-prose li + li {
+    margin-top: 0.5em;
+}
+
+.jw-case__figure {
+    margin: 0;
+}
+
+.jw-case__figure img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+    border: 1.5px solid var(--ink);
+}
+
+.jw-case__figure figcaption {
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+}
+
+@media (max-width: 860px) {
+    .jw-case__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ═══ Klickbare Bilder (Galerie, Fließtext, Case Study) ═══
+   Wie beim Titelbild des neuesten Beitrags: Das Bild zoomt beim Überfahren
+   leicht in seinen Rahmen hinein. Der Rahmen liegt deshalb am Link, nicht
+   am Bild, sonst würde er mitwachsen. Klick öffnet die Lightbox. */
+.theme .post-figure__link {
+    display: block;
+    overflow: hidden;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+    cursor: zoom-in;
+}
+
+.theme .post-figure__link img,
+.theme .project-gallery__item .post-figure__link img,
+.theme .post-figure .post-figure__link img,
+.theme .jw-case__figure .post-figure__link img {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    transition: transform 0.5s ease;
+}
+
+.theme .post-figure__link:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
+@media (hover: hover) {
+    .theme .post-figure__link:hover img {
+        transform: scale(1.03);
+    }
+}
+
+/* Startseite: Blogliste ohne eigene Linie oben – die Linie über
+   „04 — Neueste Beiträge“ reicht */
+.theme .jw-blist.jw-blist--home {
+    border-top: 0;
+}
+
+.jw-reveal-ready .jw-blist.jw-blist--home::before {
+    content: none;
 }

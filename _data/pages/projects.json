@@ -1,7 +1,13 @@
 {
   "seo": {
-    "title": "Projects – Jan Westphal",
-    "description": "All projects by Jan Westphal – Creative Coder & Designer from Kiel. Game development, interactive design, hardware prototyping and graphic design."
+    "title": {
+      "de": "Projekte – Jan Westphal",
+      "en": "Projects – Jan Westphal"
+    },
+    "description": {
+      "de": "Alle Projekte von Jan Westphal – Creative Coder und Designer aus Kiel: Spieleentwicklung, interaktives Design, Hardware-Prototypen und Grafikdesign.",
+      "en": "All projects by Jan Westphal – Creative Coder & Designer from Kiel. Game development, interactive design, hardware prototyping and graphic design."
+    }
   },
   "count_label": {
     "en": "projects",

@@ -111,6 +111,7 @@ imageFigures(md);
 // Texte der Hinweise kommen aus _data/global.json (CMS: Seiten-Texte →
 // Allgemein → Einbettungen). Sie werden bei jedem Build frisch gelesen.
 const fs = require("fs");
+const { buildLanguageVersions } = require("./_build/languages.js");
 const path = require("path");
 
 function loadEmbedTexts() {
@@ -181,6 +182,13 @@ function consentEmbeds(html) {
 }
 
 module.exports = function(eleventyConfig) {
+    // Zwei Sprachversionen: Deutsch unter /, Englisch unter /en/ (siehe
+    // _build/languages.js). Läuft nach jedem Build und schreibt auch die
+    // sitemap.xml mit beiden Versionen.
+    eleventyConfig.on("eleventy.after", function ({ dir, results }) {
+        buildLanguageVersions(dir.output, results);
+    });
+
     // Eleventy soll dieselbe Markdown-Instanz benutzen wie der "md"-Filter,
     // damit englische und deutsche Texte identisch gerendert werden.
     eleventyConfig.setLibrary("md", md);
@@ -240,7 +248,6 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("CNAME");
     eleventyConfig.addPassthroughCopy("admin");
     eleventyConfig.addPassthroughCopy("google1fb37088e637c525.html");
-    eleventyConfig.addPassthroughCopy("sitemap.xml");
     eleventyConfig.addPassthroughCopy("robots.txt");
     eleventyConfig.addPassthroughCopy("BingSiteAuth.xml");
     eleventyConfig.addPassthroughCopy("page-flip.browser.js");
@@ -287,17 +294,6 @@ module.exports = function(eleventyConfig) {
         };
     });
 
-    // Startseite: Projekte mit "featured: true" (CMS-Schalter) groß zeigen,
-    // höchstens n Stück. Ist keins markiert, gelten die ersten n.
-    eleventyConfig.addFilter("splitFeatured", function(list, n) {
-        const items = list || [];
-        const max = n || 2;
-        let featured = items.filter(function(item) { return item.data.featured; }).slice(0, max);
-        if (!featured.length) featured = items.slice(0, max);
-        const rest = items.filter(function(item) { return featured.indexOf(item) === -1; });
-        return { featured: featured, rest: rest };
-    });
-
     // Kategorien „[Electronic, Game] 2026“ zweisprachig ausgeben:
     // {% cats project.data.category %} → <span data-en="Electronic" data-de="Elektronik">…</span> · …
     // Die Übersetzungen stehen in _data/global.json → categories (CMS: Allgemein).
@@ -318,6 +314,22 @@ module.exports = function(eleventyConfig) {
     // Liste von Objekten → Liste eines Feldes, z. B. socials.items | pluck("url")
     eleventyConfig.addFilter("pluck", function(list, key) {
         return (list || []).map(function(item) { return item && item[key]; }).filter(Boolean);
+    });
+
+    // Startseite: Karten-Karussell. Jede Karte im CMS verweist per Slug auf
+    // ein Projekt; Bild und Alt-Text der Karte sind optional (sonst Coverbild).
+    // Liefert [{ project, item }] in der Reihenfolge des CMS.
+    eleventyConfig.addFilter("carouselCards", function(projects, items) {
+        return (items || []).map(function(item) {
+            const project = (projects || []).find(function(p) { return p.data.slug === item.project; });
+            return project ? { project: project, item: item } : null;
+        }).filter(Boolean);
+    });
+
+    // Projekte ohne die angegebenen Slugs (z. B. ohne die aus dem Karussell)
+    eleventyConfig.addFilter("withoutSlugs", function(projects, slugs) {
+        const skip = slugs || [];
+        return (projects || []).filter(function(p) { return skip.indexOf(p.data.slug) === -1; });
     });
 
     // 1 → "01"

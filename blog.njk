@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     {#- Texte: _data/pages/blog.json (CMS: Seiten-Texte → Blog-Übersicht) #}
     {%- set pg = pages.blog %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ pg.seo.title }}</title>
-    <meta name="description" content="{{ pg.seo.description }}" />
+    <title {% i18n pg.seo.title %}>{{ pg.seo.title.en }}</title>
+    <meta name="description" {% i18n pg.seo.description, "content" %} content="{{ pg.seo.description.en }}" />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://janwestphal.dev/blog/" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://janwestphal.dev/blog/" />
     <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="{{ pg.seo.title }}" />
-    <meta property="og:description" content="{{ pg.seo.description }}" />
+    <meta property="og:title" {% i18n pg.seo.title, "content" %} content="{{ pg.seo.title.en }}" />
+    <meta property="og:description" {% i18n pg.seo.description, "content" %} content="{{ pg.seo.description.en }}" />
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
 
 
@@ -26,7 +24,7 @@
 {% include "partials/site-header.njk" %}
 
 {%- set posts = collections.blog or [] %}
-<main>
+<main id="main" tabindex="-1">
     <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
         <p class="jw-label">[ Blog — {{ posts.length | pad2 }} <span {% i18n pg.count_label %}>{{ pg.count_label.en }}</span> ]</p>
         <div class="jw-page-head__row">
@@ -41,7 +39,7 @@
         <a class="jw-feature" href="{{ latest.url }}">
             <figure class="jw-feature__media">
                 {% if latest.data.cover_image %}
-                <img src="{{ latest.data.cover_image | imgPath }}" alt="{{ latest.data.cover_image_alt or latest.data.title }}" loading="eager" width="960" height="540">
+                <img src="{{ latest.data.cover_image | imgPath }}" alt="" loading="eager" width="960" height="540">
                 {% else %}
                 <img src="/Images/og-preview.jpg" alt="" loading="eager" width="960" height="540">
                 {% endif %}
