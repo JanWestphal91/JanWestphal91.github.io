@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket Knight – Jan Westphal</title>
+    <meta name="description" content="A small, pocket-sized device. It is a mini roguelike designed for on the go, where players make progress by walking. The steps collected throughout the day...">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/en/projects/pocket-knight/" rel="canonical">
+    <link href="https://janwestphal.dev/projects/pocket-knight/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/projects/pocket-knight/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/projects/pocket-knight/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/en/projects/pocket-knight/" property="og:url">
+    <meta content="en_US" property="og:locale">
+    <meta content="de_DE" property="og:locale:alternate">
+    <meta name="geo.region" content="DE-SH">
+    <meta name="geo.placename" content="Kiel">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Pocket Knight – Jan Westphal">
+    <meta property="og:description" content="A small, pocket-sized device. It is a mini roguelike designed for on the go, where players make progress by walking. The steps collected throughout the day...">
+    
+    <meta property="og:image" content="https://janwestphal.dev/Images/projects/pocket-knight/pocketknightcloth.webp">
+    <meta name="twitter:image" content="https://janwestphal.dev/Images/projects/pocket-knight/pocketknightcloth.webp">
+    
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Pocket Knight – Jan Westphal Preview">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pocket Knight – Jan Westphal">
+    <meta name="twitter:description" content="A small, pocket-sized device. It is a mini roguelike designed for on the go, where players make progress by walking. The steps collected throughout the day...">
+
+
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-project" data-page="project-static">
+
+<a class="jw-skip" href="#main">Skip to content</a>
+<header class="site-header">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="/en/" class="logo">Jan Westphal</a>
+        </div>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/en/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Projects</span><span class="nav-label nav-label--mobile"><span>Projects</span> →</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span> →</span></a></li>
+                <li class="jw-nav-about"><a href="/en/#about" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="/en/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact</span><span class="nav-label nav-label--mobile"><span>Contact</span> →</span></a></li>
+                <li><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Motion"><span class="nav-label nav-label--desktop">Motion</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">on</span><span class="jw-motion-toggle__off">off</span></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/projects/pocket-knight/"><span class="nav-label nav-label--desktop">Deutsch</span><span class="nav-label nav-label--mobile">DE</span></a></li>
+            </ul>
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<main id="main" tabindex="-1" class="project-page">
+    <section class="jw-wrap jw-detail-head" aria-labelledby="jw-page-title">
+        <nav class="jw-crumb" aria-label="Breadcrumb">
+            <a href="/en/projects/">Projects</a>
+            <span aria-hidden="true">/</span>
+            <span>01</span>
+        </nav>
+        <div class="jw-detail-head__row">
+            <div class="jw-detail-head__main">
+                <h1 id="jw-page-title">Pocket Knight</h1>
+                <div class="project-summary jw-lead"><p>A small, pocket-sized device. It is a mini roguelike designed for on the go, where players make progress by walking. The steps collected throughout the day unlock events, which lead to different encounters and battles. With every battle, the player gains experience, improves their equipment, and grows stronger.</p>
+<p>The events are stored so that players can go through them one by one in the evening at their own pace, while only needing to carry the device with them during the day.
+I’m writing a bit more in depth about the development process in this <a href="/en/blog/development-process-of-pocket-knight/">blog article</a>.</p>
+</div>
+                
+            </div>
+            <dl class="jw-facts">
+                <div><dt>Type</dt><dd><span>Electronic</span> · <span>Game</span></dd></div>
+                <div><dt>Year</dt><dd>2026</dd></div>
+                <div>
+                    <dt>Details</dt>
+                    <dd>
+                        <span>Electronic · Prototype · Game · Status: released</span>
+                        
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
+        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span>Media</span></h2>
+        <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span>This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).</span> <a href="/en/datenschutz/">Privacy</a></p><button type="button" class="jw-consent__button">Load video</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YMT1BVRyX4g?si=-3MBMNdEbFsba26u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div>
+    </section>
+    
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
+        <h2 id="jw-facts-title" class="jw-label jw-rule">02 — <span>Fact sheet</span></h2>
+        <dl class="jw-casefacts">
+            <div><dt>Role</dt><dd>Solo project: concept, electronics, firmware, game design, pixel art and enclosure</dd></div>
+            <div><dt>Time frame</dt><dd>About 3 months in my free time, 2026</dd></div>
+            <div><dt>Tools</dt><dd><ul class="jw-skills"><li>Fusion</li><li>Prusa Mini (FabLab Kiel)</li></ul></dd></div>
+            <div><dt>Hardware</dt><dd><ul class="jw-casefacts__list"><li>DFRobot FireBeetle 2 ESP32</li><li>OLED display, 128 × 64 px</li><li>Seeed Grove pedometer (BMA456)</li><li>Piezo buzzer and mini vibration motor</li><li>3 push buttons</li><li>1800 mAh Li-ion battery</li><li>Perfboard, PLA enclosure</li></ul></dd></div>
+            <div><dt>Links</dt><dd><ul class="jw-casefacts__list"><li><a href="/en/blog/development-process-of-pocket-knight/"><span>Devlog: the whole development process</span>&#160;<span aria-hidden="true">→</span></a></li></ul></dd></div>
+        </dl>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-1">
+        <h2 id="jw-case-1" class="jw-label jw-rule">03 — <span>Idea</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                <div><p>I wanted to build a device that brings to mind the Digimon Digivice toys from my childhood: small enough for a trouser pocket, and with a game that moves forward while you walk.</p>
+<p>The goal was a complete, playable roguelike on a 128 × 64 px screen – with as few parts as possible, so the device stays light and the battery lasts a long time.</p>
+</div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-2">
+        <h2 id="jw-case-2" class="jw-label jw-rule">04 — <span>Approach</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                <div><p>I picked an ESP32 FireBeetle because the board already handles the battery, so I only had to connect a Li-ion cell. Everything was first wired up on a breadboard, and I wrote the firmware against that setup.</p>
+<p>Once the circuit and code were stable, I soldered all parts onto a piece of perfboard as compactly as possible. In parallel I designed the enclosure in Fusion and printed it on a Prusa Mini at the FabLab Kiel.</p>
+</div>
+                
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldbreadboard.webp">
+                    <img src="/Images/PocketKnight/handheldbreadboard.webp" alt="Breadboard prototype: the OLED display shows a battle screen, wired to the ESP32, three buttons and the pedometer" loading="lazy">
+                </a>
+                <figcaption>The first prototype on the breadboard</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-3">
+        <h2 id="jw-case-3" class="jw-label jw-rule">05 — <span>Challenges</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                <div><ul>
+<li><strong>Counting steps while asleep:</strong> the device has to sleep to save power but must not lose a single step.</li>
+<li><strong>Pixel graphics:</strong> loading sprites and playing animations on a small OLED took several attempts.</li>
+<li><strong>Very little space:</strong> 128 px of width is not much for text, items and battle information. Some texts are still cut off today.</li>
+</ul>
+</div>
+                
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldactive.webp">
+                    <img src="/Images/PocketKnight/handheldactive.webp" alt="The soldered perfboard with the OLED display showing a battle between the knight and two enemies" loading="lazy">
+                </a>
+                <figcaption>Soldered onto perfboard, the game already running</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-4">
+        <h2 id="jw-case-4" class="jw-label jw-rule">06 — <span>Game design</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                <div><p>Every 250 steps an event is triggered, and the device beeps and vibrates. Up to 20 events are stored, so you can play them all in one go in the evening.</p>
+<p>Battles are turn-based: the enemy shows its next move in advance, and the player has 3 skill points per fight for attacks, blocks and special skills. After every 10 events there is a boss; a full run is 50 events and a final boss. When a run ends, meta currency unlocks new items, equipment and starting bonuses.</p>
+</div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-5">
+        <h2 id="jw-case-5" class="jw-label jw-rule">07 — <span>Result and next steps</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                <div><p>The device works and has been in daily use for weeks. Based on the measured consumption, one charge lasts about 3–4 months – the battery is clearly oversized and makes up much of the weight, so next time I'd use a much smaller one.</p>
+<p>Cut for now: co-op and versus multiplayer over ESP-NOW, an online leaderboard, more starting classes and an English version of the game texts.</p>
+</div>
+                
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/blog/development-process-of-pocket-knight/Printfablab.webp">
+                    <img src="/Images/blog/development-process-of-pocket-knight/Printfablab.webp" alt="A Prusa Mini 3D printer at the FabLab Kiel printing the grey enclosure" loading="lazy">
+                </a>
+                <figcaption>Printing the enclosure at the FabLab Kiel</figcaption>
+            </figure>
+        </div>
+    </section>
+    
+
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
+        <h2 id="jw-gallery-title" class="jw-label jw-rule">08 — <span>Gallery</span> (03)</h2>
+        <div class="project-gallery jw-gallery">
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightcloth.webp"><img src="/Images/projects/pocket-knight/pocketknightcloth.webp" alt="Close-up of the Pocket Knight device: grey case, blue-framed OLED screen, blue fleur-de-lis buttons and a keychain charm" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 01</span> <span>Photo of the device</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightspriteposter.webp"><img src="/Images/projects/pocket-knight/pocketknightspriteposter.webp" alt="Poster of all Pocket Knight pixel sprites – the knight, events, enemies and bosses – drawn white on black" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 02</span> <span>Pocket Knight - spriteposter</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightposter3.webp"><img src="/Images/projects/pocket-knight/pocketknightposter3.webp" alt="Pocket Knight poster: knights in a classical painting reach for the device, which floats above them like a holy grail" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 03</span> <span>Pocket Knight - a holy grail</span></figcaption>
+            </figure>
+            
+        </div>
+    </section>
+    
+
+    <nav class="jw-wrap jw-pager" aria-label="More projects">
+        
+        <a class="jw-pager__link" href="/en/projects/">
+            <span class="jw-label">← All projects</span>
+            <span class="jw-pager__title">Back to index</span>
+        </a>
+        
+        
+        <a class="jw-pager__link jw-pager__link--next" href="/en/projects/go-pony-go-c/">
+            <span class="jw-label">Next project →</span>
+            <span class="jw-pager__title">Go Pony, Go C!</span>
+        </a>
+        
+    </nav>
+
+    
+<section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text">Questions, ideas or feedback? I’d love to hear from you.</p>
+        <a href="/en/#contact" class="jw-cta__button"><span>Drop a message</span>&#160;→</a>
+    </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/en/impressum/">Imprint</a></li>
+            <li><a href="/en/datenschutz/">Privacy</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+<script src="/page-flip.browser.js" defer></script>
+<script src="/flipbook.js" defer></script>
+</body>
+</html>

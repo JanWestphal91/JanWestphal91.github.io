@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog – Jan Westphal</title>
-    <meta name="description" content="Thoughts, process notes and updates by Jan Westphal – Creative Coder &amp; Designer from Kiel." />
-    <meta name="author" content="Jan Westphal" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://janwestphal.dev/blog/" />
+    <meta name="description" content="Gedanken, Prozessnotizen und Neuigkeiten von Jan Westphal – Creative Coder und Designer aus Kiel.">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/blog/" rel="canonical">
+    <link href="https://janwestphal.dev/blog/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/blog/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/blog/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/blog/" property="og:url">
+    <meta content="de_DE" property="og:locale">
+    <meta content="en_US" property="og:locale:alternate">
 
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://janwestphal.dev/blog/" />
-    <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="Blog – Jan Westphal" />
-    <meta property="og:description" content="Thoughts, process notes and updates by Jan Westphal – Creative Coder &amp; Designer from Kiel." />
-    <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Blog – Jan Westphal">
+    <meta property="og:description" content="Gedanken, Prozessnotizen und Neuigkeiten von Jan Westphal – Creative Coder und Designer aus Kiel.">
+    <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg">
 
 
     <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
-    <meta name="theme-color" content="#EEECE6" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png" />
-    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
     <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
-    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/theme.css" />
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
     <script src="/translations.js" defer></script>
     <script src="/script.js" defer></script>
 
 </head>
 <body class="theme page-blog">
 
+<a class="jw-skip" href="#main">Zum Inhalt springen</a>
 <header class="site-header">
     <div class="container nav">
         <div class="jw-brand">
@@ -43,14 +51,15 @@
         </div>
         <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Projects" data-de="Projekte">Projects</span><span class="nav-label nav-label--mobile"><span data-en="Projects" data-de="Projekte">Projects</span> →</span></a></li>
-                <li><a href="/blog/" class="link-button secondary" aria-current="page"><span class="nav-label nav-label--desktop" data-en="Blog" data-de="Blog">Blog</span><span class="nav-label nav-label--mobile"><span data-en="Blog" data-de="Blog">Blog</span> →</span></a></li>
-                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span data-en="About" data-de="Über mich">About</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Contact" data-de="Kontakt">Contact</span><span class="nav-label nav-label--mobile"><span data-en="Contact" data-de="Kontakt">Contact</span> →</span></a></li>
-                <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
+                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop">Projekte</span><span class="nav-label nav-label--mobile"><span>Projekte</span> →</span></a></li>
+                <li><a href="/blog/" class="link-button secondary" aria-current="page"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span> →</span></a></li>
+                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span>Über mich</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Kontakt</span><span class="nav-label nav-label--mobile"><span>Kontakt</span> →</span></a></li>
+                <li><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Animationen"><span class="nav-label nav-label--desktop">Animationen</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">an</span><span class="jw-motion-toggle__off">aus</span></span></button></li>
+                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/blog/"><span class="nav-label nav-label--desktop">English</span><span class="nav-label nav-label--mobile">EN</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" data-aria-en="Open menu" data-aria-de="Menü öffnen" aria-label="Open menu" aria-expanded="false">
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -58,12 +67,12 @@
     </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
     <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
-        <p class="jw-label">[ Blog — 03 <span data-en="posts" data-de="Beiträge">posts</span> ]</p>
+        <p class="jw-label">[ Blog — 03 <span>Beiträge</span> ]</p>
         <div class="jw-page-head__row">
-            <h1 id="jw-page-title" data-en="Blog" data-de="Blog">Blog</h1>
-            <p class="jw-page-head__intro" data-en="Devlogs, build processes and game jam reports – how the projects actually came together." data-de="Devlogs, Bauprozesse und Game-Jam-Berichte – wie die Projekte tatsächlich entstanden sind.">Devlogs, build processes and game jam reports – how the projects actually came together.</p>
+            <h1 id="jw-page-title">Blog</h1>
+            <p class="jw-page-head__intro">Devlogs, Bauprozesse und Game-Jam-Berichte – wie die Projekte tatsächlich entstanden sind.</p>
         </div>
     </section>
 
@@ -72,22 +81,22 @@
         <a class="jw-feature" href="/blog/development-process-of-pocket-knight/">
             <figure class="jw-feature__media">
                 
-                <img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="Photo of the finished device" loading="eager" width="960" height="540">
+                <img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="" loading="eager" width="960" height="540">
                 
             </figure>
             <div class="jw-feature__body">
                 <div class="jw-feature__text">
-                    <span class="jw-badge" data-en="Latest" data-de="Neu">Latest</span>
-                    <h2 data-en="Development process of Pocket Knight" data-de="Entwicklungsprozess des Mini Spielgeräts Pocket Knight">Development process of Pocket Knight</h2>
+                    <span class="jw-badge">Neu</span>
+                    <h2>Entwicklungsprozess des Mini-Spielgeräts Pocket Knight</h2>
                     
-                    <p data-en="Detailed Development process of a handheld device." data-de="Dokumentation des Entwicklungsprozess für ein Handheld Gerät.">Detailed Development process of a handheld device.</p>
+                    <p>Dokumentation des Entwicklungsprozesses eines Handheld-Geräts.</p>
                     
                 </div>
                 <div class="jw-feature__foot">
                     <span class="jw-tags">
-                        <span data-lang-show="en">August 20, 2026</span><span data-lang-show="de" hidden>20. August 2026</span> · Game Dev · Prototyping · Electronics
+                        <span>20. August 2026</span> · Game Dev · Prototyping · Electronics
                     </span>
-                    <span class="jw-feature__read"><span data-en="Read" data-de="Lesen">Read</span>&nbsp;→</span>
+                    <span class="jw-feature__read"><span>Lesen</span>&#160;→</span>
                 </div>
             </div>
         </a>
@@ -95,21 +104,21 @@
 
     
     <section class="jw-wrap jw-page-body" aria-labelledby="jw-archive-title">
-        <h2 id="jw-archive-title" class="jw-label" data-en="All posts" data-de="Alle Beiträge">All posts</h2>
+        <h2 id="jw-archive-title" class="jw-label">Alle Beiträge</h2>
         <ul class="jw-blist">
             <li>
                 <a class="jw-brow" href="/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">
                     <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/gamejamwork.webp" alt="" loading="lazy" width="160" height="160"></span>
                     <span class="jw-brow__date jw-tags">
-                        <span data-lang-show="en">August 20, 2026</span><span data-lang-show="de" hidden>20. August 2026</span>
+                        <span>20. August 2026</span>
                     </span>
                     <span class="jw-brow__main">
-                        <span class="jw-brow__title" data-en="Experiences and impressions from the Media Literacy Gamejam in Leck" data-de="Erfahrungen und Eindrücke von der Medienkompetenz GameJam in Leck">Experiences and impressions from the Media Literacy Gamejam in Leck</span>
+                        <span class="jw-brow__title">Erfahrungen und Eindrücke vom Medienkompetenz-Game-Jam in Leck</span>
                         
-                        <span class="jw-brow__desc" data-en="I attended a game jam over the weekend and write about it." data-de="Ich war auf einer Gamejam übers Wochenende und berichte darüber.">I attended a game jam over the weekend and write about it.</span>
+                        <span class="jw-brow__desc">Ich war ein Wochenende lang auf einem Game Jam und berichte darüber.</span>
                         
                     </span>
-                    <span class="jw-brow__tags jw-tags">Game Dev · Design · Prototyping · Gamejam · if(game)SH e.V. · Media Literacy</span>
+                    <span class="jw-brow__tags jw-tags">Game Dev · Design · Prototyping · Game Jam · if(game)SH e.V. · Media Literacy</span>
                     <span class="jw-brow__arrow" aria-hidden="true">→</span>
                 </a>
             </li>
@@ -117,12 +126,12 @@
                 <a class="jw-brow" href="/blog/hello-blog/">
                     <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/Audiodingo/audiodingostanding.webp" alt="" loading="lazy" width="160" height="160"></span>
                     <span class="jw-brow__date jw-tags">
-                        <span data-lang-show="en">June 13, 2026</span><span data-lang-show="de" hidden>13. Juni 2026</span>
+                        <span>13. Juni 2026</span>
                     </span>
                     <span class="jw-brow__main">
-                        <span class="jw-brow__title" data-en="Development process of a DIY synthesizer" data-de="Entwicklung eines DIY Synthesizers">Development process of a DIY synthesizer</span>
+                        <span class="jw-brow__title">Entwicklung eines DIY-Synthesizers</span>
                         
-                        <span class="jw-brow__desc" data-en="From circuit to working prototype." data-de="Von einer Schaltung zum funktionierenden Prototyp.">From circuit to working prototype.</span>
+                        <span class="jw-brow__desc">Von einer Schaltung zum funktionierenden Prototyp.</span>
                         
                     </span>
                     <span class="jw-brow__tags jw-tags">Devlog · Electronic</span>
@@ -137,8 +146,8 @@
     
 <section class="jw-cta" aria-label="Contact">
     <div class="jw-wrap jw-cta__inner">
-        <p class="jw-cta__text" data-en="Questions, ideas or feedback? I’d love to hear from you." data-de="Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.">Questions, ideas or feedback? I’d love to hear from you.</p>
-        <a href="/#contact" class="jw-cta__button"><span data-en="Drop a message" data-de="Schreib mir">Drop a message</span>&nbsp;→</a>
+        <p class="jw-cta__text">Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.</p>
+        <a href="/#contact" class="jw-cta__button"><span>Schreib mir</span>&#160;→</a>
     </div>
 </section>
 
@@ -147,10 +156,10 @@
 
 <footer class="site-footer">
     <div class="container footer-row">
-        <p class="footer-copy" data-en="© 2026 Jan Westphal. All wrongs reserved." data-de="© 2026 Jan Westphal. Alle Fehler vorbehalten.">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <p class="footer-copy">© 2026 Jan Westphal. Alle Fehler vorbehalten.</p>
         <ul class="jw-footer-links">
-            <li><a href="/impressum/" data-en="Imprint" data-de="Impressum">Imprint</a></li>
-            <li><a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></li>
+            <li><a href="/impressum/">Impressum</a></li>
+            <li><a href="/datenschutz/">Datenschutz</a></li>
         </ul>
     </div>
 </footer>

@@ -1,56 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chirping on Trust for GBA – Jan Westphal</title>
-    <meta name="description" content="As part of the annual Summer Game Jam by IF(game)SH e.V., I developed a game for the Game Boy Advance over the course of a weekend in a team of three. My..." />
-    <meta name="author" content="Jan Westphal" />
-    <meta name="robots" content="index, follow" />
-    <meta name="geo.region" content="DE-SH" />
-    <meta name="geo.placename" content="Kiel" />
-    <link rel="canonical" href="https://janwestphal.dev/projects/chirping-on-trust/" />
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <meta name="description" content="Im Rahmen des jährlichen Summer Game Jams des IF(game)SH e.V. habe ich an einem Wochenende in einem Dreierteam ein Spiel für den Game Boy Advance...">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/projects/chirping-on-trust/" rel="canonical">
+    <link href="https://janwestphal.dev/projects/chirping-on-trust/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/projects/chirping-on-trust/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/projects/chirping-on-trust/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/projects/chirping-on-trust/" property="og:url">
+    <meta content="de_DE" property="og:locale">
+    <meta content="en_US" property="og:locale:alternate">
+    <meta name="geo.region" content="DE-SH">
+    <meta name="geo.placename" content="Kiel">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://janwestphal.dev/projects/chirping-on-trust/" />
-    <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:locale:alternate" content="de_DE" />
-    <meta property="og:title" content="Chirping on Trust for GBA – Jan Westphal" />
-    <meta property="og:description" content="As part of the annual Summer Game Jam by IF(game)SH e.V., I developed a game for the Game Boy Advance over the course of a weekend in a team of three. My..." />
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Chirping on Trust for GBA – Jan Westphal">
+    <meta property="og:description" content="Im Rahmen des jährlichen Summer Game Jams des IF(game)SH e.V. habe ich an einem Wochenende in einem Dreierteam ein Spiel für den Game Boy Advance...">
     
-    <meta property="og:image" content="https://janwestphal.dev/Images/projects/chirping-on-trust/webshot.webp" />
-    <meta name="twitter:image" content="https://janwestphal.dev/Images/projects/chirping-on-trust/webshot.webp" />
+    <meta property="og:image" content="https://janwestphal.dev/Images/projects/chirping-on-trust/webshot.webp">
+    <meta name="twitter:image" content="https://janwestphal.dev/Images/projects/chirping-on-trust/webshot.webp">
     
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Chirping on Trust for GBA – Jan Westphal Preview" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Chirping on Trust for GBA – Jan Westphal Preview">
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Chirping on Trust for GBA – Jan Westphal" />
-    <meta name="twitter:description" content="As part of the annual Summer Game Jam by IF(game)SH e.V., I developed a game for the Game Boy Advance over the course of a weekend in a team of three. My..." />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chirping on Trust for GBA – Jan Westphal">
+    <meta name="twitter:description" content="Im Rahmen des jährlichen Summer Game Jams des IF(game)SH e.V. habe ich an einem Wochenende in einem Dreierteam ein Spiel für den Game Boy Advance...">
 
 
     <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
-    <meta name="theme-color" content="#EEECE6" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png" />
-    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
     <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
-    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/theme.css" />
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
     <script src="/translations.js" defer></script>
     <script src="/script.js" defer></script>
 
 </head>
 <body class="theme page-project" data-page="project-static">
 
+<a class="jw-skip" href="#main">Zum Inhalt springen</a>
 <header class="site-header">
     <div class="container nav">
         <div class="jw-brand">
@@ -58,14 +64,15 @@
         </div>
         <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop" data-en="Projects" data-de="Projekte">Projects</span><span class="nav-label nav-label--mobile"><span data-en="Projects" data-de="Projekte">Projects</span> →</span></a></li>
-                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Blog" data-de="Blog">Blog</span><span class="nav-label nav-label--mobile"><span data-en="Blog" data-de="Blog">Blog</span> →</span></a></li>
-                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span data-en="About" data-de="Über mich">About</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Contact" data-de="Kontakt">Contact</span><span class="nav-label nav-label--mobile"><span data-en="Contact" data-de="Kontakt">Contact</span> →</span></a></li>
-                <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
+                <li><a href="/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Projekte</span><span class="nav-label nav-label--mobile"><span>Projekte</span> →</span></a></li>
+                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span> →</span></a></li>
+                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span>Über mich</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Kontakt</span><span class="nav-label nav-label--mobile"><span>Kontakt</span> →</span></a></li>
+                <li><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Animationen"><span class="nav-label nav-label--desktop">Animationen</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">an</span><span class="jw-motion-toggle__off">aus</span></span></button></li>
+                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/projects/chirping-on-trust/"><span class="nav-label nav-label--desktop">English</span><span class="nav-label nav-label--mobile">EN</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" data-aria-en="Open menu" data-aria-de="Menü öffnen" aria-label="Open menu" aria-expanded="false">
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -73,34 +80,31 @@
     </div>
 </header>
 
-<main class="project-page">
+<main id="main" tabindex="-1" class="project-page">
     <section class="jw-wrap jw-detail-head" aria-labelledby="jw-page-title">
         <nav class="jw-crumb" aria-label="Breadcrumb">
-            <a href="/projects/" data-en="Projects" data-de="Projekte">Projects</a>
+            <a href="/projects/">Projekte</a>
             <span aria-hidden="true">/</span>
             <span>03</span>
         </nav>
         <div class="jw-detail-head__row">
             <div class="jw-detail-head__main">
                 <h1 id="jw-page-title">Chirping on Trust for GBA</h1>
-                <div class="project-summary jw-lead" data-lang-show="en"><p>As part of the annual Summer Game Jam by IF(game)SH e.V., I developed a game for the Game Boy Advance over the course of a weekend in a team of three. My main responsibilities were pixel art, the web emulator, and the styling of the <a href="https://jan-west.itch.io/chirping-on-trust">itch.io page</a>. My teammates focused on technical feasibility and gameplay programming. We developed the game in Rust using the agb library, which also allowed us to load Aseprite files directly without having to export them first. In the end, this enabled us to compile a ROM and test it on an actual Game Boy by loading it via a microSD card into a flash cartridge.</p>
-<p>My team members were <a href="https://gracl.itch.io/">Gracl</a><a href="https://gracl.itch.io/"> </a>&amp; <a href="https://zoltankost.itch.io/">Zoltankost</a><a href="https://zoltankost.itch.io/"> </a>and it was really fun to work with them!</p>
-<p>Here´s a <a href="https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">blog </a>about my expierience at the gamejam.</p>
-</div>
-                <div class="project-summary jw-lead" data-lang-show="de" hidden><p>Im Rahmen der jährlichen Summer Gamejam vom IF(game)SH e.V. habe ich ein Spiel in einem dreier Team für den Gameboy Advance über ein Wochenende entwickelt. Ich war hauptsächlich für die Pixelart, den Webemulator und das <a href="https://jan-west.itch.io/chirping-on-trust">Itch.io site</a> styling zuständig. Meine Teampartner haben sich mit der technischen Machbarkeit und der Gameplayprogrammierung auseinander gesetzt. Wir haben das Spiel in der Programmiersprache Rust entwickelt mit der agb Bibliothek, durch die agb bibliothek konnten wir auch direkt Aseprite (Pixelart Editor) files laden ohne exportieren zu müssen. Dadurch konnten wir am Ende eine ROM kompilieren und diese dann über eine micro sd Karte in ein Flashmodul einlegen und auf dem Gameboy dann tatsächlich testen.</p>
-<p>Check doch gerne mal die <a href="https://jan-west.itch.io/chirping-on-trust">Gamesite</a>, dort kann auch die ROM runtergeladen werden sowie das Spiel im Browser gespielt werden.</p>
-<p>Meine Teampartner für das Spiel waren <a href="https://gracl.itch.io/">Gracl </a>&amp; <a href="https://zoltankost.itch.io/">Zoltankost</a>, es war eine sehr witzige Runde und ich hatte jede Menge Spaß während der Gamejam!</p>
-<p>In diesem <a href="https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">Blogbeitrag </a>schreibe ich auch noch etwas ausführlicher über die Gamejam.</p>
+                
+                <div class="project-summary jw-lead"><p>Im Rahmen des jährlichen Summer Game Jams des IF(game)SH e.V. habe ich an einem Wochenende in einem Dreierteam ein Spiel für den Game Boy Advance entwickelt. Ich war hauptsächlich für die Pixelart, den Web-Emulator und das Styling der <a href="https://jan-west.itch.io/chirping-on-trust">itch.io-Seite</a> zuständig. Meine Teampartner haben sich um die technische Machbarkeit und die Gameplay-Programmierung gekümmert. Entwickelt haben wir das Spiel in der Programmiersprache Rust mit der Bibliothek agb. Dadurch konnten wir Aseprite-Dateien (Pixelart-Editor) direkt laden, ohne sie vorher exportieren zu müssen. Am Ende konnten wir eine ROM kompilieren, sie über eine microSD-Karte in ein Flash-Modul laden und auf einem echten Game Boy testen.</p>
+<p>Schau gern auf der <a href="https://jan-west.itch.io/chirping-on-trust">Spielseite</a> vorbei: Dort kannst du die ROM herunterladen oder das Spiel direkt im Browser spielen.</p>
+<p>Meine Teampartner waren <a href="https://gracl.itch.io/">Gracl</a> &amp; <a href="https://zoltankost.itch.io/">Zoltankost</a>, es war eine sehr witzige Runde und ich hatte jede Menge Spaß während des Game Jams!</p>
+<p>In diesem <a href="https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">Blogbeitrag</a> schreibe ich noch etwas ausführlicher über den Game Jam.</p>
 </div>
             </div>
             <dl class="jw-facts">
-                <div><dt data-en="Type" data-de="Art">Type</dt><dd><span data-en="Game" data-de="Spiel">Game</span></dd></div>
-                <div><dt data-en="Year" data-de="Jahr">Year</dt><dd>2026</dd></div>
+                <div><dt>Art</dt><dd><span>Spiel</span></dd></div>
+                <div><dt>Jahr</dt><dd>2026</dd></div>
                 <div>
-                    <dt data-en="Details" data-de="Details">Details</dt>
+                    <dt>Details</dt>
                     <dd>
-                        <span data-lang-show="en">Gamejam, Group project, released</span>
-                        <span data-lang-show="de" hidden>Gamejam, Group project, released</span>
+                        
+                        <span>Game Jam, Gruppenprojekt, veröffentlicht</span>
                     </dd>
                 </div>
             </dl>
@@ -109,28 +113,29 @@
 
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
-        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span data-en="Media" data-de="Medien">Media</span></h2>
-        <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--widget" style="width:206px;min-height:165px"><p class="jw-consent__text"><span data-en="Embedded from itch.io. Loading sends data to itch.io." data-de="Von itch.io eingebunden. Beim Laden werden Daten an itch.io übertragen.">Embedded from itch.io. Loading sends data to itch.io.</span> <a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></p><button type="button" class="jw-consent__button" data-en="Load" data-de="Laden">Load</button><template><iframe frameborder="0" src="https://itch.io/embed/4878195?border_width=0&amp;bg_color=9badb7&amp;fg_color=3f3f74&amp;link_color=5b6ee1&amp;border_color=798b95" width="206" height="165"><a href="https://jan-west.itch.io/chirping-on-trust">Chirping on trust by Netro, Gracl, zoltankost</a></iframe></template></div></div>
+        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span>Medien</span></h2>
+        <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--widget" style="width:206px;min-height:165px"><p class="jw-consent__text"><span>Von itch.io eingebunden. Beim Laden werden Daten an itch.io übertragen.</span> <a href="/datenschutz/">Datenschutz</a></p><button type="button" class="jw-consent__button">Laden</button><template><iframe frameborder="0" src="https://itch.io/embed/4878195?border_width=0&bg_color=9badb7&fg_color=3f3f74&link_color=5b6ee1&border_color=798b95" width="206" height="165"><a href="https://jan-west.itch.io/chirping-on-trust">Chirping on trust by Netro, Gracl, zoltankost</a></iframe></template></div></div>
     </section>
+    
     
 
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
-        <h2 id="jw-gallery-title" class="jw-label jw-rule">02 — <span data-en="Gallery" data-de="Galerie">Gallery</span> (02)</h2>
+        <h2 id="jw-gallery-title" class="jw-label jw-rule">02 — <span>Galerie</span> (02)</h2>
         <div class="project-gallery jw-gallery">
             
             <figure class="project-gallery__item">
                 
-                <img src="/Images/projects/chirping-on-trust/titlescreenshott.png" alt="Title screen from the game" loading="lazy">
+                <a class="post-figure__link" data-lightbox="" href="/Images/projects/chirping-on-trust/titlescreenshott.png"><img src="/Images/projects/chirping-on-trust/titlescreenshott.png" alt="Pixelart-Titelbildschirm von Chirping on Trust mit Vögeln und den Menüpunkten „Select Players“ und „Start Game“" loading="lazy"></a>
                 
-                <figcaption><span class="jw-fig">Fig. 01</span> <span data-en="Title screen from the game" data-de="Titelbildschirm des Spiels">Title screen from the game</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 01</span> <span>Titelbildschirm des Spiels</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <img src="/Images/projects/chirping-on-trust/webshot.webp" alt="Game runnning on GBA SP" loading="lazy">
+                <a class="post-figure__link" data-lightbox="" href="/Images/projects/chirping-on-trust/webshot.webp"><img src="/Images/projects/chirping-on-trust/webshot.webp" alt="Chirping on Trust läuft auf einem Game Boy Advance SP" loading="lazy"></a>
                 
-                <figcaption><span class="jw-fig">Fig. 02</span> <span data-en="Game running on GBA SP" data-de="Das Spiel läuft auf einem GBA SP">Game running on GBA SP</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 02</span> <span>Das Spiel läuft auf einem GBA SP</span></figcaption>
             </figure>
             
         </div>
@@ -140,13 +145,13 @@
     <nav class="jw-wrap jw-pager" aria-label="More projects">
         
         <a class="jw-pager__link" href="/projects/go-pony-go-c/">
-            <span class="jw-label" data-en="← Previous project" data-de="← Vorheriges Projekt">← Previous project</span>
+            <span class="jw-label">← Vorheriges Projekt</span>
             <span class="jw-pager__title">Go Pony, Go C!</span>
         </a>
         
         
         <a class="jw-pager__link jw-pager__link--next" href="/projects/Audio-Dingo-Synth/">
-            <span class="jw-label" data-en="Next project →" data-de="Nächstes Projekt →">Next project →</span>
+            <span class="jw-label">Nächstes Projekt →</span>
             <span class="jw-pager__title">Audio Dingo Synth</span>
         </a>
         
@@ -155,8 +160,8 @@
     
 <section class="jw-cta" aria-label="Contact">
     <div class="jw-wrap jw-cta__inner">
-        <p class="jw-cta__text" data-en="Questions, ideas or feedback? I’d love to hear from you." data-de="Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.">Questions, ideas or feedback? I’d love to hear from you.</p>
-        <a href="/#contact" class="jw-cta__button"><span data-en="Drop a message" data-de="Schreib mir">Drop a message</span>&nbsp;→</a>
+        <p class="jw-cta__text">Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.</p>
+        <a href="/#contact" class="jw-cta__button"><span>Schreib mir</span>&#160;→</a>
     </div>
 </section>
 
@@ -165,10 +170,10 @@
 
 <footer class="site-footer">
     <div class="container footer-row">
-        <p class="footer-copy" data-en="© 2026 Jan Westphal. All wrongs reserved." data-de="© 2026 Jan Westphal. Alle Fehler vorbehalten.">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <p class="footer-copy">© 2026 Jan Westphal. Alle Fehler vorbehalten.</p>
         <ul class="jw-footer-links">
-            <li><a href="/impressum/" data-en="Imprint" data-de="Impressum">Imprint</a></li>
-            <li><a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></li>
+            <li><a href="/impressum/">Impressum</a></li>
+            <li><a href="/datenschutz/">Datenschutz</a></li>
         </ul>
     </div>
 </footer>

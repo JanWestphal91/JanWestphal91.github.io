@@ -1,29 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 – Jan Westphal</title>
-    <meta name="robots" content="noindex" />
+    <meta name="robots" content="noindex">
+    <link href="https://janwestphal.dev/404.html" rel="canonical">
+    <link href="https://janwestphal.dev/404.html" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/404.html" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/404.html" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/404.html" property="og:url">
+    <meta content="de_DE" property="og:locale">
+    <meta content="en_US" property="og:locale:alternate">
     <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
-    <meta name="theme-color" content="#EEECE6" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png" />
-    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
     <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
-    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/theme.css" />
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
     <script src="/translations.js" defer></script>
     <script src="/script.js" defer></script>
 
 </head>
 <body class="theme page-404">
 
+<a class="jw-skip" href="#main">Zum Inhalt springen</a>
 <header class="site-header">
     <div class="container nav">
         <div class="jw-brand">
@@ -31,14 +41,15 @@
         </div>
         <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Projects" data-de="Projekte">Projects</span><span class="nav-label nav-label--mobile"><span data-en="Projects" data-de="Projekte">Projects</span> →</span></a></li>
-                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Blog" data-de="Blog">Blog</span><span class="nav-label nav-label--mobile"><span data-en="Blog" data-de="Blog">Blog</span> →</span></a></li>
-                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span data-en="About" data-de="Über mich">About</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Contact" data-de="Kontakt">Contact</span><span class="nav-label nav-label--mobile"><span data-en="Contact" data-de="Kontakt">Contact</span> →</span></a></li>
-                <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
+                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop">Projekte</span><span class="nav-label nav-label--mobile"><span>Projekte</span> →</span></a></li>
+                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span> →</span></a></li>
+                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span>Über mich</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Kontakt</span><span class="nav-label nav-label--mobile"><span>Kontakt</span> →</span></a></li>
+                <li><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Animationen"><span class="nav-label nav-label--desktop">Animationen</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">an</span><span class="jw-motion-toggle__off">aus</span></span></button></li>
+                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/404.html"><span class="nav-label nav-label--desktop">English</span><span class="nav-label nav-label--mobile">EN</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" data-aria-en="Open menu" data-aria-de="Menü öffnen" aria-label="Open menu" aria-expanded="false">
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -47,17 +58,17 @@
 </header>
 
 
-<main>
+<main id="main" tabindex="-1">
     <section class="jw-wrap jw-page-head jw-404" aria-labelledby="jw-page-title">
-        <p class="jw-label">[ <span data-en="Error 404" data-de="Error 404">Error 404</span> ]</p>
+        <p class="jw-label">[ <span>Error 404</span> ]</p>
         <div class="jw-page-head__row">
-            <h1 id="jw-page-title" data-en="Page not found" data-de="Seite nicht gefunden">Page not found</h1>
-            <p class="jw-page-head__intro" data-en="This page doesn't exist (anymore). Maybe one of these helps:" data-de="Diese Seite gibt es nicht (mehr). Vielleicht hilft eins davon weiter:">This page doesn&#39;t exist (anymore). Maybe one of these helps:</p>
+            <h1 id="jw-page-title">Seite nicht gefunden</h1>
+            <p class="jw-page-head__intro">Diese Seite gibt es nicht (mehr). Vielleicht hilft eins davon weiter:</p>
         </div>
         <div class="jw-404__actions">
-            <a href="/" class="jw-cta__button"><span data-en="Back to start" data-de="Zur Startseite">Back to start</span>&nbsp;→</a>
-            <a href="/projects/" class="jw-more">[&nbsp;<span data-en="Projects" data-de="Projekte">Projects</span>&nbsp;]</a>
-            <a href="/blog/" class="jw-more">[&nbsp;<span data-en="Blog" data-de="Blog">Blog</span>&nbsp;]</a>
+            <a href="/" class="jw-cta__button"><span>Zur Startseite</span>&#160;→</a>
+            <a href="/projects/" class="jw-more">[&#160;<span>Projekte</span>&#160;]</a>
+            <a href="/blog/" class="jw-more">[&#160;<span>Blog</span>&#160;]</a>
         </div>
     </section>
 </main>
@@ -65,10 +76,10 @@
 
 <footer class="site-footer">
     <div class="container footer-row">
-        <p class="footer-copy" data-en="© 2026 Jan Westphal. All wrongs reserved." data-de="© 2026 Jan Westphal. Alle Fehler vorbehalten.">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <p class="footer-copy">© 2026 Jan Westphal. Alle Fehler vorbehalten.</p>
         <ul class="jw-footer-links">
-            <li><a href="/impressum/" data-en="Imprint" data-de="Impressum">Imprint</a></li>
-            <li><a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></li>
+            <li><a href="/impressum/">Impressum</a></li>
+            <li><a href="/datenschutz/">Datenschutz</a></li>
         </ul>
     </div>
 </footer>

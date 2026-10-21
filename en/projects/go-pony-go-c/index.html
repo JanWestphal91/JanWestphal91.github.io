@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Pony, Go C! – Jan Westphal</title>
+    <meta name="description" content="Made with Godot and Aseprite, free to play. This game is a small homage to the old Flash games of the early 2000s and an experiment with physics...">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/en/projects/go-pony-go-c/" rel="canonical">
+    <link href="https://janwestphal.dev/projects/go-pony-go-c/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/projects/go-pony-go-c/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/projects/go-pony-go-c/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/en/projects/go-pony-go-c/" property="og:url">
+    <meta content="en_US" property="og:locale">
+    <meta content="de_DE" property="og:locale:alternate">
+    <meta name="geo.region" content="DE-SH">
+    <meta name="geo.placename" content="Kiel">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Go Pony, Go C! – Jan Westphal">
+    <meta property="og:description" content="Made with Godot and Aseprite, free to play. This game is a small homage to the old Flash games of the early 2000s and an experiment with physics...">
+    
+    <meta property="og:image" content="https://janwestphal.dev/Images/resizedpony.gif">
+    <meta name="twitter:image" content="https://janwestphal.dev/Images/resizedpony.gif">
+    
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Go Pony, Go C! – Jan Westphal Preview">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Go Pony, Go C! – Jan Westphal">
+    <meta name="twitter:description" content="Made with Godot and Aseprite, free to play. This game is a small homage to the old Flash games of the early 2000s and an experiment with physics...">
+
+
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-project" data-page="project-static">
+
+<a class="jw-skip" href="#main">Skip to content</a>
+<header class="site-header">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="/en/" class="logo">Jan Westphal</a>
+        </div>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/en/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Projects</span><span class="nav-label nav-label--mobile"><span>Projects</span> →</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span> →</span></a></li>
+                <li class="jw-nav-about"><a href="/en/#about" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="/en/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact</span><span class="nav-label nav-label--mobile"><span>Contact</span> →</span></a></li>
+                <li><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Motion"><span class="nav-label nav-label--desktop">Motion</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">on</span><span class="jw-motion-toggle__off">off</span></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/projects/go-pony-go-c/"><span class="nav-label nav-label--desktop">Deutsch</span><span class="nav-label nav-label--mobile">DE</span></a></li>
+            </ul>
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<main id="main" tabindex="-1" class="project-page">
+    <section class="jw-wrap jw-detail-head" aria-labelledby="jw-page-title">
+        <nav class="jw-crumb" aria-label="Breadcrumb">
+            <a href="/en/projects/">Projects</a>
+            <span aria-hidden="true">/</span>
+            <span>02</span>
+        </nav>
+        <div class="jw-detail-head__row">
+            <div class="jw-detail-head__main">
+                <h1 id="jw-page-title">Go Pony, Go C!</h1>
+                <div class="project-summary jw-lead"><p>Made with Godot and Aseprite, free to play. This game is a small homage to the old Flash games of the early 2000s and an experiment with physics calculations. It features a small pony getting faster, trying to reach lightspeed. Available on <a href="http://itch.io">itch.io</a> to play in a browser, with an online leaderboard, controller or keyboard input, and audio intensity transitions.</p>
+</div>
+                
+            </div>
+            <dl class="jw-facts">
+                <div><dt>Type</dt><dd><span>Game</span></dd></div>
+                <div><dt>Year</dt><dd>2026</dd></div>
+                <div>
+                    <dt>Details</dt>
+                    <dd>
+                        <span>Webgame · Solo project · Tools used: Godot, Aseprite, Adobe CC · Status: Released on itch.io</span>
+                        
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
+        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span>Media</span></h2>
+        <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--widget" style="width:208px;min-height:167px"><p class="jw-consent__text"><span>Embedded from itch.io. Loading sends data to itch.io.</span> <a href="/en/datenschutz/">Privacy</a></p><button type="button" class="jw-consent__button">Load</button><template><iframe frameborder="0" src="https://itch.io/embed/4287829" width="208" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe></template></div></div>
+    </section>
+    
+    
+
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
+        <h2 id="jw-gallery-title" class="jw-label jw-rule">02 — <span>Gallery</span> (04)</h2>
+        <div class="project-gallery jw-gallery">
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNi5wbmc=/original/1A9wjP.png"><img src="https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNi5wbmc=/original/1A9wjP.png" alt="Go Pony, Go C!: intro sequence with a short dialogue" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 01</span> <span>Intro sequence with a small dialog.</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTg0NDY4OS5wbmc=/original/OY%2BX9f.png"><img src="https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTg0NDY4OS5wbmc=/original/OY%2BX9f.png" alt="Go Pony, Go C!: the pony in the first area with turbo mode active" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 02</span> <span>First area with active turbo mode.</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzMy5wbmc=/original/lcI4Mo.png"><img src="https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzMy5wbmc=/original/lcI4Mo.png" alt="Go Pony, Go C!: the pony in the second area" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 03</span> <span>Second area.</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNS5wbmc=/original/zmOtvE.png"><img src="https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNS5wbmc=/original/zmOtvE.png" alt="Go Pony, Go C!: the last area just before reaching lightspeed" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 04</span> <span>Last area, preparing for lightspeed.</span></figcaption>
+            </figure>
+            
+        </div>
+    </section>
+    
+
+    <nav class="jw-wrap jw-pager" aria-label="More projects">
+        
+        <a class="jw-pager__link" href="/en/projects/pocket-knight/">
+            <span class="jw-label">← Previous project</span>
+            <span class="jw-pager__title">Pocket Knight</span>
+        </a>
+        
+        
+        <a class="jw-pager__link jw-pager__link--next" href="/en/projects/chirping-on-trust/">
+            <span class="jw-label">Next project →</span>
+            <span class="jw-pager__title">Chirping on Trust for GBA</span>
+        </a>
+        
+    </nav>
+
+    
+<section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text">Questions, ideas or feedback? I’d love to hear from you.</p>
+        <a href="/en/#contact" class="jw-cta__button"><span>Drop a message</span>&#160;→</a>
+    </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/en/impressum/">Imprint</a></li>
+            <li><a href="/en/datenschutz/">Privacy</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+<script src="/page-flip.browser.js" defer></script>
+<script src="/flipbook.js" defer></script>
+</body>
+</html>

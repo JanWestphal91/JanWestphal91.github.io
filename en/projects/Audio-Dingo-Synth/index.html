@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Dingo Synth – Jan Westphal</title>
+    <meta name="description" content="Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing...">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/en/projects/Audio-Dingo-Synth/" rel="canonical">
+    <link href="https://janwestphal.dev/projects/Audio-Dingo-Synth/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/projects/Audio-Dingo-Synth/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/projects/Audio-Dingo-Synth/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/en/projects/Audio-Dingo-Synth/" property="og:url">
+    <meta content="en_US" property="og:locale">
+    <meta content="de_DE" property="og:locale:alternate">
+    <meta name="geo.region" content="DE-SH">
+    <meta name="geo.placename" content="Kiel">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Audio Dingo Synth – Jan Westphal">
+    <meta property="og:description" content="Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing...">
+    
+    <meta property="og:image" content="https://janwestphal.dev/Images/Audiodingo/audiodingostanding.webp">
+    <meta name="twitter:image" content="https://janwestphal.dev/Images/Audiodingo/audiodingostanding.webp">
+    
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Audio Dingo Synth – Jan Westphal Preview">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Audio Dingo Synth – Jan Westphal">
+    <meta name="twitter:description" content="Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing...">
+
+
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-project" data-page="project-static">
+
+<a class="jw-skip" href="#main">Skip to content</a>
+<header class="site-header">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="/en/" class="logo">Jan Westphal</a>
+        </div>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/en/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Projects</span><span class="nav-label nav-label--mobile"><span>Projects</span> →</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span> →</span></a></li>
+                <li class="jw-nav-about"><a href="/en/#about" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="/en/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact</span><span class="nav-label nav-label--mobile"><span>Contact</span> →</span></a></li>
+                <li><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Motion"><span class="nav-label nav-label--desktop">Motion</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">on</span><span class="jw-motion-toggle__off">off</span></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/projects/Audio-Dingo-Synth/"><span class="nav-label nav-label--desktop">Deutsch</span><span class="nav-label nav-label--mobile">DE</span></a></li>
+            </ul>
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<main id="main" tabindex="-1" class="project-page">
+    <section class="jw-wrap jw-detail-head" aria-labelledby="jw-page-title">
+        <nav class="jw-crumb" aria-label="Breadcrumb">
+            <a href="/en/projects/">Projects</a>
+            <span aria-hidden="true">/</span>
+            <span>04</span>
+        </nav>
+        <div class="jw-detail-head__row">
+            <div class="jw-detail-head__main">
+                <h1 id="jw-page-title">Audio Dingo Synth</h1>
+                <div class="project-summary jw-lead"><p>Made with an Arduino Uno R4 Minima. It has 10 Buttons, 2 Rotary Encoder, a small OLED Display and a Joystick. The 7 buttons at the bottom are for playing notes or chords, with both rotary knobs the sound can be modulated, one changes the octave the other changes the waveform. With the joystick you can control the tone of the sound and the 3 control buttons are for recording, playback and magic functions.</p>
+<p>I wrote a bit more about the <a href="/en/blog/hello-blog/">development process in a blog post</a>, and there’s also a public <a href="https://github.com/JanWestphal91/Audio-Dingo-Synth">GitHub repository</a>.</p>
+</div>
+                
+            </div>
+            <dl class="jw-facts">
+                <div><dt>Type</dt><dd><span>Electronic</span></dd></div>
+                <div><dt>Year</dt><dd>2026</dd></div>
+                <div>
+                    <dt>Details</dt>
+                    <dd>
+                        <span>Electronic · Prototype · Audio</span>
+                        
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
+        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span>Media</span></h2>
+        <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span>This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).</span> <a href="/en/datenschutz/">Privacy</a></p><button type="button" class="jw-consent__button">Load video</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/iitkykF2S_k?si=r0XPnJhy53a7T4wm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div>
+    </section>
+    
+    
+
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
+        <h2 id="jw-gallery-title" class="jw-label jw-rule">02 — <span>Gallery</span> (01)</h2>
+        <div class="project-gallery jw-gallery">
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/standingdingo.webp"><img src="/Images/Audiodingo/standingdingo.webp" alt="Audio Dingo from the front: grey case with an orange speaker grille, two orange knobs, black keys and a small OLED display" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 01</span> <span>The finished enclosure, front view.</span></figcaption>
+            </figure>
+            
+        </div>
+    </section>
+    
+
+    <nav class="jw-wrap jw-pager" aria-label="More projects">
+        
+        <a class="jw-pager__link" href="/en/projects/chirping-on-trust/">
+            <span class="jw-label">← Previous project</span>
+            <span class="jw-pager__title">Chirping on Trust for GBA</span>
+        </a>
+        
+        
+        <a class="jw-pager__link jw-pager__link--next" href="/en/projects/e-zine-graffiti-doc/">
+            <span class="jw-label">Next project →</span>
+            <span class="jw-pager__title">Book#1 // Graffiti Archive 2015-2019</span>
+        </a>
+        
+    </nav>
+
+    
+<section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text">Questions, ideas or feedback? I’d love to hear from you.</p>
+        <a href="/en/#contact" class="jw-cta__button"><span>Drop a message</span>&#160;→</a>
+    </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/en/impressum/">Imprint</a></li>
+            <li><a href="/en/datenschutz/">Privacy</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+<script src="/page-flip.browser.js" defer></script>
+<script src="/flipbook.js" defer></script>
+</body>
+</html>

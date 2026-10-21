@@ -1,51 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://janwestphal.dev/</loc>
-        <lastmod>2026-06-17</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/"/>
     </url>
     <url>
-        <loc>https://janwestphal.dev/projects/</loc>
-        <lastmod>2026-06-17</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/projects/go-pony-go-c/</loc>
-        <lastmod>2026-06-17</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/projects/Audio-Dingo-Synth/</loc>
-        <lastmod>2026-06-17</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/projects/e-zine-graffiti-doc/</loc>
-        <lastmod>2026-06-17</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <loc>https://janwestphal.dev/en/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/"/>
     </url>
     <url>
         <loc>https://janwestphal.dev/blog/</loc>
-        <lastmod>2026-06-17</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/blog/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/blog/development-process-of-pocket-knight/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/development-process-of-pocket-knight/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/development-process-of-pocket-knight/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/development-process-of-pocket-knight/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/blog/development-process-of-pocket-knight/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/development-process-of-pocket-knight/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/development-process-of-pocket-knight/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/development-process-of-pocket-knight/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"/>
     </url>
     <url>
         <loc>https://janwestphal.dev/blog/hello-blog/</loc>
-        <lastmod>2026-06-13</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/hello-blog/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/hello-blog/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/hello-blog/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/blog/hello-blog/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/hello-blog/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/hello-blog/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/hello-blog/"/>
     </url>
     <url>
         <loc>https://janwestphal.dev/links/</loc>
-        <lastmod>2026-10-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/links/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/links/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/links/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/links/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/links/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/links/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/links/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/Audio-Dingo-Synth/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/Audio-Dingo-Synth/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/Audio-Dingo-Synth/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/Audio-Dingo-Synth/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/Audio-Dingo-Synth/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/Audio-Dingo-Synth/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/Audio-Dingo-Synth/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/Audio-Dingo-Synth/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/chirping-on-trust/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/chirping-on-trust/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/chirping-on-trust/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/chirping-on-trust/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/chirping-on-trust/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/chirping-on-trust/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/chirping-on-trust/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/chirping-on-trust/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/e-zine-graffiti-doc/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/e-zine-graffiti-doc/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/e-zine-graffiti-doc/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/e-zine-graffiti-doc/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/e-zine-graffiti-doc/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/e-zine-graffiti-doc/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/e-zine-graffiti-doc/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/e-zine-graffiti-doc/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/fine-art-assortment/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/fine-art-assortment/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/fine-art-assortment/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/fine-art-assortment/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/fine-art-assortment/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/fine-art-assortment/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/fine-art-assortment/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/fine-art-assortment/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/go-pony-go-c/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/go-pony-go-c/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/go-pony-go-c/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/go-pony-go-c/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/go-pony-go-c/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/go-pony-go-c/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/go-pony-go-c/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/go-pony-go-c/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/hidden-walls-in-lost-places/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/hidden-walls-in-lost-places/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/hidden-walls-in-lost-places/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/hidden-walls-in-lost-places/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/hidden-walls-in-lost-places/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/hidden-walls-in-lost-places/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/hidden-walls-in-lost-places/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/hidden-walls-in-lost-places/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/pocket-knight/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/pocket-knight/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/pocket-knight/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/pocket-knight/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/pocket-knight/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/pocket-knight/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/pocket-knight/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/pocket-knight/"/>
     </url>
 </urlset>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+    <link href="https://janwestphal.dev/en/admin/" rel="canonical">
+    <link href="https://janwestphal.dev/admin/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/admin/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/admin/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/en/admin/" property="og:url">
+    <meta content="en_US" property="og:locale">
+    <meta content="de_DE" property="og:locale:alternate">
+  <title>Content Manager – Jan Westphal</title>
+</head>
+<body>
+  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  <script>
+    /*
+     * Editor-Komponente "Bild mit Bildunterschrift".
+     *
+     * Fügt im Markdown-Editor einen Button ein, der ein Formular öffnet:
+     * Bild auswählen, Alt-Text, Bildunterschrift und Größe (klein / mittel /
+     * groß). Gespeichert wird ganz normales Markdown:
+     *
+     *   ![Alt-Text](/Images/blog/slug/bild.webp "Bildunterschrift |klein")
+     *
+     * Der Dateipfad bleibt also unangetastet — die Größe steht hinten in der
+     * Bildunterschrift und wird beim Build von .eleventy.js herausgelöst.
+     * Bei "mittel" wird gar keine Größe geschrieben, das ist der Standard.
+     */
+    (function registerFigureComponent(attempt) {
+      if (!window.CMS || !window.CMS.registerEditorComponent) {
+        if (attempt > 100) return;
+        window.setTimeout(function () { registerFigureComponent(attempt + 1); }, 50);
+        return;
+      }
+
+      var SIZES = ['klein', 'mittel', 'gross'];
+
+      function splitTitle(title) {
+        var match = String(title || '').match(/^(.*?)\s*\|\s*(klein|mittel|gross|groß)\s*$/i);
+        if (!match) {
+          return { caption: String(title || ''), size: 'mittel' };
+        }
+        var size = match[2].toLowerCase().replace('groß', 'gross');
+        return {
+          caption: match[1].trim(),
+          size: SIZES.indexOf(size) === -1 ? 'mittel' : size
+        };
+      }
+
+      window.CMS.registerEditorComponent({
+        id: 'bild',
+        label: 'Bild mit Bildunterschrift',
+        icon: 'image',
+        fields: [
+          {
+            label: 'Bild',
+            name: 'src',
+            widget: 'image'
+          },
+          {
+            label: 'Alt-Text',
+            name: 'alt',
+            widget: 'string',
+            required: false,
+            hint: 'Beschreibung für Screenreader und falls das Bild nicht lädt.'
+          },
+          {
+            label: 'Bildunterschrift',
+            name: 'caption',
+            widget: 'string',
+            required: false,
+            hint: 'Steht sichtbar unter dem Bild. Kann leer bleiben.'
+          },
+          {
+            label: 'Größe',
+            name: 'size',
+            widget: 'select',
+            default: 'mittel',
+            options: [
+              { label: 'Klein', value: 'klein' },
+              { label: 'Mittel', value: 'mittel' },
+              { label: 'Groß (volle Textbreite)', value: 'gross' }
+            ]
+          }
+        ],
+        pattern: /^!\[(.*?)\]\(([^\s)]+)(?:\s+"([^"]*)")?\)$/,
+        fromBlock: function (match) {
+          var parts = splitTitle(match[3]);
+          return {
+            alt: match[1] || '',
+            src: match[2] || '',
+            caption: parts.caption,
+            size: parts.size
+          };
+        },
+        toBlock: function (data) {
+          var src = data.src || '';
+          var alt = data.alt || '';
+          var caption = (data.caption || '').trim();
+          var size = SIZES.indexOf(data.size) === -1 ? 'mittel' : data.size;
+
+          var title = caption;
+          if (size !== 'mittel') {
+            title = caption ? caption + ' |' + size : '|' + size;
+          }
+
+          return '![' + alt + '](' + src +
+            (title ? ' "' + title.replace(/"/g, "'") + '"' : '') + ')';
+        },
+        toPreview: function (data) {
+          var widths = { klein: '180px', mittel: '320px', gross: '100%' };
+          var size = SIZES.indexOf(data.size) === -1 ? 'mittel' : data.size;
+          var caption = (data.caption || '').trim();
+
+          return '<figure style="margin:1rem 0;max-width:' + widths[size] + '">' +
+            '<img src="' + (data.src || '') + '" alt="' + (data.alt || '') +
+            '" style="width:100%;height:auto;border-radius:4px;display:block">' +
+            (caption
+              ? '<figcaption style="margin-top:.4rem;font-size:.85rem;opacity:.7">' +
+                caption + '</figcaption>'
+              : '') +
+            '</figure>';
+        }
+      });
+
+      /*
+       * Editor-Komponente "Einbettung (iframe)".
+       *
+       * Für YouTube, itch.io, Vimeo, Bandcamp und alles andere, was einen
+       * <iframe>-Schnipsel zum Kopieren anbietet. Gespeichert wird eine
+       * einzelne HTML-Zeile im Text:
+       *
+       *   <figure class="post-embed post-embed--16-9"><div
+       *   class="post-embed__frame"><iframe …></iframe></div>
+       *   <figcaption>…</figcaption></figure>
+       *
+       * Das Seitenverhältnis kommt aus der CSS-Klasse; "original" behält
+       * die Maße aus dem eingefügten Code (z. B. itch.io-Widgets).
+       */
+      var RATIOS = ['16-9', '4-3', 'original'];
+
+      window.CMS.registerEditorComponent({
+        id: 'einbettung',
+        label: 'Einbettung (iframe)',
+        icon: 'smart_display',
+        fields: [
+          {
+            label: 'Einbettungscode',
+            name: 'code',
+            widget: 'text',
+            hint: 'Den <iframe>-Code der Quelle hier einfügen — bei YouTube ' +
+                  'z. B. Teilen → Einbetten, bei itch.io den Embed-Code des Spiels.'
+          },
+          {
+            label: 'Seitenverhältnis',
+            name: 'ratio',
+            widget: 'select',
+            default: '16-9',
+            options: [
+              { label: '16:9 (Video)', value: '16-9' },
+              { label: '4:3', value: '4-3' },
+              { label: 'Größe aus dem Code übernehmen', value: 'original' }
+            ]
+          },
+          {
+            label: 'Bildunterschrift',
+            name: 'caption',
+            widget: 'string',
+            required: false
+          }
+        ],
+        pattern: /^<figure class="post-embed post-embed--([\w-]+)"><div class="post-embed__frame">([\s\S]*?)<\/div>(?:<figcaption>([\s\S]*?)<\/figcaption>)?<\/figure>$/,
+        fromBlock: function (match) {
+          return {
+            ratio: RATIOS.indexOf(match[1]) === -1 ? '16-9' : match[1],
+            code: (match[2] || '').trim(),
+            caption: (match[3] || '').trim()
+          };
+        },
+        toBlock: function (data) {
+          var ratio = RATIOS.indexOf(data.ratio) === -1 ? '16-9' : data.ratio;
+          // Alles auf eine Zeile, damit der Block wieder erkannt wird.
+          var code = (data.code || '').replace(/\s*[\r\n]+\s*/g, ' ').trim();
+          var caption = (data.caption || '').replace(/\s*[\r\n]+\s*/g, ' ').trim();
+
+          return '<figure class="post-embed post-embed--' + ratio + '">' +
+            '<div class="post-embed__frame">' + code + '</div>' +
+            (caption ? '<figcaption>' + caption + '</figcaption>' : '') +
+            '</figure>';
+        },
+        toPreview: function (data) {
+          var ratio = RATIOS.indexOf(data.ratio) === -1 ? '16-9' : data.ratio;
+          var caption = (data.caption || '').trim();
+          var code = (data.code || '').trim();
+          var box = ratio === 'original'
+            ? 'display:inline-block'
+            : 'aspect-ratio:' + ratio.replace('-', ' / ') + ';width:100%';
+
+          return '<figure style="margin:1rem 0">' +
+            '<div style="' + box + ';background:rgba(128,128,128,.12);border-radius:4px;overflow:hidden">' +
+            (code || '<span style="opacity:.6;font-size:.85rem">Noch kein Einbettungscode</span>') +
+            '</div>' +
+            (caption
+              ? '<figcaption style="margin-top:.4rem;font-size:.85rem;opacity:.7">' +
+                caption + '</figcaption>'
+              : '') +
+            '</figure>';
+        }
+      });
+    })(0);
+  </script>
+</body>
+</html>

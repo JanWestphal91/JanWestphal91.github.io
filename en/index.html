@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--SEO Core-->
+    <title>Jan Westphal – Portfolio | Developer & Designer from Kiel</title>
+    <meta name="description" content="Portfolio of Jan Westphal from Kiel: games, self-built electronics, illustration and graphic design – with projects, processes and devlogs.">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/en/" rel="canonical">
+    <link href="https://janwestphal.dev/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/en/" property="og:url">
+    <meta content="en_US" property="og:locale">
+    <meta content="de_DE" property="og:locale:alternate">
+    <meta name="geo.region" content="DE-SH">
+    <meta name="geo.placename" content="Kiel">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <!--Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Jan Westphal – Developer & Designer from Kiel">
+    <meta property="og:description" content="Portfolio of Jan Westphal from Kiel: games, self-built electronics, illustration and graphic design – with projects, processes and devlogs.">
+    <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Jan Westphal – Portfolio Preview">
+
+    <!--Twitter / X Card-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jan Westphal – Developer & Designer from Kiel">
+    <meta name="twitter:description" content="Portfolio of Jan Westphal from Kiel: games, self-built electronics, illustration and graphic design – with projects, processes and devlogs.">
+    <meta name="twitter:image" content="https://janwestphal.dev/Images/og-preview.jpg">
+
+    <!--Structured Data-->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jan Westphal",
+      "alternateName": "Netro",
+      "description": "Creative Coder and Designer from Kiel with roots in graffiti and illustration. Working in game development, interactive design, hardware prototyping and graphic design. Member of IF(game)SH e.V.",
+      "url": "https://janwestphal.dev",
+      "image": "https://janwestphal.dev/Images/myself.jpeg",
+      "sameAs": ["https://github.com/JanWestphal91/","https://jan-west.itch.io/","https://bsky.app/profile/jan-west.itch.io","https://www.instagram.com/netroslab/","https://www.tiktok.com/@netroslab","https://www.youtube.com/@netroslab"],
+      "jobTitle": "Creative Coder & Designer",
+      "address": { "@type": "PostalAddress", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "knowsAbout": [
+        "Game Development",
+        "Creative Coding",
+        "Illustration",
+        "Graffiti Art",
+        "Hardware Prototyping",
+        "Arduino",
+        "Godot Engine",
+        "Microcontroller Programming",
+        "3D Design and Printing",
+        "Pixel Art",
+        "Audio Synthesis",
+        "Graphic Design"
+      ]
+    }
+    </script>
+
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-home">
+
+<a class="jw-skip" href="#top">Skip to content</a>
+<header class="site-header">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="#top" class="logo">Jan Westphal</a>
+        </div>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/en/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop">Projects</span><span class="nav-label nav-label--mobile"><span>Projects</span> →</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span> →</span></a></li>
+                <li class="jw-nav-about"><a href="#about" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact</span><span class="nav-label nav-label--mobile"><span>Contact</span> →</span></a></li>
+                <li><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Motion"><span class="nav-label nav-label--desktop">Motion</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">on</span><span class="jw-motion-toggle__off">off</span></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/"><span class="nav-label nav-label--desktop">Deutsch</span><span class="nav-label nav-label--mobile">DE</span></a></li>
+            </ul>
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+<div class="ticker-band">
+    <div class="ticker-content">
+        <span class="ticker-text">People say I can do this → Creative Coding • Game Dev • Graphic Design • 2D &amp; 3D Graphics • Prototyping • UI / UX • Latest game: Pocket Knight •</span>
+        <span class="ticker-text" aria-hidden="true">People say I can do this → Creative Coding • Game Dev • Graphic Design • 2D &amp; 3D Graphics • Prototyping • UI / UX • Latest game: Pocket Knight •</span>
+    </div>
+</div>
+
+
+<main id="top" tabindex="-1">
+
+    <!-- ═══ Hero ═══ -->
+    <section class="jw-wrap jw-hero" aria-labelledby="jw-title">
+        <div class="jw-hero__main">
+            <p class="jw-hero__kicker"><span>Hi! I'm</span> <a href="#about" class="hero-name-link">Jan Westphal</a></p>
+            <h1 id="jw-title"><span class="jw-nowrap"><span>Developer</span> <span class="jw-accent">&amp;</span></span><br><span>designer</span><br><span>from Kiel</span></h1>
+            <p class="jw-hero__lead">I build games, electronic devices and graphics, I feel most at home where those three overlap.</p>
+        </div>
+        <div class="jw-hero__side">
+            <div class="jw-flip" data-flip="" aria-roledescription="carousel" aria-label="Selected projects">
+                <div class="jw-flip__stage" tabindex="0">
+                    <a class="jw-flip__card" href="/en/projects/pocket-knight/" draggable="false" data-title="Pocket Knight">
+                        <img src="/Images/projects/pocket-knight/closeshotpocketknight.webp" alt="Pocket Knight – self-built pedometer game device" loading="eager" draggable="false" width="800" height="600">
+                    </a>
+                    <a class="jw-flip__card" href="/en/projects/chirping-on-trust/" draggable="false" data-title="Chirping on Trust for GBA" tabindex="-1" aria-hidden="true">
+                        <img src="/Images/projects/chirping-on-trust/webshot.webp" alt="Chirping on Trust on the Game Boy Advance" loading="eager" draggable="false" width="800" height="600">
+                    </a>
+                    <a class="jw-flip__card" href="/en/projects/Audio-Dingo-Synth/" draggable="false" data-title="Audio Dingo Synth" tabindex="-1" aria-hidden="true">
+                        <img src="/Images/Audiodingo/audiodingostanding.webp" alt="Self-built synthesizer Audio Dingo" loading="lazy" draggable="false" width="800" height="600">
+                    </a>
+                    <a class="jw-flip__card" href="/en/projects/go-pony-go-c/" draggable="false" data-title="Go Pony, Go C!" tabindex="-1" aria-hidden="true">
+                        <img src="/Images/resizedpony.gif" alt="Scene from the game Go Pony, Go C!" loading="lazy" draggable="false" width="800" height="600">
+                    </a>
+                </div>
+                <div class="jw-flip__bar">
+                    <button type="button" class="jw-flip__btn" data-flip-prev="" aria-label="Previous project">←</button>
+                    <a class="jw-flip__caption" href="/en/projects/pocket-knight/">Pocket Knight&#160;→</a>
+                    <span class="jw-flip__count" aria-hidden="true">01 / 04</span>
+                    <button type="button" class="jw-flip__btn" data-flip-next="" aria-label="Next project">→</button>
+                </div>
+            </div>
+            <dl class="jw-facts">
+                <div><dt>Currently</dt><dd>B.Eng. Media Engineering, HAW Kiel</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <!-- ═══ Projekte ═══ -->
+    <section id="projects" class="jw-wrap jw-section" aria-labelledby="jw-projects-title">
+        <div class="jw-head">
+            <div>
+                <p class="jw-label">01 — <span>Projects</span></p>
+                <h2 id="jw-projects-title">More projects</h2>
+            </div>
+        </div>
+
+        <ul class="jw-works">
+            <li class="jw-work is-first-row">
+                <a class="jw-row" href="/en/projects/e-zine-graffiti-doc/">
+                    <span class="jw-row__thumb" aria-hidden="true"><img src="/Images/Graffzine1/buchstandingspaced.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-num">01</span>
+                    <span class="jw-row__main">
+                        <span class="jw-row__title">Book#1 // Graffiti Archive 2015-2019</span>
+                        <span class="jw-row__teaser">Digital documentation of graffiti and street art painted by me from 2015-2019.</span>
+                    </span>
+                    <span class="jw-row__info">
+                        <span class="jw-tags"><span>Illustration</span></span>
+                        <span class="jw-tags">2019</span>
+                    </span>
+                    <span class="jw-row__arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="jw-work">
+                <a class="jw-row" href="/en/projects/fine-art-assortment/">
+                    <span class="jw-row__thumb" aria-hidden="true"><img src="/Images/FineArt/1000015909.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-num">02</span>
+                    <span class="jw-row__main">
+                        <span class="jw-row__title">Fine Art Assortment</span>
+                        <span class="jw-row__teaser">A small collection of a bunch of paintings, commissions and free works.</span>
+                    </span>
+                    <span class="jw-row__info">
+                        <span class="jw-tags"><span>Illustration</span></span>
+                        <span class="jw-tags"></span>
+                    </span>
+                    <span class="jw-row__arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="jw-work">
+                <a class="jw-row" href="/en/projects/hidden-walls-in-lost-places/">
+                    <span class="jw-row__thumb" aria-hidden="true"><img src="/Images/Graffzine2/graffzine2thumb1.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-num">03</span>
+                    <span class="jw-row__main">
+                        <span class="jw-row__title">Hidden Walls in Lost Places</span>
+                        <span class="jw-row__teaser">Another collection of painted walls.</span>
+                    </span>
+                    <span class="jw-row__info">
+                        <span class="jw-tags"><span>Illustration</span></span>
+                        <span class="jw-tags">2020-2021</span>
+                    </span>
+                    <span class="jw-row__arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+        </ul>
+
+        <a href="/en/projects/" class="jw-more">[&#160;<span>All projects →</span>&#160;]</a>
+    </section>
+
+    <!-- ═══ Über mich ═══ -->
+    <section id="about" class="jw-about" aria-labelledby="jw-about-title">
+        <div class="jw-wrap jw-section">
+            <div class="jw-head">
+                <div>
+                    <p class="jw-label">02 — <span>About</span></p>
+                    <h2 id="jw-about-title">Hi, nice to meet you</h2>
+                </div>
+            </div>
+
+            <div class="jw-about__grid">
+                <figure class="jw-profile">
+                    <div class="jw-profile__photo">
+                        <img src="/Images/myself.jpeg" alt="Jan Westphal – Creative Coder and Designer from Kiel" loading="lazy" width="480" height="600">
+                    </div>
+                    <figcaption class="jw-profile__body">
+                        <p class="jw-profile__alias">Also known as Netro – my graffiti and dev alias.</p>
+                        <dl class="jw-facts jw-facts--profile">
+                            <div><dt>Open to</dt><dd><span class="jw-dot" aria-hidden="true"></span><span>Working student · Internship · Freelance</span></dd></div>
+                            <div><dt>Hours</dt><dd><span>approx. 15 hrs/week as a working student</span></dd></div>
+                            <div><dt>Studies</dt><dd><span>Media Engineering, HAW Kiel</span></dd></div>
+                            <div><dt>Location</dt><dd><span>Kiel, Germany</span></dd></div>
+                        </dl>
+                    </figcaption>
+                </figure>
+
+                <div class="jw-about__text"><div class="jw-about__more">
+                        <p>I'm into experimental design, art and prototyping. I'm fascinated by how different disciplines interlock to create something new.</p>
+                        <p>I love to draw and tinker with electronics as well as video and audio gear. Graffiti culture is part of my roots – it was my first real connection to illustration and design.</p>
+                        <p>My path wasn't a straight one. Six semesters of communication design gave me a visual foundation, then I worked as a graphic designer for several years – and realised the technology behind it intrigues me just as much. That's why I now study media engineering, bringing both worlds together.</p>
+                        <p>Game development excites me most, because design, code, sound and storytelling come together in one product. My favourites: Oxygen Not Included, Slay the Spire, Diablo and Donkey Kong Country.</p>
+                        <p>I'm married to a wonderful person who brings some order into my chaos, and we have two wonderful kids.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Werdegang ═══ -->
+    <section id="path" class="jw-wrap jw-section" aria-labelledby="jw-path-title">
+        <div class="jw-head">
+            <div>
+                <p class="jw-label">03 — <span>Background</span></p>
+                <h2 id="jw-path-title">Path</h2>
+            </div>
+        </div>
+
+        <div class="jw-cv">
+            <ol class="jw-cv__list">
+                <li class="jw-cv__row">
+                    <span class="jw-num">01</span>
+                    <span class="jw-cv__title">Painter</span>
+                    <span class="jw-cv__sub">Apprenticeship</span>
+                    <span class="jw-tags">Completed</span>
+                </li>
+                <li class="jw-cv__row">
+                    <span class="jw-num">02</span>
+                    <span class="jw-cv__title">Communication design</span>
+                    <span class="jw-cv__sub">University studies – visual foundation</span>
+                    <span class="jw-tags">6 semesters</span>
+                </li>
+                <li class="jw-cv__row">
+                    <span class="jw-num">03</span>
+                    <span class="jw-cv__title">Graphic designer</span>
+                    <span class="jw-cv__sub">Professional work in graphic design and printing</span>
+                    <span class="jw-tags">Several years</span>
+                </li>
+                <li class="jw-cv__row">
+                    <span class="jw-num">04</span>
+                    <span class="jw-cv__title">Media Engineering (B.Eng.)</span>
+                    <span class="jw-cv__sub">HAW Kiel</span>
+                    <span class="jw-tags"><span class="jw-dot" aria-hidden="true"></span><span>Now</span></span>
+                </li>
+            </ol>
+
+            <aside class="jw-cv__side">
+                <div class="jw-cv__group">
+                    <h3 class="jw-label">Toolbox</h3>
+                    <ul class="jw-skills" aria-label="Toolbox">
+                        <li>Godot</li>
+                        <li>Unity</li>
+                        <li>Arduino &amp; ESP32</li>
+                        <li>Adobe Suite</li>
+                        <li>Figma</li>
+                        <li>Blender</li>
+                        <li>Aseprite</li>
+                        <li>Fusion3D</li>
+                    </ul>
+
+                    <h3 class="jw-label">Languages</h3>
+                    <ul class="jw-skills" aria-label="Languages">
+                        <li>Python</li>
+                        <li>C#</li>
+                        <li>GDScript</li>
+                        <li>Java</li>
+                        <li>JavaScript</li>
+                    </ul>
+                    <p class="jw-skills__level">Basics</p>
+                    <ul class="jw-skills jw-skills--basic" aria-label="Basics">
+                        <li>C++ (Arduino, ESP32)</li>
+                    </ul>
+                </div>
+
+                <div class="jw-cv__group">
+                    <h3 class="jw-label">Courses - opencampus.sh</h3>
+                    <ul class="jw-cv__notes">
+                        <li><span>Game Dev Sessions</span></li>
+                        <li><span>Become a Maker</span> <span class="jw-tags">(FabLab)</span></li>
+                        <li><span>Project management sessions</span> <span class="jw-tags">WS 2026/27</span></li>
+                        <li><span>Kiel Robot League</span> <span class="jw-tags">(FabLab) · WS 2026/27</span></li>
+                    </ul>
+                </div>
+
+                <div class="jw-cv__group">
+                    <h3 class="jw-label">Community</h3>
+                    <ul class="jw-cv__notes">
+                        <li>Member of IF(game)SH e.V. – initiative for Schleswig-Holstein as a games location</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ═══ Blog ═══ -->
+    <section id="blog-preview" class="jw-wrap jw-section" aria-labelledby="jw-blog-title">
+        <div class="jw-head">
+            <div>
+                <p class="jw-label">04 — <span>Latest posts</span></p>
+                <h2 id="jw-blog-title">Blog</h2>
+            </div>
+        </div>
+        
+        <ul class="jw-blist jw-blist--home">
+            <li>
+                <a class="jw-brow" href="/en/blog/development-process-of-pocket-knight/">
+                    <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-brow__date jw-tags">
+                        <span>August 20, 2026</span>
+                    </span>
+                    <span class="jw-brow__main">
+                        <span class="jw-brow__title">Development process of Pocket Knight</span>
+                        <span class="jw-brow__desc">Detailed development process of a handheld device.</span>
+                    </span>
+                    <span class="jw-brow__arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li>
+                <a class="jw-brow" href="/en/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">
+                    <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/gamejamwork.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-brow__date jw-tags">
+                        <span>August 20, 2026</span>
+                    </span>
+                    <span class="jw-brow__main">
+                        <span class="jw-brow__title">Experiences and impressions from the Media Literacy Game Jam in Leck</span>
+                        <span class="jw-brow__desc">I attended a game jam over the weekend and write about it.</span>
+                    </span>
+                    <span class="jw-brow__arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li>
+                <a class="jw-brow" href="/en/blog/hello-blog/">
+                    <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/Audiodingo/audiodingostanding.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-brow__date jw-tags">
+                        <span>June 13, 2026</span>
+                    </span>
+                    <span class="jw-brow__main">
+                        <span class="jw-brow__title">Development process of a DIY synthesizer</span>
+                        <span class="jw-brow__desc">From circuit to working prototype.</span>
+                    </span>
+                    <span class="jw-brow__arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+        </ul>
+        <a href="/en/blog/" class="jw-more">[&#160;<span>All posts →</span>&#160;]</a>
+        
+    </section>
+
+    <!-- ═══ Kontakt ═══ -->
+    <section id="contact" class="jw-wrap jw-section" aria-labelledby="jw-contact-title">
+        <p class="jw-label">05 — <span>Contact</span></p>
+        <div class="jw-contact__grid">
+            <div class="jw-contact__box">
+                <h2 id="jw-contact-title">Drop your message here!</h2>
+                <form id="form" class="contact-form" action="https://submit-form.com/tpvcNY0Uc" method="POST" data-mail="j.westphal@live.com" novalidate><input type="checkbox" name="_honeypot" class="jw-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="jw-field">
+                        <label for="f-name"><span>Name</span></label>
+                        <input id="f-name" type="text" name="name" autocomplete="name" placeholder="Your name" required aria-describedby="f-name-error">
+                        <p class="jw-field-error" id="f-name-error" hidden></p>
+                    </div>
+                    <div class="jw-field">
+                        <label for="f-email"><span>E-mail</span></label>
+                        <input id="f-email" type="email" name="email" autocomplete="email" placeholder="name@example.com" required aria-describedby="f-email-error">
+                        <p class="jw-field-error" id="f-email-error" hidden></p>
+                    </div>
+                    <div class="jw-field jw-field--wide">
+                        <label for="f-message"><span>Message</span></label>
+                        <textarea id="f-message" name="message" placeholder="Your message – a project idea, a question or just a hello" required aria-describedby="f-message-error"></textarea>
+                        <p class="jw-field-error" id="f-message-error" hidden></p>
+                    </div>
+                    <p class="jw-form-note"><span>Your details are only used to reply to your message. More in the</span> <a href="/en/datenschutz/">privacy policy</a>.</p>
+                    <button type="submit" class="contact-submit">Send</button>
+                    <p class="jw-form-status" role="status" aria-live="polite" hidden></p>
+                </form>
+            </div>
+
+            <div class="jw-socials">
+                <div class="jw-direct">
+                    <h3 class="jw-label">Prefer email?</h3>
+                    <a class="jw-button jw-button--accent" href="mailto:j.westphal@live.com"><span>Write an email</span>&#160;→</a>
+                    <p class="jw-direct__address">j.westphal@live.com</p>
+                </div>
+                <h3 class="jw-label">Elsewhere</h3>
+                <ul class="jw-social-list">
+                    <li><a href="https://github.com/JanWestphal91/" target="_blank" rel="noopener noreferrer" class="jw-social-link">GitHub&#160;<span aria-hidden="true">↗</span></a></li>
+                    <li><a href="https://jan-west.itch.io/" target="_blank" rel="noopener noreferrer" class="jw-social-link">Itch.io&#160;<span aria-hidden="true">↗</span></a></li>
+                    <li><a href="https://bsky.app/profile/jan-west.itch.io" target="_blank" rel="noopener noreferrer" class="jw-social-link">Bluesky&#160;<span aria-hidden="true">↗</span></a></li>
+                    <li><a href="https://www.instagram.com/netroslab/" target="_blank" rel="noopener noreferrer" class="jw-social-link">Instagram&#160;<span aria-hidden="true">↗</span></a></li>
+                    <li><a href="https://www.tiktok.com/@netroslab" target="_blank" rel="noopener noreferrer" class="jw-social-link">TikTok&#160;<span aria-hidden="true">↗</span></a></li>
+                    <li><a href="https://www.youtube.com/@netroslab" target="_blank" rel="noopener noreferrer" class="jw-social-link">YouTube&#160;<span aria-hidden="true">↗</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </section></main>
+
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/en/impressum/">Imprint</a></li>
+            <li><a href="/en/datenschutz/">Privacy</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+
+</body>
+</html>

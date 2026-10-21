@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog – Jan Westphal</title>
+    <meta name="description" content="Thoughts, process notes and updates by Jan Westphal – Creative Coder & Designer from Kiel.">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/en/blog/" rel="canonical">
+    <link href="https://janwestphal.dev/blog/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/blog/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/blog/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/en/blog/" property="og:url">
+    <meta content="en_US" property="og:locale">
+    <meta content="de_DE" property="og:locale:alternate">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Blog – Jan Westphal">
+    <meta property="og:description" content="Thoughts, process notes and updates by Jan Westphal – Creative Coder & Designer from Kiel.">
+    <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg">
+
+
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-blog">
+
+<a class="jw-skip" href="#main">Skip to content</a>
+<header class="site-header">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="/en/" class="logo">Jan Westphal</a>
+        </div>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/en/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop">Projects</span><span class="nav-label nav-label--mobile"><span>Projects</span> →</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary" aria-current="page"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span> →</span></a></li>
+                <li class="jw-nav-about"><a href="/en/#about" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="/en/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact</span><span class="nav-label nav-label--mobile"><span>Contact</span> →</span></a></li>
+                <li><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Motion"><span class="nav-label nav-label--desktop">Motion</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">on</span><span class="jw-motion-toggle__off">off</span></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/blog/"><span class="nav-label nav-label--desktop">Deutsch</span><span class="nav-label nav-label--mobile">DE</span></a></li>
+            </ul>
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<main id="main" tabindex="-1">
+    <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
+        <p class="jw-label">[ Blog — 03 <span>posts</span> ]</p>
+        <div class="jw-page-head__row">
+            <h1 id="jw-page-title">Blog</h1>
+            <p class="jw-page-head__intro">Devlogs, build processes and game jam reports – how the projects actually came together.</p>
+        </div>
+    </section>
+
+    
+    <section class="jw-wrap jw-page-body" aria-label="Latest post">
+        <a class="jw-feature" href="/en/blog/development-process-of-pocket-knight/">
+            <figure class="jw-feature__media">
+                
+                <img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="" loading="eager" width="960" height="540">
+                
+            </figure>
+            <div class="jw-feature__body">
+                <div class="jw-feature__text">
+                    <span class="jw-badge">Latest</span>
+                    <h2>Development process of Pocket Knight</h2>
+                    
+                    <p>Detailed development process of a handheld device.</p>
+                    
+                </div>
+                <div class="jw-feature__foot">
+                    <span class="jw-tags">
+                        <span>August 20, 2026</span> · Game Dev · Prototyping · Electronics
+                    </span>
+                    <span class="jw-feature__read"><span>Read</span>&#160;→</span>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    
+    <section class="jw-wrap jw-page-body" aria-labelledby="jw-archive-title">
+        <h2 id="jw-archive-title" class="jw-label">All posts</h2>
+        <ul class="jw-blist">
+            <li>
+                <a class="jw-brow" href="/en/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">
+                    <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/gamejamwork.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-brow__date jw-tags">
+                        <span>August 20, 2026</span>
+                    </span>
+                    <span class="jw-brow__main">
+                        <span class="jw-brow__title">Experiences and impressions from the Media Literacy Game Jam in Leck</span>
+                        
+                        <span class="jw-brow__desc">I attended a game jam over the weekend and write about it.</span>
+                        
+                    </span>
+                    <span class="jw-brow__tags jw-tags">Game Dev · Design · Prototyping · Game Jam · if(game)SH e.V. · Media Literacy</span>
+                    <span class="jw-brow__arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li>
+                <a class="jw-brow" href="/en/blog/hello-blog/">
+                    <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/Audiodingo/audiodingostanding.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-brow__date jw-tags">
+                        <span>June 13, 2026</span>
+                    </span>
+                    <span class="jw-brow__main">
+                        <span class="jw-brow__title">Development process of a DIY synthesizer</span>
+                        
+                        <span class="jw-brow__desc">From circuit to working prototype.</span>
+                        
+                    </span>
+                    <span class="jw-brow__tags jw-tags">Devlog · Electronic</span>
+                    <span class="jw-brow__arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    
+    
+
+    
+<section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text">Questions, ideas or feedback? I’d love to hear from you.</p>
+        <a href="/en/#contact" class="jw-cta__button"><span>Drop a message</span>&#160;→</a>
+    </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/en/impressum/">Imprint</a></li>
+            <li><a href="/en/datenschutz/">Privacy</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+</body>
+</html>

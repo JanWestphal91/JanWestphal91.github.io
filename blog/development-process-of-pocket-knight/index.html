@@ -1,47 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Development process of Pocket Knight – Jan Westphal</title>
-    <meta name="description" content="Detailed Development process of a handheld device." />
-    <meta name="author" content="Jan Westphal" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://janwestphal.dev/blog/development-process-of-pocket-knight/" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entwicklungsprozess des Mini-Spielgeräts Pocket Knight – Jan Westphal</title>
+    <meta name="description" content="Dokumentation des Entwicklungsprozesses eines Handheld-Geräts.">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/blog/development-process-of-pocket-knight/" rel="canonical">
+    <link href="https://janwestphal.dev/blog/development-process-of-pocket-knight/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/blog/development-process-of-pocket-knight/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/blog/development-process-of-pocket-knight/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/blog/development-process-of-pocket-knight/" property="og:url">
+    <meta content="de_DE" property="og:locale">
+    <meta content="en_US" property="og:locale:alternate">
 
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://janwestphal.dev/blog/development-process-of-pocket-knight/" />
-    <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="Development process of Pocket Knight – Jan Westphal" />
-    <meta property="og:description" content="Detailed Development process of a handheld device." />
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Entwicklungsprozess des Mini-Spielgeräts Pocket Knight – Jan Westphal">
+    <meta property="og:description" content="Dokumentation des Entwicklungsprozesses eines Handheld-Geräts.">
     
-    <meta property="og:image" content="https://janwestphal.dev/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" />
+    <meta property="og:image" content="https://janwestphal.dev/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png">
     
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Development process of Pocket Knight – Jan Westphal" />
-    <meta name="twitter:description" content="Detailed Development process of a handheld device." />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Entwicklungsprozess des Mini-Spielgeräts Pocket Knight – Jan Westphal">
+    <meta name="twitter:description" content="Dokumentation des Entwicklungsprozesses eines Handheld-Geräts.">
 
 
     <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
-    <meta name="theme-color" content="#EEECE6" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png" />
-    <link rel="apple-touch-icon" href="/Images/favicon180.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
     <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
-    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/theme.css" />
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
     <script src="/translations.js" defer></script>
     <script src="/script.js" defer></script>
 
 </head>
 <body class="theme page-post" data-page="post">
 
+<a class="jw-skip" href="#main">Zum Inhalt springen</a>
 <header class="site-header">
     <div class="container nav">
         <div class="jw-brand">
@@ -49,14 +57,15 @@
         </div>
         <nav class="nav-main" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Projects" data-de="Projekte">Projects</span><span class="nav-label nav-label--mobile"><span data-en="Projects" data-de="Projekte">Projects</span> →</span></a></li>
-                <li><a href="/blog/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop" data-en="Blog" data-de="Blog">Blog</span><span class="nav-label nav-label--mobile"><span data-en="Blog" data-de="Blog">Blog</span> →</span></a></li>
-                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span data-en="About" data-de="Über mich">About</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop" data-en="Contact" data-de="Kontakt">Contact</span><span class="nav-label nav-label--mobile"><span data-en="Contact" data-de="Kontakt">Contact</span> →</span></a></li>
-                <li><button id="lang-toggle" class="link-button secondary" aria-label="Switch language">DE</button></li>
+                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop">Projekte</span><span class="nav-label nav-label--mobile"><span>Projekte</span> →</span></a></li>
+                <li><a href="/blog/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span> →</span></a></li>
+                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span>Über mich</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Kontakt</span><span class="nav-label nav-label--mobile"><span>Kontakt</span> →</span></a></li>
+                <li><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Animationen"><span class="nav-label nav-label--desktop">Animationen</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">an</span><span class="jw-motion-toggle__off">aus</span></span></button></li>
+                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/blog/development-process-of-pocket-knight/"><span class="nav-label nav-label--desktop">English</span><span class="nav-label nav-label--mobile">EN</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" data-aria-en="Open menu" data-aria-de="Menü öffnen" aria-label="Open menu" aria-expanded="false">
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -64,17 +73,17 @@
     </div>
 </header>
 
-<main class="post-page">
+<main id="main" tabindex="-1" class="post-page">
     <article>
         <header class="jw-wrap jw-post-head">
             <nav class="jw-crumb" aria-label="Breadcrumb">
-                <a href="/blog/" data-en="Blog" data-de="Blog">Blog</a>
+                <a href="/blog/">Blog</a>
                 <span aria-hidden="true">/</span>
-                <span data-lang-show="en">August 20, 2026</span><span data-lang-show="de" hidden>20. August 2026</span>
+                <span>20. August 2026</span>
             </nav>
-            <h1 data-en="Development process of Pocket Knight" data-de="Entwicklungsprozess des Mini Spielgeräts Pocket Knight">Development process of Pocket Knight</h1>
+            <h1>Entwicklungsprozess des Mini-Spielgeräts Pocket Knight</h1>
             
-            <p class="jw-lead" data-en="Detailed Development process of a handheld device." data-de="Dokumentation des Entwicklungsprozess für ein Handheld Gerät.">Detailed Development process of a handheld device.</p>
+            <p class="jw-lead">Dokumentation des Entwicklungsprozesses eines Handheld-Geräts.</p>
             
             
             <p class="jw-tags jw-post-head__tags">Game Dev · Prototyping · Electronics</p>
@@ -84,60 +93,15 @@
         
         <div class="jw-wrap jw-post-cover-wrap">
             <figure class="jw-post-cover">
-                <img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="Photo of the finished device" class="post-cover" loading="eager">
+                <img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="Das fertige Pocket-Knight-Gerät auf einer Steinoberfläche" class="post-cover" loading="eager">
             </figure>
         </div>
         
 
         <div class="jw-wrap">
             
-            <div class="post-body jw-prose" data-lang-show="en">
-                <p>Hi! For quite a while now I'd wanted to build a device that brings to mind the Digimon Digivice toys. I thought those things were really cool as a kid, even though I never owned one, but I've made up for that now in my own way :)</p>
-<p><a href="https://wikimon.net/images/9/99/Digivice_ver1_1.jpg"><img src="/Images/blog/development-process-of-pocket-knight/Digivice_ver1_1.webp" alt="Digive Toy" title="The toy i talk about, Bildquelle: https://wikimon.net/images/9/99/Digivice_ver1_1.jpg"></a></p>
-<p>So I started by working out a concept and thinking about which parts I could use. This time I went with a DFRobot FireBeetle v2 ESP32, because it already has the power supply on the board and all I had to do was hook up a battery. Since the device was also meant to be pocket-friendly, I tried to keep the whole thing as minimal as possible.</p>
-<p>Other components I used:</p>
-<ul>
-<li>128 x 64 pixel OLED display</li>
-<li>Seeed Grove – Pedometer (BMA456) (step counter)</li>
-<li>Piezo buzzer (sound output)</li>
-<li>Mini vibration motor (for haptic feedback)</li>
-<li>3 small switches (inputs)</li>
-<li>1800 mAh Li-ion battery (something much smaller would have done the job)</li>
-<li>PLA filament for the enclosure</li>
-<li>a piece of perfboard, wire and solder</li>
-<li>superglue and hot glue :)</li>
-</ul>
-<p>Once I had a rough plan and had gathered all the parts, I started by putting everything together on a breadboard and turned to the code first. There were several hurdles along the way that drove me to despair more than once: integrating the step counter, the sleep function while still counting steps, loading and displaying pixel graphics, and the animations. Everything else was hard too, what was I thinking?!</p>
-<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox href="/Images/PocketKnight/handheldbreadboard.webp"><img src="/Images/PocketKnight/handheldbreadboard.webp" alt="BreadboardKnight" loading="lazy"></a><figcaption>Breadboard Prototyping</figcaption></figure>
-<p>Once I eventually had halfway usable code and the breadboard circuit was more or less finalised, it was time to solder. I tried to get all the components packed together as compactly as possible, which worked out pretty well.</p>
-<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox href="/Images/PocketKnight/handheldactive.webp"><img src="/Images/PocketKnight/handheldactive.webp" alt="" loading="lazy"></a><figcaption>The soldered and glued thing</figcaption></figure>
-<p>In the next step I kept working on the game loop, the content and the sprites to turn it into a &quot;rounded&quot; game. Alongside that I started designing the enclosure in Fusion and then printed it at the <a href="https://fablab.sh/">Kiel FabLab</a>.</p>
-<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox href="/Images/blog/development-process-of-pocket-knight/Printfablab.webp"><img src="/Images/blog/development-process-of-pocket-knight/Printfablab.webp" alt="" loading="lazy"></a><figcaption>Printing the case on a Prusa Mini</figcaption></figure>
-<p>And then the time had finally come and the device was nearing completion. All in all it took considerably longer than planned again and I sank roughly 3 months of my free time into the project. I had a few more ideas I would have liked to implement, but I've cut them for now due to a lack of time and motivation.</p>
-<p>Here are the cut features:</p>
-<ul>
-<li>Multiplayer: co-op and competitive over ESP-NOW</li>
-<li>Online leaderboard over a WiFi connection</li>
-<li>Cooler animations and transition effects between screens</li>
-<li>Different starting classes (originally I wanted to build two devices, one with a knight and one with a wizard, for the co-op mode)</li>
-<li>English localisation, I wrote all the strings in German to begin with and out of convenience I've stuck with it.</li>
-</ul>
-<p>Bugs that still need dealing with:</p>
-<ul>
-<li>Text sometimes gets cut off because it's too long, 128 px really isn't much space for information.</li>
-<li>Some elements, mechanics and items are under explained.</li>
-<li>Not all enemies have an animation.</li>
-</ul>
-<p>Next time I'd also go for a much smaller battery, it makes up a large part of the weight. I've been testing the device for a few weeks now, and extrapolating from the battery usage I end up with a runtime of roughly 3 – 4 months on a single charge. That's quite convenient, but definitely overkill.</p>
-<p>And now for the actually interesting part: the game!</p>
-<p>The game loop works like this: the player starts with a knight at level 1. Every 250 steps an event is triggered, the device vibrates and beeps if it isn't in sleep mode. Up to 20 events can be collected this way, which can then be played through one after another in one go whenever you find the time.</p>
-<p>In combat the player goes first and has 3 skill points for the entire fight. They can attack, block, or use skills (each of which costs one point). The enemy's intention is shown in advance, then it's the enemy's turn and they carry out an action (attack, block, charge up for a strong attack). This goes back and forth until one of them is defeated.</p>
-<p>Events work like this: you get a choice between two random encounters, and after 10 events there's a boss fight. Each event gives a reward consisting of experience, gold, an item or a stat increase. Levelling up also gives the player stat increases and an item, always with a choice of one out of 3 items. In total that means completing 50 events and defeating the final boss. As soon as the player loses a fight, or their health drops to 0 some other way, a new run starts. At the end of a run there's a certain amount of meta currency, which can be spent on unlocking new items and equipment or starting bonuses that then become available.</p>
-<p>To finish off, here's an overview of all the event sprites and enemies, plus a few less serious posters. :) Thanks for reading!</p>
-<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span data-en="This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google)." data-de="Dieses Video ist von YouTube eingebunden. Beim Laden werden Daten wie deine IP-Adresse an YouTube (Google) übertragen.">This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).</span> <a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></p><button type="button" class="jw-consent__button" data-en="Load video" data-de="Video laden">Load video</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YMT1BVRyX4g?si=meBRJPO7GS6B1Fek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div></figure>
-
-            </div>
-            <div class="post-body jw-prose" data-lang-show="de" hidden>
+            
+            <div class="post-body jw-prose">
                 <p>Hallo! Ich hatte schon länger den Wunsch ein Gerät zu bauen das an die Digimon Digivice Spielzeuge erinnert, ich fand die Teile richtig cool als Kind obwohl ich selbst nie eins hatte, aber das hab ich ja nun auf eine andere Art und Weise nachgeholt :)</p>
 <p><a href="https://wikimon.net/images/9/99/Digivice_ver1_1.jpg"><img src="/Images/blog/development-process-of-pocket-knight/Digivice_ver1_1.webp" alt="digivice device" title="Das besagte Spielzeug, Bildquelle: https://wikimon.net/images/9/99/Digivice_ver1_1.jpg"></a></p>
 <p>Also habe ich angefangen erstmal ein Konzept auszuarbeiten und mir überlegt welche Teile ich denn nehmen könnte, diesmal habe ich mich für einen DFRobot Firebeetle v2 ESP32 entschieden weil er bereits die Stromversorgung auf dem Board hat und ich nur noch einen Akku anklemmen musste.</p>
@@ -156,11 +120,11 @@
 </ul>
 <p>Nachdem ich ungefähr einen Plan hatte und alle Teile zusammengesucht habe, habe ich angefangen auf einem Breadboard erstmal alles zusammenzustecken und mich erstmal dem Code gewidmet.</p>
 <p>Dabei gab es mehrere Hürden die mich mehrfach zum verzweifeln gebracht haben, die Integration des Schrittzählers, die Sleep Funktion während trotzdem Schritte gezählt werden, das Laden und Darstellen von Pixelgrafiken und die Animationen. Alles andere war auch schwer, was hab ich mir nur gedacht?!</p>
-<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox href="/Images/pcoketknightbreadboard.webp"><img src="/Images/pcoketknightbreadboard.webp" alt="BreadboardPocketknight" loading="lazy"></a><figcaption>Breadboard Prototyping</figcaption></figure>
+<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox="" href="/Images/pcoketknightbreadboard.webp"><img src="/Images/pcoketknightbreadboard.webp" alt="BreadboardPocketknight" loading="lazy"></a><figcaption>Breadboard Prototyping</figcaption></figure>
 <p>Nachdem ich dann irgendwann einen halbwegs brauchbaren Code hatte und die Breadboard Schaltung soweit finalisiert war gings ans Löten. Ich habe dabei versucht alle Komponenten so kompakt wie möglich zusammenzukriegen, was auch soweit ganz gut geklappt hat.</p>
-<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox href="/Images/PocketKnight/handheldactive.webp"><img src="/Images/PocketKnight/handheldactive.webp" alt="finished Electronic" loading="lazy"></a><figcaption>fertig gelötetes Teil</figcaption></figure>
-<p>Im nächsten Schritt habe ich dann noch weiter am Gameloop, am Content und den Sprites gearbeitet um daraus ein &quot;rundes&quot; Spiel zu bekommen. Nebenbei habe ich angefangen das gehäuse in Fusion zu entwerfen und es dann anschließend im <a href="https://fablab.sh/">Kieler FabLab</a> gedruckt.</p>
-<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox href="/Images/blog/development-process-of-pocket-knight/Printfablab.webp"><img src="/Images/blog/development-process-of-pocket-knight/Printfablab.webp" alt="3dPrinter-printing" loading="lazy"></a><figcaption>Druckvorgang vom Deckel  am Prusa Mini</figcaption></figure>
+<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldactive.webp"><img src="/Images/PocketKnight/handheldactive.webp" alt="finished Electronic" loading="lazy"></a><figcaption>fertig gelötetes Teil</figcaption></figure>
+<p>Im nächsten Schritt habe ich dann noch weiter am Gameloop, am Content und den Sprites gearbeitet um daraus ein "rundes" Spiel zu bekommen. Nebenbei habe ich angefangen das gehäuse in Fusion zu entwerfen und es dann anschließend im <a href="https://fablab.sh/">Kieler FabLab</a> gedruckt.</p>
+<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox="" href="/Images/blog/development-process-of-pocket-knight/Printfablab.webp"><img src="/Images/blog/development-process-of-pocket-knight/Printfablab.webp" alt="3dPrinter-printing" loading="lazy"></a><figcaption>Druckvorgang vom Deckel  am Prusa Mini</figcaption></figure>
 <p>Und dann war es endlich soweit und das Gerät näherte sich der Fertigstellung, insgesamt hat das ganze wieder deutlich länger gedauert als geplant und ich habe bummelig 3 Monate Freizeit in das Projekt reingesteckt.</p>
 <p>Ich hatte noch einige Ideen die ich gerne noch implementiert hätte, die ich aber aus Zeit- und Lustmangel erstmal gestrichen habe.</p>
 <p>Hier die gestrichenen Features:</p>
@@ -186,34 +150,34 @@
 <p>Die Events laufen so ab dass man eine Auswahl zwischen zwei zufälligen Begegnungen bekommt, nach 10 Events gibt es einen Boss Kampf. Für jedes Event gibt es eine Belohnung die aus Erfahrung, Gold, einem Gegenstand oder einer Statuserhöhung besteht. Beim Level up des Spielers gibt es ebenfalls Statuserhöhungen und einen Gegenstand, dabei hat der Spieler immer die Wahl aus einem von 3 Gegenständen. Insgesamt gilt es somit 50 Events abzuschließen und den Endgegner zu besiegen. Sobald der Spieler einen Kampf verliert oder auf andere Weise die Lebenspunkte auf 0 gehen wird ein neuer Run gestartet. Am Ende eines Runs gibt es noch eine bestimmte Anzahl an Metawährung womit neue Items und Gegenstände oder Startboni freigeschaltet werden können die dann verfügbar werden.</p>
 <p>Abschließend ist hier noch eine Übersicht mit allen Eventsprites und Gegnern und ein paar weniger ernste Poster. :)</p>
 <p>Danke fürs lesen!</p>
-<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span data-en="This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google)." data-de="Dieses Video ist von YouTube eingebunden. Beim Laden werden Daten wie deine IP-Adresse an YouTube (Google) übertragen.">This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).</span> <a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></p><button type="button" class="jw-consent__button" data-en="Load video" data-de="Video laden">Load video</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YMT1BVRyX4g?si=meBRJPO7GS6B1Fek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div></figure>
+<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span>Dieses Video ist von YouTube eingebunden. Beim Laden werden Daten wie deine IP-Adresse an YouTube (Google) übertragen.</span> <a href="/datenschutz/">Datenschutz</a></p><button type="button" class="jw-consent__button">Video laden</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YMT1BVRyX4g?si=meBRJPO7GS6B1Fek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div></figure>
             </div>
             
         </div>
 
         
         <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
-            <h2 id="jw-gallery-title" class="jw-label jw-rule"><span data-en="Gallery" data-de="Galerie">Gallery</span> (04)</h2>
+            <h2 id="jw-gallery-title" class="jw-label jw-rule"><span>Galerie</span> (04)</h2>
             <div class="project-gallery jw-gallery">
                 
                 <figure class="project-gallery__item">
-                    <img src="/Images/blog/development-process-of-pocket-knight/pocketknightcloth.webp" alt="pocketKnightDevice" loading="lazy">
-                    <figcaption><span class="jw-fig">Fig. 01</span> <span data-en="Pocket Knight finished device" data-de="Pocket Knight fertiges Gerät">Pocket Knight finished device</span></figcaption>
+                    <a class="post-figure__link" data-lightbox="" href="/Images/blog/development-process-of-pocket-knight/pocketknightcloth.webp"><img src="/Images/blog/development-process-of-pocket-knight/pocketknightcloth.webp" alt="Nahaufnahme des fertigen Pocket-Knight-Geräts mit OLED-Display, blauen Tasten und Schlüsselanhänger" loading="lazy"></a>
+                    <figcaption><span class="jw-fig">Fig. 01</span> <span>Das fertige Pocket-Knight-Gerät</span></figcaption>
                 </figure>
                 
                 <figure class="project-gallery__item">
-                    <img src="/Images/blog/development-process-of-pocket-knight/pocketknightspriteposter.webp" alt="PocketknightSprites" loading="lazy">
-                    <figcaption><span class="jw-fig">Fig. 02</span> <span data-en="Pocket Knight Sprites" data-de="Pocket Knight Sprites">Pocket Knight Sprites</span></figcaption>
+                    <a class="post-figure__link" data-lightbox="" href="/Images/blog/development-process-of-pocket-knight/pocketknightspriteposter.webp"><img src="/Images/blog/development-process-of-pocket-knight/pocketknightspriteposter.webp" alt="Poster mit allen Pixel-Sprites von Pocket Knight: Ritter, Ereignisse, Gegner und Bosse" loading="lazy"></a>
+                    <figcaption><span class="jw-fig">Fig. 02</span> <span>Pocket Knight Sprites</span></figcaption>
                 </figure>
                 
                 <figure class="project-gallery__item">
-                    <img src="/Images/pocketknightposter3.webp" alt="HolyGrail poster" loading="lazy">
-                    <figcaption><span class="jw-fig">Fig. 03</span> <span data-en="silly holy grail poster" data-de="leicht albernes heiliger Gral Poster">silly holy grail poster</span></figcaption>
+                    <a class="post-figure__link" data-lightbox="" href="/Images/pocketknightposter3.webp"><img src="/Images/pocketknightposter3.webp" alt="Pocket-Knight-Poster: Ritter in einem klassischen Gemälde greifen nach dem Gerät wie nach dem heiligen Gral" loading="lazy"></a>
+                    <figcaption><span class="jw-fig">Fig. 03</span> <span>Ein leicht albernes Heiliger-Gral-Poster</span></figcaption>
                 </figure>
                 
                 <figure class="project-gallery__item">
-                    <img src="/Images/blog/development-process-of-pocket-knight/pocketknight2.webp" alt="silly knight giving" loading="lazy">
-                    <figcaption><span class="jw-fig">Fig. 04</span> <span data-en="giving the grace." data-de="die Gnade wird gegeben.">giving the grace.</span></figcaption>
+                    <a class="post-figure__link" data-lightbox="" href="/Images/blog/development-process-of-pocket-knight/pocketknight2.webp"><img src="/Images/blog/development-process-of-pocket-knight/pocketknight2.webp" alt="Pocket-Knight-Collage: ein mittelalterliches Fresko, in dem ein Papst einem knienden Mönch das Gerät überreicht" loading="lazy"></a>
+                    <figcaption><span class="jw-fig">Fig. 04</span> <span>Die Gnade wird erteilt.</span></figcaption>
                 </figure>
                 
             </div>
@@ -224,14 +188,14 @@
     <nav class="jw-wrap jw-pager" aria-label="More posts">
         
         <a class="jw-pager__link" href="/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">
-            <span class="jw-label" data-en="← Older post" data-de="← Älterer Beitrag">← Older post</span>
-            <span class="jw-pager__title" data-en="Experiences and impressions from the Media Literacy Gamejam in Leck" data-de="Erfahrungen und Eindrücke von der Medienkompetenz GameJam in Leck">Experiences and impressions from the Media Literacy Gamejam in Leck</span>
+            <span class="jw-label">← Älterer Beitrag</span>
+            <span class="jw-pager__title">Erfahrungen und Eindrücke vom Medienkompetenz-Game-Jam in Leck</span>
         </a>
         
         
         <a class="jw-pager__link jw-pager__link--next" href="/blog/">
-            <span class="jw-label" data-en="All posts →" data-de="Alle Beiträge →">All posts →</span>
-            <span class="jw-pager__title" data-en="Back to blog" data-de="Zurück zum Blog">Back to blog</span>
+            <span class="jw-label">Alle Beiträge →</span>
+            <span class="jw-pager__title">Zurück zum Blog</span>
         </a>
         
     </nav>
@@ -239,8 +203,8 @@
     
 <section class="jw-cta" aria-label="Contact">
     <div class="jw-wrap jw-cta__inner">
-        <p class="jw-cta__text" data-en="Questions, ideas or feedback? I’d love to hear from you." data-de="Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.">Questions, ideas or feedback? I’d love to hear from you.</p>
-        <a href="/#contact" class="jw-cta__button"><span data-en="Drop a message" data-de="Schreib mir">Drop a message</span>&nbsp;→</a>
+        <p class="jw-cta__text">Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.</p>
+        <a href="/#contact" class="jw-cta__button"><span>Schreib mir</span>&#160;→</a>
     </div>
 </section>
 
@@ -249,10 +213,10 @@
 
 <footer class="site-footer">
     <div class="container footer-row">
-        <p class="footer-copy" data-en="© 2026 Jan Westphal. All wrongs reserved." data-de="© 2026 Jan Westphal. Alle Fehler vorbehalten.">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <p class="footer-copy">© 2026 Jan Westphal. Alle Fehler vorbehalten.</p>
         <ul class="jw-footer-links">
-            <li><a href="/impressum/" data-en="Imprint" data-de="Impressum">Imprint</a></li>
-            <li><a href="/datenschutz/" data-en="Privacy" data-de="Datenschutz">Privacy</a></li>
+            <li><a href="/impressum/">Impressum</a></li>
+            <li><a href="/datenschutz/">Datenschutz</a></li>
         </ul>
     </div>
 </footer>
