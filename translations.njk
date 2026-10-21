@@ -28,3 +28,8 @@ eleventyExcludeFromCollections: true
     }
 } -%}
 window.TRANSLATIONS = {{ dict | dump | safe }};
+{#- Kategorienamen für die Filter-Buttons (aus _data/global.json → categories) #}
+{%- for c in global.categories %}
+window.TRANSLATIONS.en["cat.{{ c.key }}"] = {{ (c.en or c.key) | dump | safe }};
+window.TRANSLATIONS.de["cat.{{ c.key }}"] = {{ (c.de or c.en or c.key) | dump | safe }};
+{%- endfor %}

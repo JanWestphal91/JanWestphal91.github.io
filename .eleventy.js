@@ -298,6 +298,23 @@ module.exports = function(eleventyConfig) {
         return { featured: featured, rest: rest };
     });
 
+    // Kategorien „[Electronic, Game] 2026“ zweisprachig ausgeben:
+    // {% cats project.data.category %} → <span data-en="Electronic" data-de="Elektronik">…</span> · …
+    // Die Übersetzungen stehen in _data/global.json → categories (CMS: Allgemein).
+    eleventyConfig.addShortcode("cats", function (category) {
+        const match = String(category || "").match(/\[([^\]]+)\]/);
+        if (!match) return "";
+        const file = path.join(__dirname, "_data", "global.json");
+        const list = (JSON.parse(fs.readFileSync(file, "utf8")).categories) || [];
+        return match[1].split(",").map(function (raw) {
+            const key = raw.trim();
+            const entry = list.find(function (c) { return c.key === key; }) || {};
+            const en = entry.en || key;
+            const de = entry.de || en;
+            return '<span data-en="' + escapeAttr(en) + '" data-de="' + escapeAttr(de) + '">' + escapeAttr(en) + '</span>';
+        }).join(" · ");
+    });
+
     // Liste von Objekten → Liste eines Feldes, z. B. socials.items | pluck("url")
     eleventyConfig.addFilter("pluck", function(list, key) {
         return (list || []).map(function(item) { return item && item[key]; }).filter(Boolean);

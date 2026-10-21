@@ -54,10 +54,10 @@
                         <p data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</p>
                     </div>
                     <div class="jw-prow__meta">
-                        <span class="jw-tags">{{ project.data.category | catTypes }}</span>
-                        <span class="jw-tags">{{ project.data.category | catYear or "—" }}</span>
+                        <span class="jw-tags">{% cats project.data.category %}</span>
+                        <span class="jw-tags">{{ project.data.category | catYear }}</span>
                     </div>
-                    <span class="jw-prow__arrow" aria-hidden="true">↗</span>
+                    <span class="jw-prow__arrow" aria-hidden="true">→</span>
                 </a>
             </li>
             {%- endfor %}

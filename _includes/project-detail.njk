@@ -59,7 +59,7 @@
             </div>
             <dl class="jw-facts">
                 {%- if category | catTypes %}
-                <div><dt {% i18n pt.type %}>{{ pt.type.en }}</dt><dd>{{ category | catTypes }}</dd></div>
+                <div><dt {% i18n pt.type %}>{{ pt.type.en }}</dt><dd>{% cats category %}</dd></div>
                 {%- endif %}
                 {%- if category | catYear %}
                 <div><dt {% i18n pt.year %}>{{ pt.year.en }}</dt><dd>{{ category | catYear }}</dd></div>

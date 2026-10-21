@@ -86,13 +86,26 @@
             <p class="jw-hero__lead" {% i18n h.hero.lead %}>{{ h.hero.lead.en }}</p>
         </div>
         {%- set fx = h.facts %}
-        <dl class="jw-facts">
-            <div><dt {% i18n fx.currently_label %}>{{ fx.currently_label.en }}</dt><dd {% i18n fx.currently %}>{{ fx.currently.en }}</dd></div>
-            {%- if latest %}
-            <div><dt {% i18n fx.latest_label %}>{{ fx.latest_label.en }}</dt><dd><a href="/projects/{{ latest.data.slug }}/">{{ latest.data.title }}</a></dd></div>
+        <div class="jw-hero__side">
+            {%- if h.hero.images and h.hero.images.length %}
+            {#- Kleine Collage aus Projektbildern (CMS: Startseite → Kopfbereich → Bilder) -#}
+            <ul class="jw-collage">
+                {%- for img in h.hero.images | limit(3) %}
+                <li class="jw-collage__item">
+                    {%- if img.link %}<a href="{{ img.link }}" tabindex="-1">{% endif %}
+                    <img src="{{ img.image | imgPath }}" alt="{{ img.alt.en }}" {% i18n img.alt, "alt" %} loading="eager" width="600" height="600">
+                    {%- if img.link %}</a>{% endif %}
+                </li>
+                {%- endfor %}
+            </ul>
             {%- endif %}
-            <div><dt {% i18n fx.open_label %}>{{ fx.open_label.en }}</dt><dd><span class="jw-dot" aria-hidden="true"></span><span {% i18n fx.open %}>{{ fx.open.en }}</span></dd></div>
-        </dl>
+            <dl class="jw-facts">
+                <div><dt {% i18n fx.currently_label %}>{{ fx.currently_label.en }}</dt><dd {% i18n fx.currently %}>{{ fx.currently.en }}</dd></div>
+                {%- if latest %}
+                <div><dt {% i18n fx.latest_label %}>{{ fx.latest_label.en }}</dt><dd><a href="/projects/{{ latest.data.slug }}/">{{ latest.data.title }} →</a></dd></div>
+                {%- endif %}
+            </dl>
+        </div>
     </section>
 
     <!-- ═══ Projekte ═══ -->
@@ -126,19 +139,25 @@
                             <span class="jw-num">{{ loop.index | pad2 }}</span>
                             <h3>{{ project.data.title }}</h3>
                         </div>
-                        <span class="jw-tags">{{ project.data.category | catTypes }}{% if project.data.category | catYear %} · {{ project.data.category | catYear }}{% endif %}</span>
+                        <span class="jw-tags">{% cats project.data.category %}{% if project.data.category | catYear %} · {{ project.data.category | catYear }}{% endif %}</span>
                     </div>
                     <p data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</p>
                 </a>
                 <a class="work-item-link jw-row" href="/projects/{{ project.data.slug }}/">
                     <span class="work-meta" hidden><span>{{ project.data.category }}</span></span>
+                    <span class="jw-row__thumb" aria-hidden="true"><img src="{{ project.data.cover_image | imgPath }}" alt="" loading="lazy" width="160" height="160"></span>
                     <span class="jw-num">{{ loop.index | pad2 }}</span>
-                    <span class="jw-row__title">{{ project.data.title }}</span>
-                    <span class="jw-row__info">
-                        <span class="jw-tags">{{ project.data.category | catTypes }}</span>
-                        <span class="jw-tags">{{ project.data.category | catYear or "—" }}</span>
+                    <span class="jw-row__main">
+                        <span class="jw-row__title">{{ project.data.title }}</span>
+                        {%- if project.data.summary_card %}
+                        <span class="jw-row__teaser" data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</span>
+                        {%- endif %}
                     </span>
-                    <span class="jw-row__arrow" aria-hidden="true">↗</span>
+                    <span class="jw-row__info">
+                        <span class="jw-tags">{% cats project.data.category %}</span>
+                        <span class="jw-tags">{{ project.data.category | catYear }}</span>
+                    </span>
+                    <span class="jw-row__arrow" aria-hidden="true">→</span>
                 </a>
             </li>
             {%- endfor %}
@@ -165,11 +184,21 @@
                         <img src="{{ ab.photo | imgPath }}" alt="{{ ab.photo_alt.en }}" {% i18n ab.photo_alt, "alt" %} loading="lazy" width="480" height="600">
                     </div>
                     {%- endif %}
-                    <ul class="jw-names">
-                        {%- for n in ab.names %}
-                        <li><span class="jw-names__name">{{ n.name }}</span><span class="jw-names__note" {% i18n n.note %}>{{ n.note.en }}</span></li>
-                        {%- endfor %}
-                    </ul>
+                    <figcaption class="jw-profile__body">
+                        {%- if ab.alias %}
+                        <p class="jw-profile__alias" {% i18n ab.alias %}>{{ ab.alias.en }}</p>
+                        {%- endif %}
+                        {%- if ab.availability and ab.availability.length %}
+                        <dl class="jw-facts jw-facts--profile">
+                            {%- for row in ab.availability %}
+                            <div><dt {% i18n row.label %}>{{ row.label.en }}</dt><dd>{% if row.highlight %}<span class="jw-dot" aria-hidden="true"></span>{% endif %}<span {% i18n row.value %}>{{ row.value.en }}</span></dd></div>
+                            {%- endfor %}
+                        </dl>
+                        {%- endif %}
+                        {%- if ab.cv_file %}
+                        <a class="jw-button jw-button--outline" href="{{ ab.cv_file | imgPath }}" download><span {% i18n ab.cv_label %}>{{ ab.cv_label.en }}</span>&nbsp;↓</a>
+                        {%- endif %}
+                    </figcaption>
                 </figure>
 
                 <div class="jw-about__text">
@@ -213,7 +242,7 @@
             <aside class="jw-cv__side">
                 <div class="jw-cv__group">
                     <h3 class="jw-label" {% i18n pa.toolbox_heading %}>{{ pa.toolbox_heading.en }}</h3>
-                    <ul class="jw-chips" {% i18n pa.toolbox_heading, "aria" %} aria-label="{{ pa.toolbox_heading.en }}">
+                    <ul class="jw-skills" {% i18n pa.toolbox_heading, "aria" %} aria-label="{{ pa.toolbox_heading.en }}">
                         {%- for item in pa.toolbox %}
                         <li {% i18n item %}>{{ item.en }}</li>
                         {%- endfor %}
@@ -221,7 +250,7 @@
                     {%- if pa.languages and pa.languages.length %}
 
                     <h3 class="jw-label" {% i18n pa.languages_heading %}>{{ pa.languages_heading.en }}</h3>
-                    <ul class="jw-chips" {% i18n pa.languages_heading, "aria" %} aria-label="{{ pa.languages_heading.en }}">
+                    <ul class="jw-skills" {% i18n pa.languages_heading, "aria" %} aria-label="{{ pa.languages_heading.en }}">
                         {%- for item in pa.languages %}
                         <li>{{ item }}</li>
                         {%- endfor %}
@@ -258,20 +287,28 @@
                 <p class="jw-label">04 — <span {% i18n bl.label %}>{{ bl.label.en }}</span></p>
                 <h2 id="jw-blog-title" {% i18n bl.heading %}>{{ bl.heading.en }}</h2>
             </div>
-            <a href="/blog/" class="jw-more">[&nbsp;<span {% i18n bl.more %}>{{ bl.more.en }}</span>&nbsp;]</a>
         </div>
         {% if collections.blog and collections.blog.length %}
-        <ul class="jw-posts">
+        <ul class="jw-blist jw-blist--home">
             {%- for post in collections.blog | limit(3) %}
             <li>
-                <a class="jw-post" href="{{ post.url }}">
-                    <span class="jw-post__date" data-lang-show="en">{{ post.date | postDate("en-US") }}</span>
-                    <span class="jw-post__date" data-lang-show="de" hidden>{{ post.date | postDate("de-DE") }}</span>
-                    <span class="jw-post__title" data-en="{{ post.data.title }}" data-de="{{ post.data.title_de or post.data.title }}">{{ post.data.title }}</span>
+                <a class="jw-brow" href="{{ post.url }}">
+                    <span class="jw-brow__thumb" aria-hidden="true">{% if post.data.cover_image %}<img src="{{ post.data.cover_image | imgPath }}" alt="" loading="lazy" width="160" height="160">{% endif %}</span>
+                    <span class="jw-brow__date jw-tags">
+                        <span data-lang-show="en">{{ post.date | postDate("en-US") }}</span><span data-lang-show="de" hidden>{{ post.date | postDate("de-DE") }}</span>
+                    </span>
+                    <span class="jw-brow__main">
+                        <span class="jw-brow__title" data-en="{{ post.data.title }}" data-de="{{ post.data.title_de or post.data.title }}">{{ post.data.title }}</span>
+                        {%- if post.data.description %}
+                        <span class="jw-brow__desc" data-en="{{ post.data.description }}" data-de="{{ post.data.description_de or post.data.description }}">{{ post.data.description }}</span>
+                        {%- endif %}
+                    </span>
+                    <span class="jw-brow__arrow" aria-hidden="true">→</span>
                 </a>
             </li>
             {%- endfor %}
         </ul>
+        <a href="/blog/" class="jw-more">[&nbsp;<span {% i18n bl.more %}>{{ bl.more.en }}</span>&nbsp;]</a>
         {% else %}
         <p class="jw-label" {% i18n bl.empty %}>{{ bl.empty.en }}</p>
         {% endif %}
@@ -307,10 +344,19 @@
             </div>
 
             <div class="jw-socials">
+                {%- if contact.email %}
+                <div class="jw-direct">
+                    <h2 class="jw-label" {% i18n co.direct_label %}>{{ co.direct_label.en }}</h2>
+                    <a class="jw-button jw-button--outline" href="mailto:{{ contact.email }}"><span {% i18n co.direct_button %}>{{ co.direct_button.en }}</span>&nbsp;→</a>
+                    <p class="jw-direct__address">{{ contact.email }}</p>
+                </div>
+                {%- endif %}
                 <h2 class="jw-label" {% i18n co.socials_heading %}>{{ co.socials_heading.en }}</h2>
-                {%- for s in socials.items %}
-                <a href="{{ s.url }}" target="_blank" rel="noopener noreferrer" class="jw-social">{{ s.name }}<span aria-hidden="true">↗</span></a>
-                {%- endfor %}
+                <ul class="jw-social-list">
+                    {%- for s in socials.items %}
+                    <li><a href="{{ s.url }}" target="_blank" rel="noopener noreferrer" class="jw-social-link">{{ s.name }}&nbsp;<span aria-hidden="true">↗</span></a></li>
+                    {%- endfor %}
+                </ul>
             </div>
         </div>
     </section>

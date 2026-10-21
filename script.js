@@ -245,7 +245,13 @@ function initProjectFilters() {
         const btn = document.createElement("button");
         btn.className = "filter-btn";
         btn.dataset.filter = type;
-        btn.textContent = type;
+        // Beschriftung zweisprachig (Übersetzung aus _data/global.json → categories)
+        const dict = window.TRANSLATIONS || {};
+        const en = (dict.en && dict.en["cat." + type]) || type;
+        const de = (dict.de && dict.de["cat." + type]) || en;
+        btn.dataset.en = en;
+        btn.dataset.de = de;
+        btn.textContent = currentLang === "de" ? de : en;
         filterContainer.appendChild(btn);
     });
 

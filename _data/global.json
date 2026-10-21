@@ -22,8 +22,8 @@
     }
   },
   "ticker": {
-    "de": "• Andere sagen ich kann das 👉 • Creative Coding • Game Dev • Grafikdesign • 2D & 3D Grafik • Prototyping • UI / UX • Aktuelles Spiel : ⚔️ Pocket Knight ⚔️",
-    "en": "• People say I can do this 👉 • Creative Coding • Game Dev • Graphic Design • 2D & 3D Graphics • Prototyping • UI / UX • Latest Game : ⚔️ Pocket Knight ⚔️"
+    "de": "Andere sagen, ich kann das → Creative Coding • Game Dev • Grafikdesign • 2D & 3D Grafik • Prototyping • UI / UX • Aktuelles Spiel: Pocket Knight •",
+    "en": "People say I can do this → Creative Coding • Game Dev • Graphic Design • 2D & 3D Graphics • Prototyping • UI / UX • Latest game: Pocket Knight •"
   },
   "cta": {
     "text": {
@@ -37,7 +37,7 @@
   },
   "footer": {
     "copyright": {
-      "de": "© 2026 Jan Westphal. All wrongs reserved.",
+      "de": "© 2026 Jan Westphal. Alle Fehler vorbehalten.",
       "en": "© 2026 Jan Westphal. All wrongs reserved."
     },
     "imprint": {
@@ -84,5 +84,22 @@
       "de": "Bild schließen",
       "en": "Close image"
     }
-  }
+  },
+  "categories": [
+    {
+      "key": "Electronic",
+      "de": "Elektronik",
+      "en": "Electronic"
+    },
+    {
+      "key": "Game",
+      "de": "Spiel",
+      "en": "Game"
+    },
+    {
+      "key": "Illustration",
+      "de": "Illustration",
+      "en": "Illustration"
+    }
+  ]
 }
