@@ -54,24 +54,32 @@ case:
     en: About 3 months in my free time, 2026
     de: Rund 3 Monate in meiner Freizeit, 2026
   tools:
-  - Fusion
-  - Prusa Mini (FabLab Kiel)
+  - C++ (Arduino IDE)
+  - U8g2
+  - Aseprite
+  - Fusion 360
+  - PrusaSlicer
+  - Prusa MINI+ (FabLab Kiel)
   hardware:
-  - en: DFRobot FireBeetle 2 ESP32
-    de: DFRobot FireBeetle 2 ESP32
-  - en: OLED display, 128 × 64 px
-    de: OLED-Display, 128 × 64 px
-  - en: Seeed Grove pedometer (BMA456)
+  - en: DFRobot FireBeetle 2 ESP32-E
+    de: DFRobot FireBeetle 2 ESP32-E
+  - en: SSD1306 OLED display, 128 × 64 px
+    de: SSD1306-OLED-Display, 128 × 64 px
+  - en: Seeed Grove step counter (BMA456)
     de: Seeed-Grove-Schrittzähler (BMA456)
-  - en: Piezo buzzer and mini vibration motor
-    de: Piezo-Summer und Mini-Vibrationsmotor
+  - en: Passive piezo buzzer and mini vibration motor
+    de: Passiver Piezo-Summer und Mini-Vibrationsmotor
   - en: 3 push buttons
     de: 3 Taster
   - en: 1800 mAh Li-ion battery
     de: Li-Ionen-Akku mit 1800 mAh
-  - en: Perfboard, PLA enclosure
-    de: Lochrasterplatine, Gehäuse aus PLA
+  - en: Perfboard, two-colour PLA enclosure
+    de: Lochrasterplatine, zweifarbiges Gehäuse aus PLA
   links:
+  - label:
+      en: 'GitHub repository: firmware, case files, artwork'
+      de: 'GitHub-Repository: Firmware, Gehäusedateien, Artwork'
+    url: https://github.com/JanWestphal91/Pocket-Knight
   - label:
       en: 'Devlog: the whole development process'
       de: 'Devlog: der ganze Entwicklungsprozess'
@@ -93,14 +101,14 @@ case:
       en: Approach
       de: Vorgehen
     body:
-      en: 'I picked an ESP32 FireBeetle because the board already handles the battery, so I only had to connect a Li-ion cell. Everything was first wired up on a breadboard, and I wrote the firmware against that setup.
+      en: 'I picked a FireBeetle 2 ESP32-E because battery charging is already on the board, so I only had to connect a Li-ion cell. Everything was first wired up on a breadboard, and I wrote most of the firmware against that setup.
 
 
-        Once the circuit and code were stable, I soldered all parts onto a piece of perfboard as compactly as possible. In parallel I designed the enclosure in Fusion and printed it on a Prusa Mini at the FabLab Kiel.'
-      de: 'Ich habe einen ESP32 FireBeetle gewählt, weil das Board den Akku schon selbst versorgt und ich nur noch eine Li-Ionen-Zelle anschließen musste. Zuerst lief alles auf einem Breadboard, und darauf habe ich die Firmware geschrieben.
+        Once circuit and code were stable, I soldered all parts onto a piece of perfboard as compactly as possible, then refined the game loop, content and sprites until it felt like a complete game.'
+      de: 'Ich habe einen FireBeetle 2 ESP32-E gewählt, weil das Laden des Akkus schon auf dem Board passiert und ich nur noch eine Li-Ionen-Zelle anschließen musste. Zuerst lief alles auf einem Breadboard, darauf habe ich den Großteil der Firmware geschrieben.
 
 
-        Als Schaltung und Code stabil waren, habe ich alle Teile möglichst kompakt auf eine Lochrasterplatine gelötet. Parallel dazu habe ich das Gehäuse in Fusion entworfen und im FabLab Kiel auf einem Prusa Mini gedruckt.'
+        Als Schaltung und Code stabil waren, habe ich alle Teile möglichst kompakt auf eine Lochrasterplatine gelötet und danach Spielablauf, Inhalte und Sprites verfeinert, bis es sich wie ein vollständiges Spiel anfühlte.'
     image: /Images/PocketKnight/handheldbreadboard.webp
     image_alt:
       en: 'Breadboard prototype: the OLED display shows a battle screen, wired to the ESP32, three buttons and the pedometer'
@@ -112,14 +120,14 @@ case:
       en: Challenges
       de: Herausforderungen
     body:
-      en: '- **Counting steps while asleep:** the device has to sleep to save power but must not lose a single step.
+      en: '- **Counting steps while asleep:** to save power, the ESP32 goes into deep sleep after 30 seconds without input. The BMA456 keeps counting steps in hardware. After waking up, the firmware reads the counter again and turns the difference into game steps and events.
 
-        - **Pixel graphics:** loading sprites and playing animations on a small OLED took several attempts.
+        - **Pixel graphics:** loading sprites and playing animations on a small OLED took several attempts. All graphics are stored as 1-bit bitmaps (XBM) and drawn with the U8g2 library.
 
         - **Very little space:** 128 px of width is not much for text, items and battle information. Some texts are still cut off today.'
-      de: '- **Schritte zählen im Schlafmodus:** Das Gerät muss schlafen, um Strom zu sparen, darf dabei aber keinen Schritt verlieren.
+      de: '- **Schritte zählen im Tiefschlaf:** Um Strom zu sparen, geht der ESP32 nach 30 Sekunden ohne Eingabe in den Deep Sleep. Der BMA456 zählt die Schritte in der Hardware weiter. Nach dem Aufwachen liest die Firmware den Zähler erneut aus und macht aus der Differenz Spielschritte und Events.
 
-        - **Pixelgrafik:** Sprites laden und Animationen auf dem kleinen OLED abspielen hat mehrere Anläufe gebraucht.
+        - **Pixelgrafik:** Sprites laden und Animationen auf dem kleinen OLED abspielen hat mehrere Anläufe gebraucht. Alle Grafiken liegen als 1-Bit-Bitmaps (XBM) vor und werden mit der Bibliothek U8g2 gezeichnet.
 
         - **Sehr wenig Platz:** 128 px Breite sind wenig für Text, Gegenstände und Kampfinfos. Manche Texte werden bis heute abgeschnitten.'
     image: /Images/PocketKnight/handheldactive.webp
@@ -130,35 +138,74 @@ case:
       en: Soldered onto perfboard, the game already running
       de: Auf Lochraster gelötet, das Spiel läuft schon
   - heading:
+      en: Firmware
+      de: Firmware
+    body:
+      en: 'The firmware is written in C++ in the Arduino IDE and split into modules: combat, events, progress and saving, rendering and audio.
+
+
+        - **State machine:** every screen is a state. The main loop calls the matching input and drawing function; combat has its own phases (choose, resolve, result, item choice).
+
+        - **Always saved:** progress is written to flash at every checkpoint, in two separate areas for the current run and the permanent progress. The device can be switched off at any time.
+
+        - **Data-driven content:** enemies, items, unlocks and event weights are tables at the top of the code, so balancing doesn’t require touching the logic.'
+      de: 'Die Firmware ist in C++ in der Arduino IDE geschrieben und in Module aufgeteilt: Kampf, Events, Fortschritt und Speichern, Darstellung und Audio.
+
+
+        - **Zustandsautomat:** Jeder Bildschirm ist ein eigener Zustand. Die Hauptschleife ruft die passende Funktion für Eingabe und Darstellung auf; der Kampf hat eigene Phasen (wählen, auswerten, Ergebnis, Gegenstandswahl).
+
+        - **Immer gespeichert:** Der Fortschritt wird an jedem Checkpoint in den Flash-Speicher geschrieben, getrennt nach aktuellem Durchlauf und dauerhaftem Fortschritt. Das Gerät lässt sich jederzeit ausschalten.
+
+        - **Inhalte als Daten:** Gegner, Gegenstände, Freischaltungen und Event-Gewichte stehen als Tabellen oben im Code. Zum Balancing muss ich die Logik nicht anfassen.'
+  - heading:
       en: Game design
       de: Spielmechanik
     body:
-      en: 'Every 250 steps an event is triggered, and the device beeps and vibrates. Up to 20 events are stored, so you can play them all in one go in the evening.
+      en: 'On average every 300 steps (randomly between 220 and 380) a new event is queued, and the device beeps and vibrates. Up to 10 events are stored, so you can play them in one go later. At every fork you choose one of two events – 11 types, from fights and traders to traps, shrines and a wishing well.
 
 
-        Battles are turn-based: the enemy shows its next move in advance, and the player has 3 skill points per fight for attacks, blocks and special skills. After every 10 events there is a boss; a full run is 50 events and a final boss. When a run ends, meta currency unlocks new items, equipment and starting bonuses.'
-      de: 'Alle 250 Schritte wird ein Event ausgelöst, das Gerät piept und vibriert. Bis zu 20 Events werden gespeichert, sodass man sie abends am Stück spielen kann.
+        Battles are turn-based: the enemy shows its next move in advance, and the player answers with attack, block, one of 5 skills or a consumable. After every 10 events a boss waits; defeating the fourth boss wins the run. In total there are 7 enemy types with their own behaviour and 22 items. When a run ends, meta points unlock permanent start bonuses.'
+      de: 'Im Schnitt alle 300 Schritte (zufällig zwischen 220 und 380) kommt ein neues Event dazu, das Gerät piept und vibriert. Bis zu 10 Events werden gespeichert, sodass man sie später am Stück spielen kann. An jeder Weggabelung wählt man eins von zwei Events – 11 Arten, von Kämpfen und Händlern bis zu Fallen, Schreinen und einem Wunschbrunnen.
 
 
-        Die Kämpfe sind rundenbasiert: Der Gegner zeigt seinen nächsten Zug vorher an, und der Spieler hat pro Kampf 3 Skillpunkte für Angriffe, Blocks und Spezialfähigkeiten. Nach jeweils 10 Events wartet ein Boss, ein ganzer Durchlauf umfasst 50 Events und einen Endboss. Endet ein Durchlauf, schaltet eine Meta-Währung neue Gegenstände, Ausrüstung und Startboni frei.'
+        Die Kämpfe sind rundenbasiert: Der Gegner zeigt seinen nächsten Zug vorher an, und der Spieler antwortet mit Angriff, Block, einer von 5 Fähigkeiten oder einem Verbrauchsgegenstand. Nach jeweils 10 Events wartet ein Boss; wer den vierten besiegt, gewinnt den Durchlauf. Insgesamt gibt es 7 Gegnertypen mit eigenem Verhalten und 22 Gegenstände. Endet ein Durchlauf, schalten Meta-Punkte dauerhafte Startboni frei.'
+  - heading:
+      en: Enclosure
+      de: Gehäuse
+    body:
+      en: 'I designed the case in Fusion 360 and printed it in two colours on a Prusa MINI+ at the FabLab Kiel: grey for the body, blue for the display frame and the fleur-de-lis emblems. A small coin with the emblem doubles as a key-ring charm.
+
+
+        The print files and slicer settings are in the GitHub repository, so the device can be rebuilt.'
+      de: 'Das Gehäuse habe ich in Fusion 360 entworfen und im FabLab Kiel auf einem Prusa MINI+ zweifarbig gedruckt: grau für den Körper, blau für den Displayrahmen und die Lilien-Embleme. Eine kleine Münze mit dem Emblem dient als Schlüsselanhänger.
+
+
+        Druckdateien und Slicer-Einstellungen liegen im GitHub-Repository, sodass sich das Gerät nachbauen lässt.'
+    image: /Images/PocketKnight/enclosure-fusion360.webp
+    image_alt:
+      en: The Pocket Knight enclosure and the key-ring coin with fleur-de-lis emblem in Fusion 360
+      de: Das Pocket-Knight-Gehäuse und die Schlüsselanhänger-Münze mit Lilien-Emblem in Fusion 360
+    image_caption:
+      en: Enclosure and key-ring coin in Fusion 360
+      de: Gehäuse und Anhänger-Münze in Fusion 360
   - heading:
       en: Result and next steps
       de: Ergebnis und Ausblick
     body:
-      en: 'The device works and has been in daily use for weeks. Based on the measured consumption, one charge lasts about 3–4 months – the battery is clearly oversized and makes up much of the weight, so next time I''d use a much smaller one.
+      en: 'The device works and has been in daily use for weeks. Based on the measured consumption, one charge lasts about 3–4 months – the battery is clearly oversized and makes up much of the weight, so next time I’d use a much smaller one. Firmware, case files and artwork are open source under the MIT license.
 
 
-        Cut for now: co-op and versus multiplayer over ESP-NOW, an online leaderboard, more starting classes and an English version of the game texts.'
-      de: 'Das Gerät funktioniert und ist seit Wochen im Alltag im Einsatz. Nach dem gemessenen Verbrauch hält eine Akkuladung etwa 3–4 Monate – der Akku ist deutlich überdimensioniert und macht einen Großteil des Gewichts aus, beim nächsten Mal würde ich einen viel kleineren nehmen.
+        Cut for now: co-op and versus multiplayer over ESP-NOW, an online leaderboard, smoother animations, more starting classes and an English version of the game texts.'
+      de: 'Das Gerät funktioniert und ist seit Wochen im Alltag im Einsatz. Nach dem gemessenen Verbrauch hält eine Akkuladung etwa 3–4 Monate – der Akku ist deutlich überdimensioniert und macht einen Großteil des Gewichts aus, beim nächsten Mal würde ich einen viel kleineren nehmen. Firmware, Gehäusedateien und Artwork sind unter MIT-Lizenz offen.
 
 
-        Vorerst gestrichen: Koop- und Versus-Multiplayer über ESP-NOW, eine Online-Bestenliste, weitere Startklassen und eine englische Fassung der Spieltexte.'
-    image: /Images/blog/development-process-of-pocket-knight/Printfablab.webp
+        Vorerst gestrichen: Koop- und Versus-Multiplayer über ESP-NOW, eine Online-Bestenliste, flüssigere Animationen, weitere Startklassen und eine englische Fassung der Spieltexte.'
+    image: /Images/PocketKnight/size-comparison.webp
     image_alt:
-      en: A Prusa Mini 3D printer at the FabLab Kiel printing the grey enclosure
-      de: Ein 3D-Drucker Prusa Mini im FabLab Kiel druckt das graue Gehäuse
+      en: The soldered electronics with the OLED display lying next to a banana for scale
+      de: Die gelötete Elektronik mit OLED-Display neben einer Banane als Größenvergleich
     image_caption:
-      en: Printing the enclosure at the FabLab Kiel
-      de: Das Gehäuse entsteht im FabLab Kiel
+      en: Banana for scale
+      de: Banane zum Größenvergleich
 date: 2026-08-20
 ---

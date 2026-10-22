@@ -9,8 +9,8 @@ cover_image_alt: Cover of the zine “Nachts sind die Ratten wach”
 cover_image_alt_de: Titelseite des Hefts „Nachts sind die Ratten wach“
 summary_card: Three small printed zines to leaf through as flipbooks.
 summary_card_de: Drei kleine gedruckte Hefte zum Durchblättern.
-summary: 'Three small printed zines: a short story told in shadows, early verses by Franz Kafka illustrated in black and white, and a wordless boxing fight that ends with skeletons. Each one can be leafed through here as a digital flipbook.'
-summary_de: 'Drei kleine gedruckte Hefte: eine kurze Geschichte in Schatten, frühe Verse von Franz Kafka in Schwarz-Weiß illustriert und ein wortloser Boxkampf, der bei den Skeletten endet. Jedes lässt sich hier als digitales Flipbook durchblättern.'
+summary: 'Three small printed zines: a short story told in shadows, early verses by Franz Kafka illustrated in black and white, and a wordless boxing fight that ends with skeletons. Each one can be leafed through here as a digital flipbook. The shadow pictures for “Nachts sind die Ratten wach” were photographed from below through glass and paper, lit by a torch from above; a sketch of the setup is shown below the text for that zine.'
+summary_de: 'Drei kleine gedruckte Hefte: eine kurze Geschichte in Schatten, frühe Verse von Franz Kafka in Schwarz-Weiß illustriert und ein wortloser Boxkampf, der bei den Skeletten endet. Jedes lässt sich hier als digitales Flipbook durchblättern. Die Schattenbilder für „Nachts sind die Ratten wach“ habe ich von unten durch Glas und Papier fotografiert, beleuchtet von einer Taschenlampe von oben; eine Skizze des Aufbaus steht unter dem Text zu diesem Heft.'
 meta:
 - Illustration
 - Print
@@ -22,8 +22,17 @@ meta_de:
 flipbooks:
 - title: Nachts sind die Ratten wach
   text:
-    en: A short illustrated story told in shadows.
-    de: Eine kurze illustrierte Geschichte in Schatten.
+    en: 'A short illustrated story told in shadows. The pictures were made in a dark room with a camera setup of my own: the camera at the bottom, a glass plate above it with thin paper on top, cut-out shapes on the paper and a torch further up, shining down. Each picture was exposed for 10 seconds. The lettering was drawn letter by letter with a torch in a long exposure.'
+    de: 'Eine kurze illustrierte Geschichte in Schatten. Die Bilder sind in einem dunklen Raum mit einem eigenen Kameraaufbau entstanden: unten die Kamera, darüber eine Glasplatte mit dünnem Papier, darauf ausgeschnittene Formen und weiter oben eine Taschenlampe, die nach unten leuchtet. Jedes Bild wurde 10 Sekunden lang belichtet. Die Schrift habe ich mit einer Taschenlampe in Langzeitbelichtung Buchstabe für Buchstabe gezeichnet.'
+  figure:
+    image: /Images/NachtsRatten/aufbau-de.webp
+    image_en: /Images/NachtsRatten/aufbau-en.webp
+    alt:
+      en: 'Diagram of the setup, side view: a torch at the top shines down onto cut-out shapes lying on thin paper on a glass plate. The glass plate rests on two supports; underneath, the camera points upwards and photographs the shadows.'
+      de: 'Skizze des Aufbaus von der Seite: Oben leuchtet eine Taschenlampe nach unten auf ausgeschnittene Formen, die auf dünnem Papier auf einer Glasplatte liegen. Die Glasplatte ruht auf zwei Stützen, darunter zeigt die Kamera nach oben und fotografiert die Schatten.'
+    caption:
+      en: The setup in the dark room
+      de: Der Aufbau im dunklen Raum
   pages:
   - /Images/NachtsRatten/nachtsratten1.webp
   - /Images/NachtsRatten/nachtsratten2.webp

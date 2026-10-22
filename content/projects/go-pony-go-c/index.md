@@ -43,5 +43,46 @@ images:
     caption: Last area, preparing for lightspeed.
     caption_de: Letzter Abschnitt – Vorbereitung für Lichtgeschwindigkeit.
 embed: <iframe frameborder="0" src="https://itch.io/embed/4287829" width="208" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe>
+case:
+  role:
+    en: 'Solo project: game design, programming, pixel art and audio'
+    de: 'Soloprojekt: Spieldesign, Programmierung, Pixelart und Audio'
+  duration:
+    en: November 2025 to March 2026
+    de: November 2025 bis März 2026
+  tools:
+  - Godot
+  - Aseprite
+  - Adobe CC
+  links:
+  - label:
+      en: Play on itch.io
+      de: Auf itch.io spielen
+    url: https://jan-west.itch.io/go-pony-go-c
+  sections:
+  - heading:
+      en: Idea
+      de: Idee
+    body:
+      en: 'A small homage to the Flash games of the early 2000s and an experiment with physics calculations: a small pony keeps getting faster and tries to reach the speed of light.'
+      de: 'Eine kleine Hommage an die Flash-Spiele der frühen 2000er und ein Experiment mit Physikberechnungen: Ein kleines Pony wird immer schneller und versucht, die Lichtgeschwindigkeit zu erreichen.'
+  - heading:
+      en: Features
+      de: Umsetzung
+    body:
+      en: '- **Online leaderboard** to compare runs
+
+        - **Controller or keyboard** input
+
+        - **Audio intensity transitions:** the music adapts as the pony speeds up
+
+        - **Playable in the browser** on itch.io, free to play'
+      de: '- **Online-Bestenliste**, um Läufe zu vergleichen
+
+        - **Controller oder Tastatur** als Steuerung
+
+        - **Audio-Intensität und Übergänge:** Die Musik passt sich an, wenn das Pony schneller wird
+
+        - **Im Browser spielbar** auf itch.io, kostenlos'
 date: 2026-01-01
 ---

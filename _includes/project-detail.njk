@@ -104,6 +104,18 @@
         {%- if fb.text %}
         <p class="jw-zine__text" {% i18n fb.text %}>{{ fb.text.en }}</p>
         {%- endif %}
+        {%- if fb.figure and fb.figure.image %}
+        {#- Optionale Grafik zum Heft (z. B. der Aufbau), je Sprache ein eigenes Bild -#}
+        {%- set fg = fb.figure %}
+        {%- set fgEn = fg.image_en or fg.image %}
+        <figure class="jw-zine__figure">
+            <a class="post-figure__link" data-lightbox href="{{ fgEn | imgPath }}" data-lang-show="en"><img src="{{ fgEn | imgPath }}" alt="{{ fg.alt.en if fg.alt else '' }}" loading="lazy" width="1200" height="680"></a>
+            <a class="post-figure__link" data-lightbox href="{{ fg.image | imgPath }}" data-lang-show="de" hidden><img src="{{ fg.image | imgPath }}" alt="{{ (fg.alt.de or fg.alt.en) if fg.alt else '' }}" loading="lazy" width="1200" height="680"></a>
+            {%- if fg.caption %}
+            <figcaption {% i18n fg.caption %}>{{ fg.caption.en }}</figcaption>
+            {%- endif %}
+        </figure>
+        {%- endif %}
         <div class="jw-flipbook" data-flipbook-title="{{ fb.title }}"{% if fb.page_width and fb.page_height %} data-flipbook-width="{{ fb.page_width }}" data-flipbook-height="{{ fb.page_height }}"{% endif %} data-flipbook-images="{{ fb.pages | join(',') }}"></div>
     </section>
     {%- endfor %}
