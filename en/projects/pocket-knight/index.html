@@ -123,9 +123,9 @@ I’m writing a bit more in depth about the development process in this <a href=
         <dl class="jw-casefacts">
             <div><dt>Role</dt><dd>Solo project: concept, electronics, firmware, game design, pixel art and enclosure</dd></div>
             <div><dt>Time frame</dt><dd>About 3 months in my free time, 2026</dd></div>
-            <div><dt>Tools</dt><dd><ul class="jw-skills"><li>Fusion</li><li>Prusa Mini (FabLab Kiel)</li></ul></dd></div>
-            <div><dt>Hardware</dt><dd><ul class="jw-casefacts__list"><li>DFRobot FireBeetle 2 ESP32</li><li>OLED display, 128 × 64 px</li><li>Seeed Grove pedometer (BMA456)</li><li>Piezo buzzer and mini vibration motor</li><li>3 push buttons</li><li>1800 mAh Li-ion battery</li><li>Perfboard, PLA enclosure</li></ul></dd></div>
-            <div><dt>Links</dt><dd><ul class="jw-casefacts__list"><li><a href="/en/blog/development-process-of-pocket-knight/"><span>Devlog: the whole development process</span>&#160;<span aria-hidden="true">→</span></a></li></ul></dd></div>
+            <div><dt>Tools</dt><dd><ul class="jw-skills"><li>C++ (Arduino IDE)</li><li>U8g2</li><li>Aseprite</li><li>Fusion 360</li><li>PrusaSlicer</li><li>Prusa MINI+ (FabLab Kiel)</li></ul></dd></div>
+            <div><dt>Hardware</dt><dd><ul class="jw-casefacts__list"><li>DFRobot FireBeetle 2 ESP32-E</li><li>SSD1306 OLED display, 128 × 64 px</li><li>Seeed Grove step counter (BMA456)</li><li>Passive piezo buzzer and mini vibration motor</li><li>3 push buttons</li><li>1800 mAh Li-ion battery</li><li>Perfboard, two-colour PLA enclosure</li></ul></dd></div>
+            <div><dt>Links</dt><dd><ul class="jw-casefacts__list"><li><a href="https://github.com/JanWestphal91/Pocket-Knight" target="_blank" rel="noopener noreferrer"><span>GitHub repository: firmware, case files, artwork</span>&#160;<span aria-hidden="true">↗</span></a></li><li><a href="/en/blog/development-process-of-pocket-knight/"><span>Devlog: the whole development process</span>&#160;<span aria-hidden="true">→</span></a></li></ul></dd></div>
         </dl>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-1">
@@ -143,8 +143,8 @@ I’m writing a bit more in depth about the development process in this <a href=
         <h2 id="jw-case-2" class="jw-label jw-rule">04 — <span>Approach</span></h2>
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
-                <div><p>I picked an ESP32 FireBeetle because the board already handles the battery, so I only had to connect a Li-ion cell. Everything was first wired up on a breadboard, and I wrote the firmware against that setup.</p>
-<p>Once the circuit and code were stable, I soldered all parts onto a piece of perfboard as compactly as possible. In parallel I designed the enclosure in Fusion and printed it on a Prusa Mini at the FabLab Kiel.</p>
+                <div><p>I picked a FireBeetle 2 ESP32-E because battery charging is already on the board, so I only had to connect a Li-ion cell. Everything was first wired up on a breadboard, and I wrote most of the firmware against that setup.</p>
+<p>Once circuit and code were stable, I soldered all parts onto a piece of perfboard as compactly as possible, then refined the game loop, content and sprites until it felt like a complete game.</p>
 </div>
                 
             </div>
@@ -161,8 +161,8 @@ I’m writing a bit more in depth about the development process in this <a href=
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
                 <div><ul>
-<li><strong>Counting steps while asleep:</strong> the device has to sleep to save power but must not lose a single step.</li>
-<li><strong>Pixel graphics:</strong> loading sprites and playing animations on a small OLED took several attempts.</li>
+<li><strong>Counting steps while asleep:</strong> to save power, the ESP32 goes into deep sleep after 30 seconds without input. The BMA456 keeps counting steps in hardware. After waking up, the firmware reads the counter again and turns the difference into game steps and events.</li>
+<li><strong>Pixel graphics:</strong> loading sprites and playing animations on a small OLED took several attempts. All graphics are stored as 1-bit bitmaps (XBM) and drawn with the U8g2 library.</li>
 <li><strong>Very little space:</strong> 128 px of width is not much for text, items and battle information. Some texts are still cut off today.</li>
 </ul>
 </div>
@@ -177,30 +177,62 @@ I’m writing a bit more in depth about the development process in this <a href=
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-4">
-        <h2 id="jw-case-4" class="jw-label jw-rule">06 — <span>Game design</span></h2>
+        <h2 id="jw-case-4" class="jw-label jw-rule">06 — <span>Firmware</span></h2>
         <div class="jw-case__grid jw-case__grid--text">
             <div class="jw-prose jw-case__text">
-                <div><p>Every 250 steps an event is triggered, and the device beeps and vibrates. Up to 20 events are stored, so you can play them all in one go in the evening.</p>
-<p>Battles are turn-based: the enemy shows its next move in advance, and the player has 3 skill points per fight for attacks, blocks and special skills. After every 10 events there is a boss; a full run is 50 events and a final boss. When a run ends, meta currency unlocks new items, equipment and starting bonuses.</p>
+                <div><p>The firmware is written in C++ in the Arduino IDE and split into modules: combat, events, progress and saving, rendering and audio.</p>
+<ul>
+<li><strong>State machine:</strong> every screen is a state. The main loop calls the matching input and drawing function; combat has its own phases (choose, resolve, result, item choice).</li>
+<li><strong>Always saved:</strong> progress is written to flash at every checkpoint, in two separate areas for the current run and the permanent progress. The device can be switched off at any time.</li>
+<li><strong>Data-driven content:</strong> enemies, items, unlocks and event weights are tables at the top of the code, so balancing doesn’t require touching the logic.</li>
+</ul>
 </div>
                 
             </div>
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-5">
-        <h2 id="jw-case-5" class="jw-label jw-rule">07 — <span>Result and next steps</span></h2>
+        <h2 id="jw-case-5" class="jw-label jw-rule">07 — <span>Game design</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                <div><p>On average every 300 steps (randomly between 220 and 380) a new event is queued, and the device beeps and vibrates. Up to 10 events are stored, so you can play them in one go later. At every fork you choose one of two events – 11 types, from fights and traders to traps, shrines and a wishing well.</p>
+<p>Battles are turn-based: the enemy shows its next move in advance, and the player answers with attack, block, one of 5 skills or a consumable. After every 10 events a boss waits; defeating the fourth boss wins the run. In total there are 7 enemy types with their own behaviour and 22 items. When a run ends, meta points unlock permanent start bonuses.</p>
+</div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-6">
+        <h2 id="jw-case-6" class="jw-label jw-rule">08 — <span>Enclosure</span></h2>
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
-                <div><p>The device works and has been in daily use for weeks. Based on the measured consumption, one charge lasts about 3–4 months – the battery is clearly oversized and makes up much of the weight, so next time I'd use a much smaller one.</p>
-<p>Cut for now: co-op and versus multiplayer over ESP-NOW, an online leaderboard, more starting classes and an English version of the game texts.</p>
+                <div><p>I designed the case in Fusion 360 and printed it in two colours on a Prusa MINI+ at the FabLab Kiel: grey for the body, blue for the display frame and the fleur-de-lis emblems. A small coin with the emblem doubles as a key-ring charm.</p>
+<p>The print files and slicer settings are in the GitHub repository, so the device can be rebuilt.</p>
 </div>
                 
             </div>
             <figure class="jw-case__figure">
-                <a class="post-figure__link" data-lightbox="" href="/Images/blog/development-process-of-pocket-knight/Printfablab.webp">
-                    <img src="/Images/blog/development-process-of-pocket-knight/Printfablab.webp" alt="A Prusa Mini 3D printer at the FabLab Kiel printing the grey enclosure" loading="lazy">
+                <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/enclosure-fusion360.webp">
+                    <img src="/Images/PocketKnight/enclosure-fusion360.webp" alt="The Pocket Knight enclosure and the key-ring coin with fleur-de-lis emblem in Fusion 360" loading="lazy">
                 </a>
-                <figcaption>Printing the enclosure at the FabLab Kiel</figcaption>
+                <figcaption>Enclosure and key-ring coin in Fusion 360</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-7">
+        <h2 id="jw-case-7" class="jw-label jw-rule">09 — <span>Result and next steps</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                <div><p>The device works and has been in daily use for weeks. Based on the measured consumption, one charge lasts about 3–4 months – the battery is clearly oversized and makes up much of the weight, so next time I’d use a much smaller one. Firmware, case files and artwork are open source under the MIT license.</p>
+<p>Cut for now: co-op and versus multiplayer over ESP-NOW, an online leaderboard, smoother animations, more starting classes and an English version of the game texts.</p>
+</div>
+                
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/size-comparison.webp">
+                    <img src="/Images/PocketKnight/size-comparison.webp" alt="The soldered electronics with the OLED display lying next to a banana for scale" loading="lazy">
+                </a>
+                <figcaption>Banana for scale</figcaption>
             </figure>
         </div>
     </section>
@@ -209,7 +241,7 @@ I’m writing a bit more in depth about the development process in this <a href=
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
         <div class="jw-gallery-head">
-            <h2 id="jw-gallery-title" class="jw-label jw-rule">08 — <span>Gallery</span> (03)</h2><div class="jw-view-toggle" role="group" aria-label="Gallery view" hidden>
+            <h2 id="jw-gallery-title" class="jw-label jw-rule">10 — <span>Gallery</span> (03)</h2><div class="jw-view-toggle" role="group" aria-label="Gallery view" hidden>
                 <button type="button" data-view="archive" aria-pressed="true">Archive</button>
                 <button type="button" data-view="grid" aria-pressed="false">Grid</button>
             </div>

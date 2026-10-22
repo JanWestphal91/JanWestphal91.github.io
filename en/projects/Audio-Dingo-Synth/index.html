@@ -117,11 +117,89 @@
     
 
     
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
+        <h2 id="jw-facts-title" class="jw-label jw-rule">02 — <span>Fact sheet</span></h2>
+        <dl class="jw-casefacts">
+            <div><dt>Role</dt><dd>Solo project in the course Become a Maker (opencampus.sh, FabLab Kiel): concept, circuit, firmware, sound design and enclosure</dd></div>
+            <div><dt>Time frame</dt><dd>April to September 2026 (summer semester)</dd></div>
+            <div><dt>Tools</dt><dd><ul class="jw-skills"><li>Arduino</li><li>Mozzi</li><li>Wokwi</li><li>Fusion</li></ul></dd></div>
+            <div><dt>Hardware</dt><dd><ul class="jw-casefacts__list"><li>Arduino Uno R4 Minima</li><li>7 note keys and 3 function buttons</li><li>2 rotary encoders and a joystick</li><li>Small OLED display</li><li>Built-in speaker and headphone jack</li><li>Battery power</li></ul></dd></div>
+            <div><dt>Links</dt><dd><ul class="jw-casefacts__list"><li><a href="https://github.com/JanWestphal91/Audio-Dingo-Synth" target="_blank" rel="noopener noreferrer"><span>GitHub repository</span>&#160;<span aria-hidden="true">↗</span></a></li><li><a href="/en/blog/hello-blog/"><span>Devlog: development process</span>&#160;<span aria-hidden="true">→</span></a></li></ul></dd></div>
+        </dl>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-1">
+        <h2 id="jw-case-1" class="jw-label jw-rule">03 — <span>Requirements</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                <div><p>The goal was a small synthesizer that generates its own tones and fits into my existing setup of other synths. It had to be portable, so it runs on battery power.</p>
+<ul>
+<li><strong>Playing:</strong> 7 note keys, because a scale has 7 notes, plus 3 function buttons for recording, playback and special functions.</li>
+<li><strong>Shaping the sound:</strong> 2 rotary encoders – one changes the octave, the other the waveform – and a joystick for the pitch.</li>
+<li><strong>Feedback:</strong> a display showing the current settings and the parameter being edited.</li>
+<li><strong>Output:</strong> a built-in speaker for standalone use and a headphone jack to connect it to other synths.</li>
+</ul>
+</div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-2">
+        <h2 id="jw-case-2" class="jw-label jw-rule">04 — <span>From simulation to breadboard</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                <div><p>Before buying anything, I simulated and tested a first circuit on Wokwi. Then came the research: which parts are suitable, which work reliably together, and where to get them.</p>
+<p>Once everything had arrived, I built the first hardware prototype on a breadboard and wrote a first basic version of the code.</p>
+</div>
+                
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/DingoFirstBreadboard.webp">
+                    <img src="/Images/Audiodingo/DingoFirstBreadboard.webp" alt="First breadboard prototype: Arduino, OLED display, joystick and rotary encoders connected with many jumper wires" loading="lazy">
+                </a>
+                <figcaption>The first prototype on the breadboard</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-3">
+        <h2 id="jw-case-3" class="jw-label jw-rule">05 — <span>Enclosure in two iterations</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                <div><p>With a rough circuit layout in mind, I designed the enclosure in Fusion. The first print was only the black main body – enough to fit all components and get a feel for the form and layout.</p>
+<p>For the second iteration the case became noticeably wider and deeper, and I adjusted the cut-outs for buttons and connectors. This print fit properly – a very satisfying milestone.</p>
+</div>
+                
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/DingofirstCase.webp">
+                    <img src="/Images/Audiodingo/DingofirstCase.webp" alt="First 3D-printed case in black, with cut-outs for keys, knobs and the display" loading="lazy">
+                </a>
+                <figcaption>The first print: only the main body</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-4">
+        <h2 id="jw-case-4" class="jw-label jw-rule">06 — <span>Sound and firmware</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                <div><p>In parallel to the enclosure, I soldered the components, refined the code and improved the sound generation. For the audio synthesis I used the Mozzi library, which proved very useful for this kind of Arduino project.</p>
+<p>The code is open source on GitHub.</p>
+</div>
+                
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/DingoinFusion.webp">
+                    <img src="/Images/Audiodingo/DingoinFusion.webp" alt="Screenshot of the case design in Fusion" loading="lazy">
+                </a>
+                <figcaption>The case design in Fusion</figcaption>
+            </figure>
+        </div>
+    </section>
+    
 
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
         <div class="jw-gallery-head">
-            <h2 id="jw-gallery-title" class="jw-label jw-rule">02 — <span>Gallery</span> (01)</h2><div class="jw-view-toggle" role="group" aria-label="Gallery view" hidden>
+            <h2 id="jw-gallery-title" class="jw-label jw-rule">07 — <span>Gallery</span> (01)</h2><div class="jw-view-toggle" role="group" aria-label="Gallery view" hidden>
                 <button type="button" data-view="archive" aria-pressed="true">Archive</button>
                 <button type="button" data-view="grid" aria-pressed="false">Grid</button>
             </div>
