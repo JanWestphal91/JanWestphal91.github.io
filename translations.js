@@ -3,5 +3,7 @@ window.TRANSLATIONS.en["cat.Electronic"] = "Electronic";
 window.TRANSLATIONS.de["cat.Electronic"] = "Elektronik";
 window.TRANSLATIONS.en["cat.Game"] = "Game";
 window.TRANSLATIONS.de["cat.Game"] = "Spiel";
+window.TRANSLATIONS.en["cat.3D"] = "3D";
+window.TRANSLATIONS.de["cat.3D"] = "3D";
 window.TRANSLATIONS.en["cat.Illustration"] = "Illustration";
 window.TRANSLATIONS.de["cat.Illustration"] = "Illustration";

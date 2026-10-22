@@ -676,6 +676,18 @@ collections:
         - label: Englisch
           name: en
           widget: string
+      - label: Projekte in dieser Liste
+        name: list
+        widget: relation
+        collection: projects
+        value_field: slug
+        search_fields:
+        - title
+        display_fields:
+        - title
+        multiple: true
+        required: false
+        hint: Welche Projekte unter „Weitere Projekte“ stehen, in dieser Reihenfolge. Leer lassen = alle, die nicht schon oben im Karussell sind. Alle Projekte stehen immer auf /projects/.
       - label: Link zur Übersicht
         name: more
         widget: object
@@ -2322,6 +2334,62 @@ collections:
       widget: number
       required: false
       value_type: int
+  - label: '3D-Modelle: Einleitung'
+    name: models_intro
+    widget: object
+    collapsed: false
+    summary: '{{fields.de}}'
+    fields:
+    - label: Deutsch
+      name: de
+      widget: text
+      required: false
+    - label: Englisch
+      name: en
+      widget: text
+      required: false
+    hint: Kurzer Text über den Modellen, z. B. was die Ansicht „Topologie“ zeigt.
+    required: false
+  - label: 3D-Modelle
+    name: models
+    widget: list
+    required: false
+    label_singular: Modell
+    collapsed: true
+    summary: '{{fields.title.de}}'
+    hint: 'Jedes Modell wird zu einem drehbaren 3D-Viewer mit Animationen und Topologie-Ansicht. Format: .glb. Für die Topologie ohne Dreiecks-Diagonalen das Export-Skript _build/blender-export-glb.py nutzen (Anleitung im Kopf der Datei).'
+    fields:
+    - label: Titel
+      name: title
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Datei (.glb)
+      name: src
+      widget: file
+      media_folder: /Images/3D
+      public_folder: /Images/3D
+      hint: Am besten unter 3 MB halten, das Modell lädt erst, wenn man dorthin scrollt.
+    - label: Beschreibung
+      name: text
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: text
+      - label: Englisch
+        name: en
+        widget: text
+      required: false
   - label: Case Study
     name: case
     widget: object
@@ -2411,7 +2479,7 @@ collections:
       label_singular: Abschnitt
       summary: '{{fields.heading.de}}'
       collapsed: true
-      hint: 'Bewährte Reihenfolge: Idee → Vorgehen → Herausforderungen → Ergebnis und Ausblick.'
+      hint: 'Bewährte Reihenfolge: Idee → Vorgehen → Herausforderungen mit Lösung → Ergebnis → Was ich gelernt habe.'
       fields:
       - label: Überschrift
         name: heading
@@ -2436,10 +2504,21 @@ collections:
         - label: Englisch
           name: en
           widget: markdown
-      - label: Bild
+      - label: Bild (Deutsch bzw. für beide Sprachen)
         name: image
         widget: image
         required: false
+      - label: Bild für die englische Seite
+        name: image_en
+        widget: image
+        required: false
+        hint: Nur nötig, wenn das Bild Text enthält (z. B. ein Diagramm). Sonst leer lassen.
+      - label: Bild in voller Breite unter dem Text
+        name: image_wide
+        widget: boolean
+        required: false
+        default: false
+        hint: Für Diagramme und breite Grafiken, damit die Schrift lesbar bleibt.
       - label: Alt-Text des Bilds
         name: image_alt
         widget: object

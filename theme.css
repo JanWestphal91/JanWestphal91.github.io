@@ -1961,7 +1961,8 @@ body.theme {
     opacity: 1;
 }
 
-.theme .post-body code {
+.theme .post-body code,
+.theme .jw-prose code {
     padding: 0.1em 0.35em;
     border-radius: 0;
     background: rgb(17 17 17 / 0.07);
@@ -1969,7 +1970,9 @@ body.theme {
     font-size: 0.85em;
 }
 
-.theme .post-body pre {
+.theme .post-body pre,
+.theme .jw-prose pre {
+    overflow-x: auto;
     margin: 1.4em 0;
     padding: 20px;
     border-radius: 0;
@@ -1979,7 +1982,8 @@ body.theme {
     line-height: 1.6;
 }
 
-.theme .post-body pre code {
+.theme .post-body pre code,
+.theme .jw-prose pre code {
     padding: 0;
     background: none;
     color: inherit;
@@ -3017,6 +3021,20 @@ html.jw-motion-off {
     grid-template-columns: minmax(0, 1fr);
 }
 
+/* Breites Bild (z. B. Diagramm) unter dem Text, über die ganze Breite */
+.jw-case__grid--wide {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.jw-case__grid--wide .jw-case__text {
+    max-width: 72ch;
+}
+
+.jw-case__grid--wide .jw-case__figure img {
+    max-height: none;
+    object-fit: contain;
+}
+
 .theme .jw-case .jw-prose {
     padding-bottom: 0;
 }
@@ -3327,4 +3345,221 @@ html.jw-motion-off {
     font-family: var(--mono);
     font-size: 13px;
     color: var(--muted);
+}
+
+
+/* ═══ 3D-Modelle (js/model-viewer.js) ═══
+   Rahmen wie bei den Bildern, darunter eine Leiste mit Ansicht,
+   Animation und Zurücksetzen. Die Bühne behält ihr Seitenverhältnis,
+   auf dem Handy bleibt sie niedrig genug, dass man daneben scrollen kann. */
+.theme .jw-models__intro {
+    max-width: 72ch;
+    margin: 0 0 32px;
+}
+
+.jw-model + .jw-model {
+    margin-top: 64px;
+}
+
+.jw-model__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: clamp(16px, 4vw, 56px);
+    align-items: baseline;
+    margin-bottom: 16px;
+}
+
+.theme .jw-model__title {
+    margin: 0;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.15;
+}
+
+.theme .jw-model__title .jw-fig {
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+}
+
+.theme .jw-model__text {
+    margin: 0;
+    max-width: 62ch;
+}
+
+.jw-model__stage {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    max-height: 72vh;
+    width: 100%;
+    border: 1.5px solid var(--ink);
+    background:
+        radial-gradient(ellipse at 50% 62%, var(--paper) 0%, var(--bg) 78%);
+    overflow: hidden;
+}
+
+.jw-model__stage canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: none;
+}
+
+.jw-model__stage canvas:active {
+    cursor: grabbing;
+}
+
+.jw-model__stage canvas:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: -4px;
+}
+
+.jw-model__status {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 16px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    pointer-events: none;
+}
+
+.jw-model__status:empty {
+    display: none;
+}
+
+.jw-model__hint {
+    position: absolute;
+    left: 12px;
+    bottom: 10px;
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.jw-model.is-ready .jw-model__hint {
+    opacity: 1;
+}
+
+.jw-model__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    margin-top: 12px;
+}
+
+.jw-model__modes {
+    display: inline-flex;
+    border: 1.5px solid var(--ink);
+}
+
+.theme .jw-model__modes button,
+.theme .jw-model__btn,
+.theme .jw-model__anim select {
+    min-height: 40px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.theme .jw-model__modes button[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+.theme .jw-model__btn {
+    border: 1.5px solid var(--ink);
+}
+
+.theme .jw-model__btn[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+.jw-model__anim {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.jw-model__anim[hidden],
+.jw-model__btn[hidden] {
+    display: none;
+}
+
+.theme .jw-model__anim select {
+    border: 1.5px solid var(--ink);
+    padding-right: 12px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 13px;
+}
+
+.theme .jw-model__modes button:focus-visible,
+.theme .jw-model__btn:focus-visible,
+.theme .jw-model__anim select:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.theme .jw-model__stats {
+    margin: 12px 0 0;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.theme .jw-model__stats:empty {
+    display: none;
+}
+
+@media (max-width: 860px) {
+    .jw-model__head {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .jw-model__stage {
+        aspect-ratio: 4 / 3;
+        max-height: 60vh;
+    }
+}
+
+.jw-model__hint--touch {
+    display: none;
+}
+
+@media (pointer: coarse) {
+    .jw-model__hint {
+        display: none;
+    }
+
+    .jw-model__hint--touch {
+        display: block;
+    }
 }

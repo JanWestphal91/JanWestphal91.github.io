@@ -85,6 +85,18 @@
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/"/>
     </url>
     <url>
+        <loc>https://janwestphal.dev/projects/3d-objekte/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/3d-objekte/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/3d-objekte/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/3d-objekte/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/3d-objekte/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/3d-objekte/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/3d-objekte/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/3d-objekte/"/>
+    </url>
+    <url>
         <loc>https://janwestphal.dev/projects/Audio-Dingo-Synth/</loc>
         <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/Audio-Dingo-Synth/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/Audio-Dingo-Synth/"/>

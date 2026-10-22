@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D-Objekte – Jan Westphal</title>
+    <meta name="description" content="Models, renderings and scene screenshots from my 3D work. Three models can be rotated right here in the browser: a rigged duck with its animations, a tree...">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/en/projects/3d-objekte/" rel="canonical">
+    <link href="https://janwestphal.dev/projects/3d-objekte/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/projects/3d-objekte/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/projects/3d-objekte/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/en/projects/3d-objekte/" property="og:url">
+    <meta content="en_US" property="og:locale">
+    <meta content="de_DE" property="og:locale:alternate">
+    <meta name="geo.region" content="DE-SH">
+    <meta name="geo.placename" content="Kiel">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="3D-Objekte – Jan Westphal">
+    <meta property="og:description" content="Models, renderings and scene screenshots from my 3D work. Three models can be rotated right here in the browser: a rigged duck with its animations, a tree...">
+    
+    <meta property="og:image" content="https://janwestphal.dev/Images/3D/wald-diorama-farbig.webp">
+    <meta name="twitter:image" content="https://janwestphal.dev/Images/3D/wald-diorama-farbig.webp">
+    
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="3D-Objekte – Jan Westphal Preview">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="3D-Objekte – Jan Westphal">
+    <meta name="twitter:description" content="Models, renderings and scene screenshots from my 3D work. Three models can be rotated right here in the browser: a rigged duck with its animations, a tree...">
+
+
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-project" data-page="project-static">
+
+<a class="jw-skip" href="#main">Skip to content</a>
+<header class="site-header">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="/en/" class="logo">Jan Westphal</a>
+        </div>
+        <nav class="nav-main" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/en/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Projects</span><span class="nav-label nav-label--mobile"><span>Projects</span> →</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span> →</span></a></li>
+                <li class="jw-nav-about"><a href="/en/#about" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="/en/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact</span><span class="nav-label nav-label--mobile"><span>Contact</span> →</span></a></li>
+                <li><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Motion"><span class="nav-label nav-label--desktop">Motion</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">on</span><span class="jw-motion-toggle__off">off</span></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/projects/3d-objekte/"><span class="nav-label nav-label--desktop">Deutsch</span><span class="nav-label nav-label--mobile">DE</span></a></li>
+            </ul>
+        </nav>
+        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<main id="main" tabindex="-1" class="project-page">
+    <section class="jw-wrap jw-detail-head" aria-labelledby="jw-page-title">
+        <nav class="jw-crumb" aria-label="Breadcrumb">
+            <a href="/en/projects/">Projects</a>
+            <span aria-hidden="true">/</span>
+            <span>05</span>
+        </nav>
+        <div class="jw-detail-head__row">
+            <div class="jw-detail-head__main">
+                <h1 id="jw-page-title">3D-Objekte</h1>
+                <div class="project-summary jw-lead"><p>Models, renderings and scene screenshots from my 3D work. Three models can be rotated right here in the browser: a rigged duck with its animations, a tree and a bridge overgrown with vines. The topology view shows the edges as I modelled them in Blender.</p>
+</div>
+                
+            </div>
+            <dl class="jw-facts">
+                <div><dt>Type</dt><dd><span>3D</span></dd></div>
+                <div>
+                    <dt>Details</dt>
+                    <dd>
+                        <span>3D · Blender · Modelling</span>
+                        
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    
+    <section class="jw-wrap jw-detail-block" aria-label="Cover">
+        <figure class="jw-cover">
+            <img src="/Images/3D/wald-diorama-farbig.webp" alt="Forest diorama in a paper style: fir trees and round trees around a path, in the middle a small hooded figure in a pool of light" loading="eager">
+        </figure>
+    </section>
+    
+    <section class="jw-wrap jw-detail-block jw-models" aria-labelledby="jw-models-title">
+        <h2 id="jw-models-title" class="jw-label jw-rule">01 — <span>3D models</span> (03)</h2>
+        <p class="jw-models__intro">Drag to rotate the models. “Topology” shows each model in a neutral material with its edges – only the edges from the model, without the diagonals that appear when the browser splits every quad into two triangles.</p>
+        <article class="jw-model" data-model-src="/Images/3D/ente.glb" aria-labelledby="jw-model-1">
+            <div class="jw-model__head">
+                <h3 id="jw-model-1" class="jw-model__title"><span class="jw-fig">3D 01</span> <span>Duck</span></h3>
+                <p class="jw-model__text">Rigged with Rigify, with 14 animations from walking and swimming to diving and gliding. The feathers are separate objects attached to the rig.</p>
+            </div>
+            <div class="jw-model__stage">
+                <canvas tabindex="0" role="img" aria-label="Interactive 3D model. Drag to rotate, after a click zoom with the mouse wheel or two fingers, arrow keys to pan."></canvas>
+                <p class="jw-model__status" role="status">The 3D view needs JavaScript.</p>
+                <p class="jw-model__hint" aria-hidden="true">Drag to rotate · click, then mouse wheel to zoom</p>
+                <p class="jw-model__hint jw-model__hint--touch" aria-hidden="true">One finger rotates · two fingers zoom</p>
+            </div>
+            <div class="jw-model__bar">
+                <div class="jw-model__modes" role="group" aria-label="View">
+                    <button type="button" data-model-mode="model" aria-pressed="true">Model</button>
+                    <button type="button" data-model-mode="topology" aria-pressed="false">Topology</button>
+                </div>
+                <label class="jw-model__anim" hidden><span>Animation</span> <select></select></label>
+                <button type="button" class="jw-model__btn" data-model-play="" aria-pressed="false" hidden>Play</button>
+                <button type="button" class="jw-model__btn" data-model-reset="">Reset view</button>
+            </div>
+            <p class="jw-model__stats"></p>
+        </article>
+        <article class="jw-model" data-model-src="/Images/3D/laternenbaum.glb" aria-labelledby="jw-model-2">
+            <div class="jw-model__head">
+                <h3 id="jw-model-2" class="jw-model__title"><span class="jw-fig">3D 02</span> <span>Tree</span></h3>
+                <p class="jw-model__text">Trunk and roots are one continuous mesh made almost entirely of quads. The crown consists of 15 leaf clusters, bent with a Simple Deform modifier. In the gallery below the tree stands in its scene with lanterns.</p>
+            </div>
+            <div class="jw-model__stage">
+                <canvas tabindex="0" role="img" aria-label="Interactive 3D model. Drag to rotate, after a click zoom with the mouse wheel or two fingers, arrow keys to pan."></canvas>
+                <p class="jw-model__status" role="status">The 3D view needs JavaScript.</p>
+                <p class="jw-model__hint" aria-hidden="true">Drag to rotate · click, then mouse wheel to zoom</p>
+                <p class="jw-model__hint jw-model__hint--touch" aria-hidden="true">One finger rotates · two fingers zoom</p>
+            </div>
+            <div class="jw-model__bar">
+                <div class="jw-model__modes" role="group" aria-label="View">
+                    <button type="button" data-model-mode="model" aria-pressed="true">Model</button>
+                    <button type="button" data-model-mode="topology" aria-pressed="false">Topology</button>
+                </div>
+                <label class="jw-model__anim" hidden><span>Animation</span> <select></select></label>
+                <button type="button" class="jw-model__btn" data-model-play="" aria-pressed="false" hidden>Play</button>
+                <button type="button" class="jw-model__btn" data-model-reset="">Reset view</button>
+            </div>
+            <p class="jw-model__stats"></p>
+        </article>
+        <article class="jw-model" data-model-src="/Images/3D/bruecke.glb" aria-labelledby="jw-model-3">
+            <div class="jw-model__head">
+                <h3 id="jw-model-3" class="jw-model__title"><span class="jw-fig">3D 03</span> <span>Bridge with vines</span></h3>
+                <p class="jw-model__text">Posts, beams, planks, ropes and vines as separate objects. The vines are mostly triangles, everything else is built from quads.</p>
+            </div>
+            <div class="jw-model__stage">
+                <canvas tabindex="0" role="img" aria-label="Interactive 3D model. Drag to rotate, after a click zoom with the mouse wheel or two fingers, arrow keys to pan."></canvas>
+                <p class="jw-model__status" role="status">The 3D view needs JavaScript.</p>
+                <p class="jw-model__hint" aria-hidden="true">Drag to rotate · click, then mouse wheel to zoom</p>
+                <p class="jw-model__hint jw-model__hint--touch" aria-hidden="true">One finger rotates · two fingers zoom</p>
+            </div>
+            <div class="jw-model__bar">
+                <div class="jw-model__modes" role="group" aria-label="View">
+                    <button type="button" data-model-mode="model" aria-pressed="true">Model</button>
+                    <button type="button" data-model-mode="topology" aria-pressed="false">Topology</button>
+                </div>
+                <label class="jw-model__anim" hidden><span>Animation</span> <select></select></label>
+                <button type="button" class="jw-model__btn" data-model-play="" aria-pressed="false" hidden>Play</button>
+                <button type="button" class="jw-model__btn" data-model-reset="">Reset view</button>
+            </div>
+            <p class="jw-model__stats"></p>
+        </article>
+    </section>
+
+    
+
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
+        <div class="jw-gallery-head">
+            <h2 id="jw-gallery-title" class="jw-label jw-rule">02 — <span>Gallery</span> (11)</h2><div class="jw-view-toggle" role="group" aria-label="Gallery view" hidden>
+                <button type="button" data-view="archive" aria-pressed="true">Archive</button>
+                <button type="button" data-view="grid" aria-pressed="false">Grid</button>
+            </div>
+        </div>
+        <div class="project-gallery jw-gallery" data-archive-code="3D">
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-farbig.webp"><img src="/Images/3D/wald-diorama-farbig.webp" alt="Forest diorama in a paper style: fir trees and round trees around a path, in the middle a small hooded figure in a pool of light" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 01</span> <span>Forest diorama, in colour</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-papier.webp"><img src="/Images/3D/wald-diorama-papier.webp" alt="The same forest diorama in plain white paper and cardboard" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 02</span> <span>Forest diorama, plain paper</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-daemmerung.webp"><img src="/Images/3D/wald-diorama-daemmerung.webp" alt="The forest diorama in dim green light, only the path around the figure is lit" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 03</span> <span>Forest diorama at dusk</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-nacht.webp"><img src="/Images/3D/wald-diorama-nacht.webp" alt="The forest diorama at night in grey-blue tones, the figure as the only light source" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 04</span> <span>Forest diorama at night</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/baum-laternen.webp"><img src="/Images/3D/baum-laternen.webp" alt="A large tree with a crown of paper-textured blocks, small lantern houses hanging from it, an ant figure standing at the roots" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 05</span> <span>The tree with lanterns in its scene</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/spinne.webp"><img src="/Images/3D/spinne.webp" alt="Low-poly spider in red, blue and black with large white fangs, rendered on a grey background" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 06</span> <span>Low-poly spider, rendering</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/schwertsaeulen.webp"><img src="/Images/3D/schwertsaeulen.webp" alt="Low-poly desert under a purple sky, two giant swords stuck in the sand, a small figure in front of a gate with lanterns" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 07</span> <span>Low-poly scene with sword pillars</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/saeulenhalle.webp"><img src="/Images/3D/saeulenhalle.webp" alt="A small figure on a red platform faces an armoured giant between tall columns" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 08</span> <span>Giant in a hall of columns</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/lagerfeuer.webp"><img src="/Images/3D/lagerfeuer.webp" alt="Figure with a wide-brimmed hat and a red scarf sitting by a camp fire in a cave, blue crystals and a sword in the ground" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 09</span> <span>Camp fire in a cave</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/lagerfeuer-animiert.webp"><img src="/Images/3D/lagerfeuer-animiert.webp" alt="Animated version of the camp fire scene with flickering flames and rising sparks" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 10</span> <span>Camp fire, animated</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/leuchtturm.webp"><img src="/Images/3D/leuchtturm.webp" alt="Figure in a blue coat in front of a lighthouse at night, its cyan beam crossing the rainy sky" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 11</span> <span>Lighthouse in the rain</span></figcaption>
+            </figure>
+            
+        </div>
+    </section>
+    
+
+    <nav class="jw-wrap jw-pager" aria-label="More projects">
+        
+        <a class="jw-pager__link" href="/en/projects/Audio-Dingo-Synth/">
+            <span class="jw-label">← Previous project</span>
+            <span class="jw-pager__title">Audio Dingo Synth</span>
+        </a>
+        
+        
+        <a class="jw-pager__link jw-pager__link--next" href="/en/projects/e-zine-graffiti-doc/">
+            <span class="jw-label">Next project →</span>
+            <span class="jw-pager__title">Book#1 // Graffiti Archive 2015-2019</span>
+        </a>
+        
+    </nav>
+
+    
+<section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text">Questions, ideas or feedback? I’d love to hear from you.</p>
+        <a href="/en/#contact" class="jw-cta__button"><span>Drop a message</span>&#160;→</a>
+    </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/en/impressum/">Imprint</a></li>
+            <li><a href="/en/datenschutz/">Privacy</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+<script src="/page-flip.browser.js" defer></script>
+<script src="/flipbook.js" defer></script>
+<script type="module" src="/js/model-viewer.js"></script>
+</body>
+</html>
