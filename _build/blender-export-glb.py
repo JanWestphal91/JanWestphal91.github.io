@@ -8,13 +8,18 @@
 #
 #   ... -- Images/3D/bruecke.glb Cube
 #
+# Ohne Animationen, als festes Modell in der Grundhaltung des Rigs:
+#
+#   ... -- Images/3D/ente.glb --static
+#
 # Danach die Datei verkleinern (etwa auf ein Drittel):
 #
 #   npx @gltf-transform/cli meshopt Images/3D/modell.glb Images/3D/modell.glb
 #
 # Was das Skript macht:
 #   - exportiert alle sichtbaren Meshes, bei einem Rig auch Skin und alle
-#     Actions als Animationen (nur Deform-Knochen, Constraints werden gebacken)
+#     Actions als Animationen (nur Deform-Knochen, Constraints werden gebacken);
+#     mit --static wird die Grundhaltung fest ins Mesh übernommen
 #   - wendet alle Modifier außer der Armatur an
 #   - trianguliert selbst und schreibt an jede Dreiecksecke das Attribut
 #     _EDGE: 1 = die gegenüberliegende Kante ist eine echte Kante aus Blender,
@@ -31,6 +36,8 @@ if args and args[0].endswith(".blend"):          # Aufruf ohne Blender-Oberfläc
     bpy.ops.wm.open_mainfile(filepath=args.pop(0))
 if not args:
     sys.exit("Bitte die Zieldatei angeben, z. B. -- Images/3D/modell.glb")
+static = "--static" in args
+args = [a for a in args if a != "--static"]
 out, skip = args[0], set(args[1:])
 
 if bpy.context.object and bpy.context.object.mode != "OBJECT":
@@ -43,15 +50,19 @@ for o in bpy.data.objects:
     o.select_set(False)
 
 for o in meshes:
-    # Armatur-Modifier auf ein ausgeblendetes Rig (z. B. Rigify-Metarig) entfernen
+    # Armatur-Modifier auf ein ausgeblendetes Rig entfernen
     for m in list(o.modifiers):
         if m.type == "ARMATURE" and m.object and not m.object.visible_get():
             o.modifiers.remove(m)
     if o.data.users > 1:
         o.data = o.data.copy()
     bpy.context.view_layer.objects.active = o
+    if static:
+        for m in o.modifiers:
+            if m.type == "ARMATURE" and m.object:
+                m.object.data.pose_position = "REST"
     for m in list(o.modifiers):
-        if m.type != "ARMATURE":
+        if static or m.type != "ARMATURE":
             with bpy.context.temp_override(object=o, active_object=o):
                 bpy.ops.object.modifier_apply(modifier=m.name)
 
@@ -75,7 +86,13 @@ for o in meshes:
     bm.free()
     o.select_set(True)
 
-rigs = [o for o in bpy.data.objects if o.type == "ARMATURE" and o.visible_get()]
+if static:
+    for o in meshes:                      # Mesh steht jetzt für sich, ohne Rig
+        if o.parent and o.parent.type == "ARMATURE":
+            mw = o.matrix_world.copy()
+            o.parent = None
+            o.matrix_world = mw
+rigs = [] if static else [o for o in bpy.data.objects if o.type == "ARMATURE" and o.visible_get()]
 for r in rigs:
     r.select_set(True)
 

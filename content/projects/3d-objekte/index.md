@@ -7,10 +7,10 @@ order: 3
 cover_image: /Images/3D/wald-diorama-farbig.webp
 cover_image_alt: 'Forest diorama in a paper style: fir trees and round trees around a path, in the middle a small hooded figure in a pool of light'
 cover_image_alt_de: 'Wald-Diorama im Papier-Look: Tannen und runde Bäume um einen Weg, in der Mitte eine kleine Figur mit Kapuze im Lichtkegel'
-summary_card: 3D models to rotate, with animations and a topology view.
-summary_card_de: 3D-Modelle zum Drehen, mit Animationen und Topologie-Ansicht.
-summary: 'Models, renderings and scene screenshots from my 3D work. Three models can be rotated right here in the browser: a rigged duck with its animations, a tree and a bridge overgrown with vines. The topology view shows the edges as I modelled them in Blender.'
-summary_de: 'Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Drei Modelle lassen sich direkt im Browser drehen: eine geriggte Ente mit ihren Animationen, ein Baum und eine Brücke mit Ranken. Die Ansicht „Topologie“ zeigt die Kanten so, wie ich sie in Blender modelliert habe.'
+summary_card: 3D models to rotate, with a topology view.
+summary_card_de: 3D-Modelle zum Drehen, mit Topologie-Ansicht.
+summary: 'Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree and a bridge overgrown with vines. The topology view shows the edges as I modelled them in Blender.'
+summary_de: 'Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Vier Modelle lassen sich direkt im Browser drehen: eine geriggte Ente, eine Spielfigur, ein Baum und eine Brücke mit Ranken. Die Ansicht „Topologie“ zeigt die Kanten so, wie ich sie in Blender modelliert habe.'
 meta:
 - 3D
 - Blender
@@ -28,8 +28,15 @@ models:
     de: Ente
   src: /Images/3D/ente.glb
   text:
-    en: Rigged with Rigify, with 14 animations from walking and swimming to diving and gliding. The feathers are separate objects attached to the rig.
-    de: Mit Rigify geriggt, mit 14 Animationen von Laufen und Schwimmen bis Tauchen und Gleiten. Die Federn sind einzelne Objekte, die am Rig hängen.
+    en: Rigged by myself. The feathers are separate objects attached to the rig, so they can be posed individually.
+    de: Selbst geriggt. Die Federn sind einzelne Objekte, die am Rig hängen und sich so einzeln bewegen lassen.
+- title:
+    en: Player character
+    de: Spielfigur
+  src: /Images/3D/spielfigur.glb
+  text:
+    en: Rigged, with 16 animations from idle and running to attacks, dashes and strafing. Jacket, scarf, hair, belt and boots are separate meshes. This model only exists as an exported, triangulated file, so the quads in the topology view have been reconstructed from the triangles.
+    de: Geriggt, mit 16 Animationen von Stehen und Laufen bis zu Angriffen, Dash und seitlichem Ausweichen. Jacke, Schal, Haare, Gürtel und Stiefel sind eigene Meshes. Das Modell liegt nur als exportierte, triangulierte Datei vor, die Vierecke in der Topologie-Ansicht sind deshalb aus den Dreiecken zurückgerechnet.
 - title:
     en: Tree
     de: Baum
