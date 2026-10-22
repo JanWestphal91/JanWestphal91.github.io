@@ -4,9 +4,9 @@ title: 3D-Objekte
 slug: 3d-objekte
 category: '[3D]'
 order: 3
-cover_image: /Images/3D/wald-diorama-farbig.webp
-cover_image_alt: 'Forest diorama in a paper style: fir trees and round trees around a path, in the middle a small hooded figure in a pool of light'
-cover_image_alt_de: 'Wald-Diorama im Papier-Look: Tannen und runde Bäume um einen Weg, in der Mitte eine kleine Figur mit Kapuze im Lichtkegel'
+cover_image: /Images/3D/baum-laternen.webp
+cover_image_alt: A large tree with a crown of paper-textured blocks, small lantern houses hanging from it, an ant figure standing at the roots
+cover_image_alt_de: Ein großer Baum mit einer Krone aus Blöcken mit Papiertextur, daran hängen kleine Laternenhäuser, an den Wurzeln steht eine Ameisenfigur
 summary_card: 3D models to rotate, with a topology view.
 summary_card_de: 3D-Modelle zum Drehen, mit Topologie-Ansicht.
 summary: 'Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree and a bridge overgrown with vines. The topology view shows the edges as I modelled them in Blender.'
@@ -35,8 +35,8 @@ models:
     de: Spielfigur
   src: /Images/3D/spielfigur.glb
   text:
-    en: Rigged, shown here in the rig's rest pose. Jacket, scarf, hair, belt and boots are separate meshes. This model only exists as an exported, triangulated file, so the quads in the topology view have been reconstructed from the triangles.
-    de: Geriggt, hier in der Grundhaltung des Rigs. Jacke, Schal, Haare, Gürtel und Stiefel sind eigene Meshes. Das Modell liegt nur als exportierte, triangulierte Datei vor, die Vierecke in der Topologie-Ansicht sind deshalb aus den Dreiecken zurückgerechnet.
+    en: Rigged, shown here in the rig's rest pose. Jacket, scarf, hair, belt and boots are separate meshes.
+    de: Geriggt, hier in der Grundhaltung des Rigs. Jacke, Schal, Haare, Gürtel und Stiefel sind eigene Meshes.
 - title:
     en: Tree
     de: Baum
