@@ -35,8 +35,8 @@ models:
     de: Spielfigur
   src: /Images/3D/spielfigur.glb
   text:
-    en: Rigged, with 16 animations from idle and running to attacks, dashes and strafing. Jacket, scarf, hair, belt and boots are separate meshes. This model only exists as an exported, triangulated file, so the quads in the topology view have been reconstructed from the triangles.
-    de: Geriggt, mit 16 Animationen von Stehen und Laufen bis zu Angriffen, Dash und seitlichem Ausweichen. Jacke, Schal, Haare, Gürtel und Stiefel sind eigene Meshes. Das Modell liegt nur als exportierte, triangulierte Datei vor, die Vierecke in der Topologie-Ansicht sind deshalb aus den Dreiecken zurückgerechnet.
+    en: Rigged, shown here in the rig's rest pose. Jacket, scarf, hair, belt and boots are separate meshes. This model only exists as an exported, triangulated file, so the quads in the topology view have been reconstructed from the triangles.
+    de: Geriggt, hier in der Grundhaltung des Rigs. Jacke, Schal, Haare, Gürtel und Stiefel sind eigene Meshes. Das Modell liegt nur als exportierte, triangulierte Datei vor, die Vierecke in der Topologie-Ansicht sind deshalb aus den Dreiecken zurückgerechnet.
 - title:
     en: Tree
     de: Baum
