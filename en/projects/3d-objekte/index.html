@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D-Objekte – Jan Westphal</title>
-    <meta name="description" content="Models, renderings and scene screenshots from my 3D work. Three models can be rotated right here in the browser: a rigged duck with its animations, a tree...">
+    <meta name="description" content="Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree...">
     <meta name="author" content="Jan Westphal">
     <meta name="robots" content="index, follow">
     <link href="https://janwestphal.dev/en/projects/3d-objekte/" rel="canonical">
@@ -21,7 +21,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Jan Westphal">
     <meta property="og:title" content="3D-Objekte – Jan Westphal">
-    <meta property="og:description" content="Models, renderings and scene screenshots from my 3D work. Three models can be rotated right here in the browser: a rigged duck with its animations, a tree...">
+    <meta property="og:description" content="Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree...">
     
     <meta property="og:image" content="https://janwestphal.dev/Images/3D/wald-diorama-farbig.webp">
     <meta name="twitter:image" content="https://janwestphal.dev/Images/3D/wald-diorama-farbig.webp">
@@ -32,7 +32,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="3D-Objekte – Jan Westphal">
-    <meta name="twitter:description" content="Models, renderings and scene screenshots from my 3D work. Three models can be rotated right here in the browser: a rigged duck with its animations, a tree...">
+    <meta name="twitter:description" content="Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree...">
 
 
     <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
@@ -90,7 +90,7 @@
         <div class="jw-detail-head__row">
             <div class="jw-detail-head__main">
                 <h1 id="jw-page-title">3D-Objekte</h1>
-                <div class="project-summary jw-lead"><p>Models, renderings and scene screenshots from my 3D work. Three models can be rotated right here in the browser: a rigged duck with its animations, a tree and a bridge overgrown with vines. The topology view shows the edges as I modelled them in Blender.</p>
+                <div class="project-summary jw-lead"><p>Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree and a bridge overgrown with vines. The topology view shows the edges as I modelled them in Blender.</p>
 </div>
                 
             </div>
@@ -115,12 +115,12 @@
     </section>
     
     <section class="jw-wrap jw-detail-block jw-models" aria-labelledby="jw-models-title">
-        <h2 id="jw-models-title" class="jw-label jw-rule">01 — <span>3D models</span> (03)</h2>
+        <h2 id="jw-models-title" class="jw-label jw-rule">01 — <span>3D models</span> (04)</h2>
         <p class="jw-models__intro">Drag to rotate the models. “Topology” shows each model in a neutral material with its edges – only the edges from the model, without the diagonals that appear when the browser splits every quad into two triangles.</p>
         <article class="jw-model" data-model-src="/Images/3D/ente.glb" aria-labelledby="jw-model-1">
             <div class="jw-model__head">
                 <h3 id="jw-model-1" class="jw-model__title"><span class="jw-fig">3D 01</span> <span>Duck</span></h3>
-                <p class="jw-model__text">Rigged with Rigify, with 14 animations from walking and swimming to diving and gliding. The feathers are separate objects attached to the rig.</p>
+                <p class="jw-model__text">Rigged by myself. The feathers are separate objects attached to the rig, so they can be posed individually.</p>
             </div>
             <div class="jw-model__stage">
                 <canvas tabindex="0" role="img" aria-label="Interactive 3D model. Drag to rotate, after a click zoom with the mouse wheel or two fingers, arrow keys to pan."></canvas>
@@ -139,9 +139,31 @@
             </div>
             <p class="jw-model__stats"></p>
         </article>
-        <article class="jw-model" data-model-src="/Images/3D/laternenbaum.glb" aria-labelledby="jw-model-2">
+        <article class="jw-model" data-model-src="/Images/3D/spielfigur.glb" aria-labelledby="jw-model-2">
             <div class="jw-model__head">
-                <h3 id="jw-model-2" class="jw-model__title"><span class="jw-fig">3D 02</span> <span>Tree</span></h3>
+                <h3 id="jw-model-2" class="jw-model__title"><span class="jw-fig">3D 02</span> <span>Player character</span></h3>
+                <p class="jw-model__text">Rigged, with 16 animations from idle and running to attacks, dashes and strafing. Jacket, scarf, hair, belt and boots are separate meshes. This model only exists as an exported, triangulated file, so the quads in the topology view have been reconstructed from the triangles.</p>
+            </div>
+            <div class="jw-model__stage">
+                <canvas tabindex="0" role="img" aria-label="Interactive 3D model. Drag to rotate, after a click zoom with the mouse wheel or two fingers, arrow keys to pan."></canvas>
+                <p class="jw-model__status" role="status">The 3D view needs JavaScript.</p>
+                <p class="jw-model__hint" aria-hidden="true">Drag to rotate · click, then mouse wheel to zoom</p>
+                <p class="jw-model__hint jw-model__hint--touch" aria-hidden="true">One finger rotates · two fingers zoom</p>
+            </div>
+            <div class="jw-model__bar">
+                <div class="jw-model__modes" role="group" aria-label="View">
+                    <button type="button" data-model-mode="model" aria-pressed="true">Model</button>
+                    <button type="button" data-model-mode="topology" aria-pressed="false">Topology</button>
+                </div>
+                <label class="jw-model__anim" hidden><span>Animation</span> <select></select></label>
+                <button type="button" class="jw-model__btn" data-model-play="" aria-pressed="false" hidden>Play</button>
+                <button type="button" class="jw-model__btn" data-model-reset="">Reset view</button>
+            </div>
+            <p class="jw-model__stats"></p>
+        </article>
+        <article class="jw-model" data-model-src="/Images/3D/laternenbaum.glb" aria-labelledby="jw-model-3">
+            <div class="jw-model__head">
+                <h3 id="jw-model-3" class="jw-model__title"><span class="jw-fig">3D 03</span> <span>Tree</span></h3>
                 <p class="jw-model__text">Trunk and roots are one continuous mesh made almost entirely of quads. The crown consists of 15 leaf clusters, bent with a Simple Deform modifier. In the gallery below the tree stands in its scene with lanterns.</p>
             </div>
             <div class="jw-model__stage">
@@ -161,9 +183,9 @@
             </div>
             <p class="jw-model__stats"></p>
         </article>
-        <article class="jw-model" data-model-src="/Images/3D/bruecke.glb" aria-labelledby="jw-model-3">
+        <article class="jw-model" data-model-src="/Images/3D/bruecke.glb" aria-labelledby="jw-model-4">
             <div class="jw-model__head">
-                <h3 id="jw-model-3" class="jw-model__title"><span class="jw-fig">3D 03</span> <span>Bridge with vines</span></h3>
+                <h3 id="jw-model-4" class="jw-model__title"><span class="jw-fig">3D 04</span> <span>Bridge with vines</span></h3>
                 <p class="jw-model__text">Posts, beams, planks, ropes and vines as separate objects. The vines are mostly triangles, everything else is built from quads.</p>
             </div>
             <div class="jw-model__stage">

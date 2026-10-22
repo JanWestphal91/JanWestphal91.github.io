@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D-Objekte – Jan Westphal</title>
-    <meta name="description" content="Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Drei Modelle lassen sich direkt im Browser drehen: eine geriggte Ente mit ihren...">
+    <meta name="description" content="Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Vier Modelle lassen sich direkt im Browser drehen: eine geriggte Ente, eine Spielfigur,...">
     <meta name="author" content="Jan Westphal">
     <meta name="robots" content="index, follow">
     <link href="https://janwestphal.dev/projects/3d-objekte/" rel="canonical">
@@ -21,7 +21,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Jan Westphal">
     <meta property="og:title" content="3D-Objekte – Jan Westphal">
-    <meta property="og:description" content="Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Drei Modelle lassen sich direkt im Browser drehen: eine geriggte Ente mit ihren...">
+    <meta property="og:description" content="Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Vier Modelle lassen sich direkt im Browser drehen: eine geriggte Ente, eine Spielfigur,...">
     
     <meta property="og:image" content="https://janwestphal.dev/Images/3D/wald-diorama-farbig.webp">
     <meta name="twitter:image" content="https://janwestphal.dev/Images/3D/wald-diorama-farbig.webp">
@@ -32,7 +32,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="3D-Objekte – Jan Westphal">
-    <meta name="twitter:description" content="Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Drei Modelle lassen sich direkt im Browser drehen: eine geriggte Ente mit ihren...">
+    <meta name="twitter:description" content="Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Vier Modelle lassen sich direkt im Browser drehen: eine geriggte Ente, eine Spielfigur,...">
 
 
     <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
@@ -91,7 +91,7 @@
             <div class="jw-detail-head__main">
                 <h1 id="jw-page-title">3D-Objekte</h1>
                 
-                <div class="project-summary jw-lead"><p>Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Drei Modelle lassen sich direkt im Browser drehen: eine geriggte Ente mit ihren Animationen, ein Baum und eine Brücke mit Ranken. Die Ansicht „Topologie“ zeigt die Kanten so, wie ich sie in Blender modelliert habe.</p>
+                <div class="project-summary jw-lead"><p>Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Vier Modelle lassen sich direkt im Browser drehen: eine geriggte Ente, eine Spielfigur, ein Baum und eine Brücke mit Ranken. Die Ansicht „Topologie“ zeigt die Kanten so, wie ich sie in Blender modelliert habe.</p>
 </div>
             </div>
             <dl class="jw-facts">
@@ -115,12 +115,12 @@
     </section>
     
     <section class="jw-wrap jw-detail-block jw-models" aria-labelledby="jw-models-title">
-        <h2 id="jw-models-title" class="jw-label jw-rule">01 — <span>3D-Modelle</span> (03)</h2>
+        <h2 id="jw-models-title" class="jw-label jw-rule">01 — <span>3D-Modelle</span> (04)</h2>
         <p class="jw-models__intro">Die Modelle lassen sich mit der Maus oder dem Finger drehen. Unter „Topologie“ erscheint jedes Modell in einem neutralen Material mit seinen Kanten – nur mit den Kanten aus dem Modell, ohne die Diagonalen, die entstehen, wenn der Browser jedes Viereck in zwei Dreiecke zerlegt.</p>
         <article class="jw-model" data-model-src="/Images/3D/ente.glb" aria-labelledby="jw-model-1">
             <div class="jw-model__head">
                 <h3 id="jw-model-1" class="jw-model__title"><span class="jw-fig">3D 01</span> <span>Ente</span></h3>
-                <p class="jw-model__text">Mit Rigify geriggt, mit 14 Animationen von Laufen und Schwimmen bis Tauchen und Gleiten. Die Federn sind einzelne Objekte, die am Rig hängen.</p>
+                <p class="jw-model__text">Selbst geriggt. Die Federn sind einzelne Objekte, die am Rig hängen und sich so einzeln bewegen lassen.</p>
             </div>
             <div class="jw-model__stage">
                 <canvas tabindex="0" role="img" aria-label="Interaktives 3D-Modell. Ziehen zum Drehen, nach einem Klick mit Mausrad oder zwei Fingern zoomen, Pfeiltasten zum Verschieben."></canvas>
@@ -139,9 +139,31 @@
             </div>
             <p class="jw-model__stats"></p>
         </article>
-        <article class="jw-model" data-model-src="/Images/3D/laternenbaum.glb" aria-labelledby="jw-model-2">
+        <article class="jw-model" data-model-src="/Images/3D/spielfigur.glb" aria-labelledby="jw-model-2">
             <div class="jw-model__head">
-                <h3 id="jw-model-2" class="jw-model__title"><span class="jw-fig">3D 02</span> <span>Baum</span></h3>
+                <h3 id="jw-model-2" class="jw-model__title"><span class="jw-fig">3D 02</span> <span>Spielfigur</span></h3>
+                <p class="jw-model__text">Geriggt, mit 16 Animationen von Stehen und Laufen bis zu Angriffen, Dash und seitlichem Ausweichen. Jacke, Schal, Haare, Gürtel und Stiefel sind eigene Meshes. Das Modell liegt nur als exportierte, triangulierte Datei vor, die Vierecke in der Topologie-Ansicht sind deshalb aus den Dreiecken zurückgerechnet.</p>
+            </div>
+            <div class="jw-model__stage">
+                <canvas tabindex="0" role="img" aria-label="Interaktives 3D-Modell. Ziehen zum Drehen, nach einem Klick mit Mausrad oder zwei Fingern zoomen, Pfeiltasten zum Verschieben."></canvas>
+                <p class="jw-model__status" role="status">Für die 3D-Ansicht wird JavaScript benötigt.</p>
+                <p class="jw-model__hint" aria-hidden="true">Ziehen zum Drehen · Klick, dann Mausrad zum Zoomen</p>
+                <p class="jw-model__hint jw-model__hint--touch" aria-hidden="true">Ein Finger dreht · zwei Finger zoomen</p>
+            </div>
+            <div class="jw-model__bar">
+                <div class="jw-model__modes" role="group" aria-label="Ansicht">
+                    <button type="button" data-model-mode="model" aria-pressed="true">Modell</button>
+                    <button type="button" data-model-mode="topology" aria-pressed="false">Topologie</button>
+                </div>
+                <label class="jw-model__anim" hidden><span>Animation</span> <select></select></label>
+                <button type="button" class="jw-model__btn" data-model-play="" aria-pressed="false" hidden>Abspielen</button>
+                <button type="button" class="jw-model__btn" data-model-reset="">Ansicht zurücksetzen</button>
+            </div>
+            <p class="jw-model__stats"></p>
+        </article>
+        <article class="jw-model" data-model-src="/Images/3D/laternenbaum.glb" aria-labelledby="jw-model-3">
+            <div class="jw-model__head">
+                <h3 id="jw-model-3" class="jw-model__title"><span class="jw-fig">3D 03</span> <span>Baum</span></h3>
                 <p class="jw-model__text">Stamm und Wurzeln sind ein durchgehendes Netz fast nur aus Vierecken. Die Krone besteht aus 15 Blattgruppen, die mit einem Simple-Deform-Modifier gebogen sind. In der Galerie unten steht der Baum mit Laternen in seiner Szene.</p>
             </div>
             <div class="jw-model__stage">
@@ -161,9 +183,9 @@
             </div>
             <p class="jw-model__stats"></p>
         </article>
-        <article class="jw-model" data-model-src="/Images/3D/bruecke.glb" aria-labelledby="jw-model-3">
+        <article class="jw-model" data-model-src="/Images/3D/bruecke.glb" aria-labelledby="jw-model-4">
             <div class="jw-model__head">
-                <h3 id="jw-model-3" class="jw-model__title"><span class="jw-fig">3D 03</span> <span>Brücke mit Ranken</span></h3>
+                <h3 id="jw-model-4" class="jw-model__title"><span class="jw-fig">3D 04</span> <span>Brücke mit Ranken</span></h3>
                 <p class="jw-model__text">Pfosten, Balken, Planken, Seile und Ranken als einzelne Objekte. Die Ranken bestehen größtenteils aus Dreiecken, alles andere aus Vierecken.</p>
             </div>
             <div class="jw-model__stage">
