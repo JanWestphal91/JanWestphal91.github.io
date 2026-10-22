@@ -3,7 +3,7 @@ published: true
 title: Book#1 // Graffiti Archive 2015-2019
 slug: e-zine-graffiti-doc
 category: '[Illustration] 2019'
-order: 3
+order: 4
 cover_image: Images/Graffzine1/buchstandingspaced.webp
 cover_image_alt: "The printed graffiti archive book standing upright"
 cover_image_alt_de: "Das gedruckte Graffiti-Archiv-Buch, aufrecht stehend"

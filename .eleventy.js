@@ -252,6 +252,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("BingSiteAuth.xml");
     eleventyConfig.addPassthroughCopy("page-flip.browser.js");
     eleventyConfig.addPassthroughCopy("flipbook.js");
+    eleventyConfig.addPassthroughCopy("js");
 
     eleventyConfig.addCollection("projects", function(collectionApi) {
         return collectionApi.getFilteredByGlob("content/projects/*/index.md")
@@ -330,6 +331,13 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("withoutSlugs", function(projects, slugs) {
         const skip = slugs || [];
         return (projects || []).filter(function(p) { return skip.indexOf(p.data.slug) === -1; });
+    });
+
+    // Projekte in der Reihenfolge der angegebenen Slugs (unbekannte fallen weg)
+    eleventyConfig.addFilter("bySlugs", function(projects, slugs) {
+        return (slugs || []).map(function(slug) {
+            return (projects || []).find(function(p) { return p.data.slug === slug; });
+        }).filter(Boolean);
     });
 
     // 1 → "01"

@@ -92,7 +92,8 @@
     {%- set nMedia = 1 if embed else 0 %}
     {%- set nBooks = flipbooks.length if flipbooks else 0 %}
     {%- set cs = case if (case and (case.role or case.sections)) else null %}
-    {%- set nFacts = nMedia + nBooks + (1 if cs else 0) %}
+    {%- set nModels = 1 if (models and models.length) else 0 %}
+    {%- set nFacts = nMedia + nBooks + nModels + (1 if cs else 0) %}
     {%- set nSections = (cs.sections.length if (cs and cs.sections) else 0) %}
     {%- set nGallery = nFacts + nSections + 1 %}
     {#- ═══ Flipbooks (optional, CMS: Projekt → Flipbooks) ═══
@@ -120,6 +121,44 @@
     </section>
     {%- endfor %}
 
+    {#- ═══ 3D-Modelle (optional, CMS: Projekt → 3D-Modelle) ═══
+        Jedes Modell (.glb) wird zu einem drehbaren Viewer mit Animationen
+        und Topologie-Ansicht (js/model-viewer.js, lädt erst bei Bedarf). -#}
+    {%- if nModels %}
+    <section class="jw-wrap jw-detail-block jw-models" aria-labelledby="jw-models-title">
+        <h2 id="jw-models-title" class="jw-label jw-rule">{{ (nMedia + nBooks + 1) | pad2 }} — <span {% i18n global.ui.models %}>{{ global.ui.models.en }}</span> ({{ models.length | pad2 }})</h2>
+        {%- if models_intro %}
+        <p class="jw-models__intro" {% i18n models_intro %}>{{ models_intro.en }}</p>
+        {%- endif %}
+        {%- for m in models %}
+        <article class="jw-model" data-model-src="{{ m.src | imgPath }}" aria-labelledby="jw-model-{{ loop.index }}">
+            <div class="jw-model__head">
+                <h3 id="jw-model-{{ loop.index }}" class="jw-model__title"><span class="jw-fig">3D {{ loop.index | pad2 }}</span> <span {% i18n m.title %}>{{ m.title.en }}</span></h3>
+                {%- if m.text %}
+                <p class="jw-model__text" {% i18n m.text %}>{{ m.text.en }}</p>
+                {%- endif %}
+            </div>
+            <div class="jw-model__stage">
+                <canvas tabindex="0" role="img" {% i18n global.ui.model_canvas, "aria" %} aria-label="{{ global.ui.model_canvas.en }}"></canvas>
+                <p class="jw-model__status" role="status" {% i18n global.ui.model_noscript %}>{{ global.ui.model_noscript.en }}</p>
+                <p class="jw-model__hint" aria-hidden="true" {% i18n global.ui.model_hint %}>{{ global.ui.model_hint.en }}</p>
+                <p class="jw-model__hint jw-model__hint--touch" aria-hidden="true" {% i18n global.ui.model_hint_touch %}>{{ global.ui.model_hint_touch.en }}</p>
+            </div>
+            <div class="jw-model__bar">
+                <div class="jw-model__modes" role="group" {% i18n global.ui.model_view, "aria" %} aria-label="{{ global.ui.model_view.en }}">
+                    <button type="button" data-model-mode="model" aria-pressed="true" {% i18n global.ui.model_shaded %}>{{ global.ui.model_shaded.en }}</button>
+                    <button type="button" data-model-mode="topology" aria-pressed="false" {% i18n global.ui.model_topology %}>{{ global.ui.model_topology.en }}</button>
+                </div>
+                <label class="jw-model__anim" hidden><span {% i18n global.ui.model_animation %}>{{ global.ui.model_animation.en }}</span> <select></select></label>
+                <button type="button" class="jw-model__btn" data-model-play aria-pressed="false" hidden {% i18n global.ui.model_play %}>{{ global.ui.model_play.en }}</button>
+                <button type="button" class="jw-model__btn" data-model-reset {% i18n global.ui.model_reset %}>{{ global.ui.model_reset.en }}</button>
+            </div>
+            <p class="jw-model__stats"></p>
+        </article>
+        {%- endfor %}
+    </section>
+    {%- endif %}
+
     {% if cs %}
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
         <h2 id="jw-facts-title" class="jw-label jw-rule">{{ nFacts | pad2 }} — <span {% i18n pt.case_label %}>{{ pt.case_label.en }}</span></h2>
@@ -144,7 +183,7 @@
     {%- for sec in cs.sections %}
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-{{ loop.index }}">
         <h2 id="jw-case-{{ loop.index }}" class="jw-label jw-rule">{{ (nFacts + loop.index) | pad2 }} — <span {% i18n sec.heading %}>{{ sec.heading.en }}</span></h2>
-        <div class="jw-case__grid{% if not sec.image %} jw-case__grid--text{% endif %}">
+        <div class="jw-case__grid{% if not sec.image %} jw-case__grid--text{% elif sec.image_wide %} jw-case__grid--wide{% endif %}">
             <div class="jw-prose jw-case__text">
                 <div data-lang-show="en">{{ sec.body.en | md | safe }}</div>
                 <div data-lang-show="de" hidden>{{ (sec.body.de or sec.body.en) | md | safe }}</div>
@@ -152,9 +191,19 @@
             {%- if sec.image %}
             {%- set capEn = sec.image_caption.en if sec.image_caption else "" %}
             <figure class="jw-case__figure">
+                {%- if sec.image_en %}
+                {#- Bild mit Text: je Sprache eine eigene Datei -#}
+                <a class="post-figure__link" data-lightbox href="{{ sec.image_en | imgPath }}" data-lang-show="en">
+                    <img src="{{ sec.image_en | imgPath }}" alt="{{ sec.image_alt.en if sec.image_alt else '' }}" loading="lazy">
+                </a>
+                <a class="post-figure__link" data-lightbox href="{{ sec.image | imgPath }}" data-lang-show="de" hidden>
+                    <img src="{{ sec.image | imgPath }}" alt="{{ (sec.image_alt.de or sec.image_alt.en) if sec.image_alt else '' }}" loading="lazy">
+                </a>
+                {%- else %}
                 <a class="post-figure__link" data-lightbox href="{{ sec.image | imgPath }}">
                     <img src="{{ sec.image | imgPath }}" alt="{{ sec.image_alt.en if sec.image_alt else '' }}" data-alt-en="{{ sec.image_alt.en if sec.image_alt else '' }}" data-alt-de="{{ (sec.image_alt.de or sec.image_alt.en) if sec.image_alt else '' }}" loading="lazy">
                 </a>
+                {%- endif %}
                 {%- if capEn %}
                 <figcaption {% i18n sec.image_caption %}>{{ capEn }}</figcaption>
                 {%- endif %}
@@ -223,5 +272,8 @@
 
 <script src="/page-flip.browser.js" defer></script>
 <script src="/flipbook.js" defer></script>
+{%- if models and models.length %}
+<script type="module" src="/js/model-viewer.js"></script>
+{%- endif %}
 </body>
 </html>

@@ -112,9 +112,14 @@
     </section>
 
     <!-- ═══ Projekte ═══ -->
-    {#- Weitere Projekte: alle, die nicht schon oben im Karussell stehen.
+    {#- Weitere Projekte: die im CMS ausgewählten (Startseite → 01 Projekte),
+        sonst alle, die nicht schon oben im Karussell stehen.
         Die vollständige Liste mit Filtern steht auf /projects/. -#}
+    {%- if h.projects.list and h.projects.list.length %}
+    {%- set moreProjects = collections.projects | bySlugs(h.projects.list) %}
+    {%- else %}
     {%- set moreProjects = collections.projects | withoutSlugs(h.hero.images | pluck("project")) %}
+    {%- endif %}
     <section id="projects" class="jw-wrap jw-section" aria-labelledby="jw-projects-title">
         <div class="jw-head">
             <div>

@@ -123,6 +123,50 @@
     "gallery_grid": {
       "de": "Raster",
       "en": "Grid"
+    },
+    "models": {
+      "de": "3D-Modelle",
+      "en": "3D models"
+    },
+    "model_view": {
+      "de": "Ansicht",
+      "en": "View"
+    },
+    "model_shaded": {
+      "de": "Modell",
+      "en": "Model"
+    },
+    "model_topology": {
+      "de": "Topologie",
+      "en": "Topology"
+    },
+    "model_animation": {
+      "de": "Animation",
+      "en": "Animation"
+    },
+    "model_play": {
+      "de": "Abspielen",
+      "en": "Play"
+    },
+    "model_reset": {
+      "de": "Ansicht zurücksetzen",
+      "en": "Reset view"
+    },
+    "model_canvas": {
+      "de": "Interaktives 3D-Modell. Ziehen zum Drehen, nach einem Klick mit Mausrad oder zwei Fingern zoomen, Pfeiltasten zum Verschieben.",
+      "en": "Interactive 3D model. Drag to rotate, after a click zoom with the mouse wheel or two fingers, arrow keys to pan."
+    },
+    "model_hint": {
+      "de": "Ziehen zum Drehen · Klick, dann Mausrad zum Zoomen",
+      "en": "Drag to rotate · click, then mouse wheel to zoom"
+    },
+    "model_noscript": {
+      "de": "Für die 3D-Ansicht wird JavaScript benötigt.",
+      "en": "The 3D view needs JavaScript."
+    },
+    "model_hint_touch": {
+      "de": "Ein Finger dreht · zwei Finger zoomen",
+      "en": "One finger rotates · two fingers zoom"
     }
   },
   "categories": [
@@ -135,6 +179,11 @@
       "key": "Game",
       "de": "Spiel",
       "en": "Game"
+    },
+    {
+      "key": "3D",
+      "de": "3D",
+      "en": "3D"
     },
     {
       "key": "Illustration",

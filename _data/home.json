@@ -103,7 +103,12 @@
     "more": {
       "de": "Alle Projekte →",
       "en": "All projects →"
-    }
+    },
+    "list": [
+      "3d-objekte",
+      "zines",
+      "e-zine-graffiti-doc"
+    ]
   },
   "about": {
     "label": {

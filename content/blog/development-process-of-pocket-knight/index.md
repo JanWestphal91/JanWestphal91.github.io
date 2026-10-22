@@ -94,6 +94,8 @@ body_de: |-
 
   So können insgesamt 20 Events gesammelt werden die dann nacheinander am Stück gespielt werden können sobald man Zeit dafür findet. 
 
+  > **Nachtrag:** Inzwischen habe ich das Balancing angepasst. Ein Event kommt jetzt im Schnitt alle 300 Schritte (zufällig zwischen 220 und 380), gespeichert werden bis zu 10 Events, und ein Durchlauf endet nach 40 Events mit dem vierten Boss. So bleibt die Session am Abend kürzer, und ein Durchlauf dauert ungefähr eine Woche. Den aktuellen Stand beschreibt die [Projektseite](/projects/pocket-knight/).
+
   Im Kampf ist der Spieler zu erst dran und hat 3 Skillpunkte für den ganzen Kampf, er kann Angreifen, Blocken und Skills (die jeweils einen Punkt kosten) einsetzen. Die Intention des Gegners wird bereits angezeigt, danach ist der gegner dran und führt eine Akiton aus, (Angreifen, Blocken, Aufladen für starken Angriff) das geht dann so hin und her bis einer besiegt ist.
 
   Die Events laufen so ab dass man eine Auswahl zwischen zwei zufälligen Begegnungen bekommt, nach 10 Events gibt es einen Boss Kampf. Für jedes Event gibt es eine Belohnung die aus Erfahrung, Gold, einem Gegenstand oder einer Statuserhöhung besteht. Beim Level up des Spielers gibt es ebenfalls Statuserhöhungen und einen Gegenstand, dabei hat der Spieler immer die Wahl aus einem von 3 Gegenständen. Insgesamt gilt es somit 50 Events abzuschließen und den Endgegner zu besiegen. Sobald der Spieler einen Kampf verliert oder auf andere Weise die Lebenspunkte auf 0 gehen wird ein neuer Run gestartet. Am Ende eines Runs gibt es noch eine bestimmte Anzahl an Metawährung womit neue Items und Gegenstände oder Startboni freigeschaltet werden können die dann verfügbar werden. 
@@ -156,6 +158,8 @@ Next time I'd also go for a much smaller battery, it makes up a large part of th
 And now for the actually interesting part: the game!
 
 The game loop works like this: the player starts with a knight at level 1. Every 250 steps an event is triggered, the device vibrates and beeps if it isn't in sleep mode. Up to 20 events can be collected this way, which can then be played through one after another in one go whenever you find the time.
+
+> **Update:** I have since changed the balancing. An event now comes on average every 300 steps (randomly between 220 and 380), up to 10 events are stored, and a run ends after 40 events with the fourth boss. This keeps the evening session shorter, and a run takes roughly a week. The [project page](/projects/pocket-knight/) describes the current state.
 
 In combat the player goes first and has 3 skill points for the entire fight. They can attack, block, or use skills (each of which costs one point). The enemy's intention is shown in advance, then it's the enemy's turn and they carry out an action (attack, block, charge up for a strong attack). This goes back and forth until one of them is defeated.
 
