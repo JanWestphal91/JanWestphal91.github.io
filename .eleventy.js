@@ -1,4 +1,5 @@
 const markdownIt = require("markdown-it");
+const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
 const md = markdownIt({ html: true, breaks: false, linkify: true });
 
 // ── Bilder im Fließtext ───────────────────────────────────────────────
@@ -78,6 +79,8 @@ function imageFigures(mdInstance) {
                 image.attrs = image.attrs.filter(function (attr) { return attr[0] !== "title"; });
             }
             image.attrSet("loading", "lazy");
+            // Breite für srcset (Bilder-Plugin): groß = ganze Spalte, sonst halbe
+            image.attrSet("sizes", size === "gross" ? "(min-width: 1440px) 1376px, 100vw" : "(min-width: 860px) 45vw, 100vw");
 
             const linkOpen = new state.Token("html_inline", "", 0);
             linkOpen.content = '<a class="post-figure__link" data-lightbox href="'
@@ -192,6 +195,28 @@ module.exports = function(eleventyConfig) {
     // sitemap.xml mit beiden Versionen.
     eleventyConfig.on("eleventy.after", function ({ dir, results }) {
         buildLanguageVersions(dir.output, results);
+    });
+
+    // ── Responsive Bilder ─────────────────────────────────────────────
+    // Jedes <img> in den fertigen Seiten wird beim Build durch ein <picture>
+    // ersetzt: mehrere Breiten (srcset) in AVIF und WebP, dazu die echten
+    // Maße (width/height), damit beim Laden nichts springt. Der Browser lädt
+    // nur die Breite, die er laut "sizes" braucht. Die Originale in /Images
+    // bleiben erhalten (Lightbox, CMS). Ohne eigenes "sizes" gilt bei
+    // loading="lazy" sizes="auto" (der Browser misst selbst); für Bilder, die
+    // sofort laden, steht "sizes" in der Vorlage.
+    // Ausnahmen: <img eleventy:ignore> (z. B. Bilder, die script.js braucht,
+    // wie sie sind). Bilder von fremden Servern lädt das Plugin beim Build
+    // herunter; schlägt das fehl (offline), bleibt das Original stehen.
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+        formats: ["avif", "webp"],
+        widths: [320, 640, 960, 1440, 1920],
+        failOnError: false,
+        sharpAvifOptions: { effort: 2 },
+        htmlOptions: {
+            imgAttributes: { decoding: "async" },
+            pictureAttributes: {}
+        }
     });
 
     // Eleventy soll dieselbe Markdown-Instanz benutzen wie der "md"-Filter,

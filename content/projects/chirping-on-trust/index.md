@@ -10,19 +10,13 @@ cover_image_alt_de: "Chirping on Trust läuft auf einem Game Boy Advance SP"
 summary_card: A group project made at an in-person game jam over one weekend.
 summary_card_de: Ein Gruppenprojekt, entstanden an einem Wochenende im Rahmen eines Game Jams.
 summary: |-
-  As part of the Summer Game Jam by IF(game)SH e.V. – this year held as the MEKO Jam on media literacy in Leck – I developed a game for the Game Boy Advance over the course of a weekend in a team of three. My main responsibilities were pixel art, the web emulator, and the styling of the [itch.io page](https://jan-west.itch.io/chirping-on-trust). My teammates focused on technical feasibility and gameplay programming. We developed the game in Rust using the agb library, which also allowed us to load Aseprite files directly without having to export them first. In the end, this enabled us to compile a ROM and test it on an actual Game Boy by loading it via a microSD card into a flash cartridge.
+  A game for the Game Boy Advance, made in a team of three over one weekend at the MEKO Jam on media literacy by IF(game)SH e.V. in Leck. Our goal was a ROM that runs on the real handheld – and it does. I made the pixel art, set up the web emulator and designed the [itch.io page](https://jan-west.itch.io/chirping-on-trust), where the game can be played in the browser.
 
-  My team members were [Gracl](https://gracl.itch.io/) & [Zoltankost](https://zoltankost.itch.io/) and it was really fun to work with them!
-
-  Here’s a [blog post](https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/) about my experience at the game jam.
+  Team: [Gracl](https://gracl.itch.io/) & [Zoltankost](https://zoltankost.itch.io/).
 summary_de: |-
-  Im Rahmen der Summer Game Jam des IF(game)SH e.V. – in diesem Jahr als MEKO Jam zum Thema Medienkompetenz in Leck – habe ich an einem Wochenende in einem Dreierteam ein Spiel für den Game Boy Advance entwickelt. Ich war hauptsächlich für die Pixelart, den Web-Emulator und das Styling der [itch.io-Seite](https://jan-west.itch.io/chirping-on-trust) zuständig. Meine Teampartner haben sich um die technische Machbarkeit und die Gameplay-Programmierung gekümmert. Entwickelt haben wir das Spiel in der Programmiersprache Rust mit der Bibliothek agb. Dadurch konnten wir Aseprite-Dateien (Pixelart-Editor) direkt laden, ohne sie vorher exportieren zu müssen. Am Ende konnten wir eine ROM kompilieren, sie über eine microSD-Karte in ein Flash-Modul laden und auf einem echten Game Boy testen.
+  Ein Spiel für den Game Boy Advance, entstanden an einem Wochenende im Dreierteam auf der MEKO Jam zum Thema Medienkompetenz des IF(game)SH e.V. in Leck. Unser Ziel war eine ROM, die auf dem echten Handheld läuft – das hat geklappt. Ich habe die Pixelart gezeichnet, den Web-Emulator eingerichtet und die [itch.io-Seite](https://jan-west.itch.io/chirping-on-trust) gestaltet, auf der man das Spiel im Browser spielen kann.
 
-  Schau gern auf der [Spielseite](https://jan-west.itch.io/chirping-on-trust) vorbei: Dort kannst du die ROM herunterladen oder das Spiel direkt im Browser spielen.
-
-  Meine Teampartner waren [Gracl](https://gracl.itch.io/) & [Zoltankost](https://zoltankost.itch.io/), es war eine sehr witzige Runde und ich hatte jede Menge Spaß während des Game Jams!
-
-  In diesem [Blogbeitrag](https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/) schreibe ich noch etwas ausführlicher über den Game Jam.
+  Team: [Gracl](https://gracl.itch.io/) & [Zoltankost](https://zoltankost.itch.io/).
 meta:
   - Game jam, group project, released
 meta_de:
@@ -106,12 +100,12 @@ case:
       de: Umsetzung
     body:
       en: |-
-        We wrote the game in Rust with the agb library. It let us load Aseprite files directly, without exporting them first – a big help for my pixel art under time pressure. My teammates focused on technical feasibility and gameplay programming; I took care of the pixel art, the web emulator and the styling of the itch.io page.
+        We wrote the game in Rust with the agb library. It let us load Aseprite files directly, without exporting them first – a big help for my pixel art under time pressure. The game logic and the hardware side were in my teammates’ hands.
 
         - **Pixel art:** roughly 30 sprites with a rough, shared colour palette. Every sprite had to use one of the sizes the hardware supports – 16 × 16, 32 × 32, 64 × 64 px and so on.
         - **Web emulator:** so the game can be played in the browser without a Game Boy, the itch.io page runs the ROM in the web version of the emulator mGBA.
       de: |-
-        Geschrieben haben wir das Spiel in Rust mit der Bibliothek agb. Damit konnten wir Aseprite-Dateien direkt laden, ohne sie vorher zu exportieren – eine große Hilfe für meine Pixelart unter Zeitdruck. Meine Teampartner haben sich um die technische Machbarkeit und die Gameplay-Programmierung gekümmert, ich um Pixelart, Web-Emulator und das Styling der itch.io-Seite.
+        Geschrieben haben wir das Spiel in Rust mit der Bibliothek agb. Damit konnten wir Aseprite-Dateien direkt laden, ohne sie vorher zu exportieren – eine große Hilfe für meine Pixelart unter Zeitdruck. Spiellogik und Hardware-Anbindung lagen bei meinen Teampartnern.
 
         - **Pixelart:** rund 30 Sprites mit einer groben gemeinsamen Farbpalette. Jedes Sprite musste eine der Größen haben, die die Hardware unterstützt – 16 × 16, 32 × 32, 64 × 64 px und so weiter.
         - **Web-Emulator:** Damit man das Spiel auch ohne Game Boy spielen kann, läuft die ROM auf der itch.io-Seite in der Webversion des Emulators mGBA.
@@ -136,10 +130,16 @@ case:
       en: Running on real hardware
       de: Läuft auf echter Hardware
   - heading:
-      en: What I would do better
-      de: Was ich besser machen würde
+      en: What I learned and would do differently
+      de: Was ich gelernt habe und anders machen würde
     body:
-      en: Next time I would put more time into the feedback of the interactive elements.
-      de: Beim nächsten Mal würde ich mehr Zeit in das Feedback der Interaktionselemente stecken.
+      en: |-
+        - **Clarify hardware limits before drawing:** the Game Boy Advance only accepts sprites in fixed sizes (16 × 16, 32 × 32, 64 × 64 px …). Knowing that before the first sketch saves redrawing.
+        - **Settle on an idea early:** the first evening went by without a game design. Once we had a fixed starting point on Saturday, the work moved fast. At the next jam I would commit to a simple idea on Friday and adjust it later.
+        - **Feedback for interactions:** next time I would put more time into how the game reacts to input – sounds, small animations, visible hits – so every action feels clear.
+      de: |-
+        - **Hardware-Grenzen vor dem Zeichnen klären:** Der Game Boy Advance nimmt Sprites nur in festen Größen an (16 × 16, 32 × 32, 64 × 64 px …). Wer das vor der ersten Skizze weiß, muss nichts neu zeichnen.
+        - **Früh auf eine Idee festlegen:** Der erste Abend verging ohne Spieldesign. Sobald wir am Samstag einen festen Ausgangspunkt hatten, ging die Arbeit schnell voran. Beim nächsten Jam würde ich mich am Freitag auf eine einfache Idee festlegen und sie später anpassen.
+        - **Feedback bei Interaktionen:** Beim nächsten Mal würde ich mehr Zeit darauf verwenden, wie das Spiel auf Eingaben reagiert – Töne, kleine Animationen, sichtbare Treffer –, damit jede Aktion eindeutig wirkt.
 date: 2026-08-15
 ---

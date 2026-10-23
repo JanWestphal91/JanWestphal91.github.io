@@ -29,7 +29,7 @@ eleventyExcludeFromCollections: true
 <main id="main" tabindex="-1" class="jw-links">
     <header class="jw-links__head">
         {%- if pg.photo %}
-        <img class="jw-links__photo" src="{{ pg.photo | imgPath }}" alt="{{ pg.photo_alt.en }}" {% i18n pg.photo_alt, "alt" %} width="96" height="96">
+        <img class="jw-links__photo" sizes="88px" src="{{ pg.photo | imgPath }}" alt="{{ pg.photo_alt.en }}" {% i18n pg.photo_alt, "alt" %}>
         {%- endif %}
         <div>
             <h1>Jan Westphal</h1>
@@ -60,7 +60,7 @@ eleventyExcludeFromCollections: true
             <li>
                 <a class="jw-links__row" href="{{ w.url }}"{% if '://' in w.url %} target="_blank" rel="noopener noreferrer"{% endif %}>
                     {%- if w.image %}
-                    <img src="{{ w.image | imgPath }}" alt="" width="72" height="72" loading="lazy">
+                    <img src="{{ w.image | imgPath }}" alt="" loading="lazy" sizes="64px">
                     {%- endif %}
                     <span class="jw-links__text">
                         <span class="jw-links__name">{{ w.title }}</span>

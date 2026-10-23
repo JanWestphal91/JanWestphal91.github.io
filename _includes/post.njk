@@ -58,7 +58,7 @@
         {% if cover_image %}
         <section class="jw-wrap jw-detail-block" aria-label="Cover">
             <figure class="jw-cover">
-                <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" data-alt-en="{{ cover_image_alt or title }}" data-alt-de="{{ cover_image_alt_de or cover_image_alt or title_de or title }}" loading="eager">
+                <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" data-alt-en="{{ cover_image_alt or title }}" data-alt-de="{{ cover_image_alt_de or cover_image_alt or title_de or title }}" loading="eager" sizes="(min-width: 1440px) 1376px, 100vw">
             </figure>
         </section>
         {% endif %}
@@ -86,7 +86,7 @@
             <div class="project-gallery jw-gallery" data-archive-code="{{ (title_de or title) | replace(' ', '') | truncate(2, true, '') | upper }}">
                 {% for img in images %}
                 <figure class="project-gallery__item">
-                    <a class="post-figure__link" data-lightbox href="{{ img.src | imgPath }}"><img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy"></a>
+                    <a class="post-figure__link" data-lightbox href="{{ img.src | imgPath }}"><img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></a>
                     <figcaption><span class="jw-fig">Fig. {{ loop.index | pad2 }}</span>{% if img.caption %} <span data-en="{{ img.caption }}" data-de="{{ img.caption_de or img.caption }}">{{ img.caption }}</span>{% endif %}</figcaption>
                 </figure>
                 {% endfor %}

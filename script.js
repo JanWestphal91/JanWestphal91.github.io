@@ -1268,6 +1268,8 @@ initFishScene();
                 code: prefix + '–' + pad(i + 1),
                 href: link ? link.getAttribute('href') : img.getAttribute('src'),
                 src: img.getAttribute('src'),
+                // <picture> aus dem Build (srcset in mehreren Breiten) mitnehmen
+                picture: img.closest('picture'),
                 alt: img.getAttribute('alt') || '',
                 title: caption || ('Fig. ' + pad(i + 1))
             };
@@ -1308,8 +1310,18 @@ initFishScene();
             const a = fig.querySelector('a');
             a.setAttribute('href', item.href);
             const img = fig.querySelector('img');
-            img.setAttribute('src', item.src);
-            img.setAttribute('alt', item.alt);
+            if (item.picture) {
+                // Gleiches Bild in mehreren Breiten; die Spalte ist rund halb so breit wie das Fenster
+                const pic = item.picture.cloneNode(true);
+                pic.querySelectorAll('source, img').forEach(function (el) {
+                    if (el.hasAttribute('srcset')) el.setAttribute('sizes', '(min-width: 1024px) 45vw, 100vw');
+                });
+                pic.querySelector('img').setAttribute('loading', 'lazy');
+                img.replaceWith(pic);
+            } else {
+                img.setAttribute('src', item.src);
+                img.setAttribute('alt', item.alt);
+            }
             stream.appendChild(fig);
 
             button.addEventListener('click', function () {
@@ -1391,6 +1403,97 @@ initFishScene();
         if (wide.addEventListener) wide.addEventListener('change', function () { apply(view); });
         apply(view);
     });
+})();
+
+/* ═══ Fächer (Kopfbereich der Startseite) ═══
+   Die Karten liegen wie Spielkarten in der Hand, Lage und Drehung kommen
+   aus dem CSS (.jw-fan). Das Skript entscheidet nur, welche Karte gehoben
+   ist: beim Überfahren, beim Fokus per Tastatur oder beim ersten Antippen
+   auf Touch-Geräten (das zweite Antippen öffnet das Projekt). Die Nachbarn
+   bekommen --s = -1 / 1 und rücken zur Seite. Dazu neigt sich die gehobene
+   Karte zum Zeiger, mit einem Glanzpunkt, der ihm folgt.
+   Ohne JavaScript ist die erste Karte gehoben, alle Links funktionieren. */
+(function () {
+    const root = document.querySelector('[data-fan]');
+    if (!root) return;
+
+    const slots = Array.from(root.querySelectorAll('.jw-fan__slot'));
+    const cards = slots.map(function (slot) { return slot.querySelector('.jw-fan__card'); });
+    const caption = root.querySelector('.jw-fan__caption');
+    const captionTitle = root.querySelector('.jw-fan__caption-title');
+    const meta = root.querySelector('.jw-fan__meta');
+    const count = root.querySelector('.jw-fan__count');
+    const n = slots.length;
+    let active = 0;
+    const TILT = 10; // Grad
+
+    function pad(v) { return String(v).padStart(2, '0'); }
+
+    function setActive(index) {
+        if (index === active) return;
+        active = index;
+        slots.forEach(function (slot, i) {
+            slot.classList.toggle('is-active', i === index);
+            slot.style.setProperty('--s', i === index ? 0 : (i < index ? -1 : 1));
+            slot.style.zIndex = String(20 - Math.abs(i - index));
+            if (i !== index) resetTilt(cards[i]);
+        });
+        const info = slots[index].querySelector('.jw-fan__info');
+        if (captionTitle && info) captionTitle.textContent = info.querySelector('.jw-fan__title').textContent;
+        if (caption) caption.setAttribute('href', cards[index].getAttribute('href'));
+        if (meta && info) meta.innerHTML = info.querySelector('.jw-fan__cats').outerHTML;
+        if (count) count.textContent = pad(index + 1) + ' / ' + pad(n);
+    }
+
+    function resetTilt(card) {
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+        card.style.setProperty('--jw-shine', '0');
+    }
+
+    // Startzustand: Nachbarn der ersten Karte rücken zur Seite
+    slots.forEach(function (slot, i) { slot.style.setProperty('--s', i === 0 ? 0 : 1); });
+
+    cards.forEach(function (card, i) {
+        // Maus und Stift: Überfahren hebt die Karte
+        card.addEventListener('pointerenter', function (event) {
+            if (event.pointerType !== 'touch') setActive(i);
+        });
+        card.addEventListener('focus', function () { setActive(i); });
+
+        // Touch: erstes Antippen hebt die Karte, erst das zweite öffnet sie
+        card.addEventListener('click', function (event) {
+            if (i !== active) {
+                event.preventDefault();
+                setActive(i);
+            }
+        });
+
+        // Neigung zum Zeiger, nur auf der gehobenen Karte
+        card.addEventListener('pointermove', function (event) {
+            if (event.pointerType === 'touch' || i !== active || motionOff()) return;
+            const r = card.getBoundingClientRect();
+            const px = ((event.clientX - r.left) / r.width) * 2 - 1;   // -1 … 1
+            const py = ((event.clientY - r.top) / r.height) * 2 - 1;
+            card.style.setProperty('--ry', (px * TILT).toFixed(2) + 'deg');
+            card.style.setProperty('--rx', (-py * TILT).toFixed(2) + 'deg');
+            card.style.setProperty('--jw-gx', ((px + 1) * 50).toFixed(1) + '%');
+            card.style.setProperty('--jw-gy', ((py + 1) * 50).toFixed(1) + '%');
+            card.style.setProperty('--jw-shine', Math.min(1, Math.hypot(px, py)).toFixed(3));
+        });
+        card.addEventListener('pointerleave', function () { resetTilt(card); });
+    });
+
+    // Pfeiltasten wandern durch die Karten
+    root.addEventListener('keydown', function (event) {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        const next = (active + (event.key === 'ArrowRight' ? 1 : -1) + n) % n;
+        event.preventDefault();
+        cards[next].focus();
+    });
+
+    // Ziehen eines Links als Bild verhindern
+    root.addEventListener('dragstart', function (event) { event.preventDefault(); });
 })();
 
 /* ═══ Karten-Karussell (Kopfbereich der Startseite) ═══

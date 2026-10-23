@@ -83,7 +83,7 @@
     {% elif cover_image %}
     <section class="jw-wrap jw-detail-block" aria-label="Cover">
         <figure class="jw-cover">
-            <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" data-alt-en="{{ cover_image_alt or title }}" data-alt-de="{{ cover_image_alt_de or cover_image_alt or title }}" loading="eager">
+            <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" data-alt-en="{{ cover_image_alt or title }}" data-alt-de="{{ cover_image_alt_de or cover_image_alt or title }}" loading="eager" sizes="(min-width: 1440px) 1376px, 100vw">
         </figure>
     </section>
     {% endif %}
@@ -113,8 +113,8 @@
         {%- set fg = fb.figure %}
         {%- set fgEn = fg.image_en or fg.image %}
         <figure class="jw-zine__figure">
-            <a class="post-figure__link" data-lightbox href="{{ fgEn | imgPath }}" data-lang-show="en"><img src="{{ fgEn | imgPath }}" alt="{{ fg.alt.en if fg.alt else '' }}" loading="lazy" width="1200" height="680"></a>
-            <a class="post-figure__link" data-lightbox href="{{ fg.image | imgPath }}" data-lang-show="de" hidden><img src="{{ fg.image | imgPath }}" alt="{{ (fg.alt.de or fg.alt.en) if fg.alt else '' }}" loading="lazy" width="1200" height="680"></a>
+            <a class="post-figure__link" data-lightbox href="{{ fgEn | imgPath }}" data-lang-show="en"><img src="{{ fgEn | imgPath }}" alt="{{ fg.alt.en if fg.alt else '' }}" loading="lazy" sizes="(min-width: 1440px) 1100px, 100vw"></a>
+            <a class="post-figure__link" data-lightbox href="{{ fg.image | imgPath }}" data-lang-show="de" hidden><img src="{{ fg.image | imgPath }}" alt="{{ (fg.alt.de or fg.alt.en) if fg.alt else '' }}" loading="lazy" sizes="(min-width: 1440px) 1100px, 100vw"></a>
             {%- if fg.caption %}
             <figcaption {% i18n fg.caption %}>{{ fg.caption.en }}</figcaption>
             {%- endif %}
@@ -193,18 +193,19 @@
             </div>
             {%- if sec.image %}
             {%- set capEn = sec.image_caption.en if sec.image_caption else "" %}
+            {%- set caseSizes = "(min-width: 1440px) 1376px, 100vw" if sec.image_wide else "(min-width: 860px) 45vw, 100vw" %}
             <figure class="jw-case__figure">
                 {%- if sec.image_en %}
                 {#- Bild mit Text: je Sprache eine eigene Datei -#}
                 <a class="post-figure__link" data-lightbox href="{{ sec.image_en | imgPath }}" data-lang-show="en">
-                    <img src="{{ sec.image_en | imgPath }}" alt="{{ sec.image_alt.en if sec.image_alt else '' }}" loading="lazy">
+                    <img src="{{ sec.image_en | imgPath }}" alt="{{ sec.image_alt.en if sec.image_alt else '' }}" loading="lazy" sizes="{{ caseSizes }}">
                 </a>
                 <a class="post-figure__link" data-lightbox href="{{ sec.image | imgPath }}" data-lang-show="de" hidden>
-                    <img src="{{ sec.image | imgPath }}" alt="{{ (sec.image_alt.de or sec.image_alt.en) if sec.image_alt else '' }}" loading="lazy">
+                    <img src="{{ sec.image | imgPath }}" alt="{{ (sec.image_alt.de or sec.image_alt.en) if sec.image_alt else '' }}" loading="lazy" sizes="{{ caseSizes }}">
                 </a>
                 {%- else %}
                 <a class="post-figure__link" data-lightbox href="{{ sec.image | imgPath }}">
-                    <img src="{{ sec.image | imgPath }}" alt="{{ sec.image_alt.en if sec.image_alt else '' }}" data-alt-en="{{ sec.image_alt.en if sec.image_alt else '' }}" data-alt-de="{{ (sec.image_alt.de or sec.image_alt.en) if sec.image_alt else '' }}" loading="lazy">
+                    <img src="{{ sec.image | imgPath }}" alt="{{ sec.image_alt.en if sec.image_alt else '' }}" data-alt-en="{{ sec.image_alt.en if sec.image_alt else '' }}" data-alt-de="{{ (sec.image_alt.de or sec.image_alt.en) if sec.image_alt else '' }}" loading="lazy" sizes="{{ caseSizes }}">
                 </a>
                 {%- endif %}
                 {%- if capEn %}
@@ -224,7 +225,7 @@
         {%- set poster = video_poster or cover_image %}
         <div class="jw-video" data-yt="{{ ytId }}">
             <button type="button" class="jw-video__play" {% i18n global.ui.video_play, "aria" %} aria-label="{{ global.ui.video_play.en }}">
-                {%- if poster %}<img src="{{ poster | imgPath }}" alt="" loading="lazy">{% endif %}
+                {%- if poster %}<img src="{{ poster | imgPath }}" alt="" loading="lazy" sizes="(min-width: 1440px) 1376px, 100vw">{% endif %}
                 <span class="jw-video__badge"><span class="jw-video__icon" aria-hidden="true"></span><span {% i18n global.ui.video_play %}>{{ global.ui.video_play.en }}</span></span>
             </button>
             <p class="jw-video__note" {% i18n global.ui.video_note %}>{{ global.ui.video_note.en }}</p>
@@ -250,9 +251,9 @@
             {% for img in images %}
             <figure class="project-gallery__item">
                 {% if '://' in img.src %}
-                <a class="post-figure__link" data-lightbox href="{{ img.src }}"><img src="{{ img.src }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy"></a>
+                <a class="post-figure__link" data-lightbox href="{{ img.src }}"><img src="{{ img.src }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></a>
                 {% else %}
-                <a class="post-figure__link" data-lightbox href="{{ img.src | imgPath }}"><img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy"></a>
+                <a class="post-figure__link" data-lightbox href="{{ img.src | imgPath }}"><img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></a>
                 {% endif %}
                 <figcaption><span class="jw-fig">Fig. {{ loop.index | pad2 }}</span>{% if img.caption %} <span data-en="{{ img.caption }}" data-de="{{ img.caption_de or img.caption }}">{{ img.caption }}</span>{% endif %}</figcaption>
             </figure>

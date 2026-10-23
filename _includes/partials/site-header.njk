@@ -23,7 +23,7 @@
                 <li><a href="/blog/" class="link-button secondary"{% if active == "blog" or active == "post" %} aria-current="{{ 'page' if active == 'blog' else 'true' }}"{% endif %}><span {% i18n nav.blog %}>{{ nav.blog.en }}</span></a></li>
                 <li><a href="/about/" class="link-button secondary"{% if active == "about" %} aria-current="page"{% endif %}><span {% i18n nav.about %}>{{ nav.about.en }}</span></a></li>
                 <li><a href="{{ homeBase }}#contact" class="link-button secondary"><span {% i18n nav.contact %}>{{ nav.contact.en }}</span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span {% i18n global.ui.motion_label %}>{{ global.ui.motion_label.en }}</span> <span class="jw-motion-toggle__state" aria-hidden="true" {% i18n global.ui.motion_on, "on" %} {% i18n global.ui.motion_off, "off" %}></span></button></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span {% i18n global.ui.motion_label %}>{{ global.ui.motion_label.en }}</span> <span class="jw-switch" aria-hidden="true"><span class="jw-switch__knob"></span></span></button></li>
                 {#- Sprachwechsel: normaler Link auf dieselbe Seite in der anderen
                     Sprache. href, lang und Text setzt der Build (_build/languages.js). #}
                 <li><a id="lang-toggle" class="link-button secondary" href="/" data-lang-switch><span data-lang-switch-long>English</span></a></li>

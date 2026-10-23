@@ -5,7 +5,7 @@ title_de: Entwicklungsprozess des Mini-Spielgeräts Pocket Knight
 date: 2026-08-20
 description: Detailed development process of a handheld device.
 description_de: Dokumentation des Entwicklungsprozesses eines Handheld-Geräts.
-cover_image: /Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png
+cover_image: /Images/projects/pocket-knight/closeshotpocketknight.webp
 cover_image_alt: "The finished Pocket Knight device standing on a stone surface"
 cover_image_alt_de: "Das fertige Pocket-Knight-Gerät auf einer Steinoberfläche"
 tags:

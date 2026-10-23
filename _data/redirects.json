@@ -2,5 +2,21 @@
   {
     "from": "/blog/hello-blog/",
     "to": "/blog/development-process-of-a-diy-synthesizer/"
+  },
+  {
+    "from": "/projects/Audio-Dingo-Synth/",
+    "to": "/projects/audio-dingo-synth/"
+  },
+  {
+    "from": "/projects/chonky-bee-audio-synth/",
+    "to": "/projects/audio-dingo-synth/"
+  },
+  {
+    "from": "/projects/e-zine-graffiti-doc/",
+    "to": "/projects/"
+  },
+  {
+    "from": "/projects/hidden-walls-in-lost-places/",
+    "to": "/projects/"
   }
 ]

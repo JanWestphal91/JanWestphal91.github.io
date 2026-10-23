@@ -18,13 +18,17 @@
       "de": "Hi! Ich bin",
       "en": "Hi! I'm"
     },
+    "role": {
+      "de": ", Entwickler & Designer.",
+      "en": ", developer & designer."
+    },
     "title_1": {
-      "de": "Entwickler",
-      "en": "Developer"
+      "de": "Hardware,",
+      "en": "Hardware,"
     },
     "title_2": {
-      "de": "Designer",
-      "en": "designer"
+      "de": "Games & Grafik",
+      "en": "games & graphics"
     },
     "title_3": {
       "de": "aus Kiel",
@@ -87,7 +91,7 @@
       "en": "Currently"
     },
     "currently": {
-      "de": "Student Medieningenieurswesen (B.Eng.), 3. Semester",
+      "de": "Student Medieningenieur (B.Eng.), 3. Semester",
       "en": "Media Engineering student (B.Eng.), 3rd semester"
     }
   },
@@ -133,7 +137,7 @@
         "en": "I love to draw and tinker with electronics as well as video and audio gear. Graffiti culture is part of my roots – it was my first real connection to illustration and design."
       },
       {
-        "de": "Mein Weg war kein gerader. Sechs Semester Kommunikationsdesign gaben mir das gestalterische Fundament, danach habe ich einige Jahre als Grafiker gearbeitet. Dabei habe ich gemerkt, dass mich die Technik dahinter genauso reizt. Deshalb studiere ich heute Medieningenieurswesen und verbinde beide Welten.",
+        "de": "Mein Weg war kein gerader. Sechs Semester Kommunikationsdesign gaben mir das gestalterische Fundament, danach habe ich einige Jahre als Grafiker gearbeitet. Dabei habe ich gemerkt, dass mich die Technik dahinter genauso reizt. Deshalb studiere ich heute Medieningenieur (B.Eng.) und verbinde beide Welten.",
         "en": "My path wasn't a straight one. Six semesters of communication design gave me a visual foundation, then I worked as a graphic designer for several years – and realised the technology behind it intrigues me just as much. That's why I now study media engineering, bringing both worlds together."
       },
       {
@@ -178,7 +182,7 @@
           "en": "Studies"
         },
         "value": {
-          "de": "Medieningenieurswesen, HAW Kiel",
+          "de": "Medieningenieur (B.Eng.), HAW Kiel",
           "en": "Media Engineering, HAW Kiel"
         },
         "highlight": false
@@ -262,7 +266,7 @@
       },
       {
         "title": {
-          "de": "Medieningenieurswesen (B.Eng.)",
+          "de": "Medieningenieur (B.Eng.)",
           "en": "Media Engineering (B.Eng.)"
         },
         "sub": {

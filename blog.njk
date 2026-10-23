@@ -39,9 +39,9 @@
         <a class="jw-feature" href="{{ latest.url }}">
             <figure class="jw-feature__media">
                 {% if latest.data.cover_image %}
-                <img src="{{ latest.data.cover_image | imgPath }}" alt="" loading="eager" width="960" height="540">
+                <img src="{{ latest.data.cover_image | imgPath }}" alt="" loading="eager" sizes="(min-width: 900px) 72vw, 100vw">
                 {% else %}
-                <img src="/Images/og-preview.jpg" alt="" loading="eager" width="960" height="540">
+                <img src="/Images/og-preview.jpg" alt="" loading="eager" sizes="(min-width: 900px) 72vw, 100vw">
                 {% endif %}
             </figure>
             <div class="jw-feature__body">
@@ -70,7 +70,7 @@
             {%- if not loop.first %}
             <li>
                 <a class="jw-brow" href="{{ post.url }}">
-                    <span class="jw-brow__thumb" aria-hidden="true">{% if post.data.cover_image %}<img src="{{ post.data.cover_image | imgPath }}" alt="" loading="lazy" width="160" height="160">{% endif %}</span>
+                    <span class="jw-brow__thumb" aria-hidden="true">{% if post.data.cover_image %}<img sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px" src="{{ post.data.cover_image | imgPath }}" alt="" loading="lazy">{% endif %}</span>
                     <span class="jw-brow__date jw-tags">
                         <span data-lang-show="en">{{ post.date | postDate("en-US") }}</span><span data-lang-show="de" hidden>{{ post.date | postDate("de-DE") }}</span>
                     </span>

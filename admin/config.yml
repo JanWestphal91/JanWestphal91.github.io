@@ -506,7 +506,21 @@ collections:
           name: en
           widget: string
         hint: z. B. „Hi! Ich bin“ – danach folgt automatisch „Jan Westphal“.
-      - label: Überschrift – Zeile 1 (vor dem orangen &)
+      - label: Nach dem Namen
+        name: role
+        widget: object
+        collapsed: false
+        required: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: z. B. „, Entwickler & Designer.“ – steht direkt hinter „Jan Westphal“.
+      - label: Überschrift – Zeile 1
         name: title_1
         widget: object
         collapsed: false
@@ -518,7 +532,7 @@ collections:
         - label: Englisch
           name: en
           widget: string
-      - label: Überschrift – Zeile 2
+      - label: Überschrift – Zeile 2 (ein „&“ wird weinrot gesetzt)
         name: title_2
         widget: object
         collapsed: false

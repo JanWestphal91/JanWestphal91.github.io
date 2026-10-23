@@ -74,8 +74,12 @@
     <!-- ═══ Hero ═══ -->
     <section class="jw-wrap jw-hero" aria-labelledby="jw-title">
         <div class="jw-hero__main">
-            <p class="jw-hero__kicker"><span {% i18n h.hero.greeting %}>{{ h.hero.greeting.en }}</span> <a href="#about" class="hero-name-link">Jan Westphal</a></p>
-            <h1 id="jw-title"><span class="jw-nowrap"><span {% i18n h.hero.title_1 %}>{{ h.hero.title_1.en }}</span> <span class="jw-accent">&amp;</span></span><br><span {% i18n h.hero.title_2 %}>{{ h.hero.title_2.en }}</span><br><span {% i18n h.hero.title_3 %}>{{ h.hero.title_3.en }}</span></h1>
+            <p class="jw-hero__kicker"><span {% i18n h.hero.greeting %}>{{ h.hero.greeting.en }}</span> <a href="#about" class="hero-name-link">Jan Westphal</a>{% if h.hero.role %}<span {% i18n h.hero.role %}>{{ h.hero.role.en }}</span>{% endif %}</p>
+            {#- Überschrift in drei Zeilen (CMS: Startseite → Kopfbereich). Ein „&“ in
+                Zeile 2 wird weinrot gesetzt. -#}
+            {%- set t2en = h.hero.title_2.en.split("&") %}
+            {%- set t2de = (h.hero.title_2.de or h.hero.title_2.en).split("&") %}
+            <h1 id="jw-title"><span {% i18n h.hero.title_1 %}>{{ h.hero.title_1.en }}</span><br><span class="jw-nowrap" data-lang-show="en">{{ t2en[0] }}{% if t2en.length > 1 %}<span class="jw-accent">&amp;</span>{{ t2en[1] }}{% endif %}</span><span class="jw-nowrap" data-lang-show="de" hidden>{{ t2de[0] }}{% if t2de.length > 1 %}<span class="jw-accent">&amp;</span>{{ t2de[1] }}{% endif %}</span><br><span {% i18n h.hero.title_3 %}>{{ h.hero.title_3.en }}</span></h1>
             <p class="jw-hero__lead" {% i18n h.hero.lead %}>{{ h.hero.lead.en }}</p>
         </div>
         {%- set fx = h.facts %}
@@ -86,23 +90,31 @@
                 Ziehen, wischen oder Pfeile; Logik in script.js → „Karten-Karussell“. -#}
             {%- set cards = collections.projects | carouselCards(h.hero.images) %}
             {%- if cards.length %}
-            <div class="jw-flip" data-flip aria-roledescription="carousel" {% i18n h.hero.carousel_label, "aria" %} aria-label="{{ h.hero.carousel_label.en }}">
-                <p class="jw-label jw-flip__label" aria-hidden="true" {% i18n h.hero.carousel_label %}>{{ h.hero.carousel_label.en }}</p>
-                <div class="jw-flip__stage" tabindex="0">
+            {#- Fächer: die Lieblingsprojekte wie Spielkarten in der Hand (CMS:
+                Startseite → Kopfbereich → Karten-Karussell). Beim Überfahren oder
+                Antippen hebt sich eine Karte heraus; darunter stehen Titel und
+                Kategorie der gehobenen Karte. Logik in script.js → „Fächer“. -#}
+            <div class="jw-fan" data-fan>
+                <p class="jw-label jw-fan__label" aria-hidden="true" {% i18n h.hero.carousel_label %}>{{ h.hero.carousel_label.en }}</p>
+                <ul class="jw-fan__hand" style="--n: {{ cards.length }}" {% i18n h.hero.carousel_label, "aria" %} aria-label="{{ h.hero.carousel_label.en }}">
                     {%- for c in cards %}
                     {%- set pd = c.project.data %}
                     {%- set altEn = (c.item.alt and c.item.alt.en) or pd.cover_image_alt or pd.title %}
                     {%- set altDe = (c.item.alt and c.item.alt.de) or pd.cover_image_alt_de or altEn %}
-                    <a class="jw-flip__card" href="/projects/{{ pd.slug }}/" draggable="false" data-title="{{ pd.title }}" data-dtitle-en="{{ pd.title }}" data-dtitle-de="{{ pd.title_de or pd.title }}" {% if not loop.first %}tabindex="-1" aria-hidden="true"{% endif %}>
-                        <img src="{{ (c.item.image or pd.cover_image) | imgPath }}" alt="{{ altEn }}" data-alt-en="{{ altEn }}" data-alt-de="{{ altDe }}" loading="{{ 'eager' if loop.index <= 2 else 'lazy' }}" draggable="false" width="800" height="600">
-                    </a>
+                    <li class="jw-fan__slot{% if loop.first %} is-active{% endif %}" style="--i: {{ loop.index0 }}">
+                        <a class="jw-fan__card" href="/projects/{{ pd.slug }}/" draggable="false">
+                            <img src="{{ (c.item.image or pd.cover_image) | imgPath }}" alt="{{ altEn }}" data-alt-en="{{ altEn }}" data-alt-de="{{ altDe }}" loading="eager" draggable="false" sizes="(min-width: 1024px) 640px, 110vw">
+                            <span class="jw-fan__shine" aria-hidden="true"></span>
+                        </a>
+                        <span class="jw-fan__info" hidden><span class="jw-fan__title" data-en="{{ pd.title }}" data-de="{{ pd.title_de or pd.title }}">{{ pd.title }}</span><span class="jw-fan__cats">{% cats pd.category %}{% if pd.category | catYear %} · {{ pd.category | catYear }}{% endif %}</span></span>
+                    </li>
                     {%- endfor %}
-                </div>
-                <div class="jw-flip__bar">
-                    <button type="button" class="jw-flip__btn" data-flip-prev {% i18n h.hero.carousel_prev, "aria" %} aria-label="{{ h.hero.carousel_prev.en }}">←</button>
-                    <a class="jw-flip__caption" href="/projects/{{ cards[0].project.data.slug }}/"><span data-en="{{ cards[0].project.data.title }}" data-de="{{ cards[0].project.data.title_de or cards[0].project.data.title }}">{{ cards[0].project.data.title }}</span>&nbsp;→</a>
-                    <span class="jw-flip__count" aria-hidden="true">01 / {{ cards.length | pad2 }}</span>
-                    <button type="button" class="jw-flip__btn" data-flip-next {% i18n h.hero.carousel_next, "aria" %} aria-label="{{ h.hero.carousel_next.en }}">→</button>
+                </ul>
+                {%- set c0 = cards[0].project.data %}
+                <div class="jw-fan__bar" aria-hidden="true">
+                    <a class="jw-fan__caption" href="/projects/{{ c0.slug }}/" tabindex="-1"><span class="jw-fan__caption-title" data-en="{{ c0.title }}" data-de="{{ c0.title_de or c0.title }}">{{ c0.title }}</span>&nbsp;→</a>
+                    <span class="jw-fan__meta"><span class="jw-fan__cats">{% cats c0.category %}{% if c0.category | catYear %} · {{ c0.category | catYear }}{% endif %}</span></span>
+                    <span class="jw-fan__count">01 / {{ cards.length | pad2 }}</span>
                 </div>
             </div>
             {%- endif %}
@@ -133,7 +145,7 @@
             {%- for project in moreProjects %}
             <li class="jw-work{% if loop.first %} is-first-row{% endif %}">
                 <a class="jw-row" href="/projects/{{ project.data.slug }}/">
-                    <span class="jw-row__thumb" aria-hidden="true"><img src="{{ project.data.cover_image | imgPath }}" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-row__thumb" aria-hidden="true"><img sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px" src="{{ project.data.cover_image | imgPath }}" alt="" loading="lazy"></span>
                     <span class="jw-num">{{ loop.index | pad2 }}</span>
                     <span class="jw-row__main">
                         <span class="jw-row__title" data-en="{{ project.data.title }}" data-de="{{ project.data.title_de or project.data.title }}">{{ project.data.title }}</span>
@@ -184,7 +196,7 @@
             {%- for post in collections.blog | limit(3) %}
             <li>
                 <a class="jw-brow" href="{{ post.url }}">
-                    <span class="jw-brow__thumb" aria-hidden="true">{% if post.data.cover_image %}<img src="{{ post.data.cover_image | imgPath }}" alt="" loading="lazy" width="160" height="160">{% endif %}</span>
+                    <span class="jw-brow__thumb" aria-hidden="true">{% if post.data.cover_image %}<img sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px" src="{{ post.data.cover_image | imgPath }}" alt="" loading="lazy">{% endif %}</span>
                     <span class="jw-brow__date jw-tags">
                         <span data-lang-show="en">{{ post.date | postDate("en-US") }}</span><span data-lang-show="de" hidden>{{ post.date | postDate("de-DE") }}</span>
                     </span>

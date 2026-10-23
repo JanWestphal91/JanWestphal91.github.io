@@ -217,6 +217,11 @@
       "key": "Illustration",
       "de": "Illustration",
       "en": "Illustration"
+    },
+    {
+      "key": "Art",
+      "de": "Kunst",
+      "en": "Art"
     }
   ]
 }

@@ -3,7 +3,7 @@ published: true
 title: Fine Art Assortment
 title_de: Malerei und Objekte
 slug: fine-art-assortment
-category: '[Illustration]'
+category: '[Art]'
 order: 6
 cover_image: /Images/FineArt/1000015909.webp
 cover_image_alt: "Canvas painting of a night street scene in red and blue, hanging on a wall"

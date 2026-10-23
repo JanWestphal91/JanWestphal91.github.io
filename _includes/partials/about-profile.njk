@@ -16,7 +16,7 @@
             <figure class="jw-profile">
                 {%- if ab.photo %}
                 <div class="jw-profile__photo">
-                    <img src="{{ ab.photo | imgPath }}" alt="{{ ab.photo_alt.en }}" {% i18n ab.photo_alt, "alt" %} loading="lazy" width="480" height="600">
+                    <img src="{{ ab.photo | imgPath }}" alt="{{ ab.photo_alt.en }}" {% i18n ab.photo_alt, "alt" %} loading="lazy" sizes="(min-width: 900px) 340px, 120px">
                 </div>
                 {%- endif %}
                 {%- if ab.alias %}
@@ -43,7 +43,7 @@
             <figure class="jw-profile">
                 {%- if ab.photo %}
                 <div class="jw-profile__photo">
-                    <img src="{{ ab.photo | imgPath }}" alt="{{ ab.photo_alt.en }}" {% i18n ab.photo_alt, "alt" %} loading="lazy" width="480" height="600">
+                    <img src="{{ ab.photo | imgPath }}" alt="{{ ab.photo_alt.en }}" {% i18n ab.photo_alt, "alt" %} loading="lazy" sizes="(min-width: 900px) 340px, 120px">
                 </div>
                 {%- endif %}
                 <figcaption class="jw-profile__body">

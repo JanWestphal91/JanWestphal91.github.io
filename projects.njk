@@ -43,7 +43,7 @@
                 <a class="work-item-link jw-prow" href="/projects/{{ project.data.slug }}/">
                     <span class="work-meta" hidden><span>{{ project.data.category }}</span></span>
                     <figure class="jw-prow__thumb">
-                        <img src="{{ project.data.cover_image | imgPath }}" alt="" loading="{% if loop.index <= 3 %}eager{% else %}lazy{% endif %}" width="400" height="300">
+                        <img sizes="(max-width: 900px) 104px, 200px" src="{{ project.data.cover_image | imgPath }}" alt="" loading="{% if loop.index <= 3 %}eager{% else %}lazy{% endif %}">
                     </figure>
                     <div class="jw-prow__body">
                         <div class="jw-prow__title">

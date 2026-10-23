@@ -1,6 +1,6 @@
 ---
 pagination:
-  data: redirects
+  data: redirectPages
   size: 1
   alias: r
 permalink: "{{ r.from }}"
@@ -9,11 +9,12 @@ eleventyExcludeFromCollections: true
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    {#- Weiterleitung von einer alten Adresse (_data/redirects.json). GitHub Pages
+    {#- Weiterleitung von einer alten Adresse (_data/redirects.json, gefiltert in
+        _data/redirectPages.js). GitHub Pages
         kann keine Server-Weiterleitungen, darum eine kleine Seite, die sofort
-        weiterleitet. Die englische Fassung unter /en/… erzeugt _build/languages.js. -#}
+        weiterleitet; Suchmaschinen werten das wie eine dauerhafte Weiterleitung
+        (canonical zeigt aufs Ziel). Die englische Fassung unter /en/… erzeugt _build/languages.js. -#}
     <meta charset="UTF-8" />
-    <meta name="robots" content="noindex" />
     <title>Weiterleitung – Jan Westphal</title>
     <meta http-equiv="refresh" content="0; url={{ r.to }}" data-redirect="{{ r.to }}" />
     <script>location.replace(document.querySelector('meta[data-redirect]').getAttribute('data-redirect') + location.hash);</script>

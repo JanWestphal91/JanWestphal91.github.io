@@ -11,3 +11,6 @@ _site/
 /Images/PocketKnight/*.jpg
 /Images/PocketKnight/*.JPG
 /.idea/
+
+# Zwischenspeicher für heruntergeladene Bilder (eleventy-img)
+.cache/
