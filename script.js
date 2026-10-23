@@ -1754,7 +1754,11 @@ initFishScene();
         const baseWght = parseFloat(style.fontWeight) || 600;
         const baseWdth = parseFloat(style.fontStretch) || 100;
         const BASE = { wght: baseWght, wdth: baseWdth };
-        const PEAK = { wght: Math.min(800, baseWght + 100), wdth: Math.min(100, baseWdth + 10) };
+        // Spitze: volle Strichstärke und volle Breite der Schrift (800 / 100 %).
+        // Dazu hebt sich der Buchstabe etwas an und wird größer (LIFT, GROW).
+        const PEAK = { wght: 800, wdth: 100 };
+        const LIFT = 0.1;   // in em
+        const GROW = 0.08;  // + 8 %
         let radius = 220;
         let letters = [];
         let rects = [];
@@ -1798,7 +1802,7 @@ initFishScene();
                             const letter = document.createElement('span');
                             letter.className = 'jw-letter';
                             letter.textContent = ch;
-                            letter.current = { wght: BASE.wght, wdth: BASE.wdth };
+                            letter.current = { wght: BASE.wght, wdth: BASE.wdth, k: 0 };
                             letter.style.fontVariationSettings = settings(BASE);
                             word.appendChild(letter);
                         });
@@ -1815,7 +1819,7 @@ initFishScene();
 
         function measure() {
             // Wirkungsradius wächst mit der Schriftgröße
-            radius = Math.max(90, parseFloat(getComputedStyle(title).fontSize) * 1.5);
+            radius = Math.max(120, parseFloat(getComputedStyle(title).fontSize) * 2);
             rects = letters.map(function (l) {
                 const r = l.getBoundingClientRect();
                 return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
@@ -1836,10 +1840,14 @@ initFishScene();
                 }
                 const goal = { wght: BASE.wght + (PEAK.wght - BASE.wght) * k, wdth: BASE.wdth + (PEAK.wdth - BASE.wdth) * k };
                 const c = letter.current;
-                c.wght += (goal.wght - c.wght) * 0.2;
-                c.wdth += (goal.wdth - c.wdth) * 0.2;
-                if (Math.abs(goal.wght - c.wght) > 0.5) moving = true;
+                c.wght += (goal.wght - c.wght) * 0.25;
+                c.wdth += (goal.wdth - c.wdth) * 0.25;
+                c.k += (k - c.k) * 0.25;
+                if (Math.abs(goal.wght - c.wght) > 0.5 || Math.abs(k - c.k) > 0.005) moving = true;
                 letter.style.fontVariationSettings = settings(c);
+                letter.style.transform = c.k > 0.001
+                    ? 'translateY(' + (-LIFT * c.k).toFixed(3) + 'em) scale(' + (1 + GROW * c.k).toFixed(3) + ')'
+                    : '';
             });
             frame = (pointer || moving) ? requestAnimationFrame(tick) : null;
         }

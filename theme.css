@@ -2845,6 +2845,7 @@ body.theme {
 
 .jw-letter {
     display: inline-block;
+    transform-origin: 50% 100%;
 }
 
 .jw-sr-only {
@@ -4260,4 +4261,43 @@ body.theme {
 /* die Linie unter der aktiven Zeile verschwindet in der Fläche */
 .jw-archive__index li:has(> button[aria-current]) {
     border-bottom-color: var(--ink);
+}
+
+/* ── Vorheriges / nächstes Projekt bzw. Beitrag ──
+   Die Verknüpfung ist eine breite Fläche; eine Drehung der ganzen Fläche
+   wirkt unruhig. Darum wackelt und wächst nur der Titel. Damit er nur so
+   breit wie sein Text ist, wird die Spalte nicht mehr gestreckt. Gewachsen
+   wird von der Seite aus, an der der Text steht. */
+.jw-pager__link {
+    align-items: flex-start;
+}
+
+.jw-pager__title {
+    transform-origin: left center;
+}
+
+/* ab Tablet steht „Nächstes“ rechtsbündig; darunter linksbündig (siehe 900px-Regel) */
+@media (min-width: 901px) {
+    .jw-pager__link--next {
+        align-items: flex-end;
+    }
+
+    .jw-pager__link--next .jw-pager__title {
+        transform-origin: right center;
+    }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .theme .jw-pager__title {
+        transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.15s ease;
+    }
+
+    .theme .jw-pager__link:hover .jw-pager__title {
+        transform: scale(1.05);
+        animation: jw-wiggle 0.45s ease-in-out 1;
+    }
+}
+
+.jw-motion-off .jw-pager__link:hover .jw-pager__title {
+    transform: none !important;
 }
