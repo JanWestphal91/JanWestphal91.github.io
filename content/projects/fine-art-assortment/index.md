@@ -1,6 +1,7 @@
 ---
 published: true
 title: Fine Art Assortment
+title_de: Malerei und Objekte
 slug: fine-art-assortment
 category: '[Illustration]'
 order: 6

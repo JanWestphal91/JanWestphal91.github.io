@@ -339,6 +339,12 @@ module.exports = function(eleventyConfig) {
         return (projects || []).filter(function(p) { return skip.indexOf(p.data.slug) === -1; });
     });
 
+    // YouTube-ID aus einem Einbettungscode: <iframe src="…/embed/ID?…"> → "ID"
+    eleventyConfig.addFilter("youtubeId", function(embed) {
+        const m = String(embed || "").match(/youtube(?:-nocookie)?\.com\/embed\/([A-Za-z0-9_-]{6,})/);
+        return m ? m[1] : "";
+    });
+
     // Projekte in der Reihenfolge der angegebenen Slugs (unbekannte fallen weg)
     eleventyConfig.addFilter("bySlugs", function(projects, slugs) {
         return (slugs || []).map(function(slug) {

@@ -40,7 +40,7 @@ eleventyExcludeFromCollections: true
     {%- set g = pg.game %}
     {%- if g and g.title %}
     <section class="jw-links__group" aria-labelledby="links-game">
-        <h2 id="links-game" class="jw-label">[ <span {% i18n g.label %}>{{ g.label.en }}</span> ]</h2>
+        <h2 id="links-game" class="jw-label"><span {% i18n g.label %}>{{ g.label.en }}</span></h2>
         <a class="jw-links__feature" href="{{ g.url }}"{% if '://' in g.url %} target="_blank" rel="noopener noreferrer"{% endif %}>
             {%- if g.tag and g.tag.en %}
             <span class="jw-links__tag" {% i18n g.tag %}>{{ g.tag.en }}</span>
@@ -54,7 +54,7 @@ eleventyExcludeFromCollections: true
 
     {%- if pg.writeups.items and pg.writeups.items.length %}
     <section class="jw-links__group" aria-labelledby="links-writeups">
-        <h2 id="links-writeups" class="jw-label">[ <span {% i18n pg.writeups.label %}>{{ pg.writeups.label.en }}</span> ]</h2>
+        <h2 id="links-writeups" class="jw-label"><span {% i18n pg.writeups.label %}>{{ pg.writeups.label.en }}</span></h2>
         <ul class="jw-links__list">
             {%- for w in pg.writeups.items %}
             <li>
@@ -75,7 +75,7 @@ eleventyExcludeFromCollections: true
     {%- endif %}
 
     <section class="jw-links__group" aria-labelledby="links-socials">
-        <h2 id="links-socials" class="jw-label">[ <span {% i18n pg.socials_label %}>{{ pg.socials_label.en }}</span> ]</h2>
+        <h2 id="links-socials" class="jw-label"><span {% i18n pg.socials_label %}>{{ pg.socials_label.en }}</span></h2>
         <ul class="jw-links__list">
             {%- for s in socials.items %}
             <li><a class="jw-links__row jw-links__row--plain" href="{{ s.url }}" target="_blank" rel="noopener noreferrer"><span class="jw-links__name">{{ s.name }}</span>{% if s.handle %}<span class="jw-links__handle">{{ s.handle }}</span>{% endif %}<span class="jw-links__arrow" aria-hidden="true">{{ '↗' if '://' in s.url else '→' }}</span></a></li>
@@ -85,7 +85,7 @@ eleventyExcludeFromCollections: true
 
     {%- if pg.website.items and pg.website.items.length %}
     <section class="jw-links__group" aria-labelledby="links-site">
-        <h2 id="links-site" class="jw-label">[ <span {% i18n pg.website.label %}>{{ pg.website.label.en }}</span> ]</h2>
+        <h2 id="links-site" class="jw-label"><span {% i18n pg.website.label %}>{{ pg.website.label.en }}</span></h2>
         <ul class="jw-links__list">
             {%- for l in pg.website.items %}
             <li><a class="jw-links__row jw-links__row--plain" href="{{ l.url }}"{% if '://' in l.url %} target="_blank" rel="noopener noreferrer"{% endif %}><span class="jw-links__name" {% i18n l.title %}>{{ l.title.en }}</span>{% if l.note and l.note.en %}<span class="jw-links__handle" {% i18n l.note %}>{{ l.note.en }}</span>{% endif %}<span class="jw-links__arrow" aria-hidden="true">{{ '↗' if '://' in l.url else '→' }}</span></a></li>

@@ -1,6 +1,7 @@
 ---
 published: true
-title: Zeichnungen
+title: Drawings
+title_de: Zeichnungen
 slug: zeichnungen
 category: '[Illustration]'
 order: 10
@@ -12,11 +13,9 @@ summary_card_de: Skizzenbuchseiten in Tusche, Marker, Bleistift und Aquarell.
 summary: 'A selection from my sketchbooks: urban sketches drawn on the spot, observations from everyday life, lettering and freely invented characters – in ink, fineliner, marker, pencil and watercolour.'
 summary_de: 'Eine Auswahl aus meinen Skizzenbüchern: Urban Sketches vor Ort, Beobachtungen aus dem Alltag, Lettering und frei erfundene Figuren – in Tusche, Fineliner, Marker, Bleistift und Aquarell.'
 meta:
-- Illustration
 - Sketchbook
 - Ink, marker, pencil, watercolour
 meta_de:
-- Illustration
 - Skizzenbuch
 - Tusche, Marker, Bleistift, Aquarell
 images:

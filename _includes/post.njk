@@ -45,7 +45,7 @@
             <p class="jw-lead" data-en="{{ description }}" data-de="{{ description_de or description }}">{{ description }}</p>
             {% endif %}
             {% if tags %}
-            <p class="jw-tags jw-post-head__tags">{{ tags | join(", ") | replace(", ", " · ") }}</p>
+            <p class="jw-tags jw-post-head__tags"><span data-lang-show="en">{{ tags | join(", ") | replace(", ", " · ") }}</span><span data-lang-show="de" hidden>{{ (tags_de or tags) | join(", ") | replace(", ", " · ") }}</span></p>
             {% endif %}
         </header>
 

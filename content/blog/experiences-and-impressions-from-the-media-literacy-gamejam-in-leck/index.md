@@ -10,6 +10,8 @@ cover_image_alt: "Work table at the game jam with laptops, snacks and paper prot
 cover_image_alt_de: "Arbeitstisch beim Game Jam mit Laptops, Snacks und Papierprototypen"
 tags:
   - Game Dev, Design, Prototyping, Game Jam, if(game)SH e.V., Media Literacy
+tags_de:
+  - Game Dev, Design, Prototyping, Game Jam, IF(game)SH e.V., Medienkompetenz
 images: []
 body_de: |-
   Erstmal vorab, hier sind [alle Spiele die während des Game Jams entstanden sind](https://itch.io/c/7976774/meko-jam-2026-between-the-lines) in einer Kollektion.

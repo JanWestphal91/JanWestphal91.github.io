@@ -10,6 +10,8 @@ cover_image_alt: "The finished Pocket Knight device standing on a stone surface"
 cover_image_alt_de: "Das fertige Pocket-Knight-Gerät auf einer Steinoberfläche"
 tags:
   - Game Dev, Prototyping, Electronics
+tags_de:
+  - Game Dev, Prototyping, Elektronik
 images:
   - src: /Images/blog/development-process-of-pocket-knight/pocketknightcloth.webp
     alt: "Close-up of the finished Pocket Knight device with OLED screen, blue buttons and a keychain charm"

@@ -1,0 +1,64 @@
+{#- Werdegang, Toolbox, Programmiersprachen, Kurse und Engagement.
+    Daten: _data/home.json → path (CMS: Startseite → Werdegang). Vor dem Include: pa = home.path -#}
+    <div class="jw-cv">
+        <ol class="jw-cv__list">
+            {%- for e in pa.entries %}
+            <li class="jw-cv__row">
+                <span class="jw-num">{{ loop.index | pad2 }}</span>
+                <span class="jw-cv__title" {% i18n e.title %}>{{ e.title.en }}</span>
+                <span class="jw-cv__sub" {% i18n e.sub %}>{{ e.sub.en }}</span>
+                {%- if e.current %}
+                <span class="jw-tags"><span class="jw-dot" aria-hidden="true"></span><span {% i18n e.tag %}>{{ e.tag.en }}</span></span>
+                {%- else %}
+                <span class="jw-tags" {% i18n e.tag %}>{{ e.tag.en }}</span>
+                {%- endif %}
+            </li>
+            {%- endfor %}
+        </ol>
+
+        <aside class="jw-cv__side">
+            <div class="jw-cv__group">
+                <h3 class="jw-label" {% i18n pa.toolbox_heading %}>{{ pa.toolbox_heading.en }}</h3>
+                <ul class="jw-skills" {% i18n pa.toolbox_heading, "aria" %} aria-label="{{ pa.toolbox_heading.en }}">
+                    {%- for item in pa.toolbox %}
+                    <li {% i18n item %}>{{ item.en }}</li>
+                    {%- endfor %}
+                </ul>
+                {%- if pa.languages and pa.languages.length %}
+
+                <h3 class="jw-label" {% i18n pa.languages_heading %}>{{ pa.languages_heading.en }}</h3>
+                <ul class="jw-skills" {% i18n pa.languages_heading, "aria" %} aria-label="{{ pa.languages_heading.en }}">
+                    {%- for item in pa.languages %}
+                    <li>{{ item }}</li>
+                    {%- endfor %}
+                </ul>
+                {%- if pa.languages_basic and pa.languages_basic.length %}
+                <p class="jw-skills__level" {% i18n pa.languages_basic_label %}>{{ pa.languages_basic_label.en }}</p>
+                <ul class="jw-skills jw-skills--basic" {% i18n pa.languages_basic_label, "aria" %} aria-label="{{ pa.languages_basic_label.en }}">
+                    {%- for item in pa.languages_basic %}
+                    <li>{{ item }}</li>
+                    {%- endfor %}
+                </ul>
+                {%- endif %}
+                {%- endif %}
+            </div>
+
+            <div class="jw-cv__group">
+                <h3 class="jw-label" {% i18n pa.courses_heading %}>{{ pa.courses_heading.en }}</h3>
+                <ul class="jw-cv__notes">
+                    {%- for c in pa.courses %}
+                    <li><span {% i18n c.text %}>{{ c.text.en }}</span>{% if c.note %} <span class="jw-tags">{{ c.note }}</span>{% endif %}</li>
+                    {%- endfor %}
+                </ul>
+            </div>
+
+            <div class="jw-cv__group">
+                <h3 class="jw-label" {% i18n pa.community_heading %}>{{ pa.community_heading.en }}</h3>
+                <ul class="jw-cv__notes">
+                    {%- for item in pa.community %}
+                    <li {% i18n item %}>{{ item.en }}</li>
+                    {%- endfor %}
+                </ul>
+            </div>
+        </aside>
+    </div>

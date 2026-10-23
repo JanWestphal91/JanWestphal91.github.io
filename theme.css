@@ -61,6 +61,21 @@ body.theme {
     --on-dark: #EEECE6;
     --on-dark-muted: #A8A49B;
     --on-dark-soft: #C9C5BC;
+    /* Schriftskala: sieben Stufen, alle Schriftgrößen der Seite kommen von hier.
+       xs  Metadaten in Mono (Labels, Daten, Nummern)
+       sm  Bedienelemente (Navigation, Knöpfe, Bildunterschriften)
+       md  Fließtext
+       lg  Einleitungen, kleine Überschriften
+       xl  Überschriften in Listen und Abschnitten
+       2xl Sektionsüberschriften
+       3xl Seitentitel */
+    --fs-xs: 13px;
+    --fs-sm: 15px;
+    --fs-md: 17px;
+    --fs-lg: clamp(19px, 1.6vw, 22px);
+    --fs-xl: clamp(24px, 2.4vw, 32px);
+    --fs-2xl: clamp(34px, 4.6vw, 64px);
+    --fs-3xl: clamp(46px, 8vw, 128px);
     --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --gutter: clamp(16px, 3vw, 32px);
     --wrap: 1440px;
@@ -103,7 +118,7 @@ body.theme {
 .jw-label {
     margin: 0 0 24px;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -113,7 +128,7 @@ body.theme {
 .jw-num,
 .jw-tags {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
@@ -140,7 +155,7 @@ body.theme {
 
 .theme .logo {
     margin-left: 0;
-    font-size: 1.3rem;
+    font-size: var(--fs-lg);
     font-weight: 600;
     letter-spacing: -0.005em;
     text-transform: none;
@@ -150,7 +165,7 @@ body.theme {
 
 .jw-alias {
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     color: var(--muted);
     white-space: nowrap;
 }
@@ -164,7 +179,7 @@ body.theme {
 .theme .nav-links a,
 .theme .nav-links li button {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.04em;
     color: var(--ink);
 }
@@ -183,10 +198,6 @@ body.theme {
     color: var(--accent-color);
 }
 
-@media (min-width: 769px) {
-    .theme .nav-links .link-button::before { content: "[\00a0"; }
-    .theme .nav-links .link-button::after  { content: "\00a0]"; }
-}
 
 /* ── Laufband ───────────────────────────────────────────────────── */
 
@@ -197,7 +208,7 @@ body.theme {
 .theme .ticker-text {
     padding-block: 12px;
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: var(--fs-sm);
     letter-spacing: 0.06em;
     word-spacing: 0.3em;
     color: var(--on-dark);
@@ -222,7 +233,7 @@ body.theme {
 .jw-hero__kicker {
     margin: 0 0 28px;
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: var(--fs-sm);
     letter-spacing: 0.02em;
     color: var(--ink-2);
 }
@@ -235,7 +246,7 @@ body.theme {
 
 .jw-hero h1 {
     margin: 0;
-    font-size: clamp(52px, 9vw, 148px);
+    font-size: var(--fs-3xl);
     font-weight: 600;
     line-height: 1.02;
     letter-spacing: -0.015em;
@@ -248,7 +259,7 @@ body.theme {
 .jw-hero__lead {
     margin: 32px 0 0;
     max-width: 34ch;
-    font-size: clamp(18px, 1.6vw, 22px);
+    font-size: var(--fs-lg);
     line-height: 1.45;
     color: var(--ink-2);
 }
@@ -343,7 +354,7 @@ body.theme {
     border-radius: 999px;
     background: transparent;
     color: var(--ink);
-    font-size: 18px;
+    font-size: var(--fs-md);
     line-height: 1;
     cursor: pointer;
     transition: background 0.15s ease, color 0.15s ease;
@@ -361,7 +372,7 @@ body.theme {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 18px;
+    font-size: var(--fs-md);
     font-weight: 600;
     color: var(--ink);
     text-decoration: none;
@@ -369,14 +380,14 @@ body.theme {
 
 .jw-flip__count {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
 .jw-facts {
     margin: 0;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     line-height: 1.5;
     border-top: 2px solid var(--ink);
 }
@@ -431,7 +442,7 @@ body.theme {
 
 .jw-head h2 {
     margin: 0;
-    font-size: clamp(40px, 5.2vw, 76px);
+    font-size: var(--fs-2xl);
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.012em;
@@ -443,7 +454,7 @@ body.theme {
     min-height: 44px;
     margin-top: 24px;
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: var(--fs-sm);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -465,7 +476,7 @@ body.theme {
     background: transparent;
     color: var(--ink);
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     font-weight: 400;
     transition: background 0.15s ease, color 0.15s ease;
 }
@@ -582,7 +593,7 @@ body.theme {
 
 .jw-card h3 {
     margin: 0;
-    font-size: clamp(28px, 3vw, 42px);
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.05;
     letter-spacing: -0.008em;
@@ -593,7 +604,7 @@ body.theme {
     /* bündig mit dem Titel: Breite der Nummer + Abstand */
     padding-left: calc(var(--card-num) + var(--card-gap));
     max-width: 46ch;
-    font-size: 17px;
+    font-size: var(--fs-md);
     line-height: 1.5;
     color: var(--ink-2);
 }
@@ -610,7 +621,7 @@ body.theme {
 }
 
 .jw-row__title {
-    font-size: clamp(22px, 2.4vw, 34px);
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.005em;
@@ -640,7 +651,7 @@ body.theme {
 
 .jw-row__teaser {
     max-width: 60ch;
-    font-size: 15px;
+    font-size: var(--fs-sm);
     line-height: 1.45;
     color: var(--ink-2);
 }
@@ -651,7 +662,7 @@ body.theme {
 
 .jw-row__arrow {
     justify-self: end;
-    font-size: 20px;
+    font-size: var(--fs-lg);
 }
 
 @media (hover: hover) {
@@ -713,7 +724,7 @@ body.theme {
 .jw-profile__alias {
     margin: 0;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     line-height: 1.5;
     color: var(--muted);
 }
@@ -734,7 +745,7 @@ body.theme {
     min-height: 48px;
     padding: 0 22px;
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: var(--fs-sm);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -775,7 +786,7 @@ body.theme {
 .jw-about__more p {
     margin: 0 0 1em;
     break-inside: avoid;
-    font-size: 17px;
+    font-size: var(--fs-md);
     line-height: 1.65;
     color: var(--ink-2);
 }
@@ -809,14 +820,14 @@ body.theme {
 }
 
 .jw-cv__title {
-    font-size: clamp(22px, 2.2vw, 30px);
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.005em;
 }
 
 .jw-cv__sub {
-    font-size: 16px;
+    font-size: var(--fs-md);
     line-height: 1.45;
     color: var(--ink-2);
 }
@@ -853,7 +864,7 @@ body.theme {
 
 .jw-cv__notes .jw-tags {
     margin-left: 6px;
-    font-size: 12px;
+    font-size: var(--fs-xs);
 }
 
 /* Skills: ruhiger Mono-Text mit Trennpunkten (nicht klickbar, darum keine Pillen) */
@@ -865,7 +876,7 @@ body.theme {
     flex-wrap: wrap;
     row-gap: 6px;
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: var(--fs-sm);
     line-height: 1.6;
     color: var(--ink-2);
 }
@@ -887,7 +898,7 @@ body.theme {
 .jw-skills__level {
     margin: 0 0 4px;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--muted);
@@ -911,7 +922,7 @@ body.theme {
     border: 1.5px solid var(--ink);
     border-radius: 999px;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
 }
 
 .jw-cv__notes {
@@ -923,7 +934,7 @@ body.theme {
 .jw-cv__notes li {
     padding: 12px 0;
     border-bottom: 1px solid var(--line);
-    font-size: 16px;
+    font-size: var(--fs-md);
     line-height: 1.45;
 }
 
@@ -951,7 +962,7 @@ body.theme {
 
 .jw-post__date {
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
@@ -960,7 +971,7 @@ body.theme {
 }
 
 .jw-post__title {
-    font-size: 22px;
+    font-size: var(--fs-lg);
     font-weight: 600;
     line-height: 1.25;
 }
@@ -1001,7 +1012,7 @@ body.theme {
 
 .jw-contact__box h2 {
     margin: 0 0 24px;
-    font-size: clamp(32px, 3.6vw, 52px);
+    font-size: var(--fs-2xl);
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.012em;
@@ -1037,7 +1048,7 @@ body.theme {
 /* Fehlermeldung unter dem Feld; Rahmen wird rot und dicker */
 .theme .jw-field-error {
     margin: 0;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     line-height: 1.4;
     color: #A1262C;               /* ≥ 6:1 auf dem Seitenhintergrund */
 }
@@ -1055,7 +1066,7 @@ body.theme {
 
 .theme .contact-form span {
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -1068,7 +1079,7 @@ body.theme {
     padding: 12px 14px;
     border: 1px solid #8C887F;    /* ≥ 3:1 zum Weiß */
     background: #FFFFFF;
-    font-size: 16px; /* 16px verhindert Auto-Zoom auf iOS */
+    font-size: var(--fs-md); /* 16px verhindert Auto-Zoom auf iOS */
 }
 
 .theme .contact-form textarea {
@@ -1095,7 +1106,7 @@ body.theme {
     background: var(--accent-color);
     color: var(--on-accent);
     font-family: var(--mono);
-    font-size: 15px;
+    font-size: var(--fs-sm);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -1133,7 +1144,7 @@ body.theme {
 .jw-direct__address {
     margin: 10px 0 0;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
@@ -1153,7 +1164,7 @@ body.theme {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    font-size: 17px;
+    font-size: var(--fs-md);
     font-weight: 600;
     color: var(--ink);
     text-decoration: none;
@@ -1181,7 +1192,7 @@ body.theme {
     text-align: left;
     margin: 0;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     text-transform: none;
     letter-spacing: 0;
     white-space: normal;
@@ -1238,7 +1249,7 @@ body.theme {
 
     .theme .nav-links .link-button {
         padding-inline: 0;
-        font-size: 12px;
+        font-size: var(--fs-xs);
     }
 
     .jw-nav-about {
@@ -1286,7 +1297,7 @@ body.theme {
     }
 
     .jw-row__title {
-        font-size: 21px;
+        font-size: var(--fs-lg);
     }
 
     .jw-row__info {
@@ -1403,7 +1414,7 @@ body.theme {
 
 .jw-page-head h1 {
     margin: 0;
-    font-size: clamp(56px, 11vw, 176px);
+    font-size: var(--fs-3xl);
     font-weight: 600;
     line-height: 0.98;
     letter-spacing: -0.015em;
@@ -1412,7 +1423,7 @@ body.theme {
 .jw-page-head__intro {
     flex: 0 1 420px;
     margin: 0;
-    font-size: clamp(17px, 1.5vw, 19px);
+    font-size: var(--fs-lg);
     line-height: 1.5;
     color: var(--ink-2);
 }
@@ -1473,7 +1484,7 @@ body.theme {
 
 .jw-prow h2 {
     margin: 0;
-    font-size: clamp(24px, 2.6vw, 38px);
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.05;
     letter-spacing: -0.008em;
@@ -1482,7 +1493,7 @@ body.theme {
 .jw-prow p {
     margin: 8px 0 0;
     max-width: 60ch;
-    font-size: 16px;
+    font-size: var(--fs-md);
     line-height: 1.5;
     opacity: 0.85;
 }
@@ -1495,7 +1506,7 @@ body.theme {
 
 .jw-prow__arrow {
     justify-self: end;
-    font-size: 22px;
+    font-size: var(--fs-lg);
 }
 
 /* ── Blog: neuester Beitrag ─────────────────────────────────────── */
@@ -1545,14 +1556,14 @@ body.theme {
     background: var(--ink);
     color: var(--bg);
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
 
 .jw-feature h2 {
     margin: 0;
-    font-size: clamp(28px, 2.6vw, 40px);
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.02;
     letter-spacing: -0.008em;
@@ -1560,7 +1571,7 @@ body.theme {
 
 .jw-feature p {
     margin: 0;
-    font-size: 17px;
+    font-size: var(--fs-md);
     line-height: 1.5;
     color: var(--ink-2);
 }
@@ -1575,7 +1586,7 @@ body.theme {
 
 .jw-feature__read {
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: var(--fs-sm);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -1650,21 +1661,21 @@ body.theme {
 }
 
 .jw-brow__title {
-    font-size: clamp(22px, 2.4vw, 32px);
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.005em;
 }
 
 .jw-brow__desc {
-    font-size: 16px;
+    font-size: var(--fs-md);
     line-height: 1.5;
     opacity: 0.8;
 }
 
 .jw-brow__arrow {
     justify-self: end;
-    font-size: 20px;
+    font-size: var(--fs-lg);
 }
 
 @media (hover: hover) {
@@ -1701,7 +1712,7 @@ body.theme {
     margin: 0;
     max-width: 18em;
     text-wrap: balance;
-    font-size: clamp(30px, 4vw, 60px);
+    font-size: var(--fs-2xl);
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.012em;
@@ -1715,7 +1726,7 @@ body.theme {
     background: var(--accent-color);
     color: var(--on-accent);
     font-family: var(--mono);
-    font-size: 15px;
+    font-size: var(--fs-sm);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -1740,7 +1751,7 @@ body.theme {
     gap: 8px;
     margin-bottom: clamp(28px, 4vw, 40px);
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
@@ -1764,7 +1775,7 @@ body.theme {
 
 .jw-detail-head h1 {
     margin: 0;
-    font-size: clamp(44px, 7.5vw, 128px);
+    font-size: var(--fs-3xl);
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.015em;
@@ -1773,7 +1784,7 @@ body.theme {
 
 .jw-post-head h1 {
     margin: 0;
-    font-size: clamp(38px, 6vw, 88px);
+    font-size: var(--fs-2xl);
     font-weight: 600;
     line-height: 1.05;
     letter-spacing: -0.015em;
@@ -1782,7 +1793,7 @@ body.theme {
 .theme .jw-lead {
     margin: 28px 0 0;
     max-width: 40em;
-    font-size: clamp(18px, 1.6vw, 21px);
+    font-size: var(--fs-lg);
     line-height: 1.55;
     color: var(--ink-2);
 }
@@ -1853,7 +1864,7 @@ body.theme {
 
 .theme .flipbook-controls__label {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
 }
 
 .jw-cover {
@@ -1889,7 +1900,7 @@ body.theme {
 
 .theme .project-gallery__item figcaption {
     padding: 10px 0 0;
-    font-size: 15px;
+    font-size: var(--fs-sm);
     line-height: 1.45;
     color: var(--ink-2);
 }
@@ -1897,7 +1908,7 @@ body.theme {
 .jw-fig {
     margin-right: 6px;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
@@ -1922,7 +1933,7 @@ body.theme {
 .theme .jw-prose {
     max-width: 720px;
     padding-bottom: clamp(48px, 7vw, 88px);
-    font-size: 18px;
+    font-size: var(--fs-md);
     line-height: 1.7;
 }
 
@@ -1933,7 +1944,7 @@ body.theme {
 
 .theme .post-body h2 {
     margin: 2em 0 0.6em;
-    font-size: clamp(26px, 2.6vw, 36px);
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.008em;
@@ -1941,7 +1952,7 @@ body.theme {
 
 .theme .post-body h3 {
     margin: 1.8em 0 0.5em;
-    font-size: 22px;
+    font-size: var(--fs-lg);
     font-weight: 600;
     line-height: 1.25;
 }
@@ -1978,7 +1989,7 @@ body.theme {
     border-radius: 0;
     background: var(--ink);
     color: var(--on-dark);
-    font-size: 14px;
+    font-size: var(--fs-sm);
     line-height: 1.6;
 }
 
@@ -2002,7 +2013,7 @@ body.theme {
 .theme .post-figure figcaption,
 .theme .post-embed figcaption {
     color: var(--ink-2);
-    font-size: 14px;
+    font-size: var(--fs-sm);
 }
 
 /* ── Vor/Zurück ─────────────────────────────────────────────────── */
@@ -2034,7 +2045,7 @@ body.theme {
 }
 
 .jw-pager__title {
-    font-size: clamp(22px, 2.4vw, 34px);
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.1;
     letter-spacing: -0.008em;
@@ -2114,7 +2125,7 @@ body.theme {
     }
 
     .jw-prow h2 {
-        font-size: 22px;
+        font-size: var(--fs-lg);
     }
 
     .jw-prow p {
@@ -2122,7 +2133,7 @@ body.theme {
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        font-size: 15px;
+        font-size: var(--fs-sm);
     }
 
     .theme .jw-brow {
@@ -2139,7 +2150,7 @@ body.theme {
     }
 
     .theme .jw-prose {
-        font-size: 17px;
+        font-size: var(--fs-md);
     }
 }
 
@@ -2200,7 +2211,7 @@ body.theme {
 .jw-consent__text {
     margin: 0;
     max-width: 48ch;
-    font-size: 15px;
+    font-size: var(--fs-sm);
     line-height: 1.5;
     color: var(--ink-2);
 }
@@ -2218,7 +2229,7 @@ body.theme {
     background: var(--accent-color);
     color: var(--on-accent);
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: var(--fs-sm);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -2237,13 +2248,13 @@ body.theme {
 }
 
 .jw-consent--widget .jw-consent__text {
-    font-size: 12px;
+    font-size: var(--fs-xs);
 }
 
 .theme .jw-consent--widget .jw-consent__button {
     min-height: 36px;
     padding: 0 12px;
-    font-size: 12px;
+    font-size: var(--fs-xs);
 }
 
 /* ── Impressum & Datenschutz ────────────────────────────────────── */
@@ -2251,7 +2262,7 @@ body.theme {
 .jw-legal {
     max-width: 760px;
     padding-bottom: clamp(56px, 8vw, 96px);
-    font-size: 17px;
+    font-size: var(--fs-md);
     line-height: 1.65;
 }
 
@@ -2259,7 +2270,7 @@ body.theme {
     margin: 2.2em 0 0.6em;
     padding-top: 16px;
     border-top: 2px solid var(--ink);
-    font-size: clamp(22px, 2.2vw, 28px);
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: -0.005em;
@@ -2271,7 +2282,7 @@ body.theme {
 
 .jw-legal h3 {
     margin: 1.6em 0 0.4em;
-    font-size: 18px;
+    font-size: var(--fs-md);
     font-weight: 600;
 }
 
@@ -2300,7 +2311,7 @@ body.theme {
 .jw-legal__stand {
     margin-top: 2.5em;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
@@ -2314,7 +2325,7 @@ body.theme {
     padding: 0;
     list-style: none;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
 }
 
 .theme .jw-footer-links a {
@@ -2325,7 +2336,7 @@ body.theme {
 .jw-form-note {
     grid-column: 1 / -1;
     margin: 0;
-    font-size: 13px;
+    font-size: var(--fs-xs);
     line-height: 1.5;
     color: var(--muted);
 }
@@ -2393,7 +2404,7 @@ body.theme {
 
 .jw-links__head h1 {
     margin: 0;
-    font-size: clamp(36px, 7vw, 48px);
+    font-size: var(--fs-2xl);
     line-height: 1;
     letter-spacing: 0;
 }
@@ -2401,7 +2412,7 @@ body.theme {
 .jw-links__sub {
     margin: 8px 0 0;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
@@ -2449,21 +2460,21 @@ body.theme {
     background: var(--accent-color);
     color: var(--on-accent);
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: var(--fs-xs);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
 
 .jw-links__title {
-    font-size: clamp(30px, 6vw, 40px);
+    font-size: var(--fs-2xl);
     font-weight: 700;
     font-stretch: 90%;
     line-height: 1.05;
 }
 
 .jw-links__meta {
-    font-size: 15px;
+    font-size: var(--fs-sm);
     line-height: 1.4;
     color: var(--muted);
 }
@@ -2475,7 +2486,7 @@ body.theme {
 }
 
 .jw-links__arrow {
-    font-size: 22px;
+    font-size: var(--fs-lg);
     line-height: 1;
     transition: transform 0.15s ease;
 }
@@ -2505,7 +2516,7 @@ body.theme {
 }
 
 .jw-links__name {
-    font-size: 22px;
+    font-size: var(--fs-lg);
     font-weight: 600;
     line-height: 1.2;
 }
@@ -2516,7 +2527,7 @@ body.theme {
 
 .jw-links__handle {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
     overflow-wrap: anywhere;
     text-align: right;
@@ -2584,7 +2595,7 @@ body.theme {
     padding: 14px 18px;
     border-left: 4px solid var(--ink);
     background: var(--bg);
-    font-size: 16px;
+    font-size: var(--fs-md);
     line-height: 1.5;
     color: var(--ink);
 }
@@ -2892,7 +2903,7 @@ html {
     background: var(--ink);
     color: var(--bg);
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: var(--fs-sm);
     text-decoration: none;
     transform: translateY(-200%);
 }
@@ -2913,7 +2924,7 @@ main[tabindex="-1"]:focus {
 .theme .jw-filter-status {
     margin: 12px 0 0;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.04em;
     color: var(--muted);
 }
@@ -2978,7 +2989,7 @@ html.jw-motion-off {
 .jw-casefacts dt {
     margin-bottom: 6px;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--muted);
@@ -2986,12 +2997,12 @@ html.jw-motion-off {
 
 .jw-casefacts dd {
     margin: 0;
-    font-size: 17px;
+    font-size: var(--fs-md);
     line-height: 1.5;
 }
 
 .jw-casefacts .jw-skills {
-    font-size: 15px;
+    font-size: var(--fs-sm);
 }
 
 .jw-casefacts__list {
@@ -3066,7 +3077,7 @@ html.jw-motion-off {
 .jw-case__figure figcaption {
     margin-top: 10px;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
@@ -3124,7 +3135,7 @@ html.jw-motion-off {
 .theme .jw-zine__text {
     max-width: 62ch;
     margin: 0 0 24px;
-    font-size: 17px;
+    font-size: var(--fs-md);
     line-height: 1.6;
     color: var(--ink-2);
 }
@@ -3169,7 +3180,7 @@ html.jw-motion-off {
     background: transparent;
     color: var(--ink);
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
@@ -3231,7 +3242,7 @@ html.jw-motion-off {
     background: none;
     color: var(--muted);
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.05em;
     text-align: left;
     text-transform: uppercase;
@@ -3282,7 +3293,7 @@ html.jw-motion-off {
 .jw-archive__code {
     margin-bottom: 10px;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--muted);
@@ -3306,7 +3317,7 @@ html.jw-motion-off {
     justify-content: space-between;
     padding-bottom: 14px;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.05em;
 }
 
@@ -3322,14 +3333,14 @@ html.jw-motion-off {
     margin: 0;
     padding-bottom: 16px;
     border-bottom: 2px solid var(--ink);
-    font-size: clamp(24px, 2.2vw, 32px);
+    font-size: var(--fs-xl);
     font-weight: 600;
     line-height: 1.15;
 }
 
 .theme .jw-archive__detail-text {
     margin: 16px 0 0;
-    font-size: 15px;
+    font-size: var(--fs-sm);
     line-height: 1.55;
     color: var(--ink-2);
 }
@@ -3343,7 +3354,7 @@ html.jw-motion-off {
 .jw-zine__figure figcaption {
     margin-top: 10px;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
@@ -3371,7 +3382,7 @@ html.jw-motion-off {
 
 .theme .jw-model__title {
     margin: 0;
-    font-size: clamp(22px, 2.4vw, 30px);
+    font-size: var(--fs-xl);
     line-height: 1.15;
 }
 
@@ -3379,7 +3390,7 @@ html.jw-motion-off {
     display: block;
     margin-bottom: 6px;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     font-weight: 400;
     letter-spacing: 0.06em;
     color: var(--muted);
@@ -3426,7 +3437,7 @@ html.jw-motion-off {
     margin: 0;
     padding: 16px;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
     text-align: center;
     pointer-events: none;
@@ -3442,7 +3453,7 @@ html.jw-motion-off {
     bottom: 10px;
     margin: 0;
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.04em;
     color: var(--muted);
     opacity: 0;
@@ -3477,7 +3488,7 @@ html.jw-motion-off {
     background: transparent;
     color: var(--ink);
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
@@ -3502,7 +3513,7 @@ html.jw-motion-off {
     align-items: center;
     gap: 10px;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: var(--fs-xs);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--muted);
@@ -3518,7 +3529,7 @@ html.jw-motion-off {
     padding-right: 12px;
     text-transform: none;
     letter-spacing: 0;
-    font-size: 13px;
+    font-size: var(--fs-xs);
 }
 
 .theme .jw-model__modes button:focus-visible,
@@ -3531,7 +3542,7 @@ html.jw-motion-off {
 .theme .jw-model__stats {
     margin: 12px 0 0;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--muted);
 }
 
@@ -3564,41 +3575,466 @@ html.jw-motion-off {
     }
 }
 
-/* ═══ Header auf dem Handy: eine Zeile ═══
-   Logo links, Navigation rechts. Der Schalter „Animationen“ fällt hier weg
-   (auf dem Handy laufen ohnehin weniger Animationen; die Systemeinstellung
-   „Bewegung reduzieren“ gilt weiterhin). Wird es zu eng, entfallen erst die
-   Pfeile, auf sehr schmalen Geräten bricht die Navigation in eine zweite Zeile. */
-@media (max-width: 640px) {
-    .jw-nav-motion {
-        display: none;
+
+/* ════════════════════════════════════════════════════════════════════
+   Überarbeitung Oktober 2026
+   – Mono nur noch für Metadaten (Labels, Daten, Nummern, Tags, Codes)
+   – Navigation in Bricolage, ohne eckige Klammern; auf dem Handy ein Menü
+   – Fließtext höchstens 65 Zeichen breit
+   – Hauptsektionen mit mehr Luft, Unterblöcke enger
+   – größere Vorschaubilder in den Listen, Klickziele mindestens 44 px
+   ════════════════════════════════════════════════════════════════════ */
+
+body.theme {
+    --sans: 'Bricolage Grotesque', system-ui, sans-serif;
+    --section-space: clamp(72px, 11vw, 168px);
+    --block-space: clamp(40px, 5vw, 64px);
+    --measure: 65ch;
+    --thumb-w: 176px;
+    --thumb-h: 132px;
+}
+
+/* ── Bricolage statt Mono für alles, was Inhalt oder Bedienung ist ── */
+.theme .nav-links a,
+.theme .nav-links li button,
+.theme .jw-menu-btn,
+.jw-hero__kicker,
+.jw-facts dd,
+.jw-more,
+.theme .filter-btn,
+.theme .jw-button,
+.jw-skills,
+.jw-chips li,
+.theme .contact-form span,
+.theme .contact-submit,
+.jw-feature__read,
+.theme .jw-cta__button,
+.theme .jw-consent__button,
+.theme .jw-skip,
+.jw-profile__alias,
+.theme .jw-view-toggle button,
+.theme .jw-model__modes button,
+.theme .jw-model__btn,
+.jw-model__anim,
+.jw-links__sub,
+.theme .footer-copy,
+.jw-footer-note,
+.jw-footer-links {
+    font-family: var(--sans);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.theme .nav-links a,
+.theme .nav-links li button,
+.jw-more,
+.theme .filter-btn,
+.theme .jw-button,
+.theme .contact-submit,
+.jw-feature__read,
+.theme .jw-cta__button,
+.theme .jw-consent__button,
+.theme .jw-view-toggle button,
+.theme .jw-model__modes button,
+.theme .jw-model__btn {
+    font-size: var(--fs-sm);
+    font-weight: 500;
+}
+
+.jw-hero__kicker,
+.jw-facts dd,
+.jw-skills,
+.theme .contact-form span,
+.jw-profile__alias,
+.jw-model__anim {
+    font-size: var(--fs-sm);
+}
+
+/* ── Zeilenlänge im Fließtext ── */
+.theme .jw-prose p,
+.theme .jw-prose li,
+.theme .post-body p,
+.theme .post-body li,
+.theme .post-body blockquote,
+.project-summary,
+.theme .jw-lead,
+.jw-page-head__intro,
+.jw-hero__lead,
+.theme .jw-zine__text,
+.theme .jw-models__intro,
+.theme .jw-model__text,
+.jw-row__teaser,
+.jw-brow__desc,
+.jw-about__more p,
+.jw-legal p,
+.jw-legal li {
+    max-width: var(--measure);
+}
+
+/* ── Rhythmus: Sektionen groß, Blöcke innerhalb einer Seite enger ── */
+.jw-section {
+    padding-block: calc(var(--section-space) / 2);
+}
+
+.jw-hero {
+    padding-bottom: calc(var(--section-space) / 4);
+}
+
+.jw-detail-block {
+    padding-bottom: var(--block-space);
+}
+
+.jw-head {
+    margin-bottom: 8px;
+}
+
+/* ── Header: Navigation ── */
+.theme .nav-links {
+    gap: 0 28px;
+}
+
+.theme .nav-links .link-button {
+    min-height: 44px;
+    padding: 0;
+}
+
+.theme .site-header .jw-menu-btn {
+    display: none;
+}
+
+.jw-motion-toggle__state {
+    margin-left: 0.25em;
+}
+
+/* Zustand „an/aus“ als erzeugter Text, damit er nicht doppelt im Markup steht */
+.jw-motion-toggle__state::after {
+    content: attr(data-on);
+}
+
+.jw-motion-off .jw-motion-toggle__state::after {
+    content: attr(data-off);
+}
+
+@media (max-width: 860px) {
+    /* Das aufgeklappte Menü ragt unter den Header */
+    .theme .site-header {
+        overflow: visible;
     }
 
     .theme .site-header .container.nav {
-        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        min-height: 60px;
+        padding-block: 8px;
+    }
+
+    .theme .site-header .jw-menu-btn {
+        display: inline-flex;
         align-items: center;
-        column-gap: 16px;
-        padding-block: 10px;
+        gap: 10px;
+        min-height: 44px;
+        margin: 0;
+        padding: 0 16px;
+        border: 1.5px solid var(--ink);
+        border-radius: 0;
+        background: transparent;
+        color: var(--ink);
+        font-size: var(--fs-sm);
+        font-weight: 500;
+        cursor: pointer;
     }
 
-    .theme .nav-main {
-        justify-content: flex-end;
+    /* Drei Striche, beim Öffnen ein Kreuz */
+    .theme .site-header .jw-menu-btn::after {
+        content: "";
+        width: 16px;
+        height: 10px;
+        border-block: 1.5px solid currentColor;
+        background: linear-gradient(currentColor, currentColor) center / 100% 1.5px no-repeat;
     }
 
-    .theme .nav-links {
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        gap: 0 14px;
+    .theme .site-header.is-menu-open .jw-menu-btn {
+        background: var(--ink);
+        color: var(--bg);
+    }
+
+    .theme .site-header .nav-main {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 0 var(--gutter) 16px;
+        background: var(--bg);
+        border-bottom: 2px solid var(--ink);
+        box-shadow: 0 18px 32px rgb(17 17 17 / 0.12);
+    }
+
+    .theme .site-header .nav-main.active {
+        display: block;
+    }
+
+    .theme .site-header .nav-links {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .theme .site-header .nav-links li {
+        width: 100%;
+        border-top: 1px solid var(--line);
+    }
+
+    .theme .site-header .nav-links a.link-button,
+    .theme .site-header .nav-links li button.link-button {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        min-height: 52px;
+        margin: 0;
+        padding: 0;
+        font-size: var(--fs-lg);
+        color: var(--ink);
+        text-align: left;
+    }
+
+    .theme .site-header .nav-links a[aria-current] {
+        color: var(--accent-color);
+    }
+
+    .theme .site-header .jw-nav-about,
+    .theme .site-header .jw-nav-motion {
+        display: block;
     }
 }
 
-@media (max-width: 420px) {
-    .nav-arrow {
+/* ── Vorschaubilder in Listen: größer, alle im selben Format (4 : 3) ── */
+.jw-row__thumb,
+.jw-brow__thumb {
+    width: var(--thumb-w);
+    aspect-ratio: 4 / 3;
+}
+
+@media (hover: hover) and (min-width: 901px) {
+    .theme .jw-row .jw-row__thumb,
+    .theme .jw-brow .jw-brow__thumb {
+        width: var(--thumb-w);
+        height: var(--thumb-h);
+    }
+
+    .theme .jw-row .jw-row__thumb img,
+    .theme .jw-brow .jw-brow__thumb img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .theme .jw-row:hover .jw-row__thumb,
+    .theme .jw-brow:hover .jw-brow__thumb {
+        width: 280px;
+    }
+}
+
+@media (max-width: 900px) {
+    body.theme {
+        --thumb-w: 112px;
+        --thumb-h: 84px;
+    }
+
+    .theme .jw-row {
+        grid-template-columns: var(--thumb-w) minmax(0, 1fr) 20px;
+        gap: 6px 14px;
+    }
+
+    .theme .jw-row .jw-num {
         display: none;
     }
 
-    .theme .site-header .container.nav {
-        column-gap: 12px;
+    .jw-row__main {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .jw-row__info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px 14px;
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .theme .jw-row .jw-row__thumb {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        align-self: start;
+    }
+
+    .jw-row__arrow {
+        grid-column: 3;
+    }
+
+    .theme .jw-brow,
+    .jw-blist--home .jw-brow {
+        grid-template-columns: var(--thumb-w) minmax(0, 1fr) 20px;
+    }
+
+    .jw-row__thumb,
+    .jw-brow__thumb {
+        width: var(--thumb-w);
+    }
+}
+
+/* ── Klickziele: mindestens 44 × 44 px ── */
+.theme .jw-footer-links a,
+.theme .jw-social-link,
+.theme .jw-crumb a,
+.theme .jw-casefacts a,
+.theme .footer-row a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
+
+.theme .jw-footer-links {
+    gap: 0 24px;
+}
+
+.theme .jw-footer-links a {
+    font-size: var(--fs-sm);
+    padding-inline: 2px;
+}
+
+.theme .jw-view-toggle button,
+.theme .jw-model__modes button,
+.theme .jw-model__btn,
+.theme .jw-model__anim select,
+.theme .filter-btn {
+    min-height: 44px;
+}
+
+/* Grafiken mit festen Maßen (z. B. die Aufbau-Skizze der Zines) behalten
+   auf schmalen Bildschirmen ihr Seitenverhältnis */
+.jw-zine__figure img,
+.jw-case__figure img {
+    height: auto;
+}
+
+/* ── Video mit lokalem Vorschaubild ── */
+.jw-video {
+    position: relative;
+}
+
+.theme .jw-video__play,
+.jw-video__frame {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 0;
+    padding: 0;
+    border: 1.5px solid var(--ink);
+    border-radius: 0;
+    background: var(--ink);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.jw-video__play img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.82;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+.jw-video__play:hover img,
+.jw-video__play:focus-visible img {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.jw-video__badge {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 0 22px;
+    transform: translate(-50%, -50%);
+    background: var(--accent-color);
+    color: var(--on-accent);
+    font-family: var(--sans);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.jw-video__icon {
+    width: 0;
+    height: 0;
+    border-block: 8px solid transparent;
+    border-left: 13px solid currentColor;
+}
+
+.theme .jw-video__note {
+    margin: 10px 0 0;
+    font-family: var(--mono);
+    font-size: var(--fs-xs);
+    color: var(--muted);
+}
+
+.jw-crumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ── Restliche Größen auf die Skala ── */
+body.theme {
+    font-size: var(--fs-md);
+}
+
+.theme .jw-models__intro,
+.theme .jw-model__text,
+.theme .post-body blockquote,
+.theme .post-body blockquote p {
+    font-size: var(--fs-md);
+}
+
+.theme .jw-about__title {
+    margin: 0 0 clamp(32px, 4vw, 56px);
+    font-size: var(--fs-3xl);
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+}
+
+/* Archiv-Galerie: Bildtitel sind Inhalt (Bricolage), Nummern bleiben Mono */
+.theme .jw-archive__index button {
+    min-height: 44px;
+    font-family: var(--sans);
+    font-size: var(--fs-sm);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.theme .jw-archive__index .jw-archive__num {
+    font-family: var(--mono);
+    font-size: var(--fs-xs);
+}
+
+/* weitere Klickziele */
+.theme .site-header .logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
+
+@media (min-width: 861px) {
+    .theme .nav-links .link-button {
+        padding-inline: 8px;
     }
 
     .theme .nav-links {
@@ -3606,8 +4042,28 @@ html.jw-motion-off {
     }
 }
 
-@media (max-width: 380px) {
-    .theme .site-header .logo {
-        font-size: 18px;
+.theme .jw-flip__caption {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
+
+.theme .flipbook-controls__slider {
+    min-height: 44px;
+}
+.theme .jw-crumb a { padding-inline: 8px; margin-inline: -8px; }
+
+/* Lange deutsche Wörter in Listentiteln dürfen trennen */
+.jw-row__title,
+.jw-brow__title,
+.jw-prow h2 {
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 420px) {
+    body.theme {
+        --thumb-w: 88px;
+        --thumb-h: 66px;
     }
 }

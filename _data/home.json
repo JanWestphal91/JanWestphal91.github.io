@@ -31,8 +31,8 @@
       "en": "from Kiel"
     },
     "lead": {
-      "de": "Ich entwickle Spiele, elektronische Geräte und Grafiken, ich fühle mich dort am wohlsten, wo sich die drei überschneiden.",
-      "en": "I build games, electronic devices and graphics, I feel most at home where those three overlap."
+      "de": "Ich entwickle Spiele, elektronische Geräte und Grafiken. Am wohlsten fühle ich mich dort, wo sich die drei überschneiden.",
+      "en": "I build games, electronic devices and graphics. I feel most at home where the three overlap."
     },
     "images": [
       {
@@ -52,7 +52,7 @@
         }
       },
       {
-        "project": "Audio-Dingo-Synth",
+        "project": "audio-dingo-synth",
         "image": "/Images/Audiodingo/audiodingostanding.webp",
         "alt": {
           "de": "Selbstgebauter Synthesizer Audio Dingo",
@@ -87,8 +87,8 @@
       "en": "Currently"
     },
     "currently": {
-      "de": "B.Eng. Medieningenieur, HAW Kiel",
-      "en": "B.Eng. Media Engineering, HAW Kiel"
+      "de": "Student Medieningenieurwesen (B.Eng.), 3. Semester",
+      "en": "Media Engineering student (B.Eng.), 3rd semester"
     }
   },
   "projects": {
@@ -141,8 +141,8 @@
         "en": "Game development excites me most, because design, code, sound and storytelling come together in one product. My favourites: Oxygen Not Included, Slay the Spire, Diablo and Donkey Kong Country."
       },
       {
-        "de": "Ich bin verheiratet mit einer wunderbaren Person, die Ordnung in mein Chaos bringt, und wir haben zwei wundervolle Kinder.",
-        "en": "I'm married to a wonderful person who brings some order into my chaos, and we have two wonderful kids."
+        "de": "Ich bin verheiratet, und wir haben zwei wundervolle Kinder.",
+        "en": "I'm married, and we have two wonderful kids."
       }
     ],
     "alias": {
@@ -199,6 +199,10 @@
     "cv_label": {
       "de": "Lebenslauf (PDF)",
       "en": "CV (PDF)"
+    },
+    "more": {
+      "de": "Mehr über mich →",
+      "en": "More about me →"
     }
   },
   "path": {
@@ -306,8 +310,8 @@
         "en": "Aseprite"
       },
       {
-        "de": "Fusion3D",
-        "en": "Fusion3D"
+        "de": "Fusion 360",
+        "en": "Fusion 360"
       }
     ],
     "languages_heading": {
@@ -315,10 +319,9 @@
       "en": "Languages"
     },
     "languages": [
-      "Python",
+      "C++ (Arduino, ESP32)",
       "C#",
       "GDScript",
-      "Java",
       "JavaScript"
     ],
     "courses_heading": {
@@ -369,9 +372,7 @@
       "de": "Grundlagen",
       "en": "Basics"
     },
-    "languages_basic": [
-      "C++ (Arduino, ESP32)"
-    ]
+    "languages_basic": []
   },
   "blog": {
     "label": {

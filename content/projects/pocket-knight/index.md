@@ -20,24 +20,16 @@ summary_de: |-
   Die Ereignisse werden gesammelt, sodass man sie abends in Ruhe nacheinander spielen kann und das Gerät nur tagsüber bei sich tragen muss.
   Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem [Blogbeitrag](https://janwestphal.dev/blog/development-process-of-pocket-knight/).
 meta:
-  - Electronic
-  - Game
   - 'Status: playable prototype'
 meta_de:
-  - Elektronik
-  - Game
   - 'Status: spielbarer Prototyp'
 images:
-  - src: /Images/projects/pocket-knight/pocketknightcloth.webp
-    alt: "Close-up of the Pocket Knight device: grey case, blue-framed OLED screen, blue fleur-de-lis buttons and a keychain charm"
-    alt_de: "Nahaufnahme des Pocket-Knight-Geräts: graues Gehäuse, blau umrandetes OLED-Display, blaue Lilien-Tasten und ein Schlüsselanhänger"
-    caption: Photo of the device
-    caption_de: Foto von dem Gerät
   - src: /Images/projects/pocket-knight/pocketknightposter3.webp
     alt: "Pocket Knight poster: knights in a classical painting reach for the device, which floats above them like a holy grail"
     alt_de: "Pocket-Knight-Poster: Ritter in einem klassischen Gemälde greifen nach dem Gerät, das wie ein heiliger Gral über ihnen schwebt"
     caption: Pocket Knight - a holy grail
     caption_de: Pocket Knight - Der heilige Gral
+video_poster: /Images/projects/pocket-knight/closeshotpocketknight.webp
 embed: <iframe width="560" height="315" src="https://www.youtube.com/embed/YMT1BVRyX4g?si=-3MBMNdEbFsba26u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 case:
   role:

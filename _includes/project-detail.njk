@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }} – Jan Westphal</title>
+    <title data-en="{{ title }} – Jan Westphal" data-de="{{ title_de or title }} – Jan Westphal">{{ title }} – Jan Westphal</title>
     <meta name="description" content="{{ summary | md | striptags | truncate(155) }}" data-content-en="{{ summary | md | striptags | truncate(155) }}" data-content-de="{{ (summary_de or summary) | md | striptags | truncate(155) }}" />
     <meta name="author" content="Jan Westphal" />
     <meta name="robots" content="index, follow" />
@@ -13,7 +13,7 @@
 
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Jan Westphal" />
-    <meta property="og:title" content="{{ title }} – Jan Westphal" />
+    <meta property="og:title" content="{{ title }} – Jan Westphal" data-content-en="{{ title }} – Jan Westphal" data-content-de="{{ title_de or title }} – Jan Westphal" />
     <meta property="og:description" content="{{ summary | md | striptags | truncate(155) }}" data-content-en="{{ summary | md | striptags | truncate(155) }}" data-content-de="{{ (summary_de or summary) | md | striptags | truncate(155) }}" />
     {% if cover_image %}
     <meta property="og:image" content="https://janwestphal.dev{{ cover_image | imgPath }}" />
@@ -27,7 +27,7 @@
     <meta property="og:image:alt" content="{{ title }} – Jan Westphal Preview" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ title }} – Jan Westphal" />
+    <meta name="twitter:title" content="{{ title }} – Jan Westphal" data-content-en="{{ title }} – Jan Westphal" data-content-de="{{ title_de or title }} – Jan Westphal" />
     <meta name="twitter:description" content="{{ summary | md | striptags | truncate(155) }}" data-content-en="{{ summary | md | striptags | truncate(155) }}" data-content-de="{{ (summary_de or summary) | md | striptags | truncate(155) }}" />
 
 
@@ -49,7 +49,7 @@
         </nav>
         <div class="jw-detail-head__row">
             <div class="jw-detail-head__main">
-                <h1 id="jw-page-title">{{ title }}</h1>
+                <h1 id="jw-page-title" data-en="{{ title }}" data-de="{{ title_de or title }}">{{ title }}</h1>
                 <div class="project-summary jw-lead" data-lang-show="en">{{ summary | md | safe }}</div>
                 <div class="project-summary jw-lead" data-lang-show="de" hidden>{{ (summary_de or summary) | md | safe }}</div>
             </div>
@@ -73,7 +73,14 @@
         </div>
     </section>
 
-    {% if embed %}
+    {#- Einstieg: oben steht immer ein Foto (Titelbild). Videos und Spiel-Widgets
+        folgen weiter unten nach der Case Study, YouTube erst nach einem Klick
+        (Vorschaubild lokal, keine Verbindung zu YouTube vorher). Nur ein
+        Blätterbuch als Einbettung bleibt oben. -#}
+    {%- set embedTop = embed and ('data-flipbook-images' in embed) %}
+    {%- set embedLater = embed and not embedTop %}
+    {%- set ytId = embed | youtubeId if embedLater else "" %}
+    {% if embedTop %}
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
         <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span {% i18n pt.media %}>{{ pt.media.en }}</span></h2>
         <div id="project-embed" class="jw-embed">{{ embed | safe }}</div>
@@ -89,13 +96,14 @@
     {#- ═══ Case Study (optional, CMS: Projekt → Case Study) ═══
         Steckbrief (Rolle, Zeitraum, Werkzeuge, Hardware, Links) und
         Abschnitte mit Text und Bild. Nummern laufen über alle Blöcke. -#}
-    {%- set nMedia = 1 if embed else 0 %}
+    {%- set nMedia = 1 if embedTop else 0 %}
     {%- set nBooks = flipbooks.length if flipbooks else 0 %}
     {%- set cs = case if (case and (case.role or case.sections)) else null %}
     {%- set nModels = 1 if (models and models.length) else 0 %}
     {%- set nFacts = nMedia + nBooks + nModels + (1 if cs else 0) %}
     {%- set nSections = (cs.sections.length if (cs and cs.sections) else 0) %}
-    {%- set nGallery = nFacts + nSections + 1 %}
+    {%- set nLater = nFacts + nSections + 1 %}
+    {%- set nGallery = nLater + (1 if embedLater else 0) %}
     {#- ═══ Flipbooks (optional, CMS: Projekt → Flipbooks) ═══
         Mehrere Hefte auf einer Seite, jedes mit Titel, kurzem Text und
         eigenem Blätterbuch (flipbook.js). Format pro Heft einstellbar. -#}
@@ -214,6 +222,24 @@
     {%- endfor %}
     {% endif %}
 
+    {%- if embedLater %}
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
+        <h2 id="jw-media-title" class="jw-label jw-rule">{{ nLater | pad2 }} — <span {% i18n pt.media %}>{{ pt.media.en }}</span></h2>
+        {%- if ytId %}
+        {%- set poster = video_poster or cover_image %}
+        <div class="jw-video" data-yt="{{ ytId }}">
+            <button type="button" class="jw-video__play" {% i18n global.ui.video_play, "aria" %} aria-label="{{ global.ui.video_play.en }}">
+                {%- if poster %}<img src="{{ poster | imgPath }}" alt="" loading="lazy">{% endif %}
+                <span class="jw-video__badge"><span class="jw-video__icon" aria-hidden="true"></span><span {% i18n global.ui.video_play %}>{{ global.ui.video_play.en }}</span></span>
+            </button>
+            <p class="jw-video__note" {% i18n global.ui.video_note %}>{{ global.ui.video_note.en }}</p>
+        </div>
+        {%- else %}
+        <div id="project-embed" class="jw-embed">{{ embed | safe }}</div>
+        {%- endif %}
+    </section>
+    {%- endif %}
+
     {% if images and images.length %}
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
         <div class="jw-gallery-head">
@@ -225,7 +251,7 @@
                 <button type="button" data-view="grid" aria-pressed="false" {% i18n global.ui.gallery_grid %}>{{ global.ui.gallery_grid.en }}</button>
             </div>
         </div>
-        <div class="project-gallery jw-gallery" data-archive-code="{{ title | replace(' ', '') | truncate(2, true, '') | upper }}">
+        <div class="project-gallery jw-gallery" data-archive-code="{{ (title_de or title) | replace(' ', '') | truncate(2, true, '') | upper }}">
             {% for img in images %}
             <figure class="project-gallery__item">
                 {% if '://' in img.src %}
@@ -244,7 +270,7 @@
         {% if nb.prev %}
         <a class="jw-pager__link" href="{{ nb.prev.url }}">
             <span class="jw-label" {% i18n pt.prev %}>{{ pt.prev.en }}</span>
-            <span class="jw-pager__title">{{ nb.prev.data.title }}</span>
+            <span class="jw-pager__title" data-en="{{ nb.prev.data.title }}" data-de="{{ nb.prev.data.title_de or nb.prev.data.title }}">{{ nb.prev.data.title }}</span>
         </a>
         {% else %}
         <a class="jw-pager__link" href="/projects/">
@@ -255,7 +281,7 @@
         {% if nb.next %}
         <a class="jw-pager__link jw-pager__link--next" href="{{ nb.next.url }}">
             <span class="jw-label" {% i18n pt.next %}>{{ pt.next.en }}</span>
-            <span class="jw-pager__title">{{ nb.next.data.title }}</span>
+            <span class="jw-pager__title" data-en="{{ nb.next.data.title }}" data-de="{{ nb.next.data.title_de or nb.next.data.title }}">{{ nb.next.data.title }}</span>
         </a>
         {% else %}
         <a class="jw-pager__link jw-pager__link--next" href="/projects/">

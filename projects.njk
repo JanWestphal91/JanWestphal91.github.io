@@ -25,7 +25,7 @@
 
 <main id="main" tabindex="-1">
     <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
-        <p class="jw-label">[ Index — {{ collections.projects.length | pad2 }} <span {% i18n pg.count_label %}>{{ pg.count_label.en }}</span> ]</p>
+        <p class="jw-label">Index — {{ collections.projects.length | pad2 }} <span {% i18n pg.count_label %}>{{ pg.count_label.en }}</span></p>
         <div class="jw-page-head__row">
             <h1 id="jw-page-title" {% i18n pg.heading %}>{{ pg.heading.en }}</h1>
             <p class="jw-page-head__intro" {% i18n pg.intro %}>{{ pg.intro.en }}</p>
@@ -48,7 +48,7 @@
                     <div class="jw-prow__body">
                         <div class="jw-prow__title">
                             <span class="jw-num">{{ loop.index | pad2 }}</span>
-                            <h2>{{ project.data.title }}</h2>
+                            <h2 data-en="{{ project.data.title }}" data-de="{{ project.data.title_de or project.data.title }}">{{ project.data.title }}</h2>
                         </div>
                         <p data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</p>
                     </div>

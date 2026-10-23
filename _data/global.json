@@ -19,11 +19,15 @@
     "menu": {
       "de": "Menü öffnen",
       "en": "Open menu"
+    },
+    "menu_label": {
+      "de": "Menü",
+      "en": "Menu"
     }
   },
   "ticker": {
-    "de": "Andere sagen, ich kann das → Creative Coding • Game Dev • Grafikdesign • 2D & 3D Grafik • Prototyping • UI / UX • Aktuelles Spiel: Pocket Knight •",
-    "en": "People say I can do this → Creative Coding • Game Dev • Graphic Design • 2D & 3D Graphics • Prototyping • UI / UX • Latest game: Pocket Knight •"
+    "de": "Creative Coding • Game Dev • Grafikdesign • 2D & 3D Grafik • Prototyping • Aktuelles Spiel: Pocket Knight •",
+    "en": "Creative Coding • Game Dev • Graphic Design • 2D & 3D Graphics • Prototyping • Latest game: Pocket Knight •"
   },
   "cta": {
     "text": {
@@ -167,6 +171,14 @@
     "model_hint_touch": {
       "de": "Ein Finger dreht · zwei Finger zoomen",
       "en": "One finger rotates · two fingers zoom"
+    },
+    "video_play": {
+      "de": "Video abspielen",
+      "en": "Play video"
+    },
+    "video_note": {
+      "de": "Das Video wird erst nach dem Klick von YouTube geladen.",
+      "en": "The video only loads from YouTube after you click."
     }
   },
   "categories": [

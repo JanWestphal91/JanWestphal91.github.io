@@ -65,7 +65,10 @@ const ATTRS = [
     ["alt", "alt"],
     ["placeholder", "placeholder"],
     ["aria", "aria-label"],
-    ["content", "content"]
+    ["content", "content"],
+    ["dtitle", "data-title"],
+    ["on", "data-on"],
+    ["off", "data-off"]
 ];
 
 function localize(html, url, lang) {
@@ -122,6 +125,20 @@ function localize(html, url, lang) {
         if (short) { short.textContent = SWITCH_TEXT[other].short; short.removeAttribute("data-lang-switch-short"); }
         if (!long && !short) a.textContent = SWITCH_TEXT[other].long;
     });
+
+    // Weiterleitungsseite (redirects.njk): Ziel in die Sprachversion umschreiben,
+    // canonical zeigt auf das Ziel, sonst nichts weiter
+    const redirect = document.querySelector("meta[data-redirect]");
+    if (redirect) {
+        const target = rewriteHref(redirect.getAttribute("data-redirect"), lang);
+        redirect.setAttribute("data-redirect", target);
+        redirect.setAttribute("content", "0; url=" + target);
+        const link = document.createElement("link");
+        link.setAttribute("rel", "canonical");
+        link.setAttribute("href", SITE + target);
+        document.head.appendChild(link);
+        return "<!DOCTYPE html>\n" + root.outerHTML + "\n";
+    }
 
     // <head>: Adressen dieser Version und der anderen
     const head = document.head;

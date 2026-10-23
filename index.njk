@@ -69,7 +69,7 @@
 {%- set ticker = true %}
 {% include "partials/site-header.njk" %}
 
-<main id="top" tabindex="-1">
+<main id="main" tabindex="-1">
 
     <!-- ═══ Hero ═══ -->
     <section class="jw-wrap jw-hero" aria-labelledby="jw-title">
@@ -92,14 +92,14 @@
                     {%- set pd = c.project.data %}
                     {%- set altEn = (c.item.alt and c.item.alt.en) or pd.cover_image_alt or pd.title %}
                     {%- set altDe = (c.item.alt and c.item.alt.de) or pd.cover_image_alt_de or altEn %}
-                    <a class="jw-flip__card" href="/projects/{{ pd.slug }}/" draggable="false" data-title="{{ pd.title }}" {% if not loop.first %}tabindex="-1" aria-hidden="true"{% endif %}>
+                    <a class="jw-flip__card" href="/projects/{{ pd.slug }}/" draggable="false" data-title="{{ pd.title }}" data-dtitle-en="{{ pd.title }}" data-dtitle-de="{{ pd.title_de or pd.title }}" {% if not loop.first %}tabindex="-1" aria-hidden="true"{% endif %}>
                         <img src="{{ (c.item.image or pd.cover_image) | imgPath }}" alt="{{ altEn }}" data-alt-en="{{ altEn }}" data-alt-de="{{ altDe }}" loading="{{ 'eager' if loop.index <= 2 else 'lazy' }}" draggable="false" width="800" height="600">
                     </a>
                     {%- endfor %}
                 </div>
                 <div class="jw-flip__bar">
                     <button type="button" class="jw-flip__btn" data-flip-prev {% i18n h.hero.carousel_prev, "aria" %} aria-label="{{ h.hero.carousel_prev.en }}">←</button>
-                    <a class="jw-flip__caption" href="/projects/{{ cards[0].project.data.slug }}/">{{ cards[0].project.data.title }}&nbsp;→</a>
+                    <a class="jw-flip__caption" href="/projects/{{ cards[0].project.data.slug }}/"><span data-en="{{ cards[0].project.data.title }}" data-de="{{ cards[0].project.data.title_de or cards[0].project.data.title }}">{{ cards[0].project.data.title }}</span>&nbsp;→</a>
                     <span class="jw-flip__count" aria-hidden="true">01 / {{ cards.length | pad2 }}</span>
                     <button type="button" class="jw-flip__btn" data-flip-next {% i18n h.hero.carousel_next, "aria" %} aria-label="{{ h.hero.carousel_next.en }}">→</button>
                 </div>
@@ -135,7 +135,7 @@
                     <span class="jw-row__thumb" aria-hidden="true"><img src="{{ project.data.cover_image | imgPath }}" alt="" loading="lazy" width="160" height="160"></span>
                     <span class="jw-num">{{ loop.index | pad2 }}</span>
                     <span class="jw-row__main">
-                        <span class="jw-row__title">{{ project.data.title }}</span>
+                        <span class="jw-row__title" data-en="{{ project.data.title }}" data-de="{{ project.data.title_de or project.data.title }}">{{ project.data.title }}</span>
                         {%- if project.data.summary_card %}
                         <span class="jw-row__teaser" data-en="{{ project.data.summary_card }}" data-de="{{ project.data.summary_card_de or project.data.summary_card }}">{{ project.data.summary_card }}</span>
                         {%- endif %}
@@ -150,7 +150,7 @@
             {%- endfor %}
         </ul>
 
-        <a href="/projects/" class="jw-more">[&nbsp;<span {% i18n h.projects.more %}>{{ h.projects.more.en }}</span>&nbsp;]</a>
+        <a href="/projects/" class="jw-more"><span {% i18n h.projects.more %}>{{ h.projects.more.en }}</span></a>
     </section>
 
     <!-- ═══ Über mich ═══ -->
@@ -164,113 +164,9 @@
                 </div>
             </div>
 
-            <div class="jw-about__grid">
-                <figure class="jw-profile">
-                    {%- if ab.photo %}
-                    <div class="jw-profile__photo">
-                        <img src="{{ ab.photo | imgPath }}" alt="{{ ab.photo_alt.en }}" {% i18n ab.photo_alt, "alt" %} loading="lazy" width="480" height="600">
-                    </div>
-                    {%- endif %}
-                    <figcaption class="jw-profile__body">
-                        {%- if ab.alias %}
-                        <p class="jw-profile__alias" {% i18n ab.alias %}>{{ ab.alias.en }}</p>
-                        {%- endif %}
-                        {%- if ab.availability and ab.availability.length %}
-                        <dl class="jw-facts jw-facts--profile">
-                            {%- for row in ab.availability %}
-                            <div><dt {% i18n row.label %}>{{ row.label.en }}</dt><dd>{% if row.highlight %}<span class="jw-dot" aria-hidden="true"></span>{% endif %}<span {% i18n row.value %}>{{ row.value.en }}</span></dd></div>
-                            {%- endfor %}
-                        </dl>
-                        {%- endif %}
-                        {%- if ab.cv_file %}
-                        <a class="jw-button jw-button--outline" href="{{ ab.cv_file | imgPath }}" download><span {% i18n ab.cv_label %}>{{ ab.cv_label.en }}</span>&nbsp;↓</a>
-                        {%- endif %}
-                    </figcaption>
-                </figure>
-
-                <div class="jw-about__text">
-                    {#- Alle Absätze gleich groß, auf dem Desktop in zwei Spalten. -#}
-                    <div class="jw-about__more">
-                    {%- for para in ab.paragraphs %}
-                        <p {% i18n para %}>{{ para.en }}</p>
-                    {%- endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ Werdegang ═══ -->
-    {%- set pa = h.path %}
-    <section id="path" class="jw-wrap jw-section" aria-labelledby="jw-path-title">
-        <div class="jw-head">
-            <div>
-                <p class="jw-label">03 — <span {% i18n pa.label %}>{{ pa.label.en }}</span></p>
-                <h2 id="jw-path-title" {% i18n pa.heading %}>{{ pa.heading.en }}</h2>
-            </div>
-        </div>
-
-        <div class="jw-cv">
-            <ol class="jw-cv__list">
-                {%- for e in pa.entries %}
-                <li class="jw-cv__row">
-                    <span class="jw-num">{{ loop.index | pad2 }}</span>
-                    <span class="jw-cv__title" {% i18n e.title %}>{{ e.title.en }}</span>
-                    <span class="jw-cv__sub" {% i18n e.sub %}>{{ e.sub.en }}</span>
-                    {%- if e.current %}
-                    <span class="jw-tags"><span class="jw-dot" aria-hidden="true"></span><span {% i18n e.tag %}>{{ e.tag.en }}</span></span>
-                    {%- else %}
-                    <span class="jw-tags" {% i18n e.tag %}>{{ e.tag.en }}</span>
-                    {%- endif %}
-                </li>
-                {%- endfor %}
-            </ol>
-
-            <aside class="jw-cv__side">
-                <div class="jw-cv__group">
-                    <h3 class="jw-label" {% i18n pa.toolbox_heading %}>{{ pa.toolbox_heading.en }}</h3>
-                    <ul class="jw-skills" {% i18n pa.toolbox_heading, "aria" %} aria-label="{{ pa.toolbox_heading.en }}">
-                        {%- for item in pa.toolbox %}
-                        <li {% i18n item %}>{{ item.en }}</li>
-                        {%- endfor %}
-                    </ul>
-                    {%- if pa.languages and pa.languages.length %}
-
-                    <h3 class="jw-label" {% i18n pa.languages_heading %}>{{ pa.languages_heading.en }}</h3>
-                    <ul class="jw-skills" {% i18n pa.languages_heading, "aria" %} aria-label="{{ pa.languages_heading.en }}">
-                        {%- for item in pa.languages %}
-                        <li>{{ item }}</li>
-                        {%- endfor %}
-                    </ul>
-                    {%- if pa.languages_basic and pa.languages_basic.length %}
-                    <p class="jw-skills__level" {% i18n pa.languages_basic_label %}>{{ pa.languages_basic_label.en }}</p>
-                    <ul class="jw-skills jw-skills--basic" {% i18n pa.languages_basic_label, "aria" %} aria-label="{{ pa.languages_basic_label.en }}">
-                        {%- for item in pa.languages_basic %}
-                        <li>{{ item }}</li>
-                        {%- endfor %}
-                    </ul>
-                    {%- endif %}
-                    {%- endif %}
-                </div>
-
-                <div class="jw-cv__group">
-                    <h3 class="jw-label" {% i18n pa.courses_heading %}>{{ pa.courses_heading.en }}</h3>
-                    <ul class="jw-cv__notes">
-                        {%- for c in pa.courses %}
-                        <li><span {% i18n c.text %}>{{ c.text.en }}</span>{% if c.note %} <span class="jw-tags">{{ c.note }}</span>{% endif %}</li>
-                        {%- endfor %}
-                    </ul>
-                </div>
-
-                <div class="jw-cv__group">
-                    <h3 class="jw-label" {% i18n pa.community_heading %}>{{ pa.community_heading.en }}</h3>
-                    <ul class="jw-cv__notes">
-                        {%- for item in pa.community %}
-                        <li {% i18n item %}>{{ item.en }}</li>
-                        {%- endfor %}
-                    </ul>
-                </div>
-            </aside>
+            {%- set paraLimit = 2 %}
+            {% include "partials/about-profile.njk" %}
+            <a href="/about/" class="jw-more"><span {% i18n ab.more %}>{{ ab.more.en }}</span></a>
         </div>
     </section>
 
@@ -279,7 +175,7 @@
     <section id="blog-preview" class="jw-wrap jw-section" aria-labelledby="jw-blog-title">
         <div class="jw-head">
             <div>
-                <p class="jw-label">04 — <span {% i18n bl.label %}>{{ bl.label.en }}</span></p>
+                <p class="jw-label">03 — <span {% i18n bl.label %}>{{ bl.label.en }}</span></p>
                 <h2 id="jw-blog-title" {% i18n bl.heading %}>{{ bl.heading.en }}</h2>
             </div>
         </div>
@@ -303,7 +199,7 @@
             </li>
             {%- endfor %}
         </ul>
-        <a href="/blog/" class="jw-more">[&nbsp;<span {% i18n bl.more %}>{{ bl.more.en }}</span>&nbsp;]</a>
+        <a href="/blog/" class="jw-more"><span {% i18n bl.more %}>{{ bl.more.en }}</span></a>
         {% else %}
         <p class="jw-label" {% i18n bl.empty %}>{{ bl.empty.en }}</p>
         {% endif %}
@@ -312,7 +208,7 @@
     <!-- ═══ Kontakt ═══ -->
     {%- set co = h.contact %}
     <section id="contact" class="jw-wrap jw-section" aria-labelledby="jw-contact-title">
-        <p class="jw-label">05 — <span {% i18n co.label %}>{{ co.label.en }}</span></p>
+        <p class="jw-label">04 — <span {% i18n co.label %}>{{ co.label.en }}</span></p>
         <div class="jw-contact__grid">
             <div class="jw-contact__box">
                 <h2 id="jw-contact-title" {% i18n co.heading %}>{{ co.heading.en }}</h2>

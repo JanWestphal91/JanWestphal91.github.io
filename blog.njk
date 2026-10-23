@@ -26,7 +26,7 @@
 {%- set posts = collections.blog or [] %}
 <main id="main" tabindex="-1">
     <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
-        <p class="jw-label">[ Blog — {{ posts.length | pad2 }} <span {% i18n pg.count_label %}>{{ pg.count_label.en }}</span> ]</p>
+        <p class="jw-label">Blog — {{ posts.length | pad2 }} <span {% i18n pg.count_label %}>{{ pg.count_label.en }}</span></p>
         <div class="jw-page-head__row">
             <h1 id="jw-page-title" {% i18n pg.heading %}>{{ pg.heading.en }}</h1>
             <p class="jw-page-head__intro" {% i18n pg.intro %}>{{ pg.intro.en }}</p>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="jw-feature__foot">
                     <span class="jw-tags">
-                        <span data-lang-show="en">{{ latest.date | postDate("en-US") }}</span><span data-lang-show="de" hidden>{{ latest.date | postDate("de-DE") }}</span>{% if latest.data.tags %} · {{ latest.data.tags | join(", ") | replace(", ", " · ") }}{% endif %}
+                        <span data-lang-show="en">{{ latest.date | postDate("en-US") }}</span><span data-lang-show="de" hidden>{{ latest.date | postDate("de-DE") }}</span>{% if latest.data.tags %} · <span data-lang-show="en">{{ latest.data.tags | join(", ") | replace(", ", " · ") }}</span><span data-lang-show="de" hidden>{{ (latest.data.tags_de or latest.data.tags) | join(", ") | replace(", ", " · ") }}</span>{% endif %}
                     </span>
                     <span class="jw-feature__read"><span {% i18n pg.read %}>{{ pg.read.en }}</span>&nbsp;→</span>
                 </div>
@@ -80,7 +80,7 @@
                         <span class="jw-brow__desc" data-en="{{ post.data.description }}" data-de="{{ post.data.description_de or post.data.description }}">{{ post.data.description }}</span>
                         {% endif %}
                     </span>
-                    <span class="jw-brow__tags jw-tags">{% if post.data.tags %}{{ post.data.tags | join(", ") | replace(", ", " · ") }}{% endif %}</span>
+                    <span class="jw-brow__tags jw-tags">{% if post.data.tags %}<span data-lang-show="en">{{ post.data.tags | join(", ") | replace(", ", " · ") }}</span><span data-lang-show="de" hidden>{{ (post.data.tags_de or post.data.tags) | join(", ") | replace(", ", " · ") }}</span>{% endif %}</span>
                     <span class="jw-brow__arrow" aria-hidden="true">→</span>
                 </a>
             </li>

@@ -1,6 +1,7 @@
 ---
 published: true
-title: 3D-Objekte
+title: 3D objects
+title_de: 3D-Objekte
 slug: 3d-objekte
 category: '[3D]'
 order: 3
@@ -12,11 +13,9 @@ summary_card_de: 3D-Modelle zum Drehen, mit Topologie-Ansicht.
 summary: 'Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree and a bridge overgrown with vines. The topology view shows the edges as I modelled them in Blender.'
 summary_de: 'Modelle, Renderings und Szenen-Screenshots aus meiner 3D-Arbeit. Vier Modelle lassen sich direkt im Browser drehen: eine geriggte Ente, eine Spielfigur, ein Baum und eine Brücke mit Ranken. Die Ansicht „Topologie“ zeigt die Kanten so, wie ich sie in Blender modelliert habe.'
 meta:
-- 3D
 - Blender
 - Modelling
 meta_de:
-- 3D
 - Blender
 - Modellierung
 models_intro:

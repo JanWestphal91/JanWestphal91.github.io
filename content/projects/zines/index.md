@@ -12,11 +12,9 @@ summary_card_de: Drei kleine gedruckte Hefte zum Durchblättern.
 summary: 'Three small printed zines: a short story told in shadows, early verses by Franz Kafka illustrated in black and white, and a wordless boxing fight that ends with skeletons. Each one can be leafed through here as a digital flipbook. The shadow pictures for “Nachts sind die Ratten wach” were photographed from below through glass and paper, lit by a torch from above; a sketch of the setup is shown below the text for that zine.'
 summary_de: 'Drei kleine gedruckte Hefte: eine kurze Geschichte in Schatten, frühe Verse von Franz Kafka in Schwarz-Weiß illustriert und ein wortloser Boxkampf, der bei den Skeletten endet. Jedes lässt sich hier als digitales Flipbook durchblättern. Die Schattenbilder für „Nachts sind die Ratten wach“ habe ich von unten durch Glas und Papier fotografiert, beleuchtet von einer Taschenlampe von oben; eine Skizze des Aufbaus steht unter dem Text zu diesem Heft.'
 meta:
-- Illustration
 - Print
 - Zine
 meta_de:
-- Illustration
 - Druck
 - Heft
 flipbooks:
