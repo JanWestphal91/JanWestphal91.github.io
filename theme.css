@@ -4610,3 +4610,218 @@ body.theme {
 .theme .jw-socials .jw-label {
     margin-top: 0;
 }
+
+/* Bilder aus dem Build tragen ihre echten Maße (width/height) – damit der
+   Browser den Platz vorab reservieren kann. Die Höhe soll trotzdem der
+   Breite folgen, wo das CSS nur die Breite festlegt. :where() hat keine
+   Spezifität, eigene Höhen (z. B. Vorschaubilder mit object-fit) gewinnen. */
+:where(img) {
+    height: auto;
+}
+
+/* <picture> verhält sich in Rahmen und Rastern wie das Bild darin */
+:where(picture) {
+    display: contents;
+}
+
+/* ═══ Schalter „Animationen“ ═══
+   Statt „an/aus“ als Text ein Kippschalter neben dem Wort: Weinrot mit dem
+   Knopf rechts = an, leer mit dem Knopf links = aus. Für Screenreader trägt
+   der Knopf den Zustand in aria-pressed (script.js, applyMotionState). */
+.theme .jw-motion-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.jw-switch {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    width: 34px;
+    height: 20px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.jw-switch__knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--bg);
+    transform: translateX(14px);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease;
+}
+
+.jw-motion-toggle[aria-pressed="false"] .jw-switch {
+    background: transparent;
+    border-color: var(--ink);
+}
+
+.jw-motion-toggle[aria-pressed="false"] .jw-switch__knob {
+    background: var(--ink);
+    transform: none;
+}
+
+/* Zeilenlänge in Case Studys und Blogbeiträgen: rund 65 Zeichen pro Zeile.
+   1ch ist die Breite der Ziffer 0. In Bricolage ist sie breiter als ein
+   durchschnittlicher Buchstabe: 50ch ergeben gemessen etwa 65 Zeichen. */
+.theme .jw-case__text,
+.theme .jw-case__grid--wide .jw-case__text,
+.theme .jw-flow .jw-case__text {
+    max-width: 50ch;
+}
+
+/* ═══ Fächer im Kopfbereich (statt Karten-Karussell) ═══
+   Die Projekte liegen wie Spielkarten in der Hand: jede Karte um einen
+   Punkt weit unterhalb gedreht (transform-origin), dadurch fächern sie
+   sich natürlich auf. --i ist die Nummer der Karte, --n die Anzahl, --t der
+   Abstand zur Mitte (z. B. -1.5 … 1.5 bei vier Karten). Die gehobene Karte
+   (.is-active) steht gerader, höher und vorn; ihre Nachbarn rücken per
+   --s (-1 links, 1 rechts, gesetzt von script.js) etwas zur Seite.
+   Zwei Ebenen: .jw-fan__slot trägt die Position im Fächer (mit Feder-
+   Übergang), .jw-fan__card die Neigung zum Zeiger (schneller Übergang). */
+.jw-fan {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.jw-fan__label {
+    margin: 0;
+    text-align: center;
+}
+
+.jw-fan__hand {
+    --card-w: 34%;
+    position: relative;
+    aspect-ratio: 4 / 3;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    touch-action: pan-y;
+}
+
+.jw-fan__slot {
+    --t: calc(var(--i) - (var(--n) - 1) / 2);
+    --s: 0;
+    position: absolute;
+    left: calc(50% - var(--card-w) / 2);
+    bottom: 3%;
+    width: var(--card-w);
+    aspect-ratio: 5 / 7;
+    /* Stapelreihenfolge: je näher an der gehobenen Karte, desto weiter vorn
+       (script.js setzt z-index; ohne JS ist die erste Karte gehoben) */
+    z-index: calc(var(--n) - var(--i));
+    transform-origin: 50% 130%;
+    transform:
+        translateX(calc(var(--t) * 46% + var(--s) * 12%))
+        rotate(calc(var(--t) * 5deg));
+}
+
+.jw-fan__slot.is-active {
+    z-index: 20;
+    transform:
+        translateX(calc(var(--t) * 46%))
+        translateY(-8%)
+        rotate(calc(var(--t) * 2deg))
+        scale(1.05);
+}
+
+.theme .jw-fan__card {
+    --rx: 0deg;
+    --ry: 0deg;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+    transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+    -webkit-user-drag: none;
+}
+
+.jw-fan__slot.is-active .jw-fan__card {
+    box-shadow: 0 22px 36px -22px rgb(0 0 0 / 0.45);
+}
+
+.jw-fan__card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.jw-fan__shine {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--jw-gx, 50%) var(--jw-gy, 50%), rgb(255 255 255 / 0.45), rgb(255 255 255 / 0) 60%);
+    mix-blend-mode: soft-light;
+    opacity: var(--jw-shine, 0);
+    transition: opacity 0.3s ease;
+}
+
+.theme .jw-fan__card:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .jw-fan__slot {
+        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .theme .jw-fan__card {
+        transition: transform 0.25s ease-out, box-shadow 0.3s ease;
+    }
+}
+
+/* Unter dem Fächer: Titel und Kategorie der gehobenen Karte */
+.jw-fan__bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 2px 16px;
+    padding-top: 6px;
+}
+
+.theme .jw-fan__caption {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    min-height: 32px;
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.jw-fan__meta,
+.jw-fan__count {
+    font-family: var(--mono);
+    font-size: var(--fs-xs);
+    color: var(--muted);
+}
+
+.jw-fan__meta {
+    grid-column: 1;
+}
+
+.jw-fan__count {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.jw-fan__info {
+    display: none;
+}

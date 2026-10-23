@@ -101,7 +101,7 @@
                 <li><a href="/blog/" class="link-button secondary"><span>Blog</span></a></li>
                 <li><a href="/about/" class="link-button secondary"><span>Über mich</span></a></li>
                 <li><a href="#contact" class="link-button secondary"><span>Kontakt</span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Animationen</span> <span data-off="aus" data-on="an" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Animationen</span> <span class="jw-switch" aria-hidden="true"><span class="jw-switch__knob"></span></span></button></li>
                 <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/"><span>English</span></a></li>
             </ul>
         </nav>
@@ -120,36 +120,50 @@
     <!-- ═══ Hero ═══ -->
     <section class="jw-wrap jw-hero" aria-labelledby="jw-title">
         <div class="jw-hero__main">
-            <p class="jw-hero__kicker"><span>Hi! Ich bin</span> <a href="#about" class="hero-name-link">Jan Westphal</a></p>
-            <h1 id="jw-title"><span class="jw-nowrap"><span>Entwickler</span> <span class="jw-accent">&amp;</span></span><br><span>Designer</span><br><span>aus Kiel</span></h1>
+            <p class="jw-hero__kicker"><span>Hi! Ich bin</span> <a href="#about" class="hero-name-link">Jan Westphal</a><span>, Entwickler &amp; Designer.</span></p>
+            <h1 id="jw-title"><span>Hardware,</span><br><span class="jw-nowrap">Games <span class="jw-accent">&amp;</span> Grafik</span><br><span>aus Kiel</span></h1>
             <p class="jw-hero__lead">Ich entwickle Spiele, elektronische Geräte und Grafiken. Am wohlsten fühle ich mich dort, wo sich die drei überschneiden.</p>
         </div>
-        <div class="jw-hero__side">
-            <div class="jw-flip" data-flip="" aria-roledescription="carousel" aria-label="Aktuelle Projekte">
-                <p class="jw-label jw-flip__label" aria-hidden="true">Aktuelle Projekte</p>
-                <div class="jw-flip__stage" tabindex="0">
-                    <a class="jw-flip__card" href="/projects/pocket-knight/" draggable="false" data-title="Pocket Knight">
-                        <img src="/Images/projects/pocket-knight/closeshotpocketknight.webp" alt="Pocket Knight – selbstgebautes Spielgerät mit Schrittzähler" loading="eager" draggable="false" width="800" height="600">
-                    </a>
-                    <a class="jw-flip__card" href="/projects/chirping-on-trust/" draggable="false" data-title="Chirping on Trust" tabindex="-1" aria-hidden="true">
-                        <img src="/Images/projects/chirping-on-trust/webshot.webp" alt="Chirping on Trust auf dem Game Boy Advance" loading="eager" draggable="false" width="800" height="600">
-                    </a>
-                    <a class="jw-flip__card" href="/projects/audio-dingo-synth/" draggable="false" data-title="Audio Dingo Synth" tabindex="-1" aria-hidden="true">
-                        <img src="/Images/Audiodingo/audiodingostanding.webp" alt="Selbstgebauter Synthesizer Audio Dingo" loading="lazy" draggable="false" width="800" height="600">
-                    </a>
-                    <a class="jw-flip__card" href="/projects/go-pony-go-c/" draggable="false" data-title="Go Pony, Go C!" tabindex="-1" aria-hidden="true">
-                        <img src="/Images/GoPony/karussell.webp" alt="Go Pony, Go C!: das Pony galoppiert vor Bergen im Sonnenuntergang, oben Punkte, Kombo und Zeit" loading="lazy" draggable="false" width="800" height="600">
-                    </a>
-                </div>
-                <div class="jw-flip__bar">
-                    <button type="button" class="jw-flip__btn" data-flip-prev="" aria-label="Vorheriges Projekt"><span class="jw-arrow jw-arrow--l" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></button>
-                    <a class="jw-flip__caption" href="/projects/pocket-knight/"><span>Pocket Knight</span>&#160;<span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></a>
-                    <span class="jw-flip__count" aria-hidden="true">01 / 04</span>
-                    <button type="button" class="jw-flip__btn" data-flip-next="" aria-label="Nächstes Projekt"><span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></button>
+        <div class="jw-hero__side"><div class="jw-fan" data-fan="">
+                <p class="jw-label jw-fan__label" aria-hidden="true">Aktuelle Projekte</p>
+                <ul class="jw-fan__hand" style="--n: 4" aria-label="Aktuelle Projekte">
+                    <li class="jw-fan__slot is-active" style="--i: 0">
+                        <a class="jw-fan__card" href="/projects/pocket-knight/" draggable="false">
+                            <picture><source type="image/avif" srcset="/img/8kiFr6xR8V-320.avif 320w, /img/8kiFr6xR8V-640.avif 640w, /img/8kiFr6xR8V-960.avif 960w, /img/8kiFr6xR8V-1440.avif 1440w, /img/8kiFr6xR8V-1920.avif 1920w" sizes="(min-width: 1024px) 640px, 110vw"><img decoding="async" src="/img/8kiFr6xR8V-320.webp" alt="Pocket Knight – selbstgebautes Spielgerät mit Schrittzähler" loading="eager" draggable="false" width="1920" height="1080" srcset="/img/8kiFr6xR8V-320.webp 320w, /img/8kiFr6xR8V-640.webp 640w, /img/8kiFr6xR8V-960.webp 960w, /img/8kiFr6xR8V-1440.webp 1440w, /img/8kiFr6xR8V-1920.webp 1920w" sizes="(min-width: 1024px) 640px, 110vw"></picture>
+                            <span class="jw-fan__shine" aria-hidden="true"></span>
+                        </a>
+                        <span class="jw-fan__info" hidden><span class="jw-fan__title">Pocket Knight</span><span class="jw-fan__cats"><span>Elektronik</span> · <span>Spiel</span> · 2026</span></span>
+                    </li>
+                    <li class="jw-fan__slot" style="--i: 1">
+                        <a class="jw-fan__card" href="/projects/chirping-on-trust/" draggable="false">
+                            <picture><source type="image/avif" srcset="/img/eMPy4qWxB--320.avif 320w, /img/eMPy4qWxB--640.avif 640w, /img/eMPy4qWxB--960.avif 960w, /img/eMPy4qWxB--1440.avif 1440w, /img/eMPy4qWxB--1920.avif 1920w" sizes="(min-width: 1024px) 640px, 110vw"><img decoding="async" src="/img/eMPy4qWxB--320.webp" alt="Chirping on Trust auf dem Game Boy Advance" loading="eager" draggable="false" width="1920" height="1080" srcset="/img/eMPy4qWxB--320.webp 320w, /img/eMPy4qWxB--640.webp 640w, /img/eMPy4qWxB--960.webp 960w, /img/eMPy4qWxB--1440.webp 1440w, /img/eMPy4qWxB--1920.webp 1920w" sizes="(min-width: 1024px) 640px, 110vw"></picture>
+                            <span class="jw-fan__shine" aria-hidden="true"></span>
+                        </a>
+                        <span class="jw-fan__info" hidden><span class="jw-fan__title">Chirping on Trust</span><span class="jw-fan__cats"><span>Spiel</span> · 2026</span></span>
+                    </li>
+                    <li class="jw-fan__slot" style="--i: 2">
+                        <a class="jw-fan__card" href="/projects/audio-dingo-synth/" draggable="false">
+                            <picture><source type="image/avif" srcset="/img/qPy_NYcBQX-320.avif 320w, /img/qPy_NYcBQX-640.avif 640w, /img/qPy_NYcBQX-960.avif 960w, /img/qPy_NYcBQX-1440.avif 1440w, /img/qPy_NYcBQX-1920.avif 1920w" sizes="(min-width: 1024px) 640px, 110vw"><img decoding="async" src="/img/qPy_NYcBQX-320.webp" alt="Selbstgebauter Synthesizer Audio Dingo" loading="eager" draggable="false" width="1920" height="1288" srcset="/img/qPy_NYcBQX-320.webp 320w, /img/qPy_NYcBQX-640.webp 640w, /img/qPy_NYcBQX-960.webp 960w, /img/qPy_NYcBQX-1440.webp 1440w, /img/qPy_NYcBQX-1920.webp 1920w" sizes="(min-width: 1024px) 640px, 110vw"></picture>
+                            <span class="jw-fan__shine" aria-hidden="true"></span>
+                        </a>
+                        <span class="jw-fan__info" hidden><span class="jw-fan__title">Audio Dingo Synth</span><span class="jw-fan__cats"><span>Elektronik</span> · 2026</span></span>
+                    </li>
+                    <li class="jw-fan__slot" style="--i: 3">
+                        <a class="jw-fan__card" href="/projects/go-pony-go-c/" draggable="false">
+                            <picture><source type="image/avif" srcset="/img/y4LqKYEf4l-320.avif 320w, /img/y4LqKYEf4l-640.avif 640w" sizes="(min-width: 1024px) 640px, 110vw"><img decoding="async" src="/img/y4LqKYEf4l-320.webp" alt="Go Pony, Go C!: das Pony galoppiert vor Bergen im Sonnenuntergang, oben Punkte, Kombo und Zeit" loading="eager" draggable="false" width="640" height="746" srcset="/img/y4LqKYEf4l-320.webp 320w, /img/y4LqKYEf4l-640.webp 640w" sizes="(min-width: 1024px) 640px, 110vw"></picture>
+                            <span class="jw-fan__shine" aria-hidden="true"></span>
+                        </a>
+                        <span class="jw-fan__info" hidden><span class="jw-fan__title">Go Pony, Go C!</span><span class="jw-fan__cats"><span>Spiel</span> · 2026</span></span>
+                    </li>
+                </ul>
+                <div class="jw-fan__bar" aria-hidden="true">
+                    <a class="jw-fan__caption" href="/projects/pocket-knight/" tabindex="-1"><span class="jw-fan__caption-title">Pocket Knight</span>&#160;<span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></a>
+                    <span class="jw-fan__meta"><span class="jw-fan__cats"><span>Elektronik</span> · <span>Spiel</span> · 2026</span></span>
+                    <span class="jw-fan__count">01 / 04</span>
                 </div>
             </div>
             <dl class="jw-facts">
-                <div><dt>Aktuell</dt><dd>Student Medieningenieurswesen (B.Eng.), 3. Semester</dd></div>
+                <div><dt>Aktuell</dt><dd>Student Medieningenieur (B.Eng.), 3. Semester</dd></div>
             </dl>
         </div>
     </section>
@@ -166,7 +180,7 @@
         <ul class="jw-works">
             <li class="jw-work is-first-row">
                 <a class="jw-row" href="/projects/3d-objekte/">
-                    <span class="jw-row__thumb" aria-hidden="true"><img src="/Images/3D/baum-laternen.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-row__thumb" aria-hidden="true"><picture><source type="image/avif" srcset="/img/hKGv-CrXvK-320.avif 320w, /img/hKGv-CrXvK-640.avif 640w, /img/hKGv-CrXvK-960.avif 960w, /img/hKGv-CrXvK-1440.avif 1440w" sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px"><img decoding="async" src="/img/hKGv-CrXvK-320.webp" alt="" loading="lazy" width="1440" height="1077" srcset="/img/hKGv-CrXvK-320.webp 320w, /img/hKGv-CrXvK-640.webp 640w, /img/hKGv-CrXvK-960.webp 960w, /img/hKGv-CrXvK-1440.webp 1440w" sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px"></picture></span>
                     <span class="jw-num">01</span>
                     <span class="jw-row__main">
                         <span class="jw-row__title">3D-Objekte</span>
@@ -181,7 +195,7 @@
             </li>
             <li class="jw-work">
                 <a class="jw-row" href="/projects/zines/">
-                    <span class="jw-row__thumb" aria-hidden="true"><img src="/Images/NachtsRatten/nachtsrattenthumb1.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-row__thumb" aria-hidden="true"><picture><source type="image/avif" srcset="/img/zLH0juBYnR-320.avif 320w, /img/zLH0juBYnR-640.avif 640w, /img/zLH0juBYnR-960.avif 960w" sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px"><img decoding="async" src="/img/zLH0juBYnR-320.webp" alt="" loading="lazy" width="960" height="504" srcset="/img/zLH0juBYnR-320.webp 320w, /img/zLH0juBYnR-640.webp 640w, /img/zLH0juBYnR-960.webp 960w" sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px"></picture></span>
                     <span class="jw-num">02</span>
                     <span class="jw-row__main">
                         <span class="jw-row__title">Zines</span>
@@ -212,7 +226,7 @@
         <div class="jw-about__grid jw-about__grid--home">
             <figure class="jw-profile">
                 <div class="jw-profile__photo">
-                    <img src="/Images/myself.jpeg" alt="Jan Westphal – Creative Coder und Designer aus Kiel" loading="lazy" width="480" height="600">
+                    <picture><source type="image/avif" srcset="/img/QJChlrhuT4-320.avif 320w, /img/QJChlrhuT4-640.avif 640w, /img/QJChlrhuT4-960.avif 960w, /img/QJChlrhuT4-1440.avif 1440w" sizes="(min-width: 900px) 340px, 120px"><img decoding="async" src="/img/QJChlrhuT4-320.webp" alt="Jan Westphal – Creative Coder und Designer aus Kiel" loading="lazy" width="1440" height="1920" srcset="/img/QJChlrhuT4-320.webp 320w, /img/QJChlrhuT4-640.webp 640w, /img/QJChlrhuT4-960.webp 960w, /img/QJChlrhuT4-1440.webp 1440w" sizes="(min-width: 900px) 340px, 120px"></picture>
                 </div>
                 <figcaption class="jw-profile__body"><p class="jw-profile__alias">Auch bekannt als Netro – mein Graffiti- und Dev-Alias.</p></figcaption>
             </figure>
@@ -226,7 +240,7 @@
                     <dl class="jw-facts jw-facts--profile">
                         <div><dt>Offen für</dt><dd><span class="jw-dot" aria-hidden="true"></span><span>Werkstudent · Praktikum · Aufträge</span></dd></div>
                         <div><dt>Umfang</dt><dd><span>ca. 15 Std./Woche als Werkstudent</span></dd></div>
-                        <div><dt>Studium</dt><dd><span>Medieningenieurswesen, HAW Kiel</span></dd></div>
+                        <div><dt>Studium</dt><dd><span>Medieningenieur (B.Eng.), HAW Kiel</span></dd></div>
                         <div><dt>Ort</dt><dd><span>Kiel</span></dd></div>
                     </dl>
             </div>
@@ -247,7 +261,7 @@
         <ul class="jw-blist jw-blist--home">
             <li>
                 <a class="jw-brow" href="/blog/development-process-of-pocket-knight/">
-                    <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-brow__thumb" aria-hidden="true"><picture><source type="image/avif" srcset="/img/8kiFr6xR8V-320.avif 320w, /img/8kiFr6xR8V-640.avif 640w, /img/8kiFr6xR8V-960.avif 960w, /img/8kiFr6xR8V-1440.avif 1440w, /img/8kiFr6xR8V-1920.avif 1920w" sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px"><img decoding="async" src="/img/8kiFr6xR8V-320.webp" alt="" loading="lazy" width="1920" height="1080" srcset="/img/8kiFr6xR8V-320.webp 320w, /img/8kiFr6xR8V-640.webp 640w, /img/8kiFr6xR8V-960.webp 960w, /img/8kiFr6xR8V-1440.webp 1440w, /img/8kiFr6xR8V-1920.webp 1920w" sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px"></picture></span>
                     <span class="jw-brow__date jw-tags">
                         <span>20. August 2026</span>
                     </span>
@@ -260,7 +274,7 @@
             </li>
             <li>
                 <a class="jw-brow" href="/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">
-                    <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/gamejamwork.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-brow__thumb" aria-hidden="true"><picture><source type="image/avif" srcset="/img/kHFqRokrL3-320.avif 320w, /img/kHFqRokrL3-640.avif 640w, /img/kHFqRokrL3-960.avif 960w, /img/kHFqRokrL3-1440.avif 1440w, /img/kHFqRokrL3-1920.avif 1920w" sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px"><img decoding="async" src="/img/kHFqRokrL3-320.webp" alt="" loading="lazy" width="1920" height="1079" srcset="/img/kHFqRokrL3-320.webp 320w, /img/kHFqRokrL3-640.webp 640w, /img/kHFqRokrL3-960.webp 960w, /img/kHFqRokrL3-1440.webp 1440w, /img/kHFqRokrL3-1920.webp 1920w" sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px"></picture></span>
                     <span class="jw-brow__date jw-tags">
                         <span>20. August 2026</span>
                     </span>
@@ -273,7 +287,7 @@
             </li>
             <li>
                 <a class="jw-brow" href="/blog/development-process-of-a-diy-synthesizer/">
-                    <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/Audiodingo/audiodingostanding.webp" alt="" loading="lazy" width="160" height="160"></span>
+                    <span class="jw-brow__thumb" aria-hidden="true"><picture><source type="image/avif" srcset="/img/qPy_NYcBQX-320.avif 320w, /img/qPy_NYcBQX-640.avif 640w, /img/qPy_NYcBQX-960.avif 960w, /img/qPy_NYcBQX-1440.avif 1440w, /img/qPy_NYcBQX-1920.avif 1920w" sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px"><img decoding="async" src="/img/qPy_NYcBQX-320.webp" alt="" loading="lazy" width="1920" height="1288" srcset="/img/qPy_NYcBQX-320.webp 320w, /img/qPy_NYcBQX-640.webp 640w, /img/qPy_NYcBQX-960.webp 960w, /img/qPy_NYcBQX-1440.webp 1440w, /img/qPy_NYcBQX-1920.webp 1920w" sizes="(max-width: 420px) 88px, (max-width: 900px) 112px, 176px"></picture></span>
                     <span class="jw-brow__date jw-tags">
                         <span>13. Juni 2026</span>
                     </span>

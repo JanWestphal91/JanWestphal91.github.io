@@ -7,3 +7,5 @@ window.TRANSLATIONS.en["cat.3D"] = "3D";
 window.TRANSLATIONS.de["cat.3D"] = "3D";
 window.TRANSLATIONS.en["cat.Illustration"] = "Illustration";
 window.TRANSLATIONS.de["cat.Illustration"] = "Illustration";
+window.TRANSLATIONS.en["cat.Art"] = "Art";
+window.TRANSLATIONS.de["cat.Art"] = "Kunst";

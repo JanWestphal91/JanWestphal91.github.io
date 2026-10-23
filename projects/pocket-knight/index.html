@@ -69,7 +69,7 @@
                 <li><a href="/blog/" class="link-button secondary"><span>Blog</span></a></li>
                 <li><a href="/about/" class="link-button secondary"><span>Über mich</span></a></li>
                 <li><a href="/#contact" class="link-button secondary"><span>Kontakt</span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Animationen</span> <span data-off="aus" data-on="an" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Animationen</span> <span class="jw-switch" aria-hidden="true"><span class="jw-switch__knob"></span></span></button></li>
                 <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/projects/pocket-knight/"><span>English</span></a></li>
             </ul>
         </nav>
@@ -106,7 +106,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
     
     <section class="jw-wrap jw-detail-block" aria-label="Cover">
         <figure class="jw-cover">
-            <img src="/Images/projects/pocket-knight/pocketknightcloth.webp" alt="Pocket Knight: ein graues, 3D-gedrucktes Handheld mit kleinem Display, auf einem Tuch" loading="eager">
+            <picture><source type="image/avif" srcset="/img/UGavqC7AHp-320.avif 320w, /img/UGavqC7AHp-640.avif 640w, /img/UGavqC7AHp-960.avif 960w, /img/UGavqC7AHp-1440.avif 1440w, /img/UGavqC7AHp-1920.avif 1920w" sizes="(min-width: 1440px) 1376px, 100vw"><img decoding="async" src="/img/UGavqC7AHp-320.webp" alt="Pocket Knight: ein graues, 3D-gedrucktes Handheld mit kleinem Display, auf einem Tuch" loading="eager" width="1920" height="1080" srcset="/img/UGavqC7AHp-320.webp 320w, /img/UGavqC7AHp-640.webp 640w, /img/UGavqC7AHp-960.webp 960w, /img/UGavqC7AHp-1440.webp 1440w, /img/UGavqC7AHp-1920.webp 1920w" sizes="(min-width: 1440px) 1376px, 100vw"></picture>
         </figure>
     </section>
     
@@ -144,7 +144,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldbreadboard.webp">
-                    <img src="/Images/PocketKnight/handheldbreadboard.webp" alt="Breadboard-Prototyp: Das OLED-Display zeigt einen Kampfbildschirm, verkabelt mit dem ESP32, drei Tastern und dem Schrittzähler" loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/_XpzQxMeko-320.avif 320w, /img/_XpzQxMeko-640.avif 640w, /img/_XpzQxMeko-960.avif 960w, /img/_XpzQxMeko-1440.avif 1440w, /img/_XpzQxMeko-1920.avif 1920w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/_XpzQxMeko-320.webp" alt="Breadboard-Prototyp: Das OLED-Display zeigt einen Kampfbildschirm, verkabelt mit dem ESP32, drei Tastern und dem Schrittzähler" loading="lazy" width="1920" height="1080" srcset="/img/_XpzQxMeko-320.webp 320w, /img/_XpzQxMeko-640.webp 640w, /img/_XpzQxMeko-960.webp 960w, /img/_XpzQxMeko-1440.webp 1440w, /img/_XpzQxMeko-1920.webp 1920w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
                 </a>
                 <figcaption>Der erste Prototyp auf dem Breadboard</figcaption>
             </figure>
@@ -178,7 +178,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/schlaf-de.webp">
-                    <img src="/Images/PocketKnight/schlaf-de.webp" alt="Diagramm des Schlaf- und Wachzyklus: Nach 30 Sekunden ohne Eingabe speichert der ESP32 und geht in den Deep Sleep; Taste A weckt ihn, und die Differenz zum gespeicherten Zählerstand wird zu Spielschritten. Der BMA456 zählt die ganze Zeit. Eine gestrichelte Linie markiert den Interrupt des Schrittzählers als geplante zweite Weckquelle." loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/Bl-4WfwDtF-320.avif 320w, /img/Bl-4WfwDtF-640.avif 640w, /img/Bl-4WfwDtF-960.avif 960w, /img/Bl-4WfwDtF-1440.avif 1440w, /img/Bl-4WfwDtF-1920.avif 1920w" sizes="(min-width: 1440px) 1376px, 100vw"><img decoding="async" src="/img/Bl-4WfwDtF-320.webp" alt="Diagramm des Schlaf- und Wachzyklus: Nach 30 Sekunden ohne Eingabe speichert der ESP32 und geht in den Deep Sleep; Taste A weckt ihn, und die Differenz zum gespeicherten Zählerstand wird zu Spielschritten. Der BMA456 zählt die ganze Zeit. Eine gestrichelte Linie markiert den Interrupt des Schrittzählers als geplante zweite Weckquelle." loading="lazy" width="1920" height="896" srcset="/img/Bl-4WfwDtF-320.webp 320w, /img/Bl-4WfwDtF-640.webp 640w, /img/Bl-4WfwDtF-960.webp 960w, /img/Bl-4WfwDtF-1440.webp 1440w, /img/Bl-4WfwDtF-1920.webp 1920w" sizes="(min-width: 1440px) 1376px, 100vw"></picture>
                 </a>
                 <figcaption>Schlaf- und Wachzyklus der Firmware</figcaption>
             </figure>
@@ -195,7 +195,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightspriteposter.webp">
-                    <img src="/Images/projects/pocket-knight/pocketknightspriteposter.webp" alt="Poster mit allen Pixel-Sprites von Pocket Knight – Ritter, Ereignisse, Gegner und Bosse – weiß auf schwarz" loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/4lE9SWJ7Co-320.avif 320w, /img/4lE9SWJ7Co-640.avif 640w, /img/4lE9SWJ7Co-960.avif 960w, /img/4lE9SWJ7Co-1440.avif 1440w, /img/4lE9SWJ7Co-1920.avif 1920w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/4lE9SWJ7Co-320.webp" alt="Poster mit allen Pixel-Sprites von Pocket Knight – Ritter, Ereignisse, Gegner und Bosse – weiß auf schwarz" loading="lazy" width="1920" height="2560" srcset="/img/4lE9SWJ7Co-320.webp 320w, /img/4lE9SWJ7Co-640.webp 640w, /img/4lE9SWJ7Co-960.webp 960w, /img/4lE9SWJ7Co-1440.webp 1440w, /img/4lE9SWJ7Co-1920.webp 1920w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
                 </a>
                 <figcaption>Alle Sprites des Spiels</figcaption>
             </figure>
@@ -217,7 +217,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldactive.webp">
-                    <img src="/Images/PocketKnight/handheldactive.webp" alt="Die gelötete Lochrasterplatine, das OLED-Display zeigt einen Kampf zwischen dem Ritter und zwei Gegnern" loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/yRr5AZt-tP-320.avif 320w, /img/yRr5AZt-tP-640.avif 640w, /img/yRr5AZt-tP-960.avif 960w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/yRr5AZt-tP-320.webp" alt="Die gelötete Lochrasterplatine, das OLED-Display zeigt einen Kampf zwischen dem Ritter und zwei Gegnern" loading="lazy" width="960" height="1706" srcset="/img/yRr5AZt-tP-320.webp 320w, /img/yRr5AZt-tP-640.webp 640w, /img/yRr5AZt-tP-960.webp 960w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
                 </a>
                 <figcaption>Auf Lochraster gelötet, das Spiel läuft schon</figcaption>
             </figure>
@@ -246,7 +246,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/enclosure-fusion360.webp">
-                    <img src="/Images/PocketKnight/enclosure-fusion360.webp" alt="Das Pocket-Knight-Gehäuse und die Schlüsselanhänger-Münze mit Lilien-Emblem in Fusion 360" loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/7tne5ovP05-320.avif 320w, /img/7tne5ovP05-640.avif 640w, /img/7tne5ovP05-960.avif 960w, /img/7tne5ovP05-1440.avif 1440w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/7tne5ovP05-320.webp" alt="Das Pocket-Knight-Gehäuse und die Schlüsselanhänger-Münze mit Lilien-Emblem in Fusion 360" loading="lazy" width="1440" height="754" srcset="/img/7tne5ovP05-320.webp 320w, /img/7tne5ovP05-640.webp 640w, /img/7tne5ovP05-960.webp 960w, /img/7tne5ovP05-1440.webp 1440w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
                 </a>
                 <figcaption>Gehäuse und Anhänger-Münze in Fusion 360</figcaption>
             </figure>
@@ -263,7 +263,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/size-comparison.webp">
-                    <img src="/Images/PocketKnight/size-comparison.webp" alt="Die gelötete Elektronik mit OLED-Display neben einer Banane als Größenvergleich" loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/iKFzNtO_rD-320.avif 320w, /img/iKFzNtO_rD-640.avif 640w, /img/iKFzNtO_rD-960.avif 960w, /img/iKFzNtO_rD-1440.avif 1440w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/iKFzNtO_rD-320.webp" alt="Die gelötete Elektronik mit OLED-Display neben einer Banane als Größenvergleich" loading="lazy" width="1440" height="810" srcset="/img/iKFzNtO_rD-320.webp 320w, /img/iKFzNtO_rD-640.webp 640w, /img/iKFzNtO_rD-960.webp 960w, /img/iKFzNtO_rD-1440.webp 1440w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
                 </a>
                 <figcaption>Banane zum Größenvergleich</figcaption>
             </figure>
@@ -290,7 +290,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
         <h2 id="jw-media-title" class="jw-label jw-rule">11 — <span>Medien</span></h2>
         <div class="jw-video" data-yt="YMT1BVRyX4g">
-            <button type="button" class="jw-video__play" aria-label="Video abspielen"><img src="/Images/projects/pocket-knight/closeshotpocketknight.webp" alt="" loading="lazy">
+            <button type="button" class="jw-video__play" aria-label="Video abspielen"><picture><source type="image/avif" srcset="/img/8kiFr6xR8V-320.avif 320w, /img/8kiFr6xR8V-640.avif 640w, /img/8kiFr6xR8V-960.avif 960w, /img/8kiFr6xR8V-1440.avif 1440w, /img/8kiFr6xR8V-1920.avif 1920w" sizes="(min-width: 1440px) 1376px, 100vw"><img decoding="async" src="/img/8kiFr6xR8V-320.webp" alt="" loading="lazy" width="1920" height="1080" srcset="/img/8kiFr6xR8V-320.webp 320w, /img/8kiFr6xR8V-640.webp 640w, /img/8kiFr6xR8V-960.webp 960w, /img/8kiFr6xR8V-1440.webp 1440w, /img/8kiFr6xR8V-1920.webp 1920w" sizes="(min-width: 1440px) 1376px, 100vw"></picture>
                 <span class="jw-video__badge"><span class="jw-video__icon" aria-hidden="true"></span><span>Video abspielen</span></span>
             </button>
             <p class="jw-video__note">Das Video wird erst nach dem Klick von YouTube geladen.</p>
@@ -309,7 +309,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightposter3.webp"><img src="/Images/projects/pocket-knight/pocketknightposter3.webp" alt="Pocket-Knight-Poster: Ritter in einem klassischen Gemälde greifen nach dem Gerät, das wie ein heiliger Gral über ihnen schwebt" loading="lazy"></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightposter3.webp"><picture><source type="image/avif" srcset="/img/2l7Gp3yrSm-320.avif 320w, /img/2l7Gp3yrSm-640.avif 640w, /img/2l7Gp3yrSm-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/2l7Gp3yrSm-320.webp" alt="Pocket-Knight-Poster: Ritter in einem klassischen Gemälde greifen nach dem Gerät, das wie ein heiliger Gral über ihnen schwebt" loading="lazy" width="960" height="1332" srcset="/img/2l7Gp3yrSm-320.webp 320w, /img/2l7Gp3yrSm-640.webp 640w, /img/2l7Gp3yrSm-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
                 <figcaption><span class="jw-fig">Fig. 01</span> <span>Pocket Knight - Der heilige Gral</span></figcaption>
             </figure>

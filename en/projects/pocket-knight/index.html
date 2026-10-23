@@ -69,7 +69,7 @@
                 <li><a href="/en/blog/" class="link-button secondary"><span>Blog</span></a></li>
                 <li><a href="/en/about/" class="link-button secondary"><span>About</span></a></li>
                 <li><a href="/en/#contact" class="link-button secondary"><span>Contact</span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Motion</span> <span data-off="off" data-on="on" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Motion</span> <span class="jw-switch" aria-hidden="true"><span class="jw-switch__knob"></span></span></button></li>
                 <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/projects/pocket-knight/"><span>Deutsch</span></a></li>
             </ul>
         </nav>
@@ -106,7 +106,7 @@ I’m writing a bit more in depth about the development process in this <a href=
     
     <section class="jw-wrap jw-detail-block" aria-label="Cover">
         <figure class="jw-cover">
-            <img src="/Images/projects/pocket-knight/pocketknightcloth.webp" alt="Pocket Knight: a grey 3D-printed handheld with a small screen, lying on a cloth" loading="eager">
+            <picture><source type="image/avif" srcset="/img/UGavqC7AHp-320.avif 320w, /img/UGavqC7AHp-640.avif 640w, /img/UGavqC7AHp-960.avif 960w, /img/UGavqC7AHp-1440.avif 1440w, /img/UGavqC7AHp-1920.avif 1920w" sizes="(min-width: 1440px) 1376px, 100vw"><img decoding="async" src="/img/UGavqC7AHp-320.webp" alt="Pocket Knight: a grey 3D-printed handheld with a small screen, lying on a cloth" loading="eager" width="1920" height="1080" srcset="/img/UGavqC7AHp-320.webp 320w, /img/UGavqC7AHp-640.webp 640w, /img/UGavqC7AHp-960.webp 960w, /img/UGavqC7AHp-1440.webp 1440w, /img/UGavqC7AHp-1920.webp 1920w" sizes="(min-width: 1440px) 1376px, 100vw"></picture>
         </figure>
     </section>
     
@@ -144,7 +144,7 @@ I’m writing a bit more in depth about the development process in this <a href=
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldbreadboard.webp">
-                    <img src="/Images/PocketKnight/handheldbreadboard.webp" alt="Breadboard prototype: the OLED display shows a battle screen, wired to the ESP32, three buttons and the pedometer" loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/_XpzQxMeko-320.avif 320w, /img/_XpzQxMeko-640.avif 640w, /img/_XpzQxMeko-960.avif 960w, /img/_XpzQxMeko-1440.avif 1440w, /img/_XpzQxMeko-1920.avif 1920w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/_XpzQxMeko-320.webp" alt="Breadboard prototype: the OLED display shows a battle screen, wired to the ESP32, three buttons and the pedometer" loading="lazy" width="1920" height="1080" srcset="/img/_XpzQxMeko-320.webp 320w, /img/_XpzQxMeko-640.webp 640w, /img/_XpzQxMeko-960.webp 960w, /img/_XpzQxMeko-1440.webp 1440w, /img/_XpzQxMeko-1920.webp 1920w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
                 </a>
                 <figcaption>The first prototype on the breadboard</figcaption>
             </figure>
@@ -177,7 +177,7 @@ I’m writing a bit more in depth about the development process in this <a href=
                 
             </div>
             <figure class="jw-case__figure"><a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/schlaf-en.webp">
-                    <img src="/Images/PocketKnight/schlaf-en.webp" alt="Diagram of the sleep and wake cycle: after 30 seconds without input the ESP32 saves and goes into deep sleep; button A wakes it, and the difference to the saved counter becomes game steps. The BMA456 counts steps the whole time. A dashed line marks the step counter interrupt as a planned second wake source." loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/AmSclq-mYU-320.avif 320w, /img/AmSclq-mYU-640.avif 640w, /img/AmSclq-mYU-960.avif 960w, /img/AmSclq-mYU-1440.avif 1440w, /img/AmSclq-mYU-1920.avif 1920w" sizes="(min-width: 1440px) 1376px, 100vw"><img decoding="async" src="/img/AmSclq-mYU-320.webp" alt="Diagram of the sleep and wake cycle: after 30 seconds without input the ESP32 saves and goes into deep sleep; button A wakes it, and the difference to the saved counter becomes game steps. The BMA456 counts steps the whole time. A dashed line marks the step counter interrupt as a planned second wake source." loading="lazy" width="1920" height="896" srcset="/img/AmSclq-mYU-320.webp 320w, /img/AmSclq-mYU-640.webp 640w, /img/AmSclq-mYU-960.webp 960w, /img/AmSclq-mYU-1440.webp 1440w, /img/AmSclq-mYU-1920.webp 1920w" sizes="(min-width: 1440px) 1376px, 100vw"></picture>
                 </a>
                 
                 <figcaption>Sleep and wake cycle of the firmware</figcaption>
@@ -195,7 +195,7 @@ I’m writing a bit more in depth about the development process in this <a href=
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightspriteposter.webp">
-                    <img src="/Images/projects/pocket-knight/pocketknightspriteposter.webp" alt="Poster of all Pocket Knight pixel sprites – the knight, events, enemies and bosses – drawn white on black" loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/4lE9SWJ7Co-320.avif 320w, /img/4lE9SWJ7Co-640.avif 640w, /img/4lE9SWJ7Co-960.avif 960w, /img/4lE9SWJ7Co-1440.avif 1440w, /img/4lE9SWJ7Co-1920.avif 1920w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/4lE9SWJ7Co-320.webp" alt="Poster of all Pocket Knight pixel sprites – the knight, events, enemies and bosses – drawn white on black" loading="lazy" width="1920" height="2560" srcset="/img/4lE9SWJ7Co-320.webp 320w, /img/4lE9SWJ7Co-640.webp 640w, /img/4lE9SWJ7Co-960.webp 960w, /img/4lE9SWJ7Co-1440.webp 1440w, /img/4lE9SWJ7Co-1920.webp 1920w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
                 </a>
                 <figcaption>All sprites of the game</figcaption>
             </figure>
@@ -217,7 +217,7 @@ I’m writing a bit more in depth about the development process in this <a href=
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldactive.webp">
-                    <img src="/Images/PocketKnight/handheldactive.webp" alt="The soldered perfboard with the OLED display showing a battle between the knight and two enemies" loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/yRr5AZt-tP-320.avif 320w, /img/yRr5AZt-tP-640.avif 640w, /img/yRr5AZt-tP-960.avif 960w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/yRr5AZt-tP-320.webp" alt="The soldered perfboard with the OLED display showing a battle between the knight and two enemies" loading="lazy" width="960" height="1706" srcset="/img/yRr5AZt-tP-320.webp 320w, /img/yRr5AZt-tP-640.webp 640w, /img/yRr5AZt-tP-960.webp 960w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
                 </a>
                 <figcaption>Soldered onto perfboard, the game already running</figcaption>
             </figure>
@@ -246,7 +246,7 @@ I’m writing a bit more in depth about the development process in this <a href=
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/enclosure-fusion360.webp">
-                    <img src="/Images/PocketKnight/enclosure-fusion360.webp" alt="The Pocket Knight enclosure and the key-ring coin with fleur-de-lis emblem in Fusion 360" loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/7tne5ovP05-320.avif 320w, /img/7tne5ovP05-640.avif 640w, /img/7tne5ovP05-960.avif 960w, /img/7tne5ovP05-1440.avif 1440w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/7tne5ovP05-320.webp" alt="The Pocket Knight enclosure and the key-ring coin with fleur-de-lis emblem in Fusion 360" loading="lazy" width="1440" height="754" srcset="/img/7tne5ovP05-320.webp 320w, /img/7tne5ovP05-640.webp 640w, /img/7tne5ovP05-960.webp 960w, /img/7tne5ovP05-1440.webp 1440w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
                 </a>
                 <figcaption>Enclosure and key-ring coin in Fusion 360</figcaption>
             </figure>
@@ -263,7 +263,7 @@ I’m writing a bit more in depth about the development process in this <a href=
             </div>
             <figure class="jw-case__figure">
                 <a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/size-comparison.webp">
-                    <img src="/Images/PocketKnight/size-comparison.webp" alt="The soldered electronics with the OLED display lying next to a banana for scale" loading="lazy">
+                    <picture><source type="image/avif" srcset="/img/iKFzNtO_rD-320.avif 320w, /img/iKFzNtO_rD-640.avif 640w, /img/iKFzNtO_rD-960.avif 960w, /img/iKFzNtO_rD-1440.avif 1440w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/iKFzNtO_rD-320.webp" alt="The soldered electronics with the OLED display lying next to a banana for scale" loading="lazy" width="1440" height="810" srcset="/img/iKFzNtO_rD-320.webp 320w, /img/iKFzNtO_rD-640.webp 640w, /img/iKFzNtO_rD-960.webp 960w, /img/iKFzNtO_rD-1440.webp 1440w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
                 </a>
                 <figcaption>Banana for scale</figcaption>
             </figure>
@@ -290,7 +290,7 @@ I’m writing a bit more in depth about the development process in this <a href=
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
         <h2 id="jw-media-title" class="jw-label jw-rule">11 — <span>Media</span></h2>
         <div class="jw-video" data-yt="YMT1BVRyX4g">
-            <button type="button" class="jw-video__play" aria-label="Play video"><img src="/Images/projects/pocket-knight/closeshotpocketknight.webp" alt="" loading="lazy">
+            <button type="button" class="jw-video__play" aria-label="Play video"><picture><source type="image/avif" srcset="/img/8kiFr6xR8V-320.avif 320w, /img/8kiFr6xR8V-640.avif 640w, /img/8kiFr6xR8V-960.avif 960w, /img/8kiFr6xR8V-1440.avif 1440w, /img/8kiFr6xR8V-1920.avif 1920w" sizes="(min-width: 1440px) 1376px, 100vw"><img decoding="async" src="/img/8kiFr6xR8V-320.webp" alt="" loading="lazy" width="1920" height="1080" srcset="/img/8kiFr6xR8V-320.webp 320w, /img/8kiFr6xR8V-640.webp 640w, /img/8kiFr6xR8V-960.webp 960w, /img/8kiFr6xR8V-1440.webp 1440w, /img/8kiFr6xR8V-1920.webp 1920w" sizes="(min-width: 1440px) 1376px, 100vw"></picture>
                 <span class="jw-video__badge"><span class="jw-video__icon" aria-hidden="true"></span><span>Play video</span></span>
             </button>
             <p class="jw-video__note">The video only loads from YouTube after you click.</p>
@@ -309,7 +309,7 @@ I’m writing a bit more in depth about the development process in this <a href=
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightposter3.webp"><img src="/Images/projects/pocket-knight/pocketknightposter3.webp" alt="Pocket Knight poster: knights in a classical painting reach for the device, which floats above them like a holy grail" loading="lazy"></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightposter3.webp"><picture><source type="image/avif" srcset="/img/2l7Gp3yrSm-320.avif 320w, /img/2l7Gp3yrSm-640.avif 640w, /img/2l7Gp3yrSm-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/2l7Gp3yrSm-320.webp" alt="Pocket Knight poster: knights in a classical painting reach for the device, which floats above them like a holy grail" loading="lazy" width="960" height="1332" srcset="/img/2l7Gp3yrSm-320.webp 320w, /img/2l7Gp3yrSm-640.webp 640w, /img/2l7Gp3yrSm-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
                 <figcaption><span class="jw-fig">Fig. 01</span> <span>Pocket Knight - a holy grail</span></figcaption>
             </figure>
