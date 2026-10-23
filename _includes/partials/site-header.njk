@@ -34,7 +34,9 @@
 {#- Zurück-Knopf auf allen Seiten außer der Startseite: Projekt → Projekte,
     Beitrag → Blog, sonst → Startseite. Der Name im Header führt auch zur
     Startseite, ist als Link aber nicht für alle erkennbar. -#}
-{%- if not onHome %}
+{#- Ausnahme: die Blog-Übersicht startet direkt mit dem neuesten Beitrag,
+    damit dessen Karte im ersten Bildschirm ganz zu sehen ist. -#}
+{%- if not onHome and active != "blog" %}
 {%- if active == "project" %}{% set backUrl = "/projects/" %}{% set backText = global.ui.back_projects %}
 {%- elif active == "post" %}{% set backUrl = "/blog/" %}{% set backText = global.ui.back_blog %}
 {%- else %}{% set backUrl = "/" %}{% set backText = global.ui.back_home %}{% endif %}

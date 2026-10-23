@@ -12,22 +12,6 @@ tags:
   - Devlog, Electronic
 tags_de:
   - Devlog, Elektronik
-images:
-  - src: /Images/Audiodingo/DingoFirstBreadboard.webp
-    alt: "First breadboard prototype: Arduino, OLED display, joystick and rotary encoders connected with many jumper wires"
-    alt_de: "Erster Breadboard-Prototyp: Arduino, OLED-Display, Joystick und Drehencoder, verbunden mit vielen Steckkabeln"
-    caption: Breadboard circuit prototyping
-    caption_de: Prototyping der Breadboard-Schaltung
-  - src: /Images/Audiodingo/DingofirstCase.webp
-    alt: "First 3D-printed case in black, with cut-outs for keys, knobs and the display"
-    alt_de: "Erstes 3D-gedrucktes Gehäuse in Schwarz mit Aussparungen für Tasten, Drehknöpfe und Display"
-    caption: First printed case
-    caption_de: Erstes gedrucktes Gehäuse
-  - src: /Images/Audiodingo/DingoinFusion.webp
-    alt: "Screenshot of the case design in Fusion 360"
-    alt_de: "Screenshot des Gehäuseentwurfs in Fusion 360"
-    caption: Case design in Fusion
-    caption_de: Gehäuseentwurf in Fusion
 body_de: |-
   Hallo! Das hier ist der erste Eintrag im Blog. :)
 
@@ -39,7 +23,13 @@ body_de: |-
 
   Nachdem ich alle Anforderungen ermittelt hatte, habe ich eine Testschaltung auf Wokwi.com simuliert. Im nächsten Schritt musste ich erst einmal herausfinden, welche Komponenten ich nutzen kann und welche miteinander kompatibel sind. Nach einer aufwendigen Recherche in diversen Onlineshops und nachdem schließlich alle Teile angekommen waren, ging es los mit dem Zusammenstecken.
 
+  ![Erster Breadboard-Prototyp: Arduino, OLED-Display, Joystick und Drehencoder, verbunden mit vielen Steckkabeln](/Images/Audiodingo/DingoFirstBreadboard.webp "Prototyping der Breadboard-Schaltung")
+
   Sobald ich dann einen groben Überblick über meine Schaltung hatte und den ersten grundlegenden Code geschrieben hatte, habe ich angefangen, das Gehäuse in Fusion zu designen. Beim ersten Druck habe ich lediglich den Grundkörper des Gehäuses in Schwarz gedruckt und alle Teile eingebaut, um einen ersten Eindruck vom Gerät zu bekommen.
+
+  ![Screenshot des Gehäuseentwurfs in Fusion 360](/Images/Audiodingo/DingoinFusion.webp "Gehäuseentwurf in Fusion")
+
+  ![Erstes 3D-gedrucktes Gehäuse in Schwarz mit Aussparungen für Tasten, Drehknöpfe und Display](/Images/Audiodingo/DingofirstCase.webp "Erstes gedrucktes Gehäuse")
 
   Danach ging es mit den Optimierungen weiter: Ich habe angefangen, die Komponenten zu verlöten und den Code zu überarbeiten. Zur Klangerzeugung habe ich die Mozzi-Bibliothek genutzt, und auch das Gehäuse wurde noch einmal angepasst.
 
@@ -60,7 +50,13 @@ For the playing interface, I chose 7 note keys, since a standard scale consists 
 
 After defining the requirements, I created and tested an initial circuit simulation on Wokwi. The next step was to determine which components would be suitable for the project and which ones would work together reliably. This involved a fair amount of research, comparing parts, checking compatibility, and sourcing everything from different online shops. Once all the components had arrived, I could finally begin assembling the first hardware prototype.
 
+![First breadboard prototype: Arduino, OLED display, joystick and rotary encoders connected with many jumper wires](/Images/Audiodingo/DingoFirstBreadboard.webp "Breadboard circuit prototyping")
+
 As soon as I had a rough understanding of the circuit layout and had written the first basic version of the code, I moved on to designing the enclosure in Fusion. For the first 3D print, I only produced the main body of the case in black and installed all the components to get a first impression of the overall form and layout of the device.
+
+![Screenshot of the case design in Fusion 360](/Images/Audiodingo/DingoinFusion.webp "Case design in Fusion")
+
+![First 3D-printed case in black, with cut-outs for keys, knobs and the display](/Images/Audiodingo/DingofirstCase.webp "First printed case")
 
 From there, the project moved into the next iteration phase. I began soldering the components, refining the code, and improving the sound generation. For audio synthesis, I used the Mozzi library, which proved to be a very useful tool for this type of Arduino-based project. At the same time, the enclosure design was revised as well.
 

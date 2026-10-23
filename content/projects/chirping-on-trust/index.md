@@ -134,12 +134,12 @@ case:
       de: Was ich gelernt habe und anders machen würde
     body:
       en: |-
-        - **Clarify hardware limits before drawing:** the Game Boy Advance only accepts sprites in fixed sizes (16 × 16, 32 × 32, 64 × 64 px …). Knowing that before the first sketch saves redrawing.
+        - **Test more, earlier:** run real playtests much sooner. In such a short time frame that is often hard to fit in, but an earlier test round would have given us more room to find and fix problems.
         - **Settle on an idea early:** the first evening went by without a game design. Once we had a fixed starting point on Saturday, the work moved fast. At the next jam I would commit to a simple idea on Friday and adjust it later.
-        - **Feedback for interactions:** next time I would put more time into how the game reacts to input – sounds, small animations, visible hits – so every action feels clear.
+        - **Feedback for interactions:** next time I would spend more time on how the game reacts to input – more feedback through sounds, small animations and hints, so every action is clear and easy for the player to follow.
       de: |-
-        - **Hardware-Grenzen vor dem Zeichnen klären:** Der Game Boy Advance nimmt Sprites nur in festen Größen an (16 × 16, 32 × 32, 64 × 64 px …). Wer das vor der ersten Skizze weiß, muss nichts neu zeichnen.
+        - **Mehr testen:** Viel früher echte Playtests durchführen. Im kurzen Zeitrahmen ist das oft nicht einfach möglich, aber eine frühere Testrunde hätte uns mehr Handlungsspielraum bei der Fehlersuche gegeben.
         - **Früh auf eine Idee festlegen:** Der erste Abend verging ohne Spieldesign. Sobald wir am Samstag einen festen Ausgangspunkt hatten, ging die Arbeit schnell voran. Beim nächsten Jam würde ich mich am Freitag auf eine einfache Idee festlegen und sie später anpassen.
-        - **Feedback bei Interaktionen:** Beim nächsten Mal würde ich mehr Zeit darauf verwenden, wie das Spiel auf Eingaben reagiert – Töne, kleine Animationen, sichtbare Treffer –, damit jede Aktion eindeutig wirkt.
+        - **Feedback bei Interaktionen:** Beim nächsten Mal würde ich mehr Zeit darauf verwenden, wie das Spiel auf Eingaben reagiert: mehr Feedback durch Töne, kleine Animationen und Hinweise, damit jede Aktion eindeutig wirkt und für Spielerinnen und Spieler nachvollziehbar ist.
 date: 2026-08-15
 ---

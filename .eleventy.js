@@ -374,23 +374,24 @@ module.exports = function(eleventyConfig) {
         return (projects || []).filter(function(p) { return skip.indexOf(p.data.slug) === -1; });
     });
 
-    // ── Blogbeiträge im Aufbau der Case Studys ──
-    // Der Fließtext wird in Zeilen zerlegt: Text links, die Bilder, die direkt
-    // danach im Markdown stehen, rechts daneben (wie Text und Bild in einem
-    // Case-Study-Abschnitt). Große Bilder ("|gross") und Videos stehen unter
-    // ihrem Text über die ganze Breite. Am Markdown ändert sich nichts.
+    // ── Blogbeiträge: Text mit Bildern am Rand ──
+    // Der Text läuft in einer gut lesbaren Spalte (rund 65 Zeichen). Bilder,
+    // die im Markdown nach einem Absatz stehen, rücken in die rechte Spalte
+    // neben genau diesen Absatz (sie werden im HTML vor ihn gesetzt und
+    // floaten rechts); mehrere Bilder stapeln sich dort. Der Text läuft
+    // unabhängig davon weiter, es entstehen keine Lücken. Große Bilder
+    // ("|gross") und Videos stehen über die ganze Breite. Am Markdown ändert
+    // sich nichts.
     eleventyConfig.addFilter("postFlow", function(html) {
         const { parseHTML } = require("linkedom");
         const { document } = parseHTML("<!doctype html><html><body><div id='flow'>" + String(html || "") + "</div></body></html>");
         const root = document.getElementById("flow");
-        const rows = [];
-        let cur = null;
-        const fresh = function () { cur = { text: [], figs: [], wide: false }; rows.push(cur); };
-        fresh();
+        const out = [];          // { html, text: bool }
+        let lastText = -1;       // Index des letzten Textblocks in out
 
         Array.from(root.childNodes).forEach(function (node) {
             if (node.nodeType === 3) {
-                if (node.textContent.trim()) { if (cur.figs.length) fresh(); cur.text.push(node.textContent); }
+                if (node.textContent.trim()) { out.push({ html: node.textContent, text: true }); lastText = out.length - 1; }
                 return;
             }
             if (node.nodeType !== 1) return;
@@ -398,28 +399,22 @@ module.exports = function(eleventyConfig) {
             const isImage = node.tagName === "FIGURE" && /\bpost-figure\b/.test(cls);
             const isEmbed = (node.tagName === "FIGURE" && /\bpost-embed\b/.test(cls)) || node.tagName === "IFRAME";
             if (isImage && !/post-figure--gross/.test(cls)) {
-                if (cur.wide) fresh();
-                node.setAttribute("class", cls + " jw-case__figure");
-                cur.figs.push(node.outerHTML);
+                node.setAttribute("class", cls + " jw-article__aside");
+                const item = { html: node.outerHTML, text: false };
+                // neben den vorigen Absatz setzen
+                if (lastText >= 0) { out.splice(lastText, 0, item); lastText++; }
+                else out.push(item);
             } else if (isImage || isEmbed) {
-                if (cur.figs.length && !cur.wide) fresh();
-                cur.wide = true;
-                if (isImage) node.setAttribute("class", cls + " jw-case__figure");
-                cur.figs.push(node.outerHTML);
+                node.setAttribute("class", cls + " jw-article__wide");
+                out.push({ html: node.outerHTML, text: false });
+                lastText = -1;   // nichts über ein breites Element hinweg nach oben ziehen
             } else {
-                // Überschriften beginnen eine neue Zeile
-                if (cur.figs.length || (/^H[23]$/.test(node.tagName) && cur.text.length)) fresh();
-                cur.text.push(node.outerHTML);
+                out.push({ html: node.outerHTML, text: true });
+                lastText = out.length - 1;
             }
         });
 
-        return rows.filter(function (r) { return r.text.length || r.figs.length; }).map(function (r) {
-            const kind = !r.figs.length ? " jw-case__grid--text" : (r.wide || !r.text.length ? " jw-case__grid--wide" : "");
-            return '<div class="jw-case__grid jw-flow__row' + kind + '">'
-                + (r.text.length ? '<div class="jw-prose jw-case__text post-body">' + r.text.join("\n") + '</div>' : '')
-                + (r.figs.length ? '<div class="jw-flow__media">' + r.figs.join("\n") + '</div>' : '')
-                + '</div>';
-        }).join("\n");
+        return '<div class="jw-prose post-body jw-article">' + out.map(function (o) { return o.html; }).join("\n") + '</div>';
     });
 
     // Lesezeit in Minuten (rund 200 Wörter pro Minute, mindestens 1)
