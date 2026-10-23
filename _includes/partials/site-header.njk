@@ -31,6 +31,17 @@
         </nav>
     </div>
 </header>
+{#- Zurück-Knopf auf allen Seiten außer der Startseite: Projekt → Projekte,
+    Beitrag → Blog, sonst → Startseite. Der Name im Header führt auch zur
+    Startseite, ist als Link aber nicht für alle erkennbar. -#}
+{%- if not onHome %}
+{%- if active == "project" %}{% set backUrl = "/projects/" %}{% set backText = global.ui.back_projects %}
+{%- elif active == "post" %}{% set backUrl = "/blog/" %}{% set backText = global.ui.back_blog %}
+{%- else %}{% set backUrl = "/" %}{% set backText = global.ui.back_home %}{% endif %}
+<nav class="jw-wrap jw-back" {% i18n global.ui.back_label, "aria" %} aria-label="{{ global.ui.back_label.en }}">
+    <a class="jw-back__link" href="{{ backUrl }}"><span aria-hidden="true">←</span>&nbsp;<span {% i18n backText %}>{{ backText.en }}</span></a>
+</nav>
+{%- endif %}
 {#- Laufband steht unter dem Header und scrollt mit der Seite weg;
     die Navigation bleibt oben stehen. #}
 {%- if ticker %}

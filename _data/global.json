@@ -179,6 +179,22 @@
     "video_note": {
       "de": "Das Video wird erst nach dem Klick von YouTube geladen.",
       "en": "The video only loads from YouTube after you click."
+    },
+    "back_home": {
+      "de": "Startseite",
+      "en": "Home"
+    },
+    "back_projects": {
+      "de": "Alle Projekte",
+      "en": "All projects"
+    },
+    "back_blog": {
+      "de": "Alle Beiträge",
+      "en": "All posts"
+    },
+    "back_label": {
+      "de": "Zurück",
+      "en": "Back"
     }
   },
   "categories": [

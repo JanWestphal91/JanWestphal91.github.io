@@ -1,5 +1,44 @@
 {#- Profil: Foto, Verfügbarkeit und Text aus _data/home.json → about.
-    Vor dem Include setzen: ab = home.about, paraLimit = Anzahl Absätze (0 = alle). -#}
+    Vor dem Include setzen: ab = home.about, paraLimit = Anzahl Absätze (0 = alle).
+    Mit paraLimit (Startseite) steht alles kompakt in drei Spalten:
+    Foto | Text mit Link zur Über-mich-Seite | Verfügbarkeit. -#}
+{%- set facts %}
+{%- if ab.availability and ab.availability.length %}
+                    <dl class="jw-facts jw-facts--profile">
+                        {%- for row in ab.availability %}
+                        <div><dt {% i18n row.label %}>{{ row.label.en }}</dt><dd>{% if row.highlight %}<span class="jw-dot" aria-hidden="true"></span>{% endif %}<span {% i18n row.value %}>{{ row.value.en }}</span></dd></div>
+                        {%- endfor %}
+                    </dl>
+{%- endif %}
+{%- endset %}
+{%- if paraLimit %}
+        <div class="jw-about__grid jw-about__grid--home">
+            <figure class="jw-profile">
+                {%- if ab.photo %}
+                <div class="jw-profile__photo">
+                    <img src="{{ ab.photo | imgPath }}" alt="{{ ab.photo_alt.en }}" {% i18n ab.photo_alt, "alt" %} loading="lazy" width="480" height="600">
+                </div>
+                {%- endif %}
+                {%- if ab.alias %}
+                <figcaption class="jw-profile__body"><p class="jw-profile__alias" {% i18n ab.alias %}>{{ ab.alias.en }}</p></figcaption>
+                {%- endif %}
+            </figure>
+            <div class="jw-about__text">
+                {%- for para in ab.paragraphs %}
+                {%- if loop.index <= paraLimit %}
+                <p {% i18n para %}>{{ para.en }}</p>
+                {%- endif %}
+                {%- endfor %}
+                <a href="/about/" class="jw-more"><span {% i18n ab.more %}>{{ ab.more.en }}</span></a>
+            </div>
+            <div class="jw-about__facts">
+                {{ facts | safe }}
+                {%- if ab.cv_file %}
+                <a class="jw-button jw-button--outline" href="{{ ab.cv_file | imgPath }}" download><span {% i18n ab.cv_label %}>{{ ab.cv_label.en }}</span>&nbsp;↓</a>
+                {%- endif %}
+            </div>
+        </div>
+{%- else %}
         <div class="jw-about__grid">
             <figure class="jw-profile">
                 {%- if ab.photo %}
@@ -11,13 +50,7 @@
                     {%- if ab.alias %}
                     <p class="jw-profile__alias" {% i18n ab.alias %}>{{ ab.alias.en }}</p>
                     {%- endif %}
-                    {%- if ab.availability and ab.availability.length %}
-                    <dl class="jw-facts jw-facts--profile">
-                        {%- for row in ab.availability %}
-                        <div><dt {% i18n row.label %}>{{ row.label.en }}</dt><dd>{% if row.highlight %}<span class="jw-dot" aria-hidden="true"></span>{% endif %}<span {% i18n row.value %}>{{ row.value.en }}</span></dd></div>
-                        {%- endfor %}
-                    </dl>
-                    {%- endif %}
+                    {{ facts | safe }}
                     {%- if ab.cv_file %}
                     <a class="jw-button jw-button--outline" href="{{ ab.cv_file | imgPath }}" download><span {% i18n ab.cv_label %}>{{ ab.cv_label.en }}</span>&nbsp;↓</a>
                     {%- endif %}
@@ -28,10 +61,9 @@
                 {#- Alle Absätze gleich groß, auf dem Desktop in zwei Spalten. -#}
                 <div class="jw-about__more">
                 {%- for para in ab.paragraphs %}
-                {%- if not paraLimit or loop.index <= paraLimit %}
                     <p {% i18n para %}>{{ para.en }}</p>
-                {%- endif %}
                 {%- endfor %}
                 </div>
             </div>
         </div>
+{%- endif %}

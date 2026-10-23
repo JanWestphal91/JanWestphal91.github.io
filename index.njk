@@ -87,6 +87,7 @@
             {%- set cards = collections.projects | carouselCards(h.hero.images) %}
             {%- if cards.length %}
             <div class="jw-flip" data-flip aria-roledescription="carousel" {% i18n h.hero.carousel_label, "aria" %} aria-label="{{ h.hero.carousel_label.en }}">
+                <p class="jw-label jw-flip__label" aria-hidden="true" {% i18n h.hero.carousel_label %}>{{ h.hero.carousel_label.en }}</p>
                 <div class="jw-flip__stage" tabindex="0">
                     {%- for c in cards %}
                     {%- set pd = c.project.data %}
@@ -166,7 +167,6 @@
 
             {%- set paraLimit = 2 %}
             {% include "partials/about-profile.njk" %}
-            <a href="/about/" class="jw-more"><span {% i18n ab.more %}>{{ ab.more.en }}</span></a>
         </div>
     </section>
 
