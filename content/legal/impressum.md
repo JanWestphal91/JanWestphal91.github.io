@@ -10,7 +10,7 @@ Deutschland
 
 ## Kontakt
 
-E-Mail: [j.westphal@live.com](mailto:j.westphal@live.com)\
+E-Mail: [hello@janwestphal.dev](mailto:hello@janwestphal.dev)\
 Alternativ über das [Kontaktformular](/#contact).
 
 ## Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV

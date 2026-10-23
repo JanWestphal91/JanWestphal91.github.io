@@ -6,7 +6,7 @@ stand: Oktober 2026
 
 Jan Westphal\
 Kühlungsborner Straße 4, 24106 Kiel\
-E-Mail: [j.westphal@live.com](mailto:j.westphal@live.com)
+E-Mail: [hello@janwestphal.dev](mailto:hello@janwestphal.dev)
 
 Diese Website ist ein privates Portfolio. Es werden keine Analyse- oder Tracking-Werkzeuge eingesetzt und keine Werbe-Cookies gesetzt.
 
