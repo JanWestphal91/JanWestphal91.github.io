@@ -22,7 +22,7 @@
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg">
 
     <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
-    <meta name="theme-color" content="#EEECE6">
+    <meta name="theme-color" content="#FFFFFF">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
@@ -61,6 +61,9 @@
         </nav>
     </div>
 </header>
+<nav class="jw-wrap jw-back" aria-label="Back">
+    <a class="jw-back__link" href="/en/"><span aria-hidden="true">←</span>&#160;<span>Home</span></a>
+</nav>
 
 
 <main id="main" tabindex="-1">
@@ -68,13 +71,15 @@
         <div class="jw-wrap jw-section">
             <p class="jw-label">Profile</p>
             <h1 id="jw-page-title" class="jw-about__title">About</h1>
-            <div class="jw-about__grid">
+            
+        <div class="jw-about__grid">
             <figure class="jw-profile">
                 <div class="jw-profile__photo">
                     <img src="/Images/myself.jpeg" alt="Jan Westphal – Creative Coder and Designer from Kiel" loading="lazy" width="480" height="600">
                 </div>
                 <figcaption class="jw-profile__body">
                     <p class="jw-profile__alias">Also known as Netro – my graffiti and dev alias.</p>
+                    
                     <dl class="jw-facts jw-facts--profile">
                         <div><dt>Open to</dt><dd><span class="jw-dot" aria-hidden="true"></span><span>Working student · Internship · Freelance</span></dd></div>
                         <div><dt>Hours</dt><dd><span>approx. 15 hrs/week as a working student</span></dd></div>

@@ -48,7 +48,7 @@
 body.theme {
     font-family: 'Bricolage Grotesque', system-ui, sans-serif;
     font-optical-sizing: auto;
-    --bg: #EEECE6;
+    --bg: #FFFFFF;
     --ink: #111111;
     --ink-2: #2A2824;
     --muted: #4D4A44;             /* Kontrast ≥ 7:1 auf dem Hintergrund */
@@ -135,7 +135,7 @@ body.theme {
 /* ── Header ─────────────────────────────────────────────────────── */
 
 .theme .site-header {
-    background: rgb(238 236 230 / 0.92);
+    background: rgb(255 255 255 / 0.94);
 }
 
 .theme .site-header .container.nav {
@@ -4066,4 +4066,136 @@ body.theme {
         --thumb-w: 88px;
         --thumb-h: 66px;
     }
+}
+
+/* ── Über mich auf der Startseite: kompakt in drei Spalten ── */
+.jw-about__grid--home {
+    grid-template-columns: minmax(180px, 260px) minmax(0, 1.5fr) minmax(240px, 1fr);
+    gap: 32px clamp(32px, 4vw, 64px);
+}
+
+.jw-about__grid--home .jw-about__text p {
+    max-width: var(--measure);
+    margin: 0 0 0.9em;
+    font-size: var(--fs-lg);
+    line-height: 1.5;
+    color: var(--ink-2);
+}
+
+.jw-about__grid--home .jw-more {
+    margin-top: 8px;
+    padding-left: 0;
+}
+
+.jw-about__facts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.jw-about__facts .jw-facts {
+    margin: 0;
+}
+
+@media (max-width: 1100px) {
+    .jw-about__grid--home {
+        grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+    }
+
+    .jw-about__grid--home .jw-profile {
+        grid-row: 1 / span 2;
+    }
+
+    .jw-about__grid--home .jw-about__facts {
+        grid-column: 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .jw-about__grid--home {
+        grid-template-columns: 1fr;
+    }
+
+    .jw-about__grid--home .jw-about__facts {
+        grid-column: auto;
+    }
+
+    .jw-about__grid--home .jw-profile {
+        grid-row: auto;
+    }
+
+    .jw-about__grid--home .jw-profile {
+        grid-template-columns: 120px minmax(0, 1fr);
+    }
+}
+
+/* Logo: kein Flex, sonst verschwindet beim Hover-Effekt das Leerzeichen */
+.theme .site-header .logo {
+    display: inline-block;
+    min-height: 0;
+    padding-block: 12px;
+    line-height: 20px;
+}
+
+/* ── Zurück-Knopf unter dem Header (alle Seiten außer der Startseite) ── */
+.jw-back {
+    padding-top: 20px;
+}
+
+.theme .jw-back__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1.5px solid var(--ink);
+    font-family: var(--sans);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+@media (hover: hover) {
+    .theme .jw-back__link:hover {
+        background: var(--ink);
+        color: var(--bg);
+    }
+}
+
+/* der Kopf der Seite rückt etwas näher an den Knopf */
+.jw-back + main .jw-page-head,
+.jw-back + main .jw-detail-head,
+.jw-back + main .jw-post-head {
+    padding-top: clamp(20px, 3vw, 40px);
+}
+
+.jw-flip__label {
+    margin: 0;
+    text-align: center;
+}
+
+.jw-post-head__date {
+    margin: 0 0 16px;
+}
+
+/* ── Einfarbiger Hintergrund und engere Abstände zwischen den Sektionen ── */
+body.theme {
+    --section-space: clamp(48px, 6vw, 96px);
+}
+
+.theme .jw-about,
+.theme .jw-about--page {
+    background: transparent;
+}
+
+.theme .jw-facts--profile > div {
+    border-bottom-color: var(--line);
+}
+
+/* ── Weißer Seitenhintergrund ── */
+.theme .jw-cta {
+    background: transparent;
+    border-top: 2px solid var(--ink);
 }
