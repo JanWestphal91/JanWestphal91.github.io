@@ -97,6 +97,18 @@ collections:
           name: en
           widget: string
         hint: Wird nicht angezeigt, nur vorgelesen.
+      - label: Knopf „Menü“ auf dem Handy
+        name: menu_label
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
     - label: Laufband (nur Startseite)
       name: ticker
       widget: object
@@ -827,6 +839,19 @@ collections:
           name: en
           widget: text
         hint: Alle Absätze erscheinen gleich groß, auf dem Desktop in zwei Spalten. Reihenfolge per Drag & Drop.
+      - label: Link zur Über-mich-Seite
+        name: more
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+        hint: Steht unter dem Text auf der Startseite. Die Startseite zeigt die ersten beiden Absätze, die Über-mich-Seite alle.
     - label: 03 Werdegang
       name: path
       widget: object
@@ -1026,6 +1051,7 @@ collections:
         - label: Englisch
           name: en
           widget: text
+      hint: Werdegang, Werkzeuge, Programmiersprachen, Kurse und Engagement stehen auf der Seite /about/.
     - label: 04 Blog
       name: blog
       widget: object
@@ -1365,6 +1391,66 @@ collections:
           name: en
           widget: string
         hint: Die Profile selbst bearbeitest du unter „Social-Profile“ (dort auch LinkedIn ergänzen).
+  - name: about_page
+    label: Über-mich-Seite
+    file: _data/pages/about.json
+    format: json
+    editor: *id001
+    fields:
+    - label: Suchmaschinen & Link-Vorschau
+      name: seo
+      widget: object
+      collapsed: true
+      fields:
+      - label: Seitentitel
+        name: title
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: string
+        - label: Englisch
+          name: en
+          widget: string
+      - label: Beschreibung
+        name: description
+        widget: object
+        collapsed: false
+        summary: '{{fields.de}}'
+        fields:
+        - label: Deutsch
+          name: de
+          widget: text
+        - label: Englisch
+          name: en
+          widget: text
+      hint: Erscheint in Google und in Link-Vorschauen, nicht auf der Seite selbst.
+    - label: Kleine Zeile über der Überschrift
+      name: label
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: Überschrift
+      name: heading
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
   - name: projects_page
     label: Projekte-Übersicht
     file: _data/pages/projects.json
@@ -1987,7 +2073,7 @@ collections:
         - label: Link
           name: url
           widget: string
-          hint: Interne Seiten mit / beginnen, z. B. /blog/hello-blog/
+          hint: Interne Seiten mit / beginnen, z. B. /blog/development-process-of-pocket-knight/
         - label: Vorschaubild
           name: image
           widget: image
@@ -2195,9 +2281,14 @@ collections:
     widget: boolean
     default: true
     hint: Aus = Entwurf. Wird gespeichert, erscheint aber nicht auf der Website.
-  - label: Title
+  - label: Titel (Englisch bzw. für beide Sprachen)
     name: title
     widget: string
+  - label: Titel (Deutsch)
+    name: title_de
+    widget: string
+    required: false
+    hint: Nur ausfüllen, wenn der deutsche Titel anders lautet. Das Feld „Titel“ gilt für die englische Seite.
   - label: Slug (URL-ID)
     name: slug
     widget: string
@@ -2578,6 +2669,11 @@ collections:
     widget: text
     required: false
     hint: z.B. itch.io iframe
+  - label: Vorschaubild fürs Video
+    name: video_poster
+    widget: image
+    required: false
+    hint: Wird angezeigt, bis jemand auf das YouTube-Video klickt. Leer = Titelbild. Das Video steht nach der Case Study, oben steht immer das Titelbild.
   - label: Datum
     name: date
     widget: datetime
@@ -2648,6 +2744,11 @@ collections:
     widget: list
     required: false
     hint: z.B. Game Dev, Design, Werkstatt
+  - label: Tags (Deutsch)
+    name: tags_de
+    widget: list
+    required: false
+    hint: Leer = wie die Tags oben.
   - label: Weitere Bilder
     name: images
     widget: list

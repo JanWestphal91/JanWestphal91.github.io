@@ -57,26 +57,22 @@
 <body class="theme page-project" data-page="project-static">
 
 <a class="jw-skip" href="#main">Skip to content</a>
-<header class="site-header">
+<header class="site-header" id="top">
     <div class="container nav">
         <div class="jw-brand">
             <a href="/en/" class="logo">Jan Westphal</a>
         </div>
-        <nav class="nav-main" aria-label="Main navigation">
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menu</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/en/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Projects</span><span class="nav-label nav-label--mobile"><span>Projects</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li><a href="/en/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-about"><a href="/en/#about" class="link-button secondary"><span>About</span></a></li>
-                <li><a href="/en/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact</span><span class="nav-label nav-label--mobile"><span>Contact</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Motion"><span class="nav-label nav-label--desktop">Motion</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">on</span><span class="jw-motion-toggle__off">off</span></span></button></li>
-                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/projects/pocket-knight/"><span class="nav-label nav-label--desktop">Deutsch</span><span class="nav-label nav-label--mobile">DE</span></a></li>
+                <li><a href="/en/projects/" class="link-button secondary" aria-current="true"><span>Projects</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary"><span>Blog</span></a></li>
+                <li><a href="/en/about/" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="/en/#contact" class="link-button secondary"><span>Contact</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Motion</span> <span data-off="off" data-on="on" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/projects/pocket-knight/"><span>Deutsch</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Open menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </div>
 </header>
 
@@ -102,24 +98,24 @@ I’m writing a bit more in depth about the development process in this <a href=
                 <div>
                     <dt>Details</dt>
                     <dd>
-                        <span>Electronic · Game · Status: playable prototype</span>
+                        <span>Status: playable prototype</span>
                         
                     </dd>
                 </div>
             </dl>
         </div>
     </section>
-
     
-    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
-        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span>Media</span></h2>
-        <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span>This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).</span> <a href="/en/datenschutz/">Privacy</a></p><button type="button" class="jw-consent__button">Load video</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YMT1BVRyX4g?si=-3MBMNdEbFsba26u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div>
+    <section class="jw-wrap jw-detail-block" aria-label="Cover">
+        <figure class="jw-cover">
+            <img src="/Images/projects/pocket-knight/pocketknightcloth.webp" alt="Pocket Knight: a grey 3D-printed handheld with a small screen, lying on a cloth" loading="eager">
+        </figure>
     </section>
     
 
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
-        <h2 id="jw-facts-title" class="jw-label jw-rule">02 — <span>Fact sheet</span></h2>
+        <h2 id="jw-facts-title" class="jw-label jw-rule">01 — <span>Fact sheet</span></h2>
         <dl class="jw-casefacts">
             <div><dt>Role</dt><dd>Solo project: concept, electronics, firmware, game design, pixel art and enclosure</dd></div>
             <div><dt>Time frame</dt><dd>About 3 months in my free time, 2026</dd></div>
@@ -129,7 +125,7 @@ I’m writing a bit more in depth about the development process in this <a href=
         </dl>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-1">
-        <h2 id="jw-case-1" class="jw-label jw-rule">03 — <span>Idea</span></h2>
+        <h2 id="jw-case-1" class="jw-label jw-rule">02 — <span>Idea</span></h2>
         <div class="jw-case__grid jw-case__grid--text">
             <div class="jw-prose jw-case__text">
                 <div><p>I wanted to build a device that brings to mind the Digimon Digivice toys from my childhood: small enough for a trouser pocket, and with a game that moves forward while you walk. During the day the device stays in your pocket and counts steps; in the evening you play through the collected events at your own pace.</p>
@@ -140,7 +136,7 @@ I’m writing a bit more in depth about the development process in this <a href=
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-2">
-        <h2 id="jw-case-2" class="jw-label jw-rule">04 — <span>Approach</span></h2>
+        <h2 id="jw-case-2" class="jw-label jw-rule">03 — <span>Approach</span></h2>
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
                 <div><p>I picked a FireBeetle 2 ESP32-E because battery charging is already on the board, so I only had to connect a Li-ion cell. For the steps I use a BMA456, which counts steps by itself in hardware. Everything was first wired up on a breadboard, and I wrote most of the firmware against that setup.</p>
@@ -157,7 +153,7 @@ I’m writing a bit more in depth about the development process in this <a href=
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-3">
-        <h2 id="jw-case-3" class="jw-label jw-rule">05 — <span>Counting steps while asleep</span></h2>
+        <h2 id="jw-case-3" class="jw-label jw-rule">04 — <span>Counting steps while asleep</span></h2>
         <div class="jw-case__grid jw-case__grid--wide">
             <div class="jw-prose jw-case__text">
                 <div><p>The solution to the contradiction above is to split the work. The BMA456 counts steps on its own the whole time, and the ESP32 goes into deep sleep after 30 seconds without input. Pressing button A wakes it up again.</p>
@@ -191,7 +187,7 @@ I’m writing a bit more in depth about the development process in this <a href=
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-4">
-        <h2 id="jw-case-4" class="jw-label jw-rule">06 — <span>Pixel graphics</span></h2>
+        <h2 id="jw-case-4" class="jw-label jw-rule">05 — <span>Pixel graphics</span></h2>
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
                 <div><p>I drew all sprites in Aseprite as 1-bit pixel art. The hard part was getting them onto the display: every graphic had to be converted to the XBM format, and the animations are controlled directly in the code, which decides frame by frame what gets drawn. Drawing is done with the U8g2 library, and the bitmaps are stored in flash with <code>PROGMEM</code> instead of in the small working memory.</p>
@@ -208,7 +204,7 @@ I’m writing a bit more in depth about the development process in this <a href=
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-5">
-        <h2 id="jw-case-5" class="jw-label jw-rule">07 — <span>Firmware</span></h2>
+        <h2 id="jw-case-5" class="jw-label jw-rule">06 — <span>Firmware</span></h2>
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
                 <div><p>The firmware is written in C++ in the Arduino IDE and split into modules: combat, events, progress and saving, rendering and audio.</p>
@@ -230,7 +226,7 @@ I’m writing a bit more in depth about the development process in this <a href=
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-6">
-        <h2 id="jw-case-6" class="jw-label jw-rule">08 — <span>Game design and balancing</span></h2>
+        <h2 id="jw-case-6" class="jw-label jw-rule">07 — <span>Game design and balancing</span></h2>
         <div class="jw-case__grid jw-case__grid--text">
             <div class="jw-prose jw-case__text">
                 <div><p>On average every 300 steps (randomly between 220 and 380) a new event is queued; if the device is awake at that moment, it beeps and vibrates. Up to 10 events are stored, so you can play them in one go later. At every fork you choose one of two events – 11 types, from fights and traders to traps, shrines and a wishing well.</p>
@@ -242,7 +238,7 @@ I’m writing a bit more in depth about the development process in this <a href=
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-7">
-        <h2 id="jw-case-7" class="jw-label jw-rule">09 — <span>Enclosure</span></h2>
+        <h2 id="jw-case-7" class="jw-label jw-rule">08 — <span>Enclosure</span></h2>
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
                 <div><p>I designed the case in Fusion 360 and printed it in two colours on a Prusa MINI+ at the FabLab Kiel: grey for the body, blue for the display frame and the fleur-de-lis emblems. A small coin with the emblem doubles as a key-ring charm. After the first print there was one revision, in which I only adjusted the depth of the case slightly.</p>
@@ -259,7 +255,7 @@ I’m writing a bit more in depth about the development process in this <a href=
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-8">
-        <h2 id="jw-case-8" class="jw-label jw-rule">10 — <span>Result</span></h2>
+        <h2 id="jw-case-8" class="jw-label jw-rule">09 — <span>Result</span></h2>
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
                 <div><p>Pocket Knight is a playable prototype: a complete run with 11 event types, 7 enemy types, 4 bosses, 22 items and permanent progress across runs, in about 3,700 lines of firmware. The device has been in daily use for weeks. The main menu still contains a debug entry for testing; since there is only this one device, the status stays at prototype.</p>
@@ -276,7 +272,7 @@ I’m writing a bit more in depth about the development process in this <a href=
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-9">
-        <h2 id="jw-case-9" class="jw-label jw-rule">11 — <span>What I learned and would change</span></h2>
+        <h2 id="jw-case-9" class="jw-label jw-rule">10 — <span>What I learned and would change</span></h2>
         <div class="jw-case__grid jw-case__grid--text">
             <div class="jw-prose jw-case__text">
                 <div><ul>
@@ -293,11 +289,20 @@ I’m writing a bit more in depth about the development process in this <a href=
         </div>
     </section>
     
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
+        <h2 id="jw-media-title" class="jw-label jw-rule">11 — <span>Media</span></h2>
+        <div class="jw-video" data-yt="YMT1BVRyX4g">
+            <button type="button" class="jw-video__play" aria-label="Play video"><img src="/Images/projects/pocket-knight/closeshotpocketknight.webp" alt="" loading="lazy">
+                <span class="jw-video__badge"><span class="jw-video__icon" aria-hidden="true"></span><span>Play video</span></span>
+            </button>
+            <p class="jw-video__note">The video only loads from YouTube after you click.</p>
+        </div>
+    </section>
 
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
         <div class="jw-gallery-head">
-            <h2 id="jw-gallery-title" class="jw-label jw-rule">12 — <span>Gallery</span> (02)</h2><div class="jw-view-toggle" role="group" aria-label="Gallery view" hidden>
+            <h2 id="jw-gallery-title" class="jw-label jw-rule">12 — <span>Gallery</span> (01)</h2><div class="jw-view-toggle" role="group" aria-label="Gallery view" hidden>
                 <button type="button" data-view="archive" aria-pressed="true">Archive</button>
                 <button type="button" data-view="grid" aria-pressed="false">Grid</button>
             </div>
@@ -306,16 +311,9 @@ I’m writing a bit more in depth about the development process in this <a href=
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightcloth.webp"><img src="/Images/projects/pocket-knight/pocketknightcloth.webp" alt="Close-up of the Pocket Knight device: grey case, blue-framed OLED screen, blue fleur-de-lis buttons and a keychain charm" loading="lazy"></a>
-                
-                <figcaption><span class="jw-fig">Fig. 01</span> <span>Photo of the device</span></figcaption>
-            </figure>
-            
-            <figure class="project-gallery__item">
-                
                 <a class="post-figure__link" data-lightbox="" href="/Images/projects/pocket-knight/pocketknightposter3.webp"><img src="/Images/projects/pocket-knight/pocketknightposter3.webp" alt="Pocket Knight poster: knights in a classical painting reach for the device, which floats above them like a holy grail" loading="lazy"></a>
                 
-                <figcaption><span class="jw-fig">Fig. 02</span> <span>Pocket Knight - a holy grail</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 01</span> <span>Pocket Knight - a holy grail</span></figcaption>
             </figure>
             
         </div>

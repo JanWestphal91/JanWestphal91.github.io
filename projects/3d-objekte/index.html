@@ -28,7 +28,7 @@
     
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="3D-Objekte – Jan Westphal Preview">
+    <meta property="og:image:alt" content="3D objects – Jan Westphal Preview">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="3D-Objekte – Jan Westphal">
@@ -57,26 +57,22 @@
 <body class="theme page-project" data-page="project-static">
 
 <a class="jw-skip" href="#main">Zum Inhalt springen</a>
-<header class="site-header">
+<header class="site-header" id="top">
     <div class="container nav">
         <div class="jw-brand">
             <a href="/" class="logo">Jan Westphal</a>
         </div>
-        <nav class="nav-main" aria-label="Main navigation">
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menü</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Projekte</span><span class="nav-label nav-label--mobile"><span>Projekte</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span>Über mich</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Kontakt</span><span class="nav-label nav-label--mobile"><span>Kontakt</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Animationen"><span class="nav-label nav-label--desktop">Animationen</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">an</span><span class="jw-motion-toggle__off">aus</span></span></button></li>
-                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/projects/3d-objekte/"><span class="nav-label nav-label--desktop">English</span><span class="nav-label nav-label--mobile">EN</span></a></li>
+                <li><a href="/projects/" class="link-button secondary" aria-current="true"><span>Projekte</span></a></li>
+                <li><a href="/blog/" class="link-button secondary"><span>Blog</span></a></li>
+                <li><a href="/about/" class="link-button secondary"><span>Über mich</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span>Kontakt</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Animationen</span> <span data-off="aus" data-on="an" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/projects/3d-objekte/"><span>English</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </div>
 </header>
 
@@ -100,13 +96,12 @@
                     <dt>Details</dt>
                     <dd>
                         
-                        <span>3D · Blender · Modellierung</span>
+                        <span>Blender · Modellierung</span>
                     </dd>
                 </div>
             </dl>
         </div>
     </section>
-
     
     <section class="jw-wrap jw-detail-block" aria-label="Cover">
         <figure class="jw-cover">
@@ -302,7 +297,7 @@
 
     <nav class="jw-wrap jw-pager" aria-label="More projects">
         
-        <a class="jw-pager__link" href="/projects/Audio-Dingo-Synth/">
+        <a class="jw-pager__link" href="/projects/audio-dingo-synth/">
             <span class="jw-label">← Vorheriges Projekt</span>
             <span class="jw-pager__title">Audio Dingo Synth</span>
         </a>
@@ -310,7 +305,7 @@
         
         <a class="jw-pager__link jw-pager__link--next" href="/projects/fine-art-assortment/">
             <span class="jw-label">Nächstes Projekt →</span>
-            <span class="jw-pager__title">Fine Art Assortment</span>
+            <span class="jw-pager__title">Malerei und Objekte</span>
         </a>
         
     </nav>

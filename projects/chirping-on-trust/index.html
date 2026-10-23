@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chirping on Trust for GBA – Jan Westphal</title>
-    <meta name="description" content="Im Rahmen des jährlichen Summer Game Jams des IF(game)SH e.V. habe ich an einem Wochenende in einem Dreierteam ein Spiel für den Game Boy Advance...">
+    <title>Chirping on Trust – Jan Westphal</title>
+    <meta name="description" content="Im Rahmen der Summer Game Jam des IF(game)SH e.V. – in diesem Jahr als MEKO Jam zum Thema Medienkompetenz in Leck – habe ich an einem Wochenende in einem...">
     <meta name="author" content="Jan Westphal">
     <meta name="robots" content="index, follow">
     <link href="https://janwestphal.dev/projects/chirping-on-trust/" rel="canonical">
@@ -20,19 +20,19 @@
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Jan Westphal">
-    <meta property="og:title" content="Chirping on Trust for GBA – Jan Westphal">
-    <meta property="og:description" content="Im Rahmen des jährlichen Summer Game Jams des IF(game)SH e.V. habe ich an einem Wochenende in einem Dreierteam ein Spiel für den Game Boy Advance...">
+    <meta property="og:title" content="Chirping on Trust – Jan Westphal">
+    <meta property="og:description" content="Im Rahmen der Summer Game Jam des IF(game)SH e.V. – in diesem Jahr als MEKO Jam zum Thema Medienkompetenz in Leck – habe ich an einem Wochenende in einem...">
     
     <meta property="og:image" content="https://janwestphal.dev/Images/projects/chirping-on-trust/webshot.webp">
     <meta name="twitter:image" content="https://janwestphal.dev/Images/projects/chirping-on-trust/webshot.webp">
     
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Chirping on Trust for GBA – Jan Westphal Preview">
+    <meta property="og:image:alt" content="Chirping on Trust – Jan Westphal Preview">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Chirping on Trust for GBA – Jan Westphal">
-    <meta name="twitter:description" content="Im Rahmen des jährlichen Summer Game Jams des IF(game)SH e.V. habe ich an einem Wochenende in einem Dreierteam ein Spiel für den Game Boy Advance...">
+    <meta name="twitter:title" content="Chirping on Trust – Jan Westphal">
+    <meta name="twitter:description" content="Im Rahmen der Summer Game Jam des IF(game)SH e.V. – in diesem Jahr als MEKO Jam zum Thema Medienkompetenz in Leck – habe ich an einem Wochenende in einem...">
 
 
     <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
@@ -57,26 +57,22 @@
 <body class="theme page-project" data-page="project-static">
 
 <a class="jw-skip" href="#main">Zum Inhalt springen</a>
-<header class="site-header">
+<header class="site-header" id="top">
     <div class="container nav">
         <div class="jw-brand">
             <a href="/" class="logo">Jan Westphal</a>
         </div>
-        <nav class="nav-main" aria-label="Main navigation">
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menü</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Projekte</span><span class="nav-label nav-label--mobile"><span>Projekte</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li><a href="/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span>Über mich</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Kontakt</span><span class="nav-label nav-label--mobile"><span>Kontakt</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Animationen"><span class="nav-label nav-label--desktop">Animationen</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">an</span><span class="jw-motion-toggle__off">aus</span></span></button></li>
-                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/projects/chirping-on-trust/"><span class="nav-label nav-label--desktop">English</span><span class="nav-label nav-label--mobile">EN</span></a></li>
+                <li><a href="/projects/" class="link-button secondary" aria-current="true"><span>Projekte</span></a></li>
+                <li><a href="/blog/" class="link-button secondary"><span>Blog</span></a></li>
+                <li><a href="/about/" class="link-button secondary"><span>Über mich</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span>Kontakt</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Animationen</span> <span data-off="aus" data-on="an" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/projects/chirping-on-trust/"><span>English</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </div>
 </header>
 
@@ -89,9 +85,9 @@
         </nav>
         <div class="jw-detail-head__row">
             <div class="jw-detail-head__main">
-                <h1 id="jw-page-title">Chirping on Trust for GBA</h1>
+                <h1 id="jw-page-title">Chirping on Trust</h1>
                 
-                <div class="project-summary jw-lead"><p>Im Rahmen des jährlichen Summer Game Jams des IF(game)SH e.V. habe ich an einem Wochenende in einem Dreierteam ein Spiel für den Game Boy Advance entwickelt. Ich war hauptsächlich für die Pixelart, den Web-Emulator und das Styling der <a href="https://jan-west.itch.io/chirping-on-trust">itch.io-Seite</a> zuständig. Meine Teampartner haben sich um die technische Machbarkeit und die Gameplay-Programmierung gekümmert. Entwickelt haben wir das Spiel in der Programmiersprache Rust mit der Bibliothek agb. Dadurch konnten wir Aseprite-Dateien (Pixelart-Editor) direkt laden, ohne sie vorher exportieren zu müssen. Am Ende konnten wir eine ROM kompilieren, sie über eine microSD-Karte in ein Flash-Modul laden und auf einem echten Game Boy testen.</p>
+                <div class="project-summary jw-lead"><p>Im Rahmen der Summer Game Jam des IF(game)SH e.V. – in diesem Jahr als MEKO Jam zum Thema Medienkompetenz in Leck – habe ich an einem Wochenende in einem Dreierteam ein Spiel für den Game Boy Advance entwickelt. Ich war hauptsächlich für die Pixelart, den Web-Emulator und das Styling der <a href="https://jan-west.itch.io/chirping-on-trust">itch.io-Seite</a> zuständig. Meine Teampartner haben sich um die technische Machbarkeit und die Gameplay-Programmierung gekümmert. Entwickelt haben wir das Spiel in der Programmiersprache Rust mit der Bibliothek agb. Dadurch konnten wir Aseprite-Dateien (Pixelart-Editor) direkt laden, ohne sie vorher exportieren zu müssen. Am Ende konnten wir eine ROM kompilieren, sie über eine microSD-Karte in ein Flash-Modul laden und auf einem echten Game Boy testen.</p>
 <p>Schau gern auf der <a href="https://jan-west.itch.io/chirping-on-trust">Spielseite</a> vorbei: Dort kannst du die ROM herunterladen oder das Spiel direkt im Browser spielen.</p>
 <p>Meine Teampartner waren <a href="https://gracl.itch.io/">Gracl</a> &amp; <a href="https://zoltankost.itch.io/">Zoltankost</a>, es war eine sehr witzige Runde und ich hatte jede Menge Spaß während des Game Jams!</p>
 <p>In diesem <a href="https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">Blogbeitrag</a> schreibe ich noch etwas ausführlicher über den Game Jam.</p>
@@ -110,31 +106,31 @@
             </dl>
         </div>
     </section>
-
     
-    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
-        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span>Medien</span></h2>
-        <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--widget" style="width:206px;min-height:165px"><p class="jw-consent__text"><span>Von itch.io eingebunden. Beim Laden werden Daten an itch.io übertragen.</span> <a href="/datenschutz/">Datenschutz</a></p><button type="button" class="jw-consent__button">Laden</button><template><iframe frameborder="0" src="https://itch.io/embed/4878195?border_width=0&bg_color=9badb7&fg_color=3f3f74&link_color=5b6ee1&border_color=798b95" width="206" height="165"><a href="https://jan-west.itch.io/chirping-on-trust">Chirping on trust by Netro, Gracl, zoltankost</a></iframe></template></div></div>
+    <section class="jw-wrap jw-detail-block" aria-label="Cover">
+        <figure class="jw-cover">
+            <img src="/Images/projects/chirping-on-trust/webshot.webp" alt="Chirping on Trust läuft auf einem Game Boy Advance SP" loading="eager">
+        </figure>
     </section>
     
 
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
-        <h2 id="jw-facts-title" class="jw-label jw-rule">02 — <span>Steckbrief</span></h2>
+        <h2 id="jw-facts-title" class="jw-label jw-rule">01 — <span>Steckbrief</span></h2>
         <dl class="jw-casefacts">
             <div><dt>Rolle</dt><dd>Dreierteam: Pixelart, Web-Emulator und die itch.io-Seite</dd></div>
             <div><dt>Zeitraum</dt><dd>Ein Wochenende, 2026</dd></div>
-            <div><dt>Werkzeuge</dt><dd><ul class="jw-skills"><li>Rust</li><li>agb</li><li>Aseprite</li></ul></dd></div>
+            <div><dt>Werkzeuge</dt><dd><ul class="jw-skills"><li>Rust</li><li>agb</li><li>Aseprite</li><li>mGBA (web version)</li></ul></dd></div>
             <div><dt>Hardware</dt><dd><ul class="jw-casefacts__list"><li>Game Boy Advance SP</li><li>Flash-Modul mit microSD-Karte</li></ul></dd></div>
             <div><dt>Links</dt><dd><ul class="jw-casefacts__list"><li><a href="https://jan-west.itch.io/chirping-on-trust" target="_blank" rel="noopener noreferrer"><span>Auf itch.io spielen</span>&#160;<span aria-hidden="true">↗</span></a></li><li><a href="https://itch.io/c/7976774/meko-jam-2026-between-the-lines" target="_blank" rel="noopener noreferrer"><span>Alle Spiele des Jams</span>&#160;<span aria-hidden="true">↗</span></a></li><li><a href="/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"><span>Devlog: das Game-Jam-Wochenende</span>&#160;<span aria-hidden="true">→</span></a></li></ul></dd></div>
         </dl>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-1">
-        <h2 id="jw-case-1" class="jw-label jw-rule">03 — <span>Rahmen</span></h2>
+        <h2 id="jw-case-1" class="jw-label jw-rule">02 — <span>Rahmen</span></h2>
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
                 
-                <div><p>Ein Game Jam zum Thema Medienkompetenz, organisiert vom IF(game)SH e.V. in Leck: rund 30–40 Teilnehmende, gemeinsam mit dänischen Entwicklerinnen und Entwicklern. Am Freitag gab es einen Workshop zu Medienkompetenz, Medienwirkung sowie Gender und Identität, dazu drei kurze Vorträge.</p>
+                <div><p>Die MEKO Jam zum Thema Medienkompetenz, organisiert vom IF(game)SH e.V. in Leck – in diesem Jahr hat sie die Summer Game Jam ersetzt: rund 30–40 Teilnehmende, gemeinsam mit dänischen Entwicklerinnen und Entwicklern. Am Freitag gab es einen Workshop zu Medienkompetenz, Medienwirkung sowie Gender und Identität, dazu drei kurze Vorträge.</p>
 <p>Nach der Teamfindung hatten meine beiden Teampartner und ich ein gemeinsames Ziel: ein Spiel für den Game Boy Advance, das als ROM tatsächlich auf dem echten Handheld läuft.</p>
 </div>
             </div>
@@ -147,7 +143,7 @@
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-2">
-        <h2 id="jw-case-2" class="jw-label jw-rule">04 — <span>Konzept</span></h2>
+        <h2 id="jw-case-2" class="jw-label jw-rule">03 — <span>Konzept</span></h2>
         <div class="jw-case__grid jw-case__grid--text">
             <div class="jw-prose jw-case__text">
                 
@@ -158,11 +154,15 @@
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-3">
-        <h2 id="jw-case-3" class="jw-label jw-rule">05 — <span>Umsetzung</span></h2>
+        <h2 id="jw-case-3" class="jw-label jw-rule">04 — <span>Umsetzung</span></h2>
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
                 
                 <div><p>Geschrieben haben wir das Spiel in Rust mit der Bibliothek agb. Damit konnten wir Aseprite-Dateien direkt laden, ohne sie vorher zu exportieren – eine große Hilfe für meine Pixelart unter Zeitdruck. Meine Teampartner haben sich um die technische Machbarkeit und die Gameplay-Programmierung gekümmert, ich um Pixelart, Web-Emulator und das Styling der itch.io-Seite.</p>
+<ul>
+<li><strong>Pixelart:</strong> rund 30 Sprites mit einer groben gemeinsamen Farbpalette. Jedes Sprite musste eine der Größen haben, die die Hardware unterstützt – 16 × 16, 32 × 32, 64 × 64 px und so weiter.</li>
+<li><strong>Web-Emulator:</strong> Damit man das Spiel auch ohne Game Boy spielen kann, läuft die ROM auf der itch.io-Seite in der Webversion des Emulators mGBA.</li>
+</ul>
 </div>
             </div>
             <figure class="jw-case__figure">
@@ -174,7 +174,7 @@
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-4">
-        <h2 id="jw-case-4" class="jw-label jw-rule">06 — <span>Ergebnis</span></h2>
+        <h2 id="jw-case-4" class="jw-label jw-rule">05 — <span>Ergebnis</span></h2>
         <div class="jw-case__grid">
             <div class="jw-prose jw-case__text">
                 
@@ -189,12 +189,26 @@
             </figure>
         </div>
     </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-5">
+        <h2 id="jw-case-5" class="jw-label jw-rule">06 — <span>Was ich besser machen würde</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Beim nächsten Mal würde ich mehr Zeit in das Feedback der Interaktionselemente stecken.</p>
+</div>
+            </div>
+        </div>
+    </section>
     
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
+        <h2 id="jw-media-title" class="jw-label jw-rule">07 — <span>Medien</span></h2>
+        <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--widget" style="width:206px;min-height:165px"><p class="jw-consent__text"><span>Von itch.io eingebunden. Beim Laden werden Daten an itch.io übertragen.</span> <a href="/datenschutz/">Datenschutz</a></p><button type="button" class="jw-consent__button">Laden</button><template><iframe frameborder="0" src="https://itch.io/embed/4878195?border_width=0&bg_color=9badb7&fg_color=3f3f74&link_color=5b6ee1&border_color=798b95" width="206" height="165"><a href="https://jan-west.itch.io/chirping-on-trust">Chirping on trust by Netro, Gracl, zoltankost</a></iframe></template></div></div>
+    </section>
 
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
         <div class="jw-gallery-head">
-            <h2 id="jw-gallery-title" class="jw-label jw-rule">07 — <span>Galerie</span> (02)</h2><div class="jw-view-toggle" role="group" aria-label="Ansicht der Galerie" hidden>
+            <h2 id="jw-gallery-title" class="jw-label jw-rule">08 — <span>Galerie</span> (02)</h2><div class="jw-view-toggle" role="group" aria-label="Ansicht der Galerie" hidden>
                 <button type="button" data-view="archive" aria-pressed="true">Archiv</button>
                 <button type="button" data-view="grid" aria-pressed="false">Raster</button>
             </div>
@@ -227,7 +241,7 @@
         </a>
         
         
-        <a class="jw-pager__link jw-pager__link--next" href="/projects/Audio-Dingo-Synth/">
+        <a class="jw-pager__link jw-pager__link--next" href="/projects/audio-dingo-synth/">
             <span class="jw-label">Nächstes Projekt →</span>
             <span class="jw-pager__title">Audio Dingo Synth</span>
         </a>

@@ -50,26 +50,22 @@
 <body class="theme page-post" data-page="post">
 
 <a class="jw-skip" href="#main">Skip to content</a>
-<header class="site-header">
+<header class="site-header" id="top">
     <div class="container nav">
         <div class="jw-brand">
             <a href="/en/" class="logo">Jan Westphal</a>
         </div>
-        <nav class="nav-main" aria-label="Main navigation">
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menu</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/en/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop">Projects</span><span class="nav-label nav-label--mobile"><span>Projects</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li><a href="/en/blog/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-about"><a href="/en/#about" class="link-button secondary"><span>About</span></a></li>
-                <li><a href="/en/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact</span><span class="nav-label nav-label--mobile"><span>Contact</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Motion"><span class="nav-label nav-label--desktop">Motion</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">on</span><span class="jw-motion-toggle__off">off</span></span></button></li>
-                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"><span class="nav-label nav-label--desktop">Deutsch</span><span class="nav-label nav-label--mobile">DE</span></a></li>
+                <li><a href="/en/projects/" class="link-button secondary"><span>Projects</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary" aria-current="true"><span>Blog</span></a></li>
+                <li><a href="/en/about/" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="/en/#contact" class="link-button secondary"><span>Contact</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Motion</span> <span data-off="off" data-on="on" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"><span>Deutsch</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Open menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </div>
 </header>
 
@@ -86,7 +82,7 @@
             <p class="jw-lead">I attended a game jam over the weekend and write about it.</p>
             
             
-            <p class="jw-tags jw-post-head__tags">Game Dev · Design · Prototyping · Game Jam · if(game)SH e.V. · Media Literacy</p>
+            <p class="jw-tags jw-post-head__tags"><span>Game Dev · Design · Prototyping · Game Jam · if(game)SH e.V. · Media Literacy</span></p>
             
         </header>
 
@@ -122,7 +118,7 @@
 
     <nav class="jw-wrap jw-pager" aria-label="More posts">
         
-        <a class="jw-pager__link" href="/en/blog/hello-blog/">
+        <a class="jw-pager__link" href="/en/blog/development-process-of-a-diy-synthesizer/">
             <span class="jw-label">← Older post</span>
             <span class="jw-pager__title">Development process of a DIY synthesizer</span>
         </a>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development process of a DIY synthesizer – Jan Westphal</title>
+    <meta name="description" content="From circuit to working prototype.">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/en/blog/development-process-of-a-diy-synthesizer/" rel="canonical">
+    <link href="https://janwestphal.dev/blog/development-process-of-a-diy-synthesizer/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/blog/development-process-of-a-diy-synthesizer/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/blog/development-process-of-a-diy-synthesizer/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/en/blog/development-process-of-a-diy-synthesizer/" property="og:url">
+    <meta content="en_US" property="og:locale">
+    <meta content="de_DE" property="og:locale:alternate">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Development process of a DIY synthesizer – Jan Westphal">
+    <meta property="og:description" content="From circuit to working prototype.">
+    
+    <meta property="og:image" content="https://janwestphal.dev/Images/Audiodingo/audiodingostanding.webp">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Development process of a DIY synthesizer – Jan Westphal">
+    <meta name="twitter:description" content="From circuit to working prototype.">
+
+
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-post" data-page="post">
+
+<a class="jw-skip" href="#main">Skip to content</a>
+<header class="site-header" id="top">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="/en/" class="logo">Jan Westphal</a>
+        </div>
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menu</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/en/projects/" class="link-button secondary"><span>Projects</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary" aria-current="true"><span>Blog</span></a></li>
+                <li><a href="/en/about/" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="/en/#contact" class="link-button secondary"><span>Contact</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Motion</span> <span data-off="off" data-on="on" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/blog/development-process-of-a-diy-synthesizer/"><span>Deutsch</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main" tabindex="-1" class="post-page">
+    <article>
+        <header class="jw-wrap jw-post-head">
+            <nav class="jw-crumb" aria-label="Breadcrumb">
+                <a href="/en/blog/">Blog</a>
+                <span aria-hidden="true">/</span>
+                <span>June 13, 2026</span>
+            </nav>
+            <h1>Development process of a DIY synthesizer</h1>
+            
+            <p class="jw-lead">From circuit to working prototype.</p>
+            
+            
+            <p class="jw-tags jw-post-head__tags"><span>Devlog · Electronic</span></p>
+            
+        </header>
+
+        
+        <div class="jw-wrap jw-post-cover-wrap">
+            <figure class="jw-post-cover">
+                <img src="/Images/Audiodingo/audiodingostanding.webp" alt="The finished Audio Dingo synthesizer standing upright" class="post-cover" loading="eager">
+            </figure>
+        </div>
+        
+
+        <div class="jw-wrap">
+            
+            <div class="post-body jw-prose">
+                <p>Hello, and welcome to the first post on my blog. :)</p>
+<p>In this article, I want to document the development process behind my DIY synthesizer project based on the Arduino R4 Minima, from the first breadboard prototypes and early case prints to the overall concept and design process.</p>
+<p>Once the initial idea was in place, the first step was to define the project requirements. I wanted to build a device capable of generating tones while integrating smoothly into my existing setup of other synthesizers. Portability was also an important factor, so it became clear early on that the device would need to run on battery power.</p>
+<p>For the playing interface, I chose 7 note keys, since a standard scale consists of 7 notes. In addition, the device includes 3 function buttons and 2 rotary encoders for modifying and shaping the generated sound. I also wanted to include a display to provide visual feedback for the current settings and the parameter being edited. To make the synthesizer usable as a standalone device, I added a built-in speaker. At the same time, a headphone jack was included so it could also be connected to other synths as part of a larger setup.</p>
+<p>After defining the requirements, I created and tested an initial circuit simulation on Wokwi. The next step was to determine which components would be suitable for the project and which ones would work together reliably. This involved a fair amount of research, comparing parts, checking compatibility, and sourcing everything from different online shops. Once all the components had arrived, I could finally begin assembling the first hardware prototype.</p>
+<p>As soon as I had a rough understanding of the circuit layout and had written the first basic version of the code, I moved on to designing the enclosure in Fusion. For the first 3D print, I only produced the main body of the case in black and installed all the components to get a first impression of the overall form and layout of the device.</p>
+<p>From there, the project moved into the next iteration phase. I began soldering the components, refining the code, and improving the sound generation. For audio synthesis, I used the Mozzi library, which proved to be a very useful tool for this type of Arduino-based project. At the same time, the enclosure design was revised as well.</p>
+<p>In the following iteration, the case became noticeably wider and deeper. I also adjusted the dimensions for the buttons, cutouts, and connectors to improve the overall fit. This time, the second print turned out to fit properly, which was a very satisfying milestone in the process.</p>
+<p>At the moment, the project is in its final stages. The code is still being refined, and the remaining small parts are being printed and added step by step.</p>
+<p>Et voilà, a new synthesizer is born. :)</p>
+<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span>This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).</span> <a href="/en/datenschutz/">Privacy</a></p><button type="button" class="jw-consent__button">Load video</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/iitkykF2S_k?si=zE1UXlFt0ZZfB-AN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div></figure>
+
+            </div>
+            
+            
+        </div>
+
+        
+        <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
+            <h2 id="jw-gallery-title" class="jw-label jw-rule"><span>Gallery</span> (03)</h2>
+            <div class="project-gallery jw-gallery">
+                
+                <figure class="project-gallery__item">
+                    <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/DingoFirstBreadboard.webp"><img src="/Images/Audiodingo/DingoFirstBreadboard.webp" alt="First breadboard prototype: Arduino, OLED display, joystick and rotary encoders connected with many jumper wires" loading="lazy"></a>
+                    <figcaption><span class="jw-fig">Fig. 01</span> <span>Breadboard circuit prototyping</span></figcaption>
+                </figure>
+                
+                <figure class="project-gallery__item">
+                    <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/DingofirstCase.webp"><img src="/Images/Audiodingo/DingofirstCase.webp" alt="First 3D-printed case in black, with cut-outs for keys, knobs and the display" loading="lazy"></a>
+                    <figcaption><span class="jw-fig">Fig. 02</span> <span>First printed case</span></figcaption>
+                </figure>
+                
+                <figure class="project-gallery__item">
+                    <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/DingoinFusion.webp"><img src="/Images/Audiodingo/DingoinFusion.webp" alt="Screenshot of the case design in Fusion 360" loading="lazy"></a>
+                    <figcaption><span class="jw-fig">Fig. 03</span> <span>Case design in Fusion</span></figcaption>
+                </figure>
+                
+            </div>
+        </section>
+        
+    </article>
+
+    <nav class="jw-wrap jw-pager" aria-label="More posts">
+        
+        <a class="jw-pager__link" href="/en/blog/">
+            <span class="jw-label">← All posts</span>
+            <span class="jw-pager__title">Back to blog</span>
+        </a>
+        
+        
+        <a class="jw-pager__link jw-pager__link--next" href="/en/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">
+            <span class="jw-label">Newer post →</span>
+            <span class="jw-pager__title">Experiences and impressions from the Media Literacy Game Jam in Leck</span>
+        </a>
+        
+    </nav>
+
+    
+<section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text">Questions, ideas or feedback? I’d love to hear from you.</p>
+        <a href="/en/#contact" class="jw-cta__button"><span>Drop a message</span>&#160;→</a>
+    </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. All wrongs reserved.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/en/impressum/">Imprint</a></li>
+            <li><a href="/en/datenschutz/">Privacy</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+</body>
+</html>

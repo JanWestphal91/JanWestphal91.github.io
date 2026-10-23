@@ -108,7 +108,9 @@
         const pageW = Number(bookElement.dataset.flipbookWidth) || 550;
         const pageH = Number(bookElement.dataset.flipbookHeight) || 733;
         const ratio = pageH / pageW;
-        bookElement.style.setProperty("--book-ratio", pageW + " / " + pageH);
+        // Hefte zeigen immer die Doppelseite (siehe unten): doppelte Breite
+        const isSpread = bookElement.classList.contains("jw-flipbook");
+        bookElement.style.setProperty("--book-ratio", (isSpread ? 2 * pageW : pageW) + " / " + pageH);
 
         // Größte Seitenbreite: Hefte (.jw-flipbook) höchstens 550 px pro Seite,
         // damit eine Doppelseite auf den Bildschirm passt; per
@@ -116,20 +118,27 @@
         const maxPage = Number(bookElement.dataset.flipbookMaxWidth) ||
             (bookElement.classList.contains("jw-flipbook") ? 550 : 1200);
 
+        // Hefte (.jw-flipbook) zeigen auch auf dem Handy immer die Doppelseite,
+        // weil bei den Zines die Zweiseitigkeit zur Gestaltung gehört. Dafür
+        // dürfen die Seiten dort schmaler werden (minWidth). Das alte
+        // Einzelbuch wechselt auf schmalen Bildschirmen weiter auf eine Seite.
+        const spread = isSpread;
+        const minPage = spread ? 120 : 280;
+
         const flipbook = new St.PageFlip(bookElement, {
             width: 550,
             height: Math.round(550 * ratio),
             size: "stretch",
-            minWidth: 280,
+            minWidth: minPage,
             maxWidth: maxPage,
-            minHeight: Math.round(280 * ratio),
+            minHeight: Math.round(minPage * ratio),
             maxHeight: Math.round(maxPage * ratio),
             showCover: true,
             drawShadow: true,
             maxShadowOpacity: 0.5,
             flippingTime: 700,
             mobileScrollSupport: true,
-            usePortrait: true,
+            usePortrait: !spread,
         });
 
         flipbook.on("init", function () {

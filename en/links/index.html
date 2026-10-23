@@ -42,26 +42,22 @@
 <body class="theme page-links">
 
 <a class="jw-skip" href="#main">Skip to content</a>
-<header class="site-header">
+<header class="site-header" id="top">
     <div class="container nav">
         <div class="jw-brand">
             <a href="/en/" class="logo">Jan Westphal</a>
         </div>
-        <nav class="nav-main" aria-label="Main navigation">
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menu</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/en/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop">Projects</span><span class="nav-label nav-label--mobile"><span>Projects</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li><a href="/en/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-about"><a href="/en/#about" class="link-button secondary"><span>About</span></a></li>
-                <li><a href="/en/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact</span><span class="nav-label nav-label--mobile"><span>Contact</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Motion"><span class="nav-label nav-label--desktop">Motion</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">on</span><span class="jw-motion-toggle__off">off</span></span></button></li>
-                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/links/"><span class="nav-label nav-label--desktop">Deutsch</span><span class="nav-label nav-label--mobile">DE</span></a></li>
+                <li><a href="/en/projects/" class="link-button secondary"><span>Projects</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary"><span>Blog</span></a></li>
+                <li><a href="/en/about/" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="/en/#contact" class="link-button secondary"><span>Contact</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Motion</span> <span data-off="off" data-on="on" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/links/"><span>Deutsch</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Open menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </div>
 </header>
 
@@ -75,7 +71,7 @@
         </div>
     </header>
     <section class="jw-links__group" aria-labelledby="links-game">
-        <h2 id="links-game" class="jw-label">[ <span>New game</span> ]</h2>
+        <h2 id="links-game" class="jw-label"><span>New game</span></h2>
         <a class="jw-links__feature" href="https://jan-west.itch.io/clapslapslash" target="_blank" rel="noopener noreferrer">
             <span class="jw-links__tag">Steam soon</span>
             <span class="jw-links__title">Clap, Slap, Slash!</span>
@@ -84,7 +80,7 @@
         </a>
     </section>
     <section class="jw-links__group" aria-labelledby="links-writeups">
-        <h2 id="links-writeups" class="jw-label">[ <span>Writeups</span> ]</h2>
+        <h2 id="links-writeups" class="jw-label"><span>Writeups</span></h2>
         <ul class="jw-links__list">
             <li>
                 <a class="jw-links__row" href="/en/blog/development-process-of-pocket-knight/">
@@ -97,7 +93,7 @@
                 </a>
             </li>
             <li>
-                <a class="jw-links__row" href="/en/blog/hello-blog/">
+                <a class="jw-links__row" href="/en/blog/development-process-of-a-diy-synthesizer/">
                     <img src="/Images/Audiodingo/audiodingostanding.webp" alt="" width="72" height="72" loading="lazy">
                     <span class="jw-links__text">
                         <span class="jw-links__name">Audio Dingo</span>
@@ -110,7 +106,7 @@
     </section>
 
     <section class="jw-links__group" aria-labelledby="links-socials">
-        <h2 id="links-socials" class="jw-label">[ <span>Socials</span> ]</h2>
+        <h2 id="links-socials" class="jw-label"><span>Socials</span></h2>
         <ul class="jw-links__list">
             <li><a class="jw-links__row jw-links__row--plain" href="https://github.com/JanWestphal91/" target="_blank" rel="noopener noreferrer"><span class="jw-links__name">GitHub</span><span class="jw-links__handle">JanWestphal91</span><span class="jw-links__arrow" aria-hidden="true">↗</span></a></li>
             <li><a class="jw-links__row jw-links__row--plain" href="https://jan-west.itch.io/" target="_blank" rel="noopener noreferrer"><span class="jw-links__name">Itch.io</span><span class="jw-links__handle">jan-west</span><span class="jw-links__arrow" aria-hidden="true">↗</span></a></li>
@@ -121,7 +117,7 @@
         </ul>
     </section>
     <section class="jw-links__group" aria-labelledby="links-site">
-        <h2 id="links-site" class="jw-label">[ <span>Website</span> ]</h2>
+        <h2 id="links-site" class="jw-label"><span>Website</span></h2>
         <ul class="jw-links__list">
             <li><a class="jw-links__row jw-links__row--plain" href="/en/"><span class="jw-links__name">Portfolio</span><span class="jw-links__handle">janwestphal.dev</span><span class="jw-links__arrow" aria-hidden="true">→</span></a></li>
             <li><a class="jw-links__row jw-links__row--plain" href="/en/#contact"><span class="jw-links__name">Contact</span><span class="jw-links__handle">Send a message</span><span class="jw-links__arrow" aria-hidden="true">→</span></a></li>

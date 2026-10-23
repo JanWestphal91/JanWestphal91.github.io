@@ -57,26 +57,22 @@
 <body class="theme page-project" data-page="project-static">
 
 <a class="jw-skip" href="#main">Skip to content</a>
-<header class="site-header">
+<header class="site-header" id="top">
     <div class="container nav">
         <div class="jw-brand">
             <a href="/en/" class="logo">Jan Westphal</a>
         </div>
-        <nav class="nav-main" aria-label="Main navigation">
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menu</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/en/projects/" class="link-button secondary" aria-current="true"><span class="nav-label nav-label--desktop">Projects</span><span class="nav-label nav-label--mobile"><span>Projects</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li><a href="/en/blog/" class="link-button secondary"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-about"><a href="/en/#about" class="link-button secondary"><span>About</span></a></li>
-                <li><a href="/en/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Contact</span><span class="nav-label nav-label--mobile"><span>Contact</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Motion"><span class="nav-label nav-label--desktop">Motion</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">on</span><span class="jw-motion-toggle__off">off</span></span></button></li>
-                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/projects/go-pony-go-c/"><span class="nav-label nav-label--desktop">Deutsch</span><span class="nav-label nav-label--mobile">DE</span></a></li>
+                <li><a href="/en/projects/" class="link-button secondary" aria-current="true"><span>Projects</span></a></li>
+                <li><a href="/en/blog/" class="link-button secondary"><span>Blog</span></a></li>
+                <li><a href="/en/about/" class="link-button secondary"><span>About</span></a></li>
+                <li><a href="/en/#contact" class="link-button secondary"><span>Contact</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Motion</span> <span data-off="off" data-on="on" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li><a hreflang="de" lang="de" id="lang-toggle" class="link-button secondary" href="/projects/go-pony-go-c/"><span>Deutsch</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Open menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </div>
 </header>
 
@@ -107,17 +103,17 @@
             </dl>
         </div>
     </section>
-
     
-    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
-        <h2 id="jw-media-title" class="jw-label jw-rule">01 — <span>Media</span></h2>
-        <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--widget" style="width:208px;min-height:167px"><p class="jw-consent__text"><span>Embedded from itch.io. Loading sends data to itch.io.</span> <a href="/en/datenschutz/">Privacy</a></p><button type="button" class="jw-consent__button">Load</button><template><iframe frameborder="0" src="https://itch.io/embed/4287829" width="208" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe></template></div></div>
+    <section class="jw-wrap jw-detail-block" aria-label="Cover">
+        <figure class="jw-cover">
+            <img src="/Images/resizedpony.gif" alt="Animated preview of Go Pony, Go C!: a pixel-art pony running ever faster" loading="eager">
+        </figure>
     </section>
     
 
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
-        <h2 id="jw-facts-title" class="jw-label jw-rule">02 — <span>Fact sheet</span></h2>
+        <h2 id="jw-facts-title" class="jw-label jw-rule">01 — <span>Fact sheet</span></h2>
         <dl class="jw-casefacts">
             <div><dt>Role</dt><dd>Solo project: game design, programming, pixel art and audio</dd></div>
             <div><dt>Time frame</dt><dd>November 2025 to March 2026</dd></div>
@@ -126,7 +122,7 @@
         </dl>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-1">
-        <h2 id="jw-case-1" class="jw-label jw-rule">03 — <span>Idea</span></h2>
+        <h2 id="jw-case-1" class="jw-label jw-rule">02 — <span>Idea</span></h2>
         <div class="jw-case__grid jw-case__grid--text">
             <div class="jw-prose jw-case__text">
                 <div><p>A small homage to the Flash games of the early 2000s and an experiment with physics calculations: a small pony keeps getting faster and tries to reach the speed of light.</p>
@@ -136,7 +132,7 @@
         </div>
     </section>
     <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-2">
-        <h2 id="jw-case-2" class="jw-label jw-rule">04 — <span>Features</span></h2>
+        <h2 id="jw-case-2" class="jw-label jw-rule">03 — <span>Features</span></h2>
         <div class="jw-case__grid jw-case__grid--text">
             <div class="jw-prose jw-case__text">
                 <div><ul>
@@ -151,6 +147,10 @@
         </div>
     </section>
     
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
+        <h2 id="jw-media-title" class="jw-label jw-rule">04 — <span>Media</span></h2>
+        <div id="project-embed" class="jw-embed"><div class="jw-consent jw-consent--widget" style="width:208px;min-height:167px"><p class="jw-consent__text"><span>Embedded from itch.io. Loading sends data to itch.io.</span> <a href="/en/datenschutz/">Privacy</a></p><button type="button" class="jw-consent__button">Load</button><template><iframe frameborder="0" src="https://itch.io/embed/4287829" width="208" height="167"><a href="https://jan-west.itch.io/go-pony-go-c">Go Pony, Go C! by Netro</a></iframe></template></div></div>
+    </section>
 
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
@@ -204,7 +204,7 @@
         
         <a class="jw-pager__link jw-pager__link--next" href="/en/projects/chirping-on-trust/">
             <span class="jw-label">Next project →</span>
-            <span class="jw-pager__title">Chirping on Trust for GBA</span>
+            <span class="jw-pager__title">Chirping on Trust</span>
         </a>
         
     </nav>

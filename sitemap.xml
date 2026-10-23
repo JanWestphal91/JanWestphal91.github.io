@@ -25,6 +25,18 @@
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/"/>
     </url>
     <url>
+        <loc>https://janwestphal.dev/blog/development-process-of-a-diy-synthesizer/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/development-process-of-a-diy-synthesizer/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/development-process-of-a-diy-synthesizer/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/development-process-of-a-diy-synthesizer/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/blog/development-process-of-a-diy-synthesizer/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/development-process-of-a-diy-synthesizer/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/development-process-of-a-diy-synthesizer/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/development-process-of-a-diy-synthesizer/"/>
+    </url>
+    <url>
         <loc>https://janwestphal.dev/blog/development-process-of-pocket-knight/</loc>
         <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/development-process-of-pocket-knight/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/development-process-of-pocket-knight/"/>
@@ -47,18 +59,6 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/"/>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/blog/hello-blog/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/hello-blog/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/hello-blog/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/hello-blog/"/>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/en/blog/hello-blog/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/blog/hello-blog/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/blog/hello-blog/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/blog/hello-blog/"/>
     </url>
     <url>
         <loc>https://janwestphal.dev/links/</loc>
@@ -97,16 +97,16 @@
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/3d-objekte/"/>
     </url>
     <url>
-        <loc>https://janwestphal.dev/projects/Audio-Dingo-Synth/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/Audio-Dingo-Synth/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/Audio-Dingo-Synth/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/Audio-Dingo-Synth/"/>
+        <loc>https://janwestphal.dev/projects/audio-dingo-synth/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/audio-dingo-synth/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/audio-dingo-synth/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/audio-dingo-synth/"/>
     </url>
     <url>
-        <loc>https://janwestphal.dev/en/projects/Audio-Dingo-Synth/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/Audio-Dingo-Synth/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/Audio-Dingo-Synth/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/Audio-Dingo-Synth/"/>
+        <loc>https://janwestphal.dev/en/projects/audio-dingo-synth/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/audio-dingo-synth/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/audio-dingo-synth/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/audio-dingo-synth/"/>
     </url>
     <url>
         <loc>https://janwestphal.dev/projects/chirping-on-trust/</loc>

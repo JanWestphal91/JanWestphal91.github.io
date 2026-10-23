@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Dingo Synth – Jan Westphal</title>
+    <meta name="description" content="Ein kleiner Synthesizer mit Akku, gebaut mit einem Arduino Uno R4 Minima und der Audio-Bibliothek Mozzi. Sieben Tasten spielen Töne oder Akkorde, zwei...">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/projects/audio-dingo-synth/" rel="canonical">
+    <link href="https://janwestphal.dev/projects/audio-dingo-synth/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/projects/audio-dingo-synth/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/projects/audio-dingo-synth/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/projects/audio-dingo-synth/" property="og:url">
+    <meta content="de_DE" property="og:locale">
+    <meta content="en_US" property="og:locale:alternate">
+    <meta name="geo.region" content="DE-SH">
+    <meta name="geo.placename" content="Kiel">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Audio Dingo Synth – Jan Westphal">
+    <meta property="og:description" content="Ein kleiner Synthesizer mit Akku, gebaut mit einem Arduino Uno R4 Minima und der Audio-Bibliothek Mozzi. Sieben Tasten spielen Töne oder Akkorde, zwei...">
+    
+    <meta property="og:image" content="https://janwestphal.dev/Images/Audiodingo/audiodingostanding.webp">
+    <meta name="twitter:image" content="https://janwestphal.dev/Images/Audiodingo/audiodingostanding.webp">
+    
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Audio Dingo Synth – Jan Westphal Preview">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Audio Dingo Synth – Jan Westphal">
+    <meta name="twitter:description" content="Ein kleiner Synthesizer mit Akku, gebaut mit einem Arduino Uno R4 Minima und der Audio-Bibliothek Mozzi. Sieben Tasten spielen Töne oder Akkorde, zwei...">
+
+
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-project" data-page="project-static">
+
+<a class="jw-skip" href="#main">Zum Inhalt springen</a>
+<header class="site-header" id="top">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="/" class="logo">Jan Westphal</a>
+        </div>
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menü</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/projects/" class="link-button secondary" aria-current="true"><span>Projekte</span></a></li>
+                <li><a href="/blog/" class="link-button secondary"><span>Blog</span></a></li>
+                <li><a href="/about/" class="link-button secondary"><span>Über mich</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span>Kontakt</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Animationen</span> <span data-off="aus" data-on="an" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/projects/audio-dingo-synth/"><span>English</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main" tabindex="-1" class="project-page">
+    <section class="jw-wrap jw-detail-head" aria-labelledby="jw-page-title">
+        <nav class="jw-crumb" aria-label="Breadcrumb">
+            <a href="/projects/">Projekte</a>
+            <span aria-hidden="true">/</span>
+            <span>04</span>
+        </nav>
+        <div class="jw-detail-head__row">
+            <div class="jw-detail-head__main">
+                <h1 id="jw-page-title">Audio Dingo Synth</h1>
+                
+                <div class="project-summary jw-lead"><p>Ein kleiner Synthesizer mit Akku, gebaut mit einem Arduino Uno R4 Minima und der Audio-Bibliothek Mozzi. Sieben Tasten spielen Töne oder Akkorde, zwei Drehencoder stellen Hüllkurve, Lautstärke und Presets ein, und der Joystick bringt Vibrato, Wah-Filter, Bitcrush und Glide ins Spiel. Der eingebaute Lautsprecher reicht zum Spielen allein, über die Klinkenbuchse lässt er sich mit anderen Synths verbinden.</p>
+<p>Über den Entwicklungsprozess habe ich in einem <a href="/blog/development-process-of-a-diy-synthesizer/">Blogbeitrag</a> geschrieben; Firmware und Gehäusedateien liegen im öffentlichen <a href="https://github.com/JanWestphal91/Audio-Dingo-Synth">GitHub-Repository</a>.</p>
+</div>
+            </div>
+            <dl class="jw-facts">
+                <div><dt>Art</dt><dd><span>Elektronik</span></dd></div>
+                <div><dt>Jahr</dt><dd>2026</dd></div>
+                <div>
+                    <dt>Details</dt>
+                    <dd>
+                        
+                        <span>Prototyp · Audio</span>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+    
+    <section class="jw-wrap jw-detail-block" aria-label="Cover">
+        <figure class="jw-cover">
+            <img src="/Images/Audiodingo/audiodingostanding.webp" alt="Der fertige Audio-Dingo-Synthesizer, aufrecht stehend" loading="eager">
+        </figure>
+    </section>
+    
+
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
+        <h2 id="jw-facts-title" class="jw-label jw-rule">01 — <span>Steckbrief</span></h2>
+        <dl class="jw-casefacts">
+            <div><dt>Rolle</dt><dd>Soloprojekt im Kurs Become a Maker (opencampus.sh, FabLab Kiel): Konzept, Schaltung, Firmware, Sounddesign und Gehäuse</dd></div>
+            <div><dt>Zeitraum</dt><dd>April bis September 2026 (Sommersemester)</dd></div>
+            <div><dt>Werkzeuge</dt><dd><ul class="jw-skills"><li>C++ (Arduino IDE)</li><li>Mozzi 2.0</li><li>Adafruit SSD1306 / GFX</li><li>Wokwi</li><li>Fusion 360</li></ul></dd></div>
+            <div><dt>Hardware</dt><dd><ul class="jw-casefacts__list"><li>Arduino Uno R4 Minima, Ton über den eingebauten 12-Bit-DAC</li><li>7 Tontasten und 3 Funktionstasten (MODE, WAVE, CHORD)</li><li>2 Drehencoder und ein analoger Joystick</li><li>SSD1306-OLED-Display, 128 × 32 px</li><li>Kleiner Class-D-Verstärker, Lautsprecher und Kopfhörer-/Line-Buchse</li><li>Akku mit 1800 mAh, 3D-gedrucktes Gehäuse</li></ul></dd></div>
+            <div><dt>Links</dt><dd><ul class="jw-casefacts__list"><li><a href="https://github.com/JanWestphal91/Audio-Dingo-Synth" target="_blank" rel="noopener noreferrer"><span>GitHub-Repository: Firmware, Gehäusedateien, Pinbelegung</span>&#160;<span aria-hidden="true">↗</span></a></li><li><a href="/blog/development-process-of-a-diy-synthesizer/"><span>Devlog: der Entwicklungsprozess</span>&#160;<span aria-hidden="true">→</span></a></li></ul></dd></div>
+        </dl>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-1">
+        <h2 id="jw-case-1" class="jw-label jw-rule">02 — <span>Anforderungen</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Ziel war ein kleiner Synthesizer, der eigene Klänge erzeugt und sich in mein bestehendes Setup aus anderen Synths einfügt. Er sollte auch allein funktionieren und läuft deshalb mit Akku und eingebautem Lautsprecher.</p>
+<ul>
+<li><strong>Spielen:</strong> 7 Tontasten, weil eine Tonleiter aus 7 Tönen besteht, dazu 3 Funktionstasten.</li>
+<li><strong>Klang formen:</strong> 2 Drehencoder und ein Joystick, damit sich der Klang beim Spielen verändern lässt.</li>
+<li><strong>Rückmeldung:</strong> ein kleines Display, das die aktuellen Einstellungen und den gerade bearbeiteten Wert zeigt.</li>
+<li><strong>Ausgang:</strong> ein Lautsprecher zum Spielen allein und eine Buchse, um ihn mit anderen Synths zu verbinden.</li>
+</ul>
+</div>
+            </div>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-2">
+        <h2 id="jw-case-2" class="jw-label jw-rule">03 — <span>Von der Simulation zum Breadboard</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Bevor ich etwas bestellt habe, habe ich eine erste Schaltung auf Wokwi simuliert und getestet. Danach kam die Recherche: Welche Bauteile eignen sich, welche arbeiten zuverlässig zusammen, und wo bekomme ich sie her?</p>
+<p>Als alles angekommen war, habe ich den ersten Hardware-Prototyp auf einem Breadboard aufgebaut und eine erste Grundversion des Codes geschrieben. Alle Tasten liegen zwischen Pin und Masse; die Firmware schaltet die internen Pull-up-Widerstände ein, zusätzliche Widerstände braucht es deshalb nicht.</p>
+</div>
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/DingoFirstBreadboard.webp">
+                    <img src="/Images/Audiodingo/DingoFirstBreadboard.webp" alt="Erster Breadboard-Prototyp: Arduino, OLED-Display, Joystick und Drehencoder, verbunden mit vielen Steckkabeln" loading="lazy">
+                </a>
+                <figcaption>Der erste Prototyp auf dem Breadboard</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-3">
+        <h2 id="jw-case-3" class="jw-label jw-rule">04 — <span>So entsteht der Klang</span></h2>
+        <div class="jw-case__grid jw-case__grid--wide">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Jede Note läuft durch dieselbe Kette: Oszillatoren, etwas Rauschen, ein Tiefpassfilter mit Resonanz, die Lautstärke-Hüllkurve, die Gesamtlautstärke und zuletzt der Bitcrusher. Danach geht das Sample an den DAC an Pin A0 und von dort zum Verstärker.</p>
+<ul>
+<li><strong>Oszillatoren:</strong> Jede Stimme hat zwei. Bei Sägezahn, Puls und Dreieck ist der zweite leicht verstimmt, ausgegeben wird die Differenz beider. Weil sie dabei gegeneinander wandern, verändert sich die Wellenform ständig. Bei FM moduliert der zweite Oszillator die Phase des ersten, das ergibt glockige und metallische Klänge.</li>
+<li><strong>Zwei Geschwindigkeiten:</strong> Mozzi ruft <code>updateControl()</code> 128-mal pro Sekunde für alles Langsame auf – Tasten, Encoder, Hüllkurven, Display. <code>updateAudio()</code> läuft 32.768-mal pro Sekunde und berechnet bei jedem Aufruf genau ein Sample. Dort hat deshalb nur schnelle Ganzzahl-Rechnung Platz.</li>
+<li><strong>Presets als Daten:</strong> Wellenform, Filter, Hüllkurven, LFO und Bitcrush der 5 Presets sind Felder einer Struktur in <code>presets.h</code>. Ein neuer Klang ist eine neue Tabellenzeile, kein neuer Code.</li>
+</ul>
+</div>
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/signalweg-de.webp">
+                    <img src="/Images/Audiodingo/signalweg-de.webp" alt="Diagramm des Signalwegs: Oszillatoren, plus Rauschen, Tiefpass, mal Hüllkurve, mal Lautstärke, Bitcrusher, DAC an A0 zum Verstärker. Cutoff, Filter-Hüllkurve, LFO und Joystick wirken auf den Filter, Encoder 1 stellt die Hüllkurve. Darunter: updateControl läuft 128-mal pro Sekunde, updateAudio 32.768-mal pro Sekunde." loading="lazy">
+                </a>
+                <figcaption>Signalweg einer Note in der Firmware</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-4">
+        <h2 id="jw-case-4" class="jw-label jw-rule">05 — <span>Herausforderungen</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                
+                <div><ul>
+<li><strong>Knacken durch das Display:</strong> Ein Bild über I²C zum OLED zu schicken dauert einige Millisekunden. In dieser Zeit wird der Audiopuffer nicht nachgefüllt, und gehaltene Töne knacken. Die Firmware fasst deshalb alle angezeigten Werte zu einer Prüfsumme zusammen und zeichnet nur neu, wenn sie sich ändert.</li>
+<li><strong>Fester Audio-Pin:</strong> Auf dem Uno R4 gibt Mozzi den Ton immer über den internen DAC an A0 aus. Die Pinbelegung musste darum herum geplant werden.</li>
+<li><strong>Geteilte Pins:</strong> Beim R4 Minima sind A4 und A5 dieselben Pins wie SDA und SCL des Displays. In diesem Aufbau teilen sich die Tasten WAVE und CHORD diese Leitungen mit dem Display. In einer zweiten Version würde ich beide Tasten auf freie Pins legen.</li>
+</ul>
+</div>
+            </div>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-5">
+        <h2 id="jw-case-5" class="jw-label jw-rule">06 — <span>Gehäuse in zwei Iterationen</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Mit einem groben Plan der Schaltung im Kopf habe ich das Gehäuse in Fusion 360 entworfen. Der erste Druck war nur der schwarze Grundkörper – genug, um alle Bauteile einzusetzen und ein Gefühl für Form und Anordnung zu bekommen.</p>
+<p>In der zweiten Iteration wurde das Gehäuse deutlich breiter und tiefer, und ich habe die Aussparungen für Tasten und Anschlüsse angepasst. Dieser Druck passte. Das fertige Gehäuse ist mehrfarbig gedruckt: grauer Körper, orange Akzente und schwarze Kappen. Die Druckdateien liegen im Repository.</p>
+</div>
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/DingofirstCase.webp">
+                    <img src="/Images/Audiodingo/DingofirstCase.webp" alt="Erstes 3D-gedrucktes Gehäuse in Schwarz mit Aussparungen für Tasten, Drehknöpfe und Display" loading="lazy">
+                </a>
+                <figcaption>Der erste Druck: nur der Grundkörper</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-6">
+        <h2 id="jw-case-6" class="jw-label jw-rule">07 — <span>Ergebnis</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Audio Dingo ist ein spielbares Instrument mit rund 1.100 Zeilen Firmware, aufgeteilt in Hauptprogramm, Pinbelegung, Presets und einen Encoder-Decoder.</p>
+<ul>
+<li><strong>6 Wellenformen:</strong> Sägezahn, Puls, Dreieck, Sinus, 2-Operator-FM und Rauschen</li>
+<li><strong>Akkordmodus:</strong> Jede Taste spielt drei Stimmen – Dur, Moll, sus4 oder Oktaven</li>
+<li><strong>5 Presets</strong> – Lead, Bass, FM-Glocke, Sub und eine Kickdrum – dazu eine Taste, die einen Zufallsklang würfelt</li>
+<li><strong>Tiefpassfilter mit Resonanz</strong> und eigener Hüllkurve, ADSR live mit dem Encoder einstellbar</li>
+<li><strong>Joystick:</strong> Vibrato, Wah-Filter, Bitcrush und Glide</li>
+<li><strong>OLED:</strong> Statusanzeige und ein animierter Visualizer</li>
+</ul>
+<p>Firmware, Gehäusedateien und Dokumentation sind unter MIT-Lizenz offen.</p>
+</div>
+            </div>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-7">
+        <h2 id="jw-case-7" class="jw-label jw-rule">08 — <span>Was ich gelernt habe und ändern würde</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                
+                <div><ul>
+<li><strong>Funktionen streichen:</strong> Aufnahme und Wiedergabe waren geplant. Mit den wenigen Eingabemöglichkeiten des Geräts ließen sie sich nicht gut synchronisieren, und das Projekt wäre zu umfangreich geworden. Deshalb habe ich sie herausgenommen.</li>
+<li><strong>Das Gehäuse hat am längsten gedauert:</strong> Von allen Teilen des Projekts hat das Gehäusedesign die meiste Zeit gekostet.</li>
+<li><strong>Ein stärkeres Board:</strong> Beim nächsten Mal würde ich ein leistungsfähigeres Board als den Arduino Uno nehmen und darauf achten, dass es einen digitalen Audioausgang hat statt des DAC an A0.</li>
+</ul>
+</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-media-title">
+        <h2 id="jw-media-title" class="jw-label jw-rule">09 — <span>Medien</span></h2>
+        <div class="jw-video" data-yt="iitkykF2S_k">
+            <button type="button" class="jw-video__play" aria-label="Video abspielen"><img src="/Images/Audiodingo/standingdingo.webp" alt="" loading="lazy">
+                <span class="jw-video__badge"><span class="jw-video__icon" aria-hidden="true"></span><span>Video abspielen</span></span>
+            </button>
+            <p class="jw-video__note">Das Video wird erst nach dem Klick von YouTube geladen.</p>
+        </div>
+    </section>
+
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
+        <div class="jw-gallery-head">
+            <h2 id="jw-gallery-title" class="jw-label jw-rule">10 — <span>Galerie</span> (02)</h2><div class="jw-view-toggle" role="group" aria-label="Ansicht der Galerie" hidden>
+                <button type="button" data-view="archive" aria-pressed="true">Archiv</button>
+                <button type="button" data-view="grid" aria-pressed="false">Raster</button>
+            </div>
+        </div>
+        <div class="project-gallery jw-gallery" data-archive-code="AU">
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/standingdingo.webp"><img src="/Images/Audiodingo/standingdingo.webp" alt="Audio Dingo von vorn: graues Gehäuse mit orangem Lautsprechergitter, zwei orangen Drehknöpfen, schwarzen Tasten und kleinem OLED-Display" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 01</span> <span>Das fertige Gehäuse, Frontalansicht.</span></figcaption>
+            </figure>
+            
+            <figure class="project-gallery__item">
+                
+                <a class="post-figure__link" data-lightbox="" href="/Images/Audiodingo/DingoinFusion.webp"><img src="/Images/Audiodingo/DingoinFusion.webp" alt="Screenshot des Gehäuseentwurfs in Fusion 360" loading="lazy"></a>
+                
+                <figcaption><span class="jw-fig">Fig. 02</span> <span>Der Gehäuseentwurf in Fusion 360</span></figcaption>
+            </figure>
+            
+        </div>
+    </section>
+    
+
+    <nav class="jw-wrap jw-pager" aria-label="More projects">
+        
+        <a class="jw-pager__link" href="/projects/chirping-on-trust/">
+            <span class="jw-label">← Vorheriges Projekt</span>
+            <span class="jw-pager__title">Chirping on Trust</span>
+        </a>
+        
+        
+        <a class="jw-pager__link jw-pager__link--next" href="/projects/3d-objekte/">
+            <span class="jw-label">Nächstes Projekt →</span>
+            <span class="jw-pager__title">3D-Objekte</span>
+        </a>
+        
+    </nav>
+
+    
+<section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text">Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.</p>
+        <a href="/#contact" class="jw-cta__button"><span>Schreib mir</span>&#160;→</a>
+    </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. Alle Fehler vorbehalten.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/impressum/">Impressum</a></li>
+            <li><a href="/datenschutz/">Datenschutz</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+<script src="/page-flip.browser.js" defer></script>
+<script src="/flipbook.js" defer></script>
+</body>
+</html>

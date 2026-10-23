@@ -463,57 +463,50 @@ window.applyWavyText = applyWavyText;
 window.createRainbowTextHTML = createRainbowTextHTML;
 window.applyRainbowText = applyRainbowText;
 
-/* ═══ Burger Menu Mobile Navigation ═══ */
+/* ═══ Menü auf dem Handy ═══
+   Unter 860 px steht die Navigation hinter dem Knopf „Menü“. Er klappt die
+   Liste auf und zu; Escape, ein Klick daneben oder ein Link schließen sie. */
 const burgerMenuToggle = document.getElementById("burger-menu-toggle");
 const navMain = document.querySelector(".nav-main");
+const siteHeader = document.querySelector(".site-header");
 
-function closeBurgerMenu() {
-    if (navMain) {
-        navMain.classList.remove("active");
-    }
-    if (burgerMenuToggle) {
-        burgerMenuToggle.classList.remove("active");
-        burgerMenuToggle.setAttribute("aria-expanded", "false");
-    }
+function setMenu(open) {
+    if (!navMain || !burgerMenuToggle) return;
+    navMain.classList.toggle("active", open);
+    if (siteHeader) siteHeader.classList.toggle("is-menu-open", open);
+    burgerMenuToggle.setAttribute("aria-expanded", open ? "true" : "false");
 }
 
-function toggleBurgerMenu(event) {
-    event.preventDefault();
-    
-    if (navMain) {
-        const isActive = navMain.classList.toggle("active");
-        if (burgerMenuToggle) {
-            burgerMenuToggle.classList.toggle("active", isActive);
-            burgerMenuToggle.setAttribute("aria-expanded", isActive ? "true" : "false");
-        }
-    }
+function closeBurgerMenu() {
+    setMenu(false);
 }
 
 if (burgerMenuToggle) {
-    burgerMenuToggle.addEventListener("click", toggleBurgerMenu);
+    burgerMenuToggle.addEventListener("click", function (event) {
+        event.preventDefault();
+        setMenu(burgerMenuToggle.getAttribute("aria-expanded") !== "true");
+    });
 }
 
-
-// Nav-Links schließen das Menü beim Klick
-document.querySelectorAll(".nav-links a").forEach((link) => {
+document.querySelectorAll(".nav-links a").forEach(function (link) {
     link.addEventListener("click", closeBurgerMenu);
 });
 
-// Menü schließen wenn auf der Seite geklickt wird
-document.addEventListener("click", (event) => {
-    const isClickInsideNav = navMain && navMain.contains(event.target);
-    const isClickOnBurger = burgerMenuToggle && burgerMenuToggle.contains(event.target);
-    
-    if (!isClickInsideNav && !isClickOnBurger && navMain && navMain.classList.contains("active")) {
+document.addEventListener("click", function (event) {
+    if (!navMain || !navMain.classList.contains("active")) return;
+    if (navMain.contains(event.target) || (burgerMenuToggle && burgerMenuToggle.contains(event.target))) return;
+    closeBurgerMenu();
+});
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && navMain && navMain.classList.contains("active")) {
         closeBurgerMenu();
+        if (burgerMenuToggle) burgerMenuToggle.focus();
     }
 });
 
-// Menü schließen bei Fenster-Skalierung über 768px
-window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) {
-        closeBurgerMenu();
-    }
+window.addEventListener("resize", function () {
+    if (window.innerWidth > 860) closeBurgerMenu();
 });
 
 /* ═══ Header-Höhe für Sprungziele ═══
@@ -672,7 +665,7 @@ function initFishScene() {
     const fishEl    = document.getElementById('fish');
     const bowlLabel = document.getElementById('bowl-label');
     const canvas    = document.getElementById('pellet-layer');
-    const sceneRoot = document.getElementById('top');
+    const sceneRoot = document.querySelector('main');
 
     if (!can || !bowl || !fishEl || !canvas || !sceneRoot) return;
 
@@ -1879,4 +1872,25 @@ document.addEventListener("click", function (event) {
     const template = box ? box.querySelector("template") : null;
     if (!template) return;
     box.replaceWith(template.content.cloneNode(true));
+});
+
+/* ═══ YouTube erst nach Klick ═══
+   Projektseiten zeigen ein lokales Vorschaubild. Erst der Klick lädt den
+   Player von youtube-nocookie.com und startet das Video. */
+document.querySelectorAll('.jw-video[data-yt]').forEach(function (box) {
+    const button = box.querySelector('.jw-video__play');
+    if (!button) return;
+    button.addEventListener('click', function () {
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(box.dataset.yt) + '?autoplay=1&rel=0';
+        iframe.title = button.textContent.trim();
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.allowFullscreen = true;
+        iframe.className = 'jw-video__frame';
+        button.replaceWith(iframe);
+        const note = box.querySelector('.jw-video__note');
+        if (note) note.remove();
+        iframe.focus();
+    });
 });

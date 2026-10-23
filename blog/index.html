@@ -44,32 +44,28 @@
 <body class="theme page-blog">
 
 <a class="jw-skip" href="#main">Zum Inhalt springen</a>
-<header class="site-header">
+<header class="site-header" id="top">
     <div class="container nav">
         <div class="jw-brand">
             <a href="/" class="logo">Jan Westphal</a>
         </div>
-        <nav class="nav-main" aria-label="Main navigation">
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menü</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="/projects/" class="link-button secondary"><span class="nav-label nav-label--desktop">Projekte</span><span class="nav-label nav-label--mobile"><span>Projekte</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li><a href="/blog/" class="link-button secondary" aria-current="page"><span class="nav-label nav-label--desktop">Blog</span><span class="nav-label nav-label--mobile"><span>Blog</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-about"><a href="/#about" class="link-button secondary"><span>Über mich</span></a></li>
-                <li><a href="/#contact" class="link-button secondary"><span class="nav-label nav-label--desktop">Kontakt</span><span class="nav-label nav-label--mobile"><span>Kontakt</span><span class="nav-arrow" aria-hidden="true"> →</span></span></a></li>
-                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true" aria-label="Animationen"><span class="nav-label nav-label--desktop">Animationen</span><span class="nav-label nav-label--mobile">Anim.</span><span class="jw-motion-toggle__state" aria-hidden="true"><span class="jw-motion-toggle__on">an</span><span class="jw-motion-toggle__off">aus</span></span></button></li>
-                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/blog/"><span class="nav-label nav-label--desktop">English</span><span class="nav-label nav-label--mobile">EN</span></a></li>
+                <li><a href="/projects/" class="link-button secondary"><span>Projekte</span></a></li>
+                <li><a href="/blog/" class="link-button secondary" aria-current="page"><span>Blog</span></a></li>
+                <li><a href="/about/" class="link-button secondary"><span>Über mich</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span>Kontakt</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Animationen</span> <span data-off="aus" data-on="an" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/blog/"><span>English</span></a></li>
             </ul>
         </nav>
-        <button id="burger-menu-toggle" class="burger-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </div>
 </header>
 
 <main id="main" tabindex="-1">
     <section class="jw-wrap jw-page-head" aria-labelledby="jw-page-title">
-        <p class="jw-label">[ Blog — 03 <span>Beiträge</span> ]</p>
+        <p class="jw-label">Blog — 03 <span>Beiträge</span></p>
         <div class="jw-page-head__row">
             <h1 id="jw-page-title">Blog</h1>
             <p class="jw-page-head__intro">Devlogs, Bauprozesse und Game-Jam-Berichte – wie die Projekte tatsächlich entstanden sind.</p>
@@ -94,7 +90,7 @@
                 </div>
                 <div class="jw-feature__foot">
                     <span class="jw-tags">
-                        <span>20. August 2026</span> · Game Dev · Prototyping · Electronics
+                        <span>20. August 2026</span> · <span>Game Dev · Prototyping · Elektronik</span>
                     </span>
                     <span class="jw-feature__read"><span>Lesen</span>&#160;→</span>
                 </div>
@@ -118,12 +114,12 @@
                         <span class="jw-brow__desc">Ich war ein Wochenende lang auf einem Game Jam und berichte darüber.</span>
                         
                     </span>
-                    <span class="jw-brow__tags jw-tags">Game Dev · Design · Prototyping · Game Jam · if(game)SH e.V. · Media Literacy</span>
+                    <span class="jw-brow__tags jw-tags"><span>Game Dev · Design · Prototyping · Game Jam · IF(game)SH e.V. · Medienkompetenz</span></span>
                     <span class="jw-brow__arrow" aria-hidden="true">→</span>
                 </a>
             </li>
             <li>
-                <a class="jw-brow" href="/blog/hello-blog/">
+                <a class="jw-brow" href="/blog/development-process-of-a-diy-synthesizer/">
                     <span class="jw-brow__thumb" aria-hidden="true"><img src="/Images/Audiodingo/audiodingostanding.webp" alt="" loading="lazy" width="160" height="160"></span>
                     <span class="jw-brow__date jw-tags">
                         <span>13. Juni 2026</span>
@@ -134,7 +130,7 @@
                         <span class="jw-brow__desc">Von einer Schaltung zum funktionierenden Prototyp.</span>
                         
                     </span>
-                    <span class="jw-brow__tags jw-tags">Devlog · Electronic</span>
+                    <span class="jw-brow__tags jw-tags"><span>Devlog · Elektronik</span></span>
                     <span class="jw-brow__arrow" aria-hidden="true">→</span>
                 </a>
             </li>
