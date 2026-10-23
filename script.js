@@ -343,7 +343,8 @@ if (form) {
             link.href = "mailto:" + address +
                 "?subject=" + encodeURIComponent("Nachricht über janwestphal.dev") +
                 "&body=" + encodeURIComponent(body);
-            link.textContent = t("contact.fallback") + " →";
+            link.textContent = t("contact.fallback") + "\u00a0";
+            link.insertAdjacentHTML("beforeend", jwArrow("r"));
             status.appendChild(document.createTextNode(" "));
             status.appendChild(link);
         }
@@ -404,7 +405,7 @@ if (form) {
         // Formspark erwartet JSON; das Fangfeld _honeypot wird mitgeschickt,
         // damit Formspark Bot-Nachrichten erkennen kann.
         const payload = Object.fromEntries(new FormData(form).entries());
-        const originalText = submitBtn ? submitBtn.textContent : "";
+        const originalText = submitBtn ? submitBtn.innerHTML : ""; // mit Pfeil-Grafik
 
         if (submitBtn) {
             submitBtn.textContent = t("contact.submit.sending");
@@ -432,7 +433,7 @@ if (form) {
             showStatus("error", t("contact.network-error"), true);
         } finally {
             if (submitBtn) {
-                submitBtn.textContent = originalText;
+                submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             }
         }
@@ -559,6 +560,19 @@ function initHeroModal() {
 }
 
 initHeroModal();
+
+/* Pfeil als Grafik – dieselbe Form wie _build/arrows.js, für Texte, die
+   erst im Browser entstehen (Karussell-Unterschrift, Hinweis im Formular) */
+function jwArrow(dir) {
+    const rotate = { r: 0, l: 180, ur: -45, d: 90 }[dir] || 0;
+    const svg = function (part) {
+        return '<svg class="jw-arrow__' + part + '" viewBox="0 0 16 16" focusable="false">' +
+            '<g transform="rotate(' + rotate + ' 8 8)">' +
+            '<path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square"/>' +
+            '</g></svg>';
+    };
+    return '<span class="jw-arrow jw-arrow--' + dir + '" aria-hidden="true">' + svg('a') + svg('b') + '</span>';
+}
 
 function initWavyHover(element) {
     if (!element) {
@@ -1226,7 +1240,7 @@ initFishScene();
         try { return localStorage.getItem(VIEW_KEY); } catch (error) { return null; }
     }
 
-    document.querySelectorAll('.page-project .jw-gallery').forEach(function (grid) {
+    document.querySelectorAll('.page-project .jw-gallery, .page-post .jw-gallery').forEach(function (grid) {
         const figures = Array.from(grid.querySelectorAll('.project-gallery__item'));
         if (figures.length < MIN_ITEMS) return;
 
@@ -1418,7 +1432,8 @@ initFishScene();
             else card.setAttribute('aria-hidden', 'true');
         });
         if (caption) {
-            caption.textContent = (cards[index].dataset.title || '') + ' →';
+            caption.textContent = (cards[index].dataset.title || '') + '\u00a0';
+            caption.insertAdjacentHTML('beforeend', jwArrow('r'));
             caption.setAttribute('href', cards[index].getAttribute('href'));
         }
         if (count) {
@@ -1754,11 +1769,9 @@ initFishScene();
         const baseWght = parseFloat(style.fontWeight) || 600;
         const baseWdth = parseFloat(style.fontStretch) || 100;
         const BASE = { wght: baseWght, wdth: baseWdth };
-        // Spitze: volle Strichstärke und volle Breite der Schrift (800 / 100 %).
-        // Dazu hebt sich der Buchstabe etwas an und wird größer (LIFT, GROW).
-        const PEAK = { wght: 800, wdth: 100 };
-        const LIFT = 0.1;   // in em
-        const GROW = 0.08;  // + 8 %
+        // Nur die Strichstärke steigt (Grundwert 600 aus dem CSS bis 800).
+        // Breite und Lage der Buchstaben bleiben, die Zeile verschiebt sich kaum.
+        const PEAK = { wght: Math.min(800, baseWght + 200), wdth: baseWdth };
         let radius = 220;
         let letters = [];
         let rects = [];
@@ -1819,7 +1832,7 @@ initFishScene();
 
         function measure() {
             // Wirkungsradius wächst mit der Schriftgröße
-            radius = Math.max(120, parseFloat(getComputedStyle(title).fontSize) * 2);
+            radius = Math.max(90, parseFloat(getComputedStyle(title).fontSize) * 1.5);
             rects = letters.map(function (l) {
                 const r = l.getBoundingClientRect();
                 return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
@@ -1845,9 +1858,7 @@ initFishScene();
                 c.k += (k - c.k) * 0.25;
                 if (Math.abs(goal.wght - c.wght) > 0.5 || Math.abs(k - c.k) > 0.005) moving = true;
                 letter.style.fontVariationSettings = settings(c);
-                letter.style.transform = c.k > 0.001
-                    ? 'translateY(' + (-LIFT * c.k).toFixed(3) + 'em) scale(' + (1 + GROW * c.k).toFixed(3) + ')'
-                    : '';
+
             });
             frame = (pointer || moving) ? requestAnimationFrame(tick) : null;
         }

@@ -69,38 +69,38 @@
     </div>
 </header>
 <nav class="jw-wrap jw-back" aria-label="Back">
-    <a class="jw-back__link" href="/en/blog/"><span aria-hidden="true">←</span>&#160;<span>All posts</span></a>
+    <a class="jw-back__link" href="/en/blog/"><span aria-hidden="true"><span class="jw-arrow jw-arrow--l" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></span>&#160;<span>All posts</span></a>
 </nav>
 
 <main id="main" tabindex="-1" class="post-page">
     <article>
-        <header class="jw-wrap jw-post-head">
-            <p class="jw-tags jw-post-head__date">
-                <span>August 20, 2026</span>
-            </p>
-            <h1>Development process of Pocket Knight</h1>
-            
-            <p class="jw-lead">Detailed development process of a handheld device.</p>
-            
-            
-            <p class="jw-tags jw-post-head__tags"><span>Game Dev · Prototyping · Electronics</span></p>
-            
+        <header class="jw-wrap jw-detail-head jw-post-head">
+            <div class="jw-detail-head__row">
+                <div class="jw-detail-head__main">
+                    <h1 id="jw-page-title">Development process of Pocket Knight</h1>
+                    
+                    <p class="jw-lead">Detailed development process of a handheld device.</p>
+                    
+                </div>
+                <dl class="jw-facts">
+                    <div><dt>Date</dt><dd><time datetime="2026-08-20"><span>August 20, 2026</span></time></dd></div>
+                    <div><dt>Topics</dt><dd><span>Game Dev · Prototyping · Electronics</span></dd></div>
+                    <div><dt>Reading time</dt><dd><span>5 min</span></dd></div>
+                </dl>
+            </div>
         </header>
 
         
-        <div class="jw-wrap jw-post-cover-wrap">
-            <figure class="jw-post-cover">
-                <img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="The finished Pocket Knight device standing on a stone surface" class="post-cover" loading="eager">
+        <section class="jw-wrap jw-detail-block" aria-label="Cover">
+            <figure class="jw-cover">
+                <img src="/Images/blog/development-process-of-pocket-knight/closeshotpocketknight.png" alt="The finished Pocket Knight device standing on a stone surface" loading="eager">
             </figure>
-        </div>
-        
-
-        <div class="jw-wrap">
+        </section>
+        <section class="jw-wrap jw-detail-block jw-case jw-flow" aria-labelledby="jw-post-text">
+            <h2 id="jw-post-text" class="jw-label jw-rule">01 — <span>Post</span></h2>
             
-            <div class="post-body jw-prose">
-                <p>Hi! For quite a while now I'd wanted to build a device that brings to mind the Digimon Digivice toys. I thought those things were really cool as a kid, even though I never owned one, but I've made up for that now in my own way :)</p>
-<p><a href="https://wikimon.net/images/9/99/Digivice_ver1_1.jpg"><img src="/Images/blog/development-process-of-pocket-knight/Digivice_ver1_1.webp" alt="Digive Toy" title="The toy i talk about, Bildquelle: https://wikimon.net/images/9/99/Digivice_ver1_1.jpg"></a></p>
-<p>So I started by working out a concept and thinking about which parts I could use. This time I went with a DFRobot FireBeetle v2 ESP32, because it already has the power supply on the board and all I had to do was hook up a battery. Since the device was also meant to be pocket-friendly, I tried to keep the whole thing as minimal as possible.</p>
+            <div><div class="jw-case__grid jw-flow__row"><div class="jw-prose jw-case__text post-body"><p>Hi! For quite a while now I'd wanted to build a device that brings to mind the Digimon Digivice toys. I thought those things were really cool as a kid, even though I never owned one, but I've made up for that now in my own way :)</p></div><div class="jw-flow__media"><figure class="post-figure post-figure--mittel jw-case__figure"><a class="post-figure__link" data-lightbox="" href="/Images/blog/development-process-of-pocket-knight/Digivice_ver1_1.webp"><img src="/Images/blog/development-process-of-pocket-knight/Digivice_ver1_1.webp" alt="Digive Toy" loading="lazy"></a><figcaption>The toy i talk about, Bildquelle: https://wikimon.net/images/9/99/Digivice_ver1_1.jpg</figcaption></figure></div></div>
+<div class="jw-case__grid jw-flow__row"><div class="jw-prose jw-case__text post-body"><p>So I started by working out a concept and thinking about which parts I could use. This time I went with a DFRobot FireBeetle v2 ESP32, because it already has the power supply on the board and all I had to do was hook up a battery. Since the device was also meant to be pocket-friendly, I tried to keep the whole thing as minimal as possible.</p>
 <p>Other components I used:</p>
 <ul>
 <li>128 x 64 pixel OLED display</li>
@@ -113,13 +113,10 @@
 <li>a piece of perfboard, wire and solder</li>
 <li>superglue and hot glue :)</li>
 </ul>
-<p>Once I had a rough plan and had gathered all the parts, I started by putting everything together on a breadboard and turned to the code first. There were several hurdles along the way that drove me to despair more than once: integrating the step counter, the sleep function while still counting steps, loading and displaying pixel graphics, and the animations. Everything else was hard too, what was I thinking?!</p>
-<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldbreadboard.webp"><img src="/Images/PocketKnight/handheldbreadboard.webp" alt="BreadboardKnight" loading="lazy"></a><figcaption>Breadboard Prototyping</figcaption></figure>
-<p>Once I eventually had halfway usable code and the breadboard circuit was more or less finalised, it was time to solder. I tried to get all the components packed together as compactly as possible, which worked out pretty well.</p>
-<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldactive.webp"><img src="/Images/PocketKnight/handheldactive.webp" alt="" loading="lazy"></a><figcaption>The soldered and glued thing</figcaption></figure>
-<p>In the next step I kept working on the game loop, the content and the sprites to turn it into a "rounded" game. Alongside that I started designing the enclosure in Fusion and then printed it at the <a href="https://fablab.sh/">Kiel FabLab</a>.</p>
-<figure class="post-figure post-figure--mittel"><a class="post-figure__link" data-lightbox="" href="/Images/blog/development-process-of-pocket-knight/Printfablab.webp"><img src="/Images/blog/development-process-of-pocket-knight/Printfablab.webp" alt="" loading="lazy"></a><figcaption>Printing the case on a Prusa Mini</figcaption></figure>
-<p>And then the time had finally come and the device was nearing completion. All in all it took considerably longer than planned again and I sank roughly 3 months of my free time into the project. I had a few more ideas I would have liked to implement, but I've cut them for now due to a lack of time and motivation.</p>
+<p>Once I had a rough plan and had gathered all the parts, I started by putting everything together on a breadboard and turned to the code first. There were several hurdles along the way that drove me to despair more than once: integrating the step counter, the sleep function while still counting steps, loading and displaying pixel graphics, and the animations. Everything else was hard too, what was I thinking?!</p></div><div class="jw-flow__media"><figure class="post-figure post-figure--mittel jw-case__figure"><a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldbreadboard.webp"><img src="/Images/PocketKnight/handheldbreadboard.webp" alt="BreadboardKnight" loading="lazy"></a><figcaption>Breadboard Prototyping</figcaption></figure></div></div>
+<div class="jw-case__grid jw-flow__row"><div class="jw-prose jw-case__text post-body"><p>Once I eventually had halfway usable code and the breadboard circuit was more or less finalised, it was time to solder. I tried to get all the components packed together as compactly as possible, which worked out pretty well.</p></div><div class="jw-flow__media"><figure class="post-figure post-figure--mittel jw-case__figure"><a class="post-figure__link" data-lightbox="" href="/Images/PocketKnight/handheldactive.webp"><img src="/Images/PocketKnight/handheldactive.webp" alt="" loading="lazy"></a><figcaption>The soldered and glued thing</figcaption></figure></div></div>
+<div class="jw-case__grid jw-flow__row"><div class="jw-prose jw-case__text post-body"><p>In the next step I kept working on the game loop, the content and the sprites to turn it into a "rounded" game. Alongside that I started designing the enclosure in Fusion and then printed it at the <a href="https://fablab.sh/">Kiel FabLab</a>.</p></div><div class="jw-flow__media"><figure class="post-figure post-figure--mittel jw-case__figure"><a class="post-figure__link" data-lightbox="" href="/Images/blog/development-process-of-pocket-knight/Printfablab.webp"><img src="/Images/blog/development-process-of-pocket-knight/Printfablab.webp" alt="" loading="lazy"></a><figcaption>Printing the case on a Prusa Mini</figcaption></figure></div></div>
+<div class="jw-case__grid jw-flow__row jw-case__grid--wide"><div class="jw-prose jw-case__text post-body"><p>And then the time had finally come and the device was nearing completion. All in all it took considerably longer than planned again and I sank roughly 3 months of my free time into the project. I had a few more ideas I would have liked to implement, but I've cut them for now due to a lack of time and motivation.</p>
 <p>Here are the cut features:</p>
 <ul>
 <li>Multiplayer: co-op and competitive over ESP-NOW</li>
@@ -142,18 +139,21 @@
 </blockquote>
 <p>In combat the player goes first and has 3 skill points for the entire fight. They can attack, block, or use skills (each of which costs one point). The enemy's intention is shown in advance, then it's the enemy's turn and they carry out an action (attack, block, charge up for a strong attack). This goes back and forth until one of them is defeated.</p>
 <p>Events work like this: you get a choice between two random encounters, and after 10 events there's a boss fight. Each event gives a reward consisting of experience, gold, an item or a stat increase. Levelling up also gives the player stat increases and an item, always with a choice of one out of 3 items. In total that means completing 50 events and defeating the final boss. As soon as the player loses a fight, or their health drops to 0 some other way, a new run starts. At the end of a run there's a certain amount of meta currency, which can be spent on unlocking new items and equipment or starting bonuses that then become available.</p>
-<p>To finish off, here's an overview of all the event sprites and enemies, plus a few less serious posters. :) Thanks for reading!</p>
-<figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span>This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).</span> <a href="/en/datenschutz/">Privacy</a></p><button type="button" class="jw-consent__button">Load video</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YMT1BVRyX4g?si=meBRJPO7GS6B1Fek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div></figure>
-
-            </div>
+<p>To finish off, here's an overview of all the event sprites and enemies, plus a few less serious posters. :) Thanks for reading!</p></div><div class="jw-flow__media"><figure class="post-embed post-embed--16-9"><div class="post-embed__frame"><div class="jw-consent jw-consent--video"><p class="jw-consent__text"><span>This video is embedded from YouTube. Loading it sends data such as your IP address to YouTube (Google).</span> <a href="/en/datenschutz/">Privacy</a></p><button type="button" class="jw-consent__button">Load video</button><template><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YMT1BVRyX4g?si=meBRJPO7GS6B1Fek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template></div></div></figure></div></div></div>
             
             
-        </div>
+        </section>
 
         
         <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
-            <h2 id="jw-gallery-title" class="jw-label jw-rule"><span>Gallery</span> (04)</h2>
-            <div class="project-gallery jw-gallery">
+            <div class="jw-gallery-head">
+                <h2 id="jw-gallery-title" class="jw-label jw-rule">02 — <span>Gallery</span> (04)</h2>
+                <div class="jw-view-toggle" role="group" aria-label="Gallery view" hidden>
+                    <button type="button" data-view="archive" aria-pressed="true">Archive</button>
+                    <button type="button" data-view="grid" aria-pressed="false">Grid</button>
+                </div>
+            </div>
+            <div class="project-gallery jw-gallery" data-archive-code="EN">
                 
                 <figure class="project-gallery__item">
                     <a class="post-figure__link" data-lightbox="" href="/Images/blog/development-process-of-pocket-knight/pocketknightcloth.webp"><img src="/Images/blog/development-process-of-pocket-knight/pocketknightcloth.webp" alt="Close-up of the finished Pocket Knight device with OLED screen, blue buttons and a keychain charm" loading="lazy"></a>
@@ -183,13 +183,13 @@
     <nav class="jw-wrap jw-pager" aria-label="More posts">
         
         <a class="jw-pager__link" href="/en/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/">
-            <span class="jw-label">← Older post</span>
+            <span class="jw-label"><span class="jw-arrow jw-arrow--l" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span> Older post</span>
             <span class="jw-pager__title">Experiences and impressions from the Media Literacy Game Jam in Leck</span>
         </a>
         
         
         <a class="jw-pager__link jw-pager__link--next" href="/en/blog/">
-            <span class="jw-label">All posts →</span>
+            <span class="jw-label">All posts <span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></span>
             <span class="jw-pager__title">Back to blog</span>
         </a>
         
@@ -199,7 +199,7 @@
 <section class="jw-cta" aria-label="Contact">
     <div class="jw-wrap jw-cta__inner">
         <p class="jw-cta__text">Questions, ideas or feedback? I’d love to hear from you.</p>
-        <a href="/en/#contact" class="jw-cta__button"><span>Drop a message</span>&#160;→</a>
+        <a href="/en/#contact" class="jw-cta__button"><span>Drop a message</span>&#160;<span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></a>
     </div>
 </section>
 

@@ -1897,6 +1897,66 @@ collections:
       - label: Englisch
         name: en
         widget: string
+    - label: 'Steckbrief: Datum'
+      name: date
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Steckbrief: Themen'
+      name: topics
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Steckbrief: Lesezeit'
+      name: reading
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Einheit Minuten'
+      name: minutes
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
+    - label: 'Überschrift Fließtext'
+      name: text
+      widget: object
+      collapsed: false
+      summary: '{{fields.de}}'
+      fields:
+      - label: Deutsch
+        name: de
+        widget: string
+      - label: Englisch
+        name: en
+        widget: string
   - name: links_page
     label: Linkseite (/links/)
     file: _data/pages/links.json

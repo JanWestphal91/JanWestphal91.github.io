@@ -69,37 +69,38 @@
     </div>
 </header>
 <nav class="jw-wrap jw-back" aria-label="Zurück">
-    <a class="jw-back__link" href="/blog/"><span aria-hidden="true">←</span>&#160;<span>Alle Beiträge</span></a>
+    <a class="jw-back__link" href="/blog/"><span aria-hidden="true"><span class="jw-arrow jw-arrow--l" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></span>&#160;<span>Alle Beiträge</span></a>
 </nav>
 
 <main id="main" tabindex="-1" class="post-page">
     <article>
-        <header class="jw-wrap jw-post-head">
-            <p class="jw-tags jw-post-head__date">
-                <span>20. August 2026</span>
-            </p>
-            <h1>Erfahrungen und Eindrücke vom Medienkompetenz-Game-Jam in Leck</h1>
-            
-            <p class="jw-lead">Ich war ein Wochenende lang auf einem Game Jam und berichte darüber.</p>
-            
-            
-            <p class="jw-tags jw-post-head__tags"><span>Game Dev · Design · Prototyping · Game Jam · IF(game)SH e.V. · Medienkompetenz</span></p>
-            
+        <header class="jw-wrap jw-detail-head jw-post-head">
+            <div class="jw-detail-head__row">
+                <div class="jw-detail-head__main">
+                    <h1 id="jw-page-title">Erfahrungen und Eindrücke vom Medienkompetenz-Game-Jam in Leck</h1>
+                    
+                    <p class="jw-lead">Ich war ein Wochenende lang auf einem Game Jam und berichte darüber.</p>
+                    
+                </div>
+                <dl class="jw-facts">
+                    <div><dt>Datum</dt><dd><time datetime="2026-08-20"><span>20. August 2026</span></time></dd></div>
+                    <div><dt>Themen</dt><dd><span>Game Dev · Design · Prototyping · Game Jam · IF(game)SH e.V. · Medienkompetenz</span></dd></div>
+                    <div><dt>Lesezeit</dt><dd><span>2 Min.</span></dd></div>
+                </dl>
+            </div>
         </header>
 
         
-        <div class="jw-wrap jw-post-cover-wrap">
-            <figure class="jw-post-cover">
-                <img src="/Images/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/gamejamwork.webp" alt="Arbeitstisch beim Game Jam mit Laptops, Snacks und Papierprototypen" class="post-cover" loading="eager">
+        <section class="jw-wrap jw-detail-block" aria-label="Cover">
+            <figure class="jw-cover">
+                <img src="/Images/blog/experiences-and-impressions-from-the-media-literacy-gamejam-in-leck/gamejamwork.webp" alt="Arbeitstisch beim Game Jam mit Laptops, Snacks und Papierprototypen" loading="eager">
             </figure>
-        </div>
-        
-
-        <div class="jw-wrap">
+        </section>
+        <section class="jw-wrap jw-detail-block jw-case jw-flow" aria-labelledby="jw-post-text">
+            <h2 id="jw-post-text" class="jw-label jw-rule">01 — <span>Beitrag</span></h2>
             
             
-            <div class="post-body jw-prose">
-                <p>Erstmal vorab, hier sind <a href="https://itch.io/c/7976774/meko-jam-2026-between-the-lines">alle Spiele die während des Game Jams entstanden sind</a> in einer Kollektion.</p>
+            <div><div class="jw-case__grid jw-flow__row jw-case__grid--text"><div class="jw-prose jw-case__text post-body"><p>Erstmal vorab, hier sind <a href="https://itch.io/c/7976774/meko-jam-2026-between-the-lines">alle Spiele die während des Game Jams entstanden sind</a> in einer Kollektion.</p>
 <p>Der Game Jam wurde vom IF(game)SH Verein organisiert, besonders von einer Handvoll engagierter (ehrenamtliche!) Leute die sich lange vorher um die ganze Orga und Finanzierung gekümmert haben. Der Game Jam wurde auch mit Fördergeldern unterstützt, wodurch das Ganze überhaupt erst möglich wurde, wir waren ungefähr 30-40 Teilnehmende und hatten eine Vollverpflegung  und Unterkunft. Dadurch, dass es auch eine Kollaboration mit dänischen Entwickelnden gab waren wir ein bunt gemischter Haufen.</p>
 <p>Am Freitag gab es erstmal einiges an Input, es gab einen Workshop mit drei Stationen zu den Themen: Topics of Media Literacy, Effects of Media und Gender and Identity. Dazu gab es dann noch drei Impulsvorträge in denen tiefer auf die Themen eingegangen wurde.</p>
 <p>Anschließend gings dann in die Teamfindung und am ersten Abend habe ich mit meinen Teampartnern dann erstmal das Konzept ausgearbeitet. So richtig ging unser Konzept noch nicht auf, wir waren uns über die Technik einig aber das Gamedesign hat noch nicht richtig hingehauen, wir wollten ein GBA Spiel entwickeln und das dann auch als ROM auf dem Handheld zum laufen kriegen.</p>
@@ -108,11 +109,9 @@
 <p>Am Abend hat ungefähr die Hälfte der Teilnehmer gemeinsam das social deduction Spiel Blood on the Clocktower gespielt, für mich war es das erste Mal, dass ich so eine Art Spiel gespielt habe und meine Güte, war das crazy.</p>
 <p>Am Sonntag gings dann weiter mit dem Entwickeln und auf der Zielgeraden sind wir dann auf unseren Fehler aufmerksam geworden. Wir haben nicht einmal das Spiel an dem wir uns orientiert haben gespielt und haben eigentlich nur danach entwickelt wie wir uns das Spiel vorgestellt haben. Dadurch ist unser Spiel dann doch noch etwas anderes als das Ausgangsmaterial geworden, was dann vielleicht als glücklicher Zufall verbucht werden kann. Nachdem alle Gruppen mit den Näherrücken der Deadline zunehmend unter Stress geraten sind und jede Menge Anspannung in der Luft lag sind alle Teams aber mit einer spielbaren Version fertig geworden und zum Nachmittag wurde dann noch jede Menge gespielt und ausprobiert.</p>
 <p>Alles in allem war es ein tolles Event mit vielen tollen und talentierten Leuten!</p>
-<p>Danke auch an dich fürs Lesen :)</p>
-
-            </div>
+<p>Danke auch an dich fürs Lesen :)</p></div></div></div>
             
-        </div>
+        </section>
 
         
     </article>
@@ -120,13 +119,13 @@
     <nav class="jw-wrap jw-pager" aria-label="More posts">
         
         <a class="jw-pager__link" href="/blog/development-process-of-a-diy-synthesizer/">
-            <span class="jw-label">← Älterer Beitrag</span>
+            <span class="jw-label"><span class="jw-arrow jw-arrow--l" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span> Älterer Beitrag</span>
             <span class="jw-pager__title">Entwicklung eines DIY-Synthesizers</span>
         </a>
         
         
         <a class="jw-pager__link jw-pager__link--next" href="/blog/development-process-of-pocket-knight/">
-            <span class="jw-label">Neuerer Beitrag →</span>
+            <span class="jw-label">Neuerer Beitrag <span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></span>
             <span class="jw-pager__title">Entwicklungsprozess des Mini-Spielgeräts Pocket Knight</span>
         </a>
         
@@ -136,7 +135,7 @@
 <section class="jw-cta" aria-label="Contact">
     <div class="jw-wrap jw-cta__inner">
         <p class="jw-cta__text">Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.</p>
-        <a href="/#contact" class="jw-cta__button"><span>Schreib mir</span>&#160;→</a>
+        <a href="/#contact" class="jw-cta__button"><span>Schreib mir</span>&#160;<span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></a>
     </div>
 </section>
 
