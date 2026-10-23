@@ -190,7 +190,7 @@ function initProjectFilters() {
         if (metaSpan) {
             const text = metaSpan.textContent.trim();
             // Extract the type part (everything inside brackets)
-            const match = text.match(/\[([^\]]+)\]/);
+            const match = text.match(/\[([^\]]+)]/);
             if (match) {
                 const typePart = match[1];
                 // Split by comma and add each type
@@ -230,7 +230,7 @@ function initProjectFilters() {
             }
 
             const text = metaSpan.textContent.trim();
-            const match = text.match(/\[([^\]]+)\]/);
+            const match = text.match(/\[([^\]]+)]/);
 
             if (selectedType === "all") {
                 item.classList.remove("hidden");
@@ -974,15 +974,26 @@ function initTicker() {
     }
     content.style.animation = "none";
 
-    // Width of ONE of the two duplicated .ticker-text spans — the loop point.
+    // Abstand von einer Kopie des Textes zur nächsten – der Punkt, an dem die
+    // Schleife unsichtbar von vorn beginnt. Ist der Text kürzer als das
+    // Fenster, entstünde eine Lücke, bis die nächste Kopie hereinläuft.
+    // Darum werden so viele Kopien angehängt, dass immer mindestens eine
+    // Fensterbreite plus eine Kopie Text dasteht.
     let half = 0;
     function measure() {
-        half = content.scrollWidth / 2;
+        const copies = content.querySelectorAll(".ticker-text");
+        if (copies.length < 2) { half = content.scrollWidth; return; }
+        half = copies[1].offsetLeft - copies[0].offsetLeft;
+        if (half <= 0) return;
+        const needed = Math.ceil(band.clientWidth / half) + 1;
+        for (let i = copies.length; i < needed; i++) {
+            const clone = copies[1].cloneNode(true);
+            clone.setAttribute("aria-hidden", "true");
+            content.appendChild(clone);
+        }
     }
     measure();
     window.addEventListener("resize", measure);
-    // The language toggle rewrites the .ticker-text contents.
-    new MutationObserver(measure).observe(content, { childList: true, subtree: true, characterData: true });
 
     // Match the old CSS timing: 50% of the content per 30s.
     const LOOP_SECONDS = 30;
