@@ -61,10 +61,10 @@
       },
       {
         "project": "go-pony-go-c",
-        "image": "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNS5wbmc=/original/zmOtvE.png",
+        "image": "/Images/GoPony/karussell.webp",
         "alt": {
-          "de": "Go Pony, Go C!: das Pony im Weltraum, kurz vor der Lichtgeschwindigkeit",
-          "en": "Go Pony, Go C!: the pony in space, just before reaching lightspeed"
+          "de": "Go Pony, Go C!: das Pony galoppiert vor Bergen im Sonnenuntergang, oben Punkte, Kombo und Zeit",
+          "en": "Go Pony, Go C!: the pony galloping past mountains at sunset, with points, combo and time at the top"
         }
       }
     ],
