@@ -1,0 +1,20 @@
+{
+  "seo": {
+    "title": {
+      "de": "Über mich – Jan Westphal",
+      "en": "About – Jan Westphal"
+    },
+    "description": {
+      "de": "Jan Westphal aus Kiel: Werdegang vom Maler über Kommunikationsdesign und Grafikdesign zum Medieningenieurwesen, dazu Werkzeuge, Programmiersprachen und Kurse.",
+      "en": "Jan Westphal from Kiel: from painter and communication design to graphic design and media engineering, plus tools, programming languages and courses."
+    }
+  },
+  "label": {
+    "de": "Profil",
+    "en": "Profile"
+  },
+  "heading": {
+    "de": "Über mich",
+    "en": "About"
+  }
+}

@@ -1,0 +1,58 @@
+---
+permalink: /about/
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    {#- Seitentexte: _data/pages/about.json (CMS: Seiten-Texte → Über mich).
+        Profil, Werdegang, Werkzeuge und Kurse: _data/home.json (CMS: Startseite),
+        damit die Startseite und diese Seite dieselben Angaben zeigen. #}
+    {%- set pg = pages.about %}
+    {%- set ab = home.about %}
+    {%- set pa = home.path %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title {% i18n pg.seo.title %}>{{ pg.seo.title.en }}</title>
+    <meta name="description" {% i18n pg.seo.description, "content" %} content="{{ pg.seo.description.en }}" />
+    <meta name="author" content="Jan Westphal" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Jan Westphal" />
+    <meta property="og:title" {% i18n pg.seo.title, "content" %} content="{{ pg.seo.title.en }}" />
+    <meta property="og:description" {% i18n pg.seo.description, "content" %} content="{{ pg.seo.description.en }}" />
+    <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
+
+{% include "partials/head-assets.njk" %}
+</head>
+<body class="theme page-about">
+{%- set active = "about" %}
+{% include "partials/site-header.njk" %}
+
+<main id="main" tabindex="-1">
+    <section class="jw-about jw-about--page" aria-labelledby="jw-page-title">
+        <div class="jw-wrap jw-section">
+            <p class="jw-label" {% i18n pg.label %}>{{ pg.label.en }}</p>
+            <h1 id="jw-page-title" class="jw-about__title" {% i18n pg.heading %}>{{ pg.heading.en }}</h1>
+            {%- set paraLimit = 0 %}
+            {% include "partials/about-profile.njk" %}
+        </div>
+    </section>
+
+    <section id="path" class="jw-wrap jw-section" aria-labelledby="jw-path-title">
+        <div class="jw-head">
+            <div>
+                <p class="jw-label">01 — <span {% i18n pa.label %}>{{ pa.label.en }}</span></p>
+                <h2 id="jw-path-title" {% i18n pa.heading %}>{{ pa.heading.en }}</h2>
+            </div>
+        </div>
+        {% include "partials/cv.njk" %}
+    </section>
+
+    {% include "partials/cta.njk" %}
+</main>
+
+{% include "partials/site-footer.njk" %}
+
+</body>
+</html>
