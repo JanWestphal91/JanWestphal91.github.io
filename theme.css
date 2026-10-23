@@ -4546,3 +4546,67 @@ body.theme {
     --jw-gy: 50%;
     --jw-shine: 0;
 }
+
+/* ═══ Kontaktformular im Stil der Seite (Oktober 2026) ═══
+   Kein grauer Kasten mehr: weißer Grund wie überall, Felder mit derselben
+   schwarzen 1,5-px-Linie wie Bilder und Knöpfe, Feldnamen als Mono-Label
+   wie die Abschnittsnummern. */
+.theme .jw-contact__box {
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.theme .jw-contact__box h2 {
+    margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+.theme .contact-form {
+    gap: 24px;
+}
+
+.theme .contact-form label span {
+    font-family: var(--mono);
+    font-size: var(--fs-xs);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+}
+
+.theme .contact-form input,
+.theme .contact-form textarea {
+    border: 1.5px solid var(--ink);
+    border-radius: 0;
+    background: var(--bg);
+    padding: 14px 16px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.theme .contact-form input:focus,
+.theme .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: inset 0 0 0 1px var(--accent-color);
+}
+
+.theme .contact-form .jw-form-note {
+    margin: 0;
+    grid-column: 1 / -1;
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+    color: var(--muted);
+}
+
+/* Knopf: Text und Pfeil in Weiß (die Label-Regel für „span“ färbte sie schwarz) */
+.theme .contact-submit span {
+    font: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+}
+
+/* Socials: Linie oben wie bei den anderen Abschnitten */
+.theme .jw-socials .jw-label {
+    margin-top: 0;
+}
