@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über mich – Jan Westphal</title>
+    <meta name="description" content="Jan Westphal aus Kiel: Werdegang vom Maler über Kommunikationsdesign und Grafikdesign zum Medieningenieurwesen, dazu Werkzeuge, Programmiersprachen und Kurse.">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/about/" rel="canonical">
+    <link href="https://janwestphal.dev/about/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/about/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/about/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/about/" property="og:url">
+    <meta content="de_DE" property="og:locale">
+    <meta content="en_US" property="og:locale:alternate">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Über mich – Jan Westphal">
+    <meta property="og:description" content="Jan Westphal aus Kiel: Werdegang vom Maler über Kommunikationsdesign und Grafikdesign zum Medieningenieurwesen, dazu Werkzeuge, Programmiersprachen und Kurse.">
+    <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg">
+
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#EEECE6">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-about">
+
+<a class="jw-skip" href="#main">Zum Inhalt springen</a>
+<header class="site-header" id="top">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="/" class="logo">Jan Westphal</a>
+        </div>
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menü</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/projects/" class="link-button secondary"><span>Projekte</span></a></li>
+                <li><a href="/blog/" class="link-button secondary"><span>Blog</span></a></li>
+                <li><a href="/about/" class="link-button secondary" aria-current="page"><span>Über mich</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span>Kontakt</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Animationen</span> <span data-off="aus" data-on="an" class="jw-motion-toggle__state" aria-hidden="true"></span></button></li>
+                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/about/"><span>English</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main id="main" tabindex="-1">
+    <section class="jw-about jw-about--page" aria-labelledby="jw-page-title">
+        <div class="jw-wrap jw-section">
+            <p class="jw-label">Profil</p>
+            <h1 id="jw-page-title" class="jw-about__title">Über mich</h1>
+            <div class="jw-about__grid">
+            <figure class="jw-profile">
+                <div class="jw-profile__photo">
+                    <img src="/Images/myself.jpeg" alt="Jan Westphal – Creative Coder und Designer aus Kiel" loading="lazy" width="480" height="600">
+                </div>
+                <figcaption class="jw-profile__body">
+                    <p class="jw-profile__alias">Auch bekannt als Netro – mein Graffiti- und Dev-Alias.</p>
+                    <dl class="jw-facts jw-facts--profile">
+                        <div><dt>Offen für</dt><dd><span class="jw-dot" aria-hidden="true"></span><span>Werkstudent · Praktikum · Aufträge</span></dd></div>
+                        <div><dt>Umfang</dt><dd><span>ca. 15 Std./Woche als Werkstudent</span></dd></div>
+                        <div><dt>Studium</dt><dd><span>Medieningenieurwesen, HAW Kiel</span></dd></div>
+                        <div><dt>Ort</dt><dd><span>Kiel</span></dd></div>
+                    </dl>
+                </figcaption>
+            </figure>
+
+            <div class="jw-about__text"><div class="jw-about__more">
+                    <p>Ich beschäftige mich mit experimentellem Design, Kunst und Prototyping. Mich fasziniert, wie verschiedene Disziplinen ineinandergreifen und dabei etwas Neues entsteht.</p>
+                    <p>Ich zeichne gern und bastle an Elektronik sowie an Video- und Audioequipment. Die Graffiti-Kultur gehört zu meinen Wurzeln: Sie war meine erste echte Verbindung zu Illustration und Gestaltung.</p>
+                    <p>Mein Weg war kein gerader. Sechs Semester Kommunikationsdesign gaben mir das gestalterische Fundament, danach habe ich einige Jahre als Grafiker gearbeitet. Dabei habe ich gemerkt, dass mich die Technik dahinter genauso reizt. Deshalb studiere ich heute Medieningenieurwesen und verbinde beide Welten.</p>
+                    <p>Game-Entwicklung finde ich besonders spannend, weil dort Design, Code, Sound und Storytelling in einem Produkt zusammenlaufen. Meine Lieblingsspiele: Oxygen Not Included, Slay the Spire, Diablo und Donkey Kong Country.</p>
+                    <p>Ich bin verheiratet, und wir haben zwei wundervolle Kinder.</p>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <section id="path" class="jw-wrap jw-section" aria-labelledby="jw-path-title">
+        <div class="jw-head">
+            <div>
+                <p class="jw-label">01 — <span>Hintergrund</span></p>
+                <h2 id="jw-path-title">Werdegang</h2>
+            </div>
+        </div>
+        <div class="jw-cv">
+        <ol class="jw-cv__list">
+            <li class="jw-cv__row">
+                <span class="jw-num">01</span>
+                <span class="jw-cv__title">Maler und Lackierer</span>
+                <span class="jw-cv__sub">Ausbildung</span>
+                <span class="jw-tags">Abgeschlossen</span>
+            </li>
+            <li class="jw-cv__row">
+                <span class="jw-num">02</span>
+                <span class="jw-cv__title">Kommunikationsdesign (B.A.)</span>
+                <span class="jw-cv__sub">Muthesius Kunsthochschule</span>
+                <span class="jw-tags">6 Semester, nicht abgeschlossen</span>
+            </li>
+            <li class="jw-cv__row">
+                <span class="jw-num">03</span>
+                <span class="jw-cv__title">Grafiker</span>
+                <span class="jw-cv__sub">Berufstätigkeit (Grafikdesign / Drucktechnik)</span>
+                <span class="jw-tags">Mehrere Jahre</span>
+            </li>
+            <li class="jw-cv__row">
+                <span class="jw-num">04</span>
+                <span class="jw-cv__title">Medieningenieurwesen (B.Eng.)</span>
+                <span class="jw-cv__sub">HAW Kiel</span>
+                <span class="jw-tags"><span class="jw-dot" aria-hidden="true"></span><span>Aktuell, 3/7 Semester</span></span>
+            </li>
+        </ol>
+
+        <aside class="jw-cv__side">
+            <div class="jw-cv__group">
+                <h3 class="jw-label">Toolbox</h3>
+                <ul class="jw-skills" aria-label="Toolbox">
+                    <li>Godot</li>
+                    <li>Unity</li>
+                    <li>Arduino &amp; ESP32</li>
+                    <li>Adobe Suite</li>
+                    <li>Figma</li>
+                    <li>Blender</li>
+                    <li>Aseprite</li>
+                    <li>Fusion 360</li>
+                </ul>
+
+                <h3 class="jw-label">Programmiersprachen</h3>
+                <ul class="jw-skills" aria-label="Programmiersprachen">
+                    <li>C++ (Arduino, ESP32)</li>
+                    <li>C#</li>
+                    <li>GDScript</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+
+            <div class="jw-cv__group">
+                <h3 class="jw-label">Kurse - opencampus.sh</h3>
+                <ul class="jw-cv__notes">
+                    <li><span>Game Dev Sessions</span></li>
+                    <li><span>Become a Maker</span> <span class="jw-tags">(FabLab)</span></li>
+                    <li><span>Projektmanagement-Sessions</span> <span class="jw-tags">WS 2026/27</span></li>
+                    <li><span>Kiel Robot League</span> <span class="jw-tags">(FabLab) · WS 2026/27</span></li>
+                </ul>
+            </div>
+
+            <div class="jw-cv__group">
+                <h3 class="jw-label">Engagement</h3>
+                <ul class="jw-cv__notes">
+                    <li>Mitglied im IF(game)SH e.V. – Initiative für den Games-Standort Schleswig-Holstein</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    </section>
+
+    
+<section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text">Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.</p>
+        <a href="/#contact" class="jw-cta__button"><span>Schreib mir</span>&#160;→</a>
+    </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. Alle Fehler vorbehalten.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/impressum/">Impressum</a></li>
+            <li><a href="/datenschutz/">Datenschutz</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+</body>
+</html>
