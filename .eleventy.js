@@ -254,6 +254,12 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("flipbook.js");
     eleventyConfig.addPassthroughCopy("js");
 
+    // Inhalte mit "published: false" (CMS: Schalter „Veröffentlicht“) werden
+    // gar nicht gebaut: keine eigene Seite, in keiner Liste, nicht in der Sitemap.
+    eleventyConfig.addPreprocessor("unpublished", "md", function(data) {
+        if (data.published === false) return false;
+    });
+
     eleventyConfig.addCollection("projects", function(collectionApi) {
         return collectionApi.getFilteredByGlob("content/projects/*/index.md")
             .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
