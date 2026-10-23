@@ -4230,3 +4230,34 @@ body.theme {
 .jw-motion-off :is(.nav-links a, .logo, .jw-back__link, .jw-social-link, .jw-footer-links a):is(:hover, :active) {
     transform: none !important;
 }
+
+/* ── Galerie-Index: aktives Bild wie eine überfahrene Blog-/Projektzeile ──
+   Schwarze Fläche, weiße Schrift. Die Zeile bekommt seitlich Innenabstand,
+   damit der Text nicht an der Kante der Fläche klebt. */
+.theme .jw-archive__index button {
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 0;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+@media (hover: hover) {
+    .theme .jw-archive__index button:not([aria-current]):hover {
+        background: var(--paper);
+        color: var(--ink);
+    }
+}
+
+.theme .jw-archive__index button[aria-current] {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+.theme .jw-archive__index button[aria-current] .jw-archive__num {
+    color: var(--on-dark-soft);
+}
+
+/* die Linie unter der aktiven Zeile verschwindet in der Fläche */
+.jw-archive__index li:has(> button[aria-current]) {
+    border-bottom-color: var(--ink);
+}
