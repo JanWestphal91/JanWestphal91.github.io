@@ -61,10 +61,10 @@
       },
       {
         "project": "go-pony-go-c",
-        "image": "/Images/resizedpony.gif",
+        "image": "https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNS5wbmc=/original/zmOtvE.png",
         "alt": {
-          "de": "Szene aus dem Spiel Go Pony, Go C!",
-          "en": "Scene from the game Go Pony, Go C!"
+          "de": "Go Pony, Go C!: das Pony im Weltraum, kurz vor der Lichtgeschwindigkeit",
+          "en": "Go Pony, Go C!: the pony in space, just before reaching lightspeed"
         }
       }
     ],

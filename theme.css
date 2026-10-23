@@ -4199,3 +4199,34 @@ body.theme {
     background: transparent;
     border-top: 2px solid var(--ink);
 }
+
+/* ── Wackeln beim Überfahren auch für Links ──
+   Header, Fußzeile, Social Links, Zurück-Knopf, Links im Fließtext und in den
+   Projektfakten. rotate wirkt nur auf Boxen, darum werden reine Textlinks zu
+   inline-block. Textlinks wachsen nicht, damit sie keine Nachbarzeilen überdecken. */
+.theme :is(.jw-prose a, .project-summary a, .jw-casefacts__list a, .jw-form-note a, .jw-footer-links a, .hero-name-link) {
+    display: inline-block;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .theme :is(.nav-links a, .logo, .jw-back__link, .jw-social-link, .jw-footer-links a) {
+        transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease, color 0.15s ease;
+    }
+
+    .theme :is(.nav-links a, .logo, .jw-back__link, .jw-social-link, .jw-footer-links a):hover {
+        transform: scale(1.06);
+        animation: jw-wiggle 0.45s ease-in-out 1;
+    }
+
+    .theme :is(.jw-prose a, .project-summary a, .jw-casefacts__list a, .jw-form-note a, .hero-name-link, .jw-flip__caption):hover {
+        animation: jw-wiggle 0.45s ease-in-out 1;
+    }
+
+    .theme :is(.nav-links a, .logo, .jw-back__link, .jw-social-link, .jw-footer-links a):active {
+        transform: scale(0.97);
+    }
+}
+
+.jw-motion-off :is(.nav-links a, .logo, .jw-back__link, .jw-social-link, .jw-footer-links a):is(:hover, :active) {
+    transform: none !important;
+}

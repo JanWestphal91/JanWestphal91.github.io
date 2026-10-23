@@ -4,9 +4,9 @@ title: Go Pony, Go C!
 slug: go-pony-go-c
 category: '[Game] 2026'
 order: 1
-cover_image: Images/resizedpony.gif
-cover_image_alt: "Animated preview of Go Pony, Go C!: a pixel-art pony running ever faster"
-cover_image_alt_de: "Animierte Vorschau von Go Pony, Go C!: ein Pixelart-Pony, das immer schneller rennt"
+cover_image: https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNS5wbmc=/original/zmOtvE.png
+cover_image_alt: "Go Pony, Go C!: the pony in the last area in space, just before reaching lightspeed"
+cover_image_alt_de: "Go Pony, Go C!: das Pony im letzten Abschnitt im Weltraum, kurz vor der Lichtgeschwindigkeit"
 summary_card: A small game about a pony racing to lightspeed.
 summary_card_de: Ein kleines Spiel über ein Pony, das zur Lichtgeschwindigkeit rennt.
 summary: Made with Godot and Aseprite, free to play. This game is a small homage to the old Flash games of the early 2000s and an experiment with physics calculations. It features a small pony getting faster, trying to reach lightspeed. Available on itch.io to play in a browser, with an online leaderboard, controller or keyboard input, and audio intensity transitions.
@@ -22,6 +22,11 @@ meta_de:
   - 'Tools: Godot, Aseprite, Adobe CC'
   - 'Status: Veröffentlicht auf itch.io'
 images:
+  - src: Images/GoPony/titelbildschirm.webp
+    alt: "Go Pony, Go C!: title screen with the menu Start Game, High Scores, Options and Credits"
+    alt_de: "Go Pony, Go C!: Titelbildschirm mit dem Menü Start Game, High Scores, Options und Credits"
+    caption: Title screen with the main menu.
+    caption_de: Titelbildschirm mit dem Hauptmenü.
   - src: https://img.itch.zone/aW1hZ2UvNDI4NzgyOS8yNTY3MTUzNi5wbmc=/original/1A9wjP.png
     alt: "Go Pony, Go C!: intro sequence with a short dialogue"
     alt_de: "Go Pony, Go C!: Intro-Sequenz mit kurzem Dialog"

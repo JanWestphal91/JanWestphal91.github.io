@@ -361,8 +361,15 @@ module.exports = function(eleventyConfig) {
         return arr.slice(0, n);
     });
 
+    eleventyConfig.addFilter("absUrl", function(path) {
+        if (!path) return path;
+        if (path.includes('://')) return path;
+        return 'https://janwestphal.dev' + (path.startsWith('/') ? path : '/' + path);
+    });
+
     eleventyConfig.addFilter("imgPath", function(path) {
         if (!path) return path;
+        if (path.includes('://')) return path;
         return path.startsWith('/') ? path : '/' + path;
     });
 

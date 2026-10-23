@@ -13,7 +13,7 @@
     <meta property="og:title" content="{{ title }} – Jan Westphal" data-content-en="{{ title }} – Jan Westphal" data-content-de="{{ title_de or title }} – Jan Westphal" />
     <meta property="og:description" content="{{ description }}" data-content-en="{{ description }}" data-content-de="{{ description_de or description }}" />
     {% if cover_image %}
-    <meta property="og:image" content="https://janwestphal.dev{{ cover_image | imgPath }}" />
+    <meta property="og:image" content="{{ cover_image | absUrl }}" />
     {% else %}
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
     {% endif %}

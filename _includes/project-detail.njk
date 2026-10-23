@@ -16,8 +16,8 @@
     <meta property="og:title" content="{{ title }} – Jan Westphal" data-content-en="{{ title }} – Jan Westphal" data-content-de="{{ title_de or title }} – Jan Westphal" />
     <meta property="og:description" content="{{ summary | md | striptags | truncate(155) }}" data-content-en="{{ summary | md | striptags | truncate(155) }}" data-content-de="{{ (summary_de or summary) | md | striptags | truncate(155) }}" />
     {% if cover_image %}
-    <meta property="og:image" content="https://janwestphal.dev{{ cover_image | imgPath }}" />
-    <meta name="twitter:image" content="https://janwestphal.dev{{ cover_image | imgPath }}" />
+    <meta property="og:image" content="{{ cover_image | absUrl }}" />
+    <meta name="twitter:image" content="{{ cover_image | absUrl }}" />
     {% else %}
     <meta property="og:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
     <meta name="twitter:image" content="https://janwestphal.dev/Images/og-preview.jpg" />
