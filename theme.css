@@ -1113,9 +1113,7 @@ body.theme {
     transition: background 0.15s ease, color 0.15s ease;
 }
 
-.theme .contact-submit::after {
-    content: "\00a0→";
-}
+/* Pfeil steht als Grafik im Knopf (index.njk, _build/arrows.js) */
 
 @media (hover: hover) {
     .theme .contact-submit:hover {
@@ -4205,7 +4203,7 @@ body.theme {
    Header, Fußzeile, Social Links, Zurück-Knopf, Links im Fließtext und in den
    Projektfakten. rotate wirkt nur auf Boxen, darum werden reine Textlinks zu
    inline-block. Textlinks wachsen nicht, damit sie keine Nachbarzeilen überdecken. */
-.theme :is(.jw-prose a, .project-summary a, .jw-casefacts__list a, .jw-form-note a, .jw-footer-links a, .hero-name-link) {
+.theme :is(.jw-prose a:not(.post-figure__link), .project-summary a, .jw-casefacts__list a, .jw-form-note a, .jw-footer-links a, .hero-name-link) {
     display: inline-block;
 }
 
@@ -4219,7 +4217,7 @@ body.theme {
         animation: jw-wiggle 0.45s ease-in-out 1;
     }
 
-    .theme :is(.jw-prose a, .project-summary a, .jw-casefacts__list a, .jw-form-note a, .hero-name-link, .jw-flip__caption):hover {
+    .theme :is(.jw-prose a:not(.post-figure__link), .project-summary a, .jw-casefacts__list a, .jw-form-note a, .hero-name-link, .jw-flip__caption):hover {
         animation: jw-wiggle 0.45s ease-in-out 1;
     }
 
@@ -4300,4 +4298,154 @@ body.theme {
 
 .jw-motion-off .jw-pager__link:hover .jw-pager__title {
     transform: none !important;
+}
+
+
+/* ═══ Blogbeiträge im Aufbau der Case Studys (Oktober 2026) ═══
+   Kopf mit Steckbrief, Titelbild über die volle Breite, Fließtext in Zeilen:
+   Text links, die dazugehörigen Bilder rechts daneben. Die Zeilen baut der
+   Filter postFlow in .eleventy.js. */
+.page-post .jw-wrap {
+    max-width: var(--wrap);
+}
+
+/* Blogtitel sind länger als Projektnamen: eine Stufe kleiner */
+.jw-detail-head.jw-post-head h1 {
+    font-size: var(--fs-2xl);
+    line-height: 1.05;
+}
+
+.jw-post-head .jw-facts {
+    flex: 1 1 280px;
+    max-width: 380px;
+}
+
+.jw-flow__row + .jw-flow__row {
+    margin-top: clamp(40px, 5vw, 72px);
+}
+
+.theme .jw-flow .jw-case__text {
+    max-width: 72ch;
+}
+
+.theme .jw-flow .jw-prose > :last-child {
+    margin-bottom: 0;
+}
+
+.jw-flow__media {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-width: 0;
+}
+
+/* Bilder rechts: nie beschneiden, ganzes Bild zeigen; hohe Bilder werden
+   in der Höhe begrenzt und stehen dann linksbündig in der Spalte */
+.theme .jw-flow .post-figure {
+    max-width: none;
+    margin: 0;
+}
+
+.theme .jw-flow .post-figure--klein {
+    max-width: 70%;
+}
+
+.theme .jw-flow .post-figure .post-figure__link {
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+.theme .jw-flow .post-figure .post-figure__link img {
+    width: auto;
+    max-width: 100%;
+    max-height: 80vh;
+    height: auto;
+    object-fit: contain;
+}
+
+.theme .jw-flow .post-figure figcaption {
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-size: var(--fs-xs);
+    line-height: 1.5;
+    color: var(--muted);
+    overflow-wrap: anywhere; /* lange Quell-URLs */
+}
+
+.theme .jw-flow .jw-prose {
+    overflow-wrap: break-word;
+}
+
+/* Videos und große Bilder unter dem Text über die ganze Breite */
+.theme .jw-flow .jw-case__grid--wide .post-embed {
+    margin: 0;
+}
+
+.theme .jw-flow .jw-case__grid--wide .post-figure .post-figure__link,
+.theme .jw-flow .jw-case__grid--wide .post-figure .post-figure__link img {
+    width: 100%;
+}
+
+/* Überschriften mit Wellen-Effekt: Grundstärke 600, damit beim Überfahren
+   bis 800 Luft nach oben bleibt (script.js, initWave) */
+.theme :is(#jw-title, #jw-page-title, .jw-post-head h1, .jw-links__head h1) {
+    font-weight: 600;
+}
+
+/* ═══ Pfeile (Grafik statt Zeichen, siehe _build/arrows.js) ═══
+   Kurzer, kräftiger Pfeil in einem kleinen Rahmen. Beim Überfahren des
+   Links oder Knopfs gleitet er in seine Richtung hinaus und ein zweiter
+   von der Gegenseite nach. --dx/--dy: Richtung (1 = rechts bzw. unten). */
+.jw-arrow {
+    --dx: 1;
+    --dy: 0;
+    position: relative;
+    display: inline-block;
+    width: 0.78em;
+    height: 0.78em;
+    overflow: hidden;
+    vertical-align: -0.06em;
+    flex-shrink: 0;
+}
+
+.jw-arrow--l  { --dx: -1; --dy: 0; }
+.jw-arrow--ur { --dx: 1;  --dy: -1; }
+.jw-arrow--d  { --dx: 0;  --dy: 1; }
+
+.jw-arrow svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.jw-arrow__b {
+    transform: translate(calc(-110% * var(--dx)), calc(-110% * var(--dy)));
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .jw-arrow svg {
+        transition: transform 0.38s cubic-bezier(0.65, 0, 0.25, 1);
+    }
+
+    :is(a, button):hover .jw-arrow__a,
+    :is(a, button):focus-visible .jw-arrow__a {
+        transform: translate(calc(110% * var(--dx)), calc(110% * var(--dy)));
+    }
+
+    :is(a, button):hover .jw-arrow__b,
+    :is(a, button):focus-visible .jw-arrow__b {
+        transform: none;
+    }
+}
+
+/* Animationen aus: der zweite Pfeil bleibt versteckt, nichts bewegt sich */
+.jw-motion-off :is(a, button):is(:hover, :focus-visible) .jw-arrow__a {
+    transform: none !important;
+}
+
+.jw-motion-off .jw-arrow__b {
+    transform: translate(calc(-110% * var(--dx)), calc(-110% * var(--dy))) !important;
 }

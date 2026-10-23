@@ -34,46 +34,56 @@
 {%- set nb = collections.blog | neighbors(page.url) %}
 <main id="main" tabindex="-1" class="post-page">
     <article>
-        <header class="jw-wrap jw-post-head">
-            <p class="jw-tags jw-post-head__date">
-                <span data-lang-show="en">{{ date | postDate("en-US") }}</span><span data-lang-show="de" hidden>{{ date | postDate("de-DE") }}</span>
-            </p>
-            <h1 data-en="{{ title }}" data-de="{{ title_de or title }}">{{ title }}</h1>
-            {% if description %}
-            <p class="jw-lead" data-en="{{ description }}" data-de="{{ description_de or description }}">{{ description }}</p>
-            {% endif %}
-            {% if tags %}
-            <p class="jw-tags jw-post-head__tags"><span data-lang-show="en">{{ tags | join(", ") | replace(", ", " · ") }}</span><span data-lang-show="de" hidden>{{ (tags_de or tags) | join(", ") | replace(", ", " · ") }}</span></p>
-            {% endif %}
+        {#- Kopf wie bei den Projekten: Titel und Einleitung links, Steckbrief rechts -#}
+        {%- set minEn = content | readingMinutes %}
+        {%- set minDe = (body_de | md | readingMinutes) if body_de else minEn %}
+        <header class="jw-wrap jw-detail-head jw-post-head">
+            <div class="jw-detail-head__row">
+                <div class="jw-detail-head__main">
+                    <h1 id="jw-page-title" data-en="{{ title }}" data-de="{{ title_de or title }}">{{ title }}</h1>
+                    {% if description %}
+                    <p class="jw-lead" data-en="{{ description }}" data-de="{{ description_de or description }}">{{ description }}</p>
+                    {% endif %}
+                </div>
+                <dl class="jw-facts">
+                    <div><dt {% i18n pt.date %}>{{ pt.date.en }}</dt><dd><time datetime="{{ date | dateIso }}"><span data-lang-show="en">{{ date | postDate("en-US") }}</span><span data-lang-show="de" hidden>{{ date | postDate("de-DE") }}</span></time></dd></div>
+                    {%- if tags %}
+                    <div><dt {% i18n pt.topics %}>{{ pt.topics.en }}</dt><dd><span data-lang-show="en">{{ tags | join(", ") | replace(", ", " · ") }}</span><span data-lang-show="de" hidden>{{ (tags_de or tags) | join(", ") | replace(", ", " · ") }}</span></dd></div>
+                    {%- endif %}
+                    <div><dt {% i18n pt.reading %}>{{ pt.reading.en }}</dt><dd><span data-lang-show="en">{{ minEn }} {{ pt.minutes.en }}</span><span data-lang-show="de" hidden>{{ minDe }} {{ pt.minutes.de }}</span></dd></div>
+                </dl>
+            </div>
         </header>
 
         {% if cover_image %}
-        <div class="jw-wrap jw-post-cover-wrap">
-            <figure class="jw-post-cover">
-                <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" data-alt-en="{{ cover_image_alt or title }}" data-alt-de="{{ cover_image_alt_de or cover_image_alt or title_de or title }}" class="post-cover" loading="eager">
+        <section class="jw-wrap jw-detail-block" aria-label="Cover">
+            <figure class="jw-cover">
+                <img src="{{ cover_image | imgPath }}" alt="{{ cover_image_alt or title }}" data-alt-en="{{ cover_image_alt or title }}" data-alt-de="{{ cover_image_alt_de or cover_image_alt or title_de or title }}" loading="eager">
             </figure>
-        </div>
+        </section>
         {% endif %}
 
-        <div class="jw-wrap">
+        {#- Fließtext: Text links, Bilder rechts daneben (Filter postFlow in .eleventy.js) -#}
+        <section class="jw-wrap jw-detail-block jw-case jw-flow" aria-labelledby="jw-post-text">
+            <h2 id="jw-post-text" class="jw-label jw-rule">01 — <span {% i18n pt.text %}>{{ pt.text.en }}</span></h2>
             {% if body_de %}
-            <div class="post-body jw-prose" data-lang-show="en">
-                {{ content | safe }}
-            </div>
-            <div class="post-body jw-prose" data-lang-show="de" hidden>
-                {{ body_de | md | safe }}
-            </div>
+            <div data-lang-show="en">{{ content | postFlow | safe }}</div>
+            <div data-lang-show="de" hidden>{{ body_de | md | postFlow | safe }}</div>
             {% else %}
-            <div class="post-body jw-prose">
-                {{ content | safe }}
-            </div>
+            <div>{{ content | postFlow | safe }}</div>
             {% endif %}
-        </div>
+        </section>
 
         {% if images and images.length %}
         <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
-            <h2 id="jw-gallery-title" class="jw-label jw-rule"><span {% i18n global.ui.gallery %}>{{ global.ui.gallery.en }}</span> ({{ images.length | pad2 }})</h2>
-            <div class="project-gallery jw-gallery">
+            <div class="jw-gallery-head">
+                <h2 id="jw-gallery-title" class="jw-label jw-rule">02 — <span {% i18n global.ui.gallery %}>{{ global.ui.gallery.en }}</span> ({{ images.length | pad2 }})</h2>
+                <div class="jw-view-toggle" role="group" {% i18n global.ui.gallery_view, "aria" %} aria-label="{{ global.ui.gallery_view.en }}" hidden>
+                    <button type="button" data-view="archive" aria-pressed="true" {% i18n global.ui.gallery_archive %}>{{ global.ui.gallery_archive.en }}</button>
+                    <button type="button" data-view="grid" aria-pressed="false" {% i18n global.ui.gallery_grid %}>{{ global.ui.gallery_grid.en }}</button>
+                </div>
+            </div>
+            <div class="project-gallery jw-gallery" data-archive-code="{{ (title_de or title) | replace(' ', '') | truncate(2, true, '') | upper }}">
                 {% for img in images %}
                 <figure class="project-gallery__item">
                     <a class="post-figure__link" data-lightbox href="{{ img.src | imgPath }}"><img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy"></a>

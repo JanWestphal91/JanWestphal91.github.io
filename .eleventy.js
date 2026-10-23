@@ -47,9 +47,14 @@ function imageFigures(mdInstance) {
                 if (child.type === "text" && !child.content.trim()) return false;
                 return true;
             });
-            if (meaningful.length !== 1 || meaningful[0].type !== "image") continue;
-
-            const image = meaningful[0];
+            // Auch ein Bild, das in einen Link gewickelt ist ([![…](bild)](url)):
+            // Der äußere Link fällt weg, damit sich das Bild wie alle anderen in
+            // der Lightbox öffnet. Die Quelle steht in der Bildunterschrift.
+            let image = null;
+            if (meaningful.length === 1 && meaningful[0].type === "image") image = meaningful[0];
+            else if (meaningful.length === 3 && meaningful[0].type === "link_open"
+                && meaningful[1].type === "image" && meaningful[2].type === "link_close") image = meaningful[1];
+            if (!image) continue;
             let src = image.attrGet("src") || "";
             let size = null;
 
@@ -270,6 +275,11 @@ module.exports = function(eleventyConfig) {
             .sort((a, b) => b.date - a.date);
     });
 
+    eleventyConfig.addFilter("dateIso", function(date) {
+        const d = new Date(date);
+        return isNaN(d) ? "" : d.toISOString().slice(0, 10);
+    });
+
     eleventyConfig.addFilter("postDate", function(date, locale) {
         return new Date(date).toLocaleDateString(locale || "en-US", {
             year: "numeric", month: "long", day: "numeric"
@@ -337,6 +347,60 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("withoutSlugs", function(projects, slugs) {
         const skip = slugs || [];
         return (projects || []).filter(function(p) { return skip.indexOf(p.data.slug) === -1; });
+    });
+
+    // ── Blogbeiträge im Aufbau der Case Studys ──
+    // Der Fließtext wird in Zeilen zerlegt: Text links, die Bilder, die direkt
+    // danach im Markdown stehen, rechts daneben (wie Text und Bild in einem
+    // Case-Study-Abschnitt). Große Bilder ("|gross") und Videos stehen unter
+    // ihrem Text über die ganze Breite. Am Markdown ändert sich nichts.
+    eleventyConfig.addFilter("postFlow", function(html) {
+        const { parseHTML } = require("linkedom");
+        const { document } = parseHTML("<!doctype html><html><body><div id='flow'>" + String(html || "") + "</div></body></html>");
+        const root = document.getElementById("flow");
+        const rows = [];
+        let cur = null;
+        const fresh = function () { cur = { text: [], figs: [], wide: false }; rows.push(cur); };
+        fresh();
+
+        Array.from(root.childNodes).forEach(function (node) {
+            if (node.nodeType === 3) {
+                if (node.textContent.trim()) { if (cur.figs.length) fresh(); cur.text.push(node.textContent); }
+                return;
+            }
+            if (node.nodeType !== 1) return;
+            const cls = node.getAttribute("class") || "";
+            const isImage = node.tagName === "FIGURE" && /\bpost-figure\b/.test(cls);
+            const isEmbed = (node.tagName === "FIGURE" && /\bpost-embed\b/.test(cls)) || node.tagName === "IFRAME";
+            if (isImage && !/post-figure--gross/.test(cls)) {
+                if (cur.wide) fresh();
+                node.setAttribute("class", cls + " jw-case__figure");
+                cur.figs.push(node.outerHTML);
+            } else if (isImage || isEmbed) {
+                if (cur.figs.length && !cur.wide) fresh();
+                cur.wide = true;
+                if (isImage) node.setAttribute("class", cls + " jw-case__figure");
+                cur.figs.push(node.outerHTML);
+            } else {
+                // Überschriften beginnen eine neue Zeile
+                if (cur.figs.length || (/^H[23]$/.test(node.tagName) && cur.text.length)) fresh();
+                cur.text.push(node.outerHTML);
+            }
+        });
+
+        return rows.filter(function (r) { return r.text.length || r.figs.length; }).map(function (r) {
+            const kind = !r.figs.length ? " jw-case__grid--text" : (r.wide || !r.text.length ? " jw-case__grid--wide" : "");
+            return '<div class="jw-case__grid jw-flow__row' + kind + '">'
+                + (r.text.length ? '<div class="jw-prose jw-case__text post-body">' + r.text.join("\n") + '</div>' : '')
+                + (r.figs.length ? '<div class="jw-flow__media">' + r.figs.join("\n") + '</div>' : '')
+                + '</div>';
+        }).join("\n");
+    });
+
+    // Lesezeit in Minuten (rund 200 Wörter pro Minute, mindestens 1)
+    eleventyConfig.addFilter("readingMinutes", function(html) {
+        const words = String(html || "").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+        return Math.max(1, Math.round(words / 200));
     });
 
     // YouTube-ID aus einem Einbettungscode: <iframe src="…/embed/ID?…"> → "ID"

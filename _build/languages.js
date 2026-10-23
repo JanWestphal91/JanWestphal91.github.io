@@ -26,6 +26,7 @@
 const fs = require("fs");
 const path = require("path");
 const { parseHTML } = require("linkedom");
+const { replaceArrows } = require("./arrows.js");
 
 const SITE = "https://janwestphal.dev";
 const LANGS = ["de", "en"];
@@ -139,6 +140,9 @@ function localize(html, url, lang) {
         document.head.appendChild(link);
         return "<!DOCTYPE html>\n" + root.outerHTML + "\n";
     }
+
+    // Pfeilzeichen → Grafik mit Hover-Bewegung (_build/arrows.js)
+    replaceArrows(document);
 
     // <head>: Adressen dieser Version und der anderen
     const head = document.head;

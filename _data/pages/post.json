@@ -18,5 +18,25 @@
   "back": {
     "en": "Back to blog",
     "de": "Zurück zum Blog"
+  },
+  "date": {
+    "en": "Date",
+    "de": "Datum"
+  },
+  "topics": {
+    "en": "Topics",
+    "de": "Themen"
+  },
+  "reading": {
+    "en": "Reading time",
+    "de": "Lesezeit"
+  },
+  "minutes": {
+    "en": "min",
+    "de": "Min."
+  },
+  "text": {
+    "en": "Post",
+    "de": "Beitrag"
   }
 }
