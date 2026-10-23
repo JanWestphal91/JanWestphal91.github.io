@@ -3563,3 +3563,51 @@ html.jw-motion-off {
         display: block;
     }
 }
+
+/* ═══ Header auf dem Handy: eine Zeile ═══
+   Logo links, Navigation rechts. Der Schalter „Animationen“ fällt hier weg
+   (auf dem Handy laufen ohnehin weniger Animationen; die Systemeinstellung
+   „Bewegung reduzieren“ gilt weiterhin). Wird es zu eng, entfallen erst die
+   Pfeile, auf sehr schmalen Geräten bricht die Navigation in eine zweite Zeile. */
+@media (max-width: 640px) {
+    .jw-nav-motion {
+        display: none;
+    }
+
+    .theme .site-header .container.nav {
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        column-gap: 16px;
+        padding-block: 10px;
+    }
+
+    .theme .nav-main {
+        justify-content: flex-end;
+    }
+
+    .theme .nav-links {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 0 14px;
+    }
+}
+
+@media (max-width: 420px) {
+    .nav-arrow {
+        display: none;
+    }
+
+    .theme .site-header .container.nav {
+        column-gap: 12px;
+    }
+
+    .theme .nav-links {
+        gap: 0 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    .theme .site-header .logo {
+        font-size: 18px;
+    }
+}

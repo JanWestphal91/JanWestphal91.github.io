@@ -121,18 +121,6 @@
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/chirping-on-trust/"/>
     </url>
     <url>
-        <loc>https://janwestphal.dev/projects/e-zine-graffiti-doc/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/e-zine-graffiti-doc/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/e-zine-graffiti-doc/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/e-zine-graffiti-doc/"/>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/en/projects/e-zine-graffiti-doc/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/e-zine-graffiti-doc/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/e-zine-graffiti-doc/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/e-zine-graffiti-doc/"/>
-    </url>
-    <url>
         <loc>https://janwestphal.dev/projects/fine-art-assortment/</loc>
         <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/fine-art-assortment/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/fine-art-assortment/"/>
@@ -155,18 +143,6 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/go-pony-go-c/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/go-pony-go-c/"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/go-pony-go-c/"/>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/projects/hidden-walls-in-lost-places/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/hidden-walls-in-lost-places/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/hidden-walls-in-lost-places/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/hidden-walls-in-lost-places/"/>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/en/projects/hidden-walls-in-lost-places/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/hidden-walls-in-lost-places/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/hidden-walls-in-lost-places/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/hidden-walls-in-lost-places/"/>
     </url>
     <url>
         <loc>https://janwestphal.dev/projects/pocket-knight/</loc>
