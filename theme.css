@@ -2691,7 +2691,7 @@ body.theme {
         background: var(--paper);
         object-fit: cover;
         transform: translateY(-50%);
-        transition: box-shadow 0.45s ease;
+        transition: box-shadow 0.45s ease, filter 0.45s ease;
     }
 
     .theme .jw-row .jw-row__thumb img,
@@ -4701,7 +4701,8 @@ body.theme {
 .jw-fan__hand {
     --card-w: 34%;
     position: relative;
-    aspect-ratio: 4 / 3;
+    /* Höhe = Karten plus Platz zum Herausheben, ohne leeren Streifen darüber */
+    aspect-ratio: 16 / 10;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -4824,4 +4825,49 @@ body.theme {
 
 .jw-fan__info {
     display: none;
+}
+
+/* Startseite am Desktop: Der Kopfbereich füllt den ersten Bildschirm. Die
+   Linie über „01 — Projekte“ liegt dadurch knapp über der Unterkante des
+   Fensters; der Inhalt steht mittig im freien Raum darüber.
+   Höhe = Fenster − Header − Laufband − Abstand bis zur Linie − 24 px. */
+@media (min-width: 1024px) and (min-height: 680px) {
+    .theme .jw-hero {
+        min-height: calc(100svh - var(--jw-header-h, 70px) - var(--jw-ticker-h, 48px) - var(--section-space) / 2 - 24px);
+        align-content: center;
+        align-items: center;
+    }
+}
+
+/* ═══ Gedämpfte Farben bis zur Auswahl ═══
+   Nicht gehobene Karten im Fächer und die Vorschaubilder in Projekt- und
+   Blogliste sind entsättigt (nicht grau, nur ruhiger). Die gehobene Karte
+   bzw. die überfahrene Zeile blendet in die vollen Farben über. Auf Touch-
+   Geräten ohne Überfahren bleiben die Listen in voller Farbe. */
+.jw-fan__card img,
+.jw-row__thumb img,
+.jw-brow__thumb img,
+.jw-prow__thumb img,
+.jw-feature__media img {
+    transition: filter 0.45s ease, transform 0.5s ease;
+}
+
+.jw-fan__slot:not(.is-active) .jw-fan__card img {
+    filter: saturate(0.4);
+}
+
+@media (hover: hover) {
+    .jw-row .jw-row__thumb img,
+    .jw-brow .jw-brow__thumb img,
+    .jw-prow .jw-prow__thumb img,
+    .jw-feature .jw-feature__media img {
+        filter: saturate(0.4);
+    }
+
+    .jw-row:is(:hover, :focus-visible) .jw-row__thumb img,
+    .jw-brow:is(:hover, :focus-visible) .jw-brow__thumb img,
+    .jw-prow:is(:hover, :focus-visible) .jw-prow__thumb img,
+    .jw-feature:is(:hover, :focus-visible) .jw-feature__media img {
+        filter: none;
+    }
 }

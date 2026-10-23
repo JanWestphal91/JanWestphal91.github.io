@@ -776,6 +776,7 @@ collections:
       - label: Alias-Zeile unter dem Foto
         name: alias
         widget: object
+        required: false
         collapsed: false
         summary: '{{fields.de}}'
         fields:
