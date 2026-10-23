@@ -519,6 +519,9 @@ window.addEventListener("resize", function () {
     if (!header) return;
     function measure() {
         document.documentElement.style.setProperty("--jw-header-h", Math.ceil(header.getBoundingClientRect().height) + "px");
+        // Höhe des Laufbands (nur Startseite) – der Kopfbereich füllt damit den ersten Bildschirm
+        const ticker = document.querySelector(".ticker-band");
+        document.documentElement.style.setProperty("--jw-ticker-h", (ticker ? Math.ceil(ticker.getBoundingClientRect().height) : 0) + "px");
     }
     measure();
     window.addEventListener("resize", measure);
@@ -1815,11 +1818,21 @@ initFishScene();
                 }
                 // Verlässt die Sektion den Bildschirm nach unten (man scrollt hoch),
                 // fährt die Linie wieder ein und baut sich beim nächsten Mal neu auf.
-                const bottom = entry.rootBounds ? entry.rootBounds.bottom : window.innerHeight;
+                const bottom = window.innerHeight; // echte Fensterkante, nicht die um 12 % verkleinerte
                 if (entry.boundingClientRect.top >= bottom) el.classList.remove('is-revealed');
             });
         }, { rootMargin: '0px 0px -12% 0px' });
         revealTargets.forEach(function (el) { observer.observe(el); });
+        // Was beim Laden schon im Fenster steht (z. B. die Linie über „01 — Projekte“
+        // knapp über der Unterkante), baut sich sofort auf statt erst beim Scrollen
+        revealTargets.forEach(function (el) {
+            const r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0 && !el.classList.contains('is-revealed')) {
+                el.classList.add('is-revealed');
+                const label = el.matches('.jw-label') ? el : el.querySelector('.jw-label');
+                if (label && !motionOff()) scramble(label);
+            }
+        });
     }
 
     /* ── 4. Weiche Übergänge beim Filtern (FLIP-Technik) ──

@@ -95,7 +95,6 @@
                 Antippen hebt sich eine Karte heraus; darunter stehen Titel und
                 Kategorie der gehobenen Karte. Logik in script.js → „Fächer“. -#}
             <div class="jw-fan" data-fan>
-                <p class="jw-label jw-fan__label" aria-hidden="true" {% i18n h.hero.carousel_label %}>{{ h.hero.carousel_label.en }}</p>
                 <ul class="jw-fan__hand" style="--n: {{ cards.length }}" {% i18n h.hero.carousel_label, "aria" %} aria-label="{{ h.hero.carousel_label.en }}">
                     {%- for c in cards %}
                     {%- set pd = c.project.data %}
