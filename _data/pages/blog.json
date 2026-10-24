@@ -1,40 +1,40 @@
 {
   "seo": {
     "title": {
-      "de": "Blog – Jan Westphal",
-      "en": "Blog – Jan Westphal"
+      "de": "Blog - Jan Westphal",
+      "en": "Blog - Jan Westphal"
     },
     "description": {
-      "de": "Gedanken, Prozessnotizen und Neuigkeiten von Jan Westphal – Creative Coder und Designer aus Kiel.",
-      "en": "Thoughts, process notes and updates by Jan Westphal – Creative Coder & Designer from Kiel."
+      "de": "Gedanken, Prozessnotizen und Neuigkeiten von Jan Westphal - Creative Coder und Designer aus Kiel.",
+      "en": "Thoughts, process notes and updates by Jan Westphal - Creative Coder & Designer from Kiel."
     }
   },
   "count_label": {
-    "en": "posts",
-    "de": "Beiträge"
+    "de": "Beiträge",
+    "en": "posts"
   },
   "heading": {
-    "en": "Blog",
-    "de": "Blog"
+    "de": "Blog",
+    "en": "Blog"
   },
   "intro": {
-    "en": "Devlogs, build processes and game jam reports – how the projects actually came together.",
-    "de": "Devlogs, Bauprozesse und Game-Jam-Berichte – wie die Projekte tatsächlich entstanden sind."
+    "de": "Devlogs, Bauprozesse und Game-Jam-Berichte, wie die Projekte tatsächlich entstanden sind.",
+    "en": "Devlogs, build processes and game jam reports, how the projects actually came together."
   },
   "latest_badge": {
-    "en": "Latest",
-    "de": "Neu"
+    "de": "Neu",
+    "en": "Latest"
   },
   "read": {
-    "en": "Read",
-    "de": "Lesen"
+    "de": "Lesen",
+    "en": "Read"
   },
   "all_posts": {
-    "en": "All posts",
-    "de": "Alle Beiträge"
+    "de": "Alle Beiträge",
+    "en": "All posts"
   },
   "empty": {
-    "en": "No posts yet — check back soon.",
-    "de": "Noch keine Beiträge – schau bald wieder vorbei."
+    "de": "Noch keine Beiträge, schau bald wieder vorbei.",
+    "en": "No posts yet, check back soon."
   }
 }
