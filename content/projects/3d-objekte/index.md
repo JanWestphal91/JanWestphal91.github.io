@@ -20,7 +20,7 @@ meta_de:
   - Modellierung
 flipbooks: []
 models_intro:
-  de: Die Modelle lassen sich mit der Maus oder dem Finger drehen. Unter „Topologie“ erscheint jedes Modell in einem neutralen Material mit Wireframe.
+  de: Die Modelle lassen sich mit der Maus oder dem Finger drehen. Unter „Wireframe“ erscheint jedes Modell in einem neutralen Material mit seinem Wireframe.
   en: Drag to rotate the models. “Topology” shows each model in a neutral material with its edges – only the edges from the model, without the diagonals that appear when the browser splits every quad into two triangles.
 models:
   - title:
@@ -38,74 +38,59 @@ models:
       de: Modelliert, geriggt und animiert in Blender. Als Spielfigur aus einer Top Down Perspektive geplant, das Projekt dazu wurde vorerst aufgegeben wird aber vielleicht nochmal recycled.
       en: Rigged, shown here in the rig's rest pose. Jacket, scarf, hair, belt and boots are separate meshes.
   - title:
-      de: Baum
+      de: Stilisierter Baum
       en: Tree
     src: /Images/3D/laternenbaum.glb
     text:
-      de: Der Baum wurde größtenteils mit Linien und Primitives erstellt, ich habe hier versucht viel über Modifiers zu lösen.
+      de: Der Baum wurde größtenteils mit Linien und Primitives erstellt die dann über Modifiers zu Formen wurden, ich habe hier versucht mal einen anderen Workflow auszuprobieren.
       en: Trunk and roots are one continuous mesh made almost entirely of quads. The crown consists of 15 leaf clusters, bent with a Simple Deform modifier. In the gallery below the tree stands in its scene with lanterns.
   - title:
       de: Brücke mit Ranken
       en: Bridge with vines
     src: /Images/3D/bruecke.glb
     text:
-      de: Eine kleine Brücke deren weg von Ranken blockiert wird, das Modell ist im Rahmen der Game Dev Sessions von Opencampus Kiel entstanden, es war dazu gedacht bestimmte Bereiche abzusperren bis der Spieler die Ranken entfernen kann.
+      de: Eine kleine Brücke deren weg von Ranken blockiert wird, das Modell ist im Rahmen der Game Dev Sessions von Opencampus Kiel entstanden, es war dazu gedacht bestimmte Bereiche abzusperren bis der Spieler die Ranken entfernen kann. Die Ranken sind so modelliert das sie mit einem Shader wachsen und sich zurückbilden können.
       en: Posts, beams, planks, ropes and vines as separate objects. The vines are mostly triangles, everything else is built from quads.
 case: null
 images:
-  - src: /Images/3D/wald-diorama-farbig.webp
-    alt: 'Forest diorama in a paper style: fir trees and round trees around a path, in the middle a small hooded figure in a pool of light'
-    alt_de: 'Wald-Diorama im Papier-Look: Tannen und runde Bäume um einen Weg, in der Mitte eine kleine Figur mit Kapuze im Lichtkegel'
-    caption: Forest diorama, in colour
-    caption_de: Wald-Diorama, farbig
   - src: /Images/3D/wald-diorama-papier.webp
     alt: The same forest diorama in plain white paper and cardboard
-    alt_de: Dasselbe Wald-Diorama in weißem Papier und Pappe, ohne Farbe
+    alt_de: Wald Diorama als als erstes Mockup um die Stimmung und eine Stilrichtung festzulegen. Entstanden im Rahmen der Game Dev Sessions von Opencampus. Modelliert in Blender, Scene View in Unity.
     caption: Forest diorama, plain paper
     caption_de: Wald-Diorama, ungefärbtes Papier
   - src: /Images/3D/wald-diorama-daemmerung.webp
     alt: The forest diorama in dim green light, only the path around the figure is lit
-    alt_de: Das Wald-Diorama in gedämpftem grünem Licht, nur der Weg um die Figur ist beleuchtet
+    alt_de: Das gleiche Diorama als variation mit farbigen Materialien und einer abendlichen Beleuchtung.
     caption: Forest diorama at dusk
     caption_de: Wald-Diorama in der Dämmerung
-  - src: /Images/3D/wald-diorama-nacht.webp
-    alt: The forest diorama at night in grey-blue tones, the figure as the only light source
-    alt_de: Das Wald-Diorama nachts in grau-blauen Tönen, die Figur als einzige Lichtquelle
-    caption: Forest diorama at night
-    caption_de: Wald-Diorama bei Nacht
   - src: /Images/3D/baum-laternen.webp
     alt: A large tree with a crown of paper-textured blocks, small lantern houses hanging from it, an ant figure standing at the roots
-    alt_de: Ein großer Baum mit einer Krone aus Blöcken mit Papiertextur, daran hängen kleine Laternenhäuser, an den Wurzeln steht eine Ameisenfigur
+    alt_de: Eine erste Ansicht im Spiel mit kleinen Häuschen für Waldgeister die am Baum hängen.
     caption: The tree with lanterns in its scene
-    caption_de: Der Baum mit Laternen in seiner Szene
+    caption_de: Ein Baum mit Laternen in seiner Szene
   - src: /Images/3D/spinne.webp
     alt: Low-poly spider in red, blue and black with large white fangs, rendered on a grey background
-    alt_de: Low-Poly-Spinne in Rot, Blau und Schwarz mit großen weißen Fangzähnen, gerendert vor grauem Hintergrund
+    alt_de: Low-Poly-Spinne in Rot, Blau und Schwarz mit großen weißen Fangzähnen, modelliert, geriggt und gerendert in Blender.
     caption: Low-poly spider, rendering
     caption_de: Low-Poly-Spinne, Rendering
   - src: /Images/3D/schwertsaeulen.webp
     alt: Low-poly desert under a purple sky, two giant swords stuck in the sand, a small figure in front of a gate with lanterns
-    alt_de: Low-Poly-Wüste unter violettem Himmel, zwei riesige Schwerter stecken im Sand, eine kleine Figur steht vor einem Tor mit Laternen
+    alt_de: Ein früher Screenshot aus einem Prototyp der nicht weiterverfolgt wurde, Low poly Modelle in Blender modelliert, Screenshot aus Unity.
     caption: Low-poly scene with sword pillars
     caption_de: Low-Poly-Szene mit Schwertsäulen
   - src: /Images/3D/saeulenhalle.webp
     alt: A small figure on a red platform faces an armoured giant between tall columns
-    alt_de: Eine kleine Figur auf einer roten Plattform steht einem gepanzerten Riesen zwischen hohen Säulen gegenüber
+    alt_de: Ein weiterer Screenshot aus dem gleichen Prototyp.
     caption: Giant in a hall of columns
     caption_de: Riese in der Säulenhalle
-  - src: /Images/3D/lagerfeuer.webp
-    alt: Figure with a wide-brimmed hat and a red scarf sitting by a camp fire in a cave, blue crystals and a sword in the ground
-    alt_de: Figur mit breitkrempigem Hut und rotem Schal sitzt an einem Lagerfeuer in einer Höhle, daneben blaue Kristalle und ein Schwert im Boden
-    caption: Camp fire in a cave
-    caption_de: Lagerfeuer in der Höhle
   - src: /Images/3D/lagerfeuer-animiert.webp
-    alt: Animated version of the camp fire scene with flickering flames and rising sparks
+    alt: Ein weiteres Mood gif aus dem gleichen Prototyp.
     alt_de: Animierte Fassung der Lagerfeuer-Szene mit flackernden Flammen und aufsteigenden Funken
     caption: Camp fire, animated
     caption_de: Lagerfeuer, animiert
   - src: /Images/3D/leuchtturm.webp
-    alt: Figure in a blue coat in front of a lighthouse at night, its cyan beam crossing the rainy sky
-    alt_de: Figur in blauem Mantel vor einem Leuchtturm bei Nacht, der türkise Lichtstrahl zieht durch den verregneten Himmel
+    alt: Ein Screenshot aus einem Prototyp für ein Spiel über einen Leuchtturmwärter, der Leuchtturm ist dem Leuchtturm aus Kiel Holtenau nachempfunden.
+    alt_de: Ein Screenshot aus einem Prototyp für ein Spiel über einen Leuchtturmwärter, der Leuchtturm ist dem Leuchtturm aus Kiel Holtenau nachempfunden.
     caption: Lighthouse in the rain
     caption_de: Leuchtturm im Regen
 embed: ''
