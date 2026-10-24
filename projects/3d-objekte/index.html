@@ -110,7 +110,7 @@
     
     <section class="jw-wrap jw-detail-block jw-models" aria-labelledby="jw-models-title">
         <h2 id="jw-models-title" class="jw-label jw-rule">01 — <span>3D-Modelle</span> (04)</h2>
-        <p class="jw-models__intro">Die Modelle lassen sich mit der Maus oder dem Finger drehen. Unter „Topologie“ erscheint jedes Modell in einem neutralen Material mit Wireframe.</p>
+        <p class="jw-models__intro">Die Modelle lassen sich mit der Maus oder dem Finger drehen. Unter „Wireframe“ erscheint jedes Modell in einem neutralen Material mit seinem Wireframe.</p>
         <article class="jw-model" data-model-src="/Images/3D/ente.glb" aria-labelledby="jw-model-1">
             <div class="jw-model__head">
                 <h3 id="jw-model-1" class="jw-model__title"><span class="jw-fig">3D 01</span> <span>Spielbare Ente</span></h3>
@@ -157,8 +157,8 @@
         </article>
         <article class="jw-model" data-model-src="/Images/3D/laternenbaum.glb" aria-labelledby="jw-model-3">
             <div class="jw-model__head">
-                <h3 id="jw-model-3" class="jw-model__title"><span class="jw-fig">3D 03</span> <span>Baum</span></h3>
-                <p class="jw-model__text">Der Baum wurde größtenteils mit Linien und Primitives erstellt, ich habe hier versucht viel über Modifiers zu lösen.</p>
+                <h3 id="jw-model-3" class="jw-model__title"><span class="jw-fig">3D 03</span> <span>Stilisierter Baum</span></h3>
+                <p class="jw-model__text">Der Baum wurde größtenteils mit Linien und Primitives erstellt die dann über Modifiers zu Formen wurden, ich habe hier versucht mal einen anderen Workflow auszuprobieren.</p>
             </div>
             <div class="jw-model__stage">
                 <canvas tabindex="0" role="img" aria-label="Interaktives 3D-Modell. Ziehen zum Drehen, nach einem Klick mit Mausrad oder zwei Fingern zoomen, Pfeiltasten zum Verschieben."></canvas>
@@ -180,7 +180,7 @@
         <article class="jw-model" data-model-src="/Images/3D/bruecke.glb" aria-labelledby="jw-model-4">
             <div class="jw-model__head">
                 <h3 id="jw-model-4" class="jw-model__title"><span class="jw-fig">3D 04</span> <span>Brücke mit Ranken</span></h3>
-                <p class="jw-model__text">Eine kleine Brücke deren weg von Ranken blockiert wird, das Modell ist im Rahmen der Game Dev Sessions von Opencampus Kiel entstanden, es war dazu gedacht bestimmte Bereiche abzusperren bis der Spieler die Ranken entfernen kann.</p>
+                <p class="jw-model__text">Eine kleine Brücke deren weg von Ranken blockiert wird, das Modell ist im Rahmen der Game Dev Sessions von Opencampus Kiel entstanden, es war dazu gedacht bestimmte Bereiche abzusperren bis der Spieler die Ranken entfernen kann. Die Ranken sind so modelliert das sie mit einem Shader wachsen und sich zurückbilden können.</p>
             </div>
             <div class="jw-model__stage">
                 <canvas tabindex="0" role="img" aria-label="Interaktives 3D-Modell. Ziehen zum Drehen, nach einem Klick mit Mausrad oder zwei Fingern zoomen, Pfeiltasten zum Verschieben."></canvas>
@@ -206,7 +206,7 @@
     
     <section class="jw-wrap jw-detail-block" aria-labelledby="jw-gallery-title">
         <div class="jw-gallery-head">
-            <h2 id="jw-gallery-title" class="jw-label jw-rule">02 — <span>Galerie</span> (11)</h2><div class="jw-view-toggle" role="group" aria-label="Ansicht der Galerie" hidden>
+            <h2 id="jw-gallery-title" class="jw-label jw-rule">02 — <span>Galerie</span> (08)</h2><div class="jw-view-toggle" role="group" aria-label="Ansicht der Galerie" hidden>
                 <button type="button" data-view="archive" aria-pressed="true">Archiv</button>
                 <button type="button" data-view="grid" aria-pressed="false">Raster</button>
             </div>
@@ -215,79 +215,58 @@
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-farbig.webp"><picture><source type="image/avif" srcset="/img/MA5_l2z41B-320.avif 320w, /img/MA5_l2z41B-640.avif 640w, /img/MA5_l2z41B-960.avif 960w, /img/MA5_l2z41B-1440.avif 1440w, /img/MA5_l2z41B-1920.avif 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/MA5_l2z41B-320.webp" alt="Wald-Diorama im Papier-Look: Tannen und runde Bäume um einen Weg, in der Mitte eine kleine Figur mit Kapuze im Lichtkegel" loading="lazy" width="1920" height="1135" srcset="/img/MA5_l2z41B-320.webp 320w, /img/MA5_l2z41B-640.webp 640w, /img/MA5_l2z41B-960.webp 960w, /img/MA5_l2z41B-1440.webp 1440w, /img/MA5_l2z41B-1920.webp 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-papier.webp"><picture><source type="image/avif" srcset="/img/aPLons9gx3-320.avif 320w, /img/aPLons9gx3-640.avif 640w, /img/aPLons9gx3-960.avif 960w, /img/aPLons9gx3-1440.avif 1440w, /img/aPLons9gx3-1920.avif 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/aPLons9gx3-320.webp" alt="Wald Diorama als als erstes Mockup um die Stimmung und eine Stilrichtung festzulegen. Entstanden im Rahmen der Game Dev Sessions von Opencampus. Modelliert in Blender, Scene View in Unity." loading="lazy" width="1920" height="1117" srcset="/img/aPLons9gx3-320.webp 320w, /img/aPLons9gx3-640.webp 640w, /img/aPLons9gx3-960.webp 960w, /img/aPLons9gx3-1440.webp 1440w, /img/aPLons9gx3-1920.webp 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
-                <figcaption><span class="jw-fig">Fig. 01</span> <span>Wald-Diorama, farbig</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 01</span> <span>Wald-Diorama, ungefärbtes Papier</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-papier.webp"><picture><source type="image/avif" srcset="/img/aPLons9gx3-320.avif 320w, /img/aPLons9gx3-640.avif 640w, /img/aPLons9gx3-960.avif 960w, /img/aPLons9gx3-1440.avif 1440w, /img/aPLons9gx3-1920.avif 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/aPLons9gx3-320.webp" alt="Dasselbe Wald-Diorama in weißem Papier und Pappe, ohne Farbe" loading="lazy" width="1920" height="1117" srcset="/img/aPLons9gx3-320.webp 320w, /img/aPLons9gx3-640.webp 640w, /img/aPLons9gx3-960.webp 960w, /img/aPLons9gx3-1440.webp 1440w, /img/aPLons9gx3-1920.webp 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-daemmerung.webp"><picture><source type="image/avif" srcset="/img/O4Bb7QUX1e-320.avif 320w, /img/O4Bb7QUX1e-640.avif 640w, /img/O4Bb7QUX1e-960.avif 960w, /img/O4Bb7QUX1e-1440.avif 1440w, /img/O4Bb7QUX1e-1920.avif 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/O4Bb7QUX1e-320.webp" alt="Das gleiche Diorama als variation mit farbigen Materialien und einer abendlichen Beleuchtung." loading="lazy" width="1920" height="1141" srcset="/img/O4Bb7QUX1e-320.webp 320w, /img/O4Bb7QUX1e-640.webp 640w, /img/O4Bb7QUX1e-960.webp 960w, /img/O4Bb7QUX1e-1440.webp 1440w, /img/O4Bb7QUX1e-1920.webp 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
-                <figcaption><span class="jw-fig">Fig. 02</span> <span>Wald-Diorama, ungefärbtes Papier</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 02</span> <span>Wald-Diorama in der Dämmerung</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-daemmerung.webp"><picture><source type="image/avif" srcset="/img/O4Bb7QUX1e-320.avif 320w, /img/O4Bb7QUX1e-640.avif 640w, /img/O4Bb7QUX1e-960.avif 960w, /img/O4Bb7QUX1e-1440.avif 1440w, /img/O4Bb7QUX1e-1920.avif 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/O4Bb7QUX1e-320.webp" alt="Das Wald-Diorama in gedämpftem grünem Licht, nur der Weg um die Figur ist beleuchtet" loading="lazy" width="1920" height="1141" srcset="/img/O4Bb7QUX1e-320.webp 320w, /img/O4Bb7QUX1e-640.webp 640w, /img/O4Bb7QUX1e-960.webp 960w, /img/O4Bb7QUX1e-1440.webp 1440w, /img/O4Bb7QUX1e-1920.webp 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/baum-laternen.webp"><picture><source type="image/avif" srcset="/img/hKGv-CrXvK-320.avif 320w, /img/hKGv-CrXvK-640.avif 640w, /img/hKGv-CrXvK-960.avif 960w, /img/hKGv-CrXvK-1440.avif 1440w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/hKGv-CrXvK-320.webp" alt="Eine erste Ansicht im Spiel mit kleinen Häuschen für Waldgeister die am Baum hängen." loading="lazy" width="1440" height="1077" srcset="/img/hKGv-CrXvK-320.webp 320w, /img/hKGv-CrXvK-640.webp 640w, /img/hKGv-CrXvK-960.webp 960w, /img/hKGv-CrXvK-1440.webp 1440w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
-                <figcaption><span class="jw-fig">Fig. 03</span> <span>Wald-Diorama in der Dämmerung</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 03</span> <span>Ein Baum mit Laternen in seiner Szene</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-nacht.webp"><picture><source type="image/avif" srcset="/img/fjbG0kxAuI-320.avif 320w, /img/fjbG0kxAuI-640.avif 640w, /img/fjbG0kxAuI-960.avif 960w, /img/fjbG0kxAuI-1440.avif 1440w, /img/fjbG0kxAuI-1920.avif 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/fjbG0kxAuI-320.webp" alt="Das Wald-Diorama nachts in grau-blauen Tönen, die Figur als einzige Lichtquelle" loading="lazy" width="1920" height="1190" srcset="/img/fjbG0kxAuI-320.webp 320w, /img/fjbG0kxAuI-640.webp 640w, /img/fjbG0kxAuI-960.webp 960w, /img/fjbG0kxAuI-1440.webp 1440w, /img/fjbG0kxAuI-1920.webp 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/spinne.webp"><picture><source type="image/avif" srcset="/img/tXpKA3PaGd-320.avif 320w, /img/tXpKA3PaGd-640.avif 640w, /img/tXpKA3PaGd-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/tXpKA3PaGd-320.webp" alt="Low-Poly-Spinne in Rot, Blau und Schwarz mit großen weißen Fangzähnen, modelliert, geriggt und gerendert in Blender." loading="lazy" width="960" height="960" srcset="/img/tXpKA3PaGd-320.webp 320w, /img/tXpKA3PaGd-640.webp 640w, /img/tXpKA3PaGd-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
-                <figcaption><span class="jw-fig">Fig. 04</span> <span>Wald-Diorama bei Nacht</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 04</span> <span>Low-Poly-Spinne, Rendering</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/baum-laternen.webp"><picture><source type="image/avif" srcset="/img/hKGv-CrXvK-320.avif 320w, /img/hKGv-CrXvK-640.avif 640w, /img/hKGv-CrXvK-960.avif 960w, /img/hKGv-CrXvK-1440.avif 1440w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/hKGv-CrXvK-320.webp" alt="Ein großer Baum mit einer Krone aus Blöcken mit Papiertextur, daran hängen kleine Laternenhäuser, an den Wurzeln steht eine Ameisenfigur" loading="lazy" width="1440" height="1077" srcset="/img/hKGv-CrXvK-320.webp 320w, /img/hKGv-CrXvK-640.webp 640w, /img/hKGv-CrXvK-960.webp 960w, /img/hKGv-CrXvK-1440.webp 1440w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/schwertsaeulen.webp"><picture><source type="image/avif" srcset="/img/5v6VysKJws-320.avif 320w, /img/5v6VysKJws-640.avif 640w, /img/5v6VysKJws-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/5v6VysKJws-320.webp" alt="Ein früher Screenshot aus einem Prototyp der nicht weiterverfolgt wurde, Low poly Modelle in Blender modelliert, Screenshot aus Unity." loading="lazy" width="960" height="539" srcset="/img/5v6VysKJws-320.webp 320w, /img/5v6VysKJws-640.webp 640w, /img/5v6VysKJws-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
-                <figcaption><span class="jw-fig">Fig. 05</span> <span>Der Baum mit Laternen in seiner Szene</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 05</span> <span>Low-Poly-Szene mit Schwertsäulen</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/spinne.webp"><picture><source type="image/avif" srcset="/img/tXpKA3PaGd-320.avif 320w, /img/tXpKA3PaGd-640.avif 640w, /img/tXpKA3PaGd-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/tXpKA3PaGd-320.webp" alt="Low-Poly-Spinne in Rot, Blau und Schwarz mit großen weißen Fangzähnen, gerendert vor grauem Hintergrund" loading="lazy" width="960" height="960" srcset="/img/tXpKA3PaGd-320.webp 320w, /img/tXpKA3PaGd-640.webp 640w, /img/tXpKA3PaGd-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/saeulenhalle.webp"><picture><source type="image/avif" srcset="/img/DldxYq4Svv-320.avif 320w, /img/DldxYq4Svv-640.avif 640w, /img/DldxYq4Svv-867.avif 867w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/DldxYq4Svv-320.webp" alt="Ein weiterer Screenshot aus dem gleichen Prototyp." loading="lazy" width="867" height="867" srcset="/img/DldxYq4Svv-320.webp 320w, /img/DldxYq4Svv-640.webp 640w, /img/DldxYq4Svv-867.webp 867w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
-                <figcaption><span class="jw-fig">Fig. 06</span> <span>Low-Poly-Spinne, Rendering</span></figcaption>
-            </figure>
-            
-            <figure class="project-gallery__item">
-                
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/schwertsaeulen.webp"><picture><source type="image/avif" srcset="/img/5v6VysKJws-320.avif 320w, /img/5v6VysKJws-640.avif 640w, /img/5v6VysKJws-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/5v6VysKJws-320.webp" alt="Low-Poly-Wüste unter violettem Himmel, zwei riesige Schwerter stecken im Sand, eine kleine Figur steht vor einem Tor mit Laternen" loading="lazy" width="960" height="539" srcset="/img/5v6VysKJws-320.webp 320w, /img/5v6VysKJws-640.webp 640w, /img/5v6VysKJws-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
-                
-                <figcaption><span class="jw-fig">Fig. 07</span> <span>Low-Poly-Szene mit Schwertsäulen</span></figcaption>
-            </figure>
-            
-            <figure class="project-gallery__item">
-                
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/saeulenhalle.webp"><picture><source type="image/avif" srcset="/img/DldxYq4Svv-320.avif 320w, /img/DldxYq4Svv-640.avif 640w, /img/DldxYq4Svv-867.avif 867w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/DldxYq4Svv-320.webp" alt="Eine kleine Figur auf einer roten Plattform steht einem gepanzerten Riesen zwischen hohen Säulen gegenüber" loading="lazy" width="867" height="867" srcset="/img/DldxYq4Svv-320.webp 320w, /img/DldxYq4Svv-640.webp 640w, /img/DldxYq4Svv-867.webp 867w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
-                
-                <figcaption><span class="jw-fig">Fig. 08</span> <span>Riese in der Säulenhalle</span></figcaption>
-            </figure>
-            
-            <figure class="project-gallery__item">
-                
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/lagerfeuer.webp"><picture><source type="image/avif" srcset="/img/kXepbuDWLk-320.avif 320w, /img/kXepbuDWLk-640.avif 640w, /img/kXepbuDWLk-960.avif 960w, /img/kXepbuDWLk-1440.avif 1440w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/kXepbuDWLk-320.webp" alt="Figur mit breitkrempigem Hut und rotem Schal sitzt an einem Lagerfeuer in einer Höhle, daneben blaue Kristalle und ein Schwert im Boden" loading="lazy" width="1440" height="763" srcset="/img/kXepbuDWLk-320.webp 320w, /img/kXepbuDWLk-640.webp 640w, /img/kXepbuDWLk-960.webp 960w, /img/kXepbuDWLk-1440.webp 1440w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
-                
-                <figcaption><span class="jw-fig">Fig. 09</span> <span>Lagerfeuer in der Höhle</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 06</span> <span>Riese in der Säulenhalle</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
                 <a class="post-figure__link" data-lightbox="" href="/Images/3D/lagerfeuer-animiert.webp"><picture><source type="image/avif" srcset="/img/mwe8jf0Kwh-320.avif 320w, /img/mwe8jf0Kwh-640.avif 640w, /img/mwe8jf0Kwh-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/mwe8jf0Kwh-320.webp" alt="Animierte Fassung der Lagerfeuer-Szene mit flackernden Flammen und aufsteigenden Funken" loading="lazy" width="960" height="539" srcset="/img/mwe8jf0Kwh-320.webp 320w, /img/mwe8jf0Kwh-640.webp 640w, /img/mwe8jf0Kwh-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
-                <figcaption><span class="jw-fig">Fig. 10</span> <span>Lagerfeuer, animiert</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 07</span> <span>Lagerfeuer, animiert</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/leuchtturm.webp"><picture><source type="image/avif" srcset="/img/9t-1P4WwOg-320.avif 320w, /img/9t-1P4WwOg-640.avif 640w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/9t-1P4WwOg-320.webp" alt="Figur in blauem Mantel vor einem Leuchtturm bei Nacht, der türkise Lichtstrahl zieht durch den verregneten Himmel" loading="lazy" width="640" height="640" srcset="/img/9t-1P4WwOg-320.webp 320w, /img/9t-1P4WwOg-640.webp 640w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/leuchtturm.webp"><picture><source type="image/avif" srcset="/img/9t-1P4WwOg-320.avif 320w, /img/9t-1P4WwOg-640.avif 640w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/9t-1P4WwOg-320.webp" alt="Ein Screenshot aus einem Prototyp für ein Spiel über einen Leuchtturmwärter, der Leuchtturm ist dem Leuchtturm aus Kiel Holtenau nachempfunden." loading="lazy" width="640" height="640" srcset="/img/9t-1P4WwOg-320.webp 320w, /img/9t-1P4WwOg-640.webp 640w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
-                <figcaption><span class="jw-fig">Fig. 11</span> <span>Leuchtturm im Regen</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 08</span> <span>Leuchtturm im Regen</span></figcaption>
             </figure>
             
         </div>
