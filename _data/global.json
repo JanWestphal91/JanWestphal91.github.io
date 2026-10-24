@@ -222,6 +222,11 @@
       "key": "Art",
       "de": "Kunst",
       "en": "Art"
+    },
+    {
+      "key": "Web",
+      "de": "Web",
+      "en": "Web"
     }
   ]
 }
