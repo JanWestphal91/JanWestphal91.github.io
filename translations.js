@@ -9,3 +9,5 @@ window.TRANSLATIONS.en["cat.Illustration"] = "Illustration";
 window.TRANSLATIONS.de["cat.Illustration"] = "Illustration";
 window.TRANSLATIONS.en["cat.Art"] = "Art";
 window.TRANSLATIONS.de["cat.Art"] = "Kunst";
+window.TRANSLATIONS.en["cat.Web"] = "Web";
+window.TRANSLATIONS.de["cat.Web"] = "Web";

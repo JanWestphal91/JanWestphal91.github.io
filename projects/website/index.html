@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diese Website – Jan Westphal</title>
+    <meta name="description" content="janwestphal.dev ist mein Portfolio – und ihr Aufbau ein eigenes Projekt. Das Ziel: eine Seite, die meine Arbeit gut zeigt, schnell lädt, ohne Tracking und...">
+    <meta name="author" content="Jan Westphal">
+    <meta name="robots" content="index, follow">
+    <link href="https://janwestphal.dev/projects/website/" rel="canonical">
+    <link href="https://janwestphal.dev/projects/website/" hreflang="de" rel="alternate">
+    <link href="https://janwestphal.dev/en/projects/website/" hreflang="en" rel="alternate">
+    <link href="https://janwestphal.dev/projects/website/" hreflang="x-default" rel="alternate">
+    <meta content="https://janwestphal.dev/projects/website/" property="og:url">
+    <meta content="de_DE" property="og:locale">
+    <meta content="en_US" property="og:locale:alternate">
+    <meta name="geo.region" content="DE-SH">
+    <meta name="geo.placename" content="Kiel">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Jan Westphal">
+    <meta property="og:title" content="Diese Website – Jan Westphal">
+    <meta property="og:description" content="janwestphal.dev ist mein Portfolio – und ihr Aufbau ein eigenes Projekt. Das Ziel: eine Seite, die meine Arbeit gut zeigt, schnell lädt, ohne Tracking und...">
+    
+    <meta property="og:image" content="https://janwestphal.dev/Images/projects/website/startseite.webp">
+    <meta name="twitter:image" content="https://janwestphal.dev/Images/projects/website/startseite.webp">
+    
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="This website – Jan Westphal Preview">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Diese Website – Jan Westphal">
+    <meta name="twitter:description" content="janwestphal.dev ist mein Portfolio – und ihr Aufbau ein eigenes Projekt. Das Ziel: eine Seite, die meine Arbeit gut zeigt, schnell lädt, ohne Tracking und...">
+
+
+    <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
+    <meta name="theme-color" content="#FFFFFF">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/Images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/Images/favicon48.png">
+    <link rel="apple-touch-icon" href="/Images/favicon180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- ═══ Assets (gemeinsam für alle Seiten) – alle Schriften lokal ═══ -->
+    <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="/theme.css">
+    <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
+    <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
+    <script src="/translations.js" defer></script>
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="theme page-project" data-page="project-static">
+
+<a class="jw-skip" href="#main">Zum Inhalt springen</a>
+<header class="site-header" id="top">
+    <div class="container nav">
+        <div class="jw-brand">
+            <a href="/" class="logo">Jan Westphal</a>
+        </div>
+        <button type="button" id="burger-menu-toggle" class="burger-menu-toggle jw-menu-btn" aria-expanded="false" aria-controls="site-nav"><span>Menü</span></button>
+        <nav class="nav-main" id="site-nav" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="/projects/" class="link-button secondary" aria-current="true"><span>Projekte</span></a></li>
+                <li><a href="/blog/" class="link-button secondary"><span>Blog</span></a></li>
+                <li><a href="/about/" class="link-button secondary"><span>Über mich</span></a></li>
+                <li><a href="/#contact" class="link-button secondary"><span>Kontakt</span></a></li>
+                <li class="jw-nav-motion"><button type="button" id="motion-toggle" class="link-button secondary jw-motion-toggle" aria-pressed="true"><span>Animationen</span> <span class="jw-switch" aria-hidden="true"><span class="jw-switch__knob"></span></span></button></li>
+                <li><a hreflang="en" lang="en" id="lang-toggle" class="link-button secondary" href="/en/projects/website/"><span>English</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<nav class="jw-wrap jw-back" aria-label="Zurück">
+    <a class="jw-back__link" href="/projects/"><span aria-hidden="true"><span class="jw-arrow jw-arrow--l" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></span>&#160;<span>Alle Projekte</span></a>
+</nav>
+
+<main id="main" tabindex="-1" class="project-page">
+    <section class="jw-wrap jw-detail-head" aria-labelledby="jw-page-title">
+        <div class="jw-detail-head__row">
+            <div class="jw-detail-head__main">
+                <h1 id="jw-page-title">Diese Website</h1>
+                
+                <div class="project-summary jw-lead"><p>janwestphal.dev ist mein Portfolio – und ihr Aufbau ein eigenes Projekt. Das Ziel: eine Seite, die meine Arbeit gut zeigt, schnell lädt, ohne Tracking und Cookies auskommt, auf Deutsch und Englisch erreichbar ist und die ich über ein CMS pflegen kann, ohne Code anzufassen.</p>
+<p>Leitlinie für die Gestaltung: Usability und Barrierefreiheit gehen vor Effekten. Das Layout folgt etablierten HCI-Prinzipien und Designnormen; Animationen sollen Orientierung geben und sind nie Selbstzweck.</p>
+<p>Die Seite wird mit Eleventy erzeugt und liegt auf GitHub Pages. Jeder Push baut sie komplett neu: beide Sprachfassungen, alle Bilder in mehreren Größen und die Weiterleitungen für alte Adressen. Der Quellcode ist öffentlich auf GitHub.</p>
+</div>
+            </div>
+            <dl class="jw-facts">
+                <div><dt>Art</dt><dd><span>Web</span></dd></div>
+                <div><dt>Jahr</dt><dd>2026</dd></div>
+                <div>
+                    <dt>Details</dt>
+                    <dd>
+                        
+                        <span>Website, Soloprojekt · Status: online, wird laufend weiterentwickelt</span>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+    
+    <section class="jw-wrap jw-detail-block" aria-label="Cover">
+        <figure class="jw-cover">
+            <picture><source type="image/avif" srcset="/img/zrOTBPxnDT-320.avif 320w, /img/zrOTBPxnDT-640.avif 640w, /img/zrOTBPxnDT-960.avif 960w, /img/zrOTBPxnDT-1440.avif 1440w, /img/zrOTBPxnDT-1920.avif 1920w" sizes="(min-width: 1440px) 1376px, 100vw"><img decoding="async" src="/img/zrOTBPxnDT-320.webp" alt="Startseite von janwestphal.dev: die Überschrift „Hardware, Games & Grafik aus Kiel“ neben einem Fächer aus vier Projektkarten" loading="eager" width="1920" height="1200" srcset="/img/zrOTBPxnDT-320.webp 320w, /img/zrOTBPxnDT-640.webp 640w, /img/zrOTBPxnDT-960.webp 960w, /img/zrOTBPxnDT-1440.webp 1440w, /img/zrOTBPxnDT-1920.webp 1920w" sizes="(min-width: 1440px) 1376px, 100vw"></picture>
+        </figure>
+    </section>
+    
+
+    
+    <section class="jw-wrap jw-detail-block" aria-labelledby="jw-facts-title">
+        <h2 id="jw-facts-title" class="jw-label jw-rule">01 — <span>Steckbrief</span></h2>
+        <dl class="jw-casefacts">
+            <div><dt>Rolle</dt><dd>Soloprojekt: Konzept, Gestaltung, Entwicklung und Inhalte</dd></div>
+            <div><dt>Zeitraum</dt><dd>Seit Frühjahr 2026, Überarbeitung im Herbst 2026</dd></div>
+            <div><dt>Werkzeuge</dt><dd><ul class="jw-skills"><li>Eleventy</li><li>Nunjucks</li><li>Markdown</li><li>Sveltia CMS</li><li>GitHub Actions</li><li>GitHub Pages</li><li>eleventy-img</li><li>three.js</li><li>Claude (AI assistant)</li></ul></dd></div>
+            <div><dt>Links</dt><dd><ul class="jw-casefacts__list"><li><a href="https://github.com/JanWestphal91/JanWestphal91.github.io" target="_blank" rel="noopener noreferrer"><span>Quellcode auf GitHub</span>&#160;<span aria-hidden="true"><span class="jw-arrow jw-arrow--ur" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(-45 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(-45 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></span></a></li></ul></dd></div>
+        </dl>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-1">
+        <h2 id="jw-case-1" class="jw-label jw-rule">02 — <span>Ziel</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Die Seite hat zwei Zielgruppen: Arbeitgeber aus Embedded-Entwicklung, Medientechnik und Game Development und alle, die sich für meine Projekte interessieren. Beide sollen schnell sehen, was ich baue und wie ich arbeite. Daraus ergaben sich ein paar feste Anforderungen:</p>
+<ul>
+<li><strong>Schnell und statisch:</strong> kein Server, keine Datenbank, nur HTML-Dateien. Das hält die Seite schnell, sicher und kostenlos im Betrieb.</li>
+<li><strong>Zwei Sprachen:</strong> Deutsch als Hauptsprache, Englisch für alle anderen – mit eigenen Adressen, damit Suchmaschinen beide Fassungen finden.</li>
+<li><strong>Pflegbar ohne Code:</strong> Neue Projekte und Blogbeiträge entstehen in einem CMS im Browser.</li>
+<li><strong>Datenschutz:</strong> kein Tracking, keine Cookies, Schriften liegen auf der eigenen Seite. Videos und eingebettete Spiele laden erst nach einem Klick.</li>
+</ul>
+</div>
+            </div>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-2">
+        <h2 id="jw-case-2" class="jw-label jw-rule">03 — <span>Aufbau</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Jedes Projekt und jeder Blogbeitrag ist eine Markdown-Datei mit einem Kopf aus strukturierten Daten: Titel, Kategorie, Bilder, der Steckbrief der Case Study. Eleventy macht daraus mit Nunjucks-Vorlagen fertige HTML-Seiten. Das CMS (Sveltia) schreibt genau in diese Dateien und committet sie ins Repository – es gibt keinen zweiten Datenspeicher.</p>
+<p>Bei jedem Push baut GitHub Actions die Seite und veröffentlicht sie auf GitHub Pages. GitHub Pages kann keine Weiterleitungen auf dem Server, deshalb bekommt jede alte Adresse eine kleine Seite, die sofort weiterleitet und Suchmaschinen per <code>canonical</code> die neue Adresse nennt.</p>
+</div>
+            </div>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-3">
+        <h2 id="jw-case-3" class="jw-label jw-rule">04 — <span>Zwei Sprachen ohne JavaScript</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Die Vorlagen schreiben jede Seite nur einmal: englischer Text im HTML, beide Sprachen zusätzlich als Attribute (<code>data-en</code>, <code>data-de</code>). Nach dem Build liest ein kleines eigenes Skript jede Seite ein und schreibt daraus zwei fertige Fassungen – Deutsch unter <code>/</code>, Englisch unter <code>/en/</code>. Jede Fassung enthält nur ihre eigene Sprache, das richtige <code>lang</code>-Attribut, eigenen Titel und eigene Beschreibung, Querverweise für Suchmaschinen (<code>hreflang</code>) und eine gemeinsame Sitemap.</p>
+<p>Der Vorteil: Jeder Text wird an einer Stelle gepflegt, und Besucher wie Screenreader bekommen vom ersten Byte an die richtige Sprache – ohne Umschalten im Browser.</p>
+</div>
+            </div>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-4">
+        <h2 id="jw-case-4" class="jw-label jw-rule">05 — <span>Bilder</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Fotos kommen direkt aus der Kamera und sind oft mehrere Megabyte groß. Ein Plugin (eleventy-img) ersetzt beim Build jedes Bild durch ein <code>&lt;picture&gt;</code>-Element: fünf Breiten, jeweils als AVIF und WebP, dazu die echten Maße, damit beim Laden nichts springt. Der Browser lädt nur die Größe, die er wirklich braucht.</p>
+<p>Wirkung auf der Startseite: Die Bilder wiegen dort jetzt je nach Bildschirm zusammen 65 bis 125 KB – vorher war allein ein Vorschaubild im Blog 4,4 MB groß.</p>
+</div>
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/projects/website/blog.webp">
+                    <picture><source type="image/avif" srcset="/img/L_fWFglY87-320.avif 320w, /img/L_fWFglY87-640.avif 640w, /img/L_fWFglY87-960.avif 960w, /img/L_fWFglY87-1440.avif 1440w, /img/L_fWFglY87-1920.avif 1920w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/L_fWFglY87-320.webp" alt="Layout eines Blogbeitrags mit Textspalte links und dem passenden Bild rechts daneben" loading="lazy" width="1920" height="1333" srcset="/img/L_fWFglY87-320.webp 320w, /img/L_fWFglY87-640.webp 640w, /img/L_fWFglY87-960.webp 960w, /img/L_fWFglY87-1440.webp 1440w, /img/L_fWFglY87-1920.webp 1920w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
+                </a>
+                <figcaption>Blogbeiträge – Textspalte, Bilder neben dem passenden Absatz</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-5">
+        <h2 id="jw-case-5" class="jw-label jw-rule">06 — <span>Interaktion</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Die Seite soll sich anfühlen wie meine Projekte: ein bisschen verspielt, aber nicht laut. Jede Bewegung hat eine Aufgabe – sie zeigt, woher etwas kommt, was ausgewählt ist oder was sich anklicken lässt. Kein Inhalt hängt von einer Animation ab.</p>
+<ul>
+<li><strong>Fächer:</strong> Auf der Startseite liegen die aktuellen Projekte wie Spielkarten in der Hand. Beim Überfahren hebt sich eine Karte mit leichtem Nachfedern heraus und neigt sich mit einem Glanzpunkt zum Zeiger.</li>
+<li><strong>Variable Schrift:</strong> Bricolage Grotesque ist eine variable Schrift. In den großen Überschriften wird jeder Buchstabe kräftiger, je näher der Zeiger ist.</li>
+<li><strong>3D-Modelle:</strong> Modelle aus Blender lassen sich im Browser drehen (three.js). Die Ansicht „Topologie“ zeigt die Kanten so, wie ich sie modelliert habe – das Export-Skript nimmt dafür die ursprünglichen Vierecke mit.</li>
+<li><strong>Bilder und Galerien:</strong> Angeklickte Bilder wachsen weich aus ihrer Position in die Großansicht; lange Galerien bekommen links einen Index, der der Scrollposition folgt.</li>
+</ul>
+</div>
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/projects/website/topologie.webp">
+                    <picture><source type="image/avif" srcset="/img/1-VTyhCQ-J-320.avif 320w, /img/1-VTyhCQ-J-640.avif 640w, /img/1-VTyhCQ-J-960.avif 960w, /img/1-VTyhCQ-J-1440.avif 1440w, /img/1-VTyhCQ-J-1920.avif 1920w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/1-VTyhCQ-J-320.webp" alt="3D-Ansicht mit einem Entenmodell in der Topologie-Ansicht, jede Kante als dünne Linie" loading="lazy" width="1920" height="1247" srcset="/img/1-VTyhCQ-J-320.webp 320w, /img/1-VTyhCQ-J-640.webp 640w, /img/1-VTyhCQ-J-960.webp 960w, /img/1-VTyhCQ-J-1440.webp 1440w, /img/1-VTyhCQ-J-1920.webp 1920w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
+                </a>
+                <figcaption>3D-Ansicht in der Topologie-Darstellung</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-6">
+        <h2 id="jw-case-6" class="jw-label jw-rule">07 — <span>Gestaltungsprinzipien: Usability vor Effekt</span></h2>
+        <div class="jw-case__grid">
+            <div class="jw-prose jw-case__text">
+                
+                <div><p>Auffällige Effekte sind schnell gebaut – eine Seite, die man wirklich gut benutzen kann, braucht mehr Sorgfalt. Deshalb folgt die Gestaltung etablierten Prinzipien statt Trends:</p>
+<ul>
+<li><strong>Interaktionsprinzipien (DIN EN ISO 9241-110):</strong> Die Seite erklärt sich selbst (Beschriftungen statt reiner Symbole, die aktuelle Seite ist in der Navigation markiert), verhält sich erwartungskonform (Links sehen überall gleich aus und reagieren gleich) und bleibt steuerbar (Animationen lassen sich abschalten, Videos und Spiele laden erst auf Wunsch).</li>
+<li><strong>Sichtbarer Zustand:</strong> Was gerade aktiv ist, ist zu sehen – die unterstrichene Seite in der Navigation, die gehobene Karte mit „01 / 04“, das markierte Bild im Galerie-Index, der Zustand des Animationsschalters.</li>
+<li><strong>Lesbarkeit:</strong> rund 65 Zeichen pro Zeile, im Browser gemessen; eine Schriftskala mit sieben statt vierzehn Größen; klare Abstände, die Zusammengehöriges gruppieren.</li>
+<li><strong>Gut zu treffen:</strong> Klickflächen von mindestens 44 px, ganze Listenzeilen sind anklickbar statt nur der Titel.</li>
+</ul>
+<p>Barrierefreiheit gehört dazu und ist kein Zusatz. Ziel ist WCAG 2.2, Stufe AA:</p>
+<ul>
+<li><strong>Bewegung ist freiwillig:</strong> Der Schalter „Animationen“ stellt alle Bewegungen ab, und ohne eigene Wahl folgt die Seite der Einstellung des Betriebssystems (<code>prefers-reduced-motion</code>).</li>
+<li><strong>Screenreader:</strong> Animierte Überschriften enthalten ihren Text ein zweites Mal unsichtbar, damit das Wort vorgelesen wird und nicht einzelne Buchstaben; das Menü auf dem Handy meldet, ob es offen ist; jedes inhaltliche Bild hat eine Beschreibung in beiden Sprachen, rein dekorative werden für Screenreader ausgeblendet.</li>
+<li><strong>Tastatur und Kontrast:</strong> Alles ist mit der Tastatur und sichtbarem Fokus bedienbar, ein Sprunglink führt direkt zum Inhalt, und alle Texte erfüllen die AA-Kontrastwerte.</li>
+<li><strong>Formular:</strong> Fehler erscheinen direkt unter dem Feld, in der Sprache der Seite.</li>
+</ul>
+</div>
+            </div>
+            <figure class="jw-case__figure">
+                <a class="post-figure__link" data-lightbox="" href="/Images/projects/website/mobil.webp">
+                    <picture><source type="image/avif" srcset="/img/iOm-82bzvB-320.avif 320w, /img/iOm-82bzvB-640.avif 640w, /img/iOm-82bzvB-960.avif 960w, /img/iOm-82bzvB-1440.avif 1440w, /img/iOm-82bzvB-1920.avif 1920w" sizes="(min-width: 860px) 45vw, 100vw"><img decoding="async" src="/img/iOm-82bzvB-320.webp" alt="Drei Handy-Screenshots – Startseite, geöffnetes Menü mit dem Animationsschalter, Projektseite" loading="lazy" width="1920" height="1354" srcset="/img/iOm-82bzvB-320.webp 320w, /img/iOm-82bzvB-640.webp 640w, /img/iOm-82bzvB-960.webp 960w, /img/iOm-82bzvB-1440.webp 1440w, /img/iOm-82bzvB-1920.webp 1920w" sizes="(min-width: 860px) 45vw, 100vw"></picture>
+                </a>
+                <figcaption>Mobil – Startseite, Menü und Projektseite</figcaption>
+            </figure>
+        </div>
+    </section>
+    <section class="jw-wrap jw-detail-block jw-case" aria-labelledby="jw-case-7">
+        <h2 id="jw-case-7" class="jw-label jw-rule">08 — <span>Was ich gelernt habe und anders machen würde</span></h2>
+        <div class="jw-case__grid jw-case__grid--text">
+            <div class="jw-prose jw-case__text">
+                
+                <div><ul>
+<li><strong>Neu bauen statt überschreiben:</strong> Die Überarbeitung ist als Schicht über den alten Stilen gewachsen. Das funktioniert, aber zwei Stylesheets mit vielen Überschreibungen sind schwerer zu pflegen als ein sauberes. Sie zusammenzuführen ist der nächste Schritt.</li>
+<li><strong>Messen statt schätzen:</strong> Zeilenlänge, Bildgrößen und Ladegewicht wurden erst richtig gut, als ich sie im Browser gemessen statt geschätzt habe.</li>
+<li><strong>Die Plattform kennen:</strong> GitHub Pages kann keine Weiterleitungen auf dem Server, und Windows unterscheidet in Ordnernamen nicht zwischen Groß- und Kleinschreibung. Beides hat bestimmt, wie die Weiterleitungen funktionieren.</li>
+</ul>
+</div>
+            </div>
+        </div>
+    </section>
+    
+
+    
+
+    <nav class="jw-wrap jw-pager" aria-label="More projects">
+        
+        <a class="jw-pager__link" href="/projects/3d-objekte/">
+            <span class="jw-label"><span class="jw-arrow jw-arrow--l" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(180 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span> Vorheriges Projekt</span>
+            <span class="jw-pager__title">3D-Objekte</span>
+        </a>
+        
+        
+        <a class="jw-pager__link jw-pager__link--next" href="/projects/fine-art-assortment/">
+            <span class="jw-label">Nächstes Projekt <span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></span>
+            <span class="jw-pager__title">Malerei und Objekte</span>
+        </a>
+        
+    </nav>
+
+    
+<section class="jw-cta" aria-label="Contact">
+    <div class="jw-wrap jw-cta__inner">
+        <p class="jw-cta__text">Fragen, Ideen oder Feedback? Ich freue mich über eine Nachricht.</p>
+        <a href="/#contact" class="jw-cta__button"><span>Schreib mir</span>&#160;<span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></a>
+    </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container footer-row">
+        <p class="footer-copy">© 2026 Jan Westphal. Alle Fehler vorbehalten.</p>
+        <ul class="jw-footer-links">
+            <li><a href="/impressum/">Impressum</a></li>
+            <li><a href="/datenschutz/">Datenschutz</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+<script src="/page-flip.browser.js" defer></script>
+<script src="/flipbook.js" defer></script>
+</body>
+</html>

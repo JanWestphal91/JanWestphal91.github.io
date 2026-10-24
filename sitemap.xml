@@ -229,6 +229,18 @@
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/pocket-knight/"/>
     </url>
     <url>
+        <loc>https://janwestphal.dev/projects/website/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/website/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/website/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/website/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/website/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/website/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/website/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/website/"/>
+    </url>
+    <url>
         <loc>https://janwestphal.dev/projects/zeichnungen/</loc>
         <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/zeichnungen/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/zeichnungen/"/>
