@@ -41,6 +41,7 @@ case:
     - Fusion 360
     - PrusaSlicer
     - Prusa MINI+ (FabLab Kiel)
+    - Claude (Ai assistant)
   hardware:
     - de: DFRobot FireBeetle 2 ESP32-E
       en: DFRobot FireBeetle 2 ESP32-E
