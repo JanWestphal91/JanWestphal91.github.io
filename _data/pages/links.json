@@ -1,8 +1,8 @@
 {
   "seo": {
     "title": {
-      "de": "Links – Jan Westphal (Netro)",
-      "en": "Links – Jan Westphal (Netro)"
+      "de": "Links - Jan Westphal (Netro)",
+      "en": "Links - Jan Westphal (Netro)"
     },
     "description": {
       "de": "Alle Links von Jan Westphal (Netro): aktuelles Spiel, Projekt-Writeups und Social-Media-Kanäle.",
@@ -15,42 +15,42 @@
   },
   "photo": "/Images/myself.jpeg",
   "photo_alt": {
-    "en": "Portrait of Jan Westphal",
-    "de": "Porträt von Jan Westphal"
+    "de": "Porträt von Jan Westphal",
+    "en": "Portrait of Jan Westphal"
   },
   "alias": "aka Netro",
   "subtitle": {
-    "en": "Developer & designer from Kiel",
-    "de": "Entwickler & Designer aus Kiel"
+    "de": "Entwickler & Designer aus Kiel",
+    "en": "Developer & designer from Kiel"
   },
   "game": {
     "label": {
-      "en": "New game",
-      "de": "Neues Spiel"
+      "de": "Neues Spiel",
+      "en": "New game"
     },
     "tag": {
-      "en": "Steam soon",
-      "de": "Bald auf Steam"
+      "de": "Bald auf Steam",
+      "en": "Steam soon"
     },
     "title": "Clap, Slap, Slash!",
     "text": {
-      "en": "Fantasy roguelite, played with the mouse only",
-      "de": "Fantasy-Roguelite, nur mit der Maus gespielt"
+      "de": "Fantasy-Roguelite, nur mit der Maus gespielt",
+      "en": "Fantasy roguelite, played with the mouse only"
     },
     "platform": "itch.io",
     "url": "https://jan-west.itch.io/clapslapslash"
   },
   "writeups": {
     "label": {
-      "en": "Writeups",
-      "de": "Writeups"
+      "de": "Writeups",
+      "en": "Writeups"
     },
     "items": [
       {
         "title": "Pocket Knight",
         "text": {
-          "en": "Development process of a handheld pedometer game",
-          "de": "Entwicklungsprozess eines Schrittzähler-Spielgeräts"
+          "de": "Entwicklungsprozess eines Schrittzähler-Spielgeräts",
+          "en": "Development process of a handheld pedometer game"
         },
         "url": "/blog/development-process-of-pocket-knight/",
         "image": "/Images/projects/pocket-knight/closeshotpocketknight.webp"
@@ -58,8 +58,8 @@
       {
         "title": "Audio Dingo",
         "text": {
-          "en": "Building a DIY synthesizer",
-          "de": "Entwicklung eines DIY-Synthesizers"
+          "de": "Entwicklung eines DIY-Synthesizers",
+          "en": "Building a DIY synthesizer"
         },
         "url": "/blog/development-process-of-a-diy-synthesizer/",
         "image": "/Images/Audiodingo/audiodingostanding.webp"
@@ -67,34 +67,34 @@
     ]
   },
   "socials_label": {
-    "en": "Socials",
-    "de": "Socials"
+    "de": "Socials",
+    "en": "Socials"
   },
   "website": {
     "label": {
-      "en": "Website",
-      "de": "Website"
+      "de": "Website",
+      "en": "Website"
     },
     "items": [
       {
         "title": {
-          "en": "Portfolio",
-          "de": "Portfolio"
+          "de": "Portfolio",
+          "en": "Portfolio"
         },
         "note": {
-          "en": "janwestphal.dev",
-          "de": "janwestphal.dev"
+          "de": "janwestphal.dev",
+          "en": "janwestphal.dev"
         },
         "url": "/"
       },
       {
         "title": {
-          "en": "Contact",
-          "de": "Kontakt"
+          "de": "Kontakt",
+          "en": "Contact"
         },
         "note": {
-          "en": "Send a message",
-          "de": "Nachricht schreiben"
+          "de": "Nachricht schreiben",
+          "en": "Send a message"
         },
         "url": "/#contact"
       }
