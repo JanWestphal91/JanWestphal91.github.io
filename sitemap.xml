@@ -181,18 +181,6 @@
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/e-zine-graffiti-doc/"/>
     </url>
     <url>
-        <loc>https://janwestphal.dev/projects/fine-art-assortment/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/fine-art-assortment/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/fine-art-assortment/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/fine-art-assortment/"/>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/en/projects/fine-art-assortment/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/fine-art-assortment/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/fine-art-assortment/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/fine-art-assortment/"/>
-    </url>
-    <url>
         <loc>https://janwestphal.dev/projects/go-pony-go-c/</loc>
         <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/go-pony-go-c/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/go-pony-go-c/"/>
@@ -239,17 +227,5 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/website/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/website/"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/website/"/>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/projects/zines/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/zines/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/zines/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/zines/"/>
-    </url>
-    <url>
-        <loc>https://janwestphal.dev/en/projects/zines/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/zines/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/zines/"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/zines/"/>
     </url>
 </urlset>
