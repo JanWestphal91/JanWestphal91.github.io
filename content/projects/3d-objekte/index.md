@@ -1,7 +1,7 @@
 ---
 published: true
 title: 3D modelling
-title_de: 3D Modelling
+title_de: 3D Modelle
 slug: 3d-objekte
 category: '[3D, Game] 2018-2026'
 order: 3
