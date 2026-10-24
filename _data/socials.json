@@ -1,10 +1,39 @@
 {
   "items": [
-    { "name": "GitHub", "handle": "JanWestphal91", "url": "https://github.com/JanWestphal91/" },
-    { "name": "Itch.io", "handle": "jan-west", "url": "https://jan-west.itch.io/" },
-    { "name": "Bluesky", "handle": "jan-west.itch.io", "url": "https://bsky.app/profile/jan-west.itch.io" },
-    { "name": "Instagram", "handle": "@netroslab", "url": "https://www.instagram.com/netroslab/" },
-    { "name": "TikTok", "handle": "@netroslab", "url": "https://www.tiktok.com/@netroslab" },
-    { "name": "YouTube", "handle": "@netroslab", "url": "https://www.youtube.com/@netroslab" }
+    {
+      "name": "GitHub",
+      "handle": "JanWestphal91",
+      "url": "https://github.com/JanWestphal91/"
+    },
+    {
+      "name": "Itch.io",
+      "handle": "jan-west",
+      "url": "https://jan-west.itch.io/"
+    },
+    {
+      "name": "Bluesky",
+      "handle": "jan-west.itch.io",
+      "url": "https://bsky.app/profile/jan-west.itch.io"
+    },
+    {
+      "name": "Instagram",
+      "handle": "@netroslab",
+      "url": "https://www.instagram.com/netroslab/"
+    },
+    {
+      "name": "TikTok",
+      "handle": "@netroslab",
+      "url": "https://www.tiktok.com/@netroslab"
+    },
+    {
+      "name": "YouTube",
+      "handle": "@netroslab",
+      "url": "https://www.youtube.com/@netroslab"
+    },
+    {
+      "name": "LinkedIn",
+      "handle": "/janwestphal1",
+      "url": "www.linkedin.com/in/janwestphal1"
+    }
   ]
 }
