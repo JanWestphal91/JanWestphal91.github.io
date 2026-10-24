@@ -228,4 +228,16 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/website/"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/website/"/>
     </url>
+    <url>
+        <loc>https://janwestphal.dev/projects/zines/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/zines/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/zines/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/zines/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/zines/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/zines/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/zines/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/zines/"/>
+    </url>
 </urlset>
