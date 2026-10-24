@@ -1,16 +1,16 @@
 {
   "seo": {
     "title": {
-      "de": "Jan Westphal – Portfolio | Entwickler & Designer aus Kiel",
-      "en": "Jan Westphal – Portfolio | Developer & Designer from Kiel"
+      "de": "Jan Westphal - Portfolio | Entwickler & Designer aus Kiel",
+      "en": "Jan Westphal - Portfolio | Developer & Designer from Kiel"
     },
     "description": {
-      "de": "Portfolio von Jan Westphal aus Kiel: Spiele, selbstgebaute Elektronik, Illustration und Grafikdesign – mit Projekten, Prozessen und Devlogs.",
-      "en": "Portfolio of Jan Westphal from Kiel: games, self-built electronics, illustration and graphic design – with projects, processes and devlogs."
+      "de": "Portfolio von Jan Westphal aus Kiel: Spiele, selbstgebaute Elektronik, Illustration und Grafikdesign mit Projekten, Prozessen und Devlogs.",
+      "en": "Portfolio of Jan Westphal from Kiel: games, self-built electronics, illustration and graphic design with projects, processes and devlogs."
     },
     "share_title": {
-      "de": "Jan Westphal – Entwickler & Designer aus Kiel",
-      "en": "Jan Westphal – Developer & Designer from Kiel"
+      "de": "Jan Westphal - Entwickler & Designer aus Kiel",
+      "en": "Jan Westphal - Developer & Designer from Kiel"
     }
   },
   "hero": {
@@ -43,8 +43,8 @@
         "project": "pocket-knight",
         "image": "/Images/projects/pocket-knight/closeshotpocketknight.webp",
         "alt": {
-          "de": "Pocket Knight – selbstgebautes Spielgerät mit Schrittzähler",
-          "en": "Pocket Knight – self-built pedometer game device"
+          "de": "Pocket Knight - selbstgebautes Spielgerät mit Schrittzähler",
+          "en": "Pocket Knight - self-built pedometer game device"
         }
       },
       {
@@ -104,16 +104,16 @@
       "de": "Weitere Projekte",
       "en": "More projects"
     },
-    "more": {
-      "de": "Alle Projekte →",
-      "en": "All projects →"
-    },
     "list": [
       "3d-objekte",
       "zines",
       "zeichnungen",
       "fine-art-assortment"
-    ]
+    ],
+    "more": {
+      "de": "Alle Projekte →",
+      "en": "All projects →"
+    }
   },
   "about": {
     "label": {
@@ -126,31 +126,10 @@
     },
     "photo": "/Images/myself.jpeg",
     "photo_alt": {
-      "de": "Jan Westphal – Creative Coder und Designer aus Kiel",
-      "en": "Jan Westphal – Creative Coder and Designer from Kiel"
+      "de": "Jan Westphal - Creative Coder und Designer aus Kiel",
+      "en": "Jan Westphal - Creative Coder and Designer from Kiel"
     },
-    "paragraphs": [
-      {
-        "de": "Ich beschäftige mich mit experimentellem Design, Kunst und Prototyping. Mich fasziniert, wie verschiedene Disziplinen ineinandergreifen und dabei etwas Neues entsteht.",
-        "en": "I'm into experimental design, art and prototyping. I'm fascinated by how different disciplines interlock to create something new."
-      },
-      {
-        "de": "Ich zeichne gern und bastle an Elektronik sowie an Video- und Audioequipment. Die Graffiti-Kultur gehört zu meinen Wurzeln: Sie war meine erste echte Verbindung zu Illustration und Gestaltung.",
-        "en": "I love to draw and tinker with electronics as well as video and audio gear. Graffiti culture is part of my roots – it was my first real connection to illustration and design."
-      },
-      {
-        "de": "Mein Weg war kein gerader. Sechs Semester Kommunikationsdesign gaben mir das gestalterische Fundament, danach habe ich einige Jahre als Grafiker gearbeitet. Dabei habe ich gemerkt, dass mich die Technik dahinter genauso reizt. Deshalb studiere ich heute Medieningenieur (B.Eng.) und verbinde beide Welten.",
-        "en": "My path wasn't a straight one. Six semesters of communication design gave me a visual foundation, then I worked as a graphic designer for several years – and realised the technology behind it intrigues me just as much. That's why I now study media engineering, bringing both worlds together."
-      },
-      {
-        "de": "Game-Entwicklung finde ich besonders spannend, weil dort Design, Code, Sound und Storytelling in einem Produkt zusammenlaufen. Meine Lieblingsspiele: Oxygen Not Included, Slay the Spire, Diablo und Donkey Kong Country.",
-        "en": "Game development excites me most, because design, code, sound and storytelling come together in one product. My favourites: Oxygen Not Included, Slay the Spire, Diablo and Donkey Kong Country."
-      },
-      {
-        "de": "Ich bin verheiratet, und wir haben zwei wundervolle Kinder.",
-        "en": "I'm married, and we have two wonderful kids."
-      }
-    ],
+    "alias": null,
     "availability": [
       {
         "label": {
@@ -169,8 +148,8 @@
           "en": "Hours"
         },
         "value": {
-          "de": "ca. 15 Std./Woche als Werkstudent",
-          "en": "approx. 15 hrs/week as a working student"
+          "de": "ca. 10-15 Std./Woche als Werkstudent",
+          "en": "approx. 0-15 hrs/week as a working student"
         },
         "highlight": false
       },
@@ -202,6 +181,28 @@
       "de": "Lebenslauf (PDF)",
       "en": "CV (PDF)"
     },
+    "paragraphs": [
+      {
+        "de": "Ich beschäftige mich mit experimentellem Design, Kunst und Prototyping. Mich fasziniert, wie verschiedene Disziplinen ineinandergreifen und dabei etwas Neues entsteht.",
+        "en": "I'm into experimental design, art and prototyping. I'm fascinated by how different disciplines interlock to create something new."
+      },
+      {
+        "de": "Ich zeichne gern und bastle an Elektronik sowie an Video- und Audioequipment. Die Graffiti-Kultur gehört zu meinen Wurzeln, sie war meine erste echte Verbindung zu Illustration und Gestaltung.",
+        "en": "I love to draw and tinker with electronics as well as video and audio gear. Graffiti culture is part of my roots, it was my first real connection to illustration and design."
+      },
+      {
+        "de": "Mein Weg war kein gerader. Sechs Semester Kommunikationsdesign gaben mir das gestalterische Fundament, danach habe ich einige Jahre als Grafiker gearbeitet. Dabei habe ich gemerkt, dass mich die Technik dahinter genauso reizt. Deshalb studiere ich heute Medieningenieur (B.Eng.) und verbinde beide Welten.",
+        "en": "My path wasn't a straight one. Six semesters of communication design gave me a visual foundation, then I worked as a graphic designer for several years and realised the technology behind it intrigues me just as much. That's why I now study media engineering, bringing both worlds together."
+      },
+      {
+        "de": "Game-Entwicklung finde ich besonders spannend, weil dort Design, Code, Sound und Storytelling in einem Produkt zusammenlaufen. Meine Lieblingsspiele: Oxygen Not Included, Slay the Spire, Diablo und Donkey Kong Country.",
+        "en": "Game development excites me most, because design, code, sound and storytelling come together in one product. My favourites: Oxygen Not Included, Slay the Spire, Diablo and Donkey Kong Country."
+      },
+      {
+        "de": "Ich bin verheiratet, und wir haben zwei wundervolle Kinder.",
+        "en": "I'm married, and we have two wonderful kids."
+      }
+    ],
     "more": {
       "de": "Mehr über mich →",
       "en": "More about me →"
@@ -279,7 +280,7 @@
       }
     ],
     "toolbox_heading": {
-      "de": "Toolbox",
+      "de": "Werkzeuge",
       "en": "Toolbox"
     },
     "toolbox": [
@@ -321,11 +322,16 @@
       "en": "Languages"
     },
     "languages": [
-      "C++ (Arduino, ESP32)",
       "C#",
       "GDScript",
+      "C++ (Arduino, ESP32)",
       "JavaScript"
     ],
+    "languages_basic_label": {
+      "de": "Grundlagen",
+      "en": "Basics"
+    },
+    "languages_basic": [],
     "courses_heading": {
       "de": "Kurse - opencampus.sh",
       "en": "Courses - opencampus.sh"
@@ -361,20 +367,15 @@
       }
     ],
     "community_heading": {
-      "de": "Engagement",
-      "en": "Community"
+      "de": "Ehrenamt",
+      "en": "Engagement"
     },
     "community": [
       {
-        "de": "Mitglied im IF(game)SH e.V. – Initiative für den Games-Standort Schleswig-Holstein",
-        "en": "Member of IF(game)SH e.V. – initiative for Schleswig-Holstein as a games location"
+        "de": "Mitglied im IF(game)SH e.V. Initiative für den Games-Standort Schleswig-Holstein",
+        "en": "Member of IF(game)SH e.V. initiative for Schleswig-Holstein as a games location"
       }
-    ],
-    "languages_basic_label": {
-      "de": "Grundlagen",
-      "en": "Basics"
-    },
-    "languages_basic": []
+    ]
   },
   "blog": {
     "label": {
@@ -455,22 +456,6 @@
       "de": "Das Formular ist gerade nicht erreichbar – manchmal blockiert ein Werbe- oder Virenfilter die Verbindung.",
       "en": "The form can’t be reached right now – sometimes an ad blocker or antivirus filter blocks the connection."
     },
-    "socials_heading": {
-      "de": "Socials",
-      "en": "Socials"
-    },
-    "fallback": {
-      "de": "Schreib mir stattdessen direkt eine E-Mail",
-      "en": "Send me an email directly instead"
-    },
-    "direct_label": {
-      "de": "Lieber direkt?",
-      "en": "Prefer email?"
-    },
-    "direct_button": {
-      "de": "E-Mail schreiben",
-      "en": "Write an email"
-    },
     "invalid_name": {
       "de": "Bitte gib deinen Namen ein.",
       "en": "Please enter your name."
@@ -486,6 +471,22 @@
     "invalid_message": {
       "de": "Bitte schreib eine Nachricht.",
       "en": "Please write a message."
+    },
+    "fallback": {
+      "de": "Schreib mir stattdessen direkt eine E-Mail",
+      "en": "Send me an email directly instead"
+    },
+    "direct_label": {
+      "de": "Lieber direkt?",
+      "en": "Prefer email?"
+    },
+    "direct_button": {
+      "de": "E-Mail schreiben",
+      "en": "Write an email"
+    },
+    "socials_heading": {
+      "de": "Socials",
+      "en": "Socials"
     }
   }
 }
