@@ -10,15 +10,15 @@
     }
   },
   "count_label": {
-    "en": "projects",
-    "de": "Projekte"
+    "de": "Projekte",
+    "en": "projects"
   },
   "heading": {
-    "en": "Projects",
-    "de": "Projekte"
+    "de": "Projekte",
+    "en": "Projects"
   },
   "intro": {
-    "en": "Games, electronics and illustration – each project page shows what it is and how it came together.",
-    "de": "Spiele, Elektronik und Illustration – jede Projektseite zeigt, was es ist und wie es entstanden ist."
+    "de": "Spiele, Elektronik und Illustration, jede Projektseite zeigt, was es ist und wie es entstanden ist.",
+    "en": "Games, electronics and illustration, each project page shows what it is and how it came together."
   }
 }
