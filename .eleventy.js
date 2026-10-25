@@ -1,6 +1,12 @@
 const markdownIt = require("markdown-it");
 const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
 const md = markdownIt({ html: true, breaks: false, linkify: true });
+// Codeblöcke können breiter als die Spalte sein und scrollen dann waagerecht.
+// tabindex="0" macht sie per Tastatur erreichbar und scrollbar (WCAG 2.1.1).
+for (const rule of ["fence", "code_block"]) {
+    const render = md.renderer.rules[rule];
+    md.renderer.rules[rule] = (...args) => render(...args).replace(/^<pre(?=[ >])/, '<pre tabindex="0"');
+}
 
 // ── Bilder im Fließtext ───────────────────────────────────────────────
 // Ein Bild, das allein in einem Absatz steht, wird zu einer <figure>:
@@ -270,7 +276,6 @@ module.exports = function(eleventyConfig) {
     // Static assets — must be explicit in Eleventy 3
     eleventyConfig.addPassthroughCopy("Images");
     eleventyConfig.addPassthroughCopy("style.css");
-    eleventyConfig.addPassthroughCopy("theme.css");
     eleventyConfig.addPassthroughCopy("fonts");
     eleventyConfig.addPassthroughCopy("favicon.ico");
     eleventyConfig.addPassthroughCopy("site.webmanifest");

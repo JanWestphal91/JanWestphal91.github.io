@@ -47,10 +47,11 @@
 {#- Laufband steht unter dem Header und scrollt mit der Seite weg;
     die Navigation bleibt oben stehen. #}
 {%- if ticker %}
-<div class="ticker-band">
+{#- <aside> mit Namen: eigener Bereich (Landmark) für Screenreader -#}
+<aside class="ticker-band" {% i18n global.ui.ticker_label, "aria" %} aria-label="{{ global.ui.ticker_label.en }}">
     <div class="ticker-content">
         <span class="ticker-text" {% i18n global.ticker %}>{{ global.ticker.en }}</span>
         <span class="ticker-text" aria-hidden="true" {% i18n global.ticker %}>{{ global.ticker.en }}</span>
     </div>
-</div>
+</aside>
 {%- endif %}

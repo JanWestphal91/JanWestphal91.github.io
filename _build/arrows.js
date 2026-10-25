@@ -5,7 +5,7 @@
 // SVG-Pfeil. Jeder Pfeil steht zweimal in einem kleinen Rahmen mit
 // overflow: hidden: Beim Überfahren des Links gleitet der erste in
 // Pfeilrichtung hinaus und der zweite von der Gegenseite herein
-// (CSS: .jw-arrow in theme.css). Für Screenreader bleibt der Pfeil
+// (CSS: .jw-arrow in style.css). Für Screenreader bleibt der Pfeil
 // unsichtbar (aria-hidden), der Linktext reicht.
 //
 // Dieselbe Grafik baut script.js (jwArrow) für Texte, die erst im Browser

@@ -58,15 +58,15 @@ body_de: |-
 
   Dabei gab es mehrere Hürden die mich mehrfach zum verzweifeln gebracht haben, die Integration des Schrittzählers, die Sleep Funktion während trotzdem Schritte gezählt werden, das Laden und Darstellen von Pixelgrafiken und die Animationen. Alles andere war auch schwer, was hab ich mir nur gedacht?!
 
-  ![BreadboardPocketknight](/Images/pcoketknightbreadboard.webp "Breadboard Prototyping")
+  ![Pocket-Knight-Prototyp auf dem Breadboard](/Images/pcoketknightbreadboard.webp "Breadboard Prototyping")
 
   Nachdem ich dann irgendwann einen halbwegs brauchbaren Code hatte und die Breadboard Schaltung soweit finalisiert war gings ans Löten. Ich habe dabei versucht alle Komponenten so kompakt wie möglich zusammenzukriegen, was auch soweit ganz gut geklappt hat.
 
-  ![finished Electronic](/Images/PocketKnight/handheldactive.webp "fertig gelötetes Teil")
+  ![Fertig gelötete Elektronik von Pocket Knight mit eingeschaltetem Display](/Images/PocketKnight/handheldactive.webp "fertig gelötetes Teil")
 
   Im nächsten Schritt habe ich dann noch weiter am Gameloop, am Content und den Sprites gearbeitet um daraus ein "rundes" Spiel zu bekommen. Nebenbei habe ich angefangen das gehäuse in Fusion zu entwerfen und es dann anschließend im [Kieler FabLab](https://fablab.sh/) gedruckt.
 
-  ![3dPrinter-printing](/Images/blog/development-process-of-pocket-knight/Printfablab.webp "Druckvorgang vom Deckel  am Prusa Mini")
+  ![Der Gehäusedeckel wird auf dem Prusa Mini gedruckt](/Images/blog/development-process-of-pocket-knight/Printfablab.webp "Druckvorgang vom Deckel  am Prusa Mini")
 
   Und dann war es endlich soweit und das Gerät näherte sich der Fertigstellung, insgesamt hat das ganze wieder deutlich länger gedauert als geplant und ich habe bummelig 3 Monate Freizeit in das Projekt reingesteckt. 
 
@@ -129,15 +129,15 @@ Other components I used:
 
 Once I had a rough plan and had gathered all the parts, I started by putting everything together on a breadboard and turned to the code first. There were several hurdles along the way that drove me to despair more than once: integrating the step counter, the sleep function while still counting steps, loading and displaying pixel graphics, and the animations. Everything else was hard too, what was I thinking?!
 
-![BreadboardKnight](/Images/PocketKnight/handheldbreadboard.webp "Breadboard Prototyping")
+![Pocket Knight prototype on a breadboard](/Images/PocketKnight/handheldbreadboard.webp "Breadboard Prototyping")
 
 Once I eventually had halfway usable code and the breadboard circuit was more or less finalised, it was time to solder. I tried to get all the components packed together as compactly as possible, which worked out pretty well.
 
-![](/Images/PocketKnight/handheldactive.webp "The soldered and glued thing")
+![Pocket Knight electronics, soldered and glued, with the display switched on](/Images/PocketKnight/handheldactive.webp "The soldered and glued thing")
 
 In the next step I kept working on the game loop, the content and the sprites to turn it into a "rounded" game. Alongside that I started designing the enclosure in Fusion and then printed it at the [Kiel FabLab](https://fablab.sh/).
 
-![](/Images/blog/development-process-of-pocket-knight/Printfablab.webp "Printing the case on a Prusa Mini")
+![Printing the case lid on a Prusa Mini](/Images/blog/development-process-of-pocket-knight/Printfablab.webp "Printing the case on a Prusa Mini")
 
 And then the time had finally come and the device was nearing completion. All in all it took considerably longer than planned again and I sank roughly 3 months of my free time into the project. I had a few more ideas I would have liked to implement, but I've cut them for now due to a lack of time and motivation.
 

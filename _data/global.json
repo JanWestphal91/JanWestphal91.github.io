@@ -76,6 +76,10 @@
     }
   },
   "ui": {
+    "ticker_label": {
+      "de": "Aktuelles",
+      "en": "News"
+    },
     "filter_all": {
       "de": "Alle",
       "en": "All"
