@@ -40,7 +40,7 @@ case:
     - Adafruit SSD1306 / GFX
     - Wokwi
     - Fusion 360
-    - Claude (Ai assistant) Teilesuche und Code Unterstützung
+    - Claude (AI assistant)
   hardware:
     - de: Arduino Uno R4 Minima, Ton über den eingebauten 12-Bit-DAC
       en: Arduino Uno R4 Minima, audio via the on-board 12-bit DAC
@@ -76,7 +76,7 @@ case:
           - **Rückmeldung:** ein kleines Display, das die aktuellen Einstellungen und den gerade bearbeiteten Wert zeigt.
           - **Ausgang:** ein Lautsprecher zum Spielen allein und eine Buchse, um ihn mit anderen Synths zu verbinden.
         en: |-
-          The goal was a small synthesizer that generates its own sounds and fits into my existing setup of other synths. It had to work on its own as well, so it runs on a battery and has a built-in speaker.
+          The goal was a small synthesizer that generates its own sounds and fits into my existing setup of other synths. It had to work on its own as well, so it runs on a battery and has a built-in speaker. It should also be quick to pick up and use without much effort.
 
           - **Playing:** 7 note keys, because a scale has 7 notes, plus 3 function buttons.
           - **Shaping the sound:** 2 rotary encoders and a joystick, so the sound can be changed while playing.
@@ -96,7 +96,7 @@ case:
 
           Als alles angekommen war, habe ich den ersten Hardware-Prototyp auf einem Breadboard aufgebaut und eine erste Grundversion des Codes geschrieben. Alle Tasten liegen zwischen Pin und Masse; die Firmware schaltet die internen Pull-up-Widerstände ein, zusätzliche Widerstände braucht es deshalb nicht.
         en: |-
-          Before buying anything, I simulated and tested a first circuit on Wokwi. Then came the research: which parts are suitable, which work reliably together, and where to get them.
+          Before buying anything, I simulated and tested a first circuit on Wokwi. I wanted to get an overview first, because this project was my first contact with microcontrollers. Then came the research: which parts are suitable, which work reliably together, and where to get them.
 
           Once everything had arrived, I built the first hardware prototype on a breadboard and wrote a first basic version of the code. All buttons connect between the pin and ground; the firmware switches on the internal pull-up resistors, so no extra resistors are needed.
       image: /Images/Audiodingo/DingoFirstBreadboard.webp
@@ -157,11 +157,11 @@ case:
         de: |-
           Mit einem groben Plan der Schaltung im Kopf habe ich das Gehäuse in Fusion 360 entworfen. Der erste Druck war nur der schwarze Grundkörper um alle Bauteile einzusetzen und ein Gefühl für Form und Anordnung zu bekommen.
 
-          In der zweiten Iteration wurde das Gehäuse deutlich breiter und tiefer weil die kabel mehr Platz brauchten und ich habe die Aussparungen für Tasten und Anschlüsse angepasst. Dieser Druck passte. Das fertige Gehäuse ist aus mehreren Teilen gedruckt: grauer Körper, orange Akzente und schwarze Kappen. Die Druckdateien liegen im Repository.
+          In der zweiten Iteration wurde das Gehäuse deutlich breiter und tiefer weil die Kabel mehr Platz brauchten und ich habe die Aussparungen für Tasten und Anschlüsse angepasst. Dieser Druck passte. Das fertige Gehäuse ist aus mehreren Teilen gedruckt: grauer Körper, orange Akzente und schwarze Kappen. Die Druckdateien liegen im Repository.
         en: |-
-          With a rough circuit layout in mind, I designed the enclosure in Fusion 360. The first print was only the black main body – enough to fit all components and get a feel for the form and layout.
+          With a rough circuit layout in mind, I designed the enclosure in Fusion 360. The first print was only the black main body, to fit all components and get a feel for the form and layout.
 
-          For the second iteration the case became noticeably wider and deeper, and I adjusted the cut-outs for buttons and connectors. This print fit. The finished case is printed in several colours: a grey body, orange accents and black caps. The print files are in the repository.
+          For the second iteration the case became noticeably wider and deeper because the cables needed more room, and I adjusted the cut-outs for buttons and connectors. This print fit. The finished case is printed in several parts: a grey body, orange accents and black caps. The print files are in the repository.
       image: /Images/Audiodingo/DingofirstCase.webp
       image_en: ''
       image_wide: false

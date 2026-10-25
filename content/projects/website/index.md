@@ -11,19 +11,21 @@ cover_image_alt_de: 'Startseite von janwestphal.dev: die Überschrift „Hardwar
 summary_card: My portfolio as a project. Static, bilingual, fast and editable with a CMS.
 summary_card_de: Mein Portfolio als Projekt. Statisch, zweisprachig, schnell und editierbar mit einem CMS.
 summary: |-
-  janwestphal.dev is my portfolio, and building it was a project of its own. The goal: a site that shows my work properly, loads fast, works without tracking or cookies, is available in German and English, and that I can maintain through a CMS without touching code.
+  janwestphal.dev is my portfolio, and building it was a project of its own. The goal: a site that gives my work a platform, loads fast, works without tracking or cookies, is available in German and English, and that I can maintain through a CMS without constantly touching code.
 
-  The guiding principle for the design: usability and accessibility come before effects. The layout follows established HCI principles and design standards; animations are there to support orientation, never as an end in themselves.
+  The guiding principle for the design: usability and accessibility come before effects. The layout follows established HCI principles and design standards; animations are there to support orientation and are (almost) never an end in themselves.
 
-  The site is generated with Eleventy and hosted on GitHub Pages. Every push builds it from scratch: both language versions, all images in several sizes and the redirects for old addresses. The source code is public on GitHub.
+  The site is generated with Eleventy and hosted on GitHub Pages. The source code is public on GitHub.
+
+  In the near future, the site is meant to meet WCAG 2.2 (_Web Content Accessibility Guidelines_).
 summary_de: |-
-  janwestphal.dev ist mein Portfolio und ihr Aufbau ein eigenes Projekt. Das Ziel: eine Seite, die meinen Arbeiten eine Platform gibt, schnell lädt, ohne Tracking und Cookies auskommt, auf Deutsch und Englisch erreichbar ist und die ich über ein CMS pflegen kann, ohne ständig Code anzufassen.
+  janwestphal.dev ist mein Portfolio und ihr Aufbau ein eigenes Projekt. Das Ziel: eine Seite, die meinen Arbeiten eine Plattform gibt, schnell lädt, ohne Tracking und Cookies auskommt, auf Deutsch und Englisch erreichbar ist und die ich über ein CMS pflegen kann, ohne ständig Code anzufassen.
 
   Leitlinie für die Gestaltung: Usability und Barrierefreiheit gehen vor Effekten. Das Layout folgt etablierten HCI-Prinzipien und Designnormen, Animationen sollen Orientierung geben und sind (fast) nie Selbstzweck.
 
   Die Seite wird mit Eleventy erzeugt und liegt auf GitHub Pages. Der Quellcode ist öffentlich auf GitHub.
 
-  In naher Zukunft soll die Site die WCAG 2.2 (_Web Content Accessibility Guidelines)_ erfüllen.
+  In naher Zukunft soll die Site die WCAG 2.2 (_Web Content Accessibility Guidelines_) erfüllen.
 meta:
   - Website, solo project
   - 'Status: live, continuously developed'
@@ -39,7 +41,7 @@ case:
     en: 'Solo project: concept, design, development and content'
   duration:
     de: Seit Frühjahr 2026, Überarbeitung im Sommer 2026 und aktuell Herbst 2026
-    en: Since spring 2026, redesign in autumn 2026
+    en: Since spring 2026, revised in summer 2026 and again now in autumn 2026
   tools:
     - Eleventy
     - Nunjucks
@@ -71,8 +73,8 @@ case:
         en: |-
           The site has two audiences: employers in embedded development, media technology and game development, and people who are interested in my projects. Both should see quickly what I build and how I work. That led to a few fixed requirements:
 
-          - **Fast and static:** no server, no database, just HTML files. That keeps the site fast, secure and cheap to run.
-          - **Two languages:** German as the main language, English for everyone else – with its own addresses, so search engines find both versions.
+          - **Fast and static:** no server, no database, just HTML, CSS and JS. That keeps the site fast, secure and free to run. It also let me go deeper into the Web Applications module from the 2026 summer semester.
+          - **Two languages:** German as the main language, English for everyone else, with its own addresses, so search engines find both versions.
           - **Editable without code:** new projects and blog posts are written in a CMS in the browser.
           - **Privacy:** no tracking, no cookies, fonts hosted on the site itself. Videos and embedded games only load after a click.
       image: ''
@@ -89,7 +91,7 @@ case:
 
           Bei jedem Push baut GitHub Actions die Seite und veröffentlicht sie auf GitHub Pages. GitHub Pages kann keine Weiterleitungen auf dem Server, deshalb bekommt jede alte Adresse eine kleine Seite, die sofort weiterleitet und Suchmaschinen per `canonical` die neue Adresse nennt.
         en: |-
-          Every project and every blog post is a Markdown file with a header of structured data: title, category, images, the facts of the case study. Eleventy turns these files into HTML pages using Nunjucks templates. The CMS (Sveltia) writes into exactly these files and commits them to the repository – there is no second data store.
+          Every project and every blog post is a Markdown file. Eleventy turns these files into finished HTML pages. The CMS (Sveltia) writes into exactly these files and commits them to the repository, there is no second data store.
 
           On every push, GitHub Actions builds the site and publishes it on GitHub Pages. GitHub Pages cannot do server-side redirects, so old addresses get a small page that forwards immediately and points search engines to the new address via `canonical`.
       image: ''
@@ -102,10 +104,7 @@ case:
         en: Two languages without JavaScript
       body:
         de: 'Die Vorlagen schreiben jede Seite nur einmal: englischer Text im HTML, beide Sprachen zusätzlich als Attribute (`data-en`, `data-de`). Nach dem Build liest ein kleines eigenes Skript jede Seite ein und schreibt daraus zwei fertige Fassungen, Deutsch unter `/`, Englisch unter `/en/`. Jede Fassung enthält nur ihre eigene Sprache, das richtige `lang`-Attribut, eigenen Titel und eigene Beschreibung, Querverweise für Suchmaschinen (`hreflang`) und eine gemeinsame Sitemap. Jeder Text wird an einer Stelle gepflegt, und Besucher wie Screenreader bekommen die richtige Sprache durch die Browsereinstellung, ohne Umschalten im Browser.'
-        en: |-
-          The templates write every page only once: English text in the HTML, both languages additionally as attributes (`data-en`, `data-de`). After the build, a small script of my own reads every page and writes two finished versions from it – German under `/`, English under `/en/`. Each version contains only its own language, the right `lang` attribute, its own title and description, cross-references for search engines (`hreflang`) and a shared sitemap.
-
-          The advantage: each text is maintained in one place, and visitors and screen readers get the right language from the first byte – without a language switch in the browser.
+        en: 'The templates write every page only once: English text in the HTML, both languages additionally as attributes (`data-en`, `data-de`). After the build, a small script of my own reads every page and writes two finished versions from it, German under `/`, English under `/en/`. Each version contains only its own language, the right `lang` attribute, its own title and description, cross-references for search engines (`hreflang`) and a shared sitemap. Each text is maintained in one place, and visitors and screen readers get the right language from their browser settings, without switching languages in the browser.'
       image: ''
       image_en: ''
       image_wide: false
@@ -122,7 +121,7 @@ case:
         en: |-
           Photos come straight from the camera and are often several megabytes. A plugin (eleventy-img) replaces every image during the build with a `<picture>` element: five widths, each as AVIF and WebP, plus the real dimensions so nothing jumps while loading. The browser picks the size it actually needs.
 
-          Effect on the home page: the images now weigh 65 to 125 KB in total, depending on the screen – before, a single blog thumbnail was 4.4 MB.
+          Effect on the home page: the images now weigh 65 to 125 KB in total, depending on the screen. Before, I had to convert every image with a .webp converter first.
       image: /Images/projects/website/blog.webp
       image_en: ''
       image_wide: false
@@ -142,23 +141,23 @@ case:
           - **Fächer:** Auf der Startseite liegen die aktuellen Projekte wie Spielkarten in der Hand. Beim Überfahren hebt sich eine Karte mit leichtem Nachfedern heraus und neigt sich zum Zeiger.
           - **Variable Schrift:** Bricolage Grotesque ist eine variable Schrift. In den großen Überschriften wird jeder Buchstabe kräftiger, je näher der Zeiger ist.
           - **3D-Modelle:** Modelle aus Blender lassen sich im Browser drehen (three.js). Die Ansicht „Wireframe“ zeigt die Kanten so, wie ich sie modelliert habe.
-          - **Bilder und Galerien:** Angeklickte Bilder öffnen sich von ihrer Position mit einem Übergang zur Großansicht, lange Galerien bekommen links einen Index der der Scrollposition folgt sobald die Gallerie mehr als 4 Bilder hat.
+          - **Bilder und Galerien:** Angeklickte Bilder öffnen sich von ihrer Position mit einem Übergang zur Großansicht, lange Galerien bekommen links einen Index der der Scrollposition folgt sobald die Galerie mehr als 4 Bilder hat.
         en: |-
-          The site should feel like my projects: a little playful, but not loud. Every movement has a job – it shows where something comes from, what is selected or what can be clicked. No content depends on an animation.
+          The site should feel like my projects, a little playful, but not loud. Every movement has a job: it shows where something comes from, what is selected or what can be clicked. No content depends on an animation.
 
-          - **Fan of cards:** on the home page, the current projects lie like playing cards in a hand. Hovering lifts a card with a slight spring; it tilts towards the pointer with a highlight.
+          - **Fan of cards:** on the home page, the current projects lie like playing cards in a hand. Hovering lifts a card with a slight spring, and it tilts towards the pointer.
           - **Variable font:** Bricolage Grotesque is a variable font. In the large headlines, each letter gets heavier the closer the pointer is.
-          - **3D models:** models from Blender can be rotated in the browser (three.js). The “Topology” view shows the edges as I modelled them – the export script carries the original quads along.
-          - **Images and galleries:** clicked images grow smoothly from their position into the lightbox; long galleries get an index on the left that follows the scroll position.
+          - **3D models:** models from Blender can be rotated in the browser (three.js). The “Wireframe” view shows the edges as I modelled them.
+          - **Images and galleries:** clicked images open from their position into the lightbox with a transition; galleries with more than 4 images get an index on the left that follows the scroll position.
       image: /Images/projects/website/topologie.webp
       image_en: ''
       image_wide: false
       image_alt:
-        de: 3D-Ansicht mit einem Entenmodell in der Topologie-Ansicht, jede Kante als dünne Linie
-        en: 3D viewer with a duck model in topology view, every edge drawn as a thin line
+        de: 3D-Ansicht mit einem Entenmodell in der Wireframe-Ansicht, jede Kante als dünne Linie
+        en: 3D viewer with a duck model in wireframe view, every edge drawn as a thin line
       image_caption:
-        de: 3D-Ansicht in der Topologie-Darstellung
-        en: 3D viewer in topology view
+        de: 3D-Ansicht in der Wireframe-Darstellung
+        en: 3D viewer in wireframe view
     - heading:
         de: 'Gestaltungsprinzipien: Usability vor Effekt'
         en: 'Design principles: usability before effects'
@@ -178,11 +177,11 @@ case:
           - **Tastatur und Kontrast:** Alles ist mit der Tastatur und sichtbarem Fokus bedienbar, ein Sprunglink führt direkt zum Inhalt, und alle Texte erfüllen die AA-Kontrastwerte.
           - **Formular:** Fehler erscheinen direkt unter dem Feld, in der Sprache der Seite.
         en: |-
-          Eye-catching effects are quickly built – a site that people can actually use takes more care. That is why the design follows established principles rather than trends:
+          Eye-catching effects can be impressive, but they quickly become overwhelming and are often just decoration that distracts from the content. That is why the design follows established principles rather than trends:
 
           - **Interaction principles (ISO 9241-110):** the site describes itself (labels instead of icons alone, the current page is marked in the navigation), behaves as expected (links look and react the same everywhere) and stays under the visitor’s control (animations can be switched off, videos and games only load on request).
-          - **Visible status:** whatever is currently active is shown – the underlined page in the navigation, the lifted card with “01 / 04”, the highlighted image in the gallery index, the state of the animation switch.
-          - **Readability:** about 65 characters per line, measured in the browser; a type scale with seven sizes instead of fourteen; clear spacing that groups related content.
+          - **Visible status:** whatever is currently active is shown: the underlined page in the navigation, the lifted card with “01 / 04”, the highlighted image in the gallery index and the state of the animation switch.
+          - **Readability:** about 65 characters per line, measured in the browser, a type scale with seven sizes and clear spacing that groups related content.
           - **Easy to hit:** click targets of at least 44 px, whole list rows are clickable instead of only the title.
 
           Accessibility is part of this, not an extra. The site aims at WCAG 2.2 level AA:
@@ -208,11 +207,12 @@ case:
           - **Neu bauen statt überschreiben:** Die Überarbeitung ist als Schicht über den alten Stilen gewachsen. Das funktioniert, aber zwei Stylesheets mit vielen Überschreibungen sind schwerer zu pflegen als ein sauberes. Sie zusammenzuführen ist der nächste Schritt.
           - **Messen statt schätzen:** Zeilenlänge, Bildgrößen und Ladegewicht wurden erst richtig gut, als ich sie im Browser gemessen statt geschätzt habe.
           - **Die Plattform kennen:** GitHub Pages kann keine Weiterleitungen auf dem Server, und Windows unterscheidet in Ordnernamen nicht zwischen Groß- und Kleinschreibung. Beides hat bestimmt, wie die Weiterleitungen funktionieren.
-          - **Techstack besser planen:** Im Laufe der Entwicklung sind einige komponenten wie Eleventy und Sveltia CMS erst später hinzu gekommen, nächstes mal würde ich mehr Zeit in die Planung investieren. Außerdem würde ich die Architektur besser durchplanen.
+          - **Techstack besser planen:** Im Laufe der Entwicklung sind einige Komponenten wie Eleventy und Sveltia CMS erst später hinzu gekommen, nächstes mal würde ich mehr Zeit in die Planung investieren. Außerdem würde ich die Architektur besser durchplanen.
         en: |-
           - **Rebuild instead of overriding:** the redesign grew as a layer on top of the old styles. It works, but two stylesheets with many overrides are harder to maintain than one clean one. Merging them is the next step.
           - **Measure instead of guessing:** line length, image sizes and loading weight only became really good once I measured them in the browser instead of estimating.
           - **Know the platform:** GitHub Pages cannot redirect on the server, and Windows does not distinguish between upper and lower case in folder names. Both shaped how the redirects work.
+          - **Plan the tech stack better:** some components such as Eleventy and Sveltia CMS were only added later in development. Next time I would invest more time in planning, and I would plan the architecture more thoroughly.
       image: ''
       image_en: ''
       image_wide: false

@@ -41,7 +41,7 @@ case:
     - Fusion 360
     - PrusaSlicer
     - Prusa MINI+ (FabLab Kiel)
-    - Claude (Ai assistant)
+    - Claude (AI assistant)
   hardware:
     - de: DFRobot FireBeetle 2 ESP32-E
       en: DFRobot FireBeetle 2 ESP32-E
@@ -225,7 +225,7 @@ case:
 
           **Balancing:** In der ersten Fassung kam alle 250 Schritte ein Event, und bis zu 20 konnten sich ansammeln. Das machte die Session am Abend mühsam. Mit etwas mehr Schritten pro Event und höchstens 10 gespeicherten Events bleibt der Abend kurz, und ein Durchlauf mit 40 Events dauert ungefähr eine Woche.
         en: |-
-          On average every 300 steps (randomly between 220 and 380) a new event is queued; if the device is awake at that moment, it beeps and vibrates. Up to 10 events are stored, so you can play them in one go later. At every fork you choose one of two events – 11 types, from fights and traders to traps, shrines and a wishing well.
+          On average every 300 steps (randomly between 220 and 380) a new event is queued. If the device is awake at that moment, it beeps and vibrates. Up to 10 events are stored, so you can play them in one go later. At every fork you choose one of two events, from fights and traders to traps, shrines and a wishing well.
 
           Battles are turn-based: the enemy shows its next move in advance, and the player answers with attack, block, one of 5 skills or a consumable. After every 10 events a boss waits; defeating the fourth boss wins the run. In total there are 7 enemy types with their own behaviour and 22 items. When a run ends, meta points unlock permanent start bonuses.
 

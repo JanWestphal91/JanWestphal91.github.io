@@ -93,9 +93,13 @@
             {#- Fächer: die Lieblingsprojekte wie Spielkarten in der Hand (CMS:
                 Startseite → Kopfbereich → Karten-Karussell). Beim Überfahren oder
                 Antippen hebt sich eine Karte heraus; darunter stehen Titel und
-                Kategorie der gehobenen Karte. Logik in script.js → „Fächer“. -#}
+                Kategorie der gehobenen Karte. Darüber steht die Überschrift
+                (Karussell-Name), darunter die Pfeile zum Durchschalten; auf
+                Touch-Geräten lässt sich zusätzlich wischen.
+                Logik in script.js → „Fächer“. -#}
             <div class="jw-fan" data-fan>
-                <ul class="jw-fan__hand" style="--n: {{ cards.length }}" {% i18n h.hero.carousel_label, "aria" %} aria-label="{{ h.hero.carousel_label.en }}">
+                <p class="jw-label jw-fan__label" id="jw-fan-label" {% i18n h.hero.carousel_label %}>{{ h.hero.carousel_label.en }}</p>
+                <ul class="jw-fan__hand" style="--n: {{ cards.length }}" aria-labelledby="jw-fan-label">
                     {%- for c in cards %}
                     {%- set pd = c.project.data %}
                     {%- set altEn = (c.item.alt and c.item.alt.en) or pd.cover_image_alt or pd.title %}
@@ -110,10 +114,19 @@
                     {%- endfor %}
                 </ul>
                 {%- set c0 = cards[0].project.data %}
-                <div class="jw-fan__bar" aria-hidden="true">
-                    <a class="jw-fan__caption" href="/projects/{{ c0.slug }}/" tabindex="-1"><span class="jw-fan__caption-title" data-en="{{ c0.title }}" data-de="{{ c0.title_de or c0.title }}">{{ c0.title }}</span>&nbsp;→</a>
-                    <span class="jw-fan__meta"><span class="jw-fan__cats">{% cats c0.category %}{% if c0.category | catYear %} · {{ c0.category | catYear }}{% endif %}</span></span>
-                    <span class="jw-fan__count">01 / {{ cards.length | pad2 }}</span>
+                <div class="jw-fan__foot">
+                    <div class="jw-fan__bar" aria-hidden="true">
+                        <a class="jw-fan__caption" href="/projects/{{ c0.slug }}/" tabindex="-1"><span class="jw-fan__caption-title" data-en="{{ c0.title }}" data-de="{{ c0.title_de or c0.title }}">{{ c0.title }}</span>&nbsp;→</a>
+                        <span class="jw-fan__meta"><span class="jw-fan__cats">{% cats c0.category %}{% if c0.category | catYear %} · {{ c0.category | catYear }}{% endif %}</span></span>
+                    </div>
+                    {%- if cards.length > 1 %}
+                    {#- Pfeile: erst mit JavaScript sichtbar (script.js → „Fächer“) -#}
+                    <div class="jw-fan__nav" hidden>
+                        <button type="button" class="jw-fan__btn" data-fan-prev {% i18n h.hero.carousel_prev, "aria" %} aria-label="{{ h.hero.carousel_prev.en }}"></button>
+                        <span class="jw-fan__count" aria-hidden="true">01 / {{ cards.length | pad2 }}</span>
+                        <button type="button" class="jw-fan__btn" data-fan-next {% i18n h.hero.carousel_next, "aria" %} aria-label="{{ h.hero.carousel_next.en }}"></button>
+                    </div>
+                    {%- endif %}
                 </div>
             </div>
             {%- endif %}
