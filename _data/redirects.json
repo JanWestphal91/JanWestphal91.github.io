@@ -18,5 +18,17 @@
   {
     "from": "/projects/hidden-walls-in-lost-places/",
     "to": "/projects/"
+  },
+  {
+    "from": "/projects/fine-art-assortment/",
+    "to": "/projects/kunst-illustration/"
+  },
+  {
+    "from": "/projects/zeichnungen/",
+    "to": "/projects/kunst-illustration/"
+  },
+  {
+    "from": "/projects/zines/",
+    "to": "/projects/kunst-illustration/"
   }
 ]
