@@ -125,7 +125,8 @@
             <p class="jw-hero__lead">Ich entwickle Spiele, elektronische Geräte und Grafiken. Am wohlsten fühle ich mich dort, wo sich die drei überschneiden.</p>
         </div>
         <div class="jw-hero__side"><div class="jw-fan" data-fan="">
-                <ul class="jw-fan__hand" style="--n: 4" aria-label="Aktuelle Projekte">
+                <p class="jw-label jw-fan__label" id="jw-fan-label">Aktuelle Projekte</p>
+                <ul class="jw-fan__hand" style="--n: 4" aria-labelledby="jw-fan-label">
                     <li class="jw-fan__slot is-active" style="--i: 0">
                         <a class="jw-fan__card" href="/projects/pocket-knight/" draggable="false">
                             <picture><source type="image/avif" srcset="/img/8kiFr6xR8V-320.avif 320w, /img/8kiFr6xR8V-640.avif 640w, /img/8kiFr6xR8V-960.avif 960w, /img/8kiFr6xR8V-1440.avif 1440w, /img/8kiFr6xR8V-1920.avif 1920w" sizes="(min-width: 1024px) 640px, 110vw"><img decoding="async" src="/img/8kiFr6xR8V-320.webp" alt="Pocket Knight - selbstgebautes Spielgerät mit Schrittzähler" loading="eager" draggable="false" width="1920" height="1080" srcset="/img/8kiFr6xR8V-320.webp 320w, /img/8kiFr6xR8V-640.webp 640w, /img/8kiFr6xR8V-960.webp 960w, /img/8kiFr6xR8V-1440.webp 1440w, /img/8kiFr6xR8V-1920.webp 1920w" sizes="(min-width: 1024px) 640px, 110vw"></picture>
@@ -155,10 +156,15 @@
                         <span class="jw-fan__info" hidden><span class="jw-fan__title">Go Pony, Go C!</span><span class="jw-fan__cats"><span>Spiel</span> · 2026</span></span>
                     </li>
                 </ul>
-                <div class="jw-fan__bar" aria-hidden="true">
-                    <a class="jw-fan__caption" href="/projects/pocket-knight/" tabindex="-1"><span class="jw-fan__caption-title">Pocket Knight</span>&#160;<span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></a>
-                    <span class="jw-fan__meta"><span class="jw-fan__cats"><span>Elektronik</span> · <span>Spiel</span> · 2026</span></span>
-                    <span class="jw-fan__count">01 / 04</span>
+                <div class="jw-fan__foot">
+                    <div class="jw-fan__bar" aria-hidden="true">
+                        <a class="jw-fan__caption" href="/projects/pocket-knight/" tabindex="-1"><span class="jw-fan__caption-title">Pocket Knight</span>&#160;<span class="jw-arrow jw-arrow--r" aria-hidden="true"><svg class="jw-arrow__a" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg><svg class="jw-arrow__b" viewBox="0 0 16 16" focusable="false"><g transform="rotate(0 8 8)"><path d="M1.5 8H13M8.2 3.2 13 8l-4.8 4.8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="square" /></g></svg></span></a>
+                        <span class="jw-fan__meta"><span class="jw-fan__cats"><span>Elektronik</span> · <span>Spiel</span> · 2026</span></span>
+                    </div><div class="jw-fan__nav" hidden>
+                        <button type="button" class="jw-fan__btn" data-fan-prev="" aria-label="Vorheriges Projekt"></button>
+                        <span class="jw-fan__count" aria-hidden="true">01 / 04</span>
+                        <button type="button" class="jw-fan__btn" data-fan-next="" aria-label="Nächstes Projekt"></button>
+                    </div>
                 </div>
             </div>
             <dl class="jw-facts">
@@ -183,7 +189,7 @@
                     <span class="jw-num">01</span>
                     <span class="jw-row__main">
                         <span class="jw-row__title">3D Modelle</span>
-                        <span class="jw-row__teaser">3D-Modelle zum Drehen, mit Topologie Ansicht.</span>
+                        <span class="jw-row__teaser">3D-Modelle zum Drehen, mit Wireframe Ansicht.</span>
                     </span>
                     <span class="jw-row__info">
                         <span class="jw-tags"><span>3D</span> · <span>Spiel</span></span>
@@ -304,7 +310,7 @@
                     </div>
                     <div class="jw-field jw-field--wide">
                         <label for="f-message"><span>Nachricht</span></label>
-                        <textarea id="f-message" name="message" placeholder="Deine Nachricht – eine Projektidee, eine Frage oder einfach ein Hallo" required aria-describedby="f-message-error"></textarea>
+                        <textarea id="f-message" name="message" placeholder="Deine Nachricht, eine Projektidee, eine Frage oder einfach ein Hallo." required aria-describedby="f-message-error"></textarea>
                         <p class="jw-field-error" id="f-message-error" hidden></p>
                     </div>
                     <p class="jw-form-note"><span>Deine Angaben werden nur zur Beantwortung deiner Nachricht verwendet. Mehr dazu in der</span> <a href="/datenschutz/">Datenschutzerklärung</a>.</p>

@@ -1415,6 +1415,9 @@ initFishScene();
    auf Touch-Geräten (das zweite Antippen öffnet das Projekt). Die Nachbarn
    bekommen --s = -1 / 1 und rücken zur Seite. Dazu neigt sich die gehobene
    Karte zum Zeiger, mit einem Glanzpunkt, der ihm folgt.
+   Durchschalten: Pfeil-Buttons unter dem Fächer, Pfeiltasten und – auf
+   Touch-Geräten – Wischen nach links/rechts. Nach der letzten Karte kommt
+   wieder die erste.
    Ohne JavaScript ist die erste Karte gehoben, alle Links funktionieren. */
 (function () {
     const root = document.querySelector('[data-fan]');
@@ -1486,6 +1489,55 @@ initFishScene();
         });
         card.addEventListener('pointerleave', function () { resetTilt(card); });
     });
+
+    function step(delta) {
+        setActive((active + delta + n) % n);
+    }
+
+    // Pfeil-Buttons unter dem Fächer (ohne JS ausgeblendet)
+    const nav = root.querySelector('.jw-fan__nav');
+    const prev = root.querySelector('[data-fan-prev]');
+    const next = root.querySelector('[data-fan-next]');
+    if (nav && prev && next) {
+        prev.innerHTML = jwArrow('l');
+        next.innerHTML = jwArrow('r');
+        prev.addEventListener('click', function () { step(-1); });
+        next.addEventListener('click', function () { step(1); });
+        nav.hidden = false;
+    }
+
+    // Wischen auf Touch-Geräten. touch-action: pan-y (CSS) lässt das
+    // senkrechte Scrollen beim Browser; waagerechte Bewegungen kommen hier an.
+    // Ab 40 px, und deutlich mehr waagerecht als senkrecht, zählt es als
+    // Wischen. Der Klick, den manche Browser danach noch auslösen, wird
+    // verworfen, damit nicht gleich das Projekt öffnet.
+    const hand = root.querySelector('.jw-fan__hand');
+    const SWIPE = 40; // px
+    let startX = null;
+    let startY = 0;
+    let swiped = false;
+    hand.addEventListener('pointerdown', function (event) {
+        if (event.pointerType !== 'touch') return;
+        startX = event.clientX;
+        startY = event.clientY;
+    });
+    hand.addEventListener('pointerup', function (event) {
+        if (startX === null) return;
+        const dx = event.clientX - startX;
+        const dy = event.clientY - startY;
+        startX = null;
+        if (Math.abs(dx) < SWIPE || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+        step(dx < 0 ? 1 : -1);
+        swiped = true;
+        setTimeout(function () { swiped = false; }, 400);
+    });
+    hand.addEventListener('pointercancel', function () { startX = null; });
+    hand.addEventListener('click', function (event) {
+        if (!swiped) return;
+        event.preventDefault();
+        event.stopPropagation();
+        swiped = false;
+    }, true);
 
     // Pfeiltasten wandern durch die Karten
     root.addEventListener('keydown', function (event) {

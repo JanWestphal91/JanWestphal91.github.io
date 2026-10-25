@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D modelling – Jan Westphal</title>
-    <meta name="description" content="Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree...">
+    <meta name="description" content="Models, renderings and scene screenshots. The models can be rotated right here in the browser. The “Wireframe” view shows the model structure.">
     <meta name="author" content="Jan Westphal">
     <meta name="robots" content="index, follow">
     <link href="https://janwestphal.dev/en/projects/3d-objekte/" rel="canonical">
@@ -21,7 +21,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Jan Westphal">
     <meta property="og:title" content="3D modelling – Jan Westphal">
-    <meta property="og:description" content="Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree...">
+    <meta property="og:description" content="Models, renderings and scene screenshots. The models can be rotated right here in the browser. The “Wireframe” view shows the model structure.">
     
     <meta property="og:image" content="https://janwestphal.dev/Images/3D/baum-laternen.webp">
     <meta name="twitter:image" content="https://janwestphal.dev/Images/3D/baum-laternen.webp">
@@ -32,7 +32,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="3D modelling – Jan Westphal">
-    <meta name="twitter:description" content="Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree...">
+    <meta name="twitter:description" content="Models, renderings and scene screenshots. The models can be rotated right here in the browser. The “Wireframe” view shows the model structure.">
 
 
     <!-- ═══ Favicon (Variante C „JW“, Bricolage Grotesque als Vektor) ═══ -->
@@ -84,7 +84,7 @@
         <div class="jw-detail-head__row">
             <div class="jw-detail-head__main">
                 <h1 id="jw-page-title">3D modelling</h1>
-                <div class="project-summary jw-lead"><p>Models, renderings and scene screenshots from my 3D work. Four models can be rotated right here in the browser: a rigged duck, a player character, a tree and a bridge overgrown with vines. The topology view shows the edges as I modelled them in Blender.</p>
+                <div class="project-summary jw-lead"><p>Models, renderings and scene screenshots. The models can be rotated right here in the browser. The “Wireframe” view shows the model structure.</p>
 </div>
                 
             </div>
@@ -110,11 +110,11 @@
     
     <section class="jw-wrap jw-detail-block jw-models" aria-labelledby="jw-models-title">
         <h2 id="jw-models-title" class="jw-label jw-rule">01 — <span>3D models</span> (04)</h2>
-        <p class="jw-models__intro">Drag to rotate the models. “Topology” shows each model in a neutral material with its edges – only the edges from the model, without the diagonals that appear when the browser splits every quad into two triangles.</p>
+        <p class="jw-models__intro">Drag with the mouse or your finger to rotate the models. “Wireframe” shows each model in a neutral material with its wireframe.</p>
         <article class="jw-model" data-model-src="/Images/3D/ente.glb" aria-labelledby="jw-model-1">
             <div class="jw-model__head">
                 <h3 id="jw-model-1" class="jw-model__title"><span class="jw-fig">3D 01</span> <span>Playable Duck</span></h3>
-                <p class="jw-model__text">Rigged by myself. The feathers are separate objects attached to the rig, so they can be posed individually.</p>
+                <p class="jw-model__text">Modelled, rigged and animated in Blender. The model was planned for a third-person game in which you can swim, walk and fly as the duck. That project is on hold for now.</p>
             </div>
             <div class="jw-model__stage">
                 <canvas tabindex="0" role="img" aria-label="Interactive 3D model. Drag to rotate, after a click zoom with the mouse wheel or two fingers, arrow keys to pan."></canvas>
@@ -125,7 +125,7 @@
             <div class="jw-model__bar">
                 <div class="jw-model__modes" role="group" aria-label="View">
                     <button type="button" data-model-mode="model" aria-pressed="true">Model</button>
-                    <button type="button" data-model-mode="topology" aria-pressed="false">Topology</button>
+                    <button type="button" data-model-mode="topology" aria-pressed="false">Wireframe</button>
                 </div>
                 <label class="jw-model__anim" hidden><span>Animation</span> <select></select></label>
                 <button type="button" class="jw-model__btn" data-model-play="" aria-pressed="false" hidden>Play</button>
@@ -136,7 +136,7 @@
         <article class="jw-model" data-model-src="/Images/3D/spielfigur.glb" aria-labelledby="jw-model-2">
             <div class="jw-model__head">
                 <h3 id="jw-model-2" class="jw-model__title"><span class="jw-fig">3D 02</span> <span>Player character</span></h3>
-                <p class="jw-model__text">Rigged, shown here in the rig's rest pose. Jacket, scarf, hair, belt and boots are separate meshes.</p>
+                <p class="jw-model__text">Modelled, rigged and animated in Blender. Planned as the player character for a game with a top-down perspective. The project has been dropped for now, but it may be recycled at some point.</p>
             </div>
             <div class="jw-model__stage">
                 <canvas tabindex="0" role="img" aria-label="Interactive 3D model. Drag to rotate, after a click zoom with the mouse wheel or two fingers, arrow keys to pan."></canvas>
@@ -147,7 +147,7 @@
             <div class="jw-model__bar">
                 <div class="jw-model__modes" role="group" aria-label="View">
                     <button type="button" data-model-mode="model" aria-pressed="true">Model</button>
-                    <button type="button" data-model-mode="topology" aria-pressed="false">Topology</button>
+                    <button type="button" data-model-mode="topology" aria-pressed="false">Wireframe</button>
                 </div>
                 <label class="jw-model__anim" hidden><span>Animation</span> <select></select></label>
                 <button type="button" class="jw-model__btn" data-model-play="" aria-pressed="false" hidden>Play</button>
@@ -157,8 +157,8 @@
         </article>
         <article class="jw-model" data-model-src="/Images/3D/laternenbaum.glb" aria-labelledby="jw-model-3">
             <div class="jw-model__head">
-                <h3 id="jw-model-3" class="jw-model__title"><span class="jw-fig">3D 03</span> <span>Tree</span></h3>
-                <p class="jw-model__text">Trunk and roots are one continuous mesh made almost entirely of quads. The crown consists of 15 leaf clusters, bent with a Simple Deform modifier. In the gallery below the tree stands in its scene with lanterns.</p>
+                <h3 id="jw-model-3" class="jw-model__title"><span class="jw-fig">3D 03</span> <span>Stylised tree</span></h3>
+                <p class="jw-model__text">The tree was built mostly from lines and primitives that were turned into shapes with modifiers. I wanted to try out a different workflow here.</p>
             </div>
             <div class="jw-model__stage">
                 <canvas tabindex="0" role="img" aria-label="Interactive 3D model. Drag to rotate, after a click zoom with the mouse wheel or two fingers, arrow keys to pan."></canvas>
@@ -169,7 +169,7 @@
             <div class="jw-model__bar">
                 <div class="jw-model__modes" role="group" aria-label="View">
                     <button type="button" data-model-mode="model" aria-pressed="true">Model</button>
-                    <button type="button" data-model-mode="topology" aria-pressed="false">Topology</button>
+                    <button type="button" data-model-mode="topology" aria-pressed="false">Wireframe</button>
                 </div>
                 <label class="jw-model__anim" hidden><span>Animation</span> <select></select></label>
                 <button type="button" class="jw-model__btn" data-model-play="" aria-pressed="false" hidden>Play</button>
@@ -180,7 +180,7 @@
         <article class="jw-model" data-model-src="/Images/3D/bruecke.glb" aria-labelledby="jw-model-4">
             <div class="jw-model__head">
                 <h3 id="jw-model-4" class="jw-model__title"><span class="jw-fig">3D 04</span> <span>Bridge with vines</span></h3>
-                <p class="jw-model__text">Posts, beams, planks, ropes and vines as separate objects. The vines are mostly triangles, everything else is built from quads.</p>
+                <p class="jw-model__text">A small bridge whose path is blocked by vines. The model was made during the Game Dev Sessions at opencampus Kiel and was meant to block off certain areas until the player removes the vines. The vines are modelled so that a shader can make them grow and recede.</p>
             </div>
             <div class="jw-model__stage">
                 <canvas tabindex="0" role="img" aria-label="Interactive 3D model. Drag to rotate, after a click zoom with the mouse wheel or two fingers, arrow keys to pan."></canvas>
@@ -191,7 +191,7 @@
             <div class="jw-model__bar">
                 <div class="jw-model__modes" role="group" aria-label="View">
                     <button type="button" data-model-mode="model" aria-pressed="true">Model</button>
-                    <button type="button" data-model-mode="topology" aria-pressed="false">Topology</button>
+                    <button type="button" data-model-mode="topology" aria-pressed="false">Wireframe</button>
                 </div>
                 <label class="jw-model__anim" hidden><span>Animation</span> <select></select></label>
                 <button type="button" class="jw-model__btn" data-model-play="" aria-pressed="false" hidden>Play</button>
@@ -215,56 +215,56 @@
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-papier.webp"><picture><source type="image/avif" srcset="/img/aPLons9gx3-320.avif 320w, /img/aPLons9gx3-640.avif 640w, /img/aPLons9gx3-960.avif 960w, /img/aPLons9gx3-1440.avif 1440w, /img/aPLons9gx3-1920.avif 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/aPLons9gx3-320.webp" alt="The same forest diorama in plain white paper and cardboard" loading="lazy" width="1920" height="1117" srcset="/img/aPLons9gx3-320.webp 320w, /img/aPLons9gx3-640.webp 640w, /img/aPLons9gx3-960.webp 960w, /img/aPLons9gx3-1440.webp 1440w, /img/aPLons9gx3-1920.webp 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-papier.webp"><picture><source type="image/avif" srcset="/img/aPLons9gx3-320.avif 320w, /img/aPLons9gx3-640.avif 640w, /img/aPLons9gx3-960.avif 960w, /img/aPLons9gx3-1440.avif 1440w, /img/aPLons9gx3-1920.avif 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/aPLons9gx3-320.webp" alt="Forest diorama as a first mock-up to set the mood and a style direction. Made during the Game Dev Sessions at opencampus. Modelled in Blender, scene view in Unity." loading="lazy" width="1920" height="1117" srcset="/img/aPLons9gx3-320.webp 320w, /img/aPLons9gx3-640.webp 640w, /img/aPLons9gx3-960.webp 960w, /img/aPLons9gx3-1440.webp 1440w, /img/aPLons9gx3-1920.webp 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
                 <figcaption><span class="jw-fig">Fig. 01</span> <span>Forest diorama, plain paper</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-daemmerung.webp"><picture><source type="image/avif" srcset="/img/O4Bb7QUX1e-320.avif 320w, /img/O4Bb7QUX1e-640.avif 640w, /img/O4Bb7QUX1e-960.avif 960w, /img/O4Bb7QUX1e-1440.avif 1440w, /img/O4Bb7QUX1e-1920.avif 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/O4Bb7QUX1e-320.webp" alt="The forest diorama in dim green light, only the path around the figure is lit" loading="lazy" width="1920" height="1141" srcset="/img/O4Bb7QUX1e-320.webp 320w, /img/O4Bb7QUX1e-640.webp 640w, /img/O4Bb7QUX1e-960.webp 960w, /img/O4Bb7QUX1e-1440.webp 1440w, /img/O4Bb7QUX1e-1920.webp 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/wald-diorama-daemmerung.webp"><picture><source type="image/avif" srcset="/img/O4Bb7QUX1e-320.avif 320w, /img/O4Bb7QUX1e-640.avif 640w, /img/O4Bb7QUX1e-960.avif 960w, /img/O4Bb7QUX1e-1440.avif 1440w, /img/O4Bb7QUX1e-1920.avif 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/O4Bb7QUX1e-320.webp" alt="The same diorama as a variation with coloured materials and evening lighting." loading="lazy" width="1920" height="1141" srcset="/img/O4Bb7QUX1e-320.webp 320w, /img/O4Bb7QUX1e-640.webp 640w, /img/O4Bb7QUX1e-960.webp 960w, /img/O4Bb7QUX1e-1440.webp 1440w, /img/O4Bb7QUX1e-1920.webp 1920w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
                 <figcaption><span class="jw-fig">Fig. 02</span> <span>Forest diorama at dusk</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/baum-laternen.webp"><picture><source type="image/avif" srcset="/img/hKGv-CrXvK-320.avif 320w, /img/hKGv-CrXvK-640.avif 640w, /img/hKGv-CrXvK-960.avif 960w, /img/hKGv-CrXvK-1440.avif 1440w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/hKGv-CrXvK-320.webp" alt="A large tree with a crown of paper-textured blocks, small lantern houses hanging from it, an ant figure standing at the roots" loading="lazy" width="1440" height="1077" srcset="/img/hKGv-CrXvK-320.webp 320w, /img/hKGv-CrXvK-640.webp 640w, /img/hKGv-CrXvK-960.webp 960w, /img/hKGv-CrXvK-1440.webp 1440w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/baum-laternen.webp"><picture><source type="image/avif" srcset="/img/hKGv-CrXvK-320.avif 320w, /img/hKGv-CrXvK-640.avif 640w, /img/hKGv-CrXvK-960.avif 960w, /img/hKGv-CrXvK-1440.avif 1440w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/hKGv-CrXvK-320.webp" alt="A first in-game view with small houses for forest spirits hanging from the tree." loading="lazy" width="1440" height="1077" srcset="/img/hKGv-CrXvK-320.webp 320w, /img/hKGv-CrXvK-640.webp 640w, /img/hKGv-CrXvK-960.webp 960w, /img/hKGv-CrXvK-1440.webp 1440w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
-                <figcaption><span class="jw-fig">Fig. 03</span> <span>The tree with lanterns in its scene</span></figcaption>
+                <figcaption><span class="jw-fig">Fig. 03</span> <span>A tree with lanterns in its scene</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/spinne.webp"><picture><source type="image/avif" srcset="/img/tXpKA3PaGd-320.avif 320w, /img/tXpKA3PaGd-640.avif 640w, /img/tXpKA3PaGd-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/tXpKA3PaGd-320.webp" alt="Low-poly spider in red, blue and black with large white fangs, rendered on a grey background" loading="lazy" width="960" height="960" srcset="/img/tXpKA3PaGd-320.webp 320w, /img/tXpKA3PaGd-640.webp 640w, /img/tXpKA3PaGd-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/spinne.webp"><picture><source type="image/avif" srcset="/img/tXpKA3PaGd-320.avif 320w, /img/tXpKA3PaGd-640.avif 640w, /img/tXpKA3PaGd-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/tXpKA3PaGd-320.webp" alt="Low-poly spider in red, blue and black with large white fangs, modelled, rigged and rendered in Blender." loading="lazy" width="960" height="960" srcset="/img/tXpKA3PaGd-320.webp 320w, /img/tXpKA3PaGd-640.webp 640w, /img/tXpKA3PaGd-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
                 <figcaption><span class="jw-fig">Fig. 04</span> <span>Low-poly spider, rendering</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/schwertsaeulen.webp"><picture><source type="image/avif" srcset="/img/5v6VysKJws-320.avif 320w, /img/5v6VysKJws-640.avif 640w, /img/5v6VysKJws-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/5v6VysKJws-320.webp" alt="Low-poly desert under a purple sky, two giant swords stuck in the sand, a small figure in front of a gate with lanterns" loading="lazy" width="960" height="539" srcset="/img/5v6VysKJws-320.webp 320w, /img/5v6VysKJws-640.webp 640w, /img/5v6VysKJws-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/schwertsaeulen.webp"><picture><source type="image/avif" srcset="/img/5v6VysKJws-320.avif 320w, /img/5v6VysKJws-640.avif 640w, /img/5v6VysKJws-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/5v6VysKJws-320.webp" alt="An early screenshot from a prototype that was not pursued further. Low-poly models made in Blender, screenshot from Unity." loading="lazy" width="960" height="539" srcset="/img/5v6VysKJws-320.webp 320w, /img/5v6VysKJws-640.webp 640w, /img/5v6VysKJws-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
                 <figcaption><span class="jw-fig">Fig. 05</span> <span>Low-poly scene with sword pillars</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/saeulenhalle.webp"><picture><source type="image/avif" srcset="/img/DldxYq4Svv-320.avif 320w, /img/DldxYq4Svv-640.avif 640w, /img/DldxYq4Svv-867.avif 867w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/DldxYq4Svv-320.webp" alt="A small figure on a red platform faces an armoured giant between tall columns" loading="lazy" width="867" height="867" srcset="/img/DldxYq4Svv-320.webp 320w, /img/DldxYq4Svv-640.webp 640w, /img/DldxYq4Svv-867.webp 867w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/saeulenhalle.webp"><picture><source type="image/avif" srcset="/img/DldxYq4Svv-320.avif 320w, /img/DldxYq4Svv-640.avif 640w, /img/DldxYq4Svv-867.avif 867w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/DldxYq4Svv-320.webp" alt="Another screenshot from the same prototype." loading="lazy" width="867" height="867" srcset="/img/DldxYq4Svv-320.webp 320w, /img/DldxYq4Svv-640.webp 640w, /img/DldxYq4Svv-867.webp 867w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
                 <figcaption><span class="jw-fig">Fig. 06</span> <span>Giant in a hall of columns</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/lagerfeuer-animiert.webp"><picture><source type="image/avif" srcset="/img/mwe8jf0Kwh-320.avif 320w, /img/mwe8jf0Kwh-640.avif 640w, /img/mwe8jf0Kwh-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/mwe8jf0Kwh-320.webp" alt="Ein weiteres Mood gif aus dem gleichen Prototyp." loading="lazy" width="960" height="539" srcset="/img/mwe8jf0Kwh-320.webp 320w, /img/mwe8jf0Kwh-640.webp 640w, /img/mwe8jf0Kwh-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/lagerfeuer-animiert.webp"><picture><source type="image/avif" srcset="/img/mwe8jf0Kwh-320.avif 320w, /img/mwe8jf0Kwh-640.avif 640w, /img/mwe8jf0Kwh-960.avif 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/mwe8jf0Kwh-320.webp" alt="Another mood GIF from the same prototype." loading="lazy" width="960" height="539" srcset="/img/mwe8jf0Kwh-320.webp 320w, /img/mwe8jf0Kwh-640.webp 640w, /img/mwe8jf0Kwh-960.webp 960w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
                 <figcaption><span class="jw-fig">Fig. 07</span> <span>Camp fire, animated</span></figcaption>
             </figure>
             
             <figure class="project-gallery__item">
                 
-                <a class="post-figure__link" data-lightbox="" href="/Images/3D/leuchtturm.webp"><picture><source type="image/avif" srcset="/img/9t-1P4WwOg-320.avif 320w, /img/9t-1P4WwOg-640.avif 640w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/9t-1P4WwOg-320.webp" alt="Ein Screenshot aus einem Prototyp für ein Spiel über einen Leuchtturmwärter, der Leuchtturm ist dem Leuchtturm aus Kiel Holtenau nachempfunden." loading="lazy" width="640" height="640" srcset="/img/9t-1P4WwOg-320.webp 320w, /img/9t-1P4WwOg-640.webp 640w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
+                <a class="post-figure__link" data-lightbox="" href="/Images/3D/leuchtturm.webp"><picture><source type="image/avif" srcset="/img/9t-1P4WwOg-320.avif 320w, /img/9t-1P4WwOg-640.avif 640w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"><img decoding="async" src="/img/9t-1P4WwOg-320.webp" alt="A screenshot from a prototype for a game about a lighthouse keeper. The lighthouse is modelled on the one in Kiel-Holtenau." loading="lazy" width="640" height="640" srcset="/img/9t-1P4WwOg-320.webp 320w, /img/9t-1P4WwOg-640.webp 640w" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></picture></a>
                 
                 <figcaption><span class="jw-fig">Fig. 08</span> <span>Lighthouse in the rain</span></figcaption>
             </figure>
