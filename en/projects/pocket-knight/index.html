@@ -47,7 +47,6 @@
     <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
     <link rel="stylesheet" href="/style.css">
     <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
-    <link rel="stylesheet" href="/theme.css">
     <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
     <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
     <script src="/translations.js" defer></script>
@@ -163,7 +162,7 @@ I’m writing a bit more in depth about the development process in this <a href=
 <li>If reading over I²C fails, the function returns the last known value, so a read error never shows up as a jump in steps.</li>
 </ul>
 <p>Simplified excerpt from <code>progress.ino</code>:</p>
-<pre><code class="language-cpp">void syncSteps() {
+<pre tabindex="0"><code class="language-cpp">void syncSteps() {
   uint32_t cur = readSensorSteps();   // BMA456 counter
   if (cur &gt; lastSensorSteps) {
     addSteps(cur - lastSensorSteps);  // only the difference counts

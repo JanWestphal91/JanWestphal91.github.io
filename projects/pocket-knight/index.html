@@ -47,7 +47,6 @@
     <link rel="preload" href="/fonts/bricolage-grotesque/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin="">
     <link rel="stylesheet" href="/style.css">
     <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
-    <link rel="stylesheet" href="/theme.css">
     <!-- Animationen aus? Vor dem ersten Zeichnen setzen, damit nichts kurz anläuft -->
     <script>try{var m=localStorage.getItem("jw-motion");if(m==="off"||(m!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("jw-motion-off")}catch(e){}</script>
     <script src="/translations.js" defer></script>
@@ -164,7 +163,7 @@ Etwas ausführlicher schreibe ich über den Entwicklungsprozess in diesem <a hre
 <li>Schlägt das Auslesen über I²C fehl, gibt die Funktion den letzten bekannten Wert zurück. Ein Lesefehler kommt so nie als Schrittsprung im Spiel an.</li>
 </ul>
 <p>Vereinfachter Ausschnitt aus <code>progress.ino</code>:</p>
-<pre><code class="language-cpp">void syncSteps() {
+<pre tabindex="0"><code class="language-cpp">void syncSteps() {
   uint32_t cur = readSensorSteps();   // Zählerstand des BMA456
   if (cur &gt; lastSensorSteps) {
     addSteps(cur - lastSensorSteps);  // nur die Differenz zählt

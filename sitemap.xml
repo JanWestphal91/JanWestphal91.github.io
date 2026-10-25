@@ -169,6 +169,18 @@
         <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/chonky-bee-audio-synth/"/>
     </url>
     <url>
+        <loc>https://janwestphal.dev/projects/clap-slap-slash/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/clap-slap-slash/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/clap-slap-slash/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/clap-slap-slash/"/>
+    </url>
+    <url>
+        <loc>https://janwestphal.dev/en/projects/clap-slap-slash/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/clap-slap-slash/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/clap-slap-slash/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://janwestphal.dev/projects/clap-slap-slash/"/>
+    </url>
+    <url>
         <loc>https://janwestphal.dev/projects/e-zine-graffiti-doc/</loc>
         <xhtml:link rel="alternate" hreflang="de" href="https://janwestphal.dev/projects/e-zine-graffiti-doc/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://janwestphal.dev/en/projects/e-zine-graffiti-doc/"/>
