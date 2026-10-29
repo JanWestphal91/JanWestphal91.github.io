@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Art and illustration
 title_de: Kunst und Illustration
 slug: kunst-illustration
