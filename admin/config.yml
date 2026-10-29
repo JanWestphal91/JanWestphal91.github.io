@@ -2739,6 +2739,15 @@ collections:
       name: caption_de
       widget: string
       required: false
+    - label: Notiz (EN)
+      name: text
+      widget: text
+      required: false
+      hint: Optionaler kurzer Text zum Bild, z. B. Material oder eine Anekdote. Steht in der Archiv-Ansicht der Galerie neben dem Bild. Ohne Notiz steht dort der Alt-Text.
+    - label: Notiz (DE)
+      name: text_de
+      widget: text
+      required: false
   - label: Embed-Code
     name: embed
     widget: text

@@ -256,6 +256,8 @@
                 <a class="post-figure__link" data-lightbox href="{{ img.src | imgPath }}"><img src="{{ img.src | imgPath }}" alt="{{ img.alt }}" data-alt-en="{{ img.alt }}" data-alt-de="{{ img.alt_de or img.alt }}" loading="lazy" sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"></a>
                 {% endif %}
                 <figcaption><span class="jw-fig">Fig. {{ loop.index | pad2 }}</span>{% if img.caption %} <span data-en="{{ img.caption }}" data-de="{{ img.caption_de or img.caption }}">{{ img.caption }}</span>{% endif %}</figcaption>
+                {#- Notiz zum Bild: unsichtbar im Raster, script.js zeigt sie in der Archiv-Ansicht neben dem Bild -#}
+                {% if img.text %}<p class="jw-gallery__text" hidden data-en="{{ img.text }}" data-de="{{ img.text_de or img.text }}">{{ img.text }}</p>{% endif %}
             </figure>
             {% endfor %}
         </div>

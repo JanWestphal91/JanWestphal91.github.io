@@ -693,6 +693,8 @@ initLightbox();
                 // <picture> aus dem Build (srcset in mehreren Breiten) mitnehmen
                 picture: img.closest('picture'),
                 alt: img.getAttribute('alt') || '',
+                // Notiz aus dem CMS (Feld „Notiz“), sonst der Alt-Text
+                text: (figure.querySelector('.jw-gallery__text') || {}).textContent || '',
                 title: caption || ('Fig. ' + pad(i + 1))
             };
         });
@@ -765,6 +767,20 @@ initLightbox();
 
         // ── Aktives Bild ──
         const buttons = Array.from(index.querySelectorAll('button'));
+
+        // Der Index scrollt in sich, wenn er höher ist als der sichtbare
+        // Bereich (CSS: max-height). Kommt die aktive Zeile in die Nähe des
+        // oberen oder unteren Rands, wird die Liste so verschoben, dass die
+        // Zeile mittig steht. Nur die Liste scrollt, nicht die Seite.
+        function keepInIndexView(button) {
+            if (!button || index.scrollHeight <= index.clientHeight) return;
+            const row = button.getBoundingClientRect();
+            const box = index.getBoundingClientRect();
+            const margin = row.height * 2;
+            if (row.top >= box.top + margin && row.bottom <= box.bottom - margin) return;
+            const top = index.scrollTop + (row.top - box.top) - (box.height - row.height) / 2;
+            index.scrollTo({ top: Math.max(0, top), behavior: motionOff() ? 'auto' : 'smooth' });
+        }
         const streamItems = Array.from(stream.children);
         let active = -1;
 
@@ -775,12 +791,13 @@ initLightbox();
                 if (j === i) b.setAttribute('aria-current', 'true');
                 else b.removeAttribute('aria-current');
             });
+            keepInIndexView(buttons[i]);
             streamItems.forEach(function (el, j) { el.classList.toggle('is-active', j === i); });
             const item = items[i];
             detail.querySelector('.jw-archive__detail-code').textContent = item.code;
             detail.querySelector('.jw-archive__detail-count').textContent = pad(i + 1) + ' / ' + pad(items.length);
             detail.querySelector('.jw-archive__detail-title').textContent = item.title;
-            detail.querySelector('.jw-archive__detail-text').textContent = item.alt;
+            detail.querySelector('.jw-archive__detail-text').textContent = item.text || item.alt;
             if (!motionOff() && detail.animate) {
                 detail.querySelectorAll('.jw-archive__detail-title, .jw-archive__detail-text').forEach(function (el, k) {
                     el.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],

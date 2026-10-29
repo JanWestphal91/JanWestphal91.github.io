@@ -55,134 +55,186 @@ case: null
 images:
   - src: /Images/Kunst/maske-scheune.webp
     alt: 'Mural on a wooden barn: a face split into a pale and a turquoise half with a dark blue beard, a small crown on top, two turquoise hands at the sides, on a pink background'
-    alt_de: Alte Schrebergärten
-    caption: Mask, mural on a barn
-    caption_de: Mit einem Freund zusammen
+    alt_de: 'Wandbild an einer Holzscheune: ein Gesicht, halb hell und halb türkis, mit dunkelblauem Bart und kleiner Krone, links und rechts zwei türkise Hände vor pinkem Hintergrund'
+    caption: Old allotment gardens
+    caption_de: Alte Schrebergärten
+    text: Painted together with a friend.
+    text_de: Mit einem Freund zusammen
   - src: /Images/Kunst/grau-2019.webp
     alt: 'Long wall in black, white and grey with surreal objects: hands, a lamp with snowdrops, an umbrella dripping, pictures in frames and lips, signed Netro 19'
-    alt_de: Malereien in der Malerei
-    caption: Black and white, 2019
-    caption_de: Nur schwarz und Weiß
+    alt_de: 'Lange Wand in Schwarz, Weiß und Grau mit surrealen Gegenständen: Hände, eine Lampe mit Schneeglöckchen, ein tropfender Schirm, gerahmte Bilder und Lippen, signiert Netro 19'
+    caption: Paintings within the painting
+    caption_de: Malereien in der Malerei
+    text: Only black and white.
+    text_de: Nur schwarz und Weiß
   - src: /Images/Kunst/rotes-tier-2020.webp
     alt: A red four-legged creature with a long neck in front of an abstract background in red, purple, blue and olive, signed Netro FHZ 2020
-    alt_de: Graffiti mit Pferd
-    caption: Red creature, 2020
-    caption_de: Einer meiner Lieblingscharacter.
+    alt_de: Ein rotes vierbeiniges Wesen mit langem Hals vor einem abstrakten Hintergrund in Rot, Lila, Blau und Oliv, signiert Netro FHZ 2020
+    caption: Graffiti with a horse
+    caption_de: Graffiti mit Pferd
+    text: One of my favourite characters.
+    text_de: Einer meiner Lieblingscharacter.
   - src: /Images/Kunst/formen-schachbrett.webp
     alt: 'Geometric wall piece: overlapping shapes in turquoise, pink, purple and blue with black and white checkered areas'
-    alt_de: Graffiti
-    caption: Shapes and checkerboard
-    caption_de: Ich mag den Style sehr gern.
+    alt_de: 'Geometrisches Wandbild: überlappende Formen in Türkis, Pink, Lila und Blau mit schwarz-weißen Schachbrettflächen'
+    caption: Graffiti
+    caption_de: Graffiti
+    text: I really like this style.
+    text_de: Ich mag den Style sehr gern.
   - src: /Images/Kunst/schachbrett-schrift.webp
     alt: Lettering made entirely of black and white checkered stripes on a pale pink wall
-    alt_de: OpArt Graffiti
-    caption: Checkerboard lettering
-    caption_de: Würd ich nicht wieder machen mit den Schablonen.
+    alt_de: Schriftzug komplett aus schwarz-weißen Schachbrettstreifen auf einer hellrosa Wand
+    caption: Op art graffiti
+    caption_de: OpArt Graffiti
+    text: I wouldn’t do it with stencils again.
+    text_de: Würd ich nicht wieder machen mit den Schablonen.
   - src: /Images/Kunst/bruecke-2019.webp
     alt: 'Two square pieces under a bridge: an abstract one with zigzags, waves and dots signed Flash Boy, and colourful letters signed Netro FHZ, 2019'
-    alt_de: Im Quadrat
-    caption: Under the bridge, with Flash Boy, 2019
-    caption_de: Neumünster, mit einem Freund
+    alt_de: 'Zwei quadratische Bilder unter einer Brücke: ein abstraktes mit Zickzack, Wellen und Punkten, signiert Flash Boy, und bunte Buchstaben, signiert Netro FHZ, 2019'
+    caption: In the square
+    caption_de: Im Quadrat
+    text: Neumünster, with a friend.
+    text_de: Neumünster, mit einem Freund
   - src: /Images/Kunst/halle-panorama.webp
     alt: 'Panorama of an indoor wall in pink and purple: a tractor with a face, hills with lettering, a windmill under a large sun and a monster with stitched mouth on the right'
-    alt_de: WholeRoom
-    caption: Indoor wall, panorama
-    caption_de: 3 Wände eines Zimmers an einem Abend bemalt mit 2 anderen Malern.
+    alt_de: 'Panorama einer Innenwand in Pink und Lila: ein Traktor mit Gesicht, Hügel mit Schriftzug, eine Windmühle unter großer Sonne und rechts ein Monster mit zugenähtem Mund'
+    caption: Whole room
+    caption_de: WholeRoom
+    text: Three walls of a room, painted in one evening with two other painters.
+    text_de: 3 Wände eines Zimmers an einem Abend bemalt mit 2 anderen Malern.
   - src: /Images/Kunst/giebelwand.webp
     alt: Gable wall of a small house painted in black and white as a cartoon building with windows, cracks and a large lettering, reflected in a pond
-    alt_de: Den Schuppen einen neuen Anstrich verpasst
-    caption: Gable wall
-    caption_de: Giebelwand von baufälligen Gebäude
+    alt_de: Giebelwand eines kleinen Hauses, schwarz-weiß als gezeichnetes Gebäude mit Fenstern, Rissen und großem Schriftzug bemalt, davor ein Teich
+    caption: Gave the shed a new coat of paint
+    caption_de: Den Schuppen einen neuen Anstrich verpasst
+    text: Gable wall of a dilapidated building.
+    text_de: Giebelwand von baufälligen Gebäude
   - src: /Images/Kunst/lichtmalerei.webp
     alt: 'Long exposure at night: light trails trace the outlines of a painted wall with a hut, a city under a dome and a landscape, and draw grass on the floor'
-    alt_de: Abendliches Graffiti mit Light Painting
-    caption: Light painting over a wall
-    caption_de: Das Lichtmalen hat genauso lange gedauert wie die Wand.
+    alt_de: 'Langzeitbelichtung bei Nacht: Lichtspuren zeichnen die Umrisse einer bemalten Wand mit Hütte, einer Stadt unter einer Kuppel und einer Landschaft nach und malen Gras auf den Boden'
+    caption: Evening graffiti with light painting
+    caption_de: Abendliches Graffiti mit Light Painting
+    text: The light painting took as long as the wall.
+    text_de: Das Lichtmalen hat genauso lange gedauert wie die Wand.
   - src: /Images/FineArt/1000015908.webp
     alt: Three small paintings on metal sheets with colourful graffiti letters, propped up on gravel
-    alt_de: Styleplatten
-    caption: Small paintings on metal sheet
-    caption_de: Acryl und Sprühdose auf Eisenplatten
+    alt_de: Drei kleine Malereien auf Blech mit bunten Graffiti-Buchstaben, auf Kies aufgestellt
+    caption: Style plates
+    caption_de: Styleplatten
+    text: Acrylic and spray paint on iron plates.
+    text_de: Acryl und Sprühdose auf Eisenplatten
   - src: /Images/FineArt/1000015914.webp
     alt: Four more small metal-sheet paintings with graffiti characters and letters
-    alt_de: mehr Styleplatten
-    caption: More small paintings on metal sheet
-    caption_de: Acryl und Sprühdose auf Eisenplatten
+    alt_de: Vier weitere kleine Blechmalereien mit Graffiti-Figuren und Buchstaben
+    caption: More style plates
+    caption_de: mehr Styleplatten
+    text: Acrylic and spray paint on iron plates.
+    text_de: Acryl und Sprühdose auf Eisenplatten
   - src: /Images/FineArt/1000015915.webp
     alt: 'Framed drawing: black ornamental “Netro” lettering on pink paper'
-    alt_de: kitschiger Metal Style
-    caption: Acrylic ink and ink on paper
-    caption_de: Acrylmarker und Tinte auf Papier
+    alt_de: 'Gerahmte Zeichnung: schwarzer, verschnörkelter „Netro“-Schriftzug auf rosa Papier'
+    caption: Kitschy metal style
+    caption_de: kitschiger Metal Style
+    text: Acrylic marker and ink on paper.
+    text_de: Acrylmarker und Tinte auf Papier
   - src: /Images/FineArt/1000015913.webp
     alt: Large commissioned canvas of an abandoned hall with painted walls and a tree
-    alt_de: Fotos in der Mülli
-    caption: Commissioned, acrylic on canvas, 100 cm × 150 cm
-    caption_de: Auftrag, Acryl auf Leinwand 100 cm x 150 cm
+    alt_de: Große Auftragsleinwand mit einer verlassenen Halle, bemalten Wänden und einem Baum
+    caption: Photos at the Mülli
+    caption_de: Fotos in der Mülli
+    text: Commission, acrylic on canvas, 100 cm × 150 cm.
+    text_de: Auftrag, Acryl auf Leinwand 100 cm x 150 cm
   - src: /Images/FineArt/1000015912.webp
     alt: Small framed canvas of a purple moka pot with stars, next to a coffee cup
-    alt_de: Kaffeekränzchen
-    caption: small canvas painted during coffee klatch with KaffeeGang
-    caption_de: Acrylmarker, während Kaffeegang meeting.
+    alt_de: Kleine gerahmte Leinwand mit einer lila Espressokanne und Sternen, daneben eine Kaffeetasse
+    caption: Coffee klatsch
+    caption_de: Kaffeekränzchen
+    text: Acrylic marker, painted during a KaffeeGang meeting.
+    text_de: Acrylmarker, während Kaffeegang meeting.
   - src: /Images/FineArt/1000015910.webp
     alt: Canvas of a street lamp against a blue sky with white clouds and a moon
-    alt_de: Laterne bei meiner alten Lieblingsbank.
-    caption: Acrylic on canvas
-    caption_de: Acryl auf Leinwand (Hätte ich mal lieber vorgezeichnet.)
+    alt_de: Leinwand mit einer Straßenlaterne vor blauem Himmel mit weißen Wolken und Mond
+    caption: Street lamp by my old favourite bench
+    caption_de: Laterne bei meiner alten Lieblingsbank.
+    text: Acrylic on canvas (I should have sketched it out first).
+    text_de: Acryl auf Leinwand (Hätte ich mal lieber vorgezeichnet.)
   - src: /Images/FineArt/1000015909.webp
     alt: Canvas painting of a night street scene in red and blue with a figure and a van
-    alt_de: Straßenszene
-    caption: Acrylic and ink on canvas
-    caption_de: Acryl und Tinte auf Leinwand
+    alt_de: Leinwand mit einer nächtlichen Straßenszene in Rot und Blau, mit einer Figur und einem Transporter
+    caption: Street scene
+    caption_de: Straßenszene
+    text: Acrylic and ink on canvas.
+    text_de: Acryl und Tinte auf Leinwand
   - src: /Images/Zeichnungen/zeichnung01.webp
     alt: 'Double page: a forest of gnarled trees in black ink, with the words “Da merk ich nichts und lauf” and a small walking figure'
-    alt_de: Wie die Axt durch den Wald.
-    caption: Da merk ich nichts
-    caption_de: Tinte und Aquarell
+    alt_de: 'Doppelseite: ein Wald aus knorrigen Bäumen in schwarzer Tusche, mit den Worten „Da merk ich nichts und lauf“ und einer kleinen laufenden Figur'
+    caption: Like an axe through the forest
+    caption_de: Wie die Axt durch den Wald.
+    text: Ink and watercolour.
+    text_de: Tinte und Aquarell
   - src: /Images/Zeichnungen/zeichnung02.webp
     alt: Grey marker drawing of apartment blocks and a row of street lamps, captioned “Unsichtbar im Deckmantel der Masse”
-    alt_de: Unsichtbar im Deckmantel der Masse
-    caption: Unsichtbar im Deckmantel der Masse
-    caption_de: Tinte und Aquarell, Vorlesung war langweilig.
+    alt_de: Graue Markerzeichnung von Wohnblocks und einer Reihe Straßenlaternen, darunter „Unsichtbar im Deckmantel der Masse“
+    caption: Invisible under the cloak of the crowd
+    caption_de: Unsichtbar im Deckmantel der Masse
+    text: Ink and watercolour. The lecture was boring.
+    text_de: Tinte und Aquarell, Vorlesung war langweilig.
   - src: /Images/Zeichnungen/zeichnung05.webp
     alt: Fineliner drawing of two warped, bending houses on a winding street
-    alt_de: Häuser wackeln bisschen.
-    caption: Bent houses
-    caption_de: Kugelschreiber
+    alt_de: Finelinerzeichnung von zwei verbogenen, schiefen Häusern an einer gewundenen Straße
+    caption: The houses are a bit wobbly
+    caption_de: Häuser wackeln bisschen.
+    text: Ballpoint pen.
+    text_de: Kugelschreiber
   - src: /Images/Zeichnungen/zeichnung08.webp
     alt: 'Watercolour sketch across a double page: a kitchen and living room with two people'
-    alt_de: Belgien Ferienhäuschen
-    caption: Kitchen
-    caption_de: Aquarell, Tinte
+    alt_de: 'Aquarellskizze über eine Doppelseite: Küche und Wohnzimmer mit zwei Personen'
+    caption: Holiday cottage in Belgium
+    caption_de: Belgien Ferienhäuschen
+    text: Watercolour and ink.
+    text_de: Aquarell, Tinte
   - src: /Images/Zeichnungen/zeichnung09.webp
     alt: 'Watercolour sketch: two people sitting by a harbour wall, looking at a boat on the water'
-    alt_de: Kurz Kiellinie
-    caption: At the harbour
-    caption_de: Tinte, Aquarell
+    alt_de: 'Aquarellskizze: zwei Personen sitzen an einer Hafenmauer und blicken auf ein Boot im Wasser'
+    caption: Quick stop at the Kiellinie
+    caption_de: Kurz Kiellinie
+    text: Ink and watercolour.
+    text_de: Tinte, Aquarell
   - src: /Images/Zeichnungen/zeichnung10.webp
     alt: Ink drawing of a photocopier spitting out blue sheets of paper, with the word “STAU” above it
-    alt_de: Papierstau
+    alt_de: Tuschezeichnung eines Kopierers, der blaue Blätter ausspuckt, darüber das Wort „STAU“
     caption: Paper jam
-    caption_de: Tinte, Acrylmarker, jo, passiert nä.
+    caption_de: Papierstau
+    text: Ink and acrylic marker. Happens, right?
+    text_de: Tinte, Acrylmarker, jo, passiert nä.
   - src: /Images/Zeichnungen/zeichnung11.webp
     alt: Black ink drawing of an old car in tall grass in front of a wooden hut
-    alt_de: Ich glaub die Zündkerze ist durch.
-    caption: Car in the grass
-    caption_de: Tinte
+    alt_de: Schwarze Tuschezeichnung eines alten Autos im hohen Gras vor einer Holzhütte
+    caption: I think the spark plug is gone
+    caption_de: Ich glaub die Zündkerze ist durch.
+    text: Ink.
+    text_de: Tinte
   - src: /Images/Zeichnungen/zeichnung12.webp
     alt: Fineliner sketch of a street corner with bare trees, lamp posts, a bench and a traffic light
-    alt_de: Sketch ausm Park
-    caption: Street corner
-    caption_de: Tintenroller
+    alt_de: Finelinerskizze einer Straßenecke mit kahlen Bäumen, Laternen, einer Bank und einer Ampel
+    caption: Sketch from the park
+    caption_de: Sketch ausm Park
+    text: Rollerball pen.
+    text_de: Tintenroller
   - src: /Images/Zeichnungen/zeichnung13.webp
     alt: 'Double page: blue and black raindrops falling on a willow tree, reeds and an upturned umbrella'
-    alt_de: im Schützenpark hats angefangen zu regnen.
-    caption: Rain
-    caption_de: Tintenroller
+    alt_de: 'Doppelseite: blaue und schwarze Regentropfen über einer Weide, Schilf und einem umgedrehten Regenschirm'
+    caption: It started raining in the Schützenpark
+    caption_de: im Schützenpark hats angefangen zu regnen.
+    text: Rollerball pen.
+    text_de: Tintenroller
   - src: /Images/Zeichnungen/zeichnung15.webp
     alt: Black and red fineliner drawing of a potted plant next to a Telefunken P300 radio, with a red sun
-    alt_de: Beim Kugelschreiberfrühstück
-    caption: Telefunken P300
-    caption_de: Telefunken P300
+    alt_de: Schwarz-rote Finelinerzeichnung einer Topfpflanze neben einem Telefunken-P300-Radio, dahinter eine rote Sonne
+    caption: At the ballpoint breakfast
+    caption_de: Beim Kugelschreiberfrühstück
+    text: Telefunken P300.
+    text_de: Telefunken P300
 embed: ''
 video_poster: ''
 date: 2026-10-25
