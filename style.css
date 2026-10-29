@@ -3509,6 +3509,14 @@ html.jw-motion-off {
     margin: 0;
     padding: 0;
     border-top: 1px solid var(--line);
+    /* Lange Listen scrollen in sich: höchstens so hoch wie der sichtbare
+       Bereich unter dem Header (je 32 px Abstand oben und unten).
+       script.js hält die aktive Zeile im sichtbaren Teil. */
+    max-height: calc(100vh - var(--jw-header-h, 72px) - 64px);
+    max-height: calc(100dvh - var(--jw-header-h, 72px) - 64px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
 }
 
 .jw-archive__index li {
@@ -3545,7 +3553,8 @@ html.jw-motion-off {
 
 .theme .jw-archive__index button:focus-visible {
     outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
+    /* nach innen, damit der Rand der scrollenden Liste ihn nicht abschneidet */
+    outline-offset: -2px;
 }
 
 /* Bildspalte */
