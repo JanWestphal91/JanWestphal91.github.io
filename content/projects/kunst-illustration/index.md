@@ -5,50 +5,20 @@ title_de: Kunst und Illustration
 slug: kunst-illustration
 category: '[Art, Illustration]'
 order: 5
-cover_image: /Images/Kunst/maske-scheune.webp
-cover_image_alt: 'Mural on a wooden barn: a face split into a pale and a turquoise half with a dark blue beard, a small crown on top, two turquoise hands at the sides, on a pink background'
-cover_image_alt_de: 'Wandbild an einer Holzscheune: ein Gesicht, halb hell und halb türkis, mit dunkelblauem Bart und kleiner Krone, links und rechts zwei türkise Hände vor pinkem Hintergrund'
+cover_image: /Images/Kunst/rotes-tier-2020.webp
+cover_image_alt: A red horse on a wall with a graffiti
+cover_image_alt_de: Ein rotes Pferd vor einem Graffiti auf einer Wand.
 summary_card: 'My favourites: walls, canvases, objects, drawings and zines.'
 summary_card_de: 'Meine Favoriten: Wände, Leinwände, Objekte, Zeichnungen und Hefte.'
-summary: 'A collection of my favourite works away from the screen: graffiti and murals, canvases, small paintings on metal sheet, sketchbook pages and three printed zines that can be leafed through as flipbooks. Some are commissions, most are free works.'
-summary_de: 'Eine Sammlung meiner Lieblingsarbeiten abseits des Bildschirms: Graffiti und Wandbilder, Leinwände, kleine Malereien auf Blech, Skizzenbuchseiten und drei gedruckte Hefte, die sich als Flipbook durchblättern lassen. Einige sind Auftragsarbeiten, die meisten freie Arbeiten.'
+summary: 'A collection of my favourite works away from the screen: graffiti and murals, canvases, small paintings on metal sheet. Some are commissions, most are free works.'
+summary_de: 'Eine Sammlung meiner Lieblingsarbeiten abseits des Bildschirms: Graffiti und Wandbilder, Leinwände, kleine Malereien auf Blech. Einige sind Auftragsarbeiten, die meisten freie Arbeiten.'
 meta:
   - Graffiti, canvas, objects
   - Drawing, zines
 meta_de:
   - Graffiti, Leinwand, Objekte
   - Zeichnung, Hefte
-flipbooks:
-  - title: Nachts sind die Ratten wach
-    text:
-      de: 'Eine kurze illustrierte Geschichte in Schatten. Die Bilder sind in einem dunklen Raum mit einem eigenen Kameraaufbau entstanden: unten die Kamera, darüber eine Glasplatte mit dünnem Papier, darauf ausgeschnittene Formen und weiter oben eine Taschenlampe, die nach unten leuchtet. Jedes Bild wurde 10 Sekunden lang belichtet. Die Schrift habe ich mit einer Taschenlampe in Langzeitbelichtung Buchstabe für Buchstabe gezeichnet.'
-      en: 'A short illustrated story told in shadows. The pictures were made in a dark room with a camera setup of my own: the camera at the bottom, a glass plate above it with thin paper on top, cut-out shapes on the paper and a torch further up, shining down. Each picture was exposed for 10 seconds. The lettering was drawn letter by letter with a torch in a long exposure.'
-    figure:
-      image: /Images/NachtsRatten/aufbau-de.webp
-      image_en: /Images/NachtsRatten/aufbau-en.webp
-      alt:
-        de: 'Skizze des Aufbaus von der Seite: Oben leuchtet eine Taschenlampe nach unten auf ausgeschnittene Formen, die auf dünnem Papier auf einer Glasplatte liegen. Die Glasplatte ruht auf zwei Stützen, darunter zeigt die Kamera nach oben und fotografiert die Schatten.'
-        en: 'Diagram of the setup, side view: a torch at the top shines down onto cut-out shapes lying on thin paper on a glass plate. The glass plate rests on two supports; underneath, the camera points upwards and photographs the shadows.'
-      caption:
-        de: Der Aufbau im dunklen Raum
-        en: The setup in the dark room
-    pages:
-      - /Images/NachtsRatten/nachtsratten1.webp
-      - /Images/NachtsRatten/nachtsratten2.webp
-      - /Images/NachtsRatten/nachtsratten3.webp
-      - /Images/NachtsRatten/nachtsratten4.webp
-      - /Images/NachtsRatten/nachtsratten5.webp
-      - /Images/NachtsRatten/nachtsratten6.webp
-      - /Images/NachtsRatten/nachtsratten7.webp
-      - /Images/NachtsRatten/nachtsratten8.webp
-      - /Images/NachtsRatten/nachtsratten9.webp
-      - /Images/NachtsRatten/nachtsratten10.webp
-      - /Images/NachtsRatten/nachtsratten11.webp
-      - /Images/NachtsRatten/nachtsratten12.webp
-      - /Images/NachtsRatten/nachtsratten13.webp
-      - /Images/NachtsRatten/nachtsratten14.webp
-    page_width: null
-    page_height: null
+flipbooks: []
 models_intro: null
 models: []
 case: null
